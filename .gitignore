@@ -13,7 +13,7 @@ hs_err_pid*
 
 .project
 .classpath
-
+.settings
 
 target/
 pom.xml.tag
