@@ -8,7 +8,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>dionysus Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
+
   <repositories>
     <repository>
       <id>project-local</id>
@@ -16,7 +16,7 @@
       <url>file:${project.basedir}/repo</url>
     </repository>
   </repositories>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>4.1.4.RELEASE</spring.version>
@@ -90,7 +90,7 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>com.sina</groupId>
       <artifactId>sae-local</artifactId>
@@ -108,7 +108,42 @@
           <webAppConfig>
             <contextPath>/${project.artifactId}-${project.version}</contextPath>
           </webAppConfig>
+          <systemProperties>
+            <systemProperty>
+              <name>spring.profiles.active</name>
+              <value>dev</value>
+            </systemProperty>
+          </systemProperties>
+          <stopKey>jetty-stop</stopKey>
+          <stopPort>9966</stopPort>
         </configuration>
+        <executions>
+          <execution>
+            <id>start-jetty</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <scanIntervalSeconds>0</scanIntervalSeconds>
+              <daemon>true</daemon>
+              <useTestClasspath>true</useTestClasspath>
+              <systemProperties>
+                <systemProperty>
+                  <name>spring.profiles.active</name>
+                  <value>test</value>
+                </systemProperty>
+              </systemProperties>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -117,6 +152,9 @@
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
+          <compilerArgument>-Xlint:all</compilerArgument>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
         </configuration>
       </plugin>
     </plugins>

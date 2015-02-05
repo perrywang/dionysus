@@ -8,6 +8,6 @@
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>classpath*:META-INF/applicationContext*.xml</param-value>
   </context-param>
 </web-app>

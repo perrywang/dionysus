@@ -20,7 +20,7 @@
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    <property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+    <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
     <property name="persistenceUnitName" value="dionysusPersistence" />
     <property name="dataSource" ref="dionysusDataSource" />
     <property name="packagesToScan" value="org.boilerplate.entities.*" />
