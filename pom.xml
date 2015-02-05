@@ -11,8 +11,8 @@
 
   <repositories>
     <repository>
-      <id>project-local</id>
-      <name>Local dependencies for project</name>
+      <id>sae-local</id>
+      <name>Sina app engine SDK</name>
       <url>file:${project.basedir}/repo</url>
     </repository>
   </repositories>
@@ -23,9 +23,27 @@
     <hibernate.version>4.3.8.Final</hibernate.version>
     <jetty.version>9.3.0.M1</jetty.version>
     <slf4j.version>1.7.10</slf4j.version>
+    <jersey.version>2.15</jersey.version>
   </properties>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>${jersey.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -156,7 +174,6 @@
       <artifactId>xercesImpl</artifactId>
       <version>2.11.0</version>
     </dependency>
-
   </dependencies>
   <build>
     <finalName>dionysus</finalName>
