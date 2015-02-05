@@ -1,8 +1,5 @@
-<beans 
-  xmlns="http://www.springframework.org/schema/beans" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:context="http://www.springframework.org/schema/context" 
-  xmlns:tx="http://www.springframework.org/schema/tx"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
   xsi:schemaLocation="
 	http://www.springframework.org/schema/beans	
 	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -32,10 +29,27 @@
       </bean>
     </property>
   </bean>
-  <bean id="dionysusDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost:3306/dionysus"/>
-    <property name="username" value="root"/>
-    <property name="password" value=""/>
-  </bean>
+  <beans profile="dev">
+    <bean id="dionysusDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+      <property name="url" value="jdbc:mysql://localhost:3306/dionysus" />
+      <property name="username" value="root" />
+      <property name="password" value="" />
+    </bean>
+  </beans>
+  <beans profile="prod">
+    <bean id="dionysusDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+      <property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_dionysus" />
+      <property name="username" value="051on2wxmz" />
+      <property name="password" value="5xmz1hwjhj10m3xxlmjlk432wj24k05wkmzh5m30" />
+      <property name="testOnBorrow" value="true" />
+      <property name="testOnReturn" value="true" />
+      <property name="testWhileIdle" value="true" />
+      <property name="timeBetweenEvictionRunsMillis" value="1800000" />
+      <property name="numTestsPerEvictionRun" value="3" />
+      <property name="minEvictableIdleTimeMillis" value="1800000" />
+      <property name="validationQuery" value="SELECT 1" />
+    </bean>
+  </beans>
 </beans>

@@ -161,7 +161,7 @@
         <version>${jetty.version}</version>
         <configuration>
           <webAppConfig>
-            <contextPath>/${project.artifactId}-${project.version}</contextPath>
+            <contextPath>/</contextPath>
           </webAppConfig>
           <systemProperties>
             <systemProperty>
@@ -169,36 +169,7 @@
               <value>dev</value>
             </systemProperty>
           </systemProperties>
-          <stopKey>jetty-stop</stopKey>
-          <stopPort>9966</stopPort>
         </configuration>
-        <executions>
-          <execution>
-            <id>start-jetty</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <scanIntervalSeconds>0</scanIntervalSeconds>
-              <daemon>true</daemon>
-              <useTestClasspath>true</useTestClasspath>
-              <systemProperties>
-                <systemProperty>
-                  <name>spring.profiles.active</name>
-                  <value>test</value>
-                </systemProperty>
-              </systemProperties>
-            </configuration>
-          </execution>
-          <execution>
-            <id>stop-jetty</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>stop</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
