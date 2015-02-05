@@ -1,6 +1,5 @@
-package org.boilaplate.dionysus;
+package org.boilaplate.dionysus.rest;
 
-import org.boilaplate.dionysus.rest.ArticleResources;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;

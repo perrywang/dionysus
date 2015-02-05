@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="articles")
