@@ -29,7 +29,7 @@
       </bean>
     </property>
   </bean>
-  <bean id="articleDao" class="org.boilaplate.dionysus.impl.ArticleServiceDaoImp" />
+  <bean id="articleService" class="org.boilaplate.dionysus.impl.ArticleServiceImpl" />
   <beans profile="dev">
     <bean id="dionysusDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
       <property name="driverClassName" value="com.mysql.jdbc.Driver" />

@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@XmlRootElement
 @Table(name="articles")
 public class Article implements Serializable {
 

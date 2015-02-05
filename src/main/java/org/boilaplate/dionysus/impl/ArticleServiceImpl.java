@@ -6,14 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.boilaplate.dionysus.ArticleDao;
+import org.boilaplate.dionysus.ArticleService;
 import org.boilaplate.dionysus.entities.Article;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class ArticleServiceDaoImp implements ArticleDao {
+public class ArticleServiceImpl implements ArticleService {
 
+	// An entity manager can only be injected in classes running inside a transaction.
 	@PersistenceContext
 	private EntityManager entityManager;
 	
