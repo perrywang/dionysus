@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@Profile("dev")
-public class DevelopmentJPAEnvironment {
+@Profile("test")
+public class TestJPAEnvironment {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -39,7 +39,7 @@ public class DevelopmentJPAEnvironment {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-		dataSource.setUrl("jdbc:derby:dionysus.db;create=true");
+		dataSource.setUrl("jdbc:derby:dionysus-test.db;create=true");
 		return dataSource;
 	}
 

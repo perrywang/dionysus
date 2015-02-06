@@ -26,4 +26,10 @@ public class ArticleServiceImpl implements ArticleService {
 
 		return query.getResultList();
 	}
+
+	@Override
+	@Transactional(readOnly=false)
+	public void add(Article article) {
+		entityManager.persist(article);
+	}
 }

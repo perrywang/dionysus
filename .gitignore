@@ -27,3 +27,4 @@ release.properties
 .springBeans
 *.log
 dionysus.db
+dionysus-test.db
