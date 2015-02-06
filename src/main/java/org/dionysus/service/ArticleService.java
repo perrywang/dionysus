@@ -7,5 +7,5 @@ import org.dionysus.model.Article;
 public interface ArticleService {
 	public List<Article> findLatestArticle();
 	
-	public void add(Article article);
+	public void save(Article article);
 }

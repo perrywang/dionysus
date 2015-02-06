@@ -34,7 +34,8 @@ public class ArticleTest {
 		a.setTitle("test article");
 		a.setBody("This is article body");
 		
-		service.add(a);
+		Assert.assertNull(a.getId());
+		service.save(a);
 		Assert.assertNotNull(a.getId());
 		
 		articles = service.findLatestArticle();
