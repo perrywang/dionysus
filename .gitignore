@@ -15,6 +15,9 @@ hs_err_pid*
 .classpath
 .settings
 
+.idea/
+*.iml
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
