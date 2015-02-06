@@ -10,7 +10,3 @@ run jetty (local mysql is required)
 	> create database dionysus;
 
 	$ mvn jetty:run
-
-access articles
-
-	$ curl http://localhost:8080/articles

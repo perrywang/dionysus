@@ -1,4 +1,4 @@
-package org.boilaplate.dionysus.impl;
+package org.dionysus.service.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.boilaplate.dionysus.ArticleService;
-import org.boilaplate.dionysus.entities.Article;
+import org.dionysus.model.Article;
+import org.dionysus.service.ArticleService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

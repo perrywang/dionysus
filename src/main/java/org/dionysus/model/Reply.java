@@ -1,4 +1,4 @@
-package org.boilaplate.dionysus.entities;
+package org.dionysus.model;
 
 import java.io.Serializable;
 
@@ -7,18 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categories")
-public class Category implements Serializable {
+@Table(name="replies")
+public class Reply implements Serializable {
 
-	private static final long serialVersionUID = 2384283567572219724L;
+	private static final long serialVersionUID = 173375477700239586L;
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
-	@Column(name="name")
-	private String name;
+
+	@ManyToOne
+	private User user;
 }

@@ -1,4 +1,4 @@
-package org.boilaplate.dionysus.entities;
+package org.dionysus.model;
 
 import java.io.Serializable;
 
