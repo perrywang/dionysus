@@ -38,10 +38,8 @@ public class DevelopmentJPAEnvironment {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/dionysus");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
+		dataSource.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+		dataSource.setUrl("jdbc:derby:dionysus.db;create=true");
 		return dataSource;
 	}
 
@@ -60,7 +58,7 @@ public class DevelopmentJPAEnvironment {
 	Properties additionalProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.DerbyTenSevenDialect");
 		return properties;
 	}
 }

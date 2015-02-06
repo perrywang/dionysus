@@ -22,3 +22,5 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 .springBeans
+*.log
+dionysus.db
