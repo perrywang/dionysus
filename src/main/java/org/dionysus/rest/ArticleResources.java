@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.dionysus.model.Article;
-import org.dionysus.service.ArticleService;
+import org.dionysus.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 public class ArticleResources {
 	
 	@Autowired
-	private ArticleService service;
+	private ArticleRepository service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Article> getArticle() {
-		return service.findLatestArticle();
+		return service.findAll();
 	}
 }

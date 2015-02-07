@@ -11,34 +11,36 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.dionysus.model.Category;
-import org.dionysus.service.CategoryService;
+import org.dionysus.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 @Path("/categories")
+@Transactional
 public class CategoryResources {
 
 	@Autowired
-	CategoryService service;
+	CategoryRepository repository;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Category create(Category category) {
-		return service.save(category);
+		return repository.save(category);
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Category> getAll() {
-		return service.findAll();
+		return repository.findAll();
 	}
 	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Category find(@PathParam("id") Long id) {
-		return service.find(id);
+		return repository.getOne(id);
 	}
 }

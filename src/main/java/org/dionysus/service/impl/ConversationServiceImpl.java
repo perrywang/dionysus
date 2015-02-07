@@ -5,8 +5,9 @@ import javax.persistence.PersistenceContext;
 
 import org.dionysus.model.Conversation;
 import org.dionysus.model.User;
+import org.dionysus.repositories.ConversationRepository;
+import org.dionysus.repositories.UserRepository;
 import org.dionysus.service.ConversationService;
-import org.dionysus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,13 +18,16 @@ public class ConversationServiceImpl implements ConversationService {
 	private EntityManager entityManager;
 	
 	@Autowired
-	private UserService userService;
+	private UserRepository userService;
+	
+	@Autowired
+	private ConversationRepository conversationRepository;
 	
 	@Override
 	@Transactional(readOnly=false)
 	public void joinConversation(Long convId, Long userId) {
-		Conversation conversation = this.find(convId);
-		User user = userService.find(userId);
+		Conversation conversation = conversationRepository.findOne(convId);
+		User user = userService.findOne(userId);
 		conversation.join(user);
 		entityManager.persist(conversation);
 	}
@@ -31,28 +35,18 @@ public class ConversationServiceImpl implements ConversationService {
 	@Override
 	@Transactional(readOnly=false)
 	public void leaveConversation(Long convId, Long userId) {
-		Conversation conversation = this.find(convId);
-		User user = userService.find(userId);
+		Conversation conversation = conversationRepository.findOne(convId);
+		User user = userService.findOne(userId);
 		conversation.leave(user);
 		entityManager.persist(conversation);
-	}
-
-	@Override
-	public Conversation find(Long id) {
-		return entityManager.find(Conversation.class, id);
 	}
 
 	@Override
 	@Transactional(readOnly=false)
 	public Conversation create(String title, User owner) {
 		Conversation conversation = new Conversation(title, owner);
-		entityManager.persist(conversation);
+		conversationRepository.save(conversation);
 		return conversation;
 	}
 
-	@Override
-	@Transactional(readOnly=false)
-	public void save(Conversation conversation) {
-		entityManager.persist(conversation);
-	}
 }

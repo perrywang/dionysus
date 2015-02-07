@@ -4,8 +4,9 @@ import org.dionysus.config.ApplicationContext;
 import org.dionysus.config.TestJPAEnvironment;
 import org.dionysus.model.Conversation;
 import org.dionysus.model.User;
+import org.dionysus.repositories.ConversationRepository;
+import org.dionysus.repositories.UserRepository;
 import org.dionysus.service.ConversationService;
-import org.dionysus.service.UserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,18 +28,21 @@ public class ConversationServiceTest {
 	private User userB;
 
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
 
 	@Autowired
 	private ConversationService conversationService;
+	
+	@Autowired
+	private ConversationRepository conversationRepository;
 
 	@Before
 	public void setUp() {
-		owner = userService.save(new User("admin", "admin",
+		owner = userRepository.save(new User("admin", "admin",
 				"admin@dionysus.org"));
-		userA = userService.save(new User("userA", "userA",
+		userA = userRepository.save(new User("userA", "userA",
 				"usera@dionysus.org"));
-		userB = userService.save(new User("userB", "userB",
+		userB = userRepository.save(new User("userB", "userB",
 				"userb@dionysus.org"));
 	}
 
@@ -56,11 +60,11 @@ public class ConversationServiceTest {
 
 		conversationService.joinConversation(conv.getId(), userA.getId());
 		conversationService.joinConversation(conv.getId(), userB.getId());
-		conv = conversationService.find(conv.getId());
+		conv = conversationRepository.findOne(conv.getId());
 		Assert.assertEquals(conv.getParticipants().size(), 2);
 
 		conversationService.leaveConversation(conv.getId(), userA.getId());
-		conv = conversationService.find(conv.getId());
+		conv = conversationRepository.findOne(conv.getId());
 		Assert.assertEquals(conv.getParticipants().size(), 1);
 	}
 }

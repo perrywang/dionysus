@@ -8,7 +8,7 @@ import org.dionysus.config.ApplicationContext;
 import org.dionysus.config.TestJPAEnvironment;
 import org.dionysus.model.Article;
 import org.dionysus.model.Category;
-import org.dionysus.service.ArticleService;
+import org.dionysus.repositories.ArticleRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,17 +25,17 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class ArticleServiceTest {
 
 	@Autowired
-	private ArticleService articleService;
+	private ArticleRepository articleRepository;
 
 	@Test(expected = ConstraintViolationException.class)
 	public void testArticleValidation() {
 		Article article = new Article("article title", "article body");
-		articleService.save(article);
+		articleRepository.save(article);
 	}
 
 	@Test
 	public void testAddArticle() {
-		List<Article> articles = articleService.findLatestArticle();
+		List<Article> articles = articleRepository.findAll();
 		int count = articles.size();
 
 		Article aricle = new Article("article title", "article body");
@@ -44,10 +44,10 @@ public class ArticleServiceTest {
 
 		Assert.assertNull(aricle.getId());
 
-		articleService.save(aricle);
+		articleRepository.save(aricle);
 		Assert.assertNotNull(aricle.getId());
 
-		articles = articleService.findLatestArticle();
+		articles = articleRepository.findAll();
 		Assert.assertEquals(articles.size(), count + 1);
 	}
 }
