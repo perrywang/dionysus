@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "articles")
 public class Article implements Serializable {
@@ -25,10 +27,12 @@ public class Article implements Serializable {
 	private Long id;
 
 	@Column(name = "title")
+	@NotBlank(message = "article title is required")
 	private String title;
 
 	@Column(name = "body")
 	@Lob
+	@NotBlank(message = "article body is required")
 	private String body;
 
 	@ManyToOne
