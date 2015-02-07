@@ -1,5 +1,7 @@
 package org.dionysus.service.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,13 +18,28 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	@Transactional(readOnly = false)
-	public void save(Category category) {
+	public Category save(Category category) {
 		entityManager.persist(category);
+		return category;
 	}
 
 	@Override
 	@Transactional(readOnly = false)
 	public void remove(Category category) {
 		entityManager.remove(category);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Category find(Long id) {
+		return entityManager.find(Category.class, id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Category> findAll() {
+		String qlString = "SELECT c FROM Category c";
+		return entityManager.createQuery(qlString, Category.class)
+				.getResultList();
 	}
 }

@@ -19,8 +19,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "org.dionysus.service")
+@ComponentScan(basePackages = { "org.dionysus.service", "org.dionysus.rest" })
 public class ApplicationContext {
+	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer properties() {
 		return new PropertySourcesPlaceholderConfigurer();

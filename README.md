@@ -12,6 +12,12 @@ run jetty (default start in ```dev``` profile)
 
 	$ mvn jetty:run
 	
+invoke restful api
+
+	$ curl http://localhost:8080/categories
+	$ curl -X  POST -H "Content-type:application/json" -d '{"name":"test"}' http://localhost:8080/categories
+	$ curl http://localhost:8080/categories/103
+	
 create war
 
 	$ mvn package
