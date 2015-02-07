@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name="roles")
 public class Role implements Serializable {
@@ -23,7 +21,7 @@ public class Role implements Serializable {
 	private Long id;
 	
 	@Column(name="name")
-	@NotEmpty(message = "role name is required")
+//	@NotEmpty(message = "role name is required")
 	private String name;
 	
 	@Override

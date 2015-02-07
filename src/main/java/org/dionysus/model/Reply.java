@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name = "replies")
 public class Reply implements Serializable {
@@ -24,11 +22,11 @@ public class Reply implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@NotEmpty(message = "reply should have user associated")
+//	@NotEmpty(message = "reply should have user associated")
 	private User user;
 
 	@ManyToOne
-	@NotEmpty(message = "reply should have conversation associated")
+//	@NotEmpty(message = "reply should have conversation associated")
 	private Conversation conversation;
 
 	@ManyToOne

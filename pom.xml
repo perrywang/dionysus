@@ -36,7 +36,7 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${hibernate.version}</version>
     </dependency>
-    <dependency>
+    <!-- <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>5.1.3.Final</version>
@@ -50,7 +50,7 @@
       <groupId>org.glassfish.web</groupId>
       <artifactId>javax.el</artifactId>
       <version>2.2.4</version>
-    </dependency>
+    </dependency> -->
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -146,11 +146,13 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.34</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derby</artifactId>
       <version>10.11.1.1</version>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
@@ -170,6 +172,7 @@
       <groupId>com.sina</groupId>
       <artifactId>sae-local</artifactId>
       <version>1.1.0</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>xerces</groupId>

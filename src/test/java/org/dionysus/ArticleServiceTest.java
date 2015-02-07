@@ -2,8 +2,6 @@ package org.dionysus;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
-
 import org.dionysus.config.ApplicationContext;
 import org.dionysus.config.TestJPAEnvironment;
 import org.dionysus.model.Article;
@@ -28,11 +26,11 @@ public class ArticleServiceTest {
 	private ArticleService articleService;
 	
 
-	@Test(expected = ConstraintViolationException.class)
-	public void testArticleValidation() {
-		Article article = new Article("article title", "article body");
-		articleService.save(article);
-	}
+//	@Test(expected = ConstraintViolationException.class)
+//	public void testArticleValidation() {
+//		Article article = new Article("article title", "article body");
+//		articleService.save(article);
+//	}
 
 	@Test
 	public void testAddArticle() {

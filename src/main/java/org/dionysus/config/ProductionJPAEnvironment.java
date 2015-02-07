@@ -9,17 +9,15 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.sina.sae.util.SaeUserInfo;
 
 @Configuration
-@EnableTransactionManagement
 @Profile("prod")
 public class ProductionJPAEnvironment {
 
 	@Bean
-	public JpaVendorAdapter vendorAdapter() {
+	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setGenerateDdl(true);
 		vendorAdapter.setShowSql(false);

@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name = "categories")
 public class Category implements Serializable {
@@ -22,7 +20,7 @@ public class Category implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
-	@NotEmpty(message = "category name is required")
+//	@NotEmpty(message = "category name is required")
 	@Column(name = "name")
 	private String name;
 
