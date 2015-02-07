@@ -1,12 +1,16 @@
-boilerplate to run in sae
+Java project for SAE
 
-setup eclipse project
+- use Derby database in ```dev```,```test``` profile
+- use SAE MySQL in ```prod``` profile
+
+setup eclipse environment
 
 	$ mvn eclipse:eclipse -DdownloadSources=true
 	
-run jetty (local mysql is required)
-
-	$ mysql -uroot
-	> create database dionysus;
+run jetty (default start in ```dev``` profile)
 
 	$ mvn jetty:run
+	
+create war
+
+	$ mvn package
