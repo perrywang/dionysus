@@ -1,13 +1,19 @@
 package org.dionysus.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -30,10 +36,78 @@ public class Conversation implements Serializable {
 	@NotBlank(message = "conversation title is required")
 	private String title;
 
+	@NotNull(message = "conversation owner cannot be null")
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private User owner;
+
 	@Column(name = "description")
 	@Lob
 	private String description;
 
-	@NotNull(message = "conversation owner cannot be null")
-	private User owner;
+	@OneToMany(fetch = FetchType.EAGER)
+	private Collection<User> participants;
+
+	public Conversation() {
+		this.participants = new ArrayList<User>();
+	}
+
+	public Conversation(String title, User owner) {
+		super();
+		this.title = title;
+		this.owner = owner;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public Collection<User> getParticipants() {
+		return participants;
+	}
+
+	public void setParticipants(Collection<User> participants) {
+		this.participants = participants;
+	}
+
+	public void join(User user) {
+		participants.add(user);
+	}
+
+	public void leave(User user) {
+		participants.remove(user);
+	}
+
+	@Override
+	public String toString() {
+		return "Conversation: " + this.title;
+	}
 }

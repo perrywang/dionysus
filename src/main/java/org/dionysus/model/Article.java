@@ -2,6 +2,7 @@ package org.dionysus.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Article implements Serializable {
 	@NotBlank(message = "article body is required")
 	private String body;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@Valid
 	@NotNull(message = "Article should have category associated")
 	private Category category;

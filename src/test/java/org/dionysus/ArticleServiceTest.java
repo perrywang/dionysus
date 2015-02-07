@@ -9,7 +9,6 @@ import org.dionysus.config.TestJPAEnvironment;
 import org.dionysus.model.Article;
 import org.dionysus.model.Category;
 import org.dionysus.service.ArticleService;
-import org.dionysus.service.CategoryService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,13 +22,10 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ActiveProfiles("test")
 @ContextConfiguration(classes = { ApplicationContext.class,
 		TestJPAEnvironment.class }, loader = AnnotationConfigContextLoader.class)
-public class ArticleTest {
+public class ArticleServiceTest {
 
 	@Autowired
 	private ArticleService articleService;
-	
-	@Autowired
-	private CategoryService categoryService;
 	
 
 	@Test(expected = ConstraintViolationException.class)
@@ -44,9 +40,7 @@ public class ArticleTest {
 		Assert.assertEquals(articles.size(), 0);
 
 		Article aricle = new Article("article title", "article body");
-		
 		Category category = new Category("test category");
-		categoryService.save(category);
 		aricle.setCategory(category);
 
 		Assert.assertNull(aricle.getId());

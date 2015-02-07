@@ -4,7 +4,7 @@ import org.dionysus.model.Category;
 
 public interface CategoryService {
 
-	public void save(Category category);
+	void save(Category category);
 	
-	public void remove(Category category);
+	void remove(Category category);
 }
