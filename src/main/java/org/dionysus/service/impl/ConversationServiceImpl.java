@@ -1,8 +1,5 @@
 package org.dionysus.service.impl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.dionysus.model.Conversation;
 import org.dionysus.model.User;
 import org.dionysus.repositories.ConversationRepository;
@@ -14,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ConversationServiceImpl implements ConversationService {
-	@PersistenceContext
-	private EntityManager entityManager;
 	
 	@Autowired
 	private UserRepository userService;
@@ -29,7 +24,7 @@ public class ConversationServiceImpl implements ConversationService {
 		Conversation conversation = conversationRepository.findOne(convId);
 		User user = userService.findOne(userId);
 		conversation.join(user);
-		entityManager.persist(conversation);
+		conversationRepository.save(conversation);
 	}
 
 	@Override
@@ -38,7 +33,7 @@ public class ConversationServiceImpl implements ConversationService {
 		Conversation conversation = conversationRepository.findOne(convId);
 		User user = userService.findOne(userId);
 		conversation.leave(user);
-		entityManager.persist(conversation);
+		conversationRepository.save(conversation);
 	}
 
 	@Override
