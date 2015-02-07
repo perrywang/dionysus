@@ -10,16 +10,27 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-@Table(name="replies")
+@Table(name = "replies")
 public class Reply implements Serializable {
 
 	private static final long serialVersionUID = 173375477700239586L;
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 
 	@ManyToOne
+	@NotEmpty(message = "reply should have user associated")
 	private User user;
+
+	@ManyToOne
+	@NotEmpty(message = "reply should have conversation associated")
+	private Conversation conversation;
+
+	@ManyToOne
+	private Reply parent;
 }

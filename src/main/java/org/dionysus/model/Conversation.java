@@ -10,13 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "histories")
-public class History implements Serializable {
+@Table(name = "conversations")
+public class Conversation implements Serializable {
 
-	private static final long serialVersionUID = -3558156230583594674L;
+	private static final long serialVersionUID = 2523934617928738918L;
 
+	// XXX: may use uuid generator
+	// otherwise conversation id can be guessed
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
+
+	
 }

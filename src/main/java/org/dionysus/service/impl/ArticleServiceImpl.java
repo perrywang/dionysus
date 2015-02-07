@@ -13,19 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
-	// An entity manager can only be injected in classes running inside a transaction.
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Article> findLatestArticle() {
 		String qlString = "SELECT a FROM Article a ORDER BY a.id desc";
-		return entityManager.createQuery(qlString, Article.class).getResultList();
+		return entityManager.createQuery(qlString, Article.class)
+				.getResultList();
 	}
 
 	@Override
-	@Transactional(readOnly=false)
+	@Transactional(readOnly = false)
 	public void save(Article article) {
 		entityManager.persist(article);
 	}
