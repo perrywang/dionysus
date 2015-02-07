@@ -37,7 +37,7 @@ public class ArticleServiceTest {
 	@Test
 	public void testAddArticle() {
 		List<Article> articles = articleService.findLatestArticle();
-		Assert.assertEquals(articles.size(), 0);
+		int count = articles.size();
 
 		Article aricle = new Article("article title", "article body");
 		Category category = new Category("test category");
@@ -49,6 +49,6 @@ public class ArticleServiceTest {
 		Assert.assertNotNull(aricle.getId());
 
 		articles = articleService.findLatestArticle();
-		Assert.assertEquals(articles.size(), 1);
+		Assert.assertEquals(articles.size(), count + 1);
 	}
 }
