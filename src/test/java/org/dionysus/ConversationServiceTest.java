@@ -51,10 +51,14 @@ public class ConversationServiceTest {
 	@Test
 	public void testJoinAndLeaveConversation() {
 		Conversation conv = conversationService.create("test conversation", owner);
+		
 		conversationService.joinConversation(conv.getId(), userA.getId());
 		conversationService.joinConversation(conv.getId(), userB.getId());
 		conv = conversationService.find(conv.getId());
-		System.out.println(conv.getParticipants());
-//		Assert.assertEquals(conv.getParticipants().size(), 1);
+		Assert.assertEquals(conv.getParticipants().size(), 2);
+		
+		conversationService.leaveConversation(conv.getId(), userA.getId());
+		conv = conversationService.find(conv.getId());
+		Assert.assertEquals(conv.getParticipants().size(), 1);
 	}
 }
