@@ -3,6 +3,7 @@ package org.dionysus.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,9 +48,13 @@ public class Conversation implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private Collection<User> participants;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Reply> replies;
 
 	public Conversation() {
 		this.participants = new ArrayList<User>();
+		this.replies = new ArrayList<Reply>();
 	}
 
 	public Conversation(String title, User owner) {
@@ -98,12 +103,24 @@ public class Conversation implements Serializable {
 		this.participants = participants;
 	}
 
+	public List<Reply> getReplies() {
+		return replies;
+	}
+
+	public void setReplies(List<Reply> replies) {
+		this.replies = replies;
+	}
+
 	public void join(User user) {
 		participants.add(user);
 	}
 
 	public void leave(User user) {
 		participants.remove(user);
+	}
+	
+	public void addReply(Reply reply) {
+		this.replies.add(reply);
 	}
 
 	@Override
