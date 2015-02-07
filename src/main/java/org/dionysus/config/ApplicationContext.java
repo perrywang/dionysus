@@ -2,6 +2,9 @@ package org.dionysus.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,29 +20,31 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = "org.dionysus.service")
-public class ApplicationContext { 
+public class ApplicationContext {
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer properties() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
 
-//	@Bean
-//	public static Validator validator() {
-//		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//		return factory.getValidator();
-//	}
+	@Bean
+	public static Validator validator() {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		return factory.getValidator();
+	}
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+			DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
 		em.setPackagesToScan(new String[] { "org.dionysus.model" });
 		em.setJpaVendorAdapter(jpaVendorAdapter);
 		return em;
 	}
-	
+
 	@Bean
-	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+	public PlatformTransactionManager transactionManager(
+			EntityManagerFactory emf) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
 		return transactionManager;

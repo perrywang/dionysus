@@ -16,6 +16,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "conversations")
@@ -31,10 +34,10 @@ public class Conversation implements Serializable {
 	private Long id;
 
 	@Column(name = "title")
-//	@NotBlank(message = "conversation title is required")
+	@NotBlank(message = "conversation title is required")
 	private String title;
 
-//	@NotNull(message = "conversation owner cannot be null")
+	@NotNull(message = "conversation owner cannot be null")
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private User owner;
@@ -45,7 +48,7 @@ public class Conversation implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private Collection<User> participants;
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Reply> replies;
 
@@ -115,7 +118,7 @@ public class Conversation implements Serializable {
 	public void leave(User user) {
 		participants.remove(user);
 	}
-	
+
 	public void addReply(Reply reply) {
 		this.replies.add(reply);
 	}

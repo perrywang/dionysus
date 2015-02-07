@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -23,17 +27,17 @@ public class User implements Serializable {
 	@Column(name = "id")
 	private Long id;
 
-//	@NotBlank(message = "name is required")
-//	@Length(min = 4, max = 20, message = "name length should have {min}-{max} characters")
+	@NotBlank(message = "name is required")
+	@Length(min = 4, max = 20, message = "name length should have {min}-{max} characters")
 	@Column(name = "name")
 	private String name;
 
-//	@NotBlank(message = "password is required")
+	@NotBlank(message = "password is required")
 	@Column(name = "password")
 	private String password;
 
-//	@NotBlank(message = "email is required")
-//	@Email(message = "mail format is not correct")
+	@NotBlank(message = "email is required")
+	@Email(message = "mail format is not correct")
 	@Column(name = "email")
 	private String email;
 
@@ -43,7 +47,7 @@ public class User implements Serializable {
 	public User() {
 		this.roles = new ArrayList<Role>();
 	}
-	
+
 	public User(String name, String password, String email) {
 		super();
 		this.name = name;
