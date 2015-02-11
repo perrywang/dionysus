@@ -28,3 +28,4 @@ release.properties
 *.log
 dionysus.db
 dionysus-test.db
+src/main/webapp/wro

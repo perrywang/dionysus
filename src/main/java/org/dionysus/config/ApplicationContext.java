@@ -18,8 +18,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import ro.isdc.wro.http.ConfigurableWroFilter;
-
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.dionysus.repositories")
@@ -58,10 +56,5 @@ public class ApplicationContext {
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
-	}
-	
-	@Bean
-	public ConfigurableWroFilter wroFilter() {
-		return new ConfigurableWroFilter();
 	}
 }
