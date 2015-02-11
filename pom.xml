@@ -27,6 +27,7 @@
     <hibernate.version>4.3.8.Final</hibernate.version>
     <slf4j.version>1.7.10</slf4j.version>
     <restlet.version>2.0.1</restlet.version>
+    <wro4j.version>1.7.7</wro4j.version>
   </properties>
 
   <dependencies>
@@ -229,6 +230,17 @@
     </dependency>
 
     <dependency>
+      <groupId>ro.isdc.wro4j</groupId>
+      <artifactId>wro4j-core</artifactId>
+      <version>${wro4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ro.isdc.wro4j</groupId>
+      <artifactId>wro4j-extensions</artifactId>
+      <version>${wro4j.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.sina</groupId>
       <artifactId>sae-local</artifactId>
       <version>1.1.0</version>
@@ -244,6 +256,7 @@
       <artifactId>xalan</artifactId>
       <version>2.7.1</version>
     </dependency>
+
   </dependencies>
   <build>
     <finalName>dionysus</finalName>
@@ -265,24 +278,12 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.lesscss</groupId>
-        <artifactId>lesscss-maven-plugin</artifactId>
-        <version>1.7.0.1.1</version>
+        <groupId>ro.isdc.wro4j</groupId>
+        <artifactId>wro4j-maven-plugin</artifactId>
+        <version>${wro4j.version}</version>
         <configuration>
-          <sourceDirectory>${project.basedir}/src/main/webapp/less</sourceDirectory>
-          <outputDirectory>${project.build.directory}/${project.build.finalName}/css</outputDirectory>
-          <compress>true</compress>
-          <includes>
-            <include>main.less</include>
-          </includes>
+          <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

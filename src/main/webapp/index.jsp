@@ -3,11 +3,8 @@
 <html>
   <head>
     <title>Dionysus</title>
-    <link rel="stylesheet" href="/webjars/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-	  <script src="/webjars/jquery/2.1.3/jquery.min.js"></script>
-	  <script src="/webjars/underscorejs/1.6.0/underscore-min.js"></script>
-	  <script src="/webjars/backbonejs/1.1.2/backbone-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/wro/all.css">
+	  <script type="text/javascript" src="/wro/all.js"></script>
   </head>
   <body>
   <h1>load webjar static resources</h1>

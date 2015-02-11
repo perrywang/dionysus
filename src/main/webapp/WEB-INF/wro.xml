@@ -1,0 +1,18 @@
+<groups xmlns="http://www.isdc.ro/wro">
+  <group name="platform">
+    <js>classpath:META-INF/resources/webjars/jquery/2.1.3/jquery.js</js>
+    <js>classpath:META-INF/resources/webjars/underscorejs/1.6.0/underscore.js</js>
+    <js>classpath:META-INF/resources/webjars/backbonejs/1.1.2/backbone.js</js>
+    <css>classpath:META-INF/resources/webjars/font-awesome/4.3.0/css/font-awesome.css</css>
+  </group>
+  
+  <group name="app">
+    <js>/assets/app/*.js</js>
+    <css>/assets/style/*.less</css>
+  </group>
+  
+  <group name="all">
+    <group-ref>platform</group-ref>
+    <group-ref>app</group-ref>
+  </group>
+</groups>
