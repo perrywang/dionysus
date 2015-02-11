@@ -4,9 +4,12 @@
   <head>
     <title>Dionysus</title>
     <link rel="stylesheet" type="text/css" href="/wro/all.css">
-	  <script type="text/javascript" src="/wro/all.js"></script>
   </head>
-  <body>
-  <h1>load webjar static resources</h1>
+  <body id="app">
+    <header></header>
+    <main></main>
+    <footer></footer>
   </body>
+  <script type="text/javascript" src="/wro/platform.js"></script>
+  <script type="text/javascript" src="/wro/app.js"></script>
 </html>

@@ -23,7 +23,7 @@ import ro.isdc.wro.http.ConfigurableWroFilter;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "org.dionysus.repositories")
-@ComponentScan(basePackages = { "org.dionysus.service", "org.dionysus.rest", "ro.isdc.wro.spring" })
+@ComponentScan(basePackages = { "org.dionysus.service", "org.dionysus.rest" })
 public class ApplicationContext {
 
 	@Bean
