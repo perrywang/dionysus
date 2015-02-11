@@ -5,6 +5,7 @@
     <js>classpath:META-INF/resources/webjars/backbonejs/1.1.2/backbone.js</js>
     <js>classpath:META-INF/resources/webjars/backbone-relational/0.8.8/backbone.relational.js</js>
     <js>classpath:META-INF/resources/webjars/backbone-marionette/2.0.3/backbone.marionette.js</js>
+    <css>classpath:META-INF/resources/webjars/normalize/3.0.2/normalize.css</css>
     <css>classpath:META-INF/resources/webjars/font-awesome/4.3.0/css/font-awesome.css</css>
   </group>
   
