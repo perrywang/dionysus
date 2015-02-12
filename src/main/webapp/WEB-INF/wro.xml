@@ -5,8 +5,7 @@
     <js>classpath:META-INF/resources/webjars/backbonejs/1.1.2/backbone.js</js>
     <js>classpath:META-INF/resources/webjars/backbone-relational/0.8.8/backbone.relational.js</js>
     <js>classpath:META-INF/resources/webjars/backbone-marionette/2.0.3/backbone.marionette.js</js>
-    <css>classpath:META-INF/resources/webjars/bootstrap/3.3.2/css/bootstrap.css</css>
-    <js>classpath:META-INF/resources/webjars/bootstrap/3.3.2/js/bootstrap.js</js>
+    <css>classpath:META-INF/resources/webjars/normalize.css/3.0.2/normalize.css</css>
   </group>
   
   <group name="app">
