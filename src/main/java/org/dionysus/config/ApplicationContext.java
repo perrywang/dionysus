@@ -6,14 +6,13 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.dionysus.model.ModelConfiguration;
+import org.dionysus.repositories.RepositoryConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,9 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "org.dionysus.repositories")
-@Import(RepositoryRestMvcConfiguration.class)
-@ComponentScan(basePackages = { "org.dionysus.service" })
+@EnableJpaRepositories(basePackageClasses = RepositoryConfiguration.class)
 public class ApplicationContext {
 
 	@Bean
@@ -43,7 +40,7 @@ public class ApplicationContext {
 			DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		em.setPackagesToScan(new String[] { "org.dionysus.model" });
+		em.setPackagesToScan(ModelConfiguration.class.getPackage().getName());
 		em.setJpaVendorAdapter(jpaVendorAdapter);
 		return em;
 	}
