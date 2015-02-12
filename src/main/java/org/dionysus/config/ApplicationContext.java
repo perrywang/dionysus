@@ -8,7 +8,9 @@ import javax.validation.ValidatorFactory;
 
 import org.dionysus.model.ModelConfiguration;
 import org.dionysus.repositories.RepositoryConfiguration;
+import org.dionysus.service.ServiceConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -22,6 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = RepositoryConfiguration.class)
+@ComponentScan(basePackageClasses=ServiceConfiguration.class)
 public class ApplicationContext {
 
 	@Bean
