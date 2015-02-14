@@ -1,4 +1,4 @@
-package org.dionysus.domain;
+package org.dionysus.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;

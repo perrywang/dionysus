@@ -1,6 +1,5 @@
-package org.dionysus.service.impl;
+package org.dionysus.auth;
 
-import org.dionysus.domain.SecurityUser;
 import org.dionysus.domain.User;
 import org.dionysus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
