@@ -48,7 +48,7 @@ public class Category extends AbstractPersistable<Long> {
 	public String toString() {
 		StringBuilder out = new StringBuilder();
 		if (this.getParent() != null) {
-			out.append(this.getParent()).append(" -> ");
+			out.append(this.getParent()).append(" > ");
 		}
 		out.append(this.name);
 		return out.toString();

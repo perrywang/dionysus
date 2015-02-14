@@ -31,12 +31,6 @@ public class Article extends AbstractAuditable<User, Long> {
 	@Valid
 	private Category category;
 
-//	@CreatedBy
-//	private User user;
-//
-//	@CreatedDate
-//	private Date createdDate;
-
 	@Version
 	private Long version;
 

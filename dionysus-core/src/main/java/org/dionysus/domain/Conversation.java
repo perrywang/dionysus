@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -29,7 +28,6 @@ public class Conversation extends AbstractAuditable<User, Long> {
 
 	@NotNull(message = "conversation owner cannot be null")
 	@ManyToOne
-	@JoinColumn(name = "owner_id")
 	private User owner;
 
 	@Column(name = "description")

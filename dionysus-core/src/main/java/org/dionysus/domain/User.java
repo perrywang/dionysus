@@ -39,6 +39,9 @@ public class User extends AbstractPersistable<Long> {
 	
 	@OneToOne
 	private Profile profile;
+	
+	@OneToOne
+	private Inbox inbox;
 
 	public User() {
 		this.roles = new HashSet<Role>();
@@ -81,6 +84,14 @@ public class User extends AbstractPersistable<Long> {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Inbox getInbox() {
+		return inbox;
+	}
+
+	public void setInbox(Inbox inbox) {
+		this.inbox = inbox;
 	}
 
 	@Override
