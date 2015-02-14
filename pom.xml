@@ -12,6 +12,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.6</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
     <tomcat.version>7.0.57</tomcat.version>
     <wro4j.version>1.7.7</wro4j.version>
     <spring-boot.version>1.1.10.RELEASE</spring-boot.version>
@@ -34,7 +36,7 @@
     <module>dionysus-rest</module>
     <module>dionysus-webapp</module>
   </modules>
-  
+
   <build>
     <plugins>
       <plugin>

@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.dionysus</groupId>
   <artifactId>dionysus-rest</artifactId>
   <packaging>jar</packaging>
   <name>Dionysus Restful Service</name>
