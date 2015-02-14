@@ -1,14 +1,10 @@
 package org.dionysus.domain;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,17 +12,13 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 6546337477936620570L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Long id;
 
 	@NotBlank(message = "name is required")
 	@Length(min = 4, max = 20, message = "name length should have {min}-{max} characters")
@@ -57,14 +49,6 @@ public class User implements Serializable {
 		this.name = name;
 		this.password = password;
 		this.email = email;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getName() {

@@ -1,30 +1,22 @@
 package org.dionysus.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "articles")
-public class Article implements Serializable {
+public class Article extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Long id;
 
 	@Column(name = "title")
 	@NotBlank(message = "article title is required")
@@ -39,20 +31,21 @@ public class Article implements Serializable {
 	@Valid
 	private Category category;
 
+//	@CreatedBy
+//	private User user;
+//
+//	@CreatedDate
+//	private Date createdDate;
+
+	@Version
+	private Long version;
+
 	public Article() {
 	}
 
 	public Article(String title, String body) {
 		this.title = title;
 		this.body = body;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -77,5 +70,13 @@ public class Article implements Serializable {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
 	}
 }
