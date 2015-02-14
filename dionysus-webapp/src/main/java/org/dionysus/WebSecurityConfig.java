@@ -14,10 +14,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/api/v1/*", "/wro/*")
-                .permitAll()
-                .anyRequest()
-                .authenticated();
+            .antMatchers("/", "/api/v1/*", "/wro/*")
+            .permitAll()
+            .anyRequest()
+            .authenticated();
     }
 
     @Autowired

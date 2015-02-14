@@ -8,8 +8,9 @@ setup eclipse environment
 
 	$ mvn eclipse:eclipse -DdownloadSources=true
 	
-run jetty (default start in ```dev``` profile)
+run webapp
 
+	$ cd dionysus-webapp
 	$ mvn spring-boot:run
 	
 invoke restful api
