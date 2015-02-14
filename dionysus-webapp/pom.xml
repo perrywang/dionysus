@@ -25,12 +25,12 @@
     <dependency>
       <groupId>org.dionysus</groupId>
       <artifactId>dionysus-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.dionysus</groupId>
       <artifactId>dionysus-rest</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.sina</groupId>
