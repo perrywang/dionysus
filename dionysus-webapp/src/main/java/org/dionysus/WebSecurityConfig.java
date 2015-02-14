@@ -3,7 +3,6 @@ package org.dionysus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -22,30 +21,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	    http.csrf().disable()
-	    	.authorizeRequests()
-	    	.antMatchers("/api/v1/*").hasAnyRole("USER", "ADMIN")
-	    	.anyRequest()
-	    	.authenticated()
-	    .and()
-	    	.formLogin()
-	    	.permitAll()
-	    .and()
-	    	.logout()
-            .permitAll();
+	    	.antMatcher("/api/v1/*")
+	    		.authorizeRequests()
+	    		.antMatchers("/*").hasAnyRole("USER", "ADMIN")
+	    		.anyRequest()
+	    		.authenticated();
+//	    .and()
+//	    	.formLogin()
+//	    	.permitAll()
+//	    .and()
+//	    	.logout()
+//            .permitAll();
 	}
-
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder registry) throws Exception {
-//		registry.userDetailsService(securityUserService);
-//	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/", "/wro/*", "/assets/**");
 	}
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
 		    .withUser("admin")
 		    .password("admin")
@@ -54,5 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.withUser("user")
 			.password("password")
 			.roles("USER");
+//		auth.userDetailsService(securityUserService);
 	}
 }

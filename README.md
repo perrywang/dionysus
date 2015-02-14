@@ -23,7 +23,7 @@ or start full application
 
 	$ cd dionysus-webapp
 	$ mvn spring-boot:run
-	$ curl http://localhost:8080/api/v1/categories
+	$ browser http://localhost:8080/api/v1/categories
 	
 create war
 
