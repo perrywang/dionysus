@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,7 +24,7 @@ public class User extends AbstractPersistable<Long> {
 
 	@NotBlank(message = "name is required")
 	@Length(min = 4, max = 20, message = "name length should have {min}-{max} characters")
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	private String name;
 
 	@NotBlank(message = "password is required")
@@ -31,16 +33,18 @@ public class User extends AbstractPersistable<Long> {
 
 	@NotBlank(message = "email is required")
 	@Email(message = "mail format is not correct")
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn
 	private Profile profile;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn
 	private Inbox inbox;
 
 	public User() {

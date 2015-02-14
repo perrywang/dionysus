@@ -13,7 +13,7 @@ public class Role extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = -3617908500064679864L;
 
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	@NotEmpty(message = "role name is required")
 	private String name;
 

@@ -15,7 +15,7 @@ public class Category extends AbstractPersistable<Long> {
 	private static final long serialVersionUID = 2384283567572219724L;
 
 	@NotEmpty(message = "category name is required")
-	@Column(name = "name")
+	@Column(name = "name", unique = true)
 	private String name;
 
 	@ManyToOne
