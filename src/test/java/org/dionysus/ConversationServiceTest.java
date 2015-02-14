@@ -1,26 +1,22 @@
 package org.dionysus;
 
-import org.dionysus.config.ApplicationContext;
-import org.dionysus.config.TestJPAEnvironment;
-import org.dionysus.model.Conversation;
-import org.dionysus.model.User;
-import org.dionysus.repositories.ConversationRepository;
-import org.dionysus.repositories.UserRepository;
+import org.dionysus.domain.Conversation;
+import org.dionysus.domain.User;
+import org.dionysus.repository.ConversationRepository;
+import org.dionysus.repository.UserRepository;
 import org.dionysus.service.ConversationService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
-@ContextConfiguration(classes = { ApplicationContext.class,
-		TestJPAEnvironment.class }, loader = AnnotationConfigContextLoader.class)
+@SpringApplicationConfiguration(classes = Application.class)
 public class ConversationServiceTest {
 
 	private User owner;

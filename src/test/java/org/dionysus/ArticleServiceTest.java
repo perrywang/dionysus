@@ -4,24 +4,20 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
-import org.dionysus.config.ApplicationContext;
-import org.dionysus.config.TestJPAEnvironment;
-import org.dionysus.model.Article;
-import org.dionysus.model.Category;
-import org.dionysus.repositories.ArticleRepository;
+import org.dionysus.domain.Article;
+import org.dionysus.domain.Category;
+import org.dionysus.repository.ArticleRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
-@ContextConfiguration(classes = { ApplicationContext.class,
-		TestJPAEnvironment.class }, loader = AnnotationConfigContextLoader.class)
+@SpringApplicationConfiguration(classes = Application.class)
 public class ArticleServiceTest {
 
 	@Autowired

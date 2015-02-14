@@ -1,4 +1,4 @@
-package org.dionysus.model;
+package org.dionysus.domain;
 
 import java.io.Serializable;
 

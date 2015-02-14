@@ -1,4 +1,4 @@
-package org.dionysus.model;
+package org.dionysus.domain;
 
 import java.io.Serializable;
 
@@ -12,38 +12,19 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "categories")
-public class Category implements Serializable {
+@Table(name = "roles")
+public class Role implements Serializable {
 
-	private static final long serialVersionUID = 2384283567572219724L;
+	private static final long serialVersionUID = -3617908500064679864L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 
-	@NotEmpty(message = "category name is required")
 	@Column(name = "name")
+	@NotEmpty(message = "role name is required")
 	private String name;
-
-	public Category() {
-	}
-
-	public Category(String name) {
-		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	@Override
 	public String toString() {

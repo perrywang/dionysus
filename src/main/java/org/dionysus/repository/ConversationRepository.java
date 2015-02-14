@@ -1,6 +1,6 @@
-package org.dionysus.repositories;
+package org.dionysus.repository;
 
-import org.dionysus.model.Conversation;
+import org.dionysus.domain.Conversation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

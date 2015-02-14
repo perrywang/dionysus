@@ -1,9 +1,9 @@
 package org.dionysus.service.impl;
 
-import org.dionysus.model.Conversation;
-import org.dionysus.model.User;
-import org.dionysus.repositories.ConversationRepository;
-import org.dionysus.repositories.UserRepository;
+import org.dionysus.domain.Conversation;
+import org.dionysus.domain.User;
+import org.dionysus.repository.ConversationRepository;
+import org.dionysus.repository.UserRepository;
 import org.dionysus.service.ConversationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ public class ConversationServiceImpl implements ConversationService {
 	@Autowired
 	private ConversationRepository conversationRepository;
 	
-	@Override
 	@Transactional(readOnly=false)
 	public void joinConversation(Long convId, Long userId) {
 		Conversation conversation = conversationRepository.findOne(convId);
@@ -27,7 +26,6 @@ public class ConversationServiceImpl implements ConversationService {
 		conversationRepository.save(conversation);
 	}
 
-	@Override
 	@Transactional(readOnly=false)
 	public void leaveConversation(Long convId, Long userId) {
 		Conversation conversation = conversationRepository.findOne(convId);
@@ -36,8 +34,6 @@ public class ConversationServiceImpl implements ConversationService {
 		conversationRepository.save(conversation);
 	}
 
-	@Override
-	@Transactional(readOnly=false)
 	public Conversation create(String title, User owner) {
 		Conversation conversation = new Conversation(title, owner);
 		conversationRepository.save(conversation);
