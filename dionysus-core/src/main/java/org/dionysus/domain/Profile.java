@@ -10,11 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "histories")
-public class History implements Serializable {
+@Table(name="profiles")
+public class Profile implements Serializable {
 
-	private static final long serialVersionUID = -3558156230583594674L;
-
+	private static final long serialVersionUID = 4546633052695670043L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")

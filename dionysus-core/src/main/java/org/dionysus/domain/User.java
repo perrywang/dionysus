@@ -10,12 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+// TODO: should map to spring security
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -40,6 +42,9 @@ public class User implements Serializable {
 	@Email(message = "mail format is not correct")
 	@Column(name = "email")
 	private String email;
+	
+	@OneToOne
+	private Profile profile;
 
 	@OneToMany
 	private Collection<Role> roles;
