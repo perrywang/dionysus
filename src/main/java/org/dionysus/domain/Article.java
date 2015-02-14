@@ -12,7 +12,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -38,7 +37,6 @@ public class Article implements Serializable {
 
 	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@Valid
-	@NotNull(message = "Article should have category associated")
 	private Category category;
 
 	public Article() {

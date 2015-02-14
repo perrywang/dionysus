@@ -25,7 +25,7 @@ public class ArticleServiceTest {
 
 	@Test(expected = ConstraintViolationException.class)
 	public void testArticleValidation() {
-		Article article = new Article("article title", "article body");
+		Article article = new Article();
 		articleRepository.save(article);
 	}
 

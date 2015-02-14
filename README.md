@@ -14,9 +14,9 @@ run jetty (default start in ```dev``` profile)
 	
 invoke restful api
 
-	$ curl http://localhost:8080/categories
-	$ curl -X  POST -H "Content-type:application/json" -d '{"name":"test"}' http://localhost:8080/categories
-	$ curl http://localhost:8080/categories/103
+	$ curl http://localhost:8080/api/v1/categories
+	$ curl -X  POST -H "Content-type:application/json" -d '{"name":"test"}' http://localhost:8080/api/v1/categories
+	$ curl http://localhost:8080/api/v1/categories/103
 	
 create war
 

@@ -9,7 +9,7 @@ Dionysus.addRegions({
 ArticleModel = Backbone.Model.extend({});
 ArticleCollection = Backbone.Collection.extend({
 	model : ArticleModel,
-	url: '/articles'
+	url: '/api/v1/articles'
 });
 
 ArticleView = Marionette.ItemView.extend({
