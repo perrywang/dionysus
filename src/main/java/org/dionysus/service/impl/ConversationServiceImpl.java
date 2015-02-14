@@ -17,7 +17,8 @@ public class ConversationServiceImpl implements ConversationService {
 	
 	@Autowired
 	private ConversationRepository conversationRepository;
-	
+
+	@Override
 	@Transactional(readOnly=false)
 	public void joinConversation(Long convId, Long userId) {
 		Conversation conversation = conversationRepository.findOne(convId);
@@ -26,6 +27,7 @@ public class ConversationServiceImpl implements ConversationService {
 		conversationRepository.save(conversation);
 	}
 
+	@Override
 	@Transactional(readOnly=false)
 	public void leaveConversation(Long convId, Long userId) {
 		Conversation conversation = conversationRepository.findOne(convId);
@@ -34,6 +36,7 @@ public class ConversationServiceImpl implements ConversationService {
 		conversationRepository.save(conversation);
 	}
 
+	@Override
 	public Conversation create(String title, User owner) {
 		Conversation conversation = new Conversation(title, owner);
 		conversationRepository.save(conversation);
