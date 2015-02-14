@@ -8,16 +8,22 @@ setup eclipse environment
 
 	$ mvn eclipse:eclipse -DdownloadSources=true
 	
-run webapp
+run restful api server
 
-	$ cd dionysus-webapp
+	$ cd dionysus-rest
 	$ mvn spring-boot:run
 	
 invoke restful api
 
+	$ curl http://localhost:8080/categories
+	$ curl -X  POST -H "Content-type:application/json" -d '{"name":"test"}' http://localhost:8080/categories
+	$ curl http://localhost:8080/categories/1
+
+or start full application
+
+	$ cd dionysus-webapp
+	$ mvn spring-boot:run
 	$ curl http://localhost:8080/api/v1/categories
-	$ curl -X  POST -H "Content-type:application/json" -d '{"name":"test"}' http://localhost:8080/api/v1/categories
-	$ curl http://localhost:8080/api/v1/categories/1
 	
 create war
 
