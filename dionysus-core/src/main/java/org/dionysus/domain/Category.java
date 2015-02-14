@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,6 +26,9 @@ public class Category implements Serializable {
 	@NotEmpty(message = "category name is required")
 	@Column(name = "name")
 	private String name;
+
+	@ManyToOne
+	private Category parent;
 
 	public Category() {
 	}
@@ -45,8 +49,21 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	public Category getParent() {
+		return parent;
+	}
+
+	public void setParent(Category parent) {
+		this.parent = parent;
+	}
+
 	@Override
 	public String toString() {
-		return this.name;
+		StringBuilder out = new StringBuilder();
+		if (this.getParent() != null) {
+			out.append(this.getParent()).append(" -> ");
+		}
+		out.append(this.name);
+		return out.toString();
 	}
 }
