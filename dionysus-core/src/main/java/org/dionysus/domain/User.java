@@ -1,8 +1,8 @@
 package org.dionysus.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,6 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-// TODO: should map to spring security
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -42,15 +41,15 @@ public class User implements Serializable {
 	@Email(message = "mail format is not correct")
 	@Column(name = "email")
 	private String email;
+
+	@OneToMany
+	private Set<Role> roles;
 	
 	@OneToOne
 	private Profile profile;
 
-	@OneToMany
-	private Collection<Role> roles;
-
 	public User() {
-		this.roles = new ArrayList<Role>();
+		this.roles = new HashSet<Role>();
 	}
 
 	public User(String name, String password, String email) {
@@ -92,11 +91,11 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public Collection<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Collection<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
 
