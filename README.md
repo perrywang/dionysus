@@ -10,7 +10,7 @@ setup eclipse environment
 	
 run jetty (default start in ```dev``` profile)
 
-	$ mvn jetty:run
+	$ mvn spring-boot:run
 	
 invoke restful api
 
