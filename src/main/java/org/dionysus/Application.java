@@ -1,21 +1,22 @@
 package org.dionysus;
 
-import org.dionysus.domain.User;
-import org.dionysus.repository.ArticleRepository;
-import org.dionysus.service.ServiceConfiguration;
+import javax.sql.DataSource;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import com.sina.sae.util.SaeUserInfo;
 
 @Configuration 
-@EnableAutoConfiguration 
-@EntityScan(basePackageClasses = User.class)
-@ComponentScan(basePackageClasses = { ServiceConfiguration.class,
-		ArticleRepository.class })
+@EnableAutoConfiguration
+@ComponentScan
 public class Application extends SpringBootServletInitializer {
 
 	@Override
@@ -26,5 +27,16 @@ public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
+	
+	@Bean
+	@Profile("prod")
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_dionysus" );
+		dataSource.setUsername(SaeUserInfo.getAccessKey());
+		dataSource.setPassword(SaeUserInfo.getSecretKey());
+		return dataSource;
 	}
 }
