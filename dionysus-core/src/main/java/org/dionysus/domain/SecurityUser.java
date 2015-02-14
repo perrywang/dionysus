@@ -17,8 +17,8 @@ public class SecurityUser extends User implements UserDetails {
 	public SecurityUser(User user) {
 		this.setId(user.getId());
 		this.setName(user.getName());
-		this.setEmail(user.getEmail());
 		this.setPassword(user.getPassword());
+		this.setEmail(user.getEmail());
 	}
 
 	@Override
