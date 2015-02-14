@@ -10,11 +10,11 @@ import javax.persistence.Version;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 
 @Entity
 @Table(name = "articles")
-public class Article extends AbstractPersistable<Long> {
+public class Article extends AbstractAuditable<User, Long> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
 

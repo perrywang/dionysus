@@ -15,11 +15,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 
 @Entity
 @Table(name = "conversations")
-public class Conversation extends AbstractPersistable<Long> {
+public class Conversation extends AbstractAuditable<User, Long> {
 
 	private static final long serialVersionUID = 2523934617928738918L;
 
