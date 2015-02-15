@@ -1,11 +1,22 @@
+Prerequisites
+-------------
+- JDK 1.6+ [http://www.oracle.com/technetwork/java/javase/overview/index.html](http://www.oracle.com/technetwork/java/javase/overview/index.html)
+- Maven 3.2+ [http://maven.apache.org](http://maven.apache.org)
+- Eclipse [http://eclipse.org](http://eclipse.org)
+- NodeJs [http://nodejs.org](http://nodejs.org)
+	- Yeoman [http://yeoman.io/](http://yeoman.io/) with ```webapp``` generator
+	- Grunt [http://gruntjs.com/](http://gruntjs.com/)
+
+
 Environment
 -----------
 
 - use Derby database in ```dev```,```test``` profile
 - use SAE MySQL in ```prod``` profile
 
-setup eclipse environment
+setup development environment
 
+	$ mvn install
 	$ mvn eclipse:eclipse -DdownloadSources=true
 	
 run restful api server
