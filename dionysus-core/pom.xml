@@ -11,7 +11,7 @@
 
 	<artifactId>dionysus-core</artifactId>
 	<packaging>jar</packaging>
-	<name>Dionysus Domain Objects</name>
+	<name>Dionysus Domain</name>
 
 	<dependencies>
 	  <dependency>
