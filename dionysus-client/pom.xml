@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>dionysus-client</artifactId>
-  <packaging>pom</packaging>
+	<packaging>pom</packaging>
 	<name>Dionysus Client</name>
 	<build>
 		<plugins>

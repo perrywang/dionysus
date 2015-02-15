@@ -36,6 +36,9 @@
 			<groupId>org.dionysus</groupId>
 			<artifactId>dionysus-client</artifactId>
 			<version>${project.version}</version>
+			<classifier>assets</classifier>
+			<type>zip</type>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.sina</groupId>
@@ -56,5 +59,21 @@
 
 	<build>
 		<finalName>dionysus</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<overlays>
+						<overlay>
+							<groupId>org.dionysus</groupId>
+							<artifactId>dionysus-client</artifactId>
+							<classifier>assets</classifier>
+							<type>zip</type>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
