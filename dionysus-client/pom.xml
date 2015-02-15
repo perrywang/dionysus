@@ -58,7 +58,7 @@
 							<directory>yo/.tmp</directory>
 						</fileset>
 						<fileset>
-							<directory>yo/app/components</directory>
+							<directory>yo/bower_components</directory>
 						</fileset>
 						<fileset>
 							<directory>yo/node_modules</directory>
