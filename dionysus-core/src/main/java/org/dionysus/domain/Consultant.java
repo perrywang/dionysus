@@ -38,4 +38,9 @@ public class Consultant extends User {
     public void publishCourse(Course course){
         this.getPublishedCourses().add(course);
     }
+    
+    @Override
+    public String toString(){
+        return "consultant:"+this.getName();
+    }
 }

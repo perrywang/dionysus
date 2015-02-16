@@ -1,6 +1,7 @@
 
 package org.dionysus.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +39,7 @@ public class Course extends AbstractPersistable<Long> {
     @NotBlank(message = "state is required")
     private String state;
     
-    //one consult can published many courses
+    //one consult can published many courses,defau
     @ManyToOne(fetch = FetchType.EAGER)
     private Consultant consultant;
     
@@ -47,5 +48,57 @@ public class Course extends AbstractPersistable<Long> {
     */
     @ManyToMany(mappedBy = "registeredCourses")
     private Collection<User> registrations;
+    
+    public Course(String title,String description, String state){
+        super();
+        this.setTitle(title);
+        this.setDescription(description);
+        this.setState(state);
+        this.setRegistrations(new ArrayList<User>());
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Consultant getConsultant() {
+        return consultant;
+    }
+
+    public void setConsultant(Consultant consultant) {
+        this.consultant = consultant;
+    }
+
+    public Collection<User> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(Collection<User> registrations) {
+        this.registrations = registrations;
+    }
+    
+    @Override
+    public String toString(){
+        return "course:"+this.getTitle()+":"+this.getState();
+    }
 }
