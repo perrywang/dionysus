@@ -22,12 +22,12 @@ public class WebApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Application.class);
+		return application.profiles("prod").sources(Application.class);
 	}
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()
-			.profiles("dev")
+			.profiles("prod")
 			.sources(Application.class)
 			.run(args);
 	}
