@@ -39,7 +39,7 @@ public class Course extends AbstractPersistable<Long> {
     
     //one consult can published many courses
     @ManyToOne(fetch = FetchType.EAGER)
-    private User consultant;
+    private Consultant consultant;
     
     /*
     one course has many registrations, one user can register many courses
