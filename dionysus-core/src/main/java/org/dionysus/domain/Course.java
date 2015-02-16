@@ -35,6 +35,7 @@ public class Course extends AbstractPersistable<Long> {
     
     //course has possible states, active, inactive, completed
     @Column(name = "state")
+    @NotBlank(message = "state is required")
     private String state;
     
     //one consult can published many courses
