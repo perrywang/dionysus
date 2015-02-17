@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     app: 'app',
     dist: 'dist'
   };
+  
+  var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest ;
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -73,10 +75,18 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
+      proxies: [{
+        context: '/api/v1',
+        host: 'localhost',
+        port: 8080,
+        https: false,
+        changeOrigin: false
+      }],
       livereload: {
         options: {
           middleware: function(connect) {
             return [
+              proxySnippet,
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
