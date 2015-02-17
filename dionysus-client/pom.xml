@@ -33,7 +33,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<descriptors>
-						<descriptor>src/main/assembly/assembly.xml</descriptor>
+						<descriptor>assembly/assembly.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>
