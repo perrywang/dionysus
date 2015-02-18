@@ -27,13 +27,13 @@ public class WebApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()
-			.profiles("prod")
+			.profiles("dev")
 			.sources(Application.class)
 			.run(args);
 	}
 	
-	@Profile("prod")
 	@Bean
+	@Profile("prod")
 	public DataSource dataSource() {
 		return DataSourceBuilder.create()
 			.driverClassName("com.mysql.jdbc.Driver")

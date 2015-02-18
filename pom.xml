@@ -15,7 +15,6 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <tomcat.version>7.0.57</tomcat.version>
-    <wro4j.version>1.7.7</wro4j.version>
     <spring-boot.version>1.1.10.RELEASE</spring-boot.version>
   </properties>
 
@@ -23,7 +22,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-parent</artifactId>
+				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
