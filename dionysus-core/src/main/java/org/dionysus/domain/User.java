@@ -3,6 +3,7 @@ package org.dionysus.domain;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,10 +12,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -22,7 +23,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 6546337477936620570L;
@@ -43,19 +44,19 @@ public class User extends AbstractPersistable<Long> {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Profile profile;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Inbox inbox;
-        
-        @ManyToMany
-        @JoinTable
-        private Collection<Course> registeredCourses;
-        
+
+	@ManyToMany
+	@JoinTable
+	private Collection<Course> registeredCourses;
+
 	public User() {
 		this.roles = new HashSet<Role>();
 	}
