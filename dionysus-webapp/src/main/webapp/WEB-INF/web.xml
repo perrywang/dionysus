@@ -10,11 +10,6 @@
 		<param-value>org.dionysus.WebApplication</param-value>
 	</context-param>
 
-	<context-param>
-		<param-name>spring.profiles.default</param-name>
-		<param-value>prod</param-value>
-	</context-param>
-
 	<listener>
 		<listener-class>org.springframework.boot.legacy.context.web.SpringBootContextLoaderListener</listener-class>
 	</listener>

@@ -3,6 +3,7 @@ package org.dionysus;
 import javax.sql.DataSource;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.sina.sae.util.SaeUserInfo;
 
@@ -31,15 +31,15 @@ public class WebApplication extends SpringBootServletInitializer {
 			.sources(Application.class)
 			.run(args);
 	}
-
-	@Bean
+	
 	@Profile("prod")
+	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_dionysus");
-		dataSource.setUsername(SaeUserInfo.getAccessKey());
-		dataSource.setPassword(SaeUserInfo.getSecretKey());
-		return dataSource;
+		return DataSourceBuilder.create()
+			.driverClassName("com.mysql.jdbc.Driver")
+			.url("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_dionysus")
+			.username(SaeUserInfo.getAccessKey())
+			.password(SaeUserInfo.getSecretKey())
+			.build();
 	}
 }
