@@ -6,6 +6,7 @@ Prerequisites
 - NodeJs [http://nodejs.org](http://nodejs.org)
 	- Yeoman [http://yeoman.io/](http://yeoman.io/) with ```webapp``` generator
 	- Grunt [http://gruntjs.com/](http://gruntjs.com/)
+	- Bower [http://bower.io/](http://bower.io/)
 
 
 Environment
