@@ -174,8 +174,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html'],
-        exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
+        src: ['<%= config.app %>/index.html']
       }
     },
 
@@ -187,7 +186,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/styles/fonts/{,*/}*.*',
+            '<%= config.dist %>/font/{,*/}*.*',
             '<%= config.dist %>/*.{ico,png}'
           ]
         }
@@ -306,10 +305,15 @@ module.exports = function (grunt) {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
         }, {
+        //   expand: true,
+        //   dot: true,
+        //   cwd: 'bower_components/bootstrap/dist',
+        //   src: 'fonts/*',
+        //   dest: '<%= config.dist %>'
+        // }, {
           expand: true,
-          dot: true,
-          cwd: 'bower_components/bootstrap/dist',
-          src: 'fonts/*',
+          cwd: 'bower_components/materialize/dist',
+          src: 'font/{,*/}*.*',
           dest: '<%= config.dist %>'
         }]
       },
