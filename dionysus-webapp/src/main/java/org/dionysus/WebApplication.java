@@ -2,20 +2,16 @@ package org.dionysus;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
-@ComponentScan
 public class WebApplication extends SpringBootServletInitializer {
 
 	@Override
@@ -34,17 +30,11 @@ public class WebApplication extends SpringBootServletInitializer {
 	@Bean
 	@Profile("prod")
 	public DataSource dataSource() {
-		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP");
-		ds.setUsername("l0Y2c6iKt4wLpCsKrAREEKzT");
-		ds.setPassword("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj");
-		return ds;
-//		return DataSourceBuilder.create()
-//			.driverClassName("com.mysql.jdbc.Driver")
-//			.url("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP")
-//			.username("l0Y2c6iKt4wLpCsKrAREEKzT")
-//			.password("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj")
-//			.build();
+		return DataSourceBuilder.create()
+			.driverClassName("com.mysql.jdbc.Driver")
+			.url("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP")
+			.username("l0Y2c6iKt4wLpCsKrAREEKzT")
+			.password("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj")
+			.build();
 	}
 }

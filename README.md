@@ -1,6 +1,6 @@
 Prerequisites
 -------------
-- JDK 1.6+ [http://www.oracle.com/technetwork/java/javase/overview/index.html](http://www.oracle.com/technetwork/java/javase/overview/index.html)
+- JDK 1.7+ [http://www.oracle.com/technetwork/java/javase/overview/index.html](http://www.oracle.com/technetwork/java/javase/overview/index.html)
 - Maven 3.0+ [http://maven.apache.org](http://maven.apache.org)
 - Eclipse [http://eclipse.org](http://eclipse.org)
 - NodeJs [http://nodejs.org](http://nodejs.org)
@@ -12,8 +12,8 @@ Prerequisites
 Environment
 -----------
 
-- use Derby database in ```dev```,```test``` profile
-- use SAE MySQL in ```prod``` profile
+- use H2 database in ```dev```,```test``` profile
+- use BAE MySQL in ```prod``` profile
 
 setup development environment
 
