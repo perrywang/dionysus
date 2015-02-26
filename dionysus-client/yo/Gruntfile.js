@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         host: 'localhost',
         port: 8080,
         https: false,
-        changeOrigin: false
+        changeOrigin: true
       }],
       livereload: {
         options: {
@@ -305,12 +305,6 @@ module.exports = function (grunt) {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
           dest: '<%= config.dist %>/.htaccess'
         }, {
-        //   expand: true,
-        //   dot: true,
-        //   cwd: 'bower_components/bootstrap/dist',
-        //   src: 'fonts/*',
-        //   dest: '<%= config.dist %>'
-        // }, {
           expand: true,
           cwd: 'bower_components/materialize/dist',
           src: 'font/{,*/}*.*',
@@ -372,6 +366,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'configureProxies:server',
       'autoprefixer',
       'connect:livereload',
       'watch'

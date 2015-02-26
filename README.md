@@ -7,6 +7,7 @@ Prerequisites
 	- Yeoman [http://yeoman.io/](http://yeoman.io/) with ```webapp``` generator
 	- Grunt [http://gruntjs.com/](http://gruntjs.com/)
 	- Bower [http://bower.io/](http://bower.io/)
+- LiveReload [http://livereload.com/](http://livereload.com/)
 
 
 Environment
@@ -40,6 +41,19 @@ or start full application
 create war
 
 	$ mvn package
+
+
+Client side development
+-----------------------
+startup application server
+
+	$ cd dionysus-webapp
+	$ mvn spring-boot:run
+
+launch client side application
+
+	$ cd dionysus-client
+	$ grunt serve
 	
 Note
 ----
