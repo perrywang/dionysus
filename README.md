@@ -52,7 +52,7 @@ startup application server
 
 launch client side application
 
-	$ cd dionysus-client
+	$ cd dionysus-client/yo
 	$ grunt serve
 	
 Note

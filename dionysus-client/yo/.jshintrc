@@ -18,5 +18,5 @@
   "trailing": true,
   "smarttabs": true,
   "jquery": true,
-  "predef": [ "Marionette" ]
+  "predef": [ "Marionette", "Dionysus" ]
 }
