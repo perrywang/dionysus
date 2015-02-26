@@ -3,6 +3,7 @@ package org.dionysus.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;

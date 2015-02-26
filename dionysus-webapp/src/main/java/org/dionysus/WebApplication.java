@@ -2,8 +2,8 @@ package org.dionysus;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-
-import com.sina.sae.util.SaeUserInfo;
 
 @Configuration
 @EnableAutoConfiguration
@@ -32,14 +30,21 @@ public class WebApplication extends SpringBootServletInitializer {
 			.run(args);
 	}
 	
+	// should move database connection info into environment variables
 	@Bean
 	@Profile("prod")
 	public DataSource dataSource() {
-		return DataSourceBuilder.create()
-			.driverClassName("com.mysql.jdbc.Driver")
-			.url("jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_dionysus")
-			.username(SaeUserInfo.getAccessKey())
-			.password(SaeUserInfo.getSecretKey())
-			.build();
+		BasicDataSource ds = new BasicDataSource();
+		ds.setDriverClassName("com.mysql.jdbc.Driver");
+		ds.setUrl("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP");
+		ds.setUsername("l0Y2c6iKt4wLpCsKrAREEKzT");
+		ds.setPassword("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj");
+		return ds;
+//		return DataSourceBuilder.create()
+//			.driverClassName("com.mysql.jdbc.Driver")
+//			.url("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP")
+//			.username("l0Y2c6iKt4wLpCsKrAREEKzT")
+//			.password("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj")
+//			.build();
 	}
 }
