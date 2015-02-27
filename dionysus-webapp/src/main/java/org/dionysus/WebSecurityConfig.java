@@ -20,12 +20,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+//	    http.csrf().disable()
+//	    	.antMatcher("/api/v1/*")
+//	    		.authorizeRequests()
+//	    		.antMatchers("/*").hasAnyRole("USER", "ADMIN")
+//	    		.anyRequest()
+//	    		.authenticated();
 	    http.csrf().disable()
-	    	.antMatcher("/api/v1/*")
-	    		.authorizeRequests()
-	    		.antMatchers("/*").hasAnyRole("USER", "ADMIN")
-	    		.anyRequest()
-	    		.authenticated();
+	    	.antMatcher("/api/v1")
+	    	.authorizeRequests()
+	    	.antMatchers("/*")
+	    	.anonymous();
 //	    .and()
 //	    	.formLogin()
 //	    	.permitAll()
@@ -36,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/", "/wro/*", "/assets/**");
+		web.ignoring().antMatchers("/");
 	}
 
 	@Override
