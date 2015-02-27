@@ -1,0 +1,1 @@
+var Dionysus = new Marionette.Application();
