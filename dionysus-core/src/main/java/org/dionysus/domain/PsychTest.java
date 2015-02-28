@@ -2,10 +2,11 @@ package org.dionysus.domain;
 
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -25,8 +26,8 @@ public class PsychTest extends AbstractPersistable<Long> {
 	@Lob
 	private String description;
 
-	// TODO: may use embedded entity
-	@OneToMany
+	@ElementCollection
+	@CollectionTable(name = "psychtestitems")
 	private List<PsychTestItem> items;
 
 	public String getTitle() {
