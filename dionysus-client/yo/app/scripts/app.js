@@ -4,6 +4,10 @@ Dionysus.addRegions({
   footerRegion: 'footer'
 });
 
+var articles = new Dionysus.ArticleCollection();
+var defer = $.Deferred();
+articles.fetch();
+
 Dionysus.addInitializer(function() {
   var header = new Dionysus.HeaderView(),
       main   = new Dionysus.MainView(),

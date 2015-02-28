@@ -37,6 +37,11 @@
 </nav>
 </script>
 
+<script type="text/html" id="article-template">
+<h3><%= title %></h3>
+<p><%= body %></p>
+</script>
+
 <script type="text/html" id="main-template">
 <div class="row">
   <div class="col s12 m3">
@@ -103,11 +108,11 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/backbone/backbone.js"></script>
-<script src="bower_components/backbone.relational/backbone-relational.js"></script>
 <script src="bower_components/backbone.babysitter/lib/backbone.babysitter.js"></script>
 <script src="bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
 <script src="bower_components/marionette/lib/core/backbone.marionette.js"></script>
 <script src="bower_components/materialize/bin/materialize.js"></script>
+<script src="bower_components/backbone.relational/backbone-relational.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -116,6 +121,8 @@
 <script src="scripts/main.js"></script>
 <script src="scripts/header.js"></script>
 <script src="scripts/footer.js"></script>
+<script src="scripts/articles/article.js"></script>
+<script src="scripts/articles/category.js"></script>
 <script src="scripts/app.js"></script>
 <!-- endbuild -->
 </body>

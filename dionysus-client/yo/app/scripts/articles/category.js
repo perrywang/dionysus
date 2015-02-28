@@ -1,0 +1,1 @@
+Dionysus.Category = Backbone.Model.extend({});
