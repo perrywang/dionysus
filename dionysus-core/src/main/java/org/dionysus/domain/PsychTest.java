@@ -1,26 +1,33 @@
 package org.dionysus.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
-@Table(name="pychtests")
-public class PsychTest extends AbstractPersistable<Long>{
+@Table(name = "pychtests")
+public class PsychTest extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 
-	@Column(name="title")
+	@Column(name = "title")
 	@NotBlank
 	private String title;
-	
-	@Column(name="descriptoin")
+
+	@Column(name = "descriptoin")
 	@Lob
 	private String description;
+
+	// TODO: may use embedded entity
+	@OneToMany
+	private List<PsychTestItem> items;
 
 	public String getTitle() {
 		return title;
@@ -37,4 +44,13 @@ public class PsychTest extends AbstractPersistable<Long>{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public List<PsychTestItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<PsychTestItem> items) {
+		this.items = items;
+	}
+	
 }
