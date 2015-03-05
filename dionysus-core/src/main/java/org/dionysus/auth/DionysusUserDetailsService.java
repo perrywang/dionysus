@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("dionysus")
 @Transactional
-public class SecurityUserDetailsService implements UserDetailsService {
+public class DionysusUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;

@@ -24,22 +24,22 @@ public class AuditTest {
 	protected MockAuditorAware auditorAware;
 
 	@Autowired
-	protected UserRepository userService;
+	protected UserRepository userRepository;
 
 	@Autowired
-	protected ArticleRepository articleService;
+	protected ArticleRepository articleRepository;
 
 	@Before
 	public void wireUpAuditor() {
 		User user = new User(AUDIT_USER_NAME, "auditUserPassword", "audit@dionysus.org");
-		userService.save(user);
+		userRepository.save(user);
 		auditorAware.setCurrentAuditor(user);
 	}
 
 	@Test
 	public void createArticleWithAudit() {
 		Article article = new Article("audit article title", "audit article body");
-		articleService.save(article);
+		articleRepository.save(article);
 		Assert.assertNotNull(article.getId());
 		User user = article.getCreatedBy();
 		Assert.assertEquals(user.getUsername(), AUDIT_USER_NAME);

@@ -18,13 +18,13 @@ public class WebApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.profiles("prod").sources(Application.class);
+		return application.profiles("prod").sources(DomainApplicationContext.class);
 	}
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder()
 			.profiles("dev")
-			.sources(Application.class)
+			.sources(DomainApplicationContext.class)
 			.run(args);
 	}
 	
