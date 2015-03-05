@@ -6,9 +6,9 @@ import org.dionysus.domain.Article;
 import org.dionysus.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "articles", path = "articles")
+@Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
 	List<Article> findByCategory(@Param("category") Category category);
