@@ -36,6 +36,7 @@ public class AuditTest {
 		auditorAware.setCurrentAuditor(user);
 	}
 
+	// could use @WithMockUser in spring security 4.0
 	@Test
 	public void createArticleWithAudit() {
 		Article article = new Article("audit article title", "audit article body");
