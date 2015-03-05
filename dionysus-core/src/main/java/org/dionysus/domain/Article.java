@@ -1,11 +1,14 @@
 package org.dionysus.domain;
 
+import java.util.Collection;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.Valid;
@@ -33,6 +36,9 @@ public class Article extends AbstractAuditable<User, Long> {
 	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@Valid
 	private Category category;
+	
+	@OneToMany
+	private Collection<Comment> comments;
 
 	@Version
 	private Long version;
@@ -67,6 +73,14 @@ public class Article extends AbstractAuditable<User, Long> {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public Long getVersion() {

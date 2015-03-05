@@ -1,5 +1,7 @@
 package org.dionysus;
 
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +26,14 @@ public class WebApplication extends SpringBootServletInitializer {
 			.profiles("dev")
 			.sources(Application.class)
 			.run(args);
+	}
+	
+	@Bean(initMethod="start", destroyMethod="stop")
+	@Profile("dev")
+	public org.h2.tools.Server h2WebServer() throws SQLException {
+	   return org.h2.tools.Server.createWebServer(
+	      "-web", "-webAllowOthers", "-webPort", "8082"
+	   );
 	}
 	
 	// should move database connection info into environment variables
