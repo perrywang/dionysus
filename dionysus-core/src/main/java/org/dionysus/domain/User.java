@@ -1,49 +1,49 @@
 package org.dionysus.domain;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Cacheable;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User extends AbstractPersistable<Long> {
+@Access(AccessType.PROPERTY)
+@Cacheable
+public class User extends AbstractPersistable<Integer> implements UserDetails {
 
-	private static final long serialVersionUID = 6546337477936620570L;
+	private static final long serialVersionUID = 6574790333326442416L;
 
-	@NotBlank(message = "name is required")
-	@Length(min = 4, max = 20, message = "name length should have {min}-{max} characters")
-	@Column(name = "name", unique = true)
-	private String name;
-
-	@NotBlank(message = "password is required")
-	@Column(name = "password")
+	private String username;
 	private String password;
-
-	@NotBlank(message = "email is required")
-	@Email(message = "mail format is not correct")
-	@Column(name = "email", unique = true)
 	private String email;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	private Set<Role> roles;
+	private boolean accountNonExpired;
+	private boolean accountNonLocked;
+	private boolean credentialsNonExpired;
+	private boolean enabled;
+
+	private Set<Role> authorities;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn
@@ -52,30 +52,63 @@ public class User extends AbstractPersistable<Long> {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Inbox inbox;
-
-	@ManyToMany
-	@JoinTable
-	private Collection<Course> registeredCourses;
+	//
+	// @ManyToMany
+	// @JoinTable
+	// private Collection<Course> registeredCourses;
 
 	public User() {
-		this.roles = new HashSet<Role>();
 	}
 
-	public User(String name, String password, String email) {
-		super();
-		this.name = name;
+	public User(String username, String password, String email) {
+		this.username = username;
 		this.password = password;
 		this.email = email;
+
+		this.accountNonExpired = true;
+		this.accountNonLocked = true;
+		this.credentialsNonExpired = true;
+		this.enabled = true;
+
+		this.authorities = new HashSet<Role>();
 	}
 
-	public String getName() {
-		return name;
+	@NotNull
+	@Size(min = 4, max = 40)
+	@Column(name = "username")
+	@Override
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "authorities")
+	@Enumerated(EnumType.STRING)
+	@Override
+	public Set<Role> getAuthorities() {
+		return authorities;
 	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setAuthorities(Set<Role> authorities) {
+		this.authorities = authorities;
+	}
+
+	public boolean grantAuthority(Role authority) {
+		return authorities.add(authority);
+	}
+
+	public boolean revokeAuthority(Role authority) {
+		return authorities.remove(authority);
+	}
+
+	@NotNull
+//	@Size(min = 60, max = 60)
+	@Column(name = "password")
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -92,24 +125,48 @@ public class User extends AbstractPersistable<Long> {
 		this.email = email;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
-	public Inbox getInbox() {
-		return inbox;
-	}
-
-	public void setInbox(Inbox inbox) {
-		this.inbox = inbox;
-	}
-
+	@NotNull
+	@Column(name = "account_non_expired")
 	@Override
-	public String toString() {
-		return this.name;
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
 	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	@NotNull
+	@Column(name = "account_non_locked")
+	@Override
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	@NotNull
+	@Column(name = "credentials_non_expired")
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	@NotNull
+	@Column(name = "enabled")
+	@Override
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 }

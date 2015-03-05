@@ -14,7 +14,7 @@ public class SpringSecurityAuditorAware implements AuditorAware<User> {
 	public User getCurrentAuditor() {
 		SecurityContext context = SecurityContextHolder.getContext();
 		Authentication auth = context.getAuthentication();
-		SecurityUser principal = (SecurityUser) auth.getPrincipal();
-		return principal.getUser();
+		User principal = (User) auth.getPrincipal();
+		return principal;
 	}
 }

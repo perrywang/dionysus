@@ -42,6 +42,6 @@ public class AuditTest {
 		articleService.save(article);
 		Assert.assertNotNull(article.getId());
 		User user = article.getCreatedBy();
-		Assert.assertEquals(user.getName(), AUDIT_USER_NAME);
+		Assert.assertEquals(user.getUsername(), AUDIT_USER_NAME);
 	}
 }
