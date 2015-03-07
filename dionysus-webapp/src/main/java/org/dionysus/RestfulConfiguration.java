@@ -10,7 +10,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 
 @Configuration
 @Import(RepositoryRestMvcConfiguration.class)
-public class RestDataConfig  extends RepositoryRestMvcConfiguration {
+public class RestfulConfiguration  extends RepositoryRestMvcConfiguration {
 
   @Override
   protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
