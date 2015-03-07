@@ -1,7 +1,5 @@
 package org.dionysus;
 
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,13 +26,13 @@ public class WebApplication extends SpringBootServletInitializer {
 			.run(args);
 	}
 	
-	@Bean(initMethod="start", destroyMethod="stop")
-	@Profile("dev")
-	public org.h2.tools.Server h2WebServer() throws SQLException {
-	   return org.h2.tools.Server.createWebServer(
-	      "-web", "-webAllowOthers", "-webPort", "8082"
-	   );
-	}
+//	@Bean(initMethod="start", destroyMethod="stop")
+//	@Profile("dev")
+//	public org.h2.tools.Server h2WebServer() throws SQLException {
+//	   return org.h2.tools.Server.createWebServer(
+//	      "-web", "-webAllowOthers", "-webPort", "8082"
+//	   );
+//	}
 	
 	// should move database connection info into environment variables
 	@Bean
@@ -42,9 +40,9 @@ public class WebApplication extends SpringBootServletInitializer {
 	public DataSource dataSource() {
 		return DataSourceBuilder.create()
 			.driverClassName("com.mysql.jdbc.Driver")
-			.url("jdbc:mysql://sqld.duapp.com:4050/euoGBFukVdNWbXbwpDXP")
-			.username("l0Y2c6iKt4wLpCsKrAREEKzT")
-			.password("j9WtgYWKLkVxGbR4E2E6jLPl5mk8vgKj")
+			.url("jdbc:mysql://sqld.duapp.com:4050/SHZCffxtwwoGmGUwxoZb")
+			.username("xN3Lv2liVPWHfu5ywr0UPWoT")
+			.password("L7Yc5LOT2SgYtZidaN0eHFQ1ZLLnGh8c")
 			.build();
 	}
 }

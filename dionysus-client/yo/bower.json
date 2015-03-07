@@ -5,6 +5,7 @@
     "modernizr": "~2.8.2",
     "marionette": "~2.3.2",
     "materialize": "~0.95.2",
-    "backbone.relational": "~0.9.0"
+    "sockjs": "~0.3.4",
+    "stomp-websocket": "~2.3.4"
   }
 }
