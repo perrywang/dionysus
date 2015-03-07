@@ -12,14 +12,14 @@ public class Message extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 7438768194716828137L;
 
-	@Column(name="text")
-	private String text;
+	@Column(name="content")
+	private String content;
 
-	public String getText() {
-		return text;
+	public String getContent() {
+		return content;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
