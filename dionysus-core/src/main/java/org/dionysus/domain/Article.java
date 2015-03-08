@@ -33,9 +33,6 @@ public class Article extends AbstractAuditable<User, Long> {
 	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@Valid
 	private Category category;
-	
-//	@ManyToOne
-//	private Collection<Comment> comments;
 
 	@Version
 	private Long version;
@@ -71,14 +68,6 @@ public class Article extends AbstractAuditable<User, Long> {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-//	public Collection<Comment> getComments() {
-//		return comments;
-//	}
-//
-//	public void setComments(Collection<Comment> comments) {
-//		this.comments = comments;
-//	}
 
 	public Long getVersion() {
 		return version;
