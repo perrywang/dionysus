@@ -15,6 +15,11 @@
 	<name>Dionysus Admin Console</name>
 
 	<dependencies>
+    <dependency>
+      <groupId>org.dionysus</groupId>
+      <artifactId>dionysus-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 		<dependency>
 			<groupId>org.lightadmin</groupId>
 			<artifactId>lightadmin</artifactId>
