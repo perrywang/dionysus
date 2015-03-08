@@ -43,9 +43,6 @@
 						<goals>
 							<goal>single</goal>
 						</goals>
-						<configuration>
-						  <yo.test.skip>true</yo.test.skip>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
