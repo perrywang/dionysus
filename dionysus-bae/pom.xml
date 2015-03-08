@@ -13,6 +13,7 @@
 	<artifactId>dionysus-bae</artifactId>
 	<packaging>jar</packaging>
 	<name>Dionysus Baidu AppEngine</name>
+	<description>Spring Cloud Connector for Baidu AppEngine</description>
 
 	<repositories>
 		<repository>
