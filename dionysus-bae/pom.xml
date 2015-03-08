@@ -37,28 +37,15 @@
 			<version>1.4.5</version>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.baidu.bae</groupId>
 			<artifactId>baev3-sdk</artifactId>
 			<version>1.0.1</version>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
-			<exclusions>
-			  <exclusion>
-			    <groupId>org.springframework.cloud</groupId>
-			    <artifactId>spring-cloud-heroku-connector</artifactId>
-			  </exclusion>
-        <exclusion>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-        </exclusion>
-			</exclusions>
 		</dependency>
-
 	</dependencies>
 </project>
