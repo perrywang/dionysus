@@ -32,6 +32,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.baidu</groupId>
 			<artifactId>bcs-sdk</artifactId>
 			<version>1.4.5</version>
@@ -42,10 +46,6 @@
 			<artifactId>baev3-sdk</artifactId>
 			<version>1.0.1</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-cloud-connectors</artifactId>
 		</dependency>
 	</dependencies>
 </project>

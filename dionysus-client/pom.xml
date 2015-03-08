@@ -13,6 +13,7 @@
 	<artifactId>dionysus-client</artifactId>
 	<packaging>pom</packaging>
 	<name>Dionysus Web Client</name>
+
 	<build>
 		<plugins>
 			<plugin>
