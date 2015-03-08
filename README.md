@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/luj1985/dionysus.svg?branch=master)](https://travis-ci.org/luj1985/dionysus)
+
 Prerequisites
 -------------
 - JDK 1.7+ [http://www.oracle.com/technetwork/java/javase/overview/index.html](http://www.oracle.com/technetwork/java/javase/overview/index.html)
