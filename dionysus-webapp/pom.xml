@@ -14,16 +14,6 @@
 	<packaging>war</packaging>
 	<name>Dionysus Webapp</name>
 
-	<repositories>
-		<repository>
-			<id>bae</id>
-			<url>http://maven.duapp.com/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.dionysus</groupId>
@@ -35,6 +25,11 @@
 			<artifactId>dionysus-rest</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>org.dionysus</groupId>
+      <artifactId>dionysus-bae</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 		<dependency>
 			<groupId>org.dionysus</groupId>
 			<artifactId>dionysus-client</artifactId>
@@ -80,11 +75,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.baidu.bae</groupId>
-			<artifactId>baev3-sdk</artifactId>
-			<version>1.0.1</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -93,8 +83,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- <executions> <execution> <goals> <goal>repackage</goal> </goals> 
-					</execution> </executions> -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

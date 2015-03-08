@@ -12,7 +12,7 @@
 
 	<artifactId>dionysus-rest</artifactId>
 	<packaging>jar</packaging>
-	<name>Dionysus Restful</name>
+	<name>Dionysus Restful Service</name>
 
 	<dependencies>
 		<dependency>
