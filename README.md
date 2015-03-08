@@ -6,7 +6,6 @@ Prerequisites
 - Maven 3.0+ [http://maven.apache.org](http://maven.apache.org)
 - Eclipse [http://eclipse.org](http://eclipse.org)
 - NodeJs [http://nodejs.org](http://nodejs.org)
-	- Yeoman [http://yeoman.io/](http://yeoman.io/) with ```webapp``` generator
 	- Grunt [http://gruntjs.com/](http://gruntjs.com/)
 	- Bower [http://bower.io/](http://bower.io/)
 - LiveReload [http://livereload.com/](http://livereload.com/)
