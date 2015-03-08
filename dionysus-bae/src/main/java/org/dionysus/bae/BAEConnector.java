@@ -6,9 +6,10 @@ import org.springframework.cloud.AbstractCloudConnector;
 import org.springframework.cloud.FallbackServiceInfoCreator;
 import org.springframework.cloud.app.ApplicationInstanceInfo;
 import org.springframework.cloud.service.UriBasedServiceData;
+import org.springframework.cloud.util.EnvironmentAccessor;
 
 public class BAEConnector extends AbstractCloudConnector<UriBasedServiceData> {
-//	private EnvironmentAccessor environment = new EnvironmentAccessor();
+	private EnvironmentAccessor environment = new EnvironmentAccessor();
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public BAEConnector() {
@@ -18,8 +19,7 @@ public class BAEConnector extends AbstractCloudConnector<UriBasedServiceData> {
 	@Override
 	public boolean isInMatchingCloud() {
 		// SERVER_SORTWARE = bae/3.0
-//		return environment.getEnvValue("SERVER_SOFTWARE") != null;
-		return false;
+		return environment.getEnvValue("SERVER_SOFTWARE") != null;
 	}
 
 	@Override

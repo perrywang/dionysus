@@ -25,11 +25,16 @@
 			<artifactId>dionysus-rest</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-    <dependency>
-      <groupId>org.dionysus</groupId>
-      <artifactId>dionysus-bae</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>org.dionysus</groupId>
+			<artifactId>dionysus-bae</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dionysus</groupId>
+			<artifactId>dionysus-admin</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.dionysus</groupId>
 			<artifactId>dionysus-client</artifactId>
