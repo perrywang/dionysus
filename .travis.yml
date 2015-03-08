@@ -1,7 +1,8 @@
+before_script:
+  - sudo npm install -g grunt-cli
+  - sudo npm install -g bower
+
 language: java
+
 jdk:
   - openjdk7
-
-before_script:
-  - npm install -g grunt-cli
-  - npm install -g bower
