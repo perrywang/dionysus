@@ -17,18 +17,14 @@ public class Notification extends AbstractPersistable<Long> {
 	@ManyToOne
 	private User from;
 	
-	@ManyToOne
-	private User to;
-	
 	@Column(name="summary")
 	private String summary;
 	
 	public Notification() {}
 	
-	public Notification(Inbox inbox, User from, User to, String summary) {
+	public Notification(Inbox inbox, User from, String summary) {
 		this.inbox = inbox;
 		this.from = from;
-		this.to = to;
 		this.summary = summary;
 	}
 
@@ -48,14 +44,6 @@ public class Notification extends AbstractPersistable<Long> {
 		this.from = owner;
 	}
 
-	public User getTo() {
-		return to;
-	}
-
-	public void setTo(User to) {
-		this.to = to;
-	}
-
 	public String getSummary() {
 		return summary;
 	}
@@ -69,7 +57,6 @@ public class Notification extends AbstractPersistable<Long> {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Notification: \n");
 		sb.append("  from: " + from.getId() + "\n");
-		sb.append("  to: " + to.getId() + "\n");
 		sb.append("  inbox: " + inbox.getId() + "\n");
 		sb.append("  summary: " + summary + "\n");
 		return sb.toString();

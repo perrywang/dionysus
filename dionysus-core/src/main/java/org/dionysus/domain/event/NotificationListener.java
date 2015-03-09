@@ -28,7 +28,7 @@ public class NotificationListener {
 		
 		for (User to : tos) {
 			Inbox inbox = to.getInbox();
-			inbox.addNotification(new Notification(inbox, from, to, summary));
+			inbox.addNotification(new Notification(inbox, from, summary));
 			em.persist(inbox);
 		}
 	}
