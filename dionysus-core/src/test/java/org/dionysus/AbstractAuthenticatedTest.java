@@ -3,8 +3,6 @@ package org.dionysus;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.dionysus.domain.Inbox;
-import org.dionysus.domain.Profile;
 import org.dionysus.domain.User;
 import org.dionysus.repository.UserRepository;
 import org.junit.Before;
@@ -27,8 +25,6 @@ public abstract class AbstractAuthenticatedTest {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
 			user = new User(username, "password", username + "@dionysus.org");
-			user.setInbox(new Inbox(user));
-			user.setProfile(new Profile(user));
 			userRepository.save(user);
 			entityManager.flush();
 		}

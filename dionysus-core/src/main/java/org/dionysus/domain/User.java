@@ -68,19 +68,21 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 	private Inbox inbox;
 
 	public User() {
-	}
-
-	public User(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-
 		this.accountNonExpired = true;
 		this.accountNonLocked = true;
 		this.credentialsNonExpired = true;
 		this.enabled = true;
 
 		this.authorities = new HashSet<Role>();
+		this.inbox = new Inbox(this);
+		this.profile = new Profile(this);
+	}
+
+	public User(String username, String password, String email) {
+		this();
+		this.username = username;
+		this.password = password;
+		this.email = email;
 	}
 
 	@Override
