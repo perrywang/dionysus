@@ -1,13 +1,13 @@
 package org.dionysus;
 
-import java.util.List;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
 import org.dionysus.domain.Article;
 import org.dionysus.domain.Category;
 import org.dionysus.domain.User;
-import org.dionysus.repository.ArticleRepository;
 import org.dionysus.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,18 +21,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
 @SpringApplicationConfiguration(classes = DomainApplicationContext.class)
-public class ArticleValidationTest {
+public class ArticleDomainTest {
 
 	private static final String AUDIT_USER_NAME = "auditUser";
 
+	@PersistenceContext
+	private EntityManager entityManager;
+	
 	@Autowired
 	private UserRepository userRepository;
-
-	@Autowired
-	private ArticleRepository articleRepository;
 
 	@Before
 	public void wireUpAuditor() {
@@ -48,24 +49,27 @@ public class ArticleValidationTest {
 	@Test(expected = ConstraintViolationException.class)
 	public void testArticleValidation() {
 		Article article = new Article();
-		articleRepository.save(article);
+		entityManager.persist(article);
 	}
 
 	@Test
-	public void testAddArticle() {
-		List<Article> articles = articleRepository.findAll();
-		int count = articles.size();
-
+	public void testArticleAddition() {
 		Article article = new Article("article title", "article body");
 		Category category = new Category("test category");
+		entityManager.persist(category);
+		
 		article.setCategory(category);
-
 		Assert.assertNull(article.getId());
 
-		articleRepository.save(article);
+		entityManager.persist(article);
 		Assert.assertNotNull(article.getId());
+	}
 
-		articles = articleRepository.findAll();
-		Assert.assertEquals(articles.size(), count + 1);
+	@Test
+	public void testArticleAudit() {
+		Article article = new Article("audit article title", "audit article body");
+		entityManager.persist(article);
+		User user = article.getCreatedBy();
+		Assert.assertEquals(user.getUsername(), AUDIT_USER_NAME);
 	}
 }

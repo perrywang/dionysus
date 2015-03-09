@@ -1,11 +1,13 @@
 package org.dionysus.domain;
 
-import javax.persistence.CascadeType;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.Valid;
@@ -21,18 +23,20 @@ public class Article extends AbstractAuditable<User, Long> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
 
+	@NotBlank
 	@Column(name = "title")
-	@NotBlank(message = "article title is required")
 	private String title;
 
-	@Column(name = "body")
-	@Lob
-	@NotBlank(message = "article body is required")
+	@NotBlank
+	@Lob @Column(name = "body")
 	private String body;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@Valid
+	@ManyToOne
 	private Category category;
+
+	@OneToMany(mappedBy = "article")
+	private Collection<Comment> comments;
 
 	@Version
 	private Long version;

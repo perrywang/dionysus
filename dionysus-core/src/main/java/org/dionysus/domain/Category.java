@@ -1,8 +1,11 @@
 package org.dionysus.domain;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,12 +17,15 @@ public class Category extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 2384283567572219724L;
 
-	@NotEmpty(message = "category name is required")
+	@NotEmpty
 	@Column(name = "name", unique = true)
 	private String name;
 
 	@ManyToOne
 	private Category parent;
+
+	@OneToMany(mappedBy = "category")
+	private Collection<Article> articles;
 
 	public Category() {
 	}
