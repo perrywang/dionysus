@@ -3,6 +3,7 @@ package org.dionysus.domain;
 import java.util.Collection;
 
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -34,7 +35,7 @@ public class Article extends AbstractAuditable<User, Long> {
 	private String body;
 
 	@Valid
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
 
 	@OneToMany(mappedBy = "article")

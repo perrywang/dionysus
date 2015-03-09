@@ -3,6 +3,7 @@ package org.dionysus.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -24,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User extends AbstractPersistable<Integer> implements UserDetails {
+public class User extends AbstractPersistable<Long> implements UserDetails {
 
 	private static final long serialVersionUID = 6574790333326442416L;
 
@@ -60,8 +61,11 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private Set<Role> authorities;
 
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
 	private Profile profile;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+	private Inbox inbox;
 
 	public User() {
 	}
@@ -156,5 +160,32 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
+
+	public Inbox getInbox() {
+		return inbox;
+	}
+
+	public void setInbox(Inbox inbox) {
+		this.inbox = inbox;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("User: \n");
+		sb.append("  id: " + this.getId() + "\n");
+		sb.append("  username: " + this.getUsername() + "\n");
+		sb.append("  profile: " + this.getProfile().getId() + "\n");
+		sb.append("  inbox: " + this.getInbox().getId() + "\n");
+		return sb.toString();
 	}
 }
