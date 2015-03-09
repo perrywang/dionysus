@@ -1,49 +1,67 @@
 package org.dionysus.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.dionysus.domain.event.AbstractNotifiable;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "courses")
 @EntityListeners(AuditingEntityListener.class)
-public class Course extends AbstractPersistable<Long> {
+public class Course extends AbstractNotifiable<User, Long> {
 
 	private static final long serialVersionUID = 2523934617928638918L;
 
+	@NotBlank
 	@Column(name = "title")
-	@NotBlank(message = "course title is required")
 	private String title;
 
-	@Column(name = "description")
+	@Lob @Column(name = "description")
 	private String description;
 
+	@NotBlank
 	@Column(name = "state")
-	@NotBlank(message = "state is required")
-	private String state;
+	@Enumerated(EnumType.STRING)
+	private CourseState state;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Consultant consultant;
-
-//	@ManyToMany(mappedBy = "registeredCourses")
-//	private Collection<User> registrations;
+	
+	@ManyToMany
+	private Collection<User> users;
 
 	public Course() {
+		this.state = CourseState.OPEN;
+		this.users = new ArrayList<User>();
 	}
 
-	public Course(String title, String description, String state) {
-		super();
+	public Course(String title, String description) {
+		this();
 		this.setTitle(title);
 		this.setDescription(description);
-		this.setState(state);
-//		this.setRegistrations(new ArrayList<User>());
+	}
+
+	@Override
+	public Collection<User> sendTo() {
+		return this.users;
+	}
+
+	@Override
+	public String getSummary() {
+		return this.getDescription();
 	}
 
 	public String getTitle() {
@@ -62,11 +80,11 @@ public class Course extends AbstractPersistable<Long> {
 		this.description = description;
 	}
 
-	public String getState() {
+	public CourseState getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(CourseState state) {
 		this.state = state;
 	}
 
@@ -77,14 +95,6 @@ public class Course extends AbstractPersistable<Long> {
 	public void setConsultant(Consultant consultant) {
 		this.consultant = consultant;
 	}
-
-//	public Collection<User> getRegistrations() {
-//		return registrations;
-//	}
-//
-//	public void setRegistrations(Collection<User> registrations) {
-//		this.registrations = registrations;
-//	}
 
 	@Override
 	public String toString() {

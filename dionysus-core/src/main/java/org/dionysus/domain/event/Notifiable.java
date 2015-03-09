@@ -1,12 +1,12 @@
 package org.dionysus.domain.event;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface Notifiable<U> {
 
 	U receiveFrom();
 	
-	List<U> sendTo();
+	Collection<U> sendTo();
 	
 	String getSummary();
 }

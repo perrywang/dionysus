@@ -1,7 +1,7 @@
 package org.dionysus.domain.event;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
@@ -19,7 +19,7 @@ public abstract class AbstractNotifiable<U, PK extends Serializable> extends
 		return this.getCreatedBy();
 	}
 
-	public abstract List<U> sendTo();
+	public abstract Collection<U> sendTo();
 
 	public abstract String getSummary();
 }

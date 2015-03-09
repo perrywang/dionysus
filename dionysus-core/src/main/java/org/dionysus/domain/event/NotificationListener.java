@@ -1,6 +1,6 @@
 package org.dionysus.domain.event;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.PostPersist;
 
@@ -14,7 +14,7 @@ public class NotificationListener {
 	public void sendNotification(Notifiable<User> entity) {
 
 		User from = entity.receiveFrom();
-		List<User> tos = entity.sendTo();
+		Collection<User> tos = entity.sendTo();
 		String summary = entity.getSummary();
 
 		for (User to : tos) {
