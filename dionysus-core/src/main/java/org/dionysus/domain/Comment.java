@@ -10,14 +10,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.dionysus.domain.event.NotificationListener;
-import org.springframework.data.jpa.domain.AbstractAuditable;
+import org.dionysus.domain.event.AbstractNotifiable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "comments")
-@EntityListeners({ AuditingEntityListener.class, NotificationListener.class })
-public class Comment extends AbstractAuditable<User, Long> implements Notifiable<User> {
+@EntityListeners(AuditingEntityListener.class)
+public class Comment extends AbstractNotifiable<User, Long> {
 
 	private static final long serialVersionUID = -5887975510097345536L;
 
@@ -56,11 +55,6 @@ public class Comment extends AbstractAuditable<User, Long> implements Notifiable
 	}
 
 	@Override
-	public String getSummary() {
-		return this.getContent();
-	}
-
-	@Override
 	public List<User> sendTo() {
 		User creator = this.article.getCreatedBy();
 		User updator = this.article.getLastModifiedBy();
@@ -72,5 +66,10 @@ public class Comment extends AbstractAuditable<User, Long> implements Notifiable
 			users.add(updator);
 		}
 		return users;
+	}
+
+	@Override
+	public String getSummary() {
+		return this.getContent();
 	}
 }

@@ -1,4 +1,4 @@
-package org.dionysus.domain;
+package org.dionysus.domain.event;
 
 import java.util.List;
 

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.PostPersist;
 
 import org.dionysus.domain.Inbox;
-import org.dionysus.domain.Notifiable;
 import org.dionysus.domain.Notification;
 import org.dionysus.domain.User;
 
