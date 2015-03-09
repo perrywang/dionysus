@@ -15,7 +15,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -23,7 +22,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User extends AbstractPersistable<Long> implements UserDetails {
 
@@ -31,7 +30,7 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 
 	@NotNull
 	@Size(min = 4, max = 40)
-	@Column(name = "username")
+	@Column(name = "username", unique = true)
 	private String username;
 
 	@NotNull

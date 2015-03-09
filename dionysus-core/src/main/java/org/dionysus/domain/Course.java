@@ -32,7 +32,6 @@ public class Course extends AbstractNotifiable<User, Long> {
 	@Lob @Column(name = "description")
 	private String description;
 
-	@NotBlank
 	@Column(name = "state")
 	@Enumerated(EnumType.STRING)
 	private CourseState state;
@@ -56,12 +55,16 @@ public class Course extends AbstractNotifiable<User, Long> {
 
 	@Override
 	public Collection<User> sendTo() {
-		return this.users;
+		if (this.state == CourseState.IN_PROGRESS) {
+			return this.getUsers();
+		} else {
+			return new ArrayList<User>();
+		}
 	}
 
 	@Override
 	public String getSummary() {
-		return this.getDescription();
+		return this.getTitle();
 	}
 
 	public String getTitle() {
@@ -94,6 +97,14 @@ public class Course extends AbstractNotifiable<User, Long> {
 
 	public void setConsultant(Consultant consultant) {
 		this.consultant = consultant;
+	}
+
+	public Collection<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 
 	@Override
