@@ -2,6 +2,7 @@ package org.dionysus.domain;
 
 import java.util.Collection;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -16,6 +17,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@Cacheable
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "articles")

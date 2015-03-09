@@ -3,9 +3,6 @@ package org.dionysus.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Cacheable;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,7 +12,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -28,34 +24,44 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "username", name = "uk_users_username"))
 @Inheritance(strategy = InheritanceType.JOINED)
-@Access(AccessType.PROPERTY)
-@Cacheable
 public class User extends AbstractPersistable<Integer> implements UserDetails {
 
 	private static final long serialVersionUID = 6574790333326442416L;
 
+	@NotNull
+	@Size(min = 4, max = 40)
+	@Column(name = "username")
 	private String username;
+
+	@NotNull
+//	@Size(min = 60, max = 60)
+	@Column(name = "password")
 	private String password;
 	private String email;
 
+	@NotNull
+	@Column(name = "account_non_expired")
 	private boolean accountNonExpired;
+	
+	@NotNull
+	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
+
+	@NotNull
+	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired;
+
+	@NotNull
+	@Column(name = "enabled")
 	private boolean enabled;
 
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "authorities")
+	@Enumerated(EnumType.STRING)
 	private Set<Role> authorities;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn
+	@OneToOne(mappedBy = "user")
 	private Profile profile;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn
-	private Inbox inbox;
-	//
-	// @ManyToMany
-	// @JoinTable
-	// private Collection<Course> registeredCourses;
 
 	public User() {
 	}
@@ -73,17 +79,11 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		this.authorities = new HashSet<Role>();
 	}
 
-	@NotNull
-	@Size(min = 4, max = 40)
-	@Column(name = "username")
 	@Override
 	public String getUsername() {
 		return username;
 	}
-
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "authorities")
-	@Enumerated(EnumType.STRING)
+	
 	@Override
 	public Set<Role> getAuthorities() {
 		return authorities;
@@ -105,9 +105,6 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		return authorities.remove(authority);
 	}
 
-	@NotNull
-//	@Size(min = 60, max = 60)
-	@Column(name = "password")
 	@Override
 	public String getPassword() {
 		return password;
@@ -125,8 +122,6 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		this.email = email;
 	}
 
-	@NotNull
-	@Column(name = "account_non_expired")
 	@Override
 	public boolean isAccountNonExpired() {
 		return accountNonExpired;
@@ -136,8 +131,6 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		this.accountNonExpired = accountNonExpired;
 	}
 
-	@NotNull
-	@Column(name = "account_non_locked")
 	@Override
 	public boolean isAccountNonLocked() {
 		return accountNonLocked;
@@ -147,8 +140,6 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		this.accountNonLocked = accountNonLocked;
 	}
 
-	@NotNull
-	@Column(name = "credentials_non_expired")
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return credentialsNonExpired;
@@ -158,8 +149,6 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
-	@NotNull
-	@Column(name = "enabled")
 	@Override
 	public boolean isEnabled() {
 		return enabled;
@@ -168,5 +157,4 @@ public class User extends AbstractPersistable<Integer> implements UserDetails {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
 }

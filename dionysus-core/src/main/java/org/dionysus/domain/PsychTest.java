@@ -18,40 +18,14 @@ public class PsychTest extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 
-	@Column(name = "title")
 	@NotBlank
+	@Column(name = "title")
 	private String title;
 
-	@Column(name = "descriptoin")
-	@Lob
+	@Lob @Column(name = "descriptoin")
 	private String description;
 
 	@ElementCollection
 	@CollectionTable(name = "psychtestitems")
-	private List<PsychTestItem> items;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public List<PsychTestItem> getItems() {
-		return items;
-	}
-
-	public void setItems(List<PsychTestItem> items) {
-		this.items = items;
-	}
-	
+	private List<PsychTestItem> items;	
 }
