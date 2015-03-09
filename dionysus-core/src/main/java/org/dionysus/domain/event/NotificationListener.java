@@ -1,6 +1,5 @@
 package org.dionysus.domain.event;
 
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -29,8 +28,7 @@ public class NotificationListener {
 		
 		for (User to : tos) {
 			Inbox inbox = to.getInbox();
-			Collection<Notification> notifications = inbox.getNotifications();
-			notifications.add(new Notification(inbox, from, to, summary));
+			inbox.addNotification(new Notification(inbox, from, to, summary));
 			em.persist(inbox);
 		}
 	}

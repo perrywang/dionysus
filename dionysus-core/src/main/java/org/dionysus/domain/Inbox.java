@@ -45,6 +45,10 @@ public class Inbox extends AbstractPersistable<Long> {
 		this.notifications = notifications;
 	}
 	
+	public void addNotification(Notification notification) {
+		this.notifications.add(notification);
+	}
+	
 	@Override
 	public String toString() {
 		return "Inbox: " + this.getId();
