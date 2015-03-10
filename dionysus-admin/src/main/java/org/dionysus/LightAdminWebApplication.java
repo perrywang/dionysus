@@ -11,14 +11,9 @@ import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 
 @SpringBootApplication
 @Configuration
-@Order(Ordered.HIGHEST_PRECEDENCE)
-@Import(DomainApplicationContext.class)
 public class LightAdminWebApplication extends SpringBootServletInitializer {
 
 	@Bean
