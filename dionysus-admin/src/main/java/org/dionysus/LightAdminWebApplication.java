@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 
 import org.lightadmin.api.config.LightAdmin;
 import org.lightadmin.core.config.LightAdminWebApplicationInitializer;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @Configuration
+@EnableAutoConfiguration
 public class LightAdminWebApplication extends SpringBootServletInitializer {
 
 	@Bean
@@ -25,10 +27,20 @@ public class LightAdminWebApplication extends SpringBootServletInitializer {
 	                .basePackage("org.dionysus.admin")
 	                .baseUrl("/admin")
 	                .security(false);
-	    		new LightAdminWebApplicationInitializer().onStartup(servletContext);
+//	    		new LightAdminWebApplicationInitializer().onStartup(servletContext);
             }
         };
     }
+	
+//	@Override
+//	public void onStartup(ServletContext servletContext)
+//			throws ServletException {
+//		LightAdmin.configure(servletContext)
+//	        .basePackage("org.dionysus.admin")
+//	        .baseUrl("/admin")
+//	        .security(false);
+//		super.onStartup(servletContext);
+//	}
 	
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
