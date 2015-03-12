@@ -1,11 +1,8 @@
 package org.dionysus.domain;
 
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -23,9 +20,9 @@ public class Category extends AbstractPersistable<Long> {
 
 	@ManyToOne
 	private Category parent;
-
-	@OneToMany(mappedBy = "category")
-	private Collection<Article> articles;
+//
+//	@OneToMany(mappedBy = "category")
+//	private Collection<Article> articles;
 
 	public Category() {
 	}

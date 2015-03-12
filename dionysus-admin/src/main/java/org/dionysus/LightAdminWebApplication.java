@@ -4,7 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 import org.lightadmin.api.config.LightAdmin;
-import org.lightadmin.core.config.LightAdminWebApplicationInitializer;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
