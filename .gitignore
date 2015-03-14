@@ -29,3 +29,4 @@ release.properties
 dionysus.db
 dionysus-test.db
 src/main/webapp/wro
+bin/
