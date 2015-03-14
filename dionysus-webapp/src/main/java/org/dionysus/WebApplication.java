@@ -1,14 +1,18 @@
 package org.dionysus;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
 @EnableJpaAuditing
+@ComponentScan
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebApplication extends SpringBootServletInitializer {
 	
