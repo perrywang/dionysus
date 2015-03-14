@@ -7,6 +7,7 @@ import org.lightadmin.api.config.builder.FieldSetConfigurationUnitBuilder;
 import org.lightadmin.api.config.builder.PersistentFieldSetConfigurationUnitBuilder;
 import org.lightadmin.api.config.unit.EntityMetadataConfigurationUnit;
 import org.lightadmin.api.config.unit.FieldSetConfigurationUnit;
+import org.lightadmin.api.config.utils.Editors;
 
 public class ArticleAdministration extends AdministrationConfiguration<Article> {
 	
@@ -31,6 +32,7 @@ public class ArticleAdministration extends AdministrationConfiguration<Article> 
 			PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
 		return fragmentBuilder
 				.field("title").caption("Title")
+				.field("body").caption("Body").editor(Editors.wysiwyg())
 				.field("category").caption("Category")
 				.build();
 	}
