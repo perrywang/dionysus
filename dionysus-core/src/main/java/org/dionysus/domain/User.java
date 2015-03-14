@@ -60,10 +60,10 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private Set<Role> authorities;
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
 	public User() {
