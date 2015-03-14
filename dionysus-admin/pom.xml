@@ -24,21 +24,11 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jsp-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.dionysus</groupId>
 			<artifactId>dionysus-core</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.lightadmin</groupId>
-			<artifactId>lightadmin</artifactId>
-			<version>${lightadmin.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
