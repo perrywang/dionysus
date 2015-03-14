@@ -8,22 +8,23 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.dionysus.auth.PasswordListener;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
+@EntityListeners(PasswordListener.class)
 public class User extends AbstractPersistable<Long> implements UserDetails {
 
 	private static final long serialVersionUID = 6574790333326442416L;
@@ -33,10 +34,13 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 	@Column(name = "username", unique = true)
 	private String username;
 
-	@NotNull
-//	@Size(min = 60, max = 60)
+	@Transient
+	transient private String password;
+	
 	@Column(name = "password")
-	private String password;
+	private String encryptedPassword;
+
+	@Column(name = "email")
 	private String email;
 
 	@NotNull
@@ -77,11 +81,10 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 		this.profile = new Profile(this);
 	}
 
-	public User(String username, String password, String email) {
+	public User(String username, String password) {
 		this();
 		this.username = username;
 		this.password = password;
-		this.email = email;
 	}
 
 	@Override
@@ -117,6 +120,14 @@ public class User extends AbstractPersistable<Long> implements UserDetails {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEncryptedPassword() {
+		return encryptedPassword;
+	}
+
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
 	}
 
 	public String getEmail() {

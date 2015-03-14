@@ -35,7 +35,7 @@ public abstract class AbstractAuthenticatedTest {
 	protected User createUser(String username) {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
-			user = new User(username, "password", username + "@dionysus.org");
+			user = new User(username, "password");
 			userRepository.save(user);
 			entityManager.flush();
 		}

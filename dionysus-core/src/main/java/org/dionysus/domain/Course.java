@@ -8,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.dionysus.domain.event.AbstractNotifiable;
@@ -35,9 +33,6 @@ public class Course extends AbstractNotifiable<User, Long> {
 	@Column(name = "state")
 	@Enumerated(EnumType.STRING)
 	private CourseState state;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Consultant consultant;
 	
 	@ManyToMany
 	private Collection<User> users;
@@ -89,14 +84,6 @@ public class Course extends AbstractNotifiable<User, Long> {
 
 	public void setState(CourseState state) {
 		this.state = state;
-	}
-
-	public Consultant getConsultant() {
-		return consultant;
-	}
-
-	public void setConsultant(Consultant consultant) {
-		this.consultant = consultant;
 	}
 
 	public Collection<User> getUsers() {
