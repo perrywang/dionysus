@@ -32,16 +32,6 @@ public class LightAdminWebApplication extends SpringBootServletInitializer {
         };
     }
 	
-//	@Override
-//	public void onStartup(ServletContext servletContext)
-//			throws ServletException {
-//		LightAdmin.configure(servletContext)
-//	        .basePackage("org.dionysus.admin")
-//	        .baseUrl("/admin")
-//	        .security(false);
-//		super.onStartup(servletContext);
-//	}
-	
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(LightAdminWebApplication.class);
