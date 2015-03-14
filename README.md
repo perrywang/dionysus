@@ -43,6 +43,9 @@ create war
 
 	$ mvn package
 
+open administrator console
+	$ brower http://localhost:8080/admin
+
 
 Client side development
 -----------------------
