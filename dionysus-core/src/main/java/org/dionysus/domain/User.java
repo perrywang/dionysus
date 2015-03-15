@@ -19,13 +19,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.dionysus.auth.PasswordListener;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
 @EntityListeners(PasswordListener.class)
-public class User extends AbstractPersistable<Long> implements UserDetails {
+public class User extends AbstractDionysusPersistable implements UserDetails {
 
 	private static final long serialVersionUID = 6574790333326442416L;
 

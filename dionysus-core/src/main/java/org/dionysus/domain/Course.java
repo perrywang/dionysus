@@ -12,14 +12,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.dionysus.domain.event.AbstractNotifiable;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "courses")
 @EntityListeners(AuditingEntityListener.class)
-public class Course extends AbstractNotifiable<User, Long> {
+public class Course extends AbstractDionysusNotifiable<User> {
 
 	private static final long serialVersionUID = 2523934617928638918L;
 

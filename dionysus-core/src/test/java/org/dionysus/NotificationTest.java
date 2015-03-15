@@ -16,7 +16,7 @@ import org.dionysus.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class NotificationTest extends AbstractAuthenticatedTest {
+public class NotificationTest extends AbstractPersistentTest {
 
 	@Test
 	public void testSendNotificationOnArticleComment() {

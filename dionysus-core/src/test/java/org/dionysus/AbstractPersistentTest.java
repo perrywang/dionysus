@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
 @SpringApplicationConfiguration(classes = DomainApplicationContext.class)
-public abstract class AbstractAuthenticatedTest {
+public abstract class AbstractPersistentTest {
 	
 	protected static final String DEFAULT_USERNAME = "testUser";
 

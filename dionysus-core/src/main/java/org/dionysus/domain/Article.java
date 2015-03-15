@@ -11,13 +11,12 @@ import javax.persistence.Version;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "articles")
-public class Article extends AbstractAuditable<User, Long> {
+public class Article extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
 

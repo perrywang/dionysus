@@ -1,17 +1,17 @@
-package org.dionysus.domain.event;
+package org.dionysus.domain;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
-import org.springframework.data.jpa.domain.AbstractAuditable;
+import org.dionysus.domain.event.Notifiable;
+import org.dionysus.domain.event.NotificationListener;
 
 @MappedSuperclass
 @EntityListeners(NotificationListener.class)
-public abstract class AbstractNotifiable<U, PK extends Serializable> extends
-		AbstractAuditable<U, PK> implements Notifiable<U> {
+public abstract class AbstractDionysusNotifiable<U> extends
+		AbstractDionysusAuditable<U> implements Notifiable<U> {
 
 	private static final long serialVersionUID = 4497363688600667784L;
 

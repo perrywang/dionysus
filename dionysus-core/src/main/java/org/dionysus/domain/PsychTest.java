@@ -10,11 +10,10 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "pychtests")
-public class PsychTest extends AbstractPersistable<Long> {
+public class PsychTest extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 

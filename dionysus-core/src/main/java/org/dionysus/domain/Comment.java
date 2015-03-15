@@ -10,13 +10,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.dionysus.domain.event.AbstractNotifiable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "comments")
 @EntityListeners(AuditingEntityListener.class)
-public class Comment extends AbstractNotifiable<User, Long> {
+public class Comment extends AbstractDionysusNotifiable<User> {
 
 	private static final long serialVersionUID = -5887975510097345536L;
 

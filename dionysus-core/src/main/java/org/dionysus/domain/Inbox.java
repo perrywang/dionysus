@@ -7,10 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
 @Entity
-public class Inbox extends AbstractPersistable<Long> {
+public class Inbox extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = 8365840187902479233L;
 

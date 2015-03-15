@@ -8,7 +8,7 @@ import org.dionysus.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ArticleDomainTest extends AbstractAuthenticatedTest {
+public class ArticleDomainTest extends AbstractPersistentTest {
 
 	@Test(expected = ConstraintViolationException.class)
 	public void testArticleValidation() {

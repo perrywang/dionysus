@@ -6,13 +6,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "categories")
-public class Category extends AbstractPersistable<Long> {
+public class Category extends AbstractDionysusPersistable {
 
-	private static final long serialVersionUID = 2384283567572219724L;
+	private static final long serialVersionUID = -1815965724911284764L;
 
 	@NotEmpty
 	@Column(name = "name", unique = true)

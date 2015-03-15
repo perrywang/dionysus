@@ -42,5 +42,11 @@
 			<artifactId>h2</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.9</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
