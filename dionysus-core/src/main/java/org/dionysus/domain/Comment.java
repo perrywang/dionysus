@@ -16,7 +16,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "comments")
 @EntityListeners(AuditingEntityListener.class)
-public class Comment extends AbstractNotifiable<User, Long> {
+public class Comment extends AbstractNotifiable<User, String> {
 
 	private static final long serialVersionUID = -5887975510097345536L;
 

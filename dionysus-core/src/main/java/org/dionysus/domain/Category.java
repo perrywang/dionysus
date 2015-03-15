@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "categories")
-public class Category extends AbstractPersistable<Long> {
+public class Category extends AbstractPersistable<String> {
 
 	private static final long serialVersionUID = 2384283567572219724L;
 

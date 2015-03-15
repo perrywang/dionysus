@@ -3,7 +3,10 @@ package org.dionysus.admin;
 import org.dionysus.domain.Category;
 import org.lightadmin.api.config.AdministrationConfiguration;
 import org.lightadmin.api.config.builder.EntityMetadataConfigurationUnitBuilder;
+import org.lightadmin.api.config.builder.FieldSetConfigurationUnitBuilder;
+import org.lightadmin.api.config.builder.PersistentFieldSetConfigurationUnitBuilder;
 import org.lightadmin.api.config.unit.EntityMetadataConfigurationUnit;
+import org.lightadmin.api.config.unit.FieldSetConfigurationUnit;
 
 public class CategoryAdministration extends AdministrationConfiguration<Category> {
 	
@@ -14,6 +17,38 @@ public class CategoryAdministration extends AdministrationConfiguration<Category
 				.nameField("name")
 				.pluralName("Categories")
 				.singularName("Category")
+				.build();
+	}
+	
+	@Override
+	public FieldSetConfigurationUnit listView(
+			FieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("name").caption("Name")
+				.build();
+	}
+	
+	@Override
+	public FieldSetConfigurationUnit showView(
+			FieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("name").caption("Name")
+				.build();
+	}
+	
+	@Override
+	public FieldSetConfigurationUnit formView(
+			PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("name").caption("Name")
+				.build();
+	}
+	
+	@Override
+	public FieldSetConfigurationUnit quickView(
+			FieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("name").caption("Name")
 				.build();
 	}
 }

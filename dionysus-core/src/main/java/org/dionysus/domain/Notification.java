@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
-public class Notification extends AbstractPersistable<Long> {
+public class Notification extends AbstractPersistable<String> {
 
 	private static final long serialVersionUID = -7457760948182175014L;
 
