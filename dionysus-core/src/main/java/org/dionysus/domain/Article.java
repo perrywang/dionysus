@@ -22,7 +22,8 @@ public class Article extends AbstractDionysusAuditable<User> {
 	private String title;
 
 	@NotBlank
-	@Lob @Column(name = "body")
+	@Lob
+	@Column(name = "body")
 	private String body;
 
 	@Valid
@@ -30,10 +31,10 @@ public class Article extends AbstractDionysusAuditable<User> {
 	private Category category;
 
 	@Version
+	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
 	private Long version;
 
 	public Article() {
-		this.version = 0L;
 	}
 
 	public Article(String title, String body) {
@@ -72,7 +73,7 @@ public class Article extends AbstractDionysusAuditable<User> {
 	public void setVersion(Long version) {
 		this.version = version;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.title;
