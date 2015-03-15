@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "courses")
 @EntityListeners(AuditingEntityListener.class)
-public class Course extends AbstractNotifiable<User, String> {
+public class Course extends AbstractNotifiable<User, Long> {
 
 	private static final long serialVersionUID = 2523934617928638918L;
 

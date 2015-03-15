@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "pychtests")
-public class PsychTest extends AbstractPersistable<String> {
+public class PsychTest extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 

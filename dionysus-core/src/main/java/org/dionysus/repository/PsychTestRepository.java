@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PsychTestRepository extends JpaRepository<PsychTest, String> {
+public interface PsychTestRepository extends JpaRepository<PsychTest, Long> {
 
 }

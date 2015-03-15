@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
-public class Inbox extends AbstractPersistable<String> {
+public class Inbox extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 8365840187902479233L;
 

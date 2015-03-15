@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @Table(name = "categories")
-public class Category extends AbstractPersistable<String> {
+public class Category extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 2384283567572219724L;
 
@@ -20,9 +20,7 @@ public class Category extends AbstractPersistable<String> {
 
 	@ManyToOne
 	private Category parent;
-//
-//	@OneToMany(mappedBy = "category")
-//	private Collection<Article> articles;
+
 
 	public Category() {
 	}
