@@ -3,7 +3,6 @@ package org.dionysus.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,10 +10,8 @@ import javax.persistence.Version;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Table(name = "articles")
 public class Article extends AbstractDionysusAuditable<User> {
 
@@ -36,6 +33,7 @@ public class Article extends AbstractDionysusAuditable<User> {
 	private Long version;
 
 	public Article() {
+		this.version = 0L;
 	}
 
 	public Article(String title, String body) {

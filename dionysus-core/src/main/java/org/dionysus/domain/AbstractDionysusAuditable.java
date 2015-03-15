@@ -2,6 +2,7 @@ package org.dionysus.domain;
 
 import java.util.Date;
 
+import javax.persistence.EntityListeners;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -9,7 +10,9 @@ import javax.persistence.TemporalType;
 
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Auditable;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 public abstract class AbstractDionysusAuditable<U> extends
 		AbstractDionysusPersistable implements Auditable<U, Long> {

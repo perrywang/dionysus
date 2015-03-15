@@ -5,16 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 @Entity
 @Table(name = "comments")
-@EntityListeners(AuditingEntityListener.class)
 public class Comment extends AbstractDionysusNotifiable<User> {
 
 	private static final long serialVersionUID = -5887975510097345536L;
