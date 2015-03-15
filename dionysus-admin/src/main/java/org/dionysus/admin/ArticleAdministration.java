@@ -14,6 +14,7 @@ public class ArticleAdministration extends AdministrationConfiguration<Article> 
 	@Override
 	public EntityMetadataConfigurationUnit configuration(EntityMetadataConfigurationUnitBuilder configurationBuilder) {
 		return configurationBuilder
+				.nameField("title")
 				.pluralName("Articles")
 				.singularName("Article")
 				.build();
