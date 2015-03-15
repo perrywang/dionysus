@@ -28,11 +28,29 @@ public class ArticleAdministration extends AdministrationConfiguration<Article> 
 	}
 	
 	@Override
+	public FieldSetConfigurationUnit showView(
+			FieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("title").caption("Title")
+				.field("category").caption("Category")
+				.build();
+	}
+	
+	@Override
 	public FieldSetConfigurationUnit formView(
 			PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
 		return fragmentBuilder
 				.field("title").caption("Title")
 				.field("body").caption("Body").editor(Editors.wysiwyg())
+				.field("category").caption("Category")
+				.build();
+	}
+	
+	@Override
+	public FieldSetConfigurationUnit quickView(
+			FieldSetConfigurationUnitBuilder fragmentBuilder) {
+		return fragmentBuilder
+				.field("title").caption("Title")
 				.field("category").caption("Category")
 				.build();
 	}

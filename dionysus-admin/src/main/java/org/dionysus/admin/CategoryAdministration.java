@@ -11,6 +11,7 @@ public class CategoryAdministration extends AdministrationConfiguration<Category
 	public EntityMetadataConfigurationUnit configuration(
 			EntityMetadataConfigurationUnitBuilder configurationBuilder) {
 		return configurationBuilder
+				.nameField("name")
 				.pluralName("Categories")
 				.singularName("Category")
 				.build();

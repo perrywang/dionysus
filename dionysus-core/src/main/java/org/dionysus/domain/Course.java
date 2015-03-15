@@ -96,6 +96,6 @@ public class Course extends AbstractNotifiable<User, Long> {
 
 	@Override
 	public String toString() {
-		return "course:" + this.getTitle() + ":" + this.getState();
+		return this.getTitle() + " (" + this.getState() + ")";
 	}
 }

@@ -75,4 +75,9 @@ public class Article extends AbstractAuditable<User, Long> {
 	public void setVersion(Long version) {
 		this.version = version;
 	}
+	
+	@Override
+	public String toString() {
+		return this.title;
+	}
 }
