@@ -206,7 +206,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= config.app %>',
           src: '*.jade',
-          dest: '<%= config.app %>',
+          dest: '.tmp',
           ext: '.html'
         }]
       }
@@ -261,7 +261,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: '.tmp/index.html'
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -273,8 +273,13 @@ module.exports = function (grunt) {
           '<%= config.dist %>/styles'
         ]
       },
-      html: ['<%= config.dist %>/{,*/}*.html'],
-      css: ['<%= config.dist %>/styles/{,*/}*.css']
+      html: [
+        '.tmp/{,*/}*.html'
+      ],
+      css: [
+        '<%= config.dist %>/styles/{,*/}*.css',
+        '.tmp/styles/{,*/}*.css'
+      ]
     },
 
     // The following *-min tasks produce minified files in the dist folder
@@ -315,7 +320,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= config.dist %>',
+          cwd: '.tmp',
           src: '{,*/}*.html',
           dest: '<%= config.dist %>'
         }]

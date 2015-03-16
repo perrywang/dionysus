@@ -23,15 +23,9 @@ html(class="no-js")
     header
     main
     footer.page-footer.orange
-      
-  script#header-template(type="text/html")
-    include ./includes/header
-  script#article-template(type="text/html")
-    include ./includes/article
-  script#main-template(type="text/html")
-    include ./includes/main
-  script#footer-template(type="text/html")
-    include ./includes/footer
+  
+  include ./includes/layout/layout
+  include ./includes/articles/article
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
