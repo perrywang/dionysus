@@ -15,6 +15,9 @@ Dionysus.addInitializer(function() {
   Dionysus.headerRegion.show(header);
   Dionysus.mainRegion.show(main);
   Dionysus.footerRegion.show(footer);
+  $(document).ready(function(){
+    $('.slider').slider({full_width: true});
+  });
 });
 
 Dionysus.start();
