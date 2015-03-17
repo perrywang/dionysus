@@ -23,9 +23,9 @@ html(class="no-js")
     header
     main
     footer.page-footer
-  
-  include ./includes/layout/layout
-  include ./includes/articles/article
+
+  include ./includes/layout
+  include ./includes/articles
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -41,7 +41,7 @@ html(class="no-js")
   <!-- endbower -->
   <!-- endbuild -->
 
-  <!-- build:js({app,.tmp}) scripts/app.js -->
+  <!-- build:js({app,.tmp}) scripts/app.js -->  
   script(src="scripts/root.js")
   script(src="scripts/main.js")
   script(src="scripts/header.js")
@@ -50,5 +50,4 @@ html(class="no-js")
   script(src="scripts/articles/category.js")
   script(src="scripts/app.js")
 
-  script(src="scripts/chat.js")
   <!-- endbuild -->

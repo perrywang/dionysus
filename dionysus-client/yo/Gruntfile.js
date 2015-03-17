@@ -48,7 +48,10 @@ module.exports = function (grunt) {
         tasks: ['test:watch']
       },
       jade: {
-        files: ['<%= config.app %>/{,*/}*.jade'],
+        files: [
+          '<%= config.app %>/*.jade',
+          '<%= config.app %>/includes/*.jade'
+        ],
         tasks: ['jade:compile']
       },
       gruntfile: {
@@ -205,7 +208,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>',
-          src: '*.jade',
+          src: 'index.jade',
           dest: '.tmp',
           ext: '.html'
         }]
