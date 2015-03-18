@@ -29,7 +29,7 @@ public class LightAdminWebApplication extends SpringBootServletInitializer {
             	LightAdmin.configure(servletContext)
 	                .basePackage("org.dionysus.admin")
 	                .baseUrl("/admin")
-	                .security(false);
+	                .security(true);
 	    		new LightAdminWebApplicationInitializer().onStartup(servletContext);
             }
         };
