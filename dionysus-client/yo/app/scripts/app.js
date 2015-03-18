@@ -5,8 +5,8 @@ Dionysus.addRegions({
 });
 
 var articles = new Dionysus.ArticleCollection();
-var defer = $.Deferred();
-articles.fetch();
+var pages = new Dionysus.PageCollection();
+pages.fetch();
 
 Dionysus.addInitializer(function() {
   var header = new Dionysus.HeaderView(),

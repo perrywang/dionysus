@@ -14,7 +14,14 @@ public class Page extends AbstractDionysusPersistable {
 	@Column(name = "title")
 	private String title;
 
-	@Lob @Column(name = "body")
+	@Column(name = "subtitle")
+	private String subTitle;
+
+	@Column(name = "image")
+	private String image;
+
+	@Lob
+	@Column(name = "body")
 	private String body;
 
 	public String getTitle() {
@@ -33,4 +40,19 @@ public class Page extends AbstractDionysusPersistable {
 		this.body = body;
 	}
 
+	public String getSubTitle() {
+		return subTitle;
+	}
+
+	public void setSubTitle(String subTitle) {
+		this.subTitle = subTitle;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 }
