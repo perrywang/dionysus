@@ -56,7 +56,7 @@ public class BCSService {
 		String object = objectPrefix + file.getName();
 		try{
 			bcs.putObject(bucket, object, file);
-		}catch(Throwable t){
+		}catch(Exception t){
 			throw new StoreException("store file " + file.getName() + " failed", t);
 		}
 		GenerateUrlRequest urlRuest = new GenerateUrlRequest(HttpMethodName.GET, bucket, object);
@@ -67,7 +67,7 @@ public class BCSService {
 		String object = objectPrefix + fileName;
 		try{
         	bcs.deleteObject(bucket, object);
-        }catch(Throwable t){
+        }catch(Exception t){
         	throw new StoreException("delete file " + fileName + " failed", t);
         }
 	}
