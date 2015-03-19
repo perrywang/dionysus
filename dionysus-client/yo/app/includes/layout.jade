@@ -1,4 +1,4 @@
-script#header-template(type="text/html")
+script#header-template(type="text/template")
   nav
     .nav-wrapper
       a.brand-logo(href="#") 汇心网
@@ -8,26 +8,11 @@ script#header-template(type="text/html")
         li
           a(href="#") Questions
 
-script#main-template(type="text/html")
-  .slider.fullscreen
-    ul.slides
-      li
-        img(src="images/slide-1.jpeg")
-        .caption.center-align
-          h3 机构介绍
-          h5.light.grey-text.text-lighten-3 机构介绍小标题
-      li
-        img(src="images/slide-2.jpeg")
-        .caption.left-align
-          h3 汇心网
-          h5.light.grey-text.text-lighten-3 汇心网小标题
-      li
-        img(src="images/slide-3.jpeg")
-        .caption.right-align
-          h3 学校
-          h5.light.grey-text.text-lighten-3 学校小标题
+script#slide-template(type="text/template")
+  img(src="!{<%= image %>}")
+    .caption.center-align
+      h3 <%= title %>
+      h5 <%= subTitle %>
 
-script#footer-template(type="text/html")
-  .footer-copyright
-    .container &copy; 2015 XX有限公司
-      a.grey-text.text-lighten-4.right(href="#") More Links
+script#slides-template(type="text/template")
+  ul.slides

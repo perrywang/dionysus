@@ -10,6 +10,6 @@ Dionysus.ArticleCollection = Backbone.Collection.extend({
   model: Dionysus.Article
 });
 
-Dionysus.ArticleView=Marionette.ItemView.extend({ 
+Dionysus.ArticleView = Marionette.ItemView.extend({ 
   template: "#article-template"
 });
