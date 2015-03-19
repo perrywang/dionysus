@@ -1,7 +1,19 @@
+
 Dionysus.addRegions({
   headerRegion: 'header',
   mainRegion: 'main',
   footerRegion: 'footer'
+});
+
+Dionysus.HeaderView = Marionette.ItemView.extend({
+  template: '#header-template'
+});
+Dionysus.FooterView = Marionette.ItemView.extend({
+  template: '#footer-template'
+});
+
+Dionysus.MainView = Marionette.ItemView.extend({
+  template: '#main-template'
 });
 
 var articles = new Dionysus.ArticleCollection();
