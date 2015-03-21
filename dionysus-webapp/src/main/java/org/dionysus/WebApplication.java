@@ -20,6 +20,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebApplication extends SpringBootServletInitializer {
 
+	@Override
 	public void onStartup(ServletContext servletContext)
 			throws ServletException {
 		LightAdmin.configure(servletContext)

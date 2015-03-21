@@ -1,10 +1,12 @@
-Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette, $) {
+  'use strict';
+
   var Module = Backbone.Model.extend({
-    urlRoot: "/api/v1/modules"
+    urlRoot: '/api/v1/modules'
   });
 
   var ModuleCollection = Backbone.Collection.extend({
-    url: "/api/v1/modules",
+    url: '/api/v1/modules',
     parse: function(response) {
       var embedded = response._embedded;
       return embedded ? embedded.modules : [];
@@ -29,18 +31,27 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
     tagName: 'nav'
   });
 
-  Dionysus.addInitializer(function(options) {
-    var modules = new ModuleCollection();
-    var sliders = new SlidersView({ collection: modules });
-    var header = new HeaderView();
-    Dionysus.mainRegion.show(sliders);
-    Dionysus.headerRegion.show(header);
-    $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false,
-      alignment: 'right'
+  var modules = new ModuleCollection();
+  var sliders = new SlidersView({ collection: modules });
+
+  var HomeController = Marionette.Controller.extend({
+    showHome: function() {
+      Dionysus.mainRegion.show(sliders);
+      Dionysus.headerRegion.show(new HeaderView());
+      $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: false,
+        alignment: 'right'
+      });
+      modules.fetch();
+    }
+  });
+
+  Dionysus.addInitializer(function() {
+    new Marionette.AppRouter({
+      appRoutes : { "": "showHome" },
+      controller: new HomeController()
     });
-    modules.fetch();
   });
 });

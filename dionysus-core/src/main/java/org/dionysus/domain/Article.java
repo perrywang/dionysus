@@ -21,6 +21,9 @@ public class Article extends AbstractDionysusAuditable<User> {
 	@Column(name = "title")
 	private String title;
 
+	@Column(name = "summary")
+	private String summary;
+
 	@NotBlank
 	@Lob
 	@Column(name = "body")
@@ -48,6 +51,14 @@ public class Article extends AbstractDionysusAuditable<User> {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	public String getBody() {

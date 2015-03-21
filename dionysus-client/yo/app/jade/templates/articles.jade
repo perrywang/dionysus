@@ -1,6 +1,11 @@
 script#article-tpl(type="text/template")
-  h3 <%= title %>
-  p <%= body %>
+  h4 
+    a(href!="/app/articles") <%= title %>
+  p <%= summary %>
 
 script#articles-tpl(type="text/template")
   ul.collection
+
+script#article-detail-tpl(type="text/template")
+  header <%= title %>
+  p <%= body %>

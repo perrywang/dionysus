@@ -18,5 +18,5 @@
   "trailing": true,
   "smarttabs": true,
   "jquery": true,
-  "predef": [ "Marionette", "Dionysus" ]
+  "predef": [ "Marionette", "Dionysus", "Backbone", "SockJS", "Stomp" ]
 }
