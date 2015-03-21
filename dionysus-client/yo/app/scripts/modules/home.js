@@ -24,14 +24,17 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
     className: 'row'
   });
 
+  var HeaderView = Marionette.ItemView.extend({
+    template: '#header-template'
+  });
+
+
   Dionysus.addInitializer(function(options) {
-    var pages = new ModuleCollection();
-    var sliders = new SlidersView({ collection: pages });
-
-    pages.fetch().then(function() {
-      $('.slider').slider({full_width: true});
-    });
-
+    var modules = new ModuleCollection();
+    var sliders = new SlidersView({ collection: modules });
+    var header = new HeaderView();
     Dionysus.mainRegion.show(sliders);
+    Dionysus.headerRegion.show(header);
+    modules.fetch();
   });
 });
