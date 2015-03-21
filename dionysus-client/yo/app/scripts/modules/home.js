@@ -1,7 +1,7 @@
 Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  var Module = Backbone.Model.extend({
+  var ModuleModel = Backbone.Model.extend({
     urlRoot: '/api/v1/modules'
   });
 
@@ -11,7 +11,7 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
       var embedded = response._embedded;
       return embedded ? embedded.modules : [];
     },
-    model: Module
+    model: ModuleModel
   });
 
   var ModuleView = Marionette.ItemView.extend({

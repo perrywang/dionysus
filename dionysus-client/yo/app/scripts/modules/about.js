@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.About', function(Articles, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.About', function(About, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
   var Page = Backbone.Model.extend({
@@ -34,8 +34,8 @@ Dionysus.module('DionysusApp.About', function(Articles, Dionysus, Backbone, Mari
       appRoutes: {
         'app/about(/)': 'showAbout'
       },
-      controller: new AboutController();
-    })
+      controller: new AboutController()
+    });
   });
 });
 

@@ -1,7 +1,7 @@
-Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
-  var Article = Backbone.Model.extend({
+  var ArticleModel = Backbone.Model.extend({
     urlRoot: '/api/v1/articles'
   });
 
@@ -10,7 +10,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
     parse: function(response) {
       return response._embedded.articles;
     },
-    model: Article
+    model: ArticleModel
   });
 
   var ArticleView = Marionette.ItemView.extend({ 
@@ -45,7 +45,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
       articles.fetch();
     },
     showArticle: function(id) {
-      var article = new Article({id: id});
+      var article = new ArticleModel({id: id});
       Dionysus.headerRegion.show(new HeaderView());
       article.fetch().then(function() {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));

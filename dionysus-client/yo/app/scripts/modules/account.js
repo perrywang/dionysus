@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Account', function(Articles, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
   var LoginView = Marionette.ItemView.extend({ 

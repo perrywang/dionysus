@@ -1,7 +1,7 @@
-Dionysus.module('DionysusApp.Categories', function(Categories, Dionysus, Backbone) {
+Dionysus.module('DionysusApp.Category', function(Category, Dionysus, Backbone) {
   'use strict';
 
-  var Category = Backbone.Model.extend({
+  var CategoryModel = Backbone.Model.extend({
     urlRoot: '/api/v1/categories'
   });
 
@@ -10,7 +10,7 @@ Dionysus.module('DionysusApp.Categories', function(Categories, Dionysus, Backbon
     parse: function(response) {
       return response._embedded.categories;
     },
-    model: Category
+    model: CategoryModel
   });
 });
 
