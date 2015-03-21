@@ -2,7 +2,17 @@ script#header-template(type="text/template")
   nav
     .nav-wrapper
       a.brand-logo(href="#") Dionysus
-      ul.right
+      ul.right.hide-on-med-and-down
         li
           a(href="/app/login") Login
+      ul.right.hide-on-med-and-up
+        li
+          a.dropdown-button(href="#", data-activates="dropdown-menu")
+            i.mdi-navigation-more-vert
+      ul#dropdown-menu.dropdown-content
+        li
+          a(href="/app/login") Login
+        li.divider
+        li
+          a(href="#") other link
 

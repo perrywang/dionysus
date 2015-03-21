@@ -28,13 +28,18 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
     template: '#header-template'
   });
 
-
   Dionysus.addInitializer(function(options) {
     var modules = new ModuleCollection();
     var sliders = new SlidersView({ collection: modules });
     var header = new HeaderView();
     Dionysus.mainRegion.show(sliders);
     Dionysus.headerRegion.show(header);
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false,
+      alignment: 'right'
+    });
     modules.fetch();
   });
 });
