@@ -1,0 +1,19 @@
+script#module-tpl(type="text/template")
+  .card.medium
+    .card-image.waves-effect.waves-block.waves-light
+      | <img class="activator" src="<%= image %>">
+      span.card-title <%= title %>
+    .card-content
+      p.activator.grey-text.text-darken-4 
+        <%= subtitle %>
+        i.mdi-navigation-more-vert.right
+    .card-action
+      | <a class="right" href="<%= href %>">Link</a>
+    .card-reveal
+      span.card-title.grey-text.text-darken-4
+        <%= title %>
+        i.mdi-navigation-close.right
+      p <%= body %>
+
+script#modules-tpl(type="text/template")
+  div

@@ -11,9 +11,9 @@ insert into articles (id, category_id, title, body) values(3, 5, '如何放下',
 insert into articles (id, category_id, title, body) values(4, 5, '如何完美地失败', '知性上，我们知道失败能使我们领悟机遇，从而为我们人生最终的胜利导航。因此，当拒绝降临、老板说不；当你投资失利、丢了房子，或者失去了任何你想要的东西时，放慢速度，看看有哪里不对。');
 insert into articles (id, category_id, title, body) values(5, 5, '萨提亚自我成长工作坊', '真正的力量绝不是要强、计较、防御，那样只会让自己累与孤独。真正的力量是温暖。你可以做一个内心有力量的人，可以温暖自己，也温暖身边的人。可以放下抗拒与控制，活出爱与光。这个世界上的烦恼，归根结底就是对自己的不了解。才会延伸出一系列的问题：对自己要求高、敏感、拖延、完美主义、抑郁、忧伤、挫败，继而自我否定。以为得到通过努力就会得到更多的成就，就会得到认可。');
 
-insert into modules (id, title, subtitle, image, body) values (1, '机构介绍', '机构介绍小标题', '/public/images/slide-1.jpeg', '介绍正文');
-insert into modules (id, title, subtitle, image, body) values (2, '汇心网', '汇心网小标题', '/public/images/slide-2.jpeg', '介绍正文');
-insert into modules (id, title, subtitle, image, body) values (3, '学校', '学校小标题', '/public/images/slide-3.jpeg', '介绍正文');
+insert into modules (id, title, subtitle, image, body) values (1, '汇心网', '汇心网小标题', '/public/images/slide-2.jpeg', '国内最大最权威的心理服务网站');
+insert into modules (id, title, subtitle, image, body) values (2, '合作学校', '学校小标题', '/public/images/slide-3.jpeg', '学校合作XXXXXXX');
+insert into modules (id, title, subtitle, image, body) values (3, '关于我们', '机构介绍小标题', '/public/images/slide-1.jpeg', '关于我们的简单介绍...');
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (1, 'admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', TRUE, TRUE, TRUE, TRUE);

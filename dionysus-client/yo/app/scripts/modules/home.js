@@ -13,15 +13,15 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
   });
 
   var SliderView = Marionette.ItemView.extend({
-    template: '#slide-template',
-    tagName: 'li'
+    template: '#module-tpl',
+    className: 'col s12 m6 l4'
   });
 
   var SlidersView = Marionette.CompositeView.extend({
-    template: '#slides-template',
+    template: '#modules-tpl',
     childView: SliderView,
-    childViewContainer: 'ul.slides',
-    className: 'slider'
+    childViewContainer: 'div',
+    className: 'row'
   });
 
   Dionysus.addInitializer(function(options) {
