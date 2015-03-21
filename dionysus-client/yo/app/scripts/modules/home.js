@@ -31,12 +31,6 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   var HomeController = Marionette.Controller.extend({
     showHome: function() {
       Dionysus.mainRegion.show(new ModulesView({ collection: modules }));
-      $('.dropdown-button').dropdown({
-        inDuration: 300,
-        outDuration: 225,
-        constrain_width: false,
-        alignment: 'right'
-      });
       modules.fetch();
     }
   });

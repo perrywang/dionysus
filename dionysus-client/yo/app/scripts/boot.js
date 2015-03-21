@@ -5,7 +5,11 @@ Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Mario
   });
 
   Dionysus.addInitializer(function() {
-    Dionysus.headerRegion.show(new HeaderView());
+    var header = Dionysus.headerRegion.show(new HeaderView());
+    header.$el.find('.dropdown-button').dropdown({
+      constrain_width: false,
+      alignment: 'right'
+    });
   });
 });
 

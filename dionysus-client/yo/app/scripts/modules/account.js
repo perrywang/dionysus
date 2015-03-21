@@ -13,12 +13,12 @@ Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Mar
 
   var AccountController = Marionette.Controller.extend({
     login: function() {
-      Dionysus.dialogRegion.show(new LoginView());
-      $('#dialog .modal').openModal();
+      var dialog = Dionysus.dialogRegion.show(new LoginView());
+      dialog.$el.find('.modal').openModal();
     },
     register: function() {
-      Dionysus.dialogRegion.show(new RegisterView());
-      $('#dialog .modal').openModal();
+      var dialog = Dionysus.dialogRegion.show(new RegisterView());
+      dialog.$el.find('.modal').openModal();
     },
     logout: function() {
       alert('logout')
