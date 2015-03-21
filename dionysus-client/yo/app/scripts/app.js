@@ -2,7 +2,8 @@ Dionysus = new Marionette.Application();
 
 Dionysus.addRegions({
   headerRegion: '#header',
-  mainRegion: '#main'
+  mainRegion: '#main',
+  dialogRegion: '#dialog'
 });
 
 Dionysus.on('start', function() {
