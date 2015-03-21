@@ -49,6 +49,8 @@ public class PageAdministration extends AdministrationConfiguration<Page> {
 			PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
 		return fragmentBuilder
 				.field("title").caption("Title")
+				.field("subTitle").caption("Sub Title")
+				.field("image").caption("Image")
 				.field("body").caption("Body").editor(Editors.wysiwyg())
 				.build();
 	}

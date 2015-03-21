@@ -65,6 +65,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 			.antMatchers("/")
+			.antMatchers("/public/**")
 			.antMatchers("/font/**")
 			.antMatchers("/styles/**")
 			.antMatchers("/images/**")
