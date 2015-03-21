@@ -1,4 +1,4 @@
-
+Dionysus = new Marionette.Application();
 
 Dionysus.addRegions({
   headerRegion: '#header',
@@ -12,5 +12,3 @@ Dionysus.HeaderView = Marionette.ItemView.extend({
 Dionysus.on('start', function() {
   Backbone.history.start();
 });
-
-Dionysus.start();

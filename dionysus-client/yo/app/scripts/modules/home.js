@@ -1,12 +1,13 @@
 Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _) {
   var Page = Backbone.Model.extend({
-    urlRoot: "api/v1/pages"
+    urlRoot: "/api/v1/pages"
   });
 
   var PageCollection = Backbone.Collection.extend({
-    url: "api/v1/pages",
+    url: "/api/v1/pages",
     parse: function(response) {
-      return response._embedded.pages;
+      var embedded = response._embedded;
+      return embedded ? embedded.pages : [];
     },
     model: Page
   });
