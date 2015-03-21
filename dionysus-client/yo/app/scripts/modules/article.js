@@ -48,7 +48,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
       var article = new Article({id: id});
       Dionysus.headerRegion.show(new HeaderView());
       article.fetch().then(function() {
-        Dionysus.mainRegion.show(new ArticleDetailView({ model: article}))  
+        Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
     } 
   });
@@ -56,8 +56,8 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        "app/articles(/)": "showArticles",
-        "app/articles/:id(/)": "showArticle"
+        'app/articles(/)': 'showArticles',
+        'app/articles/:id(/)': 'showArticle'
       },
       controller: new ArticleController()
     });

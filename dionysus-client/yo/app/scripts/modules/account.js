@@ -1,4 +1,5 @@
 Dionysus.module('DionysusApp.Account', function(Articles, Dionysus, Backbone, Marionette, $, _) {
+  'use strict';
 
   var LoginView = Marionette.ItemView.extend({ 
     template: '#account-login-tpl',
@@ -27,9 +28,9 @@ Dionysus.module('DionysusApp.Account', function(Articles, Dionysus, Backbone, Ma
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        "app/login(/)": "login",
-        "app/logout(/)": "logout",
-        "app/register(/)": "register"
+        'app/login(/)': 'login',
+        'app/logout(/)': 'logout',
+        'app/register(/)': 'register'
       },
       controller: new AccountController()
     })

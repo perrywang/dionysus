@@ -8,7 +8,7 @@ Dionysus.module('DionysusApp.About', function(Articles, Dionysus, Backbone, Mari
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        "app/about": "showAbout"
+        'app/about': 'showAbout'
       },
       controller: new AboutController()
     })
