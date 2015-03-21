@@ -24,6 +24,14 @@ module.exports = function (grunt) {
   
   var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest ;
 
+  var singlePage = function(req, res, next) {
+    var url = req.url;
+    if (/^\/app\//.test(url)) {
+      req.url = '/';
+    }
+    return next();
+  };
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -98,6 +106,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
+              singlePage,
               proxySnippet,
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
