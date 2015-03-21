@@ -10,18 +10,10 @@ Dionysus.module('DionysusApp.About', function(About, Dionysus, Backbone, Marione
     tagName: 'article'
   });
 
-  var HeaderView = Marionette.ItemView.extend({
-    template: '#header-tpl',
-    tagName: 'nav'
-  });
-
   // TODO: should use 'name' to search page
   var about = new Page({id : 1});
   var AboutController = Marionette.Controller.extend({
     showAbout: function() {
-      // TODO: should use LayoutView to render header
-      Dionysus.headerRegion.show(new HeaderView());
-
       about.fetch().then(function() {
         Dionysus.mainRegion.show(new AboutView({model : about}));
       });

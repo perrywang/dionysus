@@ -26,17 +26,11 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
     className: 'row'
   });
 
-  var HeaderView = Marionette.ItemView.extend({
-    template: '#header-tpl',
-    tagName: 'nav'
-  });
-
   var modules = new ModuleCollection();
 
   var HomeController = Marionette.Controller.extend({
     showHome: function() {
       Dionysus.mainRegion.show(new ModulesView({ collection: modules }));
-      Dionysus.headerRegion.show(new HeaderView());
       $('.dropdown-button').dropdown({
         inDuration: 300,
         outDuration: 225,

@@ -31,22 +31,15 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
     tagName: 'article'
   });
 
-  var HeaderView = Marionette.ItemView.extend({
-    template: '#header-tpl',
-    tagName: 'nav'
-  });
-
   var articles = new ArticleCollection();
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
       Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
-      Dionysus.headerRegion.show(new HeaderView());
       articles.fetch();
     },
     showArticle: function(id) {
       var article = new ArticleModel({id: id});
-      Dionysus.headerRegion.show(new HeaderView());
       article.fetch().then(function() {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
