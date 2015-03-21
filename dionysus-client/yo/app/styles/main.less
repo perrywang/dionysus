@@ -3,19 +3,18 @@ main {
 }
 
 @media only screen and (max-width : 1025px) {
-  .dionysus.container {
-    padding: 0;
-    width: auto;
-  }
-  .dionysus .modal {
-    width: 90%;
+  .dionysus {
+    .container {
+      padding: 0;
+      width: auto;
+    }
+    .modal {
+      width: 90%;
+    } 
   }
 }
 
-.dionysus {
-  &.card-action {
-    padding: 1rem;
-  }
+.dionysus .card {
   a.btn {
     transition-property: all;
     margin: 0;
