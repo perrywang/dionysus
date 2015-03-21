@@ -23,7 +23,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
     template: '#articles-tpl',
     childView: ArticleView,
     childViewContainer: 'ul.collection',
-    className: 'container dionysus-container'
+    className: 'container dionysus'
   });
 
   var ArticleDetailView = Marionette.ItemView.extend({
@@ -37,16 +37,19 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
   });
 
   var articles = new ArticleCollection();
-  var views = new ArticlesView({ collection: articles });
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
-      Dionysus.mainRegion.show(views);
+      Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       Dionysus.headerRegion.show(new HeaderView());
       articles.fetch();
     },
     showArticle: function(id) {
-      alert(id);
+      var article = new Article({id: id});
+      Dionysus.headerRegion.show(new HeaderView());
+      article.fetch().then(function() {
+        Dionysus.mainRegion.show(new ArticleDetailView({ model: article}))  
+      });
     } 
   });
 
@@ -54,7 +57,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
     new Marionette.AppRouter({
       appRoutes : {
         "app/articles(/)": "showArticles",
-        "app/articles/:id": "showArticle"
+        "app/articles/:id(/)": "showArticle"
       },
       controller: new ArticleController()
     });

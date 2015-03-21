@@ -32,11 +32,10 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   });
 
   var modules = new ModuleCollection();
-  var modulesView = new ModulesView({ collection: modules });
 
   var HomeController = Marionette.Controller.extend({
     showHome: function() {
-      Dionysus.mainRegion.show(modulesView);
+      Dionysus.mainRegion.show(new ModulesView({ collection: modules }));
       Dionysus.headerRegion.show(new HeaderView());
       $('.dropdown-button').dropdown({
         inDuration: 300,
@@ -50,7 +49,9 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
-      appRoutes : { "": "showHome" },
+      appRoutes : { 
+        "(/)": "showHome" 
+      },
       controller: new HomeController()
     });
   });
