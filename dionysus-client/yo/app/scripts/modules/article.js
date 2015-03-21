@@ -23,7 +23,7 @@ Dionysus.module('DionysusApp.Articles', function(Articles, Dionysus, Backbone, M
     template: '#articles-tpl',
     childView: ArticleView,
     childViewContainer: 'ul.collection',
-    className: 'container'
+    className: 'container dionysus-container'
   });
 
   var ArticleDetailView = Marionette.ItemView.extend({

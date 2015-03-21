@@ -14,14 +14,14 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
     model: Module
   });
 
-  var SliderView = Marionette.ItemView.extend({
+  var ModuleView = Marionette.ItemView.extend({
     template: '#module-tpl',
     className: 'col s12 m6 l4'
   });
 
-  var SlidersView = Marionette.CompositeView.extend({
+  var ModulesView = Marionette.CompositeView.extend({
     template: '#modules-tpl',
-    childView: SliderView,
+    childView: ModuleView,
     childViewContainer: 'div.container',
     className: 'row'
   });
@@ -32,11 +32,11 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   });
 
   var modules = new ModuleCollection();
-  var sliders = new SlidersView({ collection: modules });
+  var modulesView = new ModulesView({ collection: modules });
 
   var HomeController = Marionette.Controller.extend({
     showHome: function() {
-      Dionysus.mainRegion.show(sliders);
+      Dionysus.mainRegion.show(modulesView);
       Dionysus.headerRegion.show(new HeaderView());
       $('.dropdown-button').dropdown({
         inDuration: 300,
