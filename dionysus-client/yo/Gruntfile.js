@@ -58,7 +58,7 @@ module.exports = function (grunt) {
       jade: {
         files: [
           '<%= config.app %>/*.jade',
-          '<%= config.app %>/includes/*.jade'
+          '<%= config.app %>/jade/{,*/}*.jade'
         ],
         tasks: ['jade:compile']
       },
