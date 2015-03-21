@@ -25,7 +25,7 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
   });
 
   var HeaderView = Marionette.ItemView.extend({
-    template: '#header-template',
+    template: '#header-tpl',
     tagName: 'nav'
   });
 
