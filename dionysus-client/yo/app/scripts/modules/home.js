@@ -20,7 +20,7 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
   var SlidersView = Marionette.CompositeView.extend({
     template: '#modules-tpl',
     childView: SliderView,
-    childViewContainer: 'div',
+    childViewContainer: 'div.container',
     className: 'row'
   });
 
