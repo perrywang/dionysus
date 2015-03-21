@@ -6,6 +6,7 @@
     "marionette": "~2.3.2",
     "materialize": "~0.95.2",
     "sockjs": "~0.3.4",
-    "stomp-websocket": "~2.3.4"
+    "stomp-websocket": "~2.3.4",
+    "backbone.intercept": "~0.3.2"
   }
 }

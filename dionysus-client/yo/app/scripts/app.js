@@ -10,5 +10,6 @@ Dionysus.HeaderView = Marionette.ItemView.extend({
 });
 
 Dionysus.on('start', function() {
-  Backbone.history.start();
+  Backbone.history.start({ pushState: true });
+  Backbone.Intercept.start();
 });

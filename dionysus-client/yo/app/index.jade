@@ -5,17 +5,13 @@ html(class="no-js")
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width")
     link(rel="shortcut icon" href="/favicon.ico")
-    // build:css(.) /styles/vendor.css
-    // bower:css
-    link(rel='stylesheet', href='/bower_components/materialize/bin/materialize.css')
-    // endbower
-    // endbuild
 
     // build:css(.tmp) /styles/main.css
+    link(rel="stylesheet", href="bower_components/materialize/bin/materialize.css")
     link(rel="stylesheet" href="/styles/main.css")
     // endbuild
 
-    // build:js /scripts/vendor/modernizr.js
+    // build:js /scripts/modernizr.js
     script(src="/bower_components/modernizr/modernizr.js")
     // endbuild
     title Dionysus
@@ -26,18 +22,17 @@ html(class="no-js")
   include ./includes/templates
 
   // build:js(.) /scripts/vendor.js
-  // bower:js
-  script(src='bower_components/jquery/dist/jquery.js')
-  script(src='bower_components/modernizr/modernizr.js')
-  script(src='bower_components/underscore/underscore.js')
-  script(src='bower_components/backbone/backbone.js')
-  script(src='bower_components/backbone.babysitter/lib/backbone.babysitter.js')
-  script(src='bower_components/backbone.wreqr/lib/backbone.wreqr.js')
-  script(src='bower_components/marionette/lib/core/backbone.marionette.js')
-  script(src='bower_components/materialize/bin/materialize.js')
-  script(src='bower_components/sockjs/sockjs.js')
-  script(src='bower_components/stomp-websocket/lib/stomp.min.js')
-  // endbower
+  script(src="bower_components/jquery/dist/jquery.js")
+  script(src="bower_components/modernizr/modernizr.js")
+  script(src="bower_components/underscore/underscore.js")
+  script(src="bower_components/backbone/backbone.js")
+  script(src="bower_components/backbone.babysitter/lib/backbone.babysitter.js")
+  script(src="bower_components/backbone.wreqr/lib/backbone.wreqr.js")
+  script(src="bower_components/backbone.intercept/dist/backbone.intercept.js")
+  script(src="bower_components/marionette/lib/core/backbone.marionette.js")
+  script(src="bower_components/materialize/bin/materialize.js")
+  script(src="bower_components/sockjs/sockjs.js")
+  script(src="bower_components/stomp-websocket/lib/stomp.min.js")
   // endbuild
 
   // build:js({app,.tmp}) /scripts/app.js
