@@ -6,8 +6,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pages")
-public class Page extends AbstractDionysusPersistable {
+@Table(name = "modules")
+public class Module extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -3202875103419512957L;
 
@@ -15,10 +15,13 @@ public class Page extends AbstractDionysusPersistable {
 	private String title;
 
 	@Column(name = "subtitle")
-	private String subTitle;
+	private String subtitle;
 
 	@Column(name = "image")
 	private String image;
+	
+	@Column(name = "href")
+	private String href;
 
 	@Lob
 	@Column(name = "body")
@@ -40,12 +43,12 @@ public class Page extends AbstractDionysusPersistable {
 		this.body = body;
 	}
 
-	public String getSubTitle() {
-		return subTitle;
+	public String getSubtitle() {
+		return subtitle;
 	}
 
-	public void setSubTitle(String subTitle) {
-		this.subTitle = subTitle;
+	public void setSubtitle(String subTitle) {
+		this.subtitle = subTitle;
 	}
 
 	public String getImage() {
@@ -54,5 +57,13 @@ public class Page extends AbstractDionysusPersistable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getHref() {
+		return href;
+	}
+
+	public void setHref(String href) {
+		this.href = href;
 	}
 }

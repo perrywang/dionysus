@@ -1,15 +1,15 @@
 Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _) {
-  var Page = Backbone.Model.extend({
-    urlRoot: "/api/v1/pages"
+  var Module = Backbone.Model.extend({
+    urlRoot: "/api/v1/modules"
   });
 
-  var PageCollection = Backbone.Collection.extend({
-    url: "/api/v1/pages",
+  var ModuleCollection = Backbone.Collection.extend({
+    url: "/api/v1/modules",
     parse: function(response) {
       var embedded = response._embedded;
-      return embedded ? embedded.pages : [];
+      return embedded ? embedded.modules : [];
     },
-    model: Page
+    model: Module
   });
 
   var SliderView = Marionette.ItemView.extend({
@@ -25,7 +25,7 @@ Dionysus.module('Home.Show', function(Home, Dionysus, Backbone, Marionette, $, _
   });
 
   Dionysus.addInitializer(function(options) {
-    var pages = new PageCollection();
+    var pages = new ModuleCollection();
     var sliders = new SlidersView({ collection: pages });
 
     pages.fetch().then(function() {
