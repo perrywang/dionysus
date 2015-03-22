@@ -4,8 +4,13 @@ Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Mario
     tagName: 'nav'
   });
 
+  var FooterView = Marionette.ItemView.extend({
+    template: '#footer-tpl'
+  });
+
   Dionysus.addInitializer(function() {
     var header = Dionysus.headerRegion.show(new HeaderView());
+    var footer = Dionysus.footerRegion.show(new FooterView());
     header.$el.find('.dropdown-button').dropdown({
       constrain_width: false,
       alignment: 'right'
