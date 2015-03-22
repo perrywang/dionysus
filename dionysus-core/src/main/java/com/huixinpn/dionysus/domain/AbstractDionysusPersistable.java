@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 @MappedSuperclass
-abstract class AbstractDionysusPersistable implements Serializable {
+public abstract class AbstractDionysusPersistable implements Serializable {
 
 	private static final long serialVersionUID = -8503475553298415513L;
 	@Id

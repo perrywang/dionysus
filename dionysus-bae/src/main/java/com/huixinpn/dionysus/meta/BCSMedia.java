@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain;
+package com.huixinpn.dionysus.meta;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,27 +9,28 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import com.huixinpn.dionysus.domain.User;
+
 @Entity
-@Table(name = "bcsmedias", uniqueConstraints={@UniqueConstraint(columnNames = {"filename", "type"})})
-public class BCSMedia extends AbstractDionysusAuditable<User>{
-	
+@Table(name = "bcsmedias", uniqueConstraints = { @UniqueConstraint(columnNames = { "filename", "type" }) })
+public class BCSMedia extends AbstractDionysusAuditable<User> {
+
 	private static final long serialVersionUID = -1815965724911286764L;
-	
+
 	@NotEmpty
 	@Column(name = "filename")
 	private String filename;
-	
+
 	@Column(name = "type")
 	@Enumerated(EnumType.STRING)
 	private BCSMediaType type;
-	
-	@Column(name = "url")
+
+	@Column(name = "url", unique = true)
 	private String url;
-	
-	public BCSMedia(){
-		
-	}
-	
+
+	public BCSMedia() { }
+
 	public BCSMedia(String filename, BCSMediaType type, String url) {
 		this.filename = filename;
 		this.type = type;
@@ -58,8 +59,5 @@ public class BCSMedia extends AbstractDionysusAuditable<User>{
 
 	public void setUrl(String url) {
 		this.url = url;
-	}	
-	
+	}
 }
-
-
