@@ -41,6 +41,11 @@
 			<artifactId>dionysus-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>com.huixinpn.dionysus</groupId>
+      <artifactId>dionysus-runtime</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>

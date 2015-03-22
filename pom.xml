@@ -25,6 +25,7 @@
   </parent>
 
 	<modules>
+    <module>dionysus-runtime</module>
     <module>dionysus-core</module>
     <module>dionysus-rest</module>
     <module>dionysus-admin</module>
