@@ -1,8 +1,5 @@
 package com.huixinpn.dionysus.storage.bae;
 
-import java.io.File;
-
-import com.huixinpn.dionysus.storage.StorageException;
 
 public class BCSServiceBuilder {
 
@@ -70,22 +67,5 @@ public class BCSServiceBuilder {
 
 	public BCSService build() {
 		return new BCSService(this);
-	}
-
-	public static void main(String[] args) {
-
-		BCSServiceBuilder builder = new BCSServiceBuilder();
-		BCSService bcs = builder.accessKey("xN3Lv2liVPWHfu5ywr0UPWoT")
-				.secretKey("L7Yc5LOT2SgYtZidaN0eHFQ1ZLLnGh8c")
-				.baiduEndpoint("bcs.duapp.com")
-				.imageBucket("dionysus-images")
-				.videoBucket("dionysus-videos")
-				.fileBucket("dionysus-files")
-				.build();
-		try {
-			bcs.storeImage(new File("C:\\yujinxiang.jpg"));
-		} catch (StorageException e) {
-			//
-		}
 	}
 }

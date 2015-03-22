@@ -7,7 +7,7 @@ import com.huixinpn.dionysus.storage.StorageService;
 import com.huixinpn.dionysus.storage.bae.BCSServiceBuilder;
 
 @Configuration
-public class StorageServiceProvider {
+public class StorageConfiguration {
 
 	@Bean
 	public StorageService bae() {
