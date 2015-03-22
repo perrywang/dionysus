@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.service.storage;
+package com.huixinpn.dionysus.storage;
 
 @SuppressWarnings("serial")
 public class StorageException extends Exception {

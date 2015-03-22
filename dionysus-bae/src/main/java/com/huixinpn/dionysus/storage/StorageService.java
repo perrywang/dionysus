@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.service.storage;
+package com.huixinpn.dionysus.storage;
 
 import java.io.InputStream;
 

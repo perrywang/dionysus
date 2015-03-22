@@ -3,8 +3,8 @@ package com.huixinpn.dionysus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.huixinpn.dionysus.bae.BCSServiceBuilder;
-import com.huixinpn.dionysus.service.storage.StorageService;
+import com.huixinpn.dionysus.storage.StorageService;
+import com.huixinpn.dionysus.storage.bae.BCSServiceBuilder;
 
 @Configuration
 public class StorageServiceProvider {

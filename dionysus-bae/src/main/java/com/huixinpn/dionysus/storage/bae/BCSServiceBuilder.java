@@ -1,8 +1,8 @@
-package com.huixinpn.dionysus.bae;
+package com.huixinpn.dionysus.storage.bae;
 
 import java.io.File;
 
-import com.huixinpn.dionysus.service.storage.StorageException;
+import com.huixinpn.dionysus.storage.StorageException;
 
 public class BCSServiceBuilder {
 

@@ -39,6 +39,11 @@
 			<artifactId>dionysus-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>com.huixinpn.dionysus</groupId>
+      <artifactId>dionysus-bae</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>

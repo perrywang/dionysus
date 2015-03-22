@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.bae;
+package com.huixinpn.dionysus.storage.bae;
 
 import java.io.File;
 import java.io.InputStream;
@@ -7,8 +7,8 @@ import com.baidu.inf.iis.bcs.BaiduBCS;
 import com.baidu.inf.iis.bcs.auth.BCSCredentials;
 import com.baidu.inf.iis.bcs.http.HttpMethodName;
 import com.baidu.inf.iis.bcs.request.GenerateUrlRequest;
-import com.huixinpn.dionysus.service.storage.StorageException;
-import com.huixinpn.dionysus.service.storage.StorageService;
+import com.huixinpn.dionysus.storage.StorageException;
+import com.huixinpn.dionysus.storage.StorageService;
 
 public class BCSService implements StorageService {
 
