@@ -37,10 +37,10 @@
       <artifactId>dionysus-rest</artifactId>
       <version>${project.version}</version>
     </dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+    </dependency>
 		<dependency>
 			<groupId>com.baidu</groupId>
 			<artifactId>bcs-sdk</artifactId>
@@ -64,7 +64,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
-			<version>4.1</version>
+			<version>4.3.3</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.flexjson</groupId>
