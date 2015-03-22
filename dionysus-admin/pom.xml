@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.dionysus</groupId>
+		<groupId>com.huixinpn.dionysus</groupId>
 		<artifactId>dionysus-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
@@ -37,7 +37,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.dionysus</groupId>
+			<groupId>com.huixinpn.dionysus</groupId>
 			<artifactId>dionysus-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
