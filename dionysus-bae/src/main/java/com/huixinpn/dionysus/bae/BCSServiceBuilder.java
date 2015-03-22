@@ -2,6 +2,8 @@ package com.huixinpn.dionysus.bae;
 
 import java.io.File;
 
+import com.huixinpn.dionysus.service.storage.StorageException;
+
 public class BCSServiceBuilder {
 	
 	private String accessKey;
@@ -91,7 +93,7 @@ public class BCSServiceBuilder {
     	       .build();
     	try{
     	    bcs.storeImage(new File("C:\\yujinxiang.jpg"));
-    	}catch(StoreException e){
+    	}catch(StorageException e){
     		//
     	}
     }
