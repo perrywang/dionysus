@@ -83,4 +83,10 @@ public class BCSService implements StorageService {
 		// TODO Auto-generated method stub
 		throw new StorageException("not implements yet");
 	}
+
+	@Override
+	public String save(byte[] data) throws StorageException {
+		// TODO Auto-generated method stub
+		throw new StorageException("not implements yet");
+	}
 }
