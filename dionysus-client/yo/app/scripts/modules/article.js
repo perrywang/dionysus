@@ -2,14 +2,11 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
   'use strict';
 
   var ArticleModel = Backbone.Model.extend({
-    urlRoot: '/api/v1/articles'
+    urlRoot: '/api/v1.1/articles'
   });
 
   var ArticleCollection = Backbone.Collection.extend({
-    url: '/api/v1/articles',
-    parse: function(response) {
-      return response._embedded.articles;
-    },
+    url: '/api/v1.1/articles',
     model: ArticleModel
   });
 

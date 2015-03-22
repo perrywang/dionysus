@@ -3,6 +3,7 @@ package com.huixinpn.dionysus.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,29 +12,37 @@ import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.huixinpn.dionysus.view.View;
+
 @Entity
 @Table(name = "articles")
+@JsonInclude(value = Include.NON_NULL)
 public class Article extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
 
-	@NotBlank
-	@Column(name = "title")
+	@JsonView({ View.Summary.class, View.Detail.class })
+	@NotBlank @Column(name = "title")
 	private String title;
 
+	@JsonView({ View.Summary.class, View.Detail.class })
 	@Column(name = "summary")
 	private String summary;
 
-	@NotBlank
-	@Lob
-	@Column(name = "body")
-	private String body;
-
-	@Valid
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JsonView(View.Detail.class)
+	@Valid @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Category category;
 
+	@JsonView(View.Detail.class)
+	@NotBlank @Lob @Column(name = "body")
+	private String body;
+
 	@Version
+	@JsonIgnore
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
 	private Long version;
 

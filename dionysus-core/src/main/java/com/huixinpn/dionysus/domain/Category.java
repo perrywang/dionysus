@@ -7,8 +7,12 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @Entity
 @Table(name = "categories")
+@JsonInclude(value = Include.NON_NULL)
 public class Category extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -1815965724911284764L;
