@@ -10,8 +10,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>dionysus-runtime</artifactId>
+	<artifactId>dionysus-consultant</artifactId>
 	<packaging>jar</packaging>
-	<name>Dionysus Runtime API</name>
-	<description>Platform independent API interface declaration</description>
+	<name>Dionysus Consultant Web UI</name>
+
+  <description>Provide Consultant tools</description>
 </project>

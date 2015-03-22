@@ -12,7 +12,7 @@
 
 	<artifactId>dionysus-client</artifactId>
 	<packaging>pom</packaging>
-	<name>Dionysus Web Client</name>
+	<name>Dionysus Normal User Web UI</name>
 
 	<build>
 		<plugins>

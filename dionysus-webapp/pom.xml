@@ -12,7 +12,7 @@
 
 	<artifactId>dionysus-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>Dionysus Webapp</name>
+	<name>Dionysus Web Application</name>
 
 	<dependencies>
 		<dependency>

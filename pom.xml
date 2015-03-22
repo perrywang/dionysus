@@ -29,6 +29,7 @@
     <module>dionysus-core</module>
     <module>dionysus-rest</module>
     <module>dionysus-admin</module>
+    <module>dionysus-consultant</module>
     <module>dionysus-client</module>
     <module>dionysus-bae</module>
     <module>dionysus-webapp</module>
