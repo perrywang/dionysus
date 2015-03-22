@@ -10,11 +10,11 @@ import com.huixinpn.dionysus.domain.BCSMedia;
 
 @Repository
 public interface BCSMediaRepository extends JpaRepository<BCSMedia, Long> {
-	
+
 	@Query("select b from BCSMedia b where b.type = 'IMAGE'")
 	List<BCSMedia> findAllImages();
-	
+
 	@Query("select b from BCSMedia b where b.type = 'IMAGE' and b.filename = :filename")
 	BCSMedia findImageByName(String fileName);
-	
+
 }
