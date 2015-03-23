@@ -1,0 +1,11 @@
+script#test-detail-tpl(type="text/template")
+  //- test name and description
+  header
+    h5 <%= name %>
+    h3 <%= description %>
+  //- item description and options
+  item
+    h2 <%= item-description %>
+      each option in <%= options %>
+        label <%= option-description %>
+          input(type="radio")
