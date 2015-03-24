@@ -12,3 +12,11 @@ script#test-detail-tpl(type="text/template")
     <% }); %>
   a#previous.waves-effect.waves-light.btn 上一题
   a#next.waves-effect.waves-light.btn 下一题
+
+script#test-general-tpl(type="text/template")
+  //- test name and description
+  header
+    h5 <%= test.title %>
+    image <%= test.image>
+    h3 <%= test.description %>
+  button.btn.waves-effect.waves-light 开始测试
