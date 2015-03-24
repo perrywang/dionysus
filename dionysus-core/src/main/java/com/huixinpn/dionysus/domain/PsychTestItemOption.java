@@ -1,11 +1,41 @@
 package com.huixinpn.dionysus.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import org.hibernate.validator.constraints.NotBlank;
 
-@Embeddable
-public class PsychTestItemOption {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "psychtestitemoptions")
+public class PsychTestItemOption extends AbstractDionysusPersistable{
+
+    @NotBlank
     @Column(name="description")
     private String description;
 
+    @ManyToOne
+    private PsychTestItem testItem;
+
+    public PsychTestItemOption(String description, PsychTestItem testItem) {
+        this.description = description;
+        this.testItem = testItem;
+    }
+
+    public PsychTestItemOption() {
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public PsychTestItem getTestItem() {
+        return testItem;
+    }
+
+    public void setTestItem(PsychTestItem testItem) {
+        this.testItem = testItem;
+    }
 }
