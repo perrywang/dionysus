@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name = "psychtestitemoptions")
 public class PsychTestItemOption extends AbstractDionysusPersistable{
 
+    private static final long serialVersionUID = -3002875103419512957L;
+
     @NotBlank
     @Column(name="description")
     private String description;
