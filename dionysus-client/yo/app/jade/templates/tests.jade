@@ -1,11 +1,13 @@
 script#test-detail-tpl(type="text/template")
   //- test name and description
   header
-    h5 <%= name %>
-    h3 <%= description %>
+    h5 <%= test.title %>
+    h3 <%= test.descriptoin %>
   //- item description and options
   item
-    h2 <%= item-description %>
-      each option in <%= options %>
-        label <%= option-description %>
+    //- can't finish it to understand how to get sequence variable. When click next item the sequence++ required
+    - var currentItem = <%= test.items[sequence] %>
+    h2 <%= currentItem.description %>
+      each option in currentItem.options
+        label <%= option.description %>
           input(type="radio")
