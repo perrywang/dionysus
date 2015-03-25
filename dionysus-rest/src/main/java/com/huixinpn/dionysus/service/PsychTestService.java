@@ -1,11 +1,8 @@
 package com.huixinpn.dionysus.service;
 
-/**
- * Created with IntelliJ IDEA.
- * User: pengwang
- * Date: 3/25/15
- * Time: 5:50 PM
- * To change this template use File | Settings | File Templates.
- */
-public interface PsychTestService {
+import com.huixinpn.dionysus.repository.PsychTestRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource(collectionResourceRel = "tests", path = "tests")
+public interface PsychTestService extends PsychTestRepository {
 }
