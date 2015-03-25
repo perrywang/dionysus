@@ -28,6 +28,19 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
         regions: {
             'RegionItem': '#test-item'
         },
+        events:{
+            'click a#last':'movePrevious',
+            'click a#next':'moveNext'
+        },
+
+        movePrevious:function(){
+            this.model.current--;
+        },
+
+        moveNext:function(){
+            this.model.current++;
+        },
+
         onRender: function () {
             var currentIndex = this.model.current;
             var currentItem = this.model.items[currentIndex];
