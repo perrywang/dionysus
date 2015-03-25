@@ -2,11 +2,14 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
   'use strict';
 
   var ArticleModel = Backbone.Model.extend({
-    urlRoot: '/api/v1.1/articles'
+    urlRoot: '/api/v1/articles'
   });
 
   var ArticleCollection = Backbone.Collection.extend({
-    url: '/api/v1.1/articles',
+    url: '/api/v1/articles',
+    parse: function(response) {
+      return response._embedded.articles;
+    },
     model: ArticleModel
   });
 
@@ -33,11 +36,11 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
       Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
-      articles.fetch();
+      articles.fetch({ data: { projection: 'summary' }});
     },
     showArticle: function(id) {
       var article = new ArticleModel({id: id});
-      article.fetch().then(function() {
+      article.fetch({ data: { projection: 'detail' }}).then(function() {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
     } 
