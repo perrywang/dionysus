@@ -11,8 +11,24 @@
 	</parent>
 
 	<artifactId>dionysus-client</artifactId>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<name>Dionysus Normal User Web UI</name>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.huixinpn.dionysus</groupId>
+      <artifactId>dionysus-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
+    </dependency>
+  </dependencies>
 
 	<build>
 		<plugins>
