@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain;
+package com.huixinpn.dionysus.domain.proj;
 
 import org.springframework.data.rest.core.config.Projection;
 
