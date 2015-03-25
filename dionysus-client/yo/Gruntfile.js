@@ -33,6 +33,7 @@ module.exports = function (grunt) {
   };
 
   // Define the configuration for all the tasks
+  grunt.option("force",true);
   grunt.initConfig({
 
     // Project settings

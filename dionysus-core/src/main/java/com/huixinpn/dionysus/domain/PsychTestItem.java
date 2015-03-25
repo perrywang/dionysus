@@ -8,6 +8,8 @@ import java.util.List;
 @Table(name = "psychtestitems")
 public class PsychTestItem extends AbstractDionysusPersistable{
 
+    private static final long serialVersionUID = -3202875107419512957L;
+
     @Column(name="description")
 	private String description;
 
