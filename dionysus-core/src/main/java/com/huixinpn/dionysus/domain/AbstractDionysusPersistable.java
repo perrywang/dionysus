@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @MappedSuperclass
 public abstract class AbstractDionysusPersistable implements Serializable {
 
@@ -26,7 +24,6 @@ public abstract class AbstractDionysusPersistable implements Serializable {
 	}
 
 	@Transient
-	@JsonIgnore
 	public boolean isNew() {
 		return null == getId();
 	}
