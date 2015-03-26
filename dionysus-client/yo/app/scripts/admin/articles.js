@@ -34,6 +34,11 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     tagName: 'article'
   });
 
+  var ArticleCreateView = Marionette.ItemView.extend({
+    template: '#admin-article-create-tpl',
+    tagName: 'article'
+  });
+
   var articles = new ArticleCollection();
 
   var ArticleController = Marionette.Controller.extend({
@@ -50,6 +55,17 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
         viewer.$el.find('.editor').editable({inlineMode: false});
         viewer.$el.find('select').material_select();
       });
+    },
+    createArticle: function() {
+      var article = new ArticleModel({});
+      var editor = new ArticleCreateView({model: article});
+      Dionysus.mainRegion.show(editor);
+      // make sure all js code has been loaded.
+      // TODO: should fire event to update ui
+      $(function() {
+        editor.$el.find('.editor').editable({inlineMode: false});
+        editor.$el.find('select').material_select();
+      });
     } 
   });
 
@@ -57,6 +73,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     new Marionette.AppRouter({
       appRoutes : {
         'admin/articles(/)': 'showArticles',
+        'admin/articles/create(/)': 'createArticle',
         'admin/articles/:id(/)': 'showArticle'
       },
       controller: new ArticleController()

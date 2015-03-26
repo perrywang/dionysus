@@ -4,6 +4,8 @@ script#admin-article-tpl(type="text/template")
   p <%= summary %>
 
 script#admin-articles-tpl(type="text/template")
+  section.row
+    a.btn(href="/admin/articles/create") Create Article
   ul.collection
 
 script#admin-article-detail-tpl(type="text/template")
@@ -32,5 +34,30 @@ script#admin-article-detail-tpl(type="text/template")
         .input-field.col.s12
           button.btn.waves-effect.waves-light.right(name="save") Save
             i.mdi-content-send.right
-        
-  
+
+script#admin-article-create-tpl(type="text/template")
+  .container
+    form.col.s12(action="#")
+      .row
+        .input-field.col.s8
+          input#title(type="text") 
+          label(for="title") Title
+      
+        .input-field.col.s4
+          label.active(for="category") Category
+          select#category
+            option(value="", disabled=true, selected=true) Choose you category
+            option(value="1") Category 1
+            option(value="2") Category 2
+            option(value="3") Category 3
+      .row
+        .input-field.col.s12
+          textarea#summary.materialize-textarea
+          label(for="summary") Summary
+      .row
+        .input-field.col.s12
+          textarea#body.materialize-textarea.editor
+      .row
+        .input-field.col.s12
+          button.btn.waves-effect.waves-light.right(name="save") Create
+            i.mdi-content-send.right
