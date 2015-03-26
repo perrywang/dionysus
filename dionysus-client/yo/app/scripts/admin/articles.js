@@ -43,7 +43,6 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
-      console.log('show articles in admin page');
       Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       articles.fetch({ data: { projection: 'summary' }});
     },

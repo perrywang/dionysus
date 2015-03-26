@@ -1,6 +1,6 @@
 Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette, $) {
   var HeaderView = Marionette.ItemView.extend({
-    template: '#header-tpl',
+    template: '#admin-header-tpl',
     tagName: 'nav'
   });
 
