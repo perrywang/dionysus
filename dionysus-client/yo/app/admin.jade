@@ -13,10 +13,8 @@ html(class="no-js")
     link(rel="stylesheet", href="/bower_components/froala/css/froala_style.css")
     link(rel="stylesheet", href="/styles/main.css")
     // endbuild
-  body
-    .container
-      h4 Administration page article edition
-      textarea#edit(name="content")
+  body.dionysus
+    include ./jade/admin-layout
 
   include ./jade/_library
 
@@ -26,5 +24,8 @@ html(class="no-js")
   // endbuild
 
   // build:js({app,.tmp}) /scripts/admin/app.js
+  script(src="/scripts/app.js")
   script(src="/scripts/admin/admin.js")
+  script(src="/scripts/admin/articles.js")
+  script(src="/scripts/boot.js")
   // endbuild

@@ -25,9 +25,9 @@ public class WebApplication extends SpringBootServletInitializer {
 			throws ServletException {
 		LightAdmin.configure(servletContext)
 				.basePackage("org.dionysus.admin")
-				.baseUrl("/admin")
+				.baseUrl("/lightadmin")
 				.security(false)
-				.backToSiteUrl("http://dionysus.duapp.com/admin");
+				.backToSiteUrl("http://dionysus.duapp.com/lightadmin");
 		super.onStartup(servletContext);
 	}
 

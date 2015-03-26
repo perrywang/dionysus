@@ -1,3 +1,3 @@
 $(function() {
-  $('#edit').editable({inlineMode: false})
+ // console.log('admin page loaded');
 });

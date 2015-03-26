@@ -9,12 +9,8 @@ Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Mario
   });
 
   Dionysus.addInitializer(function() {
-    var header = Dionysus.headerRegion.show(new HeaderView());
-    var footer = Dionysus.footerRegion.show(new FooterView());
-    header.$el.find('.dropdown-button').dropdown({
-      constrain_width: false,
-      alignment: 'right'
-    });
+    Dionysus.headerRegion.show(new HeaderView());
+    Dionysus.footerRegion.show(new FooterView());
   });
 });
 
