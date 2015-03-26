@@ -12,7 +12,7 @@
 
 	<artifactId>dionysus-client</artifactId>
 	<packaging>jar</packaging>
-	<name>Dionysus Normal User Web UI</name>
+	<name>Dionysus Web User Interface</name>
 
   <dependencies>
     <dependency>

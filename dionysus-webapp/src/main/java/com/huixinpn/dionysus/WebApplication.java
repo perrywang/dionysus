@@ -1,9 +1,5 @@
 package com.huixinpn.dionysus;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-
-import org.lightadmin.api.config.LightAdmin;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -19,17 +15,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @ComponentScan
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebApplication extends SpringBootServletInitializer {
-
-	@Override
-	public void onStartup(ServletContext servletContext)
-			throws ServletException {
-		LightAdmin.configure(servletContext)
-				.basePackage("org.dionysus.admin")
-				.baseUrl("/lightadmin")
-				.security(false)
-				.backToSiteUrl("http://dionysus.duapp.com/lightadmin");
-		super.onStartup(servletContext);
-	}
 
 	@Override
 	protected SpringApplicationBuilder configure(

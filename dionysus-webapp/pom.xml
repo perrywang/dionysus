@@ -30,11 +30,6 @@
 			<artifactId>dionysus-bae</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.huixinpn.dionysus</groupId>
-			<artifactId>dionysus-admin</artifactId>
-			<version>${project.version}</version>
-		</dependency>
     <dependency>
       <groupId>com.huixinpn.dionysus</groupId>
       <artifactId>dionysus-client</artifactId>
