@@ -16,7 +16,7 @@ public class PsychTestItem extends AbstractDionysusPersistable{
     @ManyToOne
     private PsychTest test;
 
-    @OneToMany(mappedBy = "testItem",orphanRemoval = true)
+    @OneToMany(mappedBy = "item",orphanRemoval = true)
     private List<PsychTestItemOption> options;
 
     public PsychTestItem(String description, PsychTest test, List<PsychTestItemOption> options) {

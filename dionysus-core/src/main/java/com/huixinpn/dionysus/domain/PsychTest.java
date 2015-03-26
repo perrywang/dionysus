@@ -16,7 +16,7 @@ public class PsychTest extends AbstractDionysusPersistable {
 	@Column(name = "title")
 	private String title;
 
-	@Lob @Column(name = "descriptoin")
+	@Lob @Column(name = "description")
 	private String description;
 
 	@OneToMany(mappedBy = "test",orphanRemoval = true)

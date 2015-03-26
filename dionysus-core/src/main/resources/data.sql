@@ -17,5 +17,11 @@ insert into modules (id, title, subtitle, href, image, body) values (3, '关于�
 
 insert into pages (id, name, title, body) values (1, 'about', 'About Us', '关于我们的详细页面');
 
+insert into psychtests(id, title, description) values (1, '你是一个变态吗？', '测试你是否存在成为心理变态的可能性以及如何调整');
+insert into psychtestitems(id, test_id, description) values (1, 1, '看到有人在你面前抢劫你会怎么做？');
+insert into psychtestitemoptions(id, item_id, description) values (1, 1, '装作没看见');
+insert into psychtestitemoptions(id, item_id, description) values (2, 1, '上前搏斗');
+insert into psychtestitemoptions(id, item_id, description) values (3, 1, '一起抢');
+
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (1, 'admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', TRUE, TRUE, TRUE, TRUE);

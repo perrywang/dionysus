@@ -15,11 +15,11 @@ public class PsychTestItemOption extends AbstractDionysusPersistable{
     private String description;
 
     @ManyToOne
-    private PsychTestItem testItem;
+    private PsychTestItem item;
 
     public PsychTestItemOption(String description, PsychTestItem testItem) {
         this.description = description;
-        this.testItem = testItem;
+        this.item = testItem;
     }
 
     public PsychTestItemOption() {
@@ -34,10 +34,10 @@ public class PsychTestItemOption extends AbstractDionysusPersistable{
     }
 
     public PsychTestItem getTestItem() {
-        return testItem;
+        return item;
     }
 
     public void setTestItem(PsychTestItem testItem) {
-        this.testItem = testItem;
+        this.item = testItem;
     }
 }
