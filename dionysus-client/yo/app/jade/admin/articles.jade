@@ -4,9 +4,10 @@ script#admin-article-tpl(type="text/template")
   p <%= summary %>
 
 script#admin-articles-tpl(type="text/template")
-  section.row
-    a.btn(href="/admin/articles/create") Create Article
   ul.collection
+  .fixed-action-btn(style='bottom: 45px; right: 24px;')
+    a.btn-floating.btn-large.red(href="/admin/articles/create")
+      i.large.mdi-content-add
 
 script#admin-article-detail-tpl(type="text/template")
   .container
