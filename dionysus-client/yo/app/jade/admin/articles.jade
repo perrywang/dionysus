@@ -12,25 +12,25 @@ script#admin-article-detail-tpl(type="text/template")
       .row
         .input-field.col.s8
           input#title(type="text", value!="<%= title %>") 
-          label.active(for="title") 标题
+          label.active(for="title") Title
       
         .input-field.col.s4
-          label.active(for="category") 类别
+          label.active(for="category") Category
           select#category
-            option(value="", disabled=true, selected=true) 选择类别
-            option(value="1") 类别1
-            option(value="2") 类别2
-            option(value="3") 类别3
+            option(value="", disabled=true, selected=true) Choose you category
+            option(value="1") Category 1
+            option(value="2") Category 2
+            option(value="3") Category 3
       .row
         .input-field.col.s12
           textarea#summary.materialize-textarea <%= summary %>
-          label.active(for="summary") 摘要
+          label.active(for="summary") Summary
       .row
         .input-field.col.s12
           textarea#body.materialize-textarea.editor <%= body %>
       .row
         .input-field.col.s12
-          button.btn.waves-effect.waves-light.right(name="save") 保存
+          button.btn.waves-effect.waves-light.right(name="save") Save
             i.mdi-content-send.right
         
   
