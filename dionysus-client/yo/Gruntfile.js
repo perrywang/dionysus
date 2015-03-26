@@ -27,7 +27,11 @@ module.exports = function (grunt) {
   var singlePage = function(req, res, next) {
     var url = req.url;
     if (/^\/app\//.test(url)) {
-      req.url = '/';
+      req.url = '/index.html';
+    } else if (/^\/admin\//.test(url)) {
+      req.url = '/admin.html';
+    } else if (/^\/consultant\//.test(url)) {
+      req.url = '/consultant.html';
     }
     return next();
   };
@@ -216,7 +220,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>',
-          src: 'index.jade',
+          src: '*.jade',
           dest: '.tmp',
           ext: '.html'
         }]

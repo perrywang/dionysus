@@ -16,4 +16,14 @@ public class HomeController {
 	public String app() {
 		return "/index.html";
 	}
+
+	@RequestMapping(value = "/admin/**", method = RequestMethod.GET)
+	public String admin() {
+		return "/admin.html";
+	}
+
+	@RequestMapping(value = "/consultant/**", method = RequestMethod.GET)
+	public String consultant() {
+		return "/consultant.html";
+	}
 }

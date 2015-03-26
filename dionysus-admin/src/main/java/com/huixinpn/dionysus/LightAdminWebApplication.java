@@ -28,7 +28,7 @@ public class LightAdminWebApplication extends SpringBootServletInitializer {
             public void onStartup(ServletContext servletContext) throws ServletException {
             	LightAdmin.configure(servletContext)
 	                .basePackage("org.dionysus.admin")
-	                .baseUrl("/admin")
+	                .baseUrl("/lightadmin")
 	                .security(true);
 	    		new LightAdminWebApplicationInitializer().onStartup(servletContext);
             }

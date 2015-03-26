@@ -19,12 +19,11 @@ public class Module extends AbstractDionysusPersistable {
 
 	@Column(name = "image")
 	private String image;
-	
+
 	@Column(name = "href")
 	private String href;
 
-	@Lob
-	@Column(name = "body")
+	@Lob @Column(name = "body")
 	private String body;
 
 	public String getTitle() {

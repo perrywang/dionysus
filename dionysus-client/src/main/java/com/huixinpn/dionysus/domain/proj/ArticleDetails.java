@@ -8,10 +8,10 @@ import com.huixinpn.dionysus.domain.Article;
 public interface ArticleDetails {
 
 	public Long getId();
-	
+
 	public String getTitle();
-	
+
 	public String getSummary();
-	
+
 	public String getBody();
 }
