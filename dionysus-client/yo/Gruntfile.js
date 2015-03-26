@@ -26,11 +26,11 @@ module.exports = function (grunt) {
 
   var singlePage = function(req, res, next) {
     var url = req.url;
-    if (/^\/app\//.test(url)) {
+    if (/^\/app(\/)?/.test(url)) {
       req.url = '/index.html';
-    } else if (/^\/admin\//.test(url)) {
+    } else if (/^\/admin(\/)?/.test(url)) {
       req.url = '/admin.html';
-    } else if (/^\/consultant\//.test(url)) {
+    } else if (/^\/consultant(\/)?/.test(url)) {
       req.url = '/consultant.html';
     }
     return next();
@@ -263,6 +263,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
             '<%= config.dist %>/font/{,*/}*.*',
+            '<%= config.dist %>/fonts/{,*/}*.*',
             '<%= config.dist %>/*.{ico,png}'
           ]
         }
@@ -390,6 +391,11 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'bower_components/materialize/dist',
           src: 'font/{,*/}*.*',
+          dest: '<%= config.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/froala',
+          src: 'fonts/{,*/}*.*',
           dest: '<%= config.dist %>'
         }]
       },

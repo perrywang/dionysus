@@ -8,12 +8,22 @@ html(class="no-js")
 
     // build:css({.,.tmp}) /styles/main.css
     link(rel="stylesheet", href="/bower_components/materialize/bin/materialize.css")
+    link(rel="stylesheet", href="/bower_components/froala/css/font-awesome.css")
+    link(rel="stylesheet", href="/bower_components/froala/css/froala_editor.css")
+    link(rel="stylesheet", href="/bower_components/froala/css/froala_style.css")
     link(rel="stylesheet", href="/styles/main.css")
     // endbuild
   body
-    h1 This is admin page
+    .container
+      h4 Administration page article edition
+      textarea#edit(name="content")
 
   include ./jade/_library
+
+  // build:js /scripts/froala_editor.js
+  script(src="/bower_components/froala/js/froala_editor.min.js")
+  script(src="/bower_components/froala/js/langs/zh_cn.js")
+  // endbuild
 
   // build:js({app,.tmp}) /scripts/admin/app.js
   script(src="/scripts/admin/admin.js")

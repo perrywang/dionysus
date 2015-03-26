@@ -1,1 +1,3 @@
-console.log('admin page');
+$(function() {
+  $('#edit').editable({inlineMode: false})
+});

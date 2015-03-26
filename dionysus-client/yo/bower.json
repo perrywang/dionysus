@@ -7,6 +7,7 @@
     "materialize": "~0.95.2",
     "sockjs": "~0.3.4",
     "stomp-websocket": "~2.3.4",
-    "backbone.intercept": "~0.3.2"
+    "backbone.intercept": "~0.3.2",
+    "froala": "~1.2.6"
   }
 }
