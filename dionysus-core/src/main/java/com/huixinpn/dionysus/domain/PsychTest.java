@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -19,7 +20,8 @@ public class PsychTest extends AbstractDionysusPersistable {
 	@Lob @Column(name = "description")
 	private String description;
 
-	@OneToMany(mappedBy = "test",orphanRemoval = true)
+	@OneToMany
+    @JoinColumn(name = "test_id")
 	private List<PsychTestItem> items;
 
     public PsychTest(String title, String description, List<PsychTestItem> items) {

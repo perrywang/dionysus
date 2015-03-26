@@ -1,5 +1,7 @@
 package com.huixinpn.dionysus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +15,17 @@ public class PsychTestItem extends AbstractDionysusPersistable{
     @Column(name="description")
 	private String description;
 
-    @ManyToOne
-    private PsychTest test;
-
-    @OneToMany(mappedBy = "item",orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "item_id")
     private List<PsychTestItemOption> options;
 
-    public PsychTestItem(String description, PsychTest test, List<PsychTestItemOption> options) {
+    public PsychTestItem(String description, List<PsychTestItemOption> options) {
         this.description = description;
-        this.test = test;
         this.options = options;
     }
 
-    public PsychTestItem(String description, PsychTest test) {
-        this(description,test,new ArrayList<PsychTestItemOption>());
+    public PsychTestItem(String description) {
+        this(description,new ArrayList<PsychTestItemOption>());
     }
 
     public PsychTestItem() {
@@ -38,14 +37,6 @@ public class PsychTestItem extends AbstractDionysusPersistable{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public PsychTest getTest() {
-        return test;
-    }
-
-    public void setTest(PsychTest test) {
-        this.test = test;
     }
 
     public List<PsychTestItemOption> getOptions() {

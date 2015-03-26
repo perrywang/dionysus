@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -14,12 +15,8 @@ public class PsychTestItemOption extends AbstractDionysusPersistable{
     @Column(name="description")
     private String description;
 
-    @ManyToOne
-    private PsychTestItem item;
-
-    public PsychTestItemOption(String description, PsychTestItem testItem) {
+    public PsychTestItemOption(String description) {
         this.description = description;
-        this.item = testItem;
     }
 
     public PsychTestItemOption() {
@@ -31,13 +28,5 @@ public class PsychTestItemOption extends AbstractDionysusPersistable{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public PsychTestItem getTestItem() {
-        return item;
-    }
-
-    public void setTestItem(PsychTestItem testItem) {
-        this.item = testItem;
     }
 }
