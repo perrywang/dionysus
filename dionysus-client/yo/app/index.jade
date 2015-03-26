@@ -15,19 +15,7 @@ html(class="no-js")
   body.dionysus
     include ./jade/layout
 
-  // build:js(.) /scripts/vendor.js
-  script(src="/bower_components/jquery/dist/jquery.js")
-  script(src="/bower_components/modernizr/modernizr.js")
-  script(src="/bower_components/underscore/underscore.js")
-  script(src="/bower_components/backbone/backbone.js")
-  script(src="/bower_components/backbone.babysitter/lib/backbone.babysitter.js")
-  script(src="/bower_components/backbone.wreqr/lib/backbone.wreqr.js")
-  script(src="/bower_components/backbone.intercept/dist/backbone.intercept.js")
-  script(src="/bower_components/marionette/lib/core/backbone.marionette.js")
-  script(src="/bower_components/materialize/bin/materialize.js")
-  script(src="/bower_components/sockjs/sockjs.js")
-  script(src="/bower_components/stomp-websocket/lib/stomp.min.js")
-  // endbuild
+  include ./jade/_library
 
   // build:js({app,.tmp}) /scripts/app.js
   script(src="/scripts/app.js")
