@@ -1,7 +1,5 @@
 package com.huixinpn.dionysus.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

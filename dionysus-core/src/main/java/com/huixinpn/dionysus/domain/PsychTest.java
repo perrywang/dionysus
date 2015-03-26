@@ -1,6 +1,5 @@
 package com.huixinpn.dionysus.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
