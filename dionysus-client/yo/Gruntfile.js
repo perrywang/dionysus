@@ -277,7 +277,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '.tmp/index.html'
+      html: '.tmp/*.html'
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
