@@ -34,6 +34,11 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     tagName: 'article'
   });
 
+  var ArticleEditView = Marionette.ItemView.extend({
+    template: '#admin-article-detail-edit-tpl',
+    tagName: 'article'
+  });
+
   var ArticleCreateView = Marionette.ItemView.extend({
     template: '#admin-article-create-tpl',
     tagName: 'article'
@@ -65,7 +70,16 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
         editor.$el.find('.editor').editable({inlineMode: false});
         editor.$el.find('select').material_select();
       });
-    } 
+    },
+    editArticle: function(id) {
+      var article = new ArticleModel({id: id});
+      article.fetch({ data: { projection: 'detail' }}).then(function() {
+        var viewer = new ArticleEditView({ model: article});
+        Dionysus.mainRegion.show(viewer);
+        viewer.$el.find('.editor').editable({inlineMode: false});
+        viewer.$el.find('select').material_select();
+      });
+    }
   });
 
   Dionysus.addInitializer(function() {
@@ -73,7 +87,8 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       appRoutes : {
         'admin/articles(/)': 'showArticles',
         'admin/articles/create(/)': 'createArticle',
-        'admin/articles/:id(/)': 'showArticle'
+        'admin/articles/:id(/)': 'showArticle',
+        'admin/articles/:id/edit': 'editArticle'
       },
       controller: new ArticleController()
     });
