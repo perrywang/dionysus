@@ -1,21 +1,10 @@
 script#module-tpl(type="text/template")
-  .card.medium
-    .card-image.waves-effect.waves-block.waves-light
-      | <img class="activator" src="<%= image %>">
-      span.card-title <%= title %>
-    .card-content
-      p.activator.grey-text.text-darken-4 
-        <%= subtitle %>
-        i.mdi-navigation-more-vert.right
-    .card-action
-      a.right.waves-effect.waves-light.btn(href!="<%= href %>")
-        | Enter
-        i.mdi-content-send.right
-    .card-reveal
-      span.card-title.grey-text.text-darken-4
-        <%= title %>
-        i.mdi-navigation-close.right
-      p <%= body %>
+  a.image
+    img(src!="<%= image %>")
+  .content
+    a.header(href!="<%= href %>") <%= title %>
+    .meta <%= subtitle %>
+    .description <%= body %>
 
 script#modules-tpl(type="text/template")
-  .container
+  .ui.cards
