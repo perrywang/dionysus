@@ -4,13 +4,33 @@ Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Mar
   var LoginView = Marionette.ItemView.extend({ 
     template: '#account-login-tpl',
     tagName: 'form',
-    className: 'ui form compact segment'
+    className: 'ui form compact segment',
+    ui: {
+      submit: '.submit'
+    },
+    events: {
+      'click @ui.submit': 'login'
+    },
+    login: function() {
+      var user = this.$el.form('get values', ['username', 'password']);
+      console.log(user);
+    }
   });
 
   var RegisterView = Marionette.ItemView.extend({ 
     template: '#account-register-tpl',
     tagName: 'form',
-    className: 'ui form compact segment'
+    className: 'ui form compact segment',
+    ui: {
+      submit: '.submit'
+    },
+    events: {
+      'click @ui.submit': 'register'
+    },
+    register: function() {
+      var user = this.$el.form('get values', ['username', 'password']);
+      console.log(user);
+    }
   });
 
   var AccountController = Marionette.Controller.extend({
