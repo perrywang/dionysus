@@ -22,8 +22,8 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   var ModulesView = Marionette.CompositeView.extend({
     template: '#modules-tpl',
     childView: ModuleView,
-    childViewContainer: '.grid',
-    className: 'ui segment'
+    childViewContainer: '.cards',
+    className: 'ui page grid'
   });
 
   var modules = new ModuleCollection();

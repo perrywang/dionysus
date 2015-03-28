@@ -22,12 +22,14 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
   var ArticlesView = Marionette.CompositeView.extend({
     template: '#articles-tpl',
     childView: ArticleView,
-    childViewContainer: '.items'
+    childViewContainer: '.items',
+    className: 'ui page'
   });
 
   var ArticleDetailView = Marionette.ItemView.extend({
     template: '#article-detail-tpl',
-    tagName: 'article'
+    tagName: 'article',
+    className: 'ui page'
   });
 
   var articles = new ArticleCollection();
