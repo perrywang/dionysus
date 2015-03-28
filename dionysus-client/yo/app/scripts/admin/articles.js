@@ -25,8 +25,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
   var ArticlesView = Marionette.CompositeView.extend({
     template: '#admin-articles-tpl',
     childView: ArticleView,
-    childViewContainer: '.items',
-    className: 'container'
+    childViewContainer: '.items'
   });
 
   var ArticleDetailView = Marionette.ItemView.extend({

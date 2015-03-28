@@ -1,10 +1,12 @@
 script#articles-tpl(type="text/template")
-  ul.ui.list
+  h2.ui.header Article List
+  ul.ui.relaxed.items
 
 script#article-tpl(type="text/template")
+  .image
+    img(src="/public/images/placeholder.png")
   .content
-    h5.header 
-      a(href!="/app/articles/<%= id %>") <%= title %>
+    a.ui.header(href!="/app/articles/<%= id %>") <%= title %>
     p.description <%= summary %>
 
 script#article-detail-tpl(type="text/template")
