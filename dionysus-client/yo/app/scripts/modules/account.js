@@ -3,22 +3,22 @@ Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Mar
 
   var LoginView = Marionette.ItemView.extend({ 
     template: '#account-login-tpl',
-    className: 'modal'
+    tagName: 'form',
+    className: 'ui form'
   });
 
   var RegisterView = Marionette.ItemView.extend({ 
     template: '#account-register-tpl',
-    className: 'modal'
+    tagName: 'form',
+    className: 'ui form'
   });
 
   var AccountController = Marionette.Controller.extend({
     login: function() {
-      var dialog = Dionysus.dialogRegion.show(new LoginView());
-      dialog.$el.find('.modal').openModal();
+      var dialog = Dionysus.mainRegion.show(new LoginView());
     },
     register: function() {
-      var dialog = Dionysus.dialogRegion.show(new RegisterView());
-      dialog.$el.find('.modal').openModal();
+      var dialog = Dionysus.mainRegion.show(new RegisterView());
     },
     logout: function() {
       alert('logout')

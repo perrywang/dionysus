@@ -1,31 +1,31 @@
+script#account-login-tpl(type="text/template")
+  h4.ui.dividing.header Login
+  .field
+    label Username
+    input(type="text", placeholder="Username")
+  .field
+    label Password
+    input(type="password", placeholder="Password")
+  .field
+    span
+      | Do not have account 
+      a(href="/app/register") register
+  button.ui.submit.button Submit
+
 script#account-register-tpl(type="text/template")
-  .modal-content
-    h4 Register
-    .input-field.col.s12
-      input#username.validate(type="text")
-      label(for="username") Username
-    .input-field.col.s12
-      input#password.validate(type="password")
-      label(for="password") Password
+  h4.ui.dividing.header Register
+  .field
+    label Username
+    input(type="text", placeholder="Username")
+  .field
+    label Password
+    input(type="password", placeholder="Password")
+  .field
+    label Password1
+    input(type="password", placeholder="Retype password")
+  .field
     span
       | Alreay have account 
       a(href="/app/login") login
-  .modal-footer
-    a.waves-effect.waves-green.btn-flat.modal-action(href="#") Register
-    a.waves-effect.waves-green.btn-flat.modal-action.modal-close(href="#") Close
+  button.ui.submit.button Submit
 
-script#account-login-tpl(type="text/template")
-  .modal-content
-    h4 Login
-    .input-field.col.s12
-      input#username.validate(type="text")
-      label(for="username") Username
-    .input-field.col.s12
-      input#password.validate(type="password")
-      label(for="password") Password
-    span 
-      | Do not have account 
-      a(href="/app/register") register
-  .modal-footer
-    a.waves-effect.waves-green.btn-flat.modal-action.modal-close(href="#") Close
-    a.waves-effect.waves-green.btn-flat.modal-action(href="#") Login

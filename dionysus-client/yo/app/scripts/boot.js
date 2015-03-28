@@ -1,7 +1,8 @@
 Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Marionette, $) {
   var HeaderView = Marionette.ItemView.extend({
     template: '#header-tpl',
-    tagName: 'nav'
+    tagName: 'nav',
+    className: 'ui menu'
   });
 
   var FooterView = Marionette.ItemView.extend({
