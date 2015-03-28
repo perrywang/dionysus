@@ -16,13 +16,13 @@ Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Mar
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#article-tpl',
     tagName: 'li',
-    className: 'collection-item'
+    className: 'item'
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
     template: '#articles-tpl',
     childView: ArticleView,
-    childViewContainer: 'ul.collection',
+    childViewContainer: 'ul',
     className: 'container'
   });
 

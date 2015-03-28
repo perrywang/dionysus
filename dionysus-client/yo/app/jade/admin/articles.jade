@@ -5,18 +5,12 @@ script#admin-article-tpl(type="text/template")
 
 script#admin-articles-tpl(type="text/template")
   ul.collection
-  .fixed-action-btn.admin-editor
-    a.btn-floating.btn-large.red(href="/admin/articles/create")
-      i.large.mdi-content-add
 
 script#admin-article-detail-tpl(type="text/template")
   .container
     h4 <%=title%>
     p <%= summary%>
     p <%= body %>
-  .fixed-action-btn.admin-editor
-    a.btn-floating.btn-large.red(href!="/admin/articles/<%=id%>/edit")
-      i.large.mdi-editor-mode-edit
 
 script#admin-article-detail-edit-tpl(type="text/template")
   .container
@@ -40,14 +34,6 @@ script#admin-article-detail-edit-tpl(type="text/template")
       .row
         .input-field.col.s12
           textarea#body.materialize-textarea.editor <%= body %>
-
-  .fixed-action-btn.admin-editor
-    a.btn-floating.btn-large.red(href!="/admin/articles/<%=id%>")
-      i.large.mdi-content-save
-    ul
-      li
-        a.btn-floating.blue
-          i.mdi-editor-publish
 
 script#admin-article-create-tpl(type="text/template")
   .container
