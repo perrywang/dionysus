@@ -40,6 +40,7 @@ script#admin-article-create-tpl(type="text/template")
   h4.ui.dividing.header Article Creating
   .two.fields
     .field
+      label Title
       input(type="text", placeholder="Title") 
     .field
       label Category
@@ -49,6 +50,8 @@ script#admin-article-create-tpl(type="text/template")
         option(value="2") Category 2
         option(value="3") Category 3
   .field
+    label Summary
     textarea#summary
   .field
+    label Body
     textarea#body.editor

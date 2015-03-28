@@ -70,16 +70,16 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       // TODO: should fire event to update ui
       $(function() {
         editor.$el.find('.editor').editable({inlineMode: false});
-        viewer.$el.find('select.dropdown').dropdown();
+        editor.$el.find('select.dropdown').dropdown();
       });
     },
     editArticle: function(id) {
       var article = new ArticleModel({id: id});
       article.fetch({ data: { projection: 'detail' }}).then(function() {
-        var viewer = new ArticleEditView({ model: article});
-        Dionysus.mainRegion.show(viewer);
-        viewer.$el.find('.editor').editable({inlineMode: false});
-        viewer.$el.find('select.dropdown').dropdown();
+        var editor = new ArticleEditView({ model: article});
+        Dionysus.mainRegion.show(editor);
+        editor.$el.find('.editor').editable({inlineMode: false});
+        editor.$el.find('select.dropdown').dropdown();
       });
     }
   });
