@@ -2,7 +2,6 @@ package com.huixinpn.dionysus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -10,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.huixinpn.dionysus.auth.DionysusUserDetailsService;
@@ -24,14 +22,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Qualifier("dionysus")
 	private DionysusUserDetailsService securityUserService;
 	
+	@Autowired
+	private PasswordEncoder encoder;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//		    .withUser("admin").password("admin").roles("ADMIN", "USER").and()
-//			.withUser("user").password("password").roles("USER");
-		auth.userDetailsService(securityUserService).passwordEncoder(passwordEncoder());
-
-
+		auth.userDetailsService(securityUserService).passwordEncoder(encoder);
 	}
 	
 	@Override
@@ -66,16 +62,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
 			.antMatchers("/")
+			.antMatchers("/themes/**")
 			.antMatchers("/public/**")
 			.antMatchers("/font/**")
 			.antMatchers("/styles/**")
 			.antMatchers("/images/**")
 			.antMatchers("/scripts/**");
-	}
-	
-	@Bean
-	public PasswordEncoder passwordEncoder(){
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
 	}
 }

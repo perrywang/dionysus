@@ -1,16 +1,15 @@
 script#account-login-tpl(type="text/template")
-  .ui.segment.compact
-    .required.field
-      label Username
-      .ui.left.icon.input
-        input(type="text", name="username", placeholder="Username")
-        i.user.icon
-    .required.field
-      label Password
-      .ui.left.icon.input
-        input(type="password", name="password", placeholder="Password")
-        i.lock.icon
-    .ui.submit.button Login
+  .required.field
+    label Username
+    .ui.left.icon.input
+      input(type="text", name="username", placeholder="Username")
+      i.user.icon
+  .required.field
+    label Password
+    .ui.left.icon.input
+      input(type="password", name="password", placeholder="Password")
+      i.lock.icon
+  .ui.submit.button Login
 
 script#account-register-tpl(type="text/template")
 
