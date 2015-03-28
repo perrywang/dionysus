@@ -1,8 +1,12 @@
 script#admin-article-tpl(type="text/template")
-  a(href!="/admin/articles/<%= id %>") <%= title %>
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.ui.header(href!="/admin/articles/<%= id %>") <%= title %>
+    p.description <%= summary %>
 
 script#admin-articles-tpl(type="text/template")
-  ul.collection
+  ul.ui.relaxed.items
 
 script#admin-article-detail-tpl(type="text/template")
   h4 <%=title%>
