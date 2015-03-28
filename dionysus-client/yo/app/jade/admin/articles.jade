@@ -1,63 +1,42 @@
 script#admin-article-tpl(type="text/template")
   a(href!="/admin/articles/<%= id %>") <%= title %>
-  a.secondary-content(href="#!")
-    i.mdi-action-highlight-remove
 
 script#admin-articles-tpl(type="text/template")
   ul.collection
 
 script#admin-article-detail-tpl(type="text/template")
-  .container
-    h4 <%=title%>
-    p <%= summary%>
-    p <%= body %>
+  h4 <%=title%>
+  p <%= summary%>
+  p <%= body %>
 
 script#admin-article-detail-edit-tpl(type="text/template")
-  .container
-    form.col.s12(action="#")
-      .row
-        .input-field.col.s8
-          input#title(type="text", value!="<%= title %>") 
-          label.active(for="title") Title
-      
-        .input-field.col.s4
-          label.active(for="category") Category
-          select#category
-            option(value="", disabled=true, selected=true) Choose you category
-            option(value="1") Category 1
-            option(value="2") Category 2
-            option(value="3") Category 3
-      .row
-        .input-field.col.s12
-          textarea#summary.materialize-textarea <%= summary %>
-          label.active(for="summary") Summary
-      .row
-        .input-field.col.s12
-          textarea#body.materialize-textarea.editor <%= body %>
+  h4.ui.dividing.header Article Editing
+  .two.fields
+    .field
+      input#title(type="text", value!="<%= title %>", placeholder="Title") 
+    .field
+      select#category
+        option(value="", disabled=true, selected=true) Choose you category
+        option(value="1") Category 1
+        option(value="2") Category 2
+        option(value="3") Category 3
+  .field
+    textarea#summary <%= summary %>
+  .field
+    textarea#body.editor <%= body %>
 
 script#admin-article-create-tpl(type="text/template")
-  .container
-    form.col.s12(action="#")
-      .row
-        .input-field.col.s8
-          input#title(type="text") 
-          label(for="title") Title
-      
-        .input-field.col.s4
-          label.active(for="category") Category
-          select#category
-            option(value="", disabled=true, selected=true) Choose you category
-            option(value="1") Category 1
-            option(value="2") Category 2
-            option(value="3") Category 3
-      .row
-        .input-field.col.s12
-          textarea#summary.materialize-textarea
-          label(for="summary") Summary
-      .row
-        .input-field.col.s12
-          textarea#body.materialize-textarea.editor
-      .row
-        .input-field.col.s12
-          button.btn.waves-effect.waves-light.right(name="save") Create
-            i.mdi-content-send.right
+  h4.ui.dividing.header Article Creating
+  .two.fields
+    .field
+      input#title(type="text", placeholder="Title") 
+    .field
+      select#category
+        option(value="", disabled=true, selected=true) Choose you category
+        option(value="1") Category 1
+        option(value="2") Category 2
+        option(value="3") Category 3
+  .field
+    textarea#summary
+  .field
+    textarea#body.editor

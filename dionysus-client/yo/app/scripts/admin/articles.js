@@ -36,12 +36,14 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
 
   var ArticleEditView = Marionette.ItemView.extend({
     template: '#admin-article-detail-edit-tpl',
-    tagName: 'article'
+    tagName: 'form',
+    className: 'ui form'
   });
 
   var ArticleCreateView = Marionette.ItemView.extend({
     template: '#admin-article-create-tpl',
-    tagName: 'article'
+    tagName: 'form',
+    className: 'ui form'
   });
 
   var articles = new ArticleCollection();
