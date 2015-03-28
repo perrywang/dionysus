@@ -2,10 +2,13 @@ script#admin-article-tpl(type="text/template")
   .image
     img(src="/public/images/placeholder.png")
   .content
-    a.ui.header(href!="/admin/articles/<%= id %>") <%= title %>
+    a.ui.header(href!="/admin/articles/<%= id %>/edit") 
+      i.edit.icon
+      | <%= title %>
     p.description <%= summary %>
 
 script#admin-articles-tpl(type="text/template")
+  h2.ui.header Article List
   ul.ui.relaxed.items
 
 script#admin-article-detail-tpl(type="text/template")
@@ -17,26 +20,31 @@ script#admin-article-detail-edit-tpl(type="text/template")
   h4.ui.dividing.header Article Editing
   .two.fields
     .field
-      input#title(type="text", value!="<%= title %>", placeholder="Title") 
+      label Title
+      input(name="title", type="text", value!="<%= title %>", placeholder="Title") 
     .field
-      select#category
-        option(value="", disabled=true, selected=true) Choose you category
+      label Category
+      select.ui.dropdown
+        option(value="", elected=true) Choose you category
         option(value="1") Category 1
         option(value="2") Category 2
         option(value="3") Category 3
   .field
+    label Summary
     textarea#summary <%= summary %>
   .field
+    label Body
     textarea#body.editor <%= body %>
 
 script#admin-article-create-tpl(type="text/template")
   h4.ui.dividing.header Article Creating
   .two.fields
     .field
-      input#title(type="text", placeholder="Title") 
+      input(type="text", placeholder="Title") 
     .field
-      select#category
-        option(value="", disabled=true, selected=true) Choose you category
+      label Category
+      select.ui.dropdown
+        option(value="", elected=true) Choose you category
         option(value="1") Category 1
         option(value="2") Category 2
         option(value="3") Category 3

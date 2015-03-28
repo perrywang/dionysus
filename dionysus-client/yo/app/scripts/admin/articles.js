@@ -59,6 +59,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
         var viewer = new ArticleDetailView({ model: article});
         Dionysus.mainRegion.show(viewer);
         viewer.$el.find('.editor').editable({inlineMode: false});
+        viewer.$el.find('select.dropdown').dropdown();
       });
     },
     createArticle: function() {
@@ -69,6 +70,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       // TODO: should fire event to update ui
       $(function() {
         editor.$el.find('.editor').editable({inlineMode: false});
+        viewer.$el.find('select.dropdown').dropdown();
       });
     },
     editArticle: function(id) {
@@ -77,6 +79,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
         var viewer = new ArticleEditView({ model: article});
         Dionysus.mainRegion.show(viewer);
         viewer.$el.find('.editor').editable({inlineMode: false});
+        viewer.$el.find('select.dropdown').dropdown();
       });
     }
   });
