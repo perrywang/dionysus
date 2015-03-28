@@ -1,10 +1,8 @@
 script#admin-header-tpl(type="text/template")
-  .nav-wrapper
-    ul.left
-      li
-        a(href="/admin/articles") Articles
-      li
-        a(href="/admin/categories") Categories
-      li
-        a(href="/admin/tests") Tests
+  a.active.item(href="/admin")
+    i.home.icon 
+    | Home
+  a.item(href="/admin/articles") Articles
+  a.item(href="/admin/categories") Categories
+  a.item(href="/admin/tests") Test
 
