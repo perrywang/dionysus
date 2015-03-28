@@ -1,10 +1,11 @@
 script#module-tpl(type="text/template")
-  a.image
-    img(src!="<%= image %>")
-  .content
-    a.header(href!="<%= href %>") <%= title %>
-    .meta <%= subtitle %>
-    .description <%= body %>
+  .ui.fluid.card
+    a.image(href!="<%= href %>")
+      img(src!="<%= image %>")
+    .content
+      a.header(href!="<%= href %>") <%= title %>
+      .meta <%= subtitle %>
+      .description <%= body %>
 
 script#modules-tpl(type="text/template")
-  .ui.cards
+  .ui.three.column.grid

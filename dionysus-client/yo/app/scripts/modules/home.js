@@ -16,13 +16,13 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
 
   var ModuleView = Marionette.ItemView.extend({
     template: '#module-tpl',
-    className: 'card'
+    className: 'column'
   });
 
   var ModulesView = Marionette.CompositeView.extend({
     template: '#modules-tpl',
     childView: ModuleView,
-    childViewContainer: '.ui.cards',
+    childViewContainer: '.grid',
     className: 'ui segment'
   });
 
