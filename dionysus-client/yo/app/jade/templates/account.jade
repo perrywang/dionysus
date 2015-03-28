@@ -1,37 +1,38 @@
 script#account-login-tpl(type="text/template")
-  .ui.compact.segment
+  .ui.segment.compact
     .required.field
       label Username
       .ui.left.icon.input
-        input(type="text", placeholder="Username")
+        input(type="text", name="username", placeholder="Username")
         i.user.icon
     .required.field
       label Password
       .ui.left.icon.input
-        input(type="password", placeholder="Password")
+        input(type="password", name="password", placeholder="Password")
         i.lock.icon
-    .ui.horizontal.divider OR
-    .field
-      span
-        | Do not have account 
-        a(href="/app/register") register
-    button.ui.submit.button Submit
+    .ui.submit.button Login
 
 script#account-register-tpl(type="text/template")
-  .ui.compact.segment
-    .required.field
-      label Username
-      input(type="text", placeholder="Username")
-    .required.field
-      label Password
-      input(type="password", placeholder="Password")
-    .required.field
-      label Retype Password
-      input(type="password", placeholder="Retype password")
-    .ui.horizontal.divider OR
-    .field
-      span
-        | Alreay have account 
-        a(href="/app/login") login
-    button.ui.submit.button Submit
+
+  .required.field
+    label Username
+    input(type="text", name="username", placeholder="Username")
+  .required.field
+    label Password
+    input(type="password", name="password", placeholder="Password")
+  .required.field
+    label Retype Password
+    input(type="password", name="password1", placeholder="Retype password")
+  .field
+    .ui.checkbox
+      input(type="checkbox", name="terms")
+      label
+        | I agree to the 
+        a(href="#") Term of Service
+  .ui.horizontal.divider OR
+  .field
+    span
+      | Alreay have account 
+      a(href="/app/login") login
+  .ui.submit.button Submit
 
