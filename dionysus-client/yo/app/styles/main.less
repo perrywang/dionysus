@@ -1,3 +1,5 @@
+@import 'node_modules/semantic-ui-less/semantic.less';
+
 main {
   display: block;
   min-height: 500px;
@@ -6,48 +8,3 @@ main {
 article {
   padding: 1rem;
 }
-
-@media only screen and (max-width : 1025px) {
-  .dionysus main {
-    .container {
-      padding: 0;
-      width: auto;
-    } 
-  }
-  .dionysus #dialog {
-    .modal {
-      width: 90%;
-    } 
-  }
-}
-
-.dionysus nav .brand-logo {
-  padding: 0 1rem;
-}
-
-.dionysus main {
-  .card {
-    a.btn {
-      transition-property: all;
-      margin: 0;
-      color: white;
-    }
-  }
-  .select-wrapper {
-    margin-top: 0;
-  }
-
-  .admin-editor {
-    top: 20px; 
-    right: 10%;
-
-    ul {
-      right: clac(10% - 28px);
-      top: 80px;
-    }
-  }
-  .froala-view {
-    min-height: 100px;
-  }
-}
-

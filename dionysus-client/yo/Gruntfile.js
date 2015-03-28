@@ -191,7 +191,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= config.app %>/styles',
-          src: '*.less',
+          src: ['*.less', '!theme.less'],
           dest: '.tmp/styles',
           ext: '.css'
         }]
@@ -410,20 +410,20 @@ module.exports = function (grunt) {
 
     // Generates a custom Modernizr build that includes only the tests you
     // reference in your app
-    modernizr: {
-      dist: {
-        devFile: 'bower_components/modernizr/modernizr.js',
-        outputFile: '<%= config.dist %>/scripts/modernizr.js',
-        files: {
-          src: [
-            '<%= config.dist %>/scripts/{,*/}*.js',
-            '<%= config.dist %>/styles/{,*/}*.css',
-            '!<%= config.dist %>/scripts/vendor/*'
-          ]
-        },
-        uglify: true
-      }
-    },
+    // modernizr: {
+    //   dist: {
+    //     devFile: 'bower_components/modernizr/modernizr.js',
+    //     outputFile: '<%= config.dist %>/scripts/modernizr.js',
+    //     files: {
+    //       src: [
+    //         '<%= config.dist %>/scripts/{,*/}*.js',
+    //         '<%= config.dist %>/styles/{,*/}*.css',
+    //         '!<%= config.dist %>/scripts/vendor/*'
+    //       ]
+    //     },
+    //     uglify: true
+    //   }
+    // },
 
     // Run some tasks in parallel to speed up build process
     concurrent: {
@@ -495,7 +495,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    'modernizr',
+    // 'modernizr',
     'rev',
     'usemin',
     'htmlmin'
