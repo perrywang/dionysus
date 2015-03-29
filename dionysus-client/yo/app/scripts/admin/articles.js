@@ -8,21 +8,26 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     urlRoot: '/api/v1/articles'
   });
 
-  var ArticleCollection = Backbone.Collection.extend({
+  var ArticleCollection = Backbone.PageableCollection.extend({
+    model: ArticleModel,
     url: '/api/v1/articles',
     parse: function(response) {
-      return response._embedded.articles;
+      var embedded = response._embedded;
+      return embedded ? embedded.articles : [];
     },
-    model: ArticleModel
+    state: {
+      firstPage: 0
+    },
+    queryParams: {
+      currentPage: 'page',
+      pageSize: 'size'
+    }
   });
 
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#admin-article-tpl',
     tagName: 'li',
-    className: 'item',
-    onRender: function() {
-      
-    }
+    className: 'item'
   });
 
   var ArticlesView = Marionette.CompositeView.extend({

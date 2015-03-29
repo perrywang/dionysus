@@ -16,7 +16,7 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
 
   var ModuleView = Marionette.ItemView.extend({
     template: '#module-tpl',
-    className: 'card'
+    className: 'card fluid'
   });
 
   var ModulesView = Marionette.CompositeView.extend({

@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "marionette": "~2.3.2",
+    "backbone.paginator": "~2.0.2",
     "backbone.intercept": "~0.3.2",
     "backbone.select": "~1.3.0",
     "sockjs": "~0.3.4",
