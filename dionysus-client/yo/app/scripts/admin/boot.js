@@ -22,7 +22,7 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
   ]);
 
   var LinkView = Marionette.ItemView.extend({
-    template: '#admin-header-tpl',
+    template: _.template('<i class="icon <%= icon %>"></i><%= name %>'),
     className: 'item',
     tagName: 'a',
     attributes: function() {
