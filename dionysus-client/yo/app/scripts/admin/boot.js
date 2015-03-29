@@ -23,9 +23,9 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     template: "#admin-header-tpl",
     tagName: "li",
     className: "item",
-    initialize: function() {
-      this.model.on('selected', this.onRender, this);
-      this.model.on('deselected', this.onRender, this);
+    modelEvents: {
+      "selected": "onRender",
+      "deselected": "onRender"
     },
     events: {
       "click a" : "navigateMenu"
