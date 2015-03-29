@@ -1,7 +1,3 @@
-script#admin-headers-tpl(type="text/template")
-  | <% _.each(items, function(item) { %>
-  | <a class="item" href="<%= item.href %>">
-  |   <i class="icon <%= item.icon %>"></i><%= item.name %>
-  | </a>
-  | <%}) %>
+script#admin-header-tpl(type="text/template")
+  | <i class="icon <%= icon %>"></i><%= name %>
 
