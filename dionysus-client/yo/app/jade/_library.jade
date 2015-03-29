@@ -1,4 +1,5 @@
-// build:js(.) /scripts/vendor.js
+//- Use CDN ?
+// build:js(.) /scripts/backbone.js
 script(src="/bower_components/jquery/dist/jquery.js")
 script(src="/bower_components/underscore/underscore.js")
 script(src="/bower_components/backbone/backbone.js")
@@ -8,7 +9,13 @@ script(src="/bower_components/backbone.select/dist/backbone.select.js")
 script(src="/bower_components/backbone.intercept/dist/backbone.intercept.js")
 script(src="/bower_components/backbone.paginator/lib/backbone.paginator.js")
 script(src="/bower_components/marionette/lib/core/backbone.marionette.js")
+// endbuild
+
+// build:js(.) /scripts/ui.js
 script(src="/bower_components/semantic-ui/dist/semantic.js")
+// endbuild
+
+// build:js(.) /scripts/live.js
 script(src="/bower_components/sockjs/sockjs.js")
 script(src="/bower_components/stomp-websocket/lib/stomp.min.js")
 // endbuild

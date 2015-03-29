@@ -263,8 +263,7 @@ module.exports = function (grunt) {
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
             '<%= config.dist %>/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png}',
-            '<%= config.dist %>/themes/default/assets/{,*/}*.*'
+            '<%= config.dist %>/*.{ico,png}'
           ]
         }
       }
