@@ -1,4 +1,5 @@
-Dionysus.module('DionysusApp.AdminCategory', function(Category, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.AdminCategory', function(Category, Dionysus, Backbone, Marionette) {
+  'use strict';
 
   var CategoryView = Marionette.ItemView.extend({
     template: '#admin-categories-tpl',
@@ -14,7 +15,7 @@ Dionysus.module('DionysusApp.AdminCategory', function(Category, Dionysus, Backbo
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        "admin/categories(/)": "showCategories" 
+        'admin/categories(/)': 'showCategories' 
       },
       controller: new CategoryController()
     });

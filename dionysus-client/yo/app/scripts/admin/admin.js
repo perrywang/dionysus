@@ -1,4 +1,5 @@
-Dionysus.module('DionysusApp.AdminHome', function(AdminHome, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.AdminHome', function(AdminHome, Dionysus, Backbone, Marionette) {
+  'use strict';
 
   var HomeView = Marionette.ItemView.extend({
     template: '#admin-home-tpl',
@@ -14,7 +15,7 @@ Dionysus.module('DionysusApp.AdminHome', function(AdminHome, Dionysus, Backbone,
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        "admin(/)": "showHome" 
+        'admin(/)': 'showHome' 
       },
       controller: new AdminHomeController()
     });

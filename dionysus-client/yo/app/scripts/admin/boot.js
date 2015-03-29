@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette) {
+Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
   var LinkModel = Backbone.Model.extend({

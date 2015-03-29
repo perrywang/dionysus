@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ArticleModel = Backbone.Model.extend({

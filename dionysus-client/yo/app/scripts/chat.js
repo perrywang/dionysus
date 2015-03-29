@@ -2,7 +2,7 @@ $(function() {
   'use strict';
   
   var stompClient = null;
-  var room = "greetings";
+  var room = 'greetings';
 
 
   var connect = $('#connect');
@@ -10,7 +10,7 @@ $(function() {
   var input = $('#message');
   var messages = $('#messages');
 
-  function setConnected(connected) {
+  function setConnected() {
     connect.toggleClass('disabled');
     disconnect.toggleClass('disabled');
   }
@@ -30,7 +30,7 @@ $(function() {
   disconnect.on('click', function() {
     stompClient.disconnect();
     setConnected(false);
-    console.log("Disconnected");
+    console.log('Disconnected');
   });
 
   input.on('change', function(e) {
@@ -39,7 +39,7 @@ $(function() {
       e.preventDefault();
     }
     var name = document.getElementById('message').value;
-    stompClient.send("/dionysus/chat/" + room, {}, JSON.stringify({ 'content': name }));
+    stompClient.send('/dionysus/chat/' + room, {}, JSON.stringify({ 'content': name }));
     $(this).val('');
   });
 });

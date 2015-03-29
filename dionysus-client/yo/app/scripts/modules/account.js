@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var LoginView = Marionette.ItemView.extend({ 
@@ -95,7 +95,7 @@ Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Mar
       Dionysus.mainRegion.show(new RegisterView());
     },
     logout: function() {
-      alert('logout')
+      
     }
   });
 
@@ -107,6 +107,6 @@ Dionysus.module('DionysusApp.Account', function(Account, Dionysus, Backbone, Mar
         'app/register(/)': 'register'
       },
       controller: new AccountController()
-    })
+    });
   });
 });

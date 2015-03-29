@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ModuleModel = Backbone.Model.extend({
@@ -38,7 +38,7 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        "(/)": "showHome" 
+        '(/)': 'showHome' 
       },
       controller: new HomeController()
     });

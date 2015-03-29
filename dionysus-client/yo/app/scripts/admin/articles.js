@@ -1,7 +1,7 @@
 /*
  * TODO: should remove duplicate model definition
  */
-Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ArticleModel = Backbone.Model.extend({
@@ -69,7 +69,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       save : '.button.submit'
     },
     events: {
-      'click @ui.save' : "saveArticle"
+      'click @ui.save' : 'saveArticle'
     },
     saveArticle: function() {
       var article = this.$el.form('get values');

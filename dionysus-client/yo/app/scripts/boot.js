@@ -1,4 +1,6 @@
-Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.Header', function(Header, Dionysus, Backbone, Marionette) {
+  'use strict';
+
   var HeaderView = Marionette.ItemView.extend({
     template: '#header-tpl',
     tagName: 'nav',
