@@ -1,16 +1,14 @@
 Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette, $) {
   var HeaderModel = Backbone.Model.extend({
     initialize: function() {
-      var selectable = new Backbone.Picky.Selectable(this);
-      _.extend(this, selectable);
+      Backbone.Select.Me.applyTo( this );
     }
   });
 
   var HeaderCollection = Backbone.Collection.extend({
     model: HeaderModel,
-    initialize: function() {
-      var singleSelect = new Backbone.Picky.SingleSelect(this);
-      _.extend(this, singleSelect);
+    initialize: function(models, options) {
+      Backbone.Select.One.applyTo( this, models, options );
     }
   });
 
@@ -40,6 +38,8 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     onRender: function() {
       if (this.model.selected) {
         this.$el.addClass('active');
+      } else {
+        this.$el.removeClass('active');
       }
     }
   }); 
