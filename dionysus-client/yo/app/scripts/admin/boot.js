@@ -1,22 +1,22 @@
 Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette, $) {
-  var HeaderModel = Backbone.Model.extend({
+  var LinkModel = Backbone.Model.extend({
     initialize: function() {
       Backbone.Select.Me.applyTo( this );
     }
   });
 
-  var HeaderCollection = Backbone.Collection.extend({
-    model: HeaderModel,
+  var LinkCollection = Backbone.Collection.extend({
+    model: LinkModel,
     initialize: function(models, options) {
       Backbone.Select.One.applyTo( this, models, options );
     }
   });
 
-  var headers = new HeaderCollection([
-    { name: "Home", href: "/admin", icon: "home" }, 
-    { name: "Articles", href: "/admin/articles", icon: "edit" }, 
-    { name: "Categories", href: "/admin/categories", icon: "inbox" }, 
-    { name: "Tests", href: "/admin/tests", icon: "lab" }
+  var links = new LinkCollection([
+    { name: "Home",       href: "/admin",             icon: "home"  },
+    { name: "Articles",   href: "/admin/articles",    icon: "edit"  },
+    { name: "Categories", href: "/admin/categories",  icon: "inbox" },
+    { name: "Tests",      href: "/admin/tests",       icon: "lab"   }
   ]);
 
   var LinkView = Marionette.ItemView.extend({
@@ -24,9 +24,7 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     className: "item",
     tagName: 'a',
     attributes: function() {
-      return {
-        href: this.model.get('href')
-      };
+      return { href: this.model.get('href') };
     },
     modelEvents: {
       "selected": "onRender",
@@ -41,7 +39,7 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     onRender: function() {
       this.$el.toggleClass('active', !!this.model.selected);
     }
-  }); 
+  });
 
   var HeaderView = Marionette.CollectionView.extend({
     childView: LinkView,
@@ -50,7 +48,7 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
   });
 
   Dionysus.addInitializer(function() {
-    Dionysus.headerRegion.show(new HeaderView({collection: headers}));
+    Dionysus.headerRegion.show(new HeaderView({collection: links}));
   });
 });
 
