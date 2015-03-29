@@ -34,11 +34,7 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
       this.model.select();
     },
     onRender: function() {
-      if (this.model.selected) {
-        this.$el.addClass('active');
-      } else {
-        this.$el.removeClass('active');
-      }
+      this.$el.toggleClass('active', !!this.model.selected);
     }
   }); 
 
