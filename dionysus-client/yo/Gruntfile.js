@@ -262,9 +262,9 @@ module.exports = function (grunt) {
             '<%= config.dist %>/scripts/{,*/}*.js',
             '<%= config.dist %>/styles/{,*/}*.css',
             '<%= config.dist %>/images/{,*/}*.*',
-            '<%= config.dist %>/font/{,*/}*.*',
             '<%= config.dist %>/fonts/{,*/}*.*',
-            '<%= config.dist %>/*.{ico,png}'
+            '<%= config.dist %>/*.{ico,png}',
+            '<%= config.dist %>/themes/default/assets/{,*/}*.*'
           ]
         }
       }
@@ -382,7 +382,7 @@ module.exports = function (grunt) {
             'images/{,*/}*.webp',
             '{,*/}*.html',
             'styles/fonts/{,*/}*.*',
-            'themes/{,*/}*.*',
+            'themes/default/assets/{,*/}*.*',
             'public/{,*/}*.*'
           ]
         }, {
