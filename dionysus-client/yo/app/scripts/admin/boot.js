@@ -19,15 +19,13 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     { name: "Tests", href: "/admin/tests", icon: "lab" }
   ]);
 
-  headers.models[0].selected=true;
-
   var HeaderView = Marionette.ItemView.extend({
     template: "#admin-header-tpl",
     tagName: "li",
     className: "item",
     initialize: function() {
       this.model.on('selected', this.onRender, this);
-      this.model.on('deselect', this.onRender, this);
+      this.model.on('deselected', this.onRender, this);
     },
     events: {
       "click a" : "navigateMenu"
