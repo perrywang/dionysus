@@ -48,6 +48,32 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     onRender: function() {
       this.$('.editor').editable({inlineMode: false});
       this.$('select.dropdown').dropdown();
+      this.$el.form({
+        title: {
+          identifier: 'title',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter a title'
+          }]
+        },
+        category: {
+          identifier: 'category',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter a category'
+          }]
+        }
+      });
+    },
+    ui : {
+      save : '.button.submit'
+    },
+    events: {
+      'click @ui.save' : "saveArticle"
+    },
+    saveArticle: function() {
+      var article = this.$el.form('get values');
+      console.log(article);
     }
   });
 

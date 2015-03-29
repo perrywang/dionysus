@@ -24,17 +24,20 @@ script#admin-article-detail-edit-tpl(type="text/template")
       input(name="title", type="text", value!="<%= title %>", placeholder="Title") 
     .field
       label Category
-      select.ui.dropdown
+      select.ui.dropdown(name="category")
         option(value="", elected=true) Choose you category
         option(value="1") Category 1
         option(value="2") Category 2
         option(value="3") Category 3
   .field
     label Summary
-    textarea#summary <%= summary %>
+    textarea(name="summary") <%= summary %>
   .field
     label Body
-    textarea#body.editor <%= body %>
+    textarea.editor(name="body") <%= body %>
+  .ui.button.submit
+    i.save.icon
+    | Save
 
 script#admin-article-create-tpl(type="text/template")
   h4.ui.dividing.header Article Creating
