@@ -1,14 +1,7 @@
 script#admin-header-tpl(type="text/template")
-  a.active.item(href="/admin")
-    i.home.icon 
-    | Home
-  a.item(href="/admin/articles") 
-    i.edit.icon
-    | Articles
-  a.item(href="/admin/categories")
-    i.inbox.icon
-    | Categories
-  a.item(href="/admin/tests") 
-    i.lab.icon
-    | Test
+  a(href!="<%= href %>") 
+    | <i class="icon <%= icon %>"></i><%= name %>
+
+script#admin-headers-tpl(type="text/template")
+  ul.ui.menu
 

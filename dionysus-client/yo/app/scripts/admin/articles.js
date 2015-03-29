@@ -19,7 +19,10 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#admin-article-tpl',
     tagName: 'li',
-    className: 'item'
+    className: 'item',
+    onRender: function() {
+      
+    }
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
