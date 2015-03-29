@@ -1,4 +1,6 @@
-Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, Marionette) {
+  'use strict';
+
   var LinkModel = Backbone.Model.extend({
     initialize: function() {
       Backbone.Select.Me.applyTo( this );
@@ -13,27 +15,27 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
   });
 
   var links = new LinkCollection([
-    { name: "Home",       href: "/admin",             icon: "home"  },
-    { name: "Articles",   href: "/admin/articles",    icon: "edit"  },
-    { name: "Categories", href: "/admin/categories",  icon: "inbox" },
-    { name: "Tests",      href: "/admin/tests",       icon: "lab"   }
+    { name: 'Home',       href: '/admin',             icon: 'home'  },
+    { name: 'Articles',   href: '/admin/articles',    icon: 'edit'  },
+    { name: 'Categories', href: '/admin/categories',  icon: 'inbox' },
+    { name: 'Tests',      href: '/admin/tests',       icon: 'lab'   }
   ]);
 
   var LinkView = Marionette.ItemView.extend({
-    template: "#admin-header-tpl",
-    className: "item",
+    template: '#admin-header-tpl',
+    className: 'item',
     tagName: 'a',
     attributes: function() {
       return { href: this.model.get('href') };
     },
     modelEvents: {
-      "selected": "onRender",
-      "deselected": "onRender"
+      'selected': 'onRender',
+      'deselected': 'onRender'
     },
     events: {
-      "click" : "navigateMenu"
+      'click' : 'navigateMenu'
     },
-    navigateMenu: function(e) {
+    navigateMenu: function() {
       this.model.select();
     },
     onRender: function() {
