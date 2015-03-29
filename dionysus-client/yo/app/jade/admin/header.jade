@@ -1,7 +1,7 @@
-script#admin-header-tpl(type="text/template")
-  a(href!="<%= href %>") 
-    | <i class="icon <%= icon %>"></i><%= name %>
-
 script#admin-headers-tpl(type="text/template")
-  ul.ui.menu
+  | <% _.each(items, function(item) { %>
+  | <a class="item" href="<%= item.href %>">
+  |   <i class="icon <%= item.icon %>"></i><%= item.name %>
+  | </a>
+  | <%}) %>
 

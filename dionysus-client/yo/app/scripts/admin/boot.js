@@ -19,30 +19,18 @@ Dionysus.module('DionysusApp.AdminHeader', function(Header, Dionysus, Backbone, 
     { name: "Tests", href: "/admin/tests", icon: "lab" }
   ]);
 
-  var HeaderView = Marionette.ItemView.extend({
-    template: "#admin-header-tpl",
-    tagName: "li",
-    className: "item",
-    modelEvents: {
-      "selected": "onRender",
-      "deselected": "onRender"
+  var HeadersView = Marionette.ItemView.extend({
+    template: '#admin-headers-tpl',
+    tagName: 'nav',
+    className: 'ui menu',
+    ui: {
+      link: 'a.item'
     },
     events: {
-      "click a" : "navigateMenu"
-    },
-    navigateMenu: function(e) {
-      this.model.select();
-    },
-    onRender: function() {
-      this.$el.toggleClass('active', !!this.model.selected);
+      'click @ui.link': function() {
+        console.log(this);
+      }
     }
-  }); 
-
-  var HeadersView = Marionette.CompositeView.extend({
-    template: '#admin-headers-tpl',
-    childView: HeaderView,
-    childViewContainer: '.menu',
-    tagName: 'nav'
   });
 
   Dionysus.addInitializer(function() {
