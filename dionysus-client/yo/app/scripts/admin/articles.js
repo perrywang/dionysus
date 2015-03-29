@@ -36,13 +36,21 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
   var ArticleEditView = Marionette.ItemView.extend({
     template: '#admin-article-detail-edit-tpl',
     tagName: 'form',
-    className: 'ui form'
+    className: 'ui form',
+    onRender: function() {
+      this.$('.editor').editable({inlineMode: false});
+      this.$('select.dropdown').dropdown();
+    }
   });
 
   var ArticleCreateView = Marionette.ItemView.extend({
     template: '#admin-article-create-tpl',
     tagName: 'form',
-    className: 'ui form'
+    className: 'ui form',
+    onRender: function() {
+      this.$('.editor').editable({inlineMode: false});
+      this.$('select.dropdown').dropdown();
+    }
   });
 
   var articles = new ArticleCollection();
@@ -57,28 +65,18 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       article.fetch({ data: { projection: 'detail' }}).then(function() {
         var viewer = new ArticleDetailView({ model: article});
         Dionysus.mainRegion.show(viewer);
-        viewer.$el.find('.editor').editable({inlineMode: false});
-        viewer.$el.find('select.dropdown').dropdown();
       });
     },
     createArticle: function() {
       var article = new ArticleModel({});
       var editor = new ArticleCreateView({model: article});
       Dionysus.mainRegion.show(editor);
-      // make sure all js code has been loaded.
-      // TODO: should fire event to update ui
-      $(function() {
-        editor.$el.find('.editor').editable({inlineMode: false});
-        editor.$el.find('select.dropdown').dropdown();
-      });
     },
     editArticle: function(id) {
       var article = new ArticleModel({id: id});
       article.fetch({ data: { projection: 'detail' }}).then(function() {
         var editor = new ArticleEditView({ model: article});
         Dionysus.mainRegion.show(editor);
-        editor.$el.find('.editor').editable({inlineMode: false});
-        editor.$el.find('select.dropdown').dropdown();
       });
     }
   });
