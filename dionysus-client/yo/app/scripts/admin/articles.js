@@ -46,7 +46,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
-      this.$('.editor').editable({inlineMode: false});
+      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
       this.$('select.dropdown').dropdown();
       this.$el.form({
         title: {
@@ -82,7 +82,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
-      this.$('.editor').editable({inlineMode: false});
+      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
       this.$('select.dropdown').dropdown();
       this.$el.form({
         title: {
