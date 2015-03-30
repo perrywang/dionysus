@@ -84,6 +84,29 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     onRender: function() {
       this.$('.editor').editable({inlineMode: false});
       this.$('select.dropdown').dropdown();
+      this.$el.form({
+        title: {
+          identifier: 'title',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter a title'
+          }]
+        },
+        category: {
+          identifier: 'category',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter a category'
+          }]
+        },
+        summary: {
+          identifier: 'summary',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter a summary'
+          }]
+        }
+      });
     }
   });
 
