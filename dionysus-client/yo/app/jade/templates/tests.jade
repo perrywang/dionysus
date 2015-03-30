@@ -1,27 +1,27 @@
-script#test-detail-tpl(type="text/template")
+script#test-tpl(type="text/template")
   //- test name and description
-  #test-header
-    h5 <%= title %>
-    h3 <%= description %>
-  //- item description and options
-  #test-item
-  a.previous.waves-effect.waves-light.btn 上一题
-  a.next.waves-effect.waves-light.btn 下一题
+  #test-header.section
+  .divider
+  #test-item.section
+  .divider
+  #test-wizard.section
 
-script#test-general-tpl(type="text/template")
+script#test-header-tpl(type="text/template")
   //- test name and description
-  header
-    h5 <%= title %>
-    image <%= image>
-    h3 <%= description %>
-  button.btn.waves-effect.waves-light 开始测试
+  h3 <%= title %>
+  h5 <%= description %>
+  span
+    h5 第<%= current+1 %>题，一共<%= total %>题
 
 script#test-item-tpl(type="text/template")
   span
-    |<%= sequence %>
-    |<%= description %>
+    <%= description %>
   #item-options
 
 script#test-item-option-tpl(type="text/template")
   input(type="radio")
   label <%= description %>
+
+script#test-wizard-tpl(type="text/template")
+  a#last.waves-effect.waves-light.btn 上一题
+  a#next.waves-effect.waves-light.btn 下一题
