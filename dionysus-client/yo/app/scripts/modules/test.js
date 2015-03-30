@@ -145,11 +145,11 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
         },
 
         lastClicked : function(){
-            this.trigger('move:last');
+            this.trigger('item:changed','last');
         },
 
         nextClicked : function(){
-            this.trigger('move:next');
+            this.trigger('item:changed','next');
         }
     });
 
@@ -188,8 +188,14 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
                 var wizardView = new WizardView();
 
-                wizardView.on('move:next',function(){
-                    var current = test.get('current')+1;
+                wizardView.on('item:changed',function(view,direction){
+                    var current = test.get('current');
+                    if(direction == "last"){
+                        current--;
+                    }else{
+                        current++;
+                    }
+
                     test.set('current',current);
                     var currentItem = test.get('items')[current];
                     itemView.model.set('description',currentItem['description']);
@@ -197,14 +203,6 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
                     itemView.render();
                 });
 
-                wizardView.on('move:last',function(){
-                    var current = test.get('current')-1;
-                    test.set('current',current);
-                    var currentItem = test.get('items')[current];
-                    itemView.model.set('description',currentItem['description']);
-                    itemView.collection = new TestItemOptionCollection(currentItem['options']);
-                    itemView.render();
-                });
 
                 var testView = new TestView();
 
