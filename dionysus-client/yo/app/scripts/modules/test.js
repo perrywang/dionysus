@@ -145,11 +145,11 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
         },
 
         lastClicked : function(){
-            this.trigger('item:changed','last');
+            this.trigger('item:changed',-1);
         },
 
         nextClicked : function(){
-            this.trigger('item:changed','next');
+            this.trigger('item:changed',1);
         }
     });
 
@@ -188,15 +188,9 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
                 var wizardView = new WizardView();
 
-                wizardView.on('item:changed',function(view,direction){
+                wizardView.on('item:changed',function(view,step){
                     var current = test.get('current');
-                    if(direction == "last"){
-                        current--;
-                    }else{
-                        current++;
-                    }
-
-                    test.set('current',current);
+                    test.set('current',current+step);
                     var currentItem = test.get('items')[current];
                     itemView.model.set('description',currentItem['description']);
                     itemView.collection = new TestItemOptionCollection(currentItem['options']);
