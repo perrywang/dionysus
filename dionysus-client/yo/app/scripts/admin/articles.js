@@ -4,6 +4,28 @@
 Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
+
+  var CategoryModel = Backbone.Model.extend({
+    urlRoot: '/api/v1/categories'
+  });
+
+  var CategoryCollection = Backbone.Collection.extend({
+    url: '/api/v1/categories',
+    parse: function(response) {
+      return response._embedded.categories;
+    },
+    model: CategoryModel
+  });
+
+  var categories = new CategoryCollection();
+
+  var categoryTpl = _.template([
+    '<% _.each(items, function(item) { %>',
+      '<option value="<%= item.id %>" <% if(selected == item.id) {%>selected<%}%>>',
+        '<%= item.name %>',
+      '</option>',
+    '<% }) %>'].join(''));
+
   var ArticleModel = Backbone.Model.extend({
     urlRoot: '/api/v1/articles'
   });
@@ -47,6 +69,12 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     className: 'ui form',
     onRender: function() {
       this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
+
+      // TODO: should use widget like component
+      var html = categoryTpl({ items: categories.toJSON(), selected: this.model.id });
+      var select = this.$('select[name="category"]');
+      select.append(html);
+
       this.$('select.dropdown').dropdown();
       this.$el.form({
         title: {
@@ -83,6 +111,12 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     className: 'ui form',
     onRender: function() {
       this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
+
+      // TODO: should use widget like component
+      var html = categoryTpl({ items: categories.toJSON(), selected: 0 });
+      var select = this.$('select[name="category"]');
+      select.append(html);
+
       this.$('select.dropdown').dropdown();
       this.$el.form({
         title: {
@@ -127,13 +161,18 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     createArticle: function() {
       var article = new ArticleModel({});
       var editor = new ArticleCreateView({model: article});
-      Dionysus.mainRegion.show(editor);
+      categories.fetch().then(function() {
+        Dionysus.mainRegion.show(editor);
+      });
     },
     editArticle: function(id) {
       var article = new ArticleModel({id: id});
+      
       article.fetch({ data: { projection: 'detail' }}).then(function() {
         var editor = new ArticleEditView({ model: article});
-        Dionysus.mainRegion.show(editor);
+        categories.fetch().then(function() {
+          Dionysus.mainRegion.show(editor);
+        });
       });
     }
   });

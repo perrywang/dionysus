@@ -27,10 +27,7 @@ script#admin-article-detail-edit-tpl(type="text/template")
     .field
       label Category
       select.ui.dropdown(name="category")
-        option(value="", elected=true) Choose you category
-        option(value="1") Category 1
-        option(value="2") Category 2
-        option(value="3") Category 3
+        option(value="") Choose you category
   .field
     label Summary
     textarea(name="summary") <%= summary %>
@@ -50,10 +47,7 @@ script#admin-article-create-tpl(type="text/template")
     .field
       label Category
       select.ui.dropdown(name="category")
-        option(value="", elected=true) Choose you category
-        option(value="1") Category 1
-        option(value="2") Category 2
-        option(value="3") Category 3
+        option(value="") Choose you category
   .field
     label Summary
     textarea#summary
