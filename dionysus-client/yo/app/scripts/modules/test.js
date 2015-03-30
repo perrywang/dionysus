@@ -189,8 +189,8 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
                 var wizardView = new WizardView();
 
                 wizardView.on('item:changed',function(view,step){
-                    var current = test.get('current');
-                    test.set('current',current+step);
+                    var current = test.get('current') + step;
+                    test.set('current',current);
                     var currentItem = test.get('items')[current];
                     itemView.model.set('description',currentItem['description']);
                     itemView.collection = new TestItemOptionCollection(currentItem['options']);
