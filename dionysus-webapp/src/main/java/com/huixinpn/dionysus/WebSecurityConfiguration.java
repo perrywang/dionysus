@@ -31,31 +31,22 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		
-//		http.antMatcher("/api/v1/**")
-//			.authorizeRequests()
-//				.anyRequest().hasRole("USER")
-//				.and()
-//			.httpBasic();
-
-//		http.antMatcher("/api/v1/**")
-//			.authorizeRequests()
-//			.anyRequest()
-//			.permitAll();
-		
-	    http.authorizeRequests()     
-            .antMatchers("/api/v1/admin/**")
+	protected void configure(HttpSecurity http) throws Exception {		
+	    http.authorizeRequests()
+            .antMatchers("/api/v1/admin/**", "/admin/**")
             .access("hasRole('ROLE_ADMIN')")
-            .and()
+          .and()
             .formLogin()
-            //login.js is the login web page
-            .loginPage("/login").failureUrl("/login?error")
+            .loginPage("/login")
+            .failureUrl("/login?error")
 			.usernameParameter("username")
 			.passwordParameter("password")
-			.and().logout().logoutSuccessUrl("/login?logout")
-			//403.js is the web page when access is denied
-			.and().exceptionHandling().accessDeniedPage("/403");
+		  .and()
+		  	.logout()
+		  	.logoutSuccessUrl("/login?logout")
+		  .and()
+		  	.exceptionHandling()
+		  	.accessDeniedPage("/403");
 	}
 	
 	@Override
@@ -64,8 +55,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/")
 			.antMatchers("/themes/**")
 			.antMatchers("/public/**")
-			.antMatchers("/font/**")
 			.antMatchers("/styles/**")
+			.antMatchers("/fonts/**")
 			.antMatchers("/images/**")
 			.antMatchers("/scripts/**");
 	}

@@ -20,8 +20,8 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public User login(@RequestBody User user) {
-		return null;
+	public void login(@RequestBody User user) {
+		
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -31,7 +31,8 @@ public class LoginController {
 
 	@RequestMapping(value = "/validate/users", method = RequestMethod.POST)
 	public boolean validate(@RequestBody User user) {
-		return userService.userValidation(user.getUsername(),
+		return userService.userValidation(
+				user.getUsername(),
 				user.getPassword());
 	}
 }

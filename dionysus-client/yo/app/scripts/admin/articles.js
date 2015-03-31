@@ -4,7 +4,6 @@
 Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
-
   var CategoryModel = Backbone.Model.extend({
     urlRoot: '/api/v1/categories'
   });
