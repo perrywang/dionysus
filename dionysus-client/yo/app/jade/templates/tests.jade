@@ -1,10 +1,10 @@
 script#test-tpl(type="text/template")
   //- test name and description
-  #test-header.section
-  .divider
-  #test-item.section
-  .divider
-  #test-wizard.section
+  #test-header.ui.left.aligned.compact.segment
+  .ui.horizontal.divider
+  #test-item.ui.left.aligned.compact.segment
+  .ui.horizontal.divider
+  #test-wizard
 
 script#test-header-tpl(type="text/template")
   //- test name and description
@@ -23,5 +23,7 @@ script#test-item-option-tpl(type="text/template")
   label <%= description %>
 
 script#test-wizard-tpl(type="text/template")
-  a#last.waves-effect.waves-light.btn 上一题
-  a#next.waves-effect.waves-light.btn 下一题
+  .four.wide.column
+      #last.ui.primary.button 上一题
+  .four.wide.column
+      #next.ui.primary.button 下一题
