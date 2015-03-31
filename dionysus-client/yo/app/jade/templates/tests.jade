@@ -1,10 +1,8 @@
 script#test-tpl(type="text/template")
   //- test name and description
-  #test-header.ui.left.aligned.compact.segment
-  .ui.horizontal.divider
-  #test-item.ui.left.aligned.compact.segment
-  .ui.horizontal.divider
-  #test-wizard
+  #test-header.ui.vertical.segment
+  #test-item.ui.vertical.segment
+  #test-wizard.ui.vertical.segment
 
 script#test-header-tpl(type="text/template")
   //- test name and description
@@ -14,13 +12,15 @@ script#test-header-tpl(type="text/template")
     h5 第<%= current+1 %>题，一共<%= total %>题
 
 script#test-item-tpl(type="text/template")
-  span
-    <%= description %>
+  .ui.basic.segment
+    .label <%= description %>
   #item-options
 
 script#test-item-option-tpl(type="text/template")
-  input(type="radio")
-  label <%= description %>
+  .ui.basic.segment
+    .ui.radio.checkbox
+      input(type="radio")
+      label <%= description %>
 
 script#test-wizard-tpl(type="text/template")
   .four.wide.column

@@ -19,7 +19,6 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
     var TestItemOptionView = Marionette.ItemView.extend({
         template: '#test-item-option-tpl',
-
         initialize: function(){
             this.model.on('change:selected', this.render, this);
         },
@@ -35,11 +34,12 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
         selectOption: function () {
             if(!this.model.get('selected')){
                 this.trigger('option:changed',this.model.get('id'));
+
             }
         },
 
         onRender : function(){
-            this.$el.toggleClass('teal lighten-4',this.model.get('selected'));
+            this.$el.toggleClass('test-item-option-selected',this.model.get('selected'));
             this.ui.checkbox.prop('checked',this.model.get('selected'));
         }
     });
@@ -51,6 +51,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
     var TestView = Marionette.LayoutView.extend({
 
         template: '#test-tpl',
+        className: 'ui segment',
 
         regions:{
             TestHeaderRegion : '#test-header',
@@ -69,6 +70,8 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
     var ItemView = Marionette.CompositeView.extend({
         template : '#test-item-tpl',
+        className : 'ui form',
+
         childView : TestItemOptionView,
         childViewContainer: '#item-options'
     });
@@ -76,9 +79,27 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
     var WizardView = Marionette.ItemView.extend({
         template : '#test-wizard-tpl',
         className : 'ui grid',
+        initialize : function(){
+            this.model.on('change:current',this.render,this);
+        },
         events : {
             'click #last' : 'lastClicked',
             'click #next' : 'nextClicked'
+        },
+
+        ui:{
+            'lastBtn' : '#last',
+            'nextBtn' : '#next'
+        },
+        onRender : function(){
+            var current = this.model.get('current');
+            var total = this.model.get('total');
+            if(current === 0){
+                this.ui.lastBtn.addClass('disabled');
+            }
+            if(current === total - 1){
+                this.ui.nextBtn.addClass('disabled');
+            }
         },
 
         lastClicked : function(){
@@ -111,7 +132,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
                     collection : options
                 });
 
-                itemView.on('childview:option:changed',function(view,selectedId){
+                itemView.on('childview:option:changed',function(childview,selectedId){
                     var current = test.get('current');
                     var currentItem = test.get('items')[current];
                     currentItem.options.map(function(option){
@@ -123,15 +144,32 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
                 });
 
-                var wizardView = new WizardView();
+                var wizardView = new WizardView({model:test});
 
-                wizardView.on('item:changed',function(view,step){
+                wizardView.on('item:changed',function(step){
                     var current = test.get('current') + step;
                     test.set('current',current);
                     var currentItem = test.get('items')[current];
-                    itemView.model.set('description',currentItem.description);
-                    itemView.collection = new TestItemOptionCollection(currentItem.options);
-                    itemView.render();
+                    var item = new TestItemModel({
+                        description : test.get('items')[current].description
+                    });
+                    var options = new TestItemOptionCollection(test.get('items')[current].options);
+                    var itemView = new ItemView({
+                        model : item,
+                        collection : options
+                    });
+                    itemView.on('childview:option:changed',function(childview,selectedId){
+                        var current = test.get('current');
+                        var currentItem = test.get('items')[current];
+                        currentItem.options.map(function(option){
+                            option.selected = (option.id === selectedId);
+                        });
+                        options.each(function(option){
+                            option.set('selected',option.get('id') === selectedId);
+                        });
+
+                    });
+                    testView.TestItemRegion.show(itemView);
                 });
 
 
