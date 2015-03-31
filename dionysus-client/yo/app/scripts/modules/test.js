@@ -82,11 +82,11 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
         },
 
         lastClicked : function(){
-            this.trigger('item:changed','last');
+            this.trigger('item:changed',-1);
         },
 
         nextClicked : function(){
-            this.trigger('item:changed','next');
+            this.trigger('item:changed',1);
         }
     });
 
@@ -125,14 +125,8 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
                 var wizardView = new WizardView();
 
-                wizardView.on('item:changed',function(view,direction){
-                    var current = test.get('current');
-                    if(direction === 'last'){
-                        current--;
-                    }else{
-                        current++;
-                    }
-
+                wizardView.on('item:changed',function(view,step){
+                    var current = test.get('current') + step;
                     test.set('current',current);
                     var currentItem = test.get('items')[current];
                     itemView.model.set('description',currentItem.description);
