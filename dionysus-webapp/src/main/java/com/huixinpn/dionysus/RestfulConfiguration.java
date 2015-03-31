@@ -2,7 +2,6 @@ package com.huixinpn.dionysus;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Locale.Category;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,6 +9,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 
 import com.huixinpn.dionysus.domain.Article;
+import com.huixinpn.dionysus.domain.Category;
 
 @Configuration
 @Import(RepositoryRestMvcConfiguration.class)

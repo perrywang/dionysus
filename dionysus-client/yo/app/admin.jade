@@ -19,8 +19,11 @@ html(class="no-js")
 
   // build:js(.) /scripts/admin/froala_editor.js
   script(src="/bower_components/froala/js/froala_editor.min.js")
-  script(src="/bower_components/froala/js/langs/zh_cn.js")
   // endbuild
+
+  script(src="/public/langs/zh_cn.js")
+  script
+    | $.Editable.DEFAULTS.key = 'qnbccwA-16ebB1watfgB3zuv==';
 
   // build:js({app,.tmp}) /scripts/admin/app.js
   script(src="/scripts/app.js")

@@ -8,7 +8,9 @@ script#admin-article-tpl(type="text/template")
     p.description <%= summary %>
 
 script#admin-articles-tpl(type="text/template")
-  h2.ui.header Article List
+  a.ui.button.edit.blue(href="/admin/articles/create") 
+    i.add.icon
+    | Create
   ul.ui.relaxed.items
 
 script#admin-article-detail-tpl(type="text/template")
@@ -25,10 +27,7 @@ script#admin-article-detail-edit-tpl(type="text/template")
     .field
       label Category
       select.ui.dropdown(name="category")
-        option(value="", elected=true) Choose you category
-        option(value="1") Category 1
-        option(value="2") Category 2
-        option(value="3") Category 3
+        option(value="") Choose you category
   .field
     label Summary
     textarea(name="summary") <%= summary %>
@@ -44,17 +43,16 @@ script#admin-article-create-tpl(type="text/template")
   .two.fields
     .field
       label Title
-      input(type="text", placeholder="Title") 
+      input(type="text", name="title", placeholder="Title") 
     .field
       label Category
-      select.ui.dropdown
-        option(value="", elected=true) Choose you category
-        option(value="1") Category 1
-        option(value="2") Category 2
-        option(value="3") Category 3
+      select.ui.dropdown(name="category")
+        option(value="") Choose you category
   .field
     label Summary
     textarea#summary
   .field
     label Body
     textarea#body.editor
+  .ui.button.submit.blue
+    | Create
