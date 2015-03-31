@@ -22,7 +22,7 @@ public class Article extends AbstractDionysusAuditable<User> {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "summary")
+	@Lob @Column(name = "summary")
 	private String summary;
 
 	@Valid
@@ -30,8 +30,7 @@ public class Article extends AbstractDionysusAuditable<User> {
 	private Category category;
 
 	@NotBlank
-	@Lob
-	@Column(name = "body")
+	@Lob @Column(name = "body")
 	private String body;
 
 	@Version
