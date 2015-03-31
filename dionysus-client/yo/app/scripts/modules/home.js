@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette) {
+Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ModuleView = Marionette.ItemView.extend({
@@ -33,7 +33,7 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
   });
 
   Dionysus.addInitializer(function() {
-    Dionysus.headerRegion.show(new HeaderView());
+    Dionysus.mainNavRegion.show(new HeaderView());
     Dionysus.footerRegion.show(new FooterView());
   });
 

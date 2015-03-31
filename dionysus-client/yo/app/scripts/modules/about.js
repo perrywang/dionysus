@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.About', function(About, Dionysus, Backbone, Marionette) {
+Dionysus.module('About', function(About, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var Page = Backbone.Model.extend({

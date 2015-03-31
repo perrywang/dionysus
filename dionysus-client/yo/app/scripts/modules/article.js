@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Article', function(Article, Dionysus, Backbone, Marionette) {
+Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ArticleView = Marionette.ItemView.extend({ 

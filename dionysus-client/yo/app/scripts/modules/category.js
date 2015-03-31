@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.Category', function(Category, Dionysus, Backbone) {
+Dionysus.module('Category', function(Category, Dionysus, Backbone) {
   'use strict';
 
   var CategoryModel = Backbone.Model.extend({
