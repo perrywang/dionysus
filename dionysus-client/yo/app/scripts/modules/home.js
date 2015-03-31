@@ -1,19 +1,6 @@
 Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  var ModuleModel = Backbone.Model.extend({
-    urlRoot: '/api/v1/modules'
-  });
-
-  var ModuleCollection = Backbone.Collection.extend({
-    url: '/api/v1/modules',
-    parse: function(response) {
-      var embedded = response._embedded;
-      return embedded ? embedded.modules : [];
-    },
-    model: ModuleModel
-  });
-
   var ModuleView = Marionette.ItemView.extend({
     template: '#module-tpl',
     className: 'card fluid'
@@ -26,19 +13,20 @@ Dionysus.module('DionysusApp.Home', function(Home, Dionysus, Backbone, Marionett
     className: 'ui segment'
   });
 
-  var modules = new ModuleCollection();
-
   var HomeController = Marionette.Controller.extend({
     showHome: function() {
-      Dionysus.mainRegion.show(new ModulesView({ collection: modules }));
-      modules.fetch();
+      var fetching = Dionysus.request('module:entities');
+      $.when(fetching).done(function(modules) {
+        Dionysus.mainRegion.show(new ModulesView({ collection: modules }));
+      });
     }
   });
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        '(/)': 'showHome' 
+        '(/)': 'showHome',
+        'app(/)': 'showHome'
       },
       controller: new HomeController()
     });

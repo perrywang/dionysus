@@ -1,21 +1,11 @@
 /*
  * TODO: should remove duplicate model definition
  */
-Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone, Marionette) {
+Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  var CategoryModel = Backbone.Model.extend({
-    urlRoot: '/api/v1/categories'
-  });
-
-  var CategoryCollection = Backbone.Collection.extend({
-    url: '/api/v1/categories',
-    parse: function(response) {
-      return response._embedded.categories;
-    },
-    model: CategoryModel
-  });
-
+  var CategoryCollection = Dionysus.Entities.CategoryCollection;
+  var ArticleModel = Dionysus.Entities.Article;
   var categories = new CategoryCollection();
 
   var categoryTpl = _.template([
@@ -24,26 +14,6 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
         '<%= item.name %>',
       '</option>',
     '<% }) %>'].join(''));
-
-  var ArticleModel = Backbone.Model.extend({
-    urlRoot: '/api/v1/articles'
-  });
-
-  var ArticleCollection = Backbone.PageableCollection.extend({
-    model: ArticleModel,
-    url: '/api/v1/articles',
-    parse: function(response) {
-      var embedded = response._embedded;
-      return embedded ? embedded.articles : [];
-    },
-    state: {
-      firstPage: 0
-    },
-    queryParams: {
-      currentPage: 'page',
-      pageSize: 'size'
-    }
-  });
 
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#admin-article-tpl',
@@ -61,7 +31,6 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     template: '#admin-article-detail-tpl',
     tagName: 'article'
   });
-
 
   var ArticleEditorView = Marionette.ItemView.extend({
     template: '#admin-article-editor-tpl',
@@ -115,12 +84,12 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     }
   });
 
-  var articles = new ArticleCollection();
-
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
-      Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
-      articles.fetch({ data: { projection: 'summary' }});
+      var fetchingArticles = Dionysus.request('article:entities');
+      $.when(fetchingArticles).done(function(articles) {
+        Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
+      });
     },
     showArticle: function(id) {
       var article = new ArticleModel({id: id});
@@ -137,9 +106,8 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       });
     },
     editArticle: function(id) {
-      var article = new ArticleModel({id: id});
-      
-      article.fetch({ data: { projection: 'detail' }}).then(function() {
+      var articleFetching = Dionysus.request('article:entity', id);
+      $.when(articleFetching).done(function(article) {
         var editor = new ArticleEditorView({ model: article});
         categories.fetch().then(function() {
           Dionysus.mainRegion.show(editor);
