@@ -20,7 +20,6 @@ Dionysus.module('DionysusApp.About', function(About, Dionysus, Backbone, Marione
     }
   });
 
-
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {

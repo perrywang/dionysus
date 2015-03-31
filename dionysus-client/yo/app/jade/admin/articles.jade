@@ -1,22 +1,17 @@
-script#admin-article-tpl(type="text/template")
-  .image
-    img(src="/public/images/placeholder.png")
-  .content
-    a.ui.header(href!="/admin/articles/<%= id %>/edit") 
-      i.edit.icon
-      | <%= title %>
-    p.description <%= summary %>
-
 script#admin-articles-tpl(type="text/template")
   a.ui.button.edit.blue(href="/admin/articles/create") 
     i.add.icon
     | Create
   ul.ui.relaxed.items
 
-script#admin-article-detail-tpl(type="text/template")
-  h4 <%=title%>
-  p <%= summary%>
-  p <%= body %>
+script#admin-article-tpl(type="text/template")
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.ui.header(href!="/admin/articles/<%= id %>") 
+      i.edit.icon
+      | <%= title %>
+    p.description <%= summary %>
 
 script#admin-article-editor-tpl(type="text/template")
   .two.fields
@@ -25,8 +20,11 @@ script#admin-article-editor-tpl(type="text/template")
       input(name="title", type="text", placeholder="Title") 
     .field
       label Category
-      select.ui.dropdown(name="category")
+      select.ui.dropdown(name="categoryId")
         option(value="") Choose you category
+        | <% _.each(categories, function(category) { %>
+        | <option value="<%= category.id %>"><%= category.name %></option>
+        | <% }) %>
   .field
     label Summary
     textarea(name="summary")

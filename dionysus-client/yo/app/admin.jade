@@ -28,9 +28,12 @@ html(class="no-js")
   // build:js({app,.tmp}) /scripts/admin/app.js
   script(src="/scripts/app.js")
   script(src="/scripts/common/entity.js")
+  script(src="/scripts/common/article.js")
+  script(src="/scripts/common/category.js")
   script(src="/scripts/admin/admin.js")
-  script(src="/scripts/admin/articles.js")
-  script(src="/scripts/admin/category.js")
+  script(src="/scripts/admin/article-management.js")
+  script(src="/scripts/admin/category-management.js")
   script(src="/scripts/admin/tests.js")
-  script(src="/scripts/admin/boot.js")
+  script
+    | Dionysus.start();
   // endbuild
