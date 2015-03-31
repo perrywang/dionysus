@@ -49,6 +49,13 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             type: 'empty',
             prompt: 'Please enter a summary'
           }]
+        },
+        body: {
+          identifier: 'body',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter article body'
+          }]
         }
       });
 
@@ -91,7 +98,6 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       var categoryFetching = Dionysus.request('category:entities');
 
       $.when(articleFetching, categoryFetching).done(function(article, categories) {
-        console.log(article);
         var editor = new ArticleEditorView({ model: article, categories: categories});
         Dionysus.mainRegion.show(editor);
       });
