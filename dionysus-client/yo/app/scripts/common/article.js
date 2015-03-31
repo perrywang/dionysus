@@ -2,7 +2,14 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   'use strict';
 
   Entities.Article = Backbone.Model.extend({
-    urlRoot: '/api/v1/articles'
+    urlRoot: '/api/v1/articles',
+    parse: function(article) {
+      var category = article;
+      if (category && category.id) {
+        article.category = category.id;
+      }
+      return article;
+    }
   });
 
   Entities.ArticleCollection = Backbone.PageableCollection.extend({
@@ -21,7 +28,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     }
   });
 
-  Dionysus.reqres.setHandler("article:entities", function() {
+  Dionysus.reqres.setHandler('article:entities', function() {
     var articles = new Entities.ArticleCollection();
     var defer = $.Deferred();
     articles.fetch({ data: { projection: 'summary' }}).then(function() {
@@ -30,7 +37,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler("article:entity", function(id) {
+  Dionysus.reqres.setHandler('article:entity', function(id) {
     var article = new Entities.Article({id: id});
     var defer = $.Deferred();
     article.fetch({ data: { projection: 'detail' }}).then(function() {
@@ -39,7 +46,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler("article:new", function() {
+  Dionysus.reqres.setHandler('article:new', function() {
     return new Entities.Article();
   });
 });

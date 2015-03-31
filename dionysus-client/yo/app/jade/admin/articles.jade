@@ -22,6 +22,9 @@ script#admin-article-editor-tpl(type="text/template")
       label Category
       select.ui.dropdown(name="category")
         option(value="") Choose you category
+        | <% _.each(categories, function(category) { %>
+        | <option value="<%= category.id %>"><%= category.name %></option>
+        | <% }) %>
   .field
     label Summary
     textarea(name="summary")

@@ -1,19 +1,5 @@
-/*
- * TODO: should remove duplicate model definition
- */
 Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette, $) {
   'use strict';
-
-  var CategoryCollection = Dionysus.Entities.CategoryCollection;
-  var ArticleModel = Dionysus.Entities.Article;
-  var categories = new CategoryCollection();
-
-  var categoryTpl = _.template([
-    '<% _.each(items, function(item) { %>',
-      '<option value="<%= item.id %>" <% if(selected == item.id) {%>selected<%}%>>',
-        '<%= item.name %>',
-      '</option>',
-    '<% }) %>'].join(''));
 
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#admin-article-tpl',
@@ -31,13 +17,16 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     template: '#admin-article-editor-tpl',
     tagName: 'form',
     className: 'ui form',
+    initialize: function(options) {
+      this.model = options.model;
+      this.categories = options.categories;
+    },
+    serializeData: function(){
+      var data = this.model.toJSON();
+      data.categories = this.categories.toJSON();
+      return data;
+    },
     onRender: function() {
-      
-      // TODO: should use widget like component
-      var html = categoryTpl({ items: categories.toJSON(), selected: this.model.id });
-      var select = this.$('select[name="category"]');
-      select.append(html);
-
       this.$('select.dropdown').dropdown();
       this.$el.form({
         title: {
@@ -87,19 +76,24 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       });
     },
     createArticle: function() {
-      var article = new Dionysus.request('article:new');
-      var editor = new ArticleEditorView({model: article});
-      categories.fetch().then(function() {
+      var article = Dionysus.request('article:new');
+      var fetchingCategory = Dionysus.request('category:entities');
+      $.when(fetchingCategory).done(function(categories) {
+        var editor = new ArticleEditorView({
+          model: article, 
+          categories: categories
+        });
         Dionysus.mainRegion.show(editor);
       });
     },
     editArticle: function(id) {
       var articleFetching = Dionysus.request('article:entity', id);
-      $.when(articleFetching).done(function(article) {
-        var editor = new ArticleEditorView({ model: article});
-        categories.fetch().then(function() {
-          Dionysus.mainRegion.show(editor);
-        });
+      var categoryFetching = Dionysus.request('category:entities');
+
+      $.when(articleFetching, categoryFetching).done(function(article, categories) {
+        console.log(article);
+        var editor = new ArticleEditorView({ model: article, categories: categories});
+        Dionysus.mainRegion.show(editor);
       });
     }
   });
