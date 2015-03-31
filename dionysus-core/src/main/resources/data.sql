@@ -17,6 +17,11 @@ insert into modules (id, title, subtitle, href, image, body) values (3, '汇心�
 
 insert into pages (id, name, title, body) values (1, 'about', 'About Us', '关于我们的详细页面');
 
+insert into menu (id, name, href) values (1, '心理体验', '/app/experience');
+insert into menu (id, name, href) values (2, '在线心理咨询', '/app/consult');
+insert into menu (id, name, href) values (3, '心理知识', '/app/knowledge');
+insert into menu (id, name, href) values (4, '心理课程', '/app/cources');
+
 insert into psychtests(id, title, description) values (1, '你是一个变态吗？', '测试你是否存在成为心理变态的可能性以及如何调整');
 insert into psychtestitems(id, test_id, description) values (1, 1, '看到有人在你面前抢劫你会怎么做？');
 insert into psychtestitemoptions(id, item_id, description) values (1, 1, '装作没看见');

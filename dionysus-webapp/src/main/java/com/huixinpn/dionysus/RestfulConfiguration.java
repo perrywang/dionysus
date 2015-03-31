@@ -10,6 +10,7 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 
 import com.huixinpn.dionysus.domain.Article;
 import com.huixinpn.dionysus.domain.Category;
+import com.huixinpn.dionysus.domain.Menu;
 
 @Configuration
 @Import(RepositoryRestMvcConfiguration.class)
@@ -17,7 +18,7 @@ public class RestfulConfiguration  extends RepositoryRestMvcConfiguration {
 
   @Override
   protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-    config.exposeIdsFor(Article.class, Category.class);
+    config.exposeIdsFor(Article.class, Category.class, Menu.class);
     try {
       config.setBaseUri(new URI("/api/v1"));
     } catch (URISyntaxException e) {
