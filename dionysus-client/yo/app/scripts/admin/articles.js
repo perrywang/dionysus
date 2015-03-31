@@ -63,57 +63,15 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     tagName: 'article'
   });
 
-  var ArticleEditView = Marionette.ItemView.extend({
-    template: '#admin-article-detail-edit-tpl',
+
+  var ArticleEditorView = Marionette.ItemView.extend({
+    template: '#admin-article-editor-tpl',
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
-      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
-
+      
       // TODO: should use widget like component
       var html = categoryTpl({ items: categories.toJSON(), selected: this.model.id });
-      var select = this.$('select[name="category"]');
-      select.append(html);
-
-      this.$('select.dropdown').dropdown();
-      this.$el.form({
-        title: {
-          identifier: 'title',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a title'
-          }]
-        },
-        category: {
-          identifier: 'category',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a category'
-          }]
-        }
-      });
-    },
-    ui : {
-      save : '.button.submit'
-    },
-    events: {
-      'click @ui.save' : 'saveArticle'
-    },
-    saveArticle: function() {
-      var article = this.$el.form('get values');
-      console.log(article);
-    }
-  });
-
-  var ArticleCreateView = Marionette.ItemView.extend({
-    template: '#admin-article-create-tpl',
-    tagName: 'form',
-    className: 'ui form',
-    onRender: function() {
-      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
-
-      // TODO: should use widget like component
-      var html = categoryTpl({ items: categories.toJSON(), selected: 0 });
       var select = this.$('select[name="category"]');
       select.append(html);
 
@@ -141,6 +99,19 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
           }]
         }
       });
+
+      this.$el.form('set values', this.model.toJSON());
+      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
+    },
+    ui : {
+      save : '.button.submit'
+    },
+    events: {
+      'click @ui.save' : 'saveArticle'
+    },
+    saveArticle: function() {
+      var article = this.$el.form('get values');
+      console.log(article);
     }
   });
 
@@ -160,7 +131,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
     },
     createArticle: function() {
       var article = new ArticleModel({});
-      var editor = new ArticleCreateView({model: article});
+      var editor = new ArticleEditorView({model: article});
       categories.fetch().then(function() {
         Dionysus.mainRegion.show(editor);
       });
@@ -169,7 +140,7 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       var article = new ArticleModel({id: id});
       
       article.fetch({ data: { projection: 'detail' }}).then(function() {
-        var editor = new ArticleEditView({ model: article});
+        var editor = new ArticleEditorView({ model: article});
         categories.fetch().then(function() {
           Dionysus.mainRegion.show(editor);
         });

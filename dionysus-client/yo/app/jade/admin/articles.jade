@@ -18,41 +18,21 @@ script#admin-article-detail-tpl(type="text/template")
   p <%= summary%>
   p <%= body %>
 
-script#admin-article-detail-edit-tpl(type="text/template")
-  h4.ui.dividing.header Article Editing
+script#admin-article-editor-tpl(type="text/template")
   .two.fields
     .field
       label Title
-      input(name="title", type="text", value!="<%= title %>", placeholder="Title") 
+      input(name="title", type="text", placeholder="Title") 
     .field
       label Category
       select.ui.dropdown(name="category")
         option(value="") Choose you category
   .field
     label Summary
-    textarea(name="summary") <%= summary %>
+    textarea(name="summary")
   .field
     label Body
-    textarea.editor(name="body") <%= body %>
+    textarea.editor(name="body")
   .ui.button.submit
     i.save.icon
     | Save
-
-script#admin-article-create-tpl(type="text/template")
-  h4.ui.dividing.header Article Creating
-  .two.fields
-    .field
-      label Title
-      input(type="text", name="title", placeholder="Title") 
-    .field
-      label Category
-      select.ui.dropdown(name="category")
-        option(value="") Choose you category
-  .field
-    label Summary
-    textarea#summary
-  .field
-    label Body
-    textarea#body.editor
-  .ui.button.submit.blue
-    | Create
