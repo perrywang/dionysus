@@ -27,11 +27,6 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     childViewContainer: '.items'
   });
 
-  var ArticleDetailView = Marionette.ItemView.extend({
-    template: '#admin-article-detail-tpl',
-    tagName: 'article'
-  });
-
   var ArticleEditorView = Marionette.ItemView.extend({
     template: '#admin-article-editor-tpl',
     tagName: 'form',
@@ -91,15 +86,8 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       });
     },
-    showArticle: function(id) {
-      var article = new ArticleModel({id: id});
-      article.fetch({ data: { projection: 'detail' }}).then(function() {
-        var viewer = new ArticleDetailView({ model: article});
-        Dionysus.mainRegion.show(viewer);
-      });
-    },
     createArticle: function() {
-      var article = new ArticleModel({});
+      var article = new Dionysus.request('article:new');
       var editor = new ArticleEditorView({model: article});
       categories.fetch().then(function() {
         Dionysus.mainRegion.show(editor);
@@ -121,8 +109,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       appRoutes : {
         'admin/articles(/)': 'showArticles',
         'admin/articles/create(/)': 'createArticle',
-        'admin/articles/:id(/)': 'showArticle',
-        'admin/articles/:id/edit': 'editArticle'
+        'admin/articles/:id': 'editArticle'
       },
       controller: new ArticleController()
     });
