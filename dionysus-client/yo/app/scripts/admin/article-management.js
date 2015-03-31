@@ -36,8 +36,8 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             prompt: 'Please enter a title'
           }]
         },
-        category: {
-          identifier: 'category',
+        categoryId: {
+          identifier: 'categoryId',
           rules: [{
             type: 'empty',
             prompt: 'Please enter a category'

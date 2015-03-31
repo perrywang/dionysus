@@ -2,14 +2,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   'use strict';
 
   Entities.Article = Backbone.Model.extend({
-    urlRoot: '/api/v1/articles',
-    parse: function(article) {
-      var category = article;
-      if (category && category.id) {
-        article.category = category.id;
-      }
-      return article;
-    }
+    urlRoot: '/api/v1/articles'
   });
 
   Entities.ArticleCollection = Backbone.PageableCollection.extend({

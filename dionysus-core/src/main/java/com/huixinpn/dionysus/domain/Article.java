@@ -85,6 +85,10 @@ public class Article extends AbstractDionysusAuditable<User> {
 	public void setVersion(Long version) {
 		this.version = version;
 	}
+	
+	public Long getCategoryId() {
+		return category != null ? category.getId() : 0L; 
+	}
 
 	@Override
 	public String toString() {
