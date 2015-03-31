@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.AdminHome', function(AdminHome, Dionysus, Backbone, Marionette) {
+Dionysus.module('AdminHome', function(AdminHome, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var HomeView = Marionette.ItemView.extend({

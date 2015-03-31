@@ -1,4 +1,4 @@
-Dionysus.module('DionysusApp.AdminCategory', function(Category, Dionysus, Backbone, Marionette) {
+Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var CategoryView = Marionette.ItemView.extend({
