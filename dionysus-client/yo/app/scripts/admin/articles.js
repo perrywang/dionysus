@@ -110,8 +110,9 @@ Dionysus.module('DionysusApp.AdminArticle', function(Article, Dionysus, Backbone
       'click @ui.save' : 'saveArticle'
     },
     saveArticle: function() {
-      var article = this.$el.form('get values');
-      console.log(article);
+      var json = this.$el.form('get values');
+      this.model.set(json);
+      this.model.save();
     }
   });
 
