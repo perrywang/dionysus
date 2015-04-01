@@ -86,7 +86,8 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
         ui:{
             'lastBtn' : '#last',
-            'nextBtn' : '#next'
+            'nextBtn' : '#next',
+            'submitBtb' : '#submit'
         },
         onRender : function(){
             var current = this.model.get('current');
@@ -96,7 +97,9 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
             }
             if(current === total - 1){
                 this.ui.nextBtn.addClass('disabled');
+                this.ui.submitBtb.removeClass('disabled');
             }
+
         },
 
         lastClicked : function(){
