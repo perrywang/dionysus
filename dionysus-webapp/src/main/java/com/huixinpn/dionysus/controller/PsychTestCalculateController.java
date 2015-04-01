@@ -8,10 +8,10 @@ import java.util.List;
 
 @Controller
 public class PsychTestCalculateController {
-    @RequestMapping(value = "/calculate", method = RequestMethod.POST)
-    public void calculate(List<Long> options){
-        //TODO we only need get a list including user selected PsychTestItemOption ids
-    }
+  @RequestMapping(value = "/calculate", method = RequestMethod.POST)
+  public void calculate(List<Long> options) {
+    //TODO we only need get a list including user selected PsychTestItemOption ids
+  }
 
 
 }
