@@ -51,8 +51,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
     var TestView = Marionette.LayoutView.extend({
 
         template: '#test-tpl',
-        className: 'ui segment',
-
+        className : 'ui segment',
         regions:{
             TestHeaderRegion : '#test-header',
             TestItemRegion : '#test-item',
@@ -70,8 +69,6 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
     var ItemView = Marionette.CompositeView.extend({
         template : '#test-item-tpl',
-        className : 'ui form',
-
         childView : TestItemOptionView,
         childViewContainer: '#item-options'
     });
@@ -138,7 +135,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
                     currentItem.options.map(function(option){
                         option.selected = (option.id === selectedId);
                     });
-                    options.each(function(option){
+                    itemView.collection.each(function(option){
                         option.set('selected',option.get('id') === selectedId);
                     });
 
@@ -150,26 +147,9 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
                     var current = test.get('current') + step;
                     test.set('current',current);
                     var currentItem = test.get('items')[current];
-                    var item = new TestItemModel({
-                        description : test.get('items')[current].description
-                    });
-                    var options = new TestItemOptionCollection(test.get('items')[current].options);
-                    var itemView = new ItemView({
-                        model : item,
-                        collection : options
-                    });
-                    itemView.on('childview:option:changed',function(childview,selectedId){
-                        var current = test.get('current');
-                        var currentItem = test.get('items')[current];
-                        currentItem.options.map(function(option){
-                            option.selected = (option.id === selectedId);
-                        });
-                        options.each(function(option){
-                            option.set('selected',option.get('id') === selectedId);
-                        });
-
-                    });
-                    testView.TestItemRegion.show(itemView);
+                    itemView.model.set('description',currentItem.description);
+                    itemView.collection = new TestItemOptionCollection(test.get('items')[current].options);
+                    itemView.render();
                 });
 
 
