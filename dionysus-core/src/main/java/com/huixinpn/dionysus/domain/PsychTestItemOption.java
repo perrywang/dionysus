@@ -6,26 +6,42 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "psychtestitemoptions")
-public class PsychTestItemOption extends AbstractDionysusPersistable{
+public class PsychTestItemOption extends AbstractDionysusPersistable {
 
-    private static final long serialVersionUID = -3002875103419512957L;
+  private static final long serialVersionUID = -3002875103419512957L;
 
-    @NotBlank
-    @Column(name="description")
-    private String description;
+  @NotBlank
+  @Column(name = "description")
+  private String description;
 
-    public PsychTestItemOption(String description) {
-        this.description = description;
-    }
+  private int score;
 
-    public PsychTestItemOption() {
-    }
+  public PsychTestItemOption(String description, int score) {
+    this.score = score;
+    this.description = description;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public PsychTestItemOption(String description) {
+    this.description = description;
+    this.score = 0;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public PsychTestItemOption() {
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public int getScore() {
+    return score;
+  }
+
+  public void setScore(int score) {
+    this.score = score;
+  }
 }
