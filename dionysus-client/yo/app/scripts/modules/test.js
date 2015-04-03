@@ -1,23 +1,7 @@
-Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
-  var TestModel = Backbone.Model.extend({
-    defaults: {
-      'current': 0
-    },
-    urlRoot: '/api/v1/tests'
-  });
-
-  var TestItemModel = Backbone.Model.extend({
-  });
-
-  var TestItemOptionModel = Backbone.Model.extend({
-    defaults: {
-      selected: false
-    }
-  });
-
-  var TestItemOptionView = Marionette.ItemView.extend({
+  var PsychTestItemOptionView = Marionette.ItemView.extend({
     template: '#test-item-option-tpl',
     initialize: function () {
       this.model.on('change:selected', this.render, this);
@@ -44,11 +28,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
     }
   });
 
-  var TestItemOptionCollection = Backbone.Collection.extend({
-    model: TestItemOptionModel
-  });
-
-  var TestView = Marionette.LayoutView.extend({
+  var PsychTestView = Marionette.LayoutView.extend({
 
     template: '#test-tpl',
     className: 'ui segment',
@@ -69,7 +49,7 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
   var ItemView = Marionette.CompositeView.extend({
     template: '#test-item-tpl',
-    childView: TestItemOptionView,
+    childView: PsychTestItemOptionView,
     childViewContainer: '#item-options'
   });
 
@@ -113,19 +93,19 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
 
   var TestController = Marionette.Controller.extend({
     showTest: function (id) {
-      var test = new TestModel({id: id});
-      test.fetch().then(function () {
+      var testFetching = Dionysus.request('test:entity', id);
+      $.when(testFetching).done(function (test) {
         var total = test.get('items').length;
         test.set('total', total);
         var headerView = new HeaderView({
           model: test
         });
         var current = test.get('current');
-        var item = new TestItemModel({
+        var item = new Dionysus.Entities.PsychTestItem({
           description: test.get('items')[current].description
         });
 
-        var options = new TestItemOptionCollection(test.get('items')[current].options);
+        var options = new Dionysus.Entities.PsychTestItemOptionCollection(test.get('items')[current].options);
 
         var itemView = new ItemView({
           model: item,
@@ -141,7 +121,6 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
           itemView.collection.each(function (option) {
             option.set('selected', option.get('id') === selectedId);
           });
-
         });
 
         var wizardView = new WizardView({model: test});
@@ -151,12 +130,12 @@ Dionysus.module('DionysusApp.Test', function (Test, Dionysus, Backbone, Marionet
           test.set('current', current);
           var currentItem = test.get('items')[current];
           itemView.model.set('description', currentItem.description);
-          itemView.collection = new TestItemOptionCollection(test.get('items')[current].options);
+          itemView.collection = new Dionysus.Entities.PsychTestItemOptionCollection(test.get('items')[current].options);
           itemView.render();
         });
 
 
-        var testView = new TestView();
+        var testView = new PsychTestView();
 
         testView.on('show', function () {
           testView.TestHeaderRegion.show(headerView);
