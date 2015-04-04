@@ -21,12 +21,20 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public void login(@RequestBody User user) {
-		
+		userService.sign(user.getUsername(),
+				user.getPassword());
+	}
+
+	@RequestMapping(value = "/login/failure", method = RequestMethod.GET)
+ 	public String loginFailure() {
+		String message = "Login Failure!";
+		return "redirect:/login?message="+message;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public boolean logout() {
-		return true;
+	public String logout() {
+		String message = "Logout Success!";
+		return "redirect:/login?message="+message;
 	}
 
 	@RequestMapping(value = "/validate/users", method = RequestMethod.POST)
