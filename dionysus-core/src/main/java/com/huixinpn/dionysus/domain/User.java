@@ -200,4 +200,17 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		sb.append("  inbox: " + this.getInbox().getId() + "\n");
 		return sb.toString();
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		if(obj instanceof User){
+			if(!this.getUsername().endsWith(((User) obj).getUsername())){
+				return false;
+			}
+			if(!this.getPassword().endsWith(((User) obj).getPassword())){
+				return false;
+			}
+		}
+		return true;
+	}
 }
