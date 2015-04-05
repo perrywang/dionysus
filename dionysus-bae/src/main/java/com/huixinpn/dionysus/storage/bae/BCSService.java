@@ -1,92 +1,94 @@
 package com.huixinpn.dionysus.storage.bae;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.util.UUID;
 
 import com.baidu.inf.iis.bcs.BaiduBCS;
 import com.baidu.inf.iis.bcs.auth.BCSCredentials;
 import com.baidu.inf.iis.bcs.http.HttpMethodName;
+import com.baidu.inf.iis.bcs.model.ObjectMetadata;
 import com.baidu.inf.iis.bcs.request.GenerateUrlRequest;
+import com.baidu.inf.iis.bcs.utils.Mimetypes;
+import com.huixinpn.dionysus.meta.BCSMedia;
+import com.huixinpn.dionysus.repository.BCSMediaRepository;
 import com.huixinpn.dionysus.storage.StorageException;
 import com.huixinpn.dionysus.storage.StorageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BCSService implements StorageService {
 
-	private static final String PREFIX = "/";
+  @Autowired
+  BCSMediaRepository repository;
 
-	private BaiduBCS bcs;
-	private String imageBucket;
-	private String videoBucket;
-	private String fileBucket;
+  private static final String PREFIX = "/";
 
-	public BCSService(BCSServiceBuilder builder) {
-		this.imageBucket = builder.getImageBucket();
-		this.videoBucket = builder.getVideoBucket();
-		this.fileBucket = builder.getFileBucket();
-		BCSCredentials credential = new BCSCredentials(builder.getAccessKey(), builder.getSecretKey());
-		bcs = new BaiduBCS(credential, builder.getBaiduEndpoint());
-		bcs.setDefaultEncoding("UTF-8");
-	}
+  private BaiduBCS bcs;
 
-	public String storeImage(File file) throws StorageException {
-		return store(imageBucket, file);
-	}
+  private String bucket;
 
-	public void deleteImage(String fileName) throws StorageException {
-		delete(imageBucket, fileName);
-	}
+  public BCSService(BCSServiceBuilder builder) {
+    this.bucket = builder.getBucket();
+    BCSCredentials credential = new BCSCredentials(builder.getAccessKey(), builder.getSecretKey());
+    bcs = new BaiduBCS(credential, builder.getBaiduEndpoint());
+    bcs.setDefaultEncoding("UTF-8");
+  }
 
-	public String storeVideo(File file) throws StorageException {
-		return store(videoBucket, file);
-	}
+  private String store(File file) throws StorageException {
+    String object = UUID.randomUUID().toString();
+    String normalized = PREFIX + object;
+    try {
+      bcs.putObject(bucket, normalized, file);
+    } catch (Exception t) {
+      throw new StorageException("failed to store file (" + file.getName() + ")", t);
+    }
+    return object;
+  }
 
-	public void deleteVideo(String videoName) throws StorageException {
-		delete(imageBucket, videoName);
-	}
+  private void delete(String object) throws StorageException {
+    try {
+      bcs.deleteObject(bucket, PREFIX+object);
+    } catch (Exception t) {
+      throw new StorageException("failed to delete file from baidu cloud", t);
+    }
+  }
 
-	public String storeFile(File file) throws StorageException {
-		return store(fileBucket, file);
-	}
+  @Override
+  public String save(InputStream input) throws StorageException {
+    try {
+      int length = input.available();
+      String object = UUID.randomUUID().toString();
+      String normalized = PREFIX + object;
+      ObjectMetadata metadata = new ObjectMetadata();
+      metadata.setContentLength(length);
+      metadata.setContentType("application/octet-stream");
+      bcs.putObject(bucket, normalized, input, metadata);
+      GenerateUrlRequest urlRequest = new GenerateUrlRequest(HttpMethodName.GET, bucket, normalized);
+      String url = bcs.generateUrl(urlRequest);
+      BCSMedia result = new BCSMedia();
+      result.setBucket(bucket);
+      result.setObject(object);
+      result.setUrl(url);
+      result.setMimetype("application/octet-stream");
+      repository.save(result);
+      return object;
+    } catch (Exception e) {
+      throw new StorageException("store to baidu cloud failed", e);
+    }
+  }
 
-	public void deleteFile(String fileName) throws StorageException {
-		delete(fileBucket, fileName);
-	}
+  @Override
+  public void remove(String name) throws StorageException {
+    delete(name);
+    repository.delete(repository.findByObject(name));
+  }
 
-	private String store(String bucket, File file) throws StorageException {
-		String name = PREFIX + file.getName();
-		try {
-			bcs.putObject(bucket, name, file);
-		} catch (Exception t) {
-			throw new StorageException("failed to store file (" + file.getName() + ")", t);
-		}
-		GenerateUrlRequest urlRuest = new GenerateUrlRequest(HttpMethodName.GET, bucket, name);
-		return bcs.generateUrl(urlRuest);
-	}
-
-	private void delete(String bucket, String fileName) throws StorageException {
-		String name = PREFIX + fileName;
-		try {
-			bcs.deleteObject(bucket, name);
-		} catch (Exception t) {
-			throw new StorageException("failed to delete file (" + fileName + ")", t);
-		}
-	}
-
-	@Override
-	public String save(InputStream file) throws StorageException {
-		// TODO Auto-generated method stub
-		throw new StorageException("not implements yet");
-	}
-
-	@Override
-	public String remove(String name) throws StorageException {
-		// TODO Auto-generated method stub
-		throw new StorageException("not implements yet");
-	}
-
-	@Override
-	public String save(byte[] data) throws StorageException {
-		// TODO Auto-generated method stub
-		throw new StorageException("not implements yet");
-	}
+  @Override
+  public String save(byte[] data) throws StorageException {
+    InputStream stream = new ByteArrayInputStream(data);
+    return save(stream);
+  }
 }

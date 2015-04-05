@@ -18,26 +18,35 @@ public class BCSMedia extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -1815965724911286764L;
 
-	@NotEmpty
-	@Column(name = "filename")
+  private String bucket;
+
+  private String object;
+
 	private String filename;
 
-	@Column(name = "type")
-	@Enumerated(EnumType.STRING)
-	private BCSMediaType type;
+  private String mimetype;
 
-	@Column(name = "url", unique = true)
 	private String url;
 
 	public BCSMedia() { }
 
-	public BCSMedia(String filename, BCSMediaType type, String url) {
-		this.filename = filename;
-		this.type = type;
-		this.url = url;
-	}
+  public String getBucket() {
+    return bucket;
+  }
 
-	public String getFilename() {
+  public void setBucket(String bucket) {
+    this.bucket = bucket;
+  }
+
+  public String getObject() {
+    return object;
+  }
+
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  public String getFilename() {
 		return filename;
 	}
 
@@ -45,15 +54,15 @@ public class BCSMedia extends AbstractDionysusAuditable<User> {
 		this.filename = filename;
 	}
 
-	public BCSMediaType getType() {
-		return type;
-	}
+  public String getMimetype() {
+    return mimetype;
+  }
 
-	public void setType(BCSMediaType type) {
-		this.type = type;
-	}
+  public void setMimetype(String mimetype) {
+    this.mimetype = mimetype;
+  }
 
-	public String getUrl() {
+  public String getUrl() {
 		return url;
 	}
 
