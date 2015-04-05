@@ -53,3 +53,6 @@ values (1, 'admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (2, 'cdf','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', TRUE, TRUE, TRUE, TRUE);
+
+insert into appointments (id, user_id, consultant_id, state, approach, ) values (1, 1, 1, 'WAITING', 'ONLINE' );
+
