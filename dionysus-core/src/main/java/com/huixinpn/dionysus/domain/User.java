@@ -210,7 +210,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 			if(!this.getPassword().endsWith(((User) obj).getPassword())){
 				return false;
 			}
+      return true;
 		}
-		return true;
+		return false;
 	}
 }
