@@ -13,7 +13,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.User;
 
 @Entity
-@Table(name = "bcsmedias", uniqueConstraints = { @UniqueConstraint(columnNames = { "filename", "type" }) })
+@Table(name = "bcsmedias")
 public class BCSMedia extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -1815965724911286764L;

@@ -10,19 +10,10 @@ import com.baidu.inf.iis.bcs.auth.BCSCredentials;
 import com.baidu.inf.iis.bcs.http.HttpMethodName;
 import com.baidu.inf.iis.bcs.model.ObjectMetadata;
 import com.baidu.inf.iis.bcs.request.GenerateUrlRequest;
-import com.baidu.inf.iis.bcs.utils.Mimetypes;
-import com.huixinpn.dionysus.meta.BCSMedia;
-import com.huixinpn.dionysus.repository.BCSMediaRepository;
 import com.huixinpn.dionysus.storage.StorageException;
 import com.huixinpn.dionysus.storage.StorageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class BCSService implements StorageService {
-
-  @Autowired
-  BCSMediaRepository repository;
 
   private static final String PREFIX = "/";
 
@@ -56,6 +47,15 @@ public class BCSService implements StorageService {
     }
   }
 
+  public String url(String object){
+    GenerateUrlRequest urlRequest = new GenerateUrlRequest(HttpMethodName.GET, bucket, PREFIX + object);
+    return bcs.generateUrl(urlRequest);
+  }
+
+  public String getBucket(){
+    return this.bucket;
+  }
+
   @Override
   public String save(InputStream input) throws StorageException {
     try {
@@ -66,14 +66,6 @@ public class BCSService implements StorageService {
       metadata.setContentLength(length);
       metadata.setContentType("application/octet-stream");
       bcs.putObject(bucket, normalized, input, metadata);
-      GenerateUrlRequest urlRequest = new GenerateUrlRequest(HttpMethodName.GET, bucket, normalized);
-      String url = bcs.generateUrl(urlRequest);
-      BCSMedia result = new BCSMedia();
-      result.setBucket(bucket);
-      result.setObject(object);
-      result.setUrl(url);
-      result.setMimetype("application/octet-stream");
-      repository.save(result);
       return object;
     } catch (Exception e) {
       throw new StorageException("store to baidu cloud failed", e);
@@ -83,7 +75,6 @@ public class BCSService implements StorageService {
   @Override
   public void remove(String name) throws StorageException {
     delete(name);
-    repository.delete(repository.findByObject(name));
   }
 
   @Override
