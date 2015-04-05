@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 
 @Entity
-@Table(name="appointment")
+@Table(name="appointments")
 public class Appointment extends AbstractDionysusAuditable<User> {
 
     private static final long serialVersionUID = 4106091118545531113L;

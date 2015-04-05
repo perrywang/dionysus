@@ -17,6 +17,5 @@ import com.huixinpn.dionysus.domain.User;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
     List<Appointment> findByUser(@Param("user") User user);
     List<Appointment> findByConsultant(@Param("consultant") User consultant);
-    List<Appointment> findAll();
 
 }
