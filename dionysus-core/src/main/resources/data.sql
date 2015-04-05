@@ -43,6 +43,13 @@ insert into psychtestitemoptions(id, item_id, description) values (10, 4, '一�
 insert into psychtestitemoptions(id, item_id, description) values (11, 4, '一周');
 insert into psychtestitemoptions(id, item_id, description) values (12, 4, '一个月');
 
+INSERT INTO roles (role_id, role_name)
+VALUES (1, 'ROLE_ADMIN');
+INSERT INTO roles (role_id, role_name)
+VALUES (2, 'ROLE_USER');
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (1, 'admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', TRUE, TRUE, TRUE, TRUE);
+
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
+values (2, 'cdf','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', TRUE, TRUE, TRUE, TRUE);

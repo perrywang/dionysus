@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 			domain_user.setAccountNonLocked(accountNonLocked);
 			domain_user.setCredentialsNonExpired(credentialsNonExpired);
 			domain_user.setEnabled(enabled);
-			domain_user.setAuthorities(user.getAuthorities());
+			domain_user.setRoles(user.getRoles());
 			return domain_user;
 		}
 		catch(Exception e){
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
 			domain_user.setAccountNonLocked(accountNonLocked);
 			domain_user.setCredentialsNonExpired(credentialsNonExpired);
 			domain_user.setEnabled(enabled);
-			domain_user.setAuthorities(temp_user.getAuthorities());
+			domain_user.setRoles(temp_user.getRoles());
 			return domain_user;
 			
 		} catch (Exception e) {

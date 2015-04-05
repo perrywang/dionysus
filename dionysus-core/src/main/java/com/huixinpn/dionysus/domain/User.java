@@ -1,5 +1,7 @@
 package com.huixinpn.dionysus.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,12 +14,16 @@ import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.huixinpn.dionysus.auth.PasswordListener;
@@ -59,10 +65,9 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Column(name = "enabled")
 	private boolean enabled;
 
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "authorities")
-	@Enumerated(EnumType.STRING)
-	private Set<Role> authorities;
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="user_username")
+	private Set<Role> roles;
 
 	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
@@ -76,7 +81,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		this.credentialsNonExpired = true;
 		this.enabled = true;
 
-		this.authorities = new HashSet<Role>();
+		this.roles = new HashSet<Role>();
 		this.inbox = new Inbox(this);
 		this.profile = new Profile(this);
 	}
@@ -92,8 +97,31 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		return username;
 	}
 	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
-	public Set<Role> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+
+		Collection<GrantedAuthority> authorities = new ArrayList<>();
+
+		Set<Role> userRoles = this.getRoles();
+
+		if(userRoles != null)
+		{
+			for (Role role : userRoles) {
+
+				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+
+				authorities.add(authority);
+
+			}
+		}
 		return authorities;
 	}
 
@@ -101,16 +129,16 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		this.username = username;
 	}
 
-	public void setAuthorities(Set<Role> authorities) {
-		this.authorities = authorities;
+	public void setAuthorities(Set<Role> roles) {
+		this.roles = roles;
 	}
 
-	public boolean grantAuthority(Role authority) {
-		return authorities.add(authority);
+	public boolean grantAuthority(Role role) {
+		return roles.add(role);
 	}
 
-	public boolean revokeAuthority(Role authority) {
-		return authorities.remove(authority);
+	public boolean revokeAuthority(Role role) {
+		return roles.remove(role);
 	}
 
 	@Override
@@ -204,13 +232,9 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Override
 	public boolean equals(Object obj){
 		if(obj instanceof User){
-			if(!this.getUsername().endsWith(((User) obj).getUsername())){
-				return false;
-			}
-			if(!this.getPassword().endsWith(((User) obj).getPassword())){
-				return false;
-			}
-      return true;
+			return (this.isEnabled() == ((User) obj).isEnabled()
+					&&this.getUsername().endsWith(((User) obj).getUsername())
+					&&this.getPassword().endsWith(((User) obj).getPassword()));				
 		}
 		return false;
 	}
