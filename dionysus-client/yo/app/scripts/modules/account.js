@@ -31,7 +31,16 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
     login: function() {
       var user = this.$el.form('get values', ['username', 'password']);
-      console.log(user);
+      $.ajax({
+        url: '/api/v1/login',
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(user)
+      }).done(function() {
+        window.alert('login success');
+      }).fail(function() {
+        window.alert('login failure');
+      });
     }
   });
 

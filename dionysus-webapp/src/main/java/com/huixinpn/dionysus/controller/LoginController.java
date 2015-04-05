@@ -1,15 +1,19 @@
 package com.huixinpn.dionysus.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.huixinpn.dionysus.domain.User;
 import com.huixinpn.dionysus.service.UserService;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1")
 public class LoginController {
 
 	private UserService userService;
@@ -20,27 +24,20 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public void login(@RequestBody User user) {
-		userService.sign(user.getUsername(),
-				user.getPassword());
-	}
-
-	@RequestMapping(value = "/login/failure", method = RequestMethod.GET)
- 	public String loginFailure() {
-		String message = "Login Failure!";
-		return "redirect:/login?message="+message;
+	public @ResponseBody User login(@RequestBody User user) {
+		return userService.sign(user.getUsername(), user.getPassword());
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout() {
-		String message = "Logout Success!";
-		return "redirect:/login?message="+message;
+	public String logout(HttpSession session) {
+		if (session != null) 
+			session.invalidate();
+		return "success";
 	}
 
 	@RequestMapping(value = "/validate/users", method = RequestMethod.POST)
 	public boolean validate(@RequestBody User user) {
-		return userService.userValidation(
-				user.getUsername(),
+		return userService.userValidation(user.getUsername(),
 				user.getPassword());
 	}
 }
