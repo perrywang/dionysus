@@ -43,4 +43,9 @@ public class LoginController {
 				user.getUsername(),
 				user.getPassword());
 	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public User register(@RequestBody User user) {
+		return userService.register(user);
+	}
 }
