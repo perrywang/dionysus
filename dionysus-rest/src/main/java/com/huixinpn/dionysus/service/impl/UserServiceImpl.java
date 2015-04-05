@@ -1,7 +1,5 @@
 package com.huixinpn.dionysus.service.impl;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -25,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private PasswordEncoder encoder;
-	
+
 	@PersistenceContext
 	private EntityManager manager;
 
@@ -36,21 +34,19 @@ public class UserServiceImpl implements UserService {
 			return false;
 		if (password.isEmpty() || password == null)
 			return false;
-		User user_search_name = repository.findByUsername(name);
-		if (user_search_name == null) {
-			throw new UsernameNotFoundException("UserName " + name
-					+ " not found");
+		User user = repository.findByUsername(name);
+		if (user == null) {
+			throw new UsernameNotFoundException("UserName " + name + " not found");
 		}
-		if (!user_search_name.isEnabled())
+		if (!user.isEnabled())
 			return false;
-		if (!user_search_name.isAccountNonExpired())
+		if (!user.isAccountNonExpired())
 			return false;
-		if (!user_search_name.isAccountNonLocked())
+		if (!user.isAccountNonLocked())
 			return false;
-		if (!user_search_name.isCredentialsNonExpired())
+		if (!user.isCredentialsNonExpired())
 			return false;
-		return encoder.matches(password,
-				user_search_name.getEncryptedPassword());
+		return encoder.matches(password, user.getEncryptedPassword());
 	}
 
 	@Override
@@ -61,32 +57,23 @@ public class UserServiceImpl implements UserService {
 			return null;
 		if (user.getPassword().isEmpty() || user.getPassword() == null)
 			return null;
-		List<User> userlist = repository.findAll();
-		for (User _user : userlist) {
-			if (_user.equals(user))
-				return null;
-		}
+
 		repository.save(user);
-		boolean enabled = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
-		User domain_user = new User(user.getUsername(), user.getPassword());
-		domain_user.setAccountNonExpired(accountNonExpired);
-		domain_user.setAccountNonLocked(accountNonLocked);
-		domain_user.setCredentialsNonExpired(credentialsNonExpired);
-		domain_user.setEnabled(enabled);
-		domain_user.setAuthorities(user.getAuthorities());
-		return domain_user;
+		manager.detach(user);
+		user.setPassword("");
+		user.setEncryptedPassword("");
+		return user;
 	}
 
 	@Override
 	public User sign(String username, String password) {
 		if (!userValidation(username, password))
-			throw new UsernameNotFoundException("UserName " + username + " not found");
+			throw new UsernameNotFoundException("UserName " + username
+					+ " not found");
 		User user = repository.findByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("UserName " + username + " not found");
+			throw new UsernameNotFoundException("UserName " + username
+					+ " not found");
 		}
 		manager.detach(user);
 		user.setPassword("");
@@ -100,20 +87,9 @@ public class UserServiceImpl implements UserService {
 		if (user == null) {
 			throw new UsernameNotFoundException("UserName " + username + " not found");
 		}
-
-		boolean enabled = true;
-		boolean accountNonExpired = true;
-		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
-
-		User domain_user = new User(user.getUsername(),
-				user.getPassword());
-		domain_user.setAccountNonExpired(accountNonExpired);
-		domain_user.setAccountNonLocked(accountNonLocked);
-		domain_user.setCredentialsNonExpired(credentialsNonExpired);
-		domain_user.setEnabled(enabled);
-		domain_user.setAuthorities(user.getAuthorities());
-		return domain_user;
+		manager.detach(user);
+		user.setPassword("");
+		user.setEncryptedPassword("");
+		return user;
 	}
-
 }

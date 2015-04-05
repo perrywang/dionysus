@@ -1,23 +1,25 @@
 package com.huixinpn.dionysus.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.huixinpn.dionysus.auth.PasswordListener;
@@ -36,7 +38,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
 	@Transient
 	transient private String password;
-	
+
 	@Column(name = "password")
 	private String encryptedPassword;
 
@@ -46,7 +48,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@NotNull
 	@Column(name = "account_non_expired")
 	private boolean accountNonExpired;
-	
+
 	@NotNull
 	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
@@ -59,14 +61,13 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Column(name = "enabled")
 	private boolean enabled;
 
-	@ElementCollection(fetch = FetchType.EAGER)
-	@CollectionTable(name = "authorities")
-	@Enumerated(EnumType.STRING)
-	private Set<Role> authorities;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_username")
+	private Set<Role> roles;
 
 	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
-	
+
 	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
@@ -76,7 +77,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		this.credentialsNonExpired = true;
 		this.enabled = true;
 
-		this.authorities = new HashSet<Role>();
+		this.roles = new HashSet<Role>();
 		this.inbox = new Inbox(this);
 		this.profile = new Profile(this);
 	}
@@ -91,9 +92,26 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
-	
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
-	public Set<Role> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> authorities = new ArrayList<>();
+		Set<Role> userRoles = this.getRoles();
+
+		if (userRoles != null) {
+			for (Role role : userRoles) {
+				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+				authorities.add(authority);
+			}
+		}
 		return authorities;
 	}
 
@@ -101,16 +119,16 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		this.username = username;
 	}
 
-	public void setAuthorities(Set<Role> authorities) {
-		this.authorities = authorities;
+	public void setAuthorities(Set<Role> roles) {
+		this.roles = roles;
 	}
 
-	public boolean grantAuthority(Role authority) {
-		return authorities.add(authority);
+	public boolean grantAuthority(Role role) {
+		return roles.add(role);
 	}
 
-	public boolean revokeAuthority(Role authority) {
-		return authorities.remove(authority);
+	public boolean revokeAuthority(Role role) {
+		return roles.remove(role);
 	}
 
 	@Override
@@ -189,7 +207,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	public void setInbox(Inbox inbox) {
 		this.inbox = inbox;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -200,17 +218,13 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		sb.append("  inbox: " + this.getInbox().getId() + "\n");
 		return sb.toString();
 	}
-	
+
 	@Override
-	public boolean equals(Object obj){
-		if(obj instanceof User){
-			if(!this.getUsername().endsWith(((User) obj).getUsername())){
-				return false;
-			}
-			if(!this.getPassword().endsWith(((User) obj).getPassword())){
-				return false;
-			}
-      return true;
+	public boolean equals(Object obj) {
+		if (obj instanceof User) {
+			User other = (User) obj;
+			Long id = this.getId();
+			return (id != null) && id.equals(other.getId());
 		}
 		return false;
 	}
