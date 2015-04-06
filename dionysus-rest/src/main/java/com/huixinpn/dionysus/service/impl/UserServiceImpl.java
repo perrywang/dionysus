@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.exception.InvalidUserException;
 import com.huixinpn.dionysus.repository.UserRepository;
 import com.huixinpn.dionysus.service.UserService;
 
@@ -28,36 +29,9 @@ public class UserServiceImpl implements UserService {
 	private EntityManager manager;
 
 	@Override
-	public boolean userValidation(String name, String password)
-			throws UsernameNotFoundException {
-		if (name.isEmpty() || name == null)
-			return false;
-		if (password.isEmpty() || password == null)
-			return false;
-		User user = repository.findByUsername(name);
-		if (user == null) {
-			throw new UsernameNotFoundException("UserName " + name + " not found");
-		}
-		if (!user.isEnabled())
-			return false;
-		if (!user.isAccountNonExpired())
-			return false;
-		if (!user.isAccountNonLocked())
-			return false;
-		if (!user.isCredentialsNonExpired())
-			return false;
-		return encoder.matches(password, user.getEncryptedPassword());
-	}
-
-	@Override
 	public User register(User user) {
-		if (user == null)
-			return null;
-		if (user.getUsername().isEmpty() || user.getUsername() == null)
-			return null;
-		if (user.getPassword().isEmpty() || user.getPassword() == null)
-			return null;
-
+		// there is bean validation in domain type
+		// no need to check property here
 		repository.save(user);
 		manager.detach(user);
 		user.setPassword("");
@@ -67,14 +41,11 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User sign(String username, String password) {
-		if (!userValidation(username, password))
-			throw new UsernameNotFoundException("UserName " + username
-					+ " not found");
 		User user = repository.findByUsername(username);
-		if (user == null) {
-			throw new UsernameNotFoundException("UserName " + username
-					+ " not found");
+		if(user == null || !encoder.matches(password, user.getEncryptedPassword())){
+			throw new InvalidUserException("invalid user: " + username);
 		}
+		// TODO: should attache security token here
 		manager.detach(user);
 		user.setPassword("");
 		user.setEncryptedPassword("");
@@ -85,7 +56,7 @@ public class UserServiceImpl implements UserService {
 	public UserDetails loadUserByUsername(String username) {
 		User user = repository.findByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("UserName " + username + " not found");
+			throw new UsernameNotFoundException("user not found: " + username);
 		}
 		manager.detach(user);
 		user.setPassword("");

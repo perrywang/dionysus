@@ -18,10 +18,12 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.huixinpn.dionysus.auth.PasswordListener;
 
 @Entity
@@ -39,6 +41,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Transient
 	transient private String password;
 
+	@JsonIgnore
 	@Column(name = "password")
 	private String encryptedPassword;
 
@@ -63,12 +66,13 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_username")
+	@RestResource(exported = false)
 	private Set<Role> roles;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
 	public User() {

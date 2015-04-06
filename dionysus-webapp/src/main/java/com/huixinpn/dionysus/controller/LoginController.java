@@ -30,17 +30,11 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		if (session != null) 
+		if (session != null)
 			session.invalidate();
 		return "success";
 	}
 
-	@RequestMapping(value = "/validate/users", method = RequestMethod.POST)
-	public boolean validate(@RequestBody User user) {
-		return userService.userValidation(user.getUsername(),
-				user.getPassword());
-	}
-	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public User register(@RequestBody User user) {
 		return userService.register(user);

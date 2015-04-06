@@ -9,27 +9,36 @@
 	<name>Dionysus</name>
 	<url>https://github.com/luj1985/dionysus</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.7</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-    <tomcat.version>7.0.59</tomcat.version>
-    <lightadmin.version>1.0.1.RELEASE</lightadmin.version>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<tomcat.version>7.0.59</tomcat.version>
+		<lightadmin.version>1.0.1.RELEASE</lightadmin.version>
+	</properties>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.11.RELEASE</version>
-  </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.2.RELEASE</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.2</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 	<modules>
-    <module>dionysus-runtime</module>
-    <module>dionysus-core</module>
-    <module>dionysus-rest</module>
-    <module>dionysus-client</module>
-    <module>dionysus-bae</module>
-    <module>dionysus-webapp</module>
-  </modules>
+		<module>dionysus-runtime</module>
+		<module>dionysus-core</module>
+		<module>dionysus-rest</module>
+		<module>dionysus-client</module>
+		<module>dionysus-bae</module>
+		<module>dionysus-webapp</module>
+	</modules>
 </project>
