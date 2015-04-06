@@ -18,6 +18,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,6 +40,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Transient
 	transient private String password;
 
+	@RestResource(exported = false)
 	@Column(name = "password")
 	private String encryptedPassword;
 
@@ -46,29 +48,36 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	private String email;
 
 	@NotNull
+	@RestResource(exported = false)
 	@Column(name = "account_non_expired")
 	private boolean accountNonExpired;
 
 	@NotNull
+	@RestResource(exported = false)
 	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
 
 	@NotNull
+	@RestResource(exported = false)
 	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired;
 
 	@NotNull
+	@RestResource(exported = false)
 	@Column(name = "enabled")
 	private boolean enabled;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_username")
+	@RestResource(exported = false)
 	private Set<Role> roles;
 
 	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@RestResource(exported = false)
 	private Profile profile;
 
 	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@RestResource(exported = false)
 	private Inbox inbox;
 
 	public User() {
