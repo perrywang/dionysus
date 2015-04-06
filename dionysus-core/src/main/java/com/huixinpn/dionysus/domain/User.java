@@ -65,10 +65,10 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@JoinColumn(name = "user_username")
 	private Set<Role> roles;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
 	public User() {
