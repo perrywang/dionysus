@@ -4,7 +4,7 @@ public class BCSServiceBuilder {
 
 	private String accessKey;
 	private String secretKey;
-	private String baiduEndpoint;
+	private String endPoint;
 	private String bucket;
 
 	public String getAccessKey() {
@@ -15,8 +15,8 @@ public class BCSServiceBuilder {
 		return secretKey;
 	}
 
-	public String getBaiduEndpoint() {
-		return baiduEndpoint;
+	public String getEndPoint() {
+		return endPoint;
 	}
 
 	public String getBucket() {
@@ -33,8 +33,8 @@ public class BCSServiceBuilder {
 		return this;
 	}
 
-	public BCSServiceBuilder baiduEndpoint(String baiduEndpoint) {
-		this.baiduEndpoint = baiduEndpoint;
+	public BCSServiceBuilder endPoint(String baiduEndpoint) {
+		this.endPoint = baiduEndpoint;
 		return this;
 	}
 

@@ -21,7 +21,6 @@ import com.huixinpn.dionysus.storage.StorageService;
 
 @Service("bcs")
 public class BCSService implements StorageService {
-
 	private static final String PREFIX = "/";
 
 	private BCSConfiguration configuration;
@@ -48,7 +47,7 @@ public class BCSService implements StorageService {
 		this.bucket = builder.getBucket();
 		BCSCredentials credential = new BCSCredentials(builder.getAccessKey(),
 				builder.getSecretKey());
-		bcs = new BaiduBCS(credential, builder.getBaiduEndpoint());
+		bcs = new BaiduBCS(credential, builder.getEndPoint());
 		bcs.setDefaultEncoding("UTF-8");
 	}
 
@@ -100,7 +99,8 @@ public class BCSService implements StorageService {
 			metadata.setContentLength(length);
 			metadata.setContentType("application/octet-stream");
 			bcs.putObject(bucket, normalized, input, metadata);
-			GenerateUrlRequest urlRequest = new GenerateUrlRequest(HttpMethodName.GET, bucket, normalized);
+			GenerateUrlRequest urlRequest = new GenerateUrlRequest(
+					HttpMethodName.GET, bucket, normalized);
 			String url = bcs.generateUrl(urlRequest);
 			BCSMedia meta = new BCSMedia();
 			meta.setObject(object);
