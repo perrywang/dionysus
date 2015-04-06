@@ -3,6 +3,7 @@ package com.huixinpn.dionysus.domain;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Calendar;
 
 /**
@@ -17,11 +18,11 @@ public class Appointment extends AbstractDionysusAuditable<User> {
 
     private static final long serialVersionUID = 4106091118545531113L;
 
-    @NotBlank
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @NotBlank
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     private User consultant;
 

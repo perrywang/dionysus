@@ -69,12 +69,10 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@RestResource(exported = false)
 	private Set<Role> roles;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	@RestResource(exported = false)
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Profile profile;
 
-	@OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	@RestResource(exported = false)
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
 	public User() {

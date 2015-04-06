@@ -3,6 +3,7 @@ package com.huixinpn.dionysus.domain;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -12,10 +13,10 @@ public class Inbox extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = 8365840187902479233L;
 
-	@OneToOne
-	private User user;
+/*	@Column(name = "user_id")
+	private long userId;*/
 
-	@OneToMany(mappedBy = "inbox")
+	@OneToMany
 	private Collection<Notification> notifications;
 	
 	public Inbox() {
@@ -24,29 +25,29 @@ public class Inbox extends AbstractDionysusPersistable {
 	
 	public Inbox(User user) {
 		this();
-		this.user = user;
+//		this.userId = user.getId();
 	}
 
-	public User getUser() {
-		return user;
-	}
+ /*   public long getUserId() {
+        return userId;
+    }
+*/
+ /*   public void setUserId(long userId) {
+        this.userId = userId;
+    }*/
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Collection<Notification> getNotifications() {
+    public Collection<Notification> getNotifications() {
 		return notifications;
 	}
 
 	public void setNotifications(Collection<Notification> notifications) {
 		this.notifications = notifications;
 	}
-	
+
 	public void addNotification(Notification notification) {
 		this.notifications.add(notification);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Inbox: " + this.getId();
