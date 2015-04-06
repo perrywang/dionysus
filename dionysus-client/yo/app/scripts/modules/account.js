@@ -93,6 +93,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     register: function() {
       var user = this.$el.form('get values', ['username', 'password']);
       console.log(user);
+      window.alert('register success');   
     }
   });
 

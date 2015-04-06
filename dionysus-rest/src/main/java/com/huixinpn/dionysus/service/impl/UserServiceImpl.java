@@ -66,14 +66,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User sign(String username, String password) {
-		if (!userValidation(username, password))
-			throw new UsernameNotFoundException("UserName " + username
-					+ " not found");
+	public User sign(String username, String password) 
+			throws UsernameNotFoundException{
+		if (username.isEmpty() || username == null)
+			return null;
+		if (password.isEmpty() || password == null)
+			return null;
 		User user = repository.findByUsername(username);
 		if (user == null) {
-			throw new UsernameNotFoundException("UserName " + username
-					+ " not found");
+			throw new UsernameNotFoundException("UserName " + username + " not found");
+		}
+		if (!user.isEnabled())
+			return null;
+		if (!user.isAccountNonExpired())
+			return null;
+		if (!user.isAccountNonLocked())
+			return null;
+		if (!user.isCredentialsNonExpired())
+			return null;
+		if(!encoder.matches(password, user.getEncryptedPassword())){
+			throw new UsernameNotFoundException("Password " + password + " not match");
 		}
 		manager.detach(user);
 		user.setPassword("");
