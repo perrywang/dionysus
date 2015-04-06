@@ -1,16 +1,10 @@
 package com.huixinpn.dionysus.meta;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.User;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "bcsmedias")
