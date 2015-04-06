@@ -23,6 +23,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.huixinpn.dionysus.auth.PasswordListener;
 
 @Entity
@@ -40,7 +41,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@Transient
 	transient private String password;
 
-	@RestResource(exported = false)
+	@JsonIgnore
 	@Column(name = "password")
 	private String encryptedPassword;
 
@@ -48,22 +49,18 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	private String email;
 
 	@NotNull
-	@RestResource(exported = false)
 	@Column(name = "account_non_expired")
 	private boolean accountNonExpired;
 
 	@NotNull
-	@RestResource(exported = false)
 	@Column(name = "account_non_locked")
 	private boolean accountNonLocked;
 
 	@NotNull
-	@RestResource(exported = false)
 	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired;
 
 	@NotNull
-	@RestResource(exported = false)
 	@Column(name = "enabled")
 	private boolean enabled;
 

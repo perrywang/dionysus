@@ -19,13 +19,14 @@ import com.huixinpn.dionysus.domain.PsychTestItemOption;
 @Import(RepositoryRestMvcConfiguration.class)
 public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
 
-  @Override
-  protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-    config.exposeIdsFor(Article.class, Category.class, Menu.class, PsychTest.class, PsychTestItem.class, PsychTestItemOption.class);
-    try {
-      config.setBaseUri(new URI("/api/v1"));
-    } catch (URISyntaxException e) {
-      e.printStackTrace();
-    }
-  }
+	@Override
+	protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+		config.exposeIdsFor(Article.class, Category.class, Menu.class, 
+				PsychTest.class, PsychTestItem.class, PsychTestItemOption.class);
+		try {
+			config.setBaseUri(new URI("/api/v1"));
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+	}
 }
