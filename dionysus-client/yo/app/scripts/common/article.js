@@ -5,19 +5,12 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     urlRoot: '/api/v1/articles'
   });
 
-  Entities.ArticleCollection = Backbone.PageableCollection.extend({
+  Entities.ArticleCollection = Backbone.Collection.extend({
     model: Entities.Article,
     url: '/api/v1/articles',
     parse: function(response) {
       var embedded = response._embedded;
       return embedded ? embedded.articles : [];
-    },
-    state: {
-      firstPage: 0
-    },
-    queryParams: {
-      currentPage: 'page',
-      pageSize: 'size'
     }
   });
 
