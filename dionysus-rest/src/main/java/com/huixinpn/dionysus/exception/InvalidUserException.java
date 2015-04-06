@@ -11,4 +11,8 @@ public class InvalidUserException extends RuntimeException {
 	public InvalidUserException(Exception e) {
 		super(e);
 	}
+	
+	public InvalidUserException(String message) {
+		super(message);
+	}
 }
