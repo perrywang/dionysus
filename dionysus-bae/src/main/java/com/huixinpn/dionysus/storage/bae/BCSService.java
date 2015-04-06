@@ -45,7 +45,7 @@ public class BCSService implements StorageService {
   public BCSService(BCSServiceBuilder builder) {
     this.bucket = builder.getBucket();
     BCSCredentials credential = new BCSCredentials(builder.getAccessKey(), builder.getSecretKey());
-    bcs = new BaiduBCS(credential, builder.getBaiduEndpoint());
+    bcs = new BaiduBCS(credential, builder.getEndPoint());
     bcs.setDefaultEncoding("UTF-8");
   }
 
