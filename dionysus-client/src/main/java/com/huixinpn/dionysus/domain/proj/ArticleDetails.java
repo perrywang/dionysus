@@ -16,8 +16,6 @@ public interface ArticleDetails {
 
 	public String getBody();
 	
-	public Long getCategoryId();
-	
 	public Category getCategory();
 	
 }

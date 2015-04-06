@@ -99,7 +99,7 @@ module.exports = function (grunt) {
         hostname: 'localhost'
       },
       proxies: [{
-        context: ['/api/v1', '/topic', '/chat', '/dionysus'],
+        context: ['/api/v1', '/topic', '/chat', '/dionysus', '/upload'],
         host: 'localhost',
         port: 8080,
         https: false,

@@ -60,7 +60,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       });
 
       this.$el.form('set values', this.model.toJSON());
-      this.$('.editor').editable({inlineMode: false, language: 'zh_cn'});
+      this.$('.editor').editable({
+        inlineMode: false, 
+        language: 'zh_cn',
+        imageUploadURL: '/api/v1/upload',
+        fileUploadURL: '/api/v1/upload'
+      });
     },
     ui : {
       save : '.button.submit'

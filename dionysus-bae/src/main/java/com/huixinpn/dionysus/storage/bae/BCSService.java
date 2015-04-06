@@ -1,7 +1,6 @@
 package com.huixinpn.dionysus.storage.bae;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.util.UUID;
 
@@ -26,17 +25,6 @@ public class BCSService implements StorageService {
     BCSCredentials credential = new BCSCredentials(builder.getAccessKey(), builder.getSecretKey());
     bcs = new BaiduBCS(credential, builder.getBaiduEndpoint());
     bcs.setDefaultEncoding("UTF-8");
-  }
-
-  private String store(File file) throws StorageException {
-    String object = UUID.randomUUID().toString();
-    String normalized = PREFIX + object;
-    try {
-      bcs.putObject(bucket, normalized, file);
-    } catch (Exception t) {
-      throw new StorageException("failed to store file (" + file.getName() + ")", t);
-    }
-    return object;
   }
 
   private void delete(String object) throws StorageException {

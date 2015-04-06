@@ -14,7 +14,5 @@ public interface ArticleSummary {
 
 	public String getSummary();
 
-	public Long getCategoryId();
-
 	public Category getCategory();
 }
