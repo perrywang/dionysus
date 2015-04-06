@@ -92,8 +92,16 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
     register: function() {
       var user = this.$el.form('get values', ['username', 'password']);
-      console.log(user);
-      window.alert('register success');   
+      $.ajax({
+        url: '/api/v1/register',
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(user)
+      }).done(function() {
+        window.alert('register success');
+      }).fail(function() {
+        window.alert('register failure');
+      });  
     }
   });
 
