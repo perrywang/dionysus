@@ -53,15 +53,15 @@ values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
 
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
+values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
+
 INSERT INTO roles (id, user_id, role_name)
 VALUES (1, 1, 'ROLE_ADMIN');
 INSERT INTO roles (id, user_id, role_name)
 VALUES (2, 2, 'ROLE_USER');
 INSERT INTO roles (id, user_id, role_name)
 VALUES (3, 3, 'ROLE_USER');
-
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
-values (3, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
 
 insert into consultants (id) values (3);
 
