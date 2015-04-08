@@ -56,14 +56,16 @@ values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
 
+insert into consultants (id) values (4);
+
 INSERT INTO roles (id, user_id, role_name)
 VALUES (1, 1, 'ROLE_ADMIN');
 INSERT INTO roles (id, user_id, role_name)
 VALUES (2, 2, 'ROLE_USER');
 INSERT INTO roles (id, user_id, role_name)
 VALUES (3, 3, 'ROLE_USER');
-
-insert into consultants (id) values (3);
+INSERT INTO roles (id, user_id, role_name)
+VALUES (4, 4, 'ROLE_CONSULTANT');
 
 insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 3, 'WAITING', 'ONLINE' );
 insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 3, 'WAITING', 'ONLINE' );
