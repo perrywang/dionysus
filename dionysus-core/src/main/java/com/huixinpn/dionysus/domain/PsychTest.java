@@ -20,9 +20,11 @@ public class PsychTest extends AbstractDionysusPersistable {
   @Column(name = "description")
   private String description;
 
-  @OneToMany
-  @JoinColumn(name = "test_id")
+  @OneToMany(mappedBy = "test")
   private List<PsychTestItem> items;
+
+  @ManyToOne
+  private PsychTestCategory category;
 
   public PsychTest(String title, String description, List<PsychTestItem> items) {
     this.title = title;
@@ -61,6 +63,14 @@ public class PsychTest extends AbstractDionysusPersistable {
     this.items = items;
   }
 
+  public PsychTestCategory getCategory() {
+    return category;
+  }
+
+  public void setCategory(PsychTestCategory category) {
+    this.category = category;
+  }
+
   public void addTestItem(PsychTestItem item) {
     items.add(item);
   }
@@ -68,4 +78,5 @@ public class PsychTest extends AbstractDionysusPersistable {
   public void removeTestItem(PsychTestItem item) {
     items.remove(item);
   }
+
 }

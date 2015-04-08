@@ -13,6 +13,9 @@ public class PsychTestItem extends AbstractDionysusPersistable {
   @Column(name = "description")
   private String description;
 
+  @ManyToOne
+  private PsychTest test;
+
   @OneToMany
   @JoinColumn(name = "item_id")
   private List<PsychTestItemOption> options;
@@ -43,6 +46,14 @@ public class PsychTestItem extends AbstractDionysusPersistable {
 
   public void setOptions(List<PsychTestItemOption> options) {
     this.options = options;
+  }
+
+  public PsychTest getTest() {
+    return test;
+  }
+
+  public void setTest(PsychTest test) {
+    this.test = test;
   }
 
   public void addItemOption(PsychTestItemOption option) {
