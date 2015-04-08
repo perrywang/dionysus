@@ -1,133 +1,136 @@
 package com.huixinpn.dionysus.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "courses")
 @EntityListeners(AuditingEntityListener.class)
 public class Course extends AbstractDionysusNotifiable<User> {
 
-	private static final long serialVersionUID = 2523934617928638918L;
+  private static final long serialVersionUID = 2523934617928638918L;
 
-	@NotBlank
-	@Column(name = "title")
-	private String title;
+  @NotBlank
+  @Column(name = "title")
+  private String title;
 
-	@Lob @Column(name = "description")
-	private String description;
-    
-	@Column(name = "state")
-	@Enumerated(EnumType.STRING)
-	private CourseState state;
-	
-    @Column(name = "approach")
-    @Enumerated(EnumType.STRING)
-    private CourseApproach approach;
-    
-    @Column(name = "calendar")
-    @Temporal(TemporalType.DATE)
-    private Calendar date;
-    
-	@ManyToMany
-	private Collection<User> users;
+  @Lob
+  @Column(name = "description")
+  private String description;
 
-	public Course() {
-		this.state = CourseState.OPEN;
-		this.users = new ArrayList<User>();
-	}
+  @Column(name = "state")
+  @Enumerated(EnumType.STRING)
+  private CourseState state;
 
-	public Course(String title, String description) {
-		this();
-		this.setTitle(title);
-		this.setDescription(description);
-	}
-	
-	public Course(String title, String description, Calendar date) {
-		this();
-		this.setTitle(title);
-		this.setDescription(description);
-		this.setDate(date);
-	}
+  @Column(name = "approach")
+  @Enumerated(EnumType.STRING)
+  private CourseApproach approach;
 
-	@Override
-	public Collection<User> sendTo() {
-		if (this.state == CourseState.IN_PROGRESS) {
-			return this.getUsers();
-		} else {
-			return new ArrayList<User>();
-		}
-	}
+  @Column(name = "calendar")
+  @Temporal(TemporalType.DATE)
+  private Calendar date;
 
-	@Override
-	public String getSummary() {
-		return this.getTitle();
-	}
+  @ManyToOne
+  private Consultant consultant;
 
-	public CourseApproach getApproach() {
-		return approach;
-	}
+  @ManyToMany
+  private Collection<User> users;
 
-	public void setApproach(CourseApproach approach) {
-		this.approach = approach;
-	}
+  public Course() {
+    this.state = CourseState.OPEN;
+    this.users = new ArrayList<User>();
+  }
 
-	public Calendar getDate() {
-		return date;
-	}
+  public Course(String title, String description) {
+    this();
+    this.setTitle(title);
+    this.setDescription(description);
+  }
 
-	public void setDate(Calendar date) {
-		this.date = date;
-	}
+  public Course(String title, String description, Calendar date) {
+    this();
+    this.setTitle(title);
+    this.setDescription(description);
+    this.setDate(date);
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  @Override
+  public Collection<User> sendTo() {
+    if (this.state == CourseState.IN_PROGRESS) {
+      return this.getUsers();
+    } else {
+      return new ArrayList<User>();
+    }
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  @Override
+  public String getSummary() {
+    return this.getTitle();
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public CourseApproach getApproach() {
+    return approach;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public void setApproach(CourseApproach approach) {
+    this.approach = approach;
+  }
 
-	public CourseState getState() {
-		return state;
-	}
+  public Calendar getDate() {
+    return date;
+  }
 
-	public void setState(CourseState state) {
-		this.state = state;
-	}
+  public void setDate(Calendar date) {
+    this.date = date;
+  }
 
-	public Collection<User> getUsers() {
-		return users;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public void setUsers(Collection<User> users) {
-		this.users = users;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	@Override
-	public String toString() {
-		return this.getTitle() + " (" + this.getState() + ")";
-	}
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public CourseState getState() {
+    return state;
+  }
+
+  public void setState(CourseState state) {
+    this.state = state;
+  }
+
+  public Collection<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Collection<User> users) {
+    this.users = users;
+  }
+
+  public Consultant getConsultant() {
+    return consultant;
+  }
+
+  public void setConsultant(Consultant consultant) {
+    this.consultant = consultant;
+  }
+
+  @Override
+  public String toString() {
+    return this.getTitle() + " (" + this.getState() + ")";
+  }
 }

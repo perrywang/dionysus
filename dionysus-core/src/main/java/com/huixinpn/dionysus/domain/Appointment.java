@@ -1,7 +1,5 @@
 package com.huixinpn.dionysus.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
@@ -13,101 +11,103 @@ import java.util.Calendar;
 
 
 @Entity
-@Table(name="appointments")
+@Table(name = "appointments")
 public class Appointment extends AbstractDionysusAuditable<User> {
 
-    private static final long serialVersionUID = 4106091118545531113L;
+  private static final long serialVersionUID = 4106091118545531113L;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+  @NotNull
+  @ManyToOne(fetch = FetchType.EAGER)
+  private User user;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.EAGER)
-    private User consultant;
+  @NotNull
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Consultant consultant;
 
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
-    private AppointmentStatus state;
+  @Column(name = "state")
+  @Enumerated(EnumType.STRING)
+  private AppointmentStatus state;
 
-    @Column(name = "approach")
-    @Enumerated(EnumType.STRING)
-    private AppointmentApproach approach;
+  @Column(name = "approach")
+  @Enumerated(EnumType.STRING)
+  private AppointmentApproach approach;
 
-    @Column(name = "calendar")
-    @Temporal(TemporalType.DATE)
-    private Calendar date;
+  @Column(name = "calendar")
+  @Temporal(TemporalType.DATE)
+  private Calendar date;
 
-    @Lob @Column(name = "reason")
-    private String reason;
+  @Lob
+  @Column(name = "reason")
+  private String reason;
 
 
-    public Appointment(){}
+  public Appointment() {
+  }
 
-    public Appointment(User user, User consultant, AppointmentApproach approach){
-        this.user = user;
-        this.consultant = consultant;
-        this.approach = approach;
-        this.state = AppointmentStatus.WAITING;
-    }
+  public Appointment(User user, Consultant consultant, AppointmentApproach approach) {
+    this.user = user;
+    this.consultant = consultant;
+    this.approach = approach;
+    this.state = AppointmentStatus.WAITING;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setUser(User user) {
+    this.user = user;
+  }
 
-    public User getConsultant() {
-        return consultant;
-    }
+  public Consultant getConsultant() {
+    return consultant;
+  }
 
-    public void setConsultant(User consultant) {
-        this.consultant = consultant;
-    }
+  public void setConsultant(Consultant consultant) {
+    this.consultant = consultant;
+  }
 
-    public AppointmentStatus getState() {
-        return state;
-    }
+  public AppointmentStatus getState() {
+    return state;
+  }
 
-    public void setState(AppointmentStatus state) {
-        this.state = state;
-    }
+  public void setState(AppointmentStatus state) {
+    this.state = state;
+  }
 
-    public AppointmentApproach getApproach() {
-        return approach;
-    }
+  public AppointmentApproach getApproach() {
+    return approach;
+  }
 
-    public void setApproach(AppointmentApproach approach) {
-        this.approach = approach;
-    }
+  public void setApproach(AppointmentApproach approach) {
+    this.approach = approach;
+  }
 
-    public Calendar getDate() {
-        return date;
-    }
+  public Calendar getDate() {
+    return date;
+  }
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
+  public void setDate(Calendar date) {
+    this.date = date;
+  }
 
-    public String getReason() {
-        return reason;
-    }
+  public String getReason() {
+    return reason;
+  }
 
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
 
-    @Override
-    public String toString() {
-        return "Appointment{" +
-                "user=" + user +
-                ", consultant=" + consultant +
-                ", state=" + state +
-                ", approach=" + approach +
-                ", date=" + date +
-                ", reason='" + reason + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Appointment{" +
+        "user=" + user +
+        ", consultant=" + consultant +
+        ", state=" + state +
+        ", approach=" + approach +
+        ", date=" + date +
+        ", reason='" + reason + '\'' +
+        '}';
+  }
 }
