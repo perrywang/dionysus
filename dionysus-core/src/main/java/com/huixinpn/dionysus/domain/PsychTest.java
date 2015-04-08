@@ -20,8 +20,7 @@ public class PsychTest extends AbstractDionysusPersistable {
   @Column(name = "description")
   private String description;
 
-  @OneToMany
-  @JoinColumn(name = "test_id")
+  @OneToMany(mappedBy = "test")
   private List<PsychTestItem> items;
 
   public PsychTest(String title, String description, List<PsychTestItem> items) {
