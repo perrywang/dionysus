@@ -1,5 +1,5 @@
 package com.huixinpn.dionysus.domain;
 
 public enum CourseApproach {
-	ONLINE, OFFLINE, RECORDED
+	ONE2MANY, ONE2ONE, VIDEO
 }

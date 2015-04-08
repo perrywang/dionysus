@@ -10,6 +10,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "courses")
+@Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(AuditingEntityListener.class)
 public class Course extends AbstractDionysusNotifiable<User> {
 
@@ -28,10 +29,6 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @Enumerated(EnumType.STRING)
   private CourseState state;
 
-  @Column(name = "approach")
-  @Enumerated(EnumType.STRING)
-  private CourseApproach approach;
-
   @Column(name = "calendar")
   @Temporal(TemporalType.DATE)
   private Calendar date;
@@ -41,6 +38,9 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   @ManyToMany
   private Collection<User> users;
+
+  @OneToMany(mappedBy = "course")
+  private Collection<CourseFeedback> feedbacks;
 
   public Course() {
     this.state = CourseState.OPEN;
@@ -72,14 +72,6 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @Override
   public String getSummary() {
     return this.getTitle();
-  }
-
-  public CourseApproach getApproach() {
-    return approach;
-  }
-
-  public void setApproach(CourseApproach approach) {
-    this.approach = approach;
   }
 
   public Calendar getDate() {
