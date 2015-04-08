@@ -7,14 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Inbox extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = 8365840187902479233L;
 
-/*	@Column(name = "user_id")
-	private long userId;*/
+	@Column(name = "user_id")
+	private Long user_id;
 
 	@OneToMany
 	private Collection<Notification> notifications;
@@ -23,20 +24,20 @@ public class Inbox extends AbstractDionysusPersistable {
 		this.notifications = new ArrayList<Notification>();
 	}
 	
-	public Inbox(User user) {
+	public Inbox(Long user_id) {
 		this();
-//		this.userId = user.getId();
+		this.user_id = user_id;
 	}
 
- /*   public long getUserId() {
-        return userId;
-    }
-*/
- /*   public void setUserId(long userId) {
-        this.userId = userId;
-    }*/
+    public Long getUser_id() {
+		return user_id;
+	}
 
-    public Collection<Notification> getNotifications() {
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
+
+	public Collection<Notification> getNotifications() {
 		return notifications;
 	}
 
