@@ -40,7 +40,6 @@ public class Appointment extends AbstractDionysusAuditable<User> {
   @Column(name = "reason")
   private String reason;
 
-
   public Appointment() {
   }
 

@@ -60,7 +60,7 @@ values (3, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', 
 
 insert into consultants (id) values (3);
 
-insert into appointments (id, user_id, consultant_id, state, approach, ) values (1, 1, 3, 'WAITING', 'ONLINE' );
-insert into appointments (id, user_id, consultant_id, state, approach, ) values (2, 1, 3, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 3, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 3, 'WAITING', 'ONLINE' );
 
 

@@ -11,6 +11,8 @@ import java.util.Collection;
 @PrimaryKeyJoinColumn
 public class Consultant extends User {
 
+  private static final long serialVersionUID = 6574790333326445416L;
+
   @OneToMany(mappedBy = "consultant")
   private Collection<Course> teachings;
 

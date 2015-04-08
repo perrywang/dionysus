@@ -21,6 +21,7 @@ import java.util.Set;
 @EntityListeners(PasswordListener.class)
 public class User extends AbstractDionysusPersistable implements UserDetails {
 
+
   private static final long serialVersionUID = 6574790333326442416L;
 
   @NotNull
