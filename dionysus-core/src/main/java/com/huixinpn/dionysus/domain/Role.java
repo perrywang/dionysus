@@ -1,50 +1,49 @@
 package com.huixinpn.dionysus.domain;
 
-import java.io.Serializable; 
-
 import javax.persistence.Column; 
-import javax.persistence.Entity; 
-import javax.persistence.GeneratedValue; 
-import javax.persistence.GenerationType; 
-import javax.persistence.Id; 
+import javax.persistence.Entity;
 import javax.persistence.Table; 
+import javax.validation.constraints.NotNull;
 
 @Entity 
 @Table(name = "roles") 
-public class Role implements Serializable {
+public class Role extends AbstractDionysusPersistable {
 	
 	private static final long serialVersionUID = -4397869977138590249L;
 	
-	@Id 
- 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
- 	@Column(name = "role_id") 
- 	private Integer id; 
- 	@Column(name="role_name",nullable=false) 
- 	private String roleName; 
- 	 
+	@NotNull
+ 	@Column(name="user_id") 
+ 	private String user_id; 
+	
+	@NotNull
+ 	@Column(name="role_name") 
+ 	private String role_name; 
+		 
  	public Role() { 
  	} 
  	 
- 	public Role(String roleName) { 
- 		this.roleName = roleName; 
- 	} 
- 	public Role(Integer id, String roleName) { 
- 		this.id = id; 
- 		this.roleName = roleName; 
- 	} 
- 	public Integer getId() { 
- 		return id; 
- 	} 
- 	public void setId(Integer id) { 
- 		this.id = id; 
- 	} 
- 	public String getRoleName() { 
- 		return roleName; 
- 	} 
- 	public void setRoleName(String roleName) { 
- 		this.roleName = roleName; 
- 	} 
- 
- 
+ 	public Role(String role_name, String user_id) { 
+ 		this.role_name = role_name;
+ 		this.user_id = user_id;
+ 	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getRole_name() {
+		return role_name;
+	}
+
+	public void setRole_name(String role_name) {
+		this.role_name = role_name;
+	}
+
+	 
+
 } 
 

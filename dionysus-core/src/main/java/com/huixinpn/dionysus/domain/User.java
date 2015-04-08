@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -65,7 +66,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	private boolean enabled;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_username")
+	@JoinColumn(name = "user_id")
 	@RestResource(exported = false)
 	private Set<Role> roles;
 
@@ -112,7 +113,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
 		if (userRoles != null) {
 			for (Role role : userRoles) {
-				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+				SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRole_name());
 				authorities.add(authority);
 			}
 		}
