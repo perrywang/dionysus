@@ -39,4 +39,9 @@ public class LoginController {
 	public User register(@RequestBody User user) {
 		return userService.register(user);
 	}
+	
+	@RequestMapping(value = "/consultant", method = RequestMethod.POST)
+	public User consultant(@RequestBody User user) {
+		return null;
+	}
 }

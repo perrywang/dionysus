@@ -81,15 +81,25 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             type   : 'checked',
             prompt : 'You must agree to the terms and conditions'
           }]
+        },
+	consultant: {
+          identifier : 'consultant',
+          rules: [{
+            type   : 'checked',
+            prompt : 'Select if you are a consultant'
+          }]
         }
       });
     },
     ui: {
-      submit: '.submit'
+      submit: '.submit',
+      consultant: '.consultant'
     },
     events: {
-      'click @ui.submit': 'register'
+      'click @ui.submit': 'register',
+      'click @ui.consultant': 'consultant'
     },
+    
     register: function() {
       var user = this.$el.form('get values', ['username', 'password']);
       $.ajax({
@@ -101,6 +111,19 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         window.alert('register success');
       }).fail(function() {
         window.alert('register failure');
+      });  
+    },
+    consultant: function() {
+      var user = this.$el.form('get values', ['username', 'password']);
+      $.ajax({
+        url: '/api/v1/consultant',
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(user)
+      }).done(function() {
+        window.alert('send the validation to admin');
+      }).fail(function() {
+        window.alert('fail to send the validation to admin');
       });  
     }
   });

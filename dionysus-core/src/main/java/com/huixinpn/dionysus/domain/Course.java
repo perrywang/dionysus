@@ -9,15 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -34,11 +30,6 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
 	@Lob @Column(name = "description")
 	private String description;
-
-	/* Trainer*/
-    @NotNull
-    @OneToOne(fetch = FetchType.EAGER)
-    private User consultant;
     
 	@Column(name = "state")
 	@Enumerated(EnumType.STRING)
@@ -60,12 +51,17 @@ public class Course extends AbstractDionysusNotifiable<User> {
 		this.users = new ArrayList<User>();
 	}
 
-	public Course(String title, String description, Calendar date, User consultant) {
+	public Course(String title, String description) {
+		this();
+		this.setTitle(title);
+		this.setDescription(description);
+	}
+	
+	public Course(String title, String description, Calendar date) {
 		this();
 		this.setTitle(title);
 		this.setDescription(description);
 		this.setDate(date);
-		this.setConsultant(consultant);
 	}
 
 	@Override
@@ -80,14 +76,6 @@ public class Course extends AbstractDionysusNotifiable<User> {
 	@Override
 	public String getSummary() {
 		return this.getTitle();
-	}
-
-	public User getConsultant() {
-		return consultant;
-	}
-
-	public void setConsultant(User consultant) {
-		this.consultant = consultant;
 	}
 
 	public CourseApproach getApproach() {
