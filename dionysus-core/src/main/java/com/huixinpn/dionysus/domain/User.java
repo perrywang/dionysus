@@ -15,7 +15,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -125,10 +124,6 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public void setAuthorities(Set<Role> roles) {
-		this.roles = roles;
 	}
 
 	public boolean grantAuthority(Role role) {
