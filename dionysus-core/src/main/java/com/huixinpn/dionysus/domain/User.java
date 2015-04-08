@@ -86,7 +86,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 		this.enabled = true;
 
 		this.roles = new HashSet<Role>();
-		this.inbox = new Inbox(this);
+		this.inbox = new Inbox(this.getId());
 		this.profile = new Profile(this);
 	}
 

@@ -77,4 +77,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> loaduserbyrole(String rolename){
 		return repository.findByRole(rolename);
 	}
+	
+	@Override
+	public User notifyuser(User user){
+		return new User();
+	}
 }
