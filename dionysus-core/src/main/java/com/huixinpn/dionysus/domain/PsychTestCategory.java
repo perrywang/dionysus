@@ -17,7 +17,7 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
   private String name;
 
   @ManyToOne
-  private Category parent;
+  private PsychTestCategory parent;
 
   @OneToMany(mappedBy = "category")
   private Collection<PsychTest> tests;
@@ -33,11 +33,11 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
     this.name = name;
   }
 
-  public Category getParent() {
+  public PsychTestCategory getParent() {
     return parent;
   }
 
-  public void setParent(Category parent) {
+  public void setParent(PsychTestCategory parent) {
     this.parent = parent;
   }
 }
