@@ -1,0 +1,38 @@
+script#site-tpl(type="text/template")
+	.ui.grid(style="background-image: url(/public/images/bg.jpg);background-size: cover;")
+		.eight.wide.column
+			img(src="/public/images/logo.png")
+		.eight.wide.column(style="padding-top:4rem")
+			.ui.inverted.header
+				h1 汇心网，关怀无处不在
+				p 这个全世界最专业的中文心理网站，集专业与娱乐于一体与您贴心相伴，随时，随地，随心。
+	.ui.four.column.divided.grid
+		.row
+			.column
+				.ui.icon.header 心理知识
+					i.circular.book.icon
+				p 心理广播／文章／音视频
+				p
+					a.ui.labled.icon.button(href="/app/articles") 进入
+						i.arrow.right.icon
+			.column
+				.ui.icon.header 在线心理咨询
+					i.circular.chat.icon
+				p 在线一对一心理咨询预约
+				p
+					a.ui.labled.icon.button(href="/app/consult") 建设中
+						i.lock.icon
+			.column
+				.ui.icon.header 心理科课程
+					i.circular.users.icon
+				p 线下课程／线上课程／录制课程
+				p
+					a.ui.labled.icon.button(href="#") 建设中
+						i.lock.icon
+			.column
+				.ui.icon.header 心理测试
+					i.circular.question.icon
+				p 在线心理测试
+				p
+					a.ui.labled.icon.button(href="#") 建设中
+						i.lock.icon

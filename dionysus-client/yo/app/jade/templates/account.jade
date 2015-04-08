@@ -28,10 +28,16 @@ script#account-register-tpl(type="text/template")
       label
         | I agree to the 
         a(href="#") Term of Service
+  .field
+    .ui.checkbox
+      input(type="checkbox", name="consultant")
+      label
+        | Consultant?
   .ui.horizontal.divider OR
   .field
     span
       | Alreay have account 
       a(href="/app/login") login
   .ui.submit.button Submit
+  .ui.consultant.button Consultant Validation
 

@@ -1,5 +1,7 @@
 package com.huixinpn.dionysus.service.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -69,5 +71,10 @@ public class UserServiceImpl implements UserService {
 		user.setPassword("");
 		user.setEncryptedPassword("");
 		return user;
+	}
+
+	@Override
+	public List<User> loaduserbyrole(String rolename){
+		return repository.findByRole(rolename);
 	}
 }

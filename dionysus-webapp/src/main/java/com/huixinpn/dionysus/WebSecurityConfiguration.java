@@ -1,7 +1,7 @@
 package com.huixinpn.dionysus;
 
+import com.huixinpn.dionysus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,16 +12,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.huixinpn.dionysus.auth.DionysusUserDetailsService;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	@Qualifier("dionysus")
-	private DionysusUserDetailsService securityUserService;
+	private UserService securityUserService;
 	
 	@Autowired
 	private PasswordEncoder encoder;

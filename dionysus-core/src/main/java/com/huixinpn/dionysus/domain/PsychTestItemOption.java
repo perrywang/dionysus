@@ -44,4 +44,5 @@ public class PsychTestItemOption extends AbstractDionysusPersistable {
   public void setScore(Integer score) {
     this.score = score;
   }
+
 }

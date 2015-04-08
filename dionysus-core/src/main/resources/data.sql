@@ -43,17 +43,31 @@ insert into psychtestitemoptions(id, item_id, description) values (10, 4, '一�
 insert into psychtestitemoptions(id, item_id, description) values (11, 4, '一周');
 insert into psychtestitemoptions(id, item_id, description) values (12, 4, '一个月');
 
-INSERT INTO roles (role_id, role_name)
-VALUES (1, 'ROLE_ADMIN');
-INSERT INTO roles (role_id, role_name)
-VALUES (2, 'ROLE_USER');
-
 -- password: 'password'
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
 values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
-values (2, 'cdf','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
+values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
 
-insert into appointments (id, user_id, consultant_id, state, approach, ) values (1, 1, 1, 'WAITING', 'ONLINE' );
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
+values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
+
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled)
+values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE);
+
+insert into consultants (id) values (4);
+
+INSERT INTO roles (id, user_id, role_name)
+VALUES (1, 1, 'ROLE_ADMIN');
+INSERT INTO roles (id, user_id, role_name)
+VALUES (2, 2, 'ROLE_USER');
+INSERT INTO roles (id, user_id, role_name)
+VALUES (3, 3, 'ROLE_USER');
+INSERT INTO roles (id, user_id, role_name)
+VALUES (4, 4, 'ROLE_CONSULTANT');
+
+insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 4, 'WAITING', 'ONLINE' );
+
 
