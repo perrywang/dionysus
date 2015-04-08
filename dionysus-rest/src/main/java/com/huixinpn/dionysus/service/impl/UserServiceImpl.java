@@ -30,13 +30,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User register(User user) {
-		// there is bean validation in domain type
-		// no need to check property here
-		//System.out.println("Username = " + user.getUsername());
-		//System.out.println("Password = " + user.getPassword());
-		user.setEncryptedPassword(encoder.encode(user.getPassword()));
-		//System.out.println("EncryptedPassword = " + user.getEncryptedPassword());
-		/*temp code, inbox and profile should be set empty otherwise the insert will be failed*/
 		user.setInbox(null);
 		user.setProfile(null);
 		repository.save(user);
