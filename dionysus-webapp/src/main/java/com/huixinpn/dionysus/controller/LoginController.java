@@ -1,7 +1,5 @@
 package com.huixinpn.dionysus.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +42,14 @@ public class LoginController {
 	
 	@RequestMapping(value = "/consultant", method = RequestMethod.POST)
 	public User consultant(@RequestBody User user) {
-		List<User> users = userService.loaduserbyrole("ROLE_USER");
-		if (users == null) {
-			System.out.println("user not found by : " + "ROLE_USER");
-			return userService.register(user);
-		}
-		for(User _user : users){
-			System.out.println("user found by : " + _user.getUsername());
-		}
+//		List<User> users = userService.loaduserbyrole("ROLE_USER");
+//		if (users == null) {
+//			System.out.println("user not found by : " + "ROLE_USER");
+//			return userService.register(user);
+//		}
+//		for(User _user : users){
+//			System.out.println("user found by : " + _user.getUsername());
+//		}
 		return userService.register(user);
 	}
 }

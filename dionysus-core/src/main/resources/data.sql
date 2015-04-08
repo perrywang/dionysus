@@ -58,14 +58,13 @@ values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', 
 
 insert into consultants (id) values (4);
 
-INSERT INTO roles (id, user_id, role_name)
-VALUES (1, 1, 'ROLE_ADMIN');
-INSERT INTO roles (id, user_id, role_name)
-VALUES (2, 2, 'ROLE_USER');
-INSERT INTO roles (id, user_id, role_name)
-VALUES (3, 3, 'ROLE_USER');
-INSERT INTO roles (id, user_id, role_name)
-VALUES (4, 4, 'ROLE_CONSULTANT');
+insert into roles(id, name) values (1, 'ROLE_ADMIN');
+insert into roles(id, name) values (2, 'ROLE_USER');
+insert into roles(id, name) values (3, 'ROLE_CONSULTANT');
+
+insert into users_roles(users_id, roles_id) values (1, 1);
+insert into users_roles(users_id, roles_id) values (2, 2);
+insert into users_roles(users_id, roles_id) values (3, 3);
 
 insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
 insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 4, 'WAITING', 'ONLINE' );

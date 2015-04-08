@@ -9,11 +9,11 @@ public class Notification extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -7457760948182175014L;
 
-	@Column(name="inbox_id")
-	private Long inbox;
+	@ManyToOne
+	private Inbox inbox;
 	
-	@Column(name="from_user_id")
-	private Long from;
+	@ManyToOne
+	private User from;
 	
 	@Column(name="summary")
 	private String summary;
@@ -21,25 +21,25 @@ public class Notification extends AbstractDionysusPersistable {
 	public Notification() {}
 	
 	public Notification(Inbox inbox, User from, String summary) {
-		this.inbox = inbox.getId();
-		this.from = from.getId();
+		this.inbox = inbox;
+		this.from = from;
 		this.summary = summary;
 	}
 
-	public Long getInbox() {
+	public Inbox getInbox() {
 		return inbox;
 	}
 
 	public void setInbox(Inbox inbox) {
-		this.inbox = inbox.getId();
+		this.inbox = inbox;
 	}
 
-	public Long getFrom() {
+	public User getFrom() {
 		return from;
 	}
 
 	public void setFrom(User owner) {
-		this.from = owner.getId();
+		this.from = owner;
 	}
 
 	public String getSummary() {
