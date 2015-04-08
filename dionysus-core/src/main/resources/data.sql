@@ -67,7 +67,7 @@ VALUES (3, 3, 'ROLE_USER');
 INSERT INTO roles (id, user_id, role_name)
 VALUES (4, 4, 'ROLE_CONSULTANT');
 
-insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 3, 'WAITING', 'ONLINE' );
-insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 3, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 4, 'WAITING', 'ONLINE' );
 
 
