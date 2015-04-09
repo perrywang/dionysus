@@ -84,8 +84,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     showArticles: function () {
       var fetchingArticles = Dionysus.request('article:instances');
       $.when(fetchingArticles).done(function(articles) {
-        console.log(articles);
-        //Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
+        Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       });
     },
     createArticle: function() {
