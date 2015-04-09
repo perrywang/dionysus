@@ -5,17 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -76,7 +66,31 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Inbox inbox;
 
-	public User() {
+    @Lob
+    @Column(name = "about")
+    private String about;
+
+    @Lob
+    @Column(name = "avatar")
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public User() {
 		this.accountNonExpired = true;
 		this.accountNonLocked = true;
 		this.credentialsNonExpired = true;
