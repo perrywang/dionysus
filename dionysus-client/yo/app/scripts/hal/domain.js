@@ -1,30 +1,12 @@
 Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
+  Article = Backbone.RelationalHalResource.extend({});
 
-  var Comment = Backbone.RelationalModel.extend({
-    urlRoot: '/api/v1/comments'
-  })
-
-  var Article = Backbone.RelationalModel.extend({
-    urlRoot: '/api/v1/articles',
-    relations: [{
-      type: Backbone.HasMany,
-      key: 'comments',
-      relatedModel: Comment
-    }]
-  });
-
-  var ArticleCollection = Backbone.Collection.extend({
+  ArticleResources = Backbone.RelationalHalResource.extend({
     url: '/api/v1/articles',
-    model: Article
-  });
-
-  var ArticleResources = Backbone.RelationalHalResource.extend({
-    url: '/api/v1/articles',
-    halEmbeded: {
+    halEmbedded: {
       articles: {
         type: Backbone.HasMany,
-        relatedModel: Article,
-        collectionType: ArticleCollection
+        relatedModel: Article
       }
     }
   });
@@ -32,15 +14,26 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   var Category = Backbone.RelationalHalResource.extend({});
 
   Dionysus.reqres.setHandler('article:instances', function() {
-    var resources = new ArticleResources();
-    var defer = $.Deferred();
+    var resources = new ArticleResources(), defer = $.Deferred();
     resources.fetch({ data: { projection: 'summary' }}).then(function() {
-      defer.resolve(new ArticleCollection(resources.embedded('articles')));
+      defer.resolve(resources.embedded('articles'));
     });
     return defer.promise();
   });
 
   Dionysus.reqres.setHandler('article:instance', function(id) {
+    // TODO: single resource fetch
+    var Article = Backbone.RelationalHalResource.extend({ 
+      url: '/api/v1/articles/' + id
+    });
+    var article = new Article(), defer = $.Deferred();
+    article.fetch({ data: { projection: 'detail'}}).then(function() {
+      defer.resolve(article);
+    });
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('article:new1', function() {
 
   });
 });

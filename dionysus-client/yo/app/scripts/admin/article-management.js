@@ -82,8 +82,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
-      var fetchingArticles = Dionysus.request('article:instances');
-      $.when(fetchingArticles).done(function(articles) {
+      Dionysus.request('article:instances').then(function(articles) {
         Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       });
     },
@@ -99,12 +98,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       });
     },
     editArticle: function(id) {
-      var articleFetching = Dionysus.request('article:entity', id);
       var categoryFetching = Dionysus.request('category:entities');
-
-      $.when(articleFetching, categoryFetching).done(function(article, categories) {
-        var editor = new ArticleEditorView({ model: article, categories: categories});
-        Dionysus.mainRegion.show(editor);
+      Dionysus.request('article:instance', id).then(function(article) {
+        categoryFetching.done(function(categories) {
+          var editor = new ArticleEditorView({ model: article, categories: categories});
+          Dionysus.mainRegion.show(editor);
+        })
       });
     }
   });
