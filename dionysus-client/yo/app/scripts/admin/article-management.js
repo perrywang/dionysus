@@ -82,7 +82,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
-      var fetchingArticles = Dionysus.request('article:entities');
+      var fetchingArticles = Dionysus.request('article:instances');
       $.when(fetchingArticles).done(function(articles) {
         Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       });
