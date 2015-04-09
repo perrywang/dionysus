@@ -11,7 +11,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   Entities.PsychTestItem = Backbone.Model.extend({
   });
 
-  Entities.PsychTestItemCollection = Backbone.PageableCollection.extend({
+  Entities.PsychTestItemCollection = Backbone.Collection.extend({
     model: Entities.PsychTestItem,
     url: '/api/v1/testitems',
     parse: function (response) {
