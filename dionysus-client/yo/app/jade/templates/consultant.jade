@@ -1,2 +1,12 @@
 script#consultants-tpl(type="text/template")
+  ul.ui.items.divided
+
 script#consultant-tpl(type="text/template")
+  .ui.small.image
+    img(src!="<%= avatar%>")
+  .content
+    a.ui.header <%= username %>
+    p.description <%= about %>
+    a.ui.button 预约
+
+script#appointment-tpl(type="text/template")

@@ -5,7 +5,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     urlRoot: '/api/v1/consultants'
   });
 
-  Entities.ConsultantCollection = Backbone.PageableCollection.extend({
+  Entities.ConsultantCollection = Backbone.Collection.extend({
     model: Entities.Consultant,
     url: '/api/v1/consultants',
     parse: function(response) {
@@ -24,7 +24,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   Dionysus.reqres.setHandler('consultant:entities', function() {
     var consultants = new Entities.ConsultantCollection();
     var defer = $.Deferred();
-    users.fetch().then(function() {
+    consultants.fetch().then(function() {
       defer.resolve(consultants);
     });
     return defer.promise();
@@ -33,7 +33,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   Dionysus.reqres.setHandler('consultant:entity', function(id) {
     var consultant = new Entities.Consultant({id: id});
     var defer = $.Deferred();
-    user.fetch().then(function() {
+    consultant.fetch().then(function() {
       defer.resolve(consultant);
     });
     return defer.promise();
