@@ -2,17 +2,24 @@ package com.huixinpn.dionysus.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "notification")
 public class Notification extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -7457760948182175014L;
 
 	@ManyToOne
+	@JoinColumn(name = "inbox_id")
 	private Inbox inbox;
 	
-	@ManyToOne
+	/*Each notification has the only sender*/
+	@OneToOne
+	@JoinColumn(name = "user_id")
 	private User from;
 	
 	@Column(name="summary")

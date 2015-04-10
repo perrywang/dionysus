@@ -14,5 +14,7 @@ public interface UserService extends UserDetailsService {
 
 //	public List<User> loaduserbyrole(String rolename);
 	
-	public User notifyuser(User user);
+	public User notifyuser(User user, String summary);
+	
+	public boolean sendemailtouser(User user);
 }

@@ -42,14 +42,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "/consultant", method = RequestMethod.POST)
 	public User consultant(@RequestBody User user) {
-//		List<User> users = userService.loaduserbyrole("ROLE_USER");
-//		if (users == null) {
-//			System.out.println("user not found by : " + "ROLE_USER");
-//			return userService.register(user);
-//		}
-//		for(User _user : users){
-//			System.out.println("user found by : " + _user.getUsername());
-//		}
-		return userService.register(user);
+		return userService.notifyuser(user, "Consultant Validation & Register");
 	}
 }

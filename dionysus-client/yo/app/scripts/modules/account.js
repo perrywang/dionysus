@@ -75,6 +75,13 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             prompt: 'Password should match'
           }]
         },
+	email: {
+          identifier: 'email',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please enter an email'
+          }]
+        },
         terms: {
           identifier : 'terms',
           rules: [{
@@ -101,7 +108,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
     
     register: function() {
-      var user = this.$el.form('get values', ['username', 'password']);
+      var user = this.$el.form('get values', ['username', 'password', 'email']);
       $.ajax({
         url: '/api/v1/register',
         method: 'POST',
@@ -114,7 +121,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       });  
     },
     consultant: function() {
-      var user = this.$el.form('get values', ['username', 'password']);
+      var user = this.$el.form('get values', ['username', 'password', 'email']);
       $.ajax({
         url: '/api/v1/consultant',
         method: 'POST',
