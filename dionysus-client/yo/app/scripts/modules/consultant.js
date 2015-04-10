@@ -4,21 +4,38 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   var ConsultantView = Marionette.ItemView.extend({ 
     template: '#consultant-tpl',
     tagName: 'li',
-    className: 'item'
+    className: 'item',
+    ui: {
+      button: '.button'
+    },
+    events: {
+      "click @ui.button" : "openAppointment"
+    },
+    openAppointment : function(e){
+      this.trigger("consultant:newAppointment", this.model);
+      alert("alert from viewItem");
+    }
   });
 
   var ConsultantsView = Marionette.CompositeView.extend({
     template: '#consultants-tpl',
     childView: ConsultantView,
     childViewContainer: '.items',
-    className: 'ui page'
+    className: 'ui page',
+    onDomRefresh:function(){
+      this.$('.ui.accordion').accordion();
+    }
   });
 
   var ConsultantController = Marionette.Controller.extend({
     showConsultants: function () {
       var fetchingConsultants = Dionysus.request('consultant:entities');
       $.when(fetchingConsultants).done(function(consultants) {
-        Dionysus.mainRegion.show(new ConsultantsView({ collection: consultants }));
+        var consultantsView = new ConsultantsView({ collection: consultants });
+        consultantsView.on("consultant:newAppointment", function(data){
+          alert("newAppointment Called!");
+        })
+        Dionysus.mainRegion.show(consultantsView);
       });
     },
   });

@@ -2,11 +2,30 @@ script#consultants-tpl(type="text/template")
   ul.ui.items.divided
 
 script#consultant-tpl(type="text/template")
-  .ui.small.image
-    img(src!="<%= avatar%>")
-  .content
-    a.ui.header <%= username %>
-    p.description <%= about %>
-    a.ui.button 预约
+  .ui.piled.segment
+    .ui.small.image
+      img(src!="<%= avatar%>")
+    .content
+      a.ui.header <%= username %>
+      p.description <%= about %>
+      .ui.divider
+      .ui.accordion
+        .title 预约信息
+          i.dropdown.icon
+        .content
+          p
+            label 日期:
+            input(type="date")
+          p
+            label 方式:
+            select.ui.dropdown
+              option(value="ONLINE") 在线
+              option(value="OFFLINE") 面对面
+              option(value="BY_PHONE") 电话
+          p
+            label 留言:
+            textarea
+          p
+            a.ui.button 预约
 
-script#consult-appointment-tpl(type="text/template")
+script#new-appointment-tpl(type="text/template")

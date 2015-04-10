@@ -2,8 +2,9 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   'use strict';
 
   Entities.Consultant = Backbone.Model.extend({
-    urlRoot: '/api/v1/consultants'
+    urlRoot: '/api/v1/consultants',
   });
+
 
   Entities.ConsultantCollection = Backbone.Collection.extend({
     model: Entities.Consultant,
