@@ -42,6 +42,9 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @OneToMany(mappedBy = "course")
   private Collection<CourseFeedback> feedbacks;
 
+  @ManyToOne
+  private CourseCategory category;
+
   public Course() {
     this.state = CourseState.OPEN;
     this.users = new ArrayList<User>();
@@ -120,6 +123,30 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   public void setConsultant(Consultant consultant) {
     this.consultant = consultant;
+  }
+
+  public CourseCategory getCategory() {
+    return category;
+  }
+
+  public void setCategory(CourseCategory category) {
+    this.category = category;
+  }
+
+  public Collection<CourseFeedback> getFeedbacks() {
+    return feedbacks;
+  }
+
+  public void setFeedbacks(Collection<CourseFeedback> feedbacks) {
+    this.feedbacks = feedbacks;
+  }
+
+  public void addFeedback(CourseFeedback feedback) {
+    this.feedbacks.add(feedback);
+  }
+
+  public void removeFeedback(CourseFeedback feedback) {
+    this.feedbacks.remove(feedback);
   }
 
   @Override
