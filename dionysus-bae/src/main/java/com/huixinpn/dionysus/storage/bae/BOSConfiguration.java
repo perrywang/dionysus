@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "baidu")
-public class BCSConfiguration {
+public class BOSConfiguration {
 
 	private String bucket;
 
@@ -15,7 +15,7 @@ public class BCSConfiguration {
 
 	private String endPoint;
 
-	public BCSConfiguration() {
+	public BOSConfiguration() {
 	}
 
 	public String getBucket() {

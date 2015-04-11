@@ -7,8 +7,8 @@ import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.User;
 
 @Entity
-@Table(name = "bcsmedias")
-public class BCSMedia extends AbstractDionysusAuditable<User> {
+@Table(name = "bosmedias")
+public class BOSMedia extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -1815965724911286764L;
 
@@ -20,9 +20,11 @@ public class BCSMedia extends AbstractDionysusAuditable<User> {
 
 	private String mimetype;
 
+	private Integer size;
+
 	private String url;
 
-	public BCSMedia() {
+	public BOSMedia() {
 	}
 
 	public String getBucket() {
@@ -63,5 +65,13 @@ public class BCSMedia extends AbstractDionysusAuditable<User> {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
 	}
 }

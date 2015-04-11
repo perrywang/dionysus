@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-  <groupId>com.baidu</groupId>
-  <artifactId>bcs-sdk</artifactId>
+  <groupId>com.baidubce</groupId>
+  <artifactId>bcs-java-sdk</artifactId>
   <versioning>
-    <release>1.4.5</release>
+    <release>0.8.1</release>
     <versions>
-      <version>1.4.5</version>
+      <version>0.8.1</version>
     </versions>
     <lastUpdated>20150308064749</lastUpdated>
   </versioning>

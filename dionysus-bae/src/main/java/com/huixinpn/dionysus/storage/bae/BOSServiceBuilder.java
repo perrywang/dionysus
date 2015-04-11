@@ -1,6 +1,6 @@
 package com.huixinpn.dionysus.storage.bae;
 
-public class BCSServiceBuilder {
+public class BOSServiceBuilder {
 
 	private String accessKey;
 	private String secretKey;
@@ -23,27 +23,27 @@ public class BCSServiceBuilder {
 		return bucket;
 	}
 
-	public BCSServiceBuilder accessKey(String accessKey) {
+	public BOSServiceBuilder accessKey(String accessKey) {
 		this.accessKey = accessKey;
 		return this;
 	}
 
-	public BCSServiceBuilder secretKey(String secretKey) {
+	public BOSServiceBuilder secretKey(String secretKey) {
 		this.secretKey = secretKey;
 		return this;
 	}
 
-	public BCSServiceBuilder endPoint(String baiduEndpoint) {
+	public BOSServiceBuilder endPoint(String baiduEndpoint) {
 		this.endPoint = baiduEndpoint;
 		return this;
 	}
 
-	public BCSServiceBuilder bucket(String bucket) {
+	public BOSServiceBuilder bucket(String bucket) {
 		this.bucket = bucket;
 		return this;
 	}
 
-	public BCSService build() {
-		return new BCSService(this);
+	public BOSService build() {
+		return new BOSService(this);
 	}
 }
