@@ -10,6 +10,7 @@ import com.huixinpn.dionysus.domain.Notification;
 import com.huixinpn.dionysus.domain.User;
 import com.huixinpn.dionysus.exception.InvalidUserException;
 import com.huixinpn.dionysus.repository.ArticleRepository;
+import com.huixinpn.dionysus.repository.CategoryRepository;
 import com.huixinpn.dionysus.repository.CommentRepository;
 import com.huixinpn.dionysus.repository.UserRepository;
 import com.huixinpn.dionysus.service.UserService;
@@ -43,6 +44,10 @@ public class UserServiceImpl implements UserService {
 	private CommentRepository commentrepository;
 	
 	@Autowired
+	@Qualifier("categoryRepository")
+	private CategoryRepository categoryRepository;
+	
+	@Autowired
 	private PasswordEncoder encoder;
 
 	@PersistenceContext
@@ -50,6 +55,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User register(User user) {
+		User _user = userrepository.findByUsername(user.getUsername());
+		if (_user != null) {
+			throw new InvalidUserException("user " + user.getUsername() + " exists!");
+		}
 		user.setInbox(null);
 		user.setProfile(null);
 		userrepository.save(user);
@@ -96,7 +105,9 @@ public class UserServiceImpl implements UserService {
 	public User notifyuser(User user, String summary){
 		User admin = userrepository.findByUsername("admin");
 		Article article = new Article(summary, summary);
-		Category category = new Category("notification");
+		Category category = categoryRepository.findByname("notification");
+		if(category == null)
+			category = new Category("notification");
 		article.setCategory(category);
 		article.setCreatedBy(user);
 		article.setLastModifiedBy(admin);

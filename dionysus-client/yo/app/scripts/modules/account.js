@@ -37,7 +37,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
       }).done(function() {
-        window.alert('login success');
+        window.location.href = "/app/site";
       }).fail(function() {
         window.alert('login failure');
       });
@@ -78,8 +78,8 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 	email: {
           identifier: 'email',
           rules: [{
-            type: 'empty',
-            prompt: 'Please enter an email'
+		    type: 'email',
+            prompt: 'Please enter an valid email'
           }]
         },
         terms: {
@@ -92,8 +92,8 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 	consultant: {
           identifier : 'consultant',
           rules: [{
-            type   : 'checked',
-            prompt : 'Select if you are a consultant'
+            //type   : 'checked',
+            //prompt : 'Select if you are a consultant'
           }]
         }
       });
@@ -116,6 +116,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         data: JSON.stringify(user)
       }).done(function() {
         window.alert('register success');
+		window.location.href = "/app/login";
       }).fail(function() {
         window.alert('register failure');
       });  
@@ -129,6 +130,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         data: JSON.stringify(user)
       }).done(function() {
         window.alert('send the validation to admin');
+		window.location.href = "/app/site";
       }).fail(function() {
         window.alert('fail to send the validation to admin');
       });  

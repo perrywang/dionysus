@@ -7,5 +7,5 @@ import com.huixinpn.dionysus.domain.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
+	Category findByname(String name);
 }
