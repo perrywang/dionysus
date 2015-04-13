@@ -37,7 +37,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
       }).done(function() {
-        window.location.href = "/app/site";
+        window.location.href = "/app/profile/3";
       }).fail(function() {
         window.alert('login failure');
       });
