@@ -1,5 +1,20 @@
 script#profile-tpl(type="text/template")
-  header
-    h5 <%= username %>
-  p <%= username %>
-  p <%= username %>
+  .item(style="padding-top:2rem")
+    .ui.piled.segment
+      .ui.small.image
+        img(src!="<%= avatar%>")
+      .content
+        a.ui.header <%= username %>
+        p.description <%= about %>
+      .row
+      .col.l4.offset-l2.s12
+        h5.white-text
+        ul
+          li
+            a.grey-text.text-lighten-3(href="/app/consultants") Appointment
+          li
+            a.grey-text.text-lighten-3(href="#!") Test
+          li
+            a.grey-text.text-lighten-3(href="#!") Course
+          li
+            a.grey-text.text-lighten-3(href="#!") Something else

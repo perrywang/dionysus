@@ -5,7 +5,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     urlRoot: '/api/v1/users'
   });
 
-  Entities.UserCollection = Backbone.PageableCollection.extend({
+  Entities.UserCollection = Backbone.Collection.extend({
     model: Entities.User,
     url: '/api/v1/users',
     parse: function(response) {
