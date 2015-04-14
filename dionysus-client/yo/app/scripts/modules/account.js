@@ -1,7 +1,7 @@
 Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  var LoginView = Marionette.ItemView.extend({ 
+  var LoginView = Marionette.ItemView.extend({
     template: '#account-login-tpl',
     tagName: 'form',
     className: 'ui form compact segment',
@@ -36,16 +36,15 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         method: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
-      }).done(function(response) {
-	    var data = response.id;
-        window.location.href = "/app/profile/" + data;
+      }).done(function() {
+        window.location.href = "/app/site";
       }).fail(function() {
         window.alert('login failure');
       });
     }
   });
 
-  var RegisterView = Marionette.ItemView.extend({ 
+  var RegisterView = Marionette.ItemView.extend({
     template: '#account-register-tpl',
     tagName: 'form',
     className: 'ui form compact segment',
@@ -65,7 +64,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             type: 'empty',
             prompt: 'Please enter a password'
           }]
-        }, 
+        },
         password1: {
           identifier: 'password1',
           rules: [{
@@ -107,7 +106,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       'click @ui.submit': 'register',
       'click @ui.consultant': 'consultant'
     },
-    
+
     register: function() {
       var user = this.$el.form('get values', ['username', 'password', 'email']);
       $.ajax({
@@ -120,7 +119,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 		window.location.href = "/app/login";
       }).fail(function() {
         window.alert('register failure');
-      });  
+      });
     },
     consultant: function() {
       var user = this.$el.form('get values', ['username', 'password', 'email']);
@@ -134,7 +133,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 		window.location.href = "/app/site";
       }).fail(function() {
         window.alert('fail to send the validation to admin');
-      });  
+      });
     }
   });
 
@@ -146,7 +145,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       Dionysus.mainRegion.show(new RegisterView());
     },
     logout: function() {
-      
+
     }
   });
 
