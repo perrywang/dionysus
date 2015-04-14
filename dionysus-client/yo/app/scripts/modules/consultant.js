@@ -13,7 +13,9 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     },
     openAppointment : function(e){
       this.trigger("consultant:newAppointment", this.model);
-      alert("alert from viewItem");
+      var appointment = this.$el.form('get values', ['date', 'approach', 'reason']);
+      alert(appointment.date + appointment.approach+appointment.reason);
+      //TODO: do the actual post action, no current user info, and reference is link.
     }
   });
 
