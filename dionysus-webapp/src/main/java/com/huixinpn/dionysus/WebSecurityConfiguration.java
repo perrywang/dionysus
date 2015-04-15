@@ -14,43 +14,42 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserService securityUserService;
-	
-	@Autowired
-	private PasswordEncoder encoder;
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(securityUserService).passwordEncoder(encoder);
-	}
-	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
-//	    http.authorizeRequests()
-//            .antMatchers("/api/v1/admin/**", "/admin/**")
-//            .access("hasRole('ROLE_ADMIN')")
-//          .and()
-//            .formLogin()
-//            .loginPage("/login")
-//            .failureUrl("/login?error")
-//			.usernameParameter("username")
-//			.passwordParameter("password")
-//		  .and()
-//		  	.logout()
-//		  	.logoutSuccessUrl("/login?logout");
-	}
-	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring()
-			.antMatchers(HttpMethod.POST, "/api/v1/login")
-			.antMatchers(HttpMethod.GET, "/", 
-				"/themes/**", "/public/**", 
-				"/styles/**", "/fonts/**", "/images/**", "/scripts/**");
-	}
+  @Autowired
+  private UserService securityUserService;
+
+  @Autowired
+  private PasswordEncoder encoder;
+
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(securityUserService).passwordEncoder(encoder);
+  }
+
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    //todo hardcode, detailed design
+    http.csrf().disable()
+        .authorizeRequests();
+/*        .antMatchers("/api/v1/admin*//**").hasRole("ADMIN")
+        .regexMatchers(HttpMethod.GET, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
+        .regexMatchers(HttpMethod.POST, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
+        .regexMatchers(HttpMethod.PUT, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
+        .regexMatchers(HttpMethod.DELETE, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
+        .antMatchers(HttpMethod.POST, "/api/v1*//**").hasRole("ADMIN")
+        .antMatchers(HttpMethod.PUT, "/api/v1*//**").hasRole("ADMIN")
+        .antMatchers(HttpMethod.DELETE, "/api/v1*//**").hasRole("ADMIN");*/
+  }
+
+
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring()
+        .antMatchers(HttpMethod.POST, "/api/v1/login")
+        .antMatchers(HttpMethod.GET, "/",
+            "/themes/**", "/public/**",
+            "/styles/**", "/fonts/**", "/images/**", "/scripts/**");
+  }
 }
