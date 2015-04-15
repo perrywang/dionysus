@@ -1,63 +1,56 @@
 package com.huixinpn.dionysus.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.huixinpn.dionysus.exception.InvalidUserException;
-import org.apache.http.HttpStatus;
+import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.huixinpn.dionysus.domain.User;
-import com.huixinpn.dionysus.service.UserService;
-
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/api/v1")
 public class LoginController {
 
-	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
-	private UserService userService;
-	
-	@Autowired
-	public LoginController(UserService service) {
-		this.userService = service;
-	}
+  private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+  private UserService userService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public @ResponseBody User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
+  @Autowired
+  public LoginController(UserService service) {
+    this.userService = service;
+  }
 
-			User loginedUser =  userService.sign(user.getUsername(), user.getPassword());
-			request.getSession();
-			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(loginedUser, user.getPassword(), user.getAuthorities());
-			SecurityContextHolder.getContext().setAuthentication(auth);
-			return loginedUser;
-	}
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  public
+  @ResponseBody
+  User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session) {
-		if (session != null)
-			session.invalidate();
-		return "success";
-	}
+    User loginedUser = userService.sign(user.getUsername(), user.getPassword());
+    request.getSession();
+    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(loginedUser, user.getPassword(), user.getAuthorities());
+    SecurityContextHolder.getContext().setAuthentication(auth);
+    return loginedUser;
+  }
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public User register(@RequestBody User user) {
-		return userService.register(user);
-	}
-	
-	@RequestMapping(value = "/consultant", method = RequestMethod.POST)
-	public User consultant(@RequestBody User user) {
-		return userService.notifyuser(user, "Consultant Validation & Register");
-	}
+  @RequestMapping(value = "/logout", method = RequestMethod.GET)
+  public String logout(HttpSession session) {
+    if (session != null)
+      session.invalidate();
+    return "success";
+  }
+
+  @RequestMapping(value = "/register", method = RequestMethod.POST)
+  public User register(@RequestBody User user) {
+    return userService.register(user);
+  }
+
+  @RequestMapping(value = "/consultant", method = RequestMethod.POST)
+  public User consultant(@RequestBody User user) {
+    return userService.notifyuser(user, "Consultant Validation & Register");
+  }
 }
