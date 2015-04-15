@@ -1,8 +1,16 @@
 package com.huixinpn.dionysus.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.huixinpn.dionysus.exception.InvalidUserException;
+import org.apache.http.HttpStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.huixinpn.dionysus.domain.User;
 import com.huixinpn.dionysus.service.UserService;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api/v1")
 public class LoginController {
-	
+
+	private static Logger logger = LoggerFactory.getLogger(LoginController.class);
 	private UserService userService;
 	
 	@Autowired
@@ -24,8 +35,13 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public @ResponseBody User login(@RequestBody User user) {
-		return userService.sign(user.getUsername(), user.getPassword());
+	public @ResponseBody User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
+
+			User loginedUser =  userService.sign(user.getUsername(), user.getPassword());
+			request.getSession();
+			UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(loginedUser, user.getPassword(), user.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(auth);
+			return loginedUser;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

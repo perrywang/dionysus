@@ -225,13 +225,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("User: \n");
-		sb.append("  id: " + this.getId() + "\n");
-		sb.append("  username: " + this.getUsername() + "\n");
-		sb.append("  profile: " + this.getProfile().getId() + "\n");
-		sb.append("  inbox: " + this.getInbox().getId() + "\n");
-		return sb.toString();
+		//satisfy UsernamepasswordAuthentionToken requirement.
+		return this.username;
 	}
 
 	@Override

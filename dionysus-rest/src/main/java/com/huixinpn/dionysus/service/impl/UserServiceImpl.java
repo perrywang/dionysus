@@ -75,14 +75,6 @@ public class UserServiceImpl implements UserService {
 			throw new InvalidUserException("invalid user: " + username);
 		}
 
-		//default spring security using DaoAuthenticationProvider if no specify in AuthenticationManagerBuilder.authenticationProvider();
-		UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
-
-		//here I put ID as extra information
-		auth.setDetails(user.getId());
-
-		SecurityContextHolder.getContext().setAuthentication(auth);
-
 		manager.detach(user);
 		user.setPassword("");
 		user.setEncryptedPassword("");
