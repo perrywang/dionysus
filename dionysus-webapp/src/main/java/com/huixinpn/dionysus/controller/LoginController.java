@@ -36,7 +36,7 @@ public class LoginController {
   User login(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) {
 
     User loginedUser = userService.sign(user.getUsername(), user.getPassword());
-    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), loginedUser.getAuthorities());
+    UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(loginedUser, user.getPassword(), loginedUser.getAuthorities());
     auth.setDetails(loginedUser.getId());
     SecurityContext context = SecurityContextHolder.getContext();
     context.setAuthentication(auth);
