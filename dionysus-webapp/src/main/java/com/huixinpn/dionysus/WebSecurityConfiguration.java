@@ -33,7 +33,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.csrf().disable()
         .authorizeRequests()
         .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
-        .regexMatchers(HttpMethod.GET, ".*/api/v1/(users|consultants|inbox|appointments|notifications|profiles)").authenticated()
+        .regexMatchers(HttpMethod.GET, ".*/api/v1/(users|consultants|inbox|appointments|notifications|profiles)(/|/\\d+)?.*").authenticated()
         .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
         .antMatchers(HttpMethod.PUT, "/api/v1/**").authenticated()
         .antMatchers(HttpMethod.DELETE, "/api/v1/**").authenticated();
