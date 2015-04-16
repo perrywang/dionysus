@@ -17,6 +17,9 @@ hs_err_pid*
 
 .idea/
 *.iml
+*.ipr
+*.iws
+
 
 target/
 pom.xml.tag
@@ -30,3 +33,4 @@ dionysus.db
 dionysus-test.db
 src/main/webapp/wro
 bin/
+dionysus-client/yo/app/scripts/modules/account.js
