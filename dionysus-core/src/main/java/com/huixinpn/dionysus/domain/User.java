@@ -54,7 +54,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "enabled")
   private boolean enabled;
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   @RestResource(exported = false)
   private Set<Role> roles;
 
