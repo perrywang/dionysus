@@ -10,11 +10,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +37,7 @@ public class LoginController {
 
     User loginedUser = userService.sign(user.getUsername(), user.getPassword());
     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), loginedUser.getAuthorities());
+    auth.setDetails(loginedUser.getId());
     SecurityContext context = SecurityContextHolder.getContext();
     context.setAuthentication(auth);
     HttpRequestResponseHolder requestResponseHolder = new HttpRequestResponseHolder(request, response);

@@ -30,17 +30,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    //todo hardcode, detailed design
     http.csrf().disable()
-        .authorizeRequests();
-/*        .antMatchers("/api/v1/admin*//**").hasRole("ADMIN")
-        .regexMatchers(HttpMethod.GET, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
-        .regexMatchers(HttpMethod.POST, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
-        .regexMatchers(HttpMethod.PUT, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
-        .regexMatchers(HttpMethod.DELETE, "api/v1/users|inbox|appointments|consultants|notifications|profiles").hasAnyRole("USER", "ADMIN")
-        .antMatchers(HttpMethod.POST, "/api/v1*//**").hasRole("ADMIN")
-        .antMatchers(HttpMethod.PUT, "/api/v1*//**").hasRole("ADMIN")
-        .antMatchers(HttpMethod.DELETE, "/api/v1*//**").hasRole("ADMIN");*/
+        .authorizeRequests()
+        .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
+        .regexMatchers(HttpMethod.GET, ".*/api/v1/(inbox|appointments|notifications|profiles)").authenticated()
+        .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
+        .antMatchers(HttpMethod.PUT, "/api/v1/**").authenticated()
+        .antMatchers(HttpMethod.DELETE, "/api/v1/**").authenticated();
   }
 
 

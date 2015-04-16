@@ -1,9 +1,6 @@
 package com.huixinpn.dionysus.service.impl;
 
-import com.huixinpn.dionysus.domain.Article;
-import com.huixinpn.dionysus.domain.Category;
-import com.huixinpn.dionysus.domain.Comment;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.*;
 import com.huixinpn.dionysus.exception.InvalidUserException;
 import com.huixinpn.dionysus.repository.ArticleRepository;
 import com.huixinpn.dionysus.repository.CategoryRepository;
@@ -19,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -52,6 +50,10 @@ public class UserServiceImpl implements UserService {
     if (_user != null) {
       throw new InvalidUserException("user " + user.getUsername() + " exists!");
     }
+
+    HashSet<Role> roles = new HashSet<Role>();
+    roles.add(new Role("ROLE_USER"));
+    user.setRoles(roles);
     user.setInbox(null);
     user.setProfile(null);
     userrepository.save(user);
