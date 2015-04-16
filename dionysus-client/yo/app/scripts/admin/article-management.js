@@ -100,6 +100,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     editArticle: function(id) {
       var categoryFetching = Dionysus.request('category:entities');
       Dionysus.request('article:instance', id).then(function(article) {
+        var c = article.link('category');
+        c.fetchResource().then(function(d) {
+          console.log(c);
+        });
         categoryFetching.done(function(categories) {
           var editor = new ArticleEditorView({ model: article, categories: categories});
           Dionysus.mainRegion.show(editor);
