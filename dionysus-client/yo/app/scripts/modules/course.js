@@ -1,6 +1,7 @@
 Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
   'use strict';
 
+//todo:
   var CourseView = Marionette.ItemView.extend({ 
     template: '#course-tpl',
     tagName: 'li',
