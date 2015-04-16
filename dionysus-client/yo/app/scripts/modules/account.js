@@ -1,6 +1,39 @@
 Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   'use strict';
-
+  
+  var LogoutView = Marionette.ItemView.extend({ 
+    template: '#logout-tpl',
+    tagName: 'form',
+    className: 'ui form',
+	onRender: function() {
+      this.$el.form({
+        feedback: {
+          identifier: 'feedback',
+          rules: [{
+            type: 'empty',
+            prompt: 'Please share the feedback'
+          }]
+        }
+      });
+    },
+    ui: {
+      logout: '.logout'
+    },
+    events: {
+      'click @ui.logout': 'logout'
+    },
+    logout: function() {
+      $.ajax({
+        url: '/api/v1/logout',
+		cache: false,
+        success: function(response) {
+          window.location.href = "/app/login";
+		  sessionStorage.setItem("authorized", "disabled");
+        }
+      });
+    }
+  });
+  
   var LoginView = Marionette.ItemView.extend({ 
     template: '#account-login-tpl',
     tagName: 'form',
@@ -39,6 +72,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       }).done(function(response) {
 	    var data = response.id;
         window.location.href = "/app/profile/" + data;
+		sessionStorage.setItem("authorized", "enabled");
       }).fail(function() {
         window.alert('login failure');
       });
@@ -146,7 +180,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       Dionysus.mainRegion.show(new RegisterView());
     },
     logout: function() {
-      
+      Dionysus.mainRegion.show(new LogoutView());
     }
   });
 

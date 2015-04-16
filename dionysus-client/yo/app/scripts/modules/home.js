@@ -22,6 +22,12 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
     }
   });
 
+  var HeaderloginView = Marionette.ItemView.extend({
+    template: '#headerlogin-tpl',
+    tagName: 'nav',
+    className: 'ui menu'
+  });
+  
   var HeaderView = Marionette.ItemView.extend({
     template: '#header-tpl',
     tagName: 'nav',
@@ -33,8 +39,14 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   Dionysus.addInitializer(function() {
-    Dionysus.mainNavRegion.show(new HeaderView());
-    Dionysus.footerRegion.show(new FooterView());
+    if(sessionStorage.getItem("authorized") == "enabled") {
+      Dionysus.mainNavRegion.show(new HeaderloginView());
+      Dionysus.footerRegion.show(new FooterView());
+	}
+	else {
+	  Dionysus.mainNavRegion.show(new HeaderView());
+      Dionysus.footerRegion.show(new FooterView());
+	}
   });
 
 
