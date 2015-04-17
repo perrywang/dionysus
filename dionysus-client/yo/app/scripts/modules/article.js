@@ -1,7 +1,7 @@
 Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  var ArticleView = Marionette.ItemView.extend({ 
+  var ArticleView = Marionette.ItemView.extend({
     template: '#article-tpl',
     tagName: 'li',
     className: 'item'
@@ -32,14 +32,23 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       $.when(articleFetching).done(function(article) {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
-    } 
+    },
+
+    showArticlesByAuthor: function(userid){
+      var articleFetching = Dionysus.request('articles:createdby', userid);
+      $.when(articleFetching).done(function(articles) {
+        Dionysus.mainRegion.show(new ArticlesView({ collection: articles}));
+      });
+    }
   });
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
+        'app/articles/createdBy/:id' : 'showArticlesByAuthor',
         'app/articles(/)': 'showArticles',
         'app/articles/:id(/)': 'showArticle'
+
       },
       controller: new ArticleController()
     });

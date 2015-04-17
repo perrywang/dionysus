@@ -13,8 +13,8 @@ script#profile-tpl(type="text/template")
           li
             a.grey-text.text-lighten-3(href="/app/consultants") Appointment
           li
-            a.grey-text.text-lighten-3(href="app/tests") Test
+            a.grey-text.text-lighten-3(href="/admin/tests") Test
           li
             a.grey-text.text-lighten-3(href="#!") Course
           li
-            a.grey-text.text-lighten-3(href="app/articles") Article
+            a.grey-text.text-lighten-3(href!="/app/articles/createdBy/<%= id %>") Article

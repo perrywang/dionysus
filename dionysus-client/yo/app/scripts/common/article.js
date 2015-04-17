@@ -11,7 +11,14 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     parse: function(response) {
       var embedded = response._embedded;
       return embedded ? embedded.articles : [];
+    },
+
+    initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
     }
+
   });
 
   Dionysus.reqres.setHandler('article:entities', function() {
@@ -28,6 +35,15 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     var defer = $.Deferred();
     article.fetch({ data: { projection: 'detail' }}).then(function() {
       defer.resolve(article);
+    });
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('articles:createdby', function(userid) {
+    var articles = new Entities.ArticleCollection({appendUrl:'/search/findByCreatedBy'});
+    var defer = $.Deferred();
+    articles.fetch({ data: { author:userid }}).then(function() {
+      defer.resolve(articles);
     });
     return defer.promise();
   });
