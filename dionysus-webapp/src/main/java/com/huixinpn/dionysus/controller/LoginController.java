@@ -41,7 +41,6 @@ public class LoginController {
     SecurityContext context = SecurityContextHolder.getContext();
     context.setAuthentication(auth);
     HttpRequestResponseHolder requestResponseHolder = new HttpRequestResponseHolder(request, response);
-    sessionSecurityContextRepository.loadContext(requestResponseHolder);
     sessionSecurityContextRepository.saveContext(context, requestResponseHolder.getRequest(), requestResponseHolder.getResponse());
     return loginedUser;
 
