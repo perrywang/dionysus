@@ -13,6 +13,11 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       var embedded = response._embedded;
       return embedded ? embedded.appointments : [];
     },
+	initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    },
     state: {
       firstPage: 0
     },
@@ -40,5 +45,13 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
+  Dionysus.reqres.setHandler('appointment:appointedby', function(userid) {
+    var appointments = new Entities.AppointmentCollection({appendUrl:'/search/findByUser'});
+    var defer = $.Deferred();
+    appointments.fetch({ data: { user:userid }}).then(function() {
+      defer.resolve(appointments);
+    });
+    return defer.promise();
+  });
 });
 

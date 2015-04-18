@@ -11,7 +11,7 @@ script#profile-tpl(type="text/template")
         h5.white-text
         ul
           li
-            a.grey-text.text-lighten-3(href="/app/consultants") Appointment
+            a.grey-text.text-lighten-3(href!="/app/appointments/appointedBy/<%= id %>") Appointment
           li
             a.grey-text.text-lighten-3(href="/admin/tests") Test
           li

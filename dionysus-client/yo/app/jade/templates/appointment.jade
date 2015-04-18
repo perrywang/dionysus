@@ -1,0 +1,13 @@
+script#appointments-tpl(type="text/template")
+  h2.ui.header Appointment List
+  ul.ui.items.divided
+
+script#appointment-tpl(type="text/template")
+  .ui.small.image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.ui.header <%= date %>
+    p.description <%= date %>
+    .extra
+      .ui.label <%= state %>
+      .ui.label <%= approach %>
