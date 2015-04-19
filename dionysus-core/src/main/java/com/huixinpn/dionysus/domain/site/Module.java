@@ -5,14 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
+@Data
+@RequiredArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "modules")
 public class Module extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -3202875103419512957L;
 
+	@NonNull
 	@Column(name = "title")
 	private String title;
 
@@ -27,44 +36,4 @@ public class Module extends AbstractDionysusPersistable {
 
 	@Lob @Column(name = "body")
 	private String body;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
-	}
-
-	public String getSubtitle() {
-		return subtitle;
-	}
-
-	public void setSubtitle(String subTitle) {
-		this.subtitle = subTitle;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public String getHref() {
-		return href;
-	}
-
-	public void setHref(String href) {
-		this.href = href;
-	}
 }
