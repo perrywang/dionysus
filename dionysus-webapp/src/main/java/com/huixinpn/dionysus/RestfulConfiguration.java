@@ -27,6 +27,8 @@ public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
 				PsychTest.class, PsychTestItem.class,
 				PsychTestItemOption.class, Consultant.class, User.class);
 		try {
+			config.setReturnBodyOnCreate(true);
+			config.setReturnBodyOnUpdate(true);
 			config.setBaseUri(new URI("/api/v1"));
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
