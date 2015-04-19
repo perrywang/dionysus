@@ -38,16 +38,16 @@ insert into comments (id, article_id, content) values (1, 1, '测试用Comment')
 insert into comments (id, article_id, content) values (2, 1, '第二条测试用Comment');
 insert into comments (id, article_id, content) values (3, 2, '测试用Comment');
 
-insert into modules (id, title, subtitle, href, image, body) values (1, '汇心网', '汇心网络中心', '/app/site', '/public/images/slide-2.jpeg', '关怀无处不在');
-insert into modules (id, title, subtitle, href, image, body) values (2, '心理服务小站', '心灵避风港.汇心心理', '/app/colleges', '/public/images/slide-3.jpeg', '国内最专业的校园心理服务提供商');
-insert into modules (id, title, subtitle, href, image, body) values (3, '汇心心理学院', '专业心理从业人员孵化基地', '/app/about', '/public/images/slide-1.jpeg', '汇心心理学院，专业源于权威');
+insert into modules (id, title, subtitle, href, image, body) values (1, '汇心网', '汇心网络中心', '/site', '/public/images/slide-2.jpeg', '关怀无处不在');
+insert into modules (id, title, subtitle, href, image, body) values (2, '心理服务小站', '心灵避风港.汇心心理', '/colleges', '/public/images/slide-3.jpeg', '国内最专业的校园心理服务提供商');
+insert into modules (id, title, subtitle, href, image, body) values (3, '汇心心理学院', '专业心理从业人员孵化基地', '/about', '/public/images/slide-1.jpeg', '汇心心理学院，专业源于权威');
 
 insert into pages (id, name, title, body) values (1, 'about', 'About Us', '关于我们的详细页面');
 
-insert into menu (id, name, href) values (1, '心理体验', '/app/experience');
-insert into menu (id, name, href) values (2, '在线心理咨询', '/app/consult');
-insert into menu (id, name, href) values (3, '心理知识', '/app/articles');
-insert into menu (id, name, href) values (4, '心理课程', '/app/cources');
+insert into menu (id, name, href) values (1, '心理体验', '/experience');
+insert into menu (id, name, href) values (2, '在线心理咨询', '/consult');
+insert into menu (id, name, href) values (3, '心理知识', '/articles');
+insert into menu (id, name, href) values (4, '心理课程', '/cources');
 
 insert into psychtests(id, title, description) values (1, '你是一个心地善良的人吗？', '测试你是一个心地善良的人还是一个老好人');
 

@@ -7,13 +7,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(
+		value = { 
+			"/", 
+			"/app/**",  
+			"/about", "/login", "/logout", "/register",
+			"/articles/**",
+			"/appointments/**",
+			"/consultants/**",
+			"/courses/**",
+			"/error/**",
+			"/profile/**",
+			"/tests/**",
+			"/site/**"
+		}, 
+		method = RequestMethod.GET)
 	public String index() {
-		return "/index.html";
-	}
-
-	@RequestMapping(value = "/app/**", method = RequestMethod.GET)
-	public String app() {
 		return "/index.html";
 	}
 

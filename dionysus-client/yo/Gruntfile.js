@@ -26,7 +26,12 @@ module.exports = function (grunt) {
 
   var singlePage = function(req, res, next) {
     var url = req.url;
+    if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\/icons\./.test(url) || (/.*\/public\//.test(url))) {
+      return next();
+    }
     if (/^\/app(\/)?/.test(url)) {
+      req.url = '/index.html';
+    } else if(/^\/[(login)|(logout)|(register)|(articles)|(appointments)|(consultants)|(courses)|(error)|(profile)|(tests)|(site)](\/)?/.test(url)) {
       req.url = '/index.html';
     } else if (/^\/admin(\/)?/.test(url)) {
       req.url = '/admin.html';
@@ -109,8 +114,8 @@ module.exports = function (grunt) {
         options: {
           middleware: function(connect) {
             return [
-              singlePage,
               proxySnippet,
+              singlePage,
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
               connect.static(config.app)
