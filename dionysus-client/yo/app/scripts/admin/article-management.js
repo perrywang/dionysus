@@ -54,8 +54,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     saveArticle: function() {
       var json = this.$el.form('get values');
-      this.model.set(json);
-      this.model.save();
+      this.trigger('article:save', json);
     }
   });
 
@@ -69,6 +68,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       $.when(Dionysus.request('article:new'), Dionysus.request('category:instances'))
         .done(function(article, categories) {
           var editor = new ArticleEditorView({ model: article, categories: categories });
+          editor.on('article:save', function(json) {
+            article.set(json);
+            article.save().done(function() {
+              toastr.info('Article has been created');
+            });
+          });
           Dionysus.mainRegion.show(editor);
         });
     },
@@ -76,6 +81,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances'))
         .done(function(article, categories) {
           var editor = new ArticleEditorView({ model: article, categories: categories});
+          editor.on('article:save', function(json) {
+            article.set(json);
+            article.save().then(function() {
+              toastr.info('Article has been saved');
+            });
+          });
           Dionysus.mainRegion.show(editor);
         });
     }

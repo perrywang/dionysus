@@ -9,6 +9,7 @@
     "sockjs": "~0.3.4",
     "stomp-websocket": "~2.3.4",
     "froala": "~1.2.6",
-    "semantic-ui": "~1.11.6"
+    "semantic-ui": "~1.11.6",
+    "toastr": "~2.1.1"
   }
 }
