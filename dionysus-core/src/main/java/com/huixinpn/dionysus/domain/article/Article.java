@@ -15,6 +15,7 @@ import javax.validation.Valid;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -26,6 +27,7 @@ import com.huixinpn.dionysus.domain.user.User;
 
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(of = { "title" })
 @Entity

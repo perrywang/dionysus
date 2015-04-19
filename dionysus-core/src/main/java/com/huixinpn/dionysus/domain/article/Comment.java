@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,7 @@ import com.huixinpn.dionysus.domain.user.User;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
 @Table(name = "comments")
