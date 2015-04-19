@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.article;
+package com.huixinpn.dionysus.authorize.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,31 +9,33 @@ import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-@RepositoryEventHandler(Article.class)
-@Slf4j
-public class ArticleEventHandler {
+import com.huixinpn.dionysus.domain.article.Category;
 
+@RepositoryEventHandler(Category.class)
+@Slf4j
+public class CategoryEventListener {
+	
 	@HandleBeforeCreate
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void checkCreateAuthority(Article article) {
-		log.debug("Creating article {}", article);
+	public void checkCreateAuthority(Category category) {
+		log.debug("Creating category {}", category);
 	}
 	
 	@HandleBeforeSave
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void checkUpdateAuthority(Article article) {
-		log.debug("Updating article {}", article);
+	public void checkUpdateAuthority(Category category) {
+		log.debug("Updating category {}", category);
 	}
 	
 	@HandleBeforeDelete
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void checkDeleteAuthority(Article article) {
-        log.debug("Deleting article {}", article);
+    public void checkDeleteAuthority(Category category) {
+        log.debug("Deleting category {}", category);
     }
 
     @HandleBeforeLinkDelete
     @PreAuthorize("denyAll()")
-    public void deleteCredentialForbidden(Article article) {
+    public void deleteCredentialForbidden(Category category) {
         //deny all, cannot be called
     }
 }
