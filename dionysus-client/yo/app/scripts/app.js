@@ -8,6 +8,11 @@ Dionysus.addRegions({
   dialogRegion: '#dialog'
 });
 
+Dionysus.navigate = function(route,options) { 
+  options || (options = {}); 
+  Backbone.history.navigate(route, options);
+};
+
 Dionysus.on('start', function() {
   Backbone.history.start({ pushState: true });
   Backbone.Intercept.start();

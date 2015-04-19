@@ -5,7 +5,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     template: '#logout-tpl',
     tagName: 'form',
     className: 'ui form',
-	onRender: function() {
+    onRender: function() {
       this.$el.form({
         feedback: {
           identifier: 'feedback',
@@ -23,14 +23,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       'click @ui.logout': 'logout'
     },
     logout: function() {
-      $.ajax({
-        url: '/api/v1/logout',
-		cache: false,
-        success: function(response) {
-          window.location.href = "/app/login";
-		  sessionStorage.setItem("authorized", "disabled");
-        }
-      });
+      this.trigger('user:logout');
     }
   });
   
@@ -64,18 +57,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
     login: function() {
       var user = this.$el.form('get values', ['username', 'password']);
-      $.ajax({
-        url: '/api/v1/login',
-        method: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(user)
-      }).done(function(response) {
-	    var data = response.id;
-        window.location.href = "/app/profile/" + data;
-		sessionStorage.setItem("authorized", "enabled");
-      }).fail(function() {
-        window.alert('login failure');
-      });
+      this.trigger('user:login', user);
     }
   });
 
@@ -110,10 +92,10 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             prompt: 'Password should match'
           }]
         },
-	email: {
+        email: {
           identifier: 'email',
           rules: [{
-		    type: 'email',
+            type: 'email',
             prompt: 'Please enter an valid email'
           }]
         },
@@ -124,7 +106,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             prompt : 'You must agree to the terms and conditions'
           }]
         },
-	consultant: {
+        consultant: {
           identifier : 'consultant',
           rules: [{
             //type   : 'checked',
@@ -144,43 +126,76 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     
     register: function() {
       var user = this.$el.form('get values', ['username', 'password', 'email']);
-      $.ajax({
-        url: '/api/v1/register',
-        method: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(user)
-      }).done(function() {
-        window.alert('register success');
-		window.location.href = "/app/login";
-      }).fail(function() {
-        window.alert('register failure');
-      });  
+      this.trigger('user:register', user); 
     },
     consultant: function() {
       var user = this.$el.form('get values', ['username', 'password', 'email']);
-      $.ajax({
-        url: '/api/v1/consultant',
-        method: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(user)
-      }).done(function() {
-        window.alert('send the validation to admin');
-		window.location.href = "/app/site";
-      }).fail(function() {
-        window.alert('fail to send the validation to admin');
-      });  
+      this.trigger('user:consultant', user); 
     }
   });
 
   var AccountController = Marionette.Controller.extend({
     login: function() {
-      Dionysus.mainRegion.show(new LoginView());
+      var view = new LoginView(), controller = this;
+      view.on('user:login', function(user) {
+        $.ajax({
+          url: '/api/v1/login',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(user)
+        }).done(function(response) {
+          var data = response.id;
+          window.location.href = "/app/profile/" + data;
+          sessionStorage.setItem("authorized", "enabled");
+        }).fail(function() {
+          window.alert('login failure');
+        });
+      });
+      Dionysus.mainRegion.show(view);
     },
     register: function() {
-      Dionysus.mainRegion.show(new RegisterView());
+      var view = new RegisterView();
+      view.on('user:register', function(user) {
+        $.ajax({
+          url: '/api/v1/register',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(user)
+        }).done(function() {
+          window.alert('register success');
+          window.location.href = "/app/login";
+        }).fail(function() {
+          window.alert('register failure');
+        }); 
+      });
+      view.on('user:consultant', function(user) {
+        $.ajax({
+          url: '/api/v1/consultant',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(user)
+        }).done(function() {
+          window.alert('send the validation to admin');
+          window.location.href = "/app/site";
+        }).fail(function() {
+          window.alert('fail to send the validation to admin');
+        }); 
+      });
+      Dionysus.mainRegion.show(view);
     },
     logout: function() {
-      Dionysus.mainRegion.show(new LogoutView());
+      var view = new LogoutView();
+      view.on('user:logout', function() {
+        $.ajax({
+          url: '/api/v1/logout',
+          cache: false,
+          success: function(response) {
+            window.location.href = "/app/login";
+            sessionStorage.setItem("authorized", "disabled");
+          }
+        });
+      })
+      Dionysus.mainRegion.show(view);
     }
   });
 

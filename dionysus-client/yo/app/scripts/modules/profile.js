@@ -9,12 +9,12 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var ProfileController = Marionette.Controller.extend({
     showProfile: function (id) {
-		var userFetching = Dionysus.request('user:entity', id);
-		$.when(userFetching).done(function(user) {
-			Dionysus.mainRegion.show(new ProfileView({ model: user}));
-		}).fail(function(){
-			alert("fail");
-	});
+      var userFetching = Dionysus.request('user:entity', id);
+      $.when(userFetching).done(function(user) {
+        Dionysus.mainRegion.show(new ProfileView({ model: user}));
+      }).fail(function(){
+        alert("fail");
+      });
     }
   });
 
