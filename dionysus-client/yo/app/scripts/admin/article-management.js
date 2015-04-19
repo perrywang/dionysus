@@ -34,14 +34,18 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       if (_.isObject(category)) {
         data.category = category.id;
       }
-      data.categories = [{'xxx': 1}, {'yyy' : 2}];
+      data.categories = this.categories.toJSON();
       return data;
     },
     onRender: function() {
       this.$('select.dropdown').dropdown();
       this.$el.form();
-
-      this.$el.form('set values', this.model.toJSON());
+      var data = this.model.toJSON();
+      var category = data.category;
+      if (_.isObject(category)) {
+        data.category = category.id;
+      }
+      this.$el.form('set values', data);
       this.$('.editor').editable({
         inlineMode: false, 
         language: 'zh_cn',
@@ -57,6 +61,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     saveArticle: function() {
       var json = this.$el.form('get values');
+      json.category = parseInt(json.category);
       this.model.set(json);
       this.model.save();
     }
@@ -69,20 +74,14 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       });
     },
     createArticle: function() {
-      var article = Dionysus.request('article:new');
-      var fetchingCategory = Dionysus.request('category:instances');
-      $.when(fetchingCategory).done(function(categories) {
-        var editor = new ArticleEditorView({
-          model: article, 
-          categories: categories
-        });
+      $.when(Dionysus.request('article:new'), Dionysus.request('category:instances')).done(function(article, categories) {
+        var editor = new ArticleEditorView({ model: article, categories: categories });
         Dionysus.mainRegion.show(editor);
       });
     },
     editArticle: function(id) {
-      Dionysus.request('article:instance', id).then(function(article) {
-        // category.fetch();
-        var editor = new ArticleEditorView({ model: article, categories: []});
+      $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances')).done(function(article, categories) {
+        var editor = new ArticleEditorView({ model: article, categories: categories});
         Dionysus.mainRegion.show(editor);
       });
     }
