@@ -8,51 +8,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
+@Data
+@RequiredArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name="inbox")
+@Table(name = "inbox")
 public class Inbox extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = 8365840187902479233L;
 
+	@NonNull
 	@OneToOne(mappedBy = "inbox")
 	private User user;
 
 	@OneToMany
-	private Collection<Notification> notifications;
-
-	public Inbox() {
-		this.notifications = new ArrayList<Notification>();
-	}
-
-	public Inbox(User user) {
-		this();
-		this.user = user;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Collection<Notification> getNotifications() {
-		return notifications;
-	}
-
-	public void setNotifications(Collection<Notification> notifications) {
-		this.notifications = notifications;
-	}
+	private Collection<Notification> notifications = new ArrayList<Notification>();;
 
 	public void addNotification(Notification notification) {
 		this.notifications.add(notification);
 	}
 
-	@Override
-	public String toString() {
-		return "Inbox: " + this.getId();
-	}
 }
