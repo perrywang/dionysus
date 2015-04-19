@@ -23,7 +23,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     serializeData: function(){
       var data = this.model.toJSON();
-      data.categories = this.categories.toJSON();
+      data.categories = this.categories;
       return data;
     },
     onRender: function() {
@@ -98,16 +98,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       });
     },
     editArticle: function(id) {
-      var categoryFetching = Dionysus.request('category:instances');
       Dionysus.request('article:instance', id).then(function(article) {
-        var c = article.link('category');
-        c.fetchResource().then(function(d) {
-          console.log(c);
-        });
-        categoryFetching.done(function(categories) {
-          var editor = new ArticleEditorView({ model: article, categories: categories});
-          Dionysus.mainRegion.show(editor);
-        })
+        var category = article.link('category');
+        console.log(category);
+        category.fetch();
+        var editor = new ArticleEditorView({ model: article, categories: []});
+        Dionysus.mainRegion.show(editor);
       });
     }
   });
