@@ -14,7 +14,7 @@ script#account-login-tpl(type="text/template")
     span
       | 没有账号
       a(href="/register") 注册
-  .ui.submit.button 登陆
+  input.ui.submit.button(type="submit", value="登陆")
 
 script#account-register-tpl(type="text/template")
 
@@ -40,12 +40,11 @@ script#account-register-tpl(type="text/template")
     .ui.checkbox
       input(type="checkbox", name="consultant")
       label
-        | Consultant?
+        | 注册咨询师?
   .ui.horizontal.divider 或
   .field
     span
       | 已经有账号
       a(href="/login") 登陆
-  .ui.submit.button 注册
-  .ui.consultant.button 注册咨询师
+  input.ui.submit.button(type="submit", value="注册")
 

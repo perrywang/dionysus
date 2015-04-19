@@ -1,5 +1,46 @@
 Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   'use strict';
+
+  var ACCOUNT_RULES = {
+    username: {
+      identifier: 'username',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter a username'
+      }]
+    },
+    password: {
+      identifier: 'password',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter a password'
+      }]
+    }, 
+    password1: {
+      identifier: 'password1',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please retype your password'
+      }, {
+        type: 'match[password]',
+        prompt: 'Password should match'
+      }]
+    },
+    email: {
+      identifier: 'email',
+      rules: [{
+        type: 'email',
+        prompt: 'Please enter an valid email'
+      }]
+    },
+    terms: {
+      identifier : 'terms',
+      rules: [{
+        type   : 'checked',
+        prompt : 'You must agree to the terms and conditions'
+      }]
+    }
+  };
   
   var LogoutView = Marionette.ItemView.extend({ 
     template: '#logout-tpl',
@@ -32,22 +73,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     tagName: 'form',
     className: 'ui form compact segment',
     onRender: function() {
-      this.$el.form({
-        username: {
-          identifier: 'username',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a username'
-          }]
-        },
-        password: {
-          identifier: 'password',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a password'
-          }]
-        }
-      });
+      this.$el.form(ACCOUNT_RULES);
     },
     ui: {
       submit: '.submit'
@@ -67,70 +93,18 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     className: 'ui form compact segment',
     onRender: function() {
       this.$('.ui.checkbox').checkbox();
-      this.$el.form({
-        username: {
-          identifier: 'username',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a username'
-          }]
-        },
-        password: {
-          identifier: 'password',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please enter a password'
-          }]
-        }, 
-        password1: {
-          identifier: 'password1',
-          rules: [{
-            type: 'empty',
-            prompt: 'Please retype your password'
-          }, {
-            type: 'match[password]',
-            prompt: 'Password should match'
-          }]
-        },
-        email: {
-          identifier: 'email',
-          rules: [{
-            type: 'email',
-            prompt: 'Please enter an valid email'
-          }]
-        },
-        terms: {
-          identifier : 'terms',
-          rules: [{
-            type   : 'checked',
-            prompt : 'You must agree to the terms and conditions'
-          }]
-        },
-        consultant: {
-          identifier : 'consultant',
-          rules: [{
-            //type   : 'checked',
-            //prompt : 'Select if you are a consultant'
-          }]
-        }
-      });
+      this.$el.form(ACCOUNT_RULES);
     },
     ui: {
       submit: '.submit',
       consultant: '.consultant'
     },
     events: {
-      'click @ui.submit': 'register',
-      'click @ui.consultant': 'consultant'
+      'click @ui.submit': 'register'
     },
-    
     register: function() {
-      var user = this.$el.form('get values', ['username', 'password', 'email']);
+      var user = this.$el.form('get values', ['username', 'password', 'email', 'consultant']);
       this.trigger('user:register', user); 
-    },
-    consultant: function() {
-      var user = this.$el.form('get values', ['username', 'password', 'email']);
-      this.trigger('user:consultant', user); 
     }
   });
 
@@ -156,29 +130,18 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     register: function() {
       var view = new RegisterView();
       view.on('user:register', function(user) {
+        var consultant = user.consultant;
+        var url = consultant ? '/api/v1/consultant' : '/api/v1/register';
         $.ajax({
-          url: '/api/v1/register',
+          url: url,
           method: 'POST',
           contentType: 'application/json; charset=utf-8',
           data: JSON.stringify(user)
         }).done(function() {
           window.alert('register success');
-          window.location.href = "/login";
-        }).fail(function() {
-          window.alert('register failure');
-        }); 
-      });
-      view.on('user:consultant', function(user) {
-        $.ajax({
-          url: '/api/v1/consultant',
-          method: 'POST',
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify(user)
-        }).done(function() {
-          window.alert('send the validation to admin');
           window.location.href = "/site";
         }).fail(function() {
-          window.alert('fail to send the validation to admin');
+          window.alert('register failure');
         }); 
       });
       Dionysus.mainRegion.show(view);
