@@ -33,9 +33,9 @@ Dionysus.module('Appointment', function(Appointment, Dionysus, Backbone, Marione
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'app/appointments/appointedBy/:id' : 'showAppointmentsByUser',
-        'app/appointments(/)': 'showAppointments',
-        //'app/articles/:id(/)': 'showArticle'
+        'appointments/appointedBy/:id' : 'showAppointmentsByUser',
+        'appointments(/)': 'showAppointments',
+        //'articles/:id(/)': 'showArticle'
 
       },
       controller: new AppointmentController()

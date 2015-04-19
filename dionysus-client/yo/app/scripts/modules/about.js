@@ -23,7 +23,7 @@ Dionysus.module('About', function(About, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'app/about(/)': 'showAbout'
+        'about(/)': 'showAbout'
       },
       controller: new AboutController()
     });

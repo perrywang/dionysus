@@ -145,7 +145,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           data: JSON.stringify(user)
         }).done(function(response) {
           var data = response.id;
-          window.location.href = "/app/profile/" + data;
+          window.location.href = "/profile/" + data;
           sessionStorage.setItem("authorized", "enabled");
         }).fail(function() {
           window.alert('login failure');
@@ -163,7 +163,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           data: JSON.stringify(user)
         }).done(function() {
           window.alert('register success');
-          window.location.href = "/app/login";
+          window.location.href = "/login";
         }).fail(function() {
           window.alert('register failure');
         }); 
@@ -176,7 +176,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           data: JSON.stringify(user)
         }).done(function() {
           window.alert('send the validation to admin');
-          window.location.href = "/app/site";
+          window.location.href = "/site";
         }).fail(function() {
           window.alert('fail to send the validation to admin');
         }); 
@@ -190,7 +190,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           url: '/api/v1/logout',
           cache: false,
           success: function(response) {
-            window.location.href = "/app/login";
+            window.location.href = "/login";
             sessionStorage.setItem("authorized", "disabled");
           }
         });
@@ -202,9 +202,9 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'app/login(/)': 'login',
-        'app/logout(/)': 'logout',
-        'app/register(/)': 'register'
+        'login(/)': 'login',
+        'logout(/)': 'logout',
+        'register(/)': 'register'
       },
       controller: new AccountController()
     });

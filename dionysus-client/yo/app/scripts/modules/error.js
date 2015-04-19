@@ -10,7 +10,7 @@ Dionysus.module('Error', function(Error, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'app/error(/)': 'showError'
+        'error(/)': 'showError'
       },
       controller: new ErrorController()
     });

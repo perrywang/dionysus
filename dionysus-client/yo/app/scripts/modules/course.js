@@ -32,8 +32,8 @@ Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'app/courses(/)': 'showCourses',
-        'app/courses/:id(/)': 'showCourse'
+        'courses(/)': 'showCourses',
+        'courses/:id(/)': 'showCourse'
       },
       controller: new CourseController()
     });

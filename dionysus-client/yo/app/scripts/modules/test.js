@@ -152,7 +152,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'app/tests/:id(/)': 'showTest'
+        'tests/:id(/)': 'showTest'
       },
       controller: new TestController()
     });

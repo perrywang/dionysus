@@ -29,7 +29,7 @@ Dionysus.module('Site', function(Site, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        'app/site(/)': 'showSiteMenu'
+        'site(/)': 'showSiteMenu'
       },
       controller: new SiteController()
     });

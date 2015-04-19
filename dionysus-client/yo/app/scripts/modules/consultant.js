@@ -45,8 +45,8 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'app/consultants(/)': 'showConsultants',
-      //  'app/consultants/:id(/)': 'showConsultant'
+        'consultants(/)': 'showConsultants',
+      //  'consultants/:id(/)': 'showConsultant'
       },
       controller: new ConsultantController()
     });

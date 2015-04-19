@@ -44,9 +44,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'app/articles/createdBy/:id' : 'showArticlesByAuthor',
-        'app/articles(/)': 'showArticles',
-        'app/articles/:id(/)': 'showArticle'
+        'articles/createdBy/:id' : 'showArticlesByAuthor',
+        'articles(/)': 'showArticles',
+        'articles/:id(/)': 'showArticle'
 
       },
       controller: new ArticleController()

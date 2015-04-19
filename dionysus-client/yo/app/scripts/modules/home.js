@@ -53,8 +53,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        '(/)': 'showHome',
-        'app(/)': 'showHome'
+        '(/)': 'showHome'
       },
       controller: new HomeController()
     });

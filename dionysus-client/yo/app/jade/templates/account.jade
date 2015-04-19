@@ -1,30 +1,35 @@
 script#account-login-tpl(type="text/template")
   .required.field
-    label Username
+    label 用户名
     .ui.left.icon.input
-      input(type="text", name="username", placeholder="Username")
+      input(type="text", name="username", placeholder="请输入用户名")
       i.user.icon
   .required.field
-    label Password
+    label 密码
     .ui.left.icon.input
-      input(type="password", name="password", placeholder="Password")
+      input(type="password", name="password", placeholder="请输入密码")
       i.lock.icon
-  .ui.submit.button Login
+  .ui.horizontal.divider 或
+  .field
+    span
+      | 没有账号
+      a(href="/register") 注册
+  .ui.submit.button 登陆
 
 script#account-register-tpl(type="text/template")
 
   .required.field
-    label Username
-    input(type="text", name="username", placeholder="Username")
+    label 用户名
+    input(type="text", name="username", placeholder="请输入用户名")
   .required.field
-    label Password
-    input(type="password", name="password", placeholder="Password")
+    label 密码
+    input(type="password", name="password", placeholder="请输入密码")
   .required.field
-    label Retype Password
-    input(type="password", name="password1", placeholder="Retype password")
+    label 确认密码
+    input(type="password", name="password1", placeholder="请再次输入密码")
   .required.field
-    label Email
-    input(type="text", name="email", placeholder="Email")
+    label 电子邮件
+    input(type="text", name="email", placeholder="请输入电子邮件")
   .field
     .ui.checkbox
       input(type="checkbox", name="terms")
@@ -36,11 +41,11 @@ script#account-register-tpl(type="text/template")
       input(type="checkbox", name="consultant")
       label
         | Consultant?
-  .ui.horizontal.divider OR
+  .ui.horizontal.divider 或
   .field
     span
-      | Alreay have account 
-      a(href="/app/login") login
-  .ui.submit.button Submit
-  .ui.consultant.button Consultant Validation
+      | 已经有账号
+      a(href="/login") 登陆
+  .ui.submit.button 注册
+  .ui.consultant.button 注册咨询师
 
