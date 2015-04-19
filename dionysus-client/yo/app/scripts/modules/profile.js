@@ -3,7 +3,6 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var ProfileView = Marionette.ItemView.extend({ 
     template: '#profile-tpl',
-    tagName: 'profile',
     className: 'ui page'
   });
 

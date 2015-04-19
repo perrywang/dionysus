@@ -1,20 +1,15 @@
 script#profile-tpl(type="text/template")
-  .item(style="padding-top:2rem")
-    .ui.piled.segment
-      .ui.small.image
-        img(src!="<%= avatar%>")
-      .content
-        a.ui.header <%= username %>
-        p.description <%= about %>
-      .row
-      .col.l4.offset-l2.s12
-        h5.white-text
-        ul
-          li
-            a.grey-text.text-lighten-3(href!="/appointments/appointedBy/<%= id %>") Appointment
-          li
-            a.grey-text.text-lighten-3(href="/admin/tests") Test
-          li
-            a.grey-text.text-lighten-3(href="#!") Course
-          li
-            a.grey-text.text-lighten-3(href!="/articles/createdBy/<%= id %>") Article
+  .ui.piled.segment
+    img.ui.small.image(src!="<%= avatar%>")
+    h3.ui.header <%= username %>
+    p.description <%= about %>
+    .row
+      ul
+        li
+          a(href!="/appointments/appointedBy/<%= id %>") 我的预约
+        li
+          a(href="/tests") 心理测试
+        li
+          a(href="#!") 心理课程
+        li
+          a(href!="/articles/createdBy/<%= id %>") 心理知识
