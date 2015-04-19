@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
     article.setCreatedBy(user);
     article.setLastModifiedBy(admin);
     articlerepository.save(article);
-    Comment comment = new Comment(article, "from " + user.getUsername());
+    Comment comment = new Comment("from " + user.getUsername(), article);
     commentrepository.save(comment);
     return admin;
   }
