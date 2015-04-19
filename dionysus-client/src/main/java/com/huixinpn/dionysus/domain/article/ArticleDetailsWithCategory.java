@@ -2,7 +2,7 @@ package com.huixinpn.dionysus.domain.article;
 
 import org.springframework.data.rest.core.config.Projection;
 
-@Projection(name = "detailsWithCategory", types = Article.class)
+@Projection(name = "details", types = Article.class)
 public interface ArticleDetailsWithCategory {
 	public Long getId();
 
@@ -11,6 +11,4 @@ public interface ArticleDetailsWithCategory {
 	public String getSummary();
 
 	public String getBody();
-
-	public Category getCategory();
 }

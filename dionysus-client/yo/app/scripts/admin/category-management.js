@@ -38,14 +38,14 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
       var json = this.$el.form('get values');
       this.model.set(json);
       this.model.save();
-      // this.model.save();
     }
   });
 
   var CategoryController = Marionette.Controller.extend({
     showCategories: function() {
       Dionysus.request('category:instances').then(function(categories) {
-        Dionysus.mainRegion.show(new CategoryListView({ collection: categories }));
+        var collection = categories.embedded('categories');
+        Dionysus.mainRegion.show(new CategoryListView({ collection: collection }));
       });
     },
     createCategory: function() {

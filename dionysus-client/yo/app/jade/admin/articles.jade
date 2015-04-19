@@ -23,7 +23,7 @@ script#admin-article-editor-tpl(type="text/template")
       select.ui.dropdown(name="category")
         option(value="") Choose you category
         | <% _.each(categories, function(category) { %>
-        | <option value="<%= category.id %>"><%= category.name %></option>
+        | <option value="<%= category.link %>"><%= category.name %></option>
         | <% }) %>
   .field
     label Summary

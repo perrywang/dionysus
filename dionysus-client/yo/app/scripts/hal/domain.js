@@ -18,6 +18,15 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         type: Backbone.HasMany,
         relatedModel: Category
       }
+    },
+    toSelection : function() {
+      var categories = this.embedded('categories');
+      return categories.map(function(category) {
+        return {
+          name : category.get('name'),
+          link : category.link('self').href()
+        }
+      });
     }
   });
 
@@ -34,7 +43,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   Dionysus.reqres.setHandler('category:instances', function() {
     var resources = new CategoryResources(), defer = $.Deferred();
     resources.fetch().then(function() {
-      defer.resolve(resources.embedded('categories'));
+      defer.resolve(resources);
     });
     return defer.promise();
   });
@@ -52,8 +61,8 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   Dionysus.reqres.setHandler('article:instances', function() {
     var resources = new ArticleResources(), defer = $.Deferred();
-    resources.fetch({ data: { projection: 'summaryWithCategory' }}).then(function() {
-      defer.resolve(resources.embedded('articles'));
+    resources.fetch({ data: { projection: 'summary' }}).then(function() {
+      defer.resolve(resources);
     });
     return defer.promise();
   });
@@ -64,8 +73,13 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       url: '/api/v1/articles/' + id
     });
     var article = new Article(), defer = $.Deferred();
-    article.fetch({ data: { projection: 'detailsWithCategory'}}).then(function() {
-      defer.resolve(article);
+
+    article.fetch({ data: { projection: 'details'}}).then(function() {
+      article.link('category').fetchResource().then(function(data) {
+        var category = data._links.self.href;
+        article.set('category', category);
+        defer.resolve(article);
+      });
     });
     return defer.promise();
   });

@@ -30,11 +30,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     serializeData: function(){
       var data = this.model.toJSON();
-      var category = data.category;
-      if (_.isObject(category)) {
-        data.category = category.id;
-      }
-      data.categories = this.categories.toJSON();
+      data.categories = this.categories.toSelection();
       return data;
     },
     onRender: function() {
@@ -42,9 +38,6 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       this.$el.form();
       var data = this.model.toJSON();
       var category = data.category;
-      if (_.isObject(category)) {
-        data.category = category.id;
-      }
       this.$el.form('set values', data);
       this.$('.editor').editable({
         inlineMode: false, 
@@ -61,7 +54,6 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     saveArticle: function() {
       var json = this.$el.form('get values');
-      json.category = parseInt(json.category);
       this.model.set(json);
       this.model.save();
     }
@@ -70,20 +62,22 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
       Dionysus.request('article:instances').then(function(articles) {
-        Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
+        Dionysus.mainRegion.show(new ArticlesView({ collection: articles.embedded('articles') }));
       });
     },
     createArticle: function() {
-      $.when(Dionysus.request('article:new'), Dionysus.request('category:instances')).done(function(article, categories) {
-        var editor = new ArticleEditorView({ model: article, categories: categories });
-        Dionysus.mainRegion.show(editor);
-      });
+      $.when(Dionysus.request('article:new'), Dionysus.request('category:instances'))
+        .done(function(article, categories) {
+          var editor = new ArticleEditorView({ model: article, categories: categories });
+          Dionysus.mainRegion.show(editor);
+        });
     },
     editArticle: function(id) {
-      $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances')).done(function(article, categories) {
-        var editor = new ArticleEditorView({ model: article, categories: categories});
-        Dionysus.mainRegion.show(editor);
-      });
+      $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances'))
+        .done(function(article, categories) {
+          var editor = new ArticleEditorView({ model: article, categories: categories});
+          Dionysus.mainRegion.show(editor);
+        });
     }
   });
 
