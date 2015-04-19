@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 	
-	@PreAuthorize("#author.username == principal.username or hasRole('ADMIN')")
+	@PreAuthorize("#user.username == principal.username or hasRole('ADMIN')")
 	List<Appointment> findByUser(@Param("user") User user);
 
 	List<Appointment> findByConsultant(@Param("consultant") Consultant consultant);

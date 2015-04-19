@@ -41,6 +41,22 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "email")
   private String email;
 
+  @Column(name = "gender")
+  private String gender;
+  
+  @Column(name = "age")
+  private String age;
+  
+  @Lob
+  @Column(name = "address")
+  private String address;
+  
+  @Column(name = "mobile")
+  private String mobile;
+  
+  @Column(name = "landline")
+  private String landline;
+  
   @NotNull
   @Column(name = "account_non_expired")
   private boolean accountNonExpired;
@@ -170,6 +186,46 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public String getGender() {
+	return gender;
+  }
+
+  public void setGender(String gender) {
+	this.gender = gender;
+  }
+
+  public String getAge() {
+	return age;
+  }
+
+  public void setAge(String age) {
+	this.age = age;
+  }
+
+  public String getAddress() {
+	return address;
+  }
+
+  public void setAddress(String address) {
+	this.address = address;
+  }
+
+  public String getMobile() {
+	return mobile;
+  }
+
+  public void setMobile(String mobile) {
+	this.mobile = mobile;
+  }
+
+  public String getLandline() {
+	return landline;
+  }
+
+  public void setLandline(String landline) {
+	this.landline = landline;
   }
 
   @Override
