@@ -11,11 +11,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
-  var Category = Backbone.RelationalHalResource.extend({});
-
   Dionysus.reqres.setHandler('article:instances', function() {
     var resources = new ArticleResources(), defer = $.Deferred();
-    resources.fetch({ data: { projection: 'summary' }}).then(function() {
+    resources.fetch({ data: { projection: 'withCategory' }}).then(function() {
       defer.resolve(resources.embedded('articles'));
     });
     return defer.promise();
@@ -27,13 +25,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       url: '/api/v1/articles/' + id
     });
     var article = new Article(), defer = $.Deferred();
-    article.fetch({ data: { projection: 'detail'}}).then(function() {
+    article.fetch({ data: { projection: 'withDetailAndCategory'}}).then(function() {
       defer.resolve(article);
     });
     return defer.promise();
-  });
-
-  Dionysus.reqres.setHandler('article:new1', function() {
-
   });
 });
