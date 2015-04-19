@@ -7,7 +7,7 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
       type: 'empty',
       prompt: 'Please enter category name'
     }]
-  }
+  };
 
   var CategoryLineView = Marionette.ItemView.extend({
     tagName: "li",
@@ -36,8 +36,7 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
     },
     saveCategory : function() {
       var json = this.$el.form('get values');
-      this.model.set(json);
-      this.model.save();
+      this.trigger('category:save', json);
     }
   });
 
@@ -51,11 +50,21 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
     createCategory: function() {
       var category = Dionysus.request('category:new');
       var editor = new CategoryEditorView({model: category});
+      editor.on('category:save', function(json) {
+        category.save(json).done(function() {
+          toastr.info('Category has been created');
+        });
+      });
       Dionysus.mainRegion.show(editor);
     },
     editCategory: function(id) {
       Dionysus.request('category:instance', id).then(function(category) {
         var editor = new CategoryEditorView({model: category});
+        editor.on('category:save', function(json) {
+          category.save(json).done(function() {
+            toastr.info('Category has been updated');
+          })
+        });
         Dionysus.mainRegion.show(editor);
       });
     }

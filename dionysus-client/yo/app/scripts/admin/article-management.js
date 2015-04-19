@@ -69,8 +69,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         .done(function(article, categories) {
           var editor = new ArticleEditorView({ model: article, categories: categories });
           editor.on('article:save', function(json) {
-            article.set(json);
-            article.save().done(function() {
+            article.save(json).done(function() {
               toastr.info('Article has been created');
             });
           });
@@ -82,8 +81,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         .done(function(article, categories) {
           var editor = new ArticleEditorView({ model: article, categories: categories});
           editor.on('article:save', function(json) {
-            article.set(json);
-            article.save().then(function() {
+            article.save(json).then(function() {
               toastr.info('Article has been saved');
             });
           });
