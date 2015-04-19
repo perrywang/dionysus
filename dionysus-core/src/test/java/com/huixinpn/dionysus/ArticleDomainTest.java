@@ -1,7 +1,5 @@
 package com.huixinpn.dionysus;
 
-import javax.validation.ConstraintViolationException;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,18 +9,12 @@ import com.huixinpn.dionysus.domain.user.User;
 
 public class ArticleDomainTest extends AbstractPersistentTest {
 
-	@Test(expected = ConstraintViolationException.class)
-	public void testArticleValidation() {
-		Article article = new Article();
-		entityManager.persist(article);
-	}
-
 	@Test
 	public void testArticleAddition() {
 		Article article = new Article("article title", "article body");
 		Category category = new Category("test category");
 		entityManager.persist(category);
-		
+
 		article.setCategory(category);
 		Assert.assertNull(article.getId());
 
@@ -32,7 +24,8 @@ public class ArticleDomainTest extends AbstractPersistentTest {
 
 	@Test
 	public void testArticleAudit() {
-		Article article = new Article("audit article title", "audit article body");
+		Article article = new Article("audit article title",
+				"audit article body");
 		entityManager.persist(article);
 		User user = article.getCreatedBy();
 		Assert.assertEquals(user.getUsername(), DEFAULT_USERNAME);

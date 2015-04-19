@@ -16,7 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.huixinpn.dionysus.DomainApplicationContext;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.repository.UserRepository;
 
@@ -25,7 +24,7 @@ import com.huixinpn.dionysus.repository.UserRepository;
 @ActiveProfiles("test")
 @SpringApplicationConfiguration(classes = DomainApplicationContext.class)
 public abstract class AbstractPersistentTest {
-	
+
 	protected static final String DEFAULT_USERNAME = "testUser";
 
 	@PersistenceContext
@@ -33,7 +32,7 @@ public abstract class AbstractPersistentTest {
 
 	@Autowired
 	protected UserRepository userRepository;
-	
+
 	protected User createUser(String username) {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
@@ -43,12 +42,13 @@ public abstract class AbstractPersistentTest {
 		}
 		return user;
 	}
-	
+
 	protected void runAs(String username) {
 		User user = createUser(username);
 		String password = UUID.randomUUID().toString();
 		SecurityContext context = SecurityContextHolder.getContext();
-		context.setAuthentication(new UsernamePasswordAuthenticationToken(user, password));
+		context.setAuthentication(new UsernamePasswordAuthenticationToken(user,
+				password));
 	}
 
 	@Before

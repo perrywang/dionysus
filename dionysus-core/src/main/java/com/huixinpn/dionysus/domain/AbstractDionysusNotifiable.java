@@ -5,9 +5,14 @@ import java.util.Collection;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import com.huixinpn.dionysus.domain.event.Notifiable;
 import com.huixinpn.dionysus.domain.event.NotificationListener;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @EntityListeners(NotificationListener.class)
 public abstract class AbstractDionysusNotifiable<U> extends

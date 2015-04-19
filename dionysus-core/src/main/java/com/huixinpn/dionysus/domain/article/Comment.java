@@ -9,43 +9,30 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.User;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
 @Entity
 @Table(name = "comments")
 public class Comment extends AbstractDionysusNotifiable<User> {
 
 	private static final long serialVersionUID = -5887975510097345536L;
 
+	@NonNull
 	@Lob @Column(name = "content")
 	private String content;
 
+	@NonNull
 	@ManyToOne
 	private Article article;
-	
-	public Comment() {}
-	
-	public Comment(Article article, String content) {
-		this.article = article;
-		this.content = content;
-	}
-
-	public Article getArticle() {
-		return article;
-	}
-
-	public void setArticle(Article article) {
-		this.article = article;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
 
 	@Override
 	public User receiveFrom() {

@@ -32,7 +32,7 @@ public class NotificationTest extends AbstractPersistentTest {
 		String username = UUID.randomUUID().toString();
 		runAs(username);
 
-		Comment comment = new Comment(article, "from some one");
+		Comment comment = new Comment("from some one", article);
 		entityManager.persist(comment);
 
 		Inbox inbox = user.getInbox();

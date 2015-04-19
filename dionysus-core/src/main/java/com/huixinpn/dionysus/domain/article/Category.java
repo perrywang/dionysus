@@ -5,54 +5,31 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@ToString(of = { "name" })
+@RequiredArgsConstructor
 @Entity
 @Table(name = "categories")
 public class Category extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -1815965724911284764L;
 
-	@NotEmpty
+	@NonNull
+	@NotBlank
 	@Column(name = "name", unique = true)
 	private String name;
 
 	@ManyToOne
 	private Category parent;
-
-
-	public Category() {
-	}
-
-	public Category(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Category getParent() {
-		return parent;
-	}
-
-	public void setParent(Category parent) {
-		this.parent = parent;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder out = new StringBuilder();
-		if (this.getParent() != null) {
-			out.append(this.getParent()).append(" > ");
-		}
-		out.append(this.name);
-		return out.toString();
-	}
 }
