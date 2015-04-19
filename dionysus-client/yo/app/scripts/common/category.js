@@ -17,7 +17,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return new Entities.Category();
   });
 
-  Dionysus.reqres.setHandler('category:instance', function(id) {
+  Dionysus.reqres.setHandler('category:entity', function(id) {
     var category = new Entities.Category({id: id});
     var defer = $.Deferred();
     category.fetch().then(function(data) {
@@ -26,7 +26,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('category:instances', function() {
+  Dionysus.reqres.setHandler('category:entities', function() {
     var categories = new Entities.CategoryCollection();
     var defer = $.Deferred();
     categories.fetch().then(function() {

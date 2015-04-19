@@ -1,6 +1,14 @@
 Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionette) {
   'use strict';
 
+  var validationRules = {
+    identifier: 'name',
+    rules: [{
+      type: 'empty',
+      prompt: 'Please enter category name'
+    }]
+  }
+
   var CategoryLineView = Marionette.ItemView.extend({
     tagName: "li",
     template: "#admin-category-tpl"
@@ -17,14 +25,20 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
-      this.$el.form({
-        identifier: 'name',
-        rules: [{
-          type: 'empty',
-          prompt: 'Please enter category name'
-        }]
-      });
+      this.$el.form(validationRules);
       this.$el.form('set values', this.model.toJSON());
+    },
+    ui: {
+      save : '.button.submit'
+    },
+    events: {
+      'click @ui.save' : 'saveCategory'
+    },
+    saveCategory : function() {
+      var json = this.$el.form('get values');
+      this.model.set(json);
+      this.model.save();
+      // this.model.save();
     }
   });
 
@@ -40,7 +54,7 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
       Dionysus.mainRegion.show(editor);
     },
     editCategory: function(id) {
-      Dionysus.request('category:instance').then(function(category) {
+      Dionysus.request('category:instance', id).then(function(category) {
         var editor = new CategoryEditorView({model: category});
         Dionysus.mainRegion.show(editor);
       });
