@@ -8,14 +8,14 @@ import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.huixinpn.dionysus.domain.Article;
-import com.huixinpn.dionysus.domain.Category;
-import com.huixinpn.dionysus.domain.Comment;
-import com.huixinpn.dionysus.domain.Course;
-import com.huixinpn.dionysus.domain.CourseState;
-import com.huixinpn.dionysus.domain.Inbox;
-import com.huixinpn.dionysus.domain.Notification;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.article.Article;
+import com.huixinpn.dionysus.domain.article.Category;
+import com.huixinpn.dionysus.domain.article.Comment;
+import com.huixinpn.dionysus.domain.course.Course;
+import com.huixinpn.dionysus.domain.course.CourseState;
+import com.huixinpn.dionysus.domain.user.Inbox;
+import com.huixinpn.dionysus.domain.user.Notification;
+import com.huixinpn.dionysus.domain.user.User;
 
 public class NotificationTest extends AbstractPersistentTest {
 

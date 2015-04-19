@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.User;
 
 @Entity
 @Table(name = "bosmedias")

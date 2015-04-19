@@ -5,9 +5,9 @@ import javax.validation.ConstraintViolationException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.huixinpn.dionysus.domain.Article;
-import com.huixinpn.dionysus.domain.Category;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.article.Article;
+import com.huixinpn.dionysus.domain.article.Category;
+import com.huixinpn.dionysus.domain.user.User;
 
 public class ArticleDomainTest extends AbstractPersistentTest {
 

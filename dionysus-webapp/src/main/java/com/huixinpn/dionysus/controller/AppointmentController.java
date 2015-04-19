@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.huixinpn.dionysus.domain.Appointment;
+import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.repository.AppointmentRepository;
 
 /**

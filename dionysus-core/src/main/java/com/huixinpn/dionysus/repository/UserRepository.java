@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.repository;
 
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;

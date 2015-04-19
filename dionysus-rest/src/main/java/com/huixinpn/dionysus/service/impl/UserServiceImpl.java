@@ -1,12 +1,18 @@
 package com.huixinpn.dionysus.service.impl;
 
 import com.huixinpn.dionysus.domain.*;
+import com.huixinpn.dionysus.domain.article.Article;
+import com.huixinpn.dionysus.domain.article.Category;
+import com.huixinpn.dionysus.domain.article.Comment;
+import com.huixinpn.dionysus.domain.user.Role;
+import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.exception.InvalidUserException;
 import com.huixinpn.dionysus.repository.ArticleRepository;
 import com.huixinpn.dionysus.repository.CategoryRepository;
 import com.huixinpn.dionysus.repository.CommentRepository;
 import com.huixinpn.dionysus.repository.UserRepository;
 import com.huixinpn.dionysus.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import java.util.HashSet;
 
 @Service

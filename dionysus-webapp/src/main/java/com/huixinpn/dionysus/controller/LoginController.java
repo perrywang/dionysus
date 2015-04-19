@@ -1,7 +1,8 @@
 package com.huixinpn.dionysus.controller;
 
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.service.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

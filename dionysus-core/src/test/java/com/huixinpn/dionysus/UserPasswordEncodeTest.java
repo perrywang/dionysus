@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.User;
 
 public class UserPasswordEncodeTest extends AbstractPersistentTest {
 

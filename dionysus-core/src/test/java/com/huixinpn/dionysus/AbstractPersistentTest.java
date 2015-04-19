@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.huixinpn.dionysus.DomainApplicationContext;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.repository.UserRepository;
 
 @Transactional

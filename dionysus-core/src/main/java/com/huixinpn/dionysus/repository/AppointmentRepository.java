@@ -1,8 +1,8 @@
 package com.huixinpn.dionysus.repository;
 
-import com.huixinpn.dionysus.domain.Appointment;
-import com.huixinpn.dionysus.domain.Consultant;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.appointment.Appointment;
+import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.domain.user.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;

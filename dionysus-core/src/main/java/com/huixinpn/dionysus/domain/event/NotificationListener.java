@@ -4,9 +4,9 @@ import java.util.Collection;
 
 import javax.persistence.PostPersist;
 
-import com.huixinpn.dionysus.domain.Inbox;
-import com.huixinpn.dionysus.domain.Notification;
-import com.huixinpn.dionysus.domain.User;
+import com.huixinpn.dionysus.domain.user.Inbox;
+import com.huixinpn.dionysus.domain.user.Notification;
+import com.huixinpn.dionysus.domain.user.User;
 
 public class NotificationListener {
 
