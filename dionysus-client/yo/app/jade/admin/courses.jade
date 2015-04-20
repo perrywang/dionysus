@@ -1,0 +1,39 @@
+script#admin-course-editor-tpl(type="text/template")
+  .two.field
+    .field
+      label 课程名称
+      input(name="name", type="text", placeholder="课程名称")
+    .field
+      lable 课程类别
+      select#category.ui.dropdown
+        option(value="") 选择课程类别
+        | <% _.each(courseCategories, function(category) { %>
+        | <option value="<%= category.link %>"><%= category.name %></option>
+        | <% }) %>
+  .field
+    label 讲师
+    select#consultant.ui.search.dropdown
+      option(value="") 选择讲师
+      | <% _.each(consultants, function(consultant) { %>
+      | <option value="<%= consultant.link %>"><%= consultant.username %></option>
+      | <% }) %>
+
+  .field
+    label 上课地点
+      input(name="address", type="text", placeholder="地址")
+  .field
+    label 上课时间
+      input(name="time", type="text", placeholder="时间")
+  .field
+    label 人数限制
+      input(name="capacity", type="text", placeholder="人数")
+  .field
+    label 视频链接
+      input(name="video", type="text", placeholder="视频链接")
+  .field
+    label 课程简介
+    textarea(name="description")
+
+  .ui.button.submit
+    i.save.icon
+    | 保存
