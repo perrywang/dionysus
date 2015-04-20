@@ -3,14 +3,42 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var ProfileView = Marionette.ItemView.extend({ 
     template: '#profile-tpl',
-    className: 'ui page'
+    className: 'ui page',
+    ui: {
+      submit: '.submit'
+    },
+    events: {
+      'click @ui.submit': 'update'
+    },
+    update: function(e) {
+      this.trigger('profile:update', this.model);	  
+      var user = this.$el.form('get values', ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline']);
+	  user['username'] = this.model.get('username');
+      user['password'] = this.model.get('password');
+	  var url = '/api/v1/updateprofile';
+      $.ajax({
+        url: url,
+        method: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(user)
+      }).done(function() {
+        window.alert('update success');
+        window.location.href = "/site";
+      }).fail(function() {
+        window.alert('update failure');
+      }); 
+    }
   });
 
   var ProfileController = Marionette.Controller.extend({
     showProfile: function (id) {
       var userFetching = Dionysus.request('user:entity', id);
       $.when(userFetching).done(function(user) {
-        Dionysus.mainRegion.show(new ProfileView({ model: user}));
+	    var profileview = new ProfileView({ model: user});
+        profileview.on("profile:update", function(data){
+          alert("update Called!");
+        })
+        Dionysus.mainRegion.show(profileview);
       }).fail(function(){
         alert("fail");
       });
