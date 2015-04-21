@@ -15,18 +15,12 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       return data;
     },
     onRender: function() {
-      this.$('#category').dropdown();
-      this.$('#consultant').dropdown();
-      this.$('#style').dropdown();
-      this.$('#videoPart').hide();
+      this.$('[name="category"]').dropdown();
+      this.$('[name="state"]').dropdown();
+      this.$('[name="consultant"]').dropdown();
+      this.$('[name="approach"]').dropdown();
       var data = this.model.toJSON();
       this.$('ui.form').form('set values', data);
-      this.$('.editor').editable({
-        inlineMode: false,
-        language: 'zh_cn',
-        imageUploadURL: '/api/v1/upload',
-        fileUploadURL: '/api/v1/upload'
-      });
     },
     ui : {
       save : '.button.submit'
@@ -43,11 +37,15 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
   var CourseController = Marionette.Controller.extend({
 
     createCourse: function() {
-      var Course = Dionysus.request('course:new');
+      var course = Dionysus.request('course:new');
       $.when(Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(categories,consultants){
         console.log(consultants.toSelection());
-        var editor = new CourseEditorView({model:Course,categories:categories,consultants: consultants});
-
+        var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
+        editor.on('course:save', function(json) {
+          course.save(json).then(function() {
+            console.log('course has been saved');
+          });
+        });
         Dionysus.mainRegion.show(editor);
 
       });

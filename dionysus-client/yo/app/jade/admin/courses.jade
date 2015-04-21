@@ -3,23 +3,30 @@ script#admin-course-editor-tpl(type="text/template")
     fields
       .six.wide.field
         label 课程名称
-        input(name="name", type="text", placeholder="课程名称")
+        input(name="title", type="text", placeholder="课程名称")
       .six.wide.field
         label 课程内容
-        select#category.ui.dropdown
+        select(name="category").ui.dropdown
           option(value="") 选择课程类别
           | <% _.each(categories, function(category) { %>
           | <option value="<%= category.link %>"><%= category.name %></option>
           | <% }) %>
 
       .six.wide.field
+        label 课程状态
+        select(name="state").ui.dropdown
+          option(value="OPEN") 开放
+          option(value="IN_PROGRESS") 准备中
+          option(value="FINISHED") 已结束
+
+      .six.wide.field
         label 上课形式
-        select#style.ui.dropdown
+        select(name="approach").ui.dropdown
           option(value="") 选择课程类别
-          option(value="1") 一对一在线辅导
-          option(value="2") 在线课堂
-          option(value="3") 在线视频
-          option(value="4") 线下课程
+          option(value="ONE2ONE") 一对一在线辅导
+          option(value="ONE2MANY") 在线课堂
+          option(value="VIDEO") 在线视频
+          option(value="OFFLINE") 线下课程
 
       .six.wide.field
         label 上课时间
@@ -29,7 +36,7 @@ script#admin-course-editor-tpl(type="text/template")
         input(name="address", type="text", placeholder="地址")
       .six.wide.field
         label 讲师
-        select#consultant.ui.dropdown
+        select(name="consultant").ui.dropdown
           option(value="") 选择讲师
           | <% _.each(consultants, function(consultant) { %>
           | <option value="<%= consultant.link %>"><%= consultant.username %></option>
