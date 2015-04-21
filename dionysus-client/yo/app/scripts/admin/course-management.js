@@ -3,22 +3,22 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
   var CourseEditorView = Marionette.ItemView.extend({
     template: '#admin-course-editor-tpl',
-    tagName: 'form',
-    className: 'ui form',
+    className: 'ui segment',
     initialize: function(options) {
-      this.couseCategories = options.couseCategories;
+      this.categories = options.categories;
       this.consultants = options.consultants;
     },
     serializeData: function(){
       var data = this.model.toJSON();
-      data.couseCategories = this.couseCategories;
+      data.categories = this.categories.toSelection();
+      data.consultants = this.consultants.toSelection();
       return data;
     },
     onRender: function() {
-
+      this.$('#category').dropdown();
+      this.$('#consultant').dropdown();
       var data = this.model.toJSON();
-      this.$el.form('set values', data);
-
+      this.$('ui.form').form('set values', data);
       this.$('.editor').editable({
         inlineMode: false,
         language: 'zh_cn',
@@ -41,6 +41,14 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
   var CourseController = Marionette.Controller.extend({
 
     createCourse: function() {
+      var Course = Dionysus.request('course:new');
+      $.when(Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(categories,consultants){
+        console.log(consultants.toSelection());
+        var editor = new CourseEditorView({model:Course,categories:categories,consultants: consultants});
+
+        Dionysus.mainRegion.show(editor);
+
+      });
     }
   });
 

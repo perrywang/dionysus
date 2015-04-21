@@ -76,4 +76,12 @@ insert into psychtestitemoptions(id, item_id, description) values (12, 4, '一�
 insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
 insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 4, 'WAITING', 'ONLINE' );
 
+insert into coursecategories (id, name) values(1, '亲子关系');
+insert into coursecategories (id, name) values(2, '家庭关系');
+insert into coursecategories (id, name) values(3, '婚姻关系');
+insert into coursecategories (id, name) values(4, '职业心理');
+insert into coursecategories (id, name) values(5, '个人成长');
+
+insert into courses (id, title, description, category_id, consultant_id) values(1,'course title','course description',1,3)
+
 
