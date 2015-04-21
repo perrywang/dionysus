@@ -17,4 +17,6 @@ public interface UserService extends UserDetailsService {
 	public User notifyuser(User user, String summary);
 	
 	public boolean sendemailtouser(User user);
+	
+	public User updateprofile(User user);
 }

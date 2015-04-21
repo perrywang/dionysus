@@ -71,6 +71,25 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public User updateprofile(User user) {
+    User _user = userrepository.findByUsername(user.getUsername());
+    if (_user == null) {
+      throw new InvalidUserException("user " + user.getUsername() + " doesn't exists!");
+    }
+    _user.setEmail(user.getEmail());
+    _user.setAddress(user.getAddress());
+    _user.setGender(user.getGender());
+    _user.setMobile(user.getMobile());
+    _user.setLandline(user.getLandline());
+    _user.setAge(user.getAge());
+    userrepository.saveAndFlush(_user);
+    manager.detach(_user);
+    _user.setPassword("");
+    _user.setEncryptedPassword("");
+    return _user;
+  }
+  
+  @Override
   public User sign(String username, String password) {
     User user = userrepository.findByUsername(username);
     if (user == null || !encoder.matches(password, user.getEncryptedPassword())) {

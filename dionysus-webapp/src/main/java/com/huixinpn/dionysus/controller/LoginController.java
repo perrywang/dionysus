@@ -63,4 +63,9 @@ public class LoginController {
   public User consultant(@RequestBody User user) {
     return userService.notifyuser(user, "Consultant Validation & Register");
   }
+  
+  @RequestMapping(value = "/updateprofile", method = RequestMethod.POST)
+  public User updateprofile(@RequestBody User user) {
+    return userService.updateprofile(user);
+  }
 }
