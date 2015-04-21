@@ -5,7 +5,7 @@ script#admin-course-editor-tpl(type="text/template")
         label 课程名称
         input(name="name", type="text", placeholder="课程名称")
       .six.wide.field
-        label 课程内容分类
+        label 课程内容
         select#category.ui.dropdown
           option(value="") 选择课程类别
           | <% _.each(categories, function(category) { %>
@@ -13,8 +13,16 @@ script#admin-course-editor-tpl(type="text/template")
           | <% }) %>
 
       .six.wide.field
+        label 上课形式
+        select#style.ui.dropdown
+          option(value="") 选择课程类别
+          option(value="1") 一对一在线辅导
+          option(value="2") 在线课堂
+          option(value="3") 线下课程
+
+      .six.wide.field
         label 上课时间
-          input(name="time", id= "courseTime", type="text", placeholder="时间")
+        input(name="time", id= "courseTime", type="text", placeholder="时间")
       .six.wide.field
         label 上课地点
         input(name="address", type="text", placeholder="地址")
@@ -29,7 +37,7 @@ script#admin-course-editor-tpl(type="text/template")
       .six.wide.field
         label 人数限制
         input(name="capacity", type="text", placeholder="人数")
-      .six.wide.field
+      #videoPart.six.wide.field
         label 视频链接
         input(name="video", type="text", placeholder="视频链接")
       .six.wide.field

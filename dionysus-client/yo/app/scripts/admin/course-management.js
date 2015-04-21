@@ -17,6 +17,8 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     onRender: function() {
       this.$('#category').dropdown();
       this.$('#consultant').dropdown();
+      this.$('#style').dropdown();
+      this.$('#videoPart').hide();
       var data = this.model.toJSON();
       this.$('ui.form').form('set values', data);
       this.$('.editor').editable({
