@@ -42,24 +42,23 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     createCourse: function() {
       var course = Dionysus.request('course:new');
       $.when(Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(categories,consultants){
-        console.log(consultants.toSelection());
-        console.log(categories.toSelection());
         var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
         editor.on('course:save', function(json) {
+          if(!course.isNew()){
+            var id = course.get('id');
+            course.clear();
+            course.set('id',id);
+          }
           course.save(json, {
-            success: function(model, response, options){
-              console.log(model);
-              console.log(response);
-              console.log(options);
-            },
             error: function(model, response, options){
               console.log(model);
               console.log(response);
               console.log(options);
-          }});
+          }}).done(function(){
+            toastr.info('课程保存成功');
+          });
         });
         Dionysus.mainRegion.show(editor);
-
       });
     }
   });
