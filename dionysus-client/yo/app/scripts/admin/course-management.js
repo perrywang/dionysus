@@ -1,6 +1,18 @@
 Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
+  var CourseItemView = Marionette.ItemView.extend({
+    template: '#admin-course-tpl',
+    tagName: 'li',
+    className: 'item'
+  });
+
+  var CourseCollectionView = Marionette.CompositeView.extend({
+    template: '#admin-courses-tpl',
+    childView: CourseItemView,
+    childViewContainer: '.items'
+  });
+
   var CourseEditorView = Marionette.ItemView.extend({
     template: '#admin-course-editor-tpl',
     initialize: function(options) {
@@ -51,23 +63,35 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
           }
           course.save(json, {
             error: function(model, response, options){
-              console.log(model);
-              console.log(response);
-              console.log(options);
+              toastr.error('课程保存失败');
           }}).done(function(){
             toastr.info('课程保存成功');
           });
         });
         Dionysus.mainRegion.show(editor);
       });
-    }
-  });
+    },
 
+    showCourses: function(){
+      $.when(Dionysus.request('course:entities')).done(function(courses){
+         //todo
+      });
+    },
+
+    editCourse: function(id){
+      $.when(Dionysus.request('course:entities',id)).done(function(course){
+        //todo
+      });
+    }
+
+  });
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'admin/courses/create(/)': 'createCourse'
+        'admin/courses/create(/)': 'createCourse',
+        'admin/courses(/)':'showCourses',
+        'admin/courses/:id(/)':'editCourse'
       },
       controller: new CourseController()
     });

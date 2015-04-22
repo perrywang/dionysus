@@ -65,3 +65,18 @@ script#admin-course-editor-tpl(type="text/template")
         .ui.button.submit
           i.save.icon
           | 保存
+
+script#admin-course-tpl(type="text/template")
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.ui.header(href!="/admin/courses/<%= id %>")
+      i.edit.icon
+      | <%= title %>
+    p.description <%= description %>
+
+script#admin-courses-tpl(type="text/template")
+  a.ui.button.edit.blue(href="/admin/courses/create")
+    i.add.icon
+    | Create
+  ul.ui.relaxed.items
