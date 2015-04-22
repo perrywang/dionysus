@@ -21,7 +21,7 @@ module.exports = function (grunt) {
     app: 'app',
     dist: 'dist'
   };
-  
+
   var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest ;
 
   var singlePage = function(req, res, next) {
@@ -30,8 +30,6 @@ module.exports = function (grunt) {
       return next();
     }
     if (/^\/app(\/)?/.test(url)) {
-      req.url = '/index.html';
-    } else if(/^\/[(login)|(logout)|(register)|(articles)|(appointments)|(consultants)|(courses)|(error)|(profile)|(tests)|(site)](\/)?/.test(url)) {
       req.url = '/index.html';
     } else if (/^\/admin(\/)?/.test(url)) {
       req.url = '/admin.html';

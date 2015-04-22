@@ -1,24 +1,24 @@
 package com.huixinpn.dionysus.domain.course;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "courses")
-@Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(AuditingEntityListener.class)
 public class Course extends AbstractDionysusNotifiable<User> {
-
 
   private static final long serialVersionUID = 2523934617928638918L;
 
@@ -50,22 +50,20 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @ManyToOne
   private CourseCategory category;
 
-  public Course() {
-    this.state = CourseState.OPEN;
-    this.users = new ArrayList<User>();
-  }
+  private String address;
 
-  public Course(String title, String description) {
-    this();
-    this.setTitle(title);
-    this.setDescription(description);
-  }
+  private Integer price;
 
-  public Course(String title, String description, Calendar date) {
-    this();
-    this.setTitle(title);
-    this.setDescription(description);
-    this.setDate(date);
+  private Integer capacity;
+
+  @Enumerated(EnumType.STRING)
+  private CourseApproach approach;
+
+  private String videoLink;
+
+  public Course(String title, String description){
+    this.title = title;
+    this.description = description;
   }
 
   @Override
@@ -73,85 +71,13 @@ public class Course extends AbstractDionysusNotifiable<User> {
     if (this.state == CourseState.IN_PROGRESS) {
       return this.getUsers();
     } else {
-      return new ArrayList<User>();
+      return new ArrayList<>();
     }
   }
 
   @Override
   public String getSummary() {
     return this.getTitle();
-  }
-
-  public Calendar getDate() {
-    return date;
-  }
-
-  public void setDate(Calendar date) {
-    this.date = date;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CourseState getState() {
-    return state;
-  }
-
-  public void setState(CourseState state) {
-    this.state = state;
-  }
-
-  public Collection<User> getUsers() {
-    return users;
-  }
-
-  public void setUsers(Collection<User> users) {
-    this.users = users;
-  }
-
-  public Consultant getConsultant() {
-    return consultant;
-  }
-
-  public void setConsultant(Consultant consultant) {
-    this.consultant = consultant;
-  }
-
-  public CourseCategory getCategory() {
-    return category;
-  }
-
-  public void setCategory(CourseCategory category) {
-    this.category = category;
-  }
-
-  public Collection<CourseFeedback> getFeedbacks() {
-    return feedbacks;
-  }
-
-  public void setFeedbacks(Collection<CourseFeedback> feedbacks) {
-    this.feedbacks = feedbacks;
-  }
-
-  public void addFeedback(CourseFeedback feedback) {
-    this.feedbacks.add(feedback);
-  }
-
-  public void removeFeedback(CourseFeedback feedback) {
-    this.feedbacks.remove(feedback);
   }
 
   @Override

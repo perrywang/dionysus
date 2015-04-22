@@ -1,20 +1,20 @@
 Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  Entities.Course = Backbone.RelationalHalResource.extend({
+  var Course = Backbone.RelationalHalResource.extend({
     url: '/api/v1/courses'
   });
 
-  Entities.CourseCategory = Backbone.RelationalHalResource.extend({
+  var CourseCategory = Backbone.RelationalHalResource.extend({
     url: '/api/v1/courseCategories'
   });
 
-  Entities.CourseCategoryCollection = Backbone.RelationalHalResource.extend({
+  var CourseCategoryCollection = Backbone.RelationalHalResource.extend({
     url: '/api/v1/courseCategories',
     halEmbedded: {
       courseCategories: {
         type: Backbone.HasMany,
-        relatedModel: Entities.CourseCategory
+        relatedModel: CourseCategory
       }
     },
     toSelection : function() {
@@ -29,7 +29,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('course:entity', function(id) {
-    var course = new Entities.Course(id);
+    var course = new Course(id);
     var defer = $.Deferred();
     course.fetch().then(function() {
       defer.resolve(course);
@@ -38,11 +38,11 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('course:new', function() {
-    return new Entities.Course();
+    return new Course();
   });
 
   Dionysus.reqres.setHandler('course:category', function(id) {
-    var category = new Entities.CourseCategory(id);
+    var category = new CourseCategory(id);
     var defer = $.Deferred();
     category.fetch().then(function() {
       defer.resolve(category);
@@ -51,10 +51,9 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('course:categories', function() {
-    var categories = new Entities.CourseCategoryCollection();
-    var defer = $.Deferred();
-    categories.fetch().then(function() {
-      defer.resolve(categories);
+    var resources = new CourseCategoryCollection(), defer = $.Deferred();
+    resources.fetch().then(function() {
+      defer.resolve(resources);
     });
     return defer.promise();
   });
