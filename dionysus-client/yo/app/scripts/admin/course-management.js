@@ -35,7 +35,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         eventObject.target.value === 'VIDEO' ? $('#videoPart').show():$('#videoPart').hide()
       });
       var data = this.model.toJSON();
-      this.$('ui.form').form('set values', data);
+      this.$el.form('set values', data);
     },
     ui : {
       save : '.button.submit'
@@ -79,8 +79,26 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     },
 
     editCourse: function(id){
-      $.when(Dionysus.request('course:entities',id)).done(function(course){
-        //todo
+      $.when(Dionysus.request('course:entity',id),Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(course,categories,consultants){
+        var category = course.getCategory();
+        $.when(category).done(function(category){
+          console.log(category);
+        });
+        var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
+        editor.on('course:save', function(json) {
+          if(!course.isNew()){
+            var id = course.get('id');
+            course.clear();
+            course.set('id',id);
+          }
+          course.save(json, {
+            error: function(model, response, options){
+              toastr.error('课程保存失败');
+            }}).done(function(){
+            toastr.info('课程保存成功');
+          });
+        });
+        Dionysus.mainRegion.show(editor);
       });
     }
 
