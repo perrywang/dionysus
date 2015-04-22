@@ -74,7 +74,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
     showCourses: function(){
       $.when(Dionysus.request('course:entities')).done(function(courses){
-         //todo
+        Dionysus.mainRegion.show(new CourseCollectionView({ collection: courses.embedded('courses') }));
       });
     },
 
