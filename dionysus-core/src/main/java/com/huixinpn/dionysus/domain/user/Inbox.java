@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,12 @@ public class Inbox extends AbstractDionysusPersistable {
 
 	@NonNull
 	@OneToOne(mappedBy = "inbox")
+	@JsonIgnore
 	private User user;
 
-	@OneToMany
-	private Collection<Notification> notifications = new ArrayList<Notification>();;
+	@OneToMany(mappedBy = "inbox")
+	@JsonIgnore
+	private Collection<Notification> notifications;
 
 	public void addNotification(Notification notification) {
 		this.notifications.add(notification);

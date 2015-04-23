@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -27,16 +28,14 @@ public class Notification extends AbstractDionysusPersistable {
 
 	@NonNull
 	@ManyToOne
-	@JoinColumn(name = "inbox_id")
+	@JsonIgnore
 	private Inbox inbox;
 
-	/* Each notification has the only sender */
+	/* Each sender can send many notifications */
 	@NonNull
-	@OneToOne
-	@JoinColumn(name = "user_id")
+	@ManyToOne
 	private User from;
 
 	@NonNull
-	@Column(name = "summary")
 	private String summary;
 }
