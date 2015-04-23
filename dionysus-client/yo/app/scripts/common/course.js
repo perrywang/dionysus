@@ -5,19 +5,31 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     url: function(){
       return this.id ? '/api/v1/courses/' + this.id : '/api/v1/courses';
     },
+    isNew: function(){
+      return this.id == null || this.id == undefined;
+    },
     initialize: function(options){
       if(options && options.id){
         this.id = options.id;
       }
     },
     getCategory: function(){
-      var category = new CourseCategory();
+      var category = new Backbone.Model();
       category.url = this.link('category').get('href');
       var defer = $.Deferred();
       category.fetch().then(function(){
         defer.resolve(category);
       });
       return defer.promise(category);
+    },
+    getConsultant: function(){
+      var consultant = new Backbone.Model();
+      consultant.url = this.link('consultant').get('href');
+      var defer = $.Deferred();
+      consultant.fetch().then(function(){
+        defer.resolve(consultant);
+      });
+      return defer.promise(consultant);
     }
   });
 
