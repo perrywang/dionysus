@@ -80,7 +80,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Profile profile;
 
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
+  @JoinColumn(name="inbox_id")
   private Inbox inbox;
 
   @Lob
@@ -114,7 +115,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     this.enabled = true;
 
     this.roles = new HashSet<Role>();
-    this.inbox = new Inbox(this);
+    this.inbox = new Inbox();
     this.profile = new Profile(this);
   }
 

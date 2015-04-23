@@ -10,6 +10,6 @@ import com.huixinpn.dionysus.domain.user.Inbox;
 public interface InboxRepository extends JpaRepository<Inbox, Long> {
 
 	@Override
-	@PreAuthorize("#inbox.user.username == principal")
+	//@PreAuthorize("#inbox.user.username == principal")
 	Inbox save(Inbox inbox);
 }
