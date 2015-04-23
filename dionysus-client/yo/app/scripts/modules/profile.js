@@ -23,7 +23,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
         data: JSON.stringify(user)
       }).done(function() {
         window.alert('update success');
-        window.location.href = "/site";
+        Dionysus.navigate('/site',{trigger:true});
       }).fail(function() {
         window.alert('update failure');
       }); 
