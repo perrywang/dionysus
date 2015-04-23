@@ -34,7 +34,7 @@ public class Inbox extends AbstractDionysusPersistable {
 
 	@OneToMany(mappedBy = "inbox")
 	@JsonIgnore
-	private Collection<Notification> notifications;
+	private Collection<Notification> notifications = new ArrayList<>();
 
 	public void addNotification(Notification notification) {
 		this.notifications.add(notification);
