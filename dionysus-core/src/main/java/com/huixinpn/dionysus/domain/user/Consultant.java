@@ -27,6 +27,10 @@ public class Consultant extends User {
     super();
   }
 
+  public Consultant(String name, String pass){
+      super(name, pass);
+  }
+
   public Collection<Course> getTeachings() {
     return teachings;
   }

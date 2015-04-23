@@ -14,20 +14,19 @@ script#consultant-tpl(type="text/template")
           .title 预约信息
             i.dropdown.icon
           .content
-            form  
-              .required.field
+            form.ui.form  
+              .field
                 label 日期:  
                 input(type="date", name="date", placeHolder="Date")
-              .required.field
+              .field
                 label 方式:  
                 select.ui.dropdown(name="approach")
                   option(value="ONLINE") 在线
                   option(value="OFFLINE") 面对面
                   option(value="BY_PHONE") 电话
-              p
+              .field
                 label 留言:  
                 textarea(name="reason")
-              p
-                .ui.button.submit 预约
+              .ui.button.submit 预约
 
 script#new-appointment-tpl(type="text/template")

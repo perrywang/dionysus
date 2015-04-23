@@ -1,10 +1,11 @@
 package com.huixinpn.dionysus;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
+import com.huixinpn.dionysus.domain.appointment.Appointment;
+import com.huixinpn.dionysus.domain.appointment.AppointmentApproach;
+import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.repository.ConsultantRepository;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -57,4 +58,18 @@ public class NotificationTest extends AbstractPersistentTest {
 			Assert.assertTrue(user.getInbox().getNotifications().size() >= 1);
 		}
 	}
+
+    @Test
+    public void testSendNotificationOnAppointment(){
+
+        User user = createUser(UUID.randomUUID().toString());
+        Consultant consultant = new Consultant("consultant","password");
+        consultantRepository.save(consultant);
+        entityManager.flush();
+        Appointment appointment = new Appointment(user,consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason");
+
+        entityManager.persist(appointment);
+
+        Assert.assertTrue(user.getInbox().getNotifications().size() >= 1);
+    }
 }

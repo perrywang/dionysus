@@ -4,10 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by huanghao on 4/4/15.
@@ -17,7 +20,7 @@ import java.util.Calendar;
 
 @Entity
 @Table(name = "appointments")
-public class Appointment extends AbstractDionysusAuditable<User> {
+public class Appointment extends AbstractDionysusNotifiable<User> {
 
   private static final long serialVersionUID = 4106091118545531113L;
 
@@ -46,13 +49,16 @@ public class Appointment extends AbstractDionysusAuditable<User> {
   private String reason;
 
   public Appointment() {
+      this.state = AppointmentStatus.WAITING;
   }
 
-  public Appointment(User user, Consultant consultant, AppointmentApproach approach) {
+  public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason) {
     this.user = user;
     this.consultant = consultant;
     this.approach = approach;
     this.state = AppointmentStatus.WAITING;
+    this.date = date;
+    this.reason = reason;
   }
 
   public User getUser() {
@@ -114,4 +120,28 @@ public class Appointment extends AbstractDionysusAuditable<User> {
         ", reason='" + reason + '\'' +
         '}';
   }
+
+  @Override
+  public String getSummary(){
+        return this.getReason();
+  }
+
+
+    @Override
+    public List<User> sendTo(){
+        User user = this.getUser();
+        User consultant = this.getConsultant();
+        List<User> users = new ArrayList<User>();
+
+        if(consultant!=null){
+            users.add(consultant);
+        }
+
+        if(user!=null){
+            users.add(user);
+        }
+
+        return users;
+
+    }
 }

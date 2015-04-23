@@ -17,6 +17,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.csrf().disable()
         .authorizeRequests()
         .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/v1/register").permitAll()
         .antMatchers(HttpMethod.GET, "/", "/themes/**", "/public/**", "/styles/**", "/fonts/**", "/images/**", "/scripts/**").permitAll()
         .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
         .regexMatchers(HttpMethod.GET, ".*/api/v1/(users|consultants|inbox|appointments|notifications|profiles)(/|/\\d+)?.*").authenticated()

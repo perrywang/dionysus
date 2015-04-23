@@ -12,10 +12,15 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       "click @ui.button" : "openAppointment"
     },
     openAppointment : function(e){
-      this.trigger("consultant:newAppointment", this.model);
-      var appointment = this.$el.form('get values', ['date', 'approach', 'reason']);
-      alert(appointment.date + appointment.approach+appointment.reason);
-      //TODO: do the actual post action, no current user info, and reference is link.
+      var appointmentData = this.$el.form('get values');
+      this.trigger("consultant:newAppointment", appointmentData);
+      appointmentData.user = Dionysus.Entities.User.prototype.urlRoot + '/' + sessionStorage.user;
+      appointmentData.consultant = this.model.url();
+      var appointment = Dionysus.request('appointment:new');
+      appointment.save(appointmentData).then(function(){
+        alert("open success!");
+        //toastr.info('预约提交成功，请等待咨询师稍后回复！');
+      });
     }
   });
 
@@ -34,9 +39,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       var fetchingConsultants = Dionysus.request('consultant:entities');
       $.when(fetchingConsultants).done(function(consultants) {
         var consultantsView = new ConsultantsView({ collection: consultants });
-        consultantsView.on("consultant:newAppointment", function(data){
-          alert("newAppointment Called!");
-        })
+        
         Dionysus.mainRegion.show(consultantsView);
       });
     },

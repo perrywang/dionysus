@@ -45,6 +45,10 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
+  Dionysus.reqres.setHandler('appointment:new', function(){
+    return new Entities.Appointment();
+  });
+
   Dionysus.reqres.setHandler('appointment:appointedby', function(userid) {
     var appointments = new Entities.AppointmentCollection({appendUrl:'/search/findByUser'});
     var defer = $.Deferred();

@@ -121,6 +121,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           var data = response.id;
           window.location.href = "/profile/" + data;
           sessionStorage.setItem("authorized", "enabled");
+          sessionStorage.setItem("user",data);
         }).fail(function() {
           window.alert('login failure');
         });
@@ -155,6 +156,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           success: function(response) {
             window.location.href = "/login";
             sessionStorage.setItem("authorized", "disabled");
+            sessionStorage.removeItem("user");
           }
         });
       })
