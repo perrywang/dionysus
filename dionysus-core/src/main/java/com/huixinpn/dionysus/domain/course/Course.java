@@ -42,10 +42,10 @@ public class Course extends AbstractDionysusNotifiable<User> {
   private Consultant consultant;
 
   @ManyToMany
-  private Collection<User> users;
+  private Collection<User> users = new ArrayList<>();
 
   @OneToMany(mappedBy = "course")
-  private Collection<CourseFeedback> feedbacks;
+  private Collection<CourseFeedback> feedbacks = new ArrayList<>();
 
   @ManyToOne
   private CourseCategory category;

@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain.user;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -37,5 +38,5 @@ public class Role extends AbstractDionysusPersistable {
 
 	@ManyToMany(mappedBy = "roles")
 	@JsonIgnore
-	private Collection<User> users;
+	private Collection<User> users = new ArrayList();
 }

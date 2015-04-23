@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -26,7 +27,7 @@ public class CourseCategory extends AbstractDionysusPersistable {
   private CourseCategory parent;
 
   @OneToMany(mappedBy = "category")
-  private Collection<Course> courses;
+  private Collection<Course> courses = new ArrayList<>();
 
   public CourseCategory() {
   }
