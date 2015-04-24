@@ -6,6 +6,7 @@ import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.repository.NotificationRepository;
 import com.huixinpn.dionysus.utils.AutowireInjector;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.PostPersist;
 import java.util.Collection;
@@ -28,6 +29,8 @@ public class NotificationListener {
         AutowireInjector.inject(this, this.notificationRepository);
       }
       notificationRepository.save(notification);
+      //only for testing pass. remove it later
+      inbox.addNotification(notification);
     }
   }
 }
