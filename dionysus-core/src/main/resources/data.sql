@@ -1,11 +1,11 @@
-
+insert into inbox (id) values (1);
 insert into inbox (id) values (2);
 insert into inbox (id) values (3);
 insert into inbox (id) values (4);
 
 -- password: 'password'
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline)
-values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '系统管理员', '/public/images/placeholder.png', 'admin@huixin.com', 'male', '30', '未知', '13888888888', '33333333');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id)
+values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '系统管理员', '/public/images/placeholder.png', 'admin@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 1);
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id)
 values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '普通用户', '/public/images/placeholder.png', 'test1@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 2);

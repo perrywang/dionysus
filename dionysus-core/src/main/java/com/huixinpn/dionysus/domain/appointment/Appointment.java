@@ -25,11 +25,11 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
   private static final long serialVersionUID = 4106091118545531113L;
 
   @NotNull
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private User user;
 
   @NotNull
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Consultant consultant;
 
   @Column(name = "state")

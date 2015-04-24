@@ -18,23 +18,11 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     initialize: function(options) {
       this.categories = options.categories;
       this.consultants = options.consultants;
-      if(options.category){
-        this.category = options.category;
-      }
-      if(options.consultant){
-        this.consultant = options.consultant;
-      }
     },
     serializeData: function(){
       var data = this.model.toJSON();
       data.categories = this.categories.toSelection();
       data.consultants = this.consultants.toSelection();
-      if(this.category){
-        data.category = this.category.get('name');
-      }
-      if(this.consultant){
-        data.consultant = this.consultant.get('username');
-      }
       return data;
     },
     onRender: function() {
@@ -46,7 +34,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="approach"]').change(function(eventObject){
         eventObject.target.value === 'VIDEO' ? $('#videoPart').show():$('#videoPart').hide()
       });
-      var data = this.serializeData();
+      var data = this.model.toJSON();
       this.$el.form('set values', data);
     },
     ui : {
@@ -95,7 +83,9 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         var category = course.getCategory();
         var consultant = course.getConsultant();
         $.when(category,consultant).done(function(category,consultant){
-          var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants,category:category,consultant:consultant});
+          course.set('category',category.get('name'));
+          course.set('consultant',consultant.get('username'));
+          var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
           editor.on('course:save', function(json) {
             course.clear();
             json.id = id;

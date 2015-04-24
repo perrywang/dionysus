@@ -3,10 +3,7 @@ package com.huixinpn.dionysus.domain.user;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -32,7 +29,7 @@ public class Inbox extends AbstractDionysusPersistable {
 	@JsonIgnore
 	private User user;
 
-	@OneToMany(mappedBy = "inbox")
+	@OneToMany(mappedBy = "inbox",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Collection<Notification> notifications = new ArrayList<>();
 
