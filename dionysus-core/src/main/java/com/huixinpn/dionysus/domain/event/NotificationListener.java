@@ -1,24 +1,33 @@
 package com.huixinpn.dionysus.domain.event;
 
-import java.util.Collection;
-
-import javax.persistence.PostPersist;
-
 import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.domain.user.Notification;
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.repository.NotificationRepository;
+import com.huixinpn.dionysus.utils.AutowireInjector;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.PostPersist;
+import java.util.Collection;
 
 public class NotificationListener {
 
-	@PostPersist
-	public void sendNotification(Notifiable<User> entity) {
-		User from = entity.receiveFrom();
-		Collection<User> tos = entity.sendTo();
-		String summary = entity.getSummary();
+  @Autowired
+  NotificationRepository notificationRepository;
 
-		for (User to : tos) {
-			Inbox inbox = to.getInbox();
-			inbox.addNotification(new Notification(inbox, from, summary));
-		}
-	}
+  @PostPersist
+  public void sendNotification(Notifiable<User> entity) {
+    User from = entity.receiveFrom();
+    Collection<User> tos = entity.sendTo();
+    String summary = entity.getSummary();
+
+    for (User to : tos) {
+      Inbox inbox = to.getInbox();
+      Notification notification = new Notification(inbox, from, summary);
+      if (this.notificationRepository == null) {
+        AutowireInjector.inject(this, this.notificationRepository);
+      }
+      notificationRepository.save(notification);
+    }
+  }
 }
