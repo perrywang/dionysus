@@ -25,6 +25,7 @@ public class NotificationListener {
     for (User to : tos) {
       Inbox inbox = to.getInbox();
       Notification notification = new Notification(inbox, from, summary);
+      //ugly tentatively using this inject
       if (this.notificationRepository == null) {
         AutowireInjector.inject(this, this.notificationRepository);
       }
