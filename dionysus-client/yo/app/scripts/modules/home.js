@@ -25,7 +25,12 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   Home.HeaderloginView = Marionette.ItemView.extend({
     template: '#headerlogin-tpl',
     tagName: 'nav',
-    className: 'ui menu'
+    className: 'ui menu',
+    serializeData: function(){
+      return {
+        "id": sessionStorage.getItem("user")
+      }
+    }
   });
   
   Home.HeaderView = Marionette.ItemView.extend({

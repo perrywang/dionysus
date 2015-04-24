@@ -121,7 +121,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           var data = response.id;
           sessionStorage.setItem("authorized", "enabled");
           sessionStorage.setItem("user",data);
-          Dionysus.navigate('/profile/' + data,{trigger:true});
+          Dionysus.navigate('/site',{trigger:true});
 		  Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
         }).fail(function() {
           window.alert('login failure');
