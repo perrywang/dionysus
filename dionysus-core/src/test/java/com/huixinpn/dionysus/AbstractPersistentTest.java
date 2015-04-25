@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.repository.ConsultantRepository;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -42,8 +43,10 @@ public abstract class AbstractPersistentTest {
 		User user = userRepository.findByUsername(username);
 		if (user == null) {
 			user = new User(username, "password");
+			//Inbox inbox = new Inbox();
+			//inbox.setUser(user);
+			//user.setInbox(inbox);
 			userRepository.save(user);
-			entityManager.flush();
 		}
 		return user;
 	}

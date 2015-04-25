@@ -30,8 +30,6 @@ public class NotificationListener {
         AutowireInjector.inject(this, this.notificationRepository);
       }
       notificationRepository.save(notification);
-      //only for testing pass. remove it later
-      inbox.addNotification(notification);
     }
   }
 }

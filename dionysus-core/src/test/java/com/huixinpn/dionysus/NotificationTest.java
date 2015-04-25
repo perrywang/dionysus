@@ -36,9 +36,10 @@ public class NotificationTest extends AbstractPersistentTest {
 		Comment comment = new Comment("from some one", article);
 		entityManager.persist(comment);
 
-		Inbox inbox = user.getInbox();
+		Inbox checkingInbox = user.getInbox();
+		entityManager.refresh(user);
 
-		Collection<Notification> notifications = inbox.getNotifications();
+		Collection<Notification> notifications = checkingInbox.getNotifications();
 		Assert.assertTrue(notifications.size() >= 1);
 	}
 
@@ -55,6 +56,7 @@ public class NotificationTest extends AbstractPersistentTest {
 		entityManager.persist(course);
 
 		for (User user : users) {
+			entityManager.refresh(user);
 			Assert.assertTrue(user.getInbox().getNotifications().size() >= 1);
 		}
 	}
@@ -65,11 +67,10 @@ public class NotificationTest extends AbstractPersistentTest {
         User user = createUser(UUID.randomUUID().toString());
         Consultant consultant = new Consultant("consultant","password");
         consultantRepository.save(consultant);
-        entityManager.flush();
         Appointment appointment = new Appointment(user,consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason");
 
         entityManager.persist(appointment);
-
+        entityManager.refresh(user);
         Assert.assertTrue(user.getInbox().getNotifications().size() >= 1);
     }
 }

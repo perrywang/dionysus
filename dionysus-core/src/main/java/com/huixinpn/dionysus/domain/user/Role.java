@@ -38,5 +38,5 @@ public class Role extends AbstractDionysusPersistable {
 
 	@ManyToMany(mappedBy = "roles")
 	@JsonIgnore
-	private Collection<User> users = new ArrayList();
+	private Collection<User> users = new ArrayList<>();
 }
