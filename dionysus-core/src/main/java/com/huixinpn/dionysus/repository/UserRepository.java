@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Override
 	//@PreAuthorize("#user.username == principal or hasRole('ADMIN')")
-	User save(User user);
+	<S extends User> S save(S user);
 
 	@Override
 	@PreAuthorize("#user.username == principal or hasRole('ADMIN')")
