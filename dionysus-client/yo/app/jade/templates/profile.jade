@@ -30,6 +30,16 @@ script#profile-tpl(type="text/template")
           input(type="text", name="mobile", value!="<%= mobile %>", required)
           i.call.icon
       .field
+        label QQ：    
+        .ui.left.icon.input
+          input(type="text", name="qq", value!="<%= qq %>", required)
+          i.call.icon
+      .field
+        label QQ 地址：    
+        .ui.left.icon.input
+          input(type="text", name="qqAddress", value!="<%= qqAddress %>", alt="外链地址，可不填", required)
+          i.call.icon
+      .field
         label 固定电话：  
         .ui.left.icon.input
           input(type="text", name="landline", value!="<%= landline %>", required)

@@ -12,7 +12,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     update: function(e) {
       this.trigger('profile:update', this.model);	  
-      var user = this.$el.form('get values', ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline']);
+      var user = this.$el.form('get values'/*, ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline','qq','qqAddress']*/);
 	  user['username'] = this.model.get('username');
       user['password'] = this.model.get('password');
 	  var url = '/api/v1/updateprofile';
