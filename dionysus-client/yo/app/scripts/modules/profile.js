@@ -27,6 +27,11 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       }).fail(function() {
         window.alert('update failure');
       }); 
+    },
+    onRender:function(){
+      this.$('select.dropdown').dropdown();
+      this.$el.form();
+      this.$el.form('set values', this.model.toJSON());
     }
   });
 
