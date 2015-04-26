@@ -18,7 +18,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       appointmentData.consultant = this.model.url();
       var appointment = Dionysus.request('appointment:new');
       appointment.save(appointmentData).then(function(){
-        alert("open success!");
+        alert("预约提交成功，请等待咨询师稍后回复!");
         //toastr.info('预约提交成功，请等待咨询师稍后回复！');
       });
     }

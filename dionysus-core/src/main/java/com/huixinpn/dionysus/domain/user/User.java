@@ -95,7 +95,29 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "avatar")
   private String avatar;
 
-  public String getAvatar() {
+  @Column(name="qq")
+  private String qq;
+
+  @Column(name="qq_address")
+  private String qqAddress;
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getQqAddress() {
+        return qqAddress;
+    }
+
+    public void setQqAddress(String qqAddress) {
+        this.qqAddress = qqAddress;
+    }
+
+    public String getAvatar() {
     return avatar;
   }
 
