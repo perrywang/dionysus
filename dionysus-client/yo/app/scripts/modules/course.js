@@ -39,8 +39,8 @@ Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
     new Marionette.AppRouter({
       appRoutes : {
         'courses(/)': 'showCourses',
-        'courses/:id(/)': 'showCourse'
-        'courses/bookedBy/:id' : 'showCoursesByUser',
+        'courses/:id(/)': 'showCourse',
+        'courses/bookedBy/:id' : 'showCoursesByUser'
       },
       controller: new CourseController()
     });
