@@ -43,8 +43,8 @@ script#profile-tpl(type="text/template")
         li
           a(href!="/appointments/appointedBy/<%= id %>") 我的预约
         li
-          a(href="/tests") 心理测试
+          a(href="/tests") 我的测试
         li
-          a(href="#!") 心理课程
+          a(href!="/courses/bookedBy/<%= id %>") 我的课程
         li
-          a(href!="/articles/createdBy/<%= id %>") 心理知识
+          a(href!="/articles/createdBy/<%= id %>") 我的文章

@@ -20,6 +20,27 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       pageSize: 'size'
     }
   });
+  
+  Entities.UserCourseCollection = Backbone.Collection.extend({
+    model: Entities.User,
+    url: '/api/v1/users',
+    parse: function(response) {
+      var embedded = response._embedded;
+      return embedded ? embedded.users : [];
+    },
+    initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    },
+    state: {
+      firstPage: 0
+    },
+    queryParams: {
+      currentPage: 'page',
+      pageSize: 'size'
+    }
+  });
 
   Dionysus.reqres.setHandler('user:entities', function() {
     var users = new Entities.UserCollection();

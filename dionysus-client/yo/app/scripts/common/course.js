@@ -107,9 +107,9 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('course:bookedby', function(userid) {
-    var courses = new Entities.CourseCollection({appendUrl:'/search/findByUser'});
+    var courses = new Entities.UserCourseCollection({appendUrl:'/' + userid + '/courses'});
     var defer = $.Deferred();
-    courses.fetch({ data: { user:userid }}).then(function() {
+    courses.fetch().then(function() {
       defer.resolve(courses);
     });
     return defer.promise();
