@@ -3,6 +3,7 @@ package com.huixinpn.dionysus.domain.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.huixinpn.dionysus.auth.PasswordListener;
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
+import com.huixinpn.dionysus.domain.course.Course;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.core.GrantedAuthority;
@@ -77,6 +78,9 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @RestResource(exported = false)
   private Set<Role> roles;
 
+  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "users")
+  private Collection<Course> courses = new ArrayList<>();
+  
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Profile profile;
 
@@ -137,7 +141,15 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     this.roles = roles;
   }
 
-  @Override
+  public Collection<Course> getCourses() {
+	return courses;
+  }
+
+  public void setCourses(Collection<Course> courses) {
+	this.courses = courses;
+  }
+
+@Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     Collection<GrantedAuthority> authorities = new ArrayList<>();
     Set<Role> userRoles = this.getRoles();

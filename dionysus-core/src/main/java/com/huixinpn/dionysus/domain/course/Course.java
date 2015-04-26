@@ -3,12 +3,15 @@ package com.huixinpn.dionysus.domain.course;
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -42,6 +45,8 @@ public class Course extends AbstractDionysusNotifiable<User> {
   private Consultant consultant;
 
   @ManyToMany
+  @JoinTable(name = "user_course", joinColumns = @JoinColumn(name = "course_id"), 
+  	inverseJoinColumns = @JoinColumn(name = "user_id")) 
   private Collection<User> users = new ArrayList<>();
 
   @OneToMany(mappedBy = "course")
@@ -86,4 +91,6 @@ public class Course extends AbstractDionysusNotifiable<User> {
   public String toString() {
     return this.getTitle() + " (" + this.getState() + ")";
   }
+  
+  
 }

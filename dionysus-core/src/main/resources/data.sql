@@ -78,10 +78,10 @@ insert into psychtestitemoptions(id, item_id, description) values (10, 4, '一�
 insert into psychtestitemoptions(id, item_id, description) values (11, 4, '一周');
 insert into psychtestitemoptions(id, item_id, description) values (12, 4, '一个月');
 
-
-
 insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
-insert into appointments (id, user_id, consultant_id, state, approach) values (2, 1, 4, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (2, 2, 4, 'WAITING', 'ONLINE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (3, 2, 3, 'ACCEPTED', 'BY_PHONE' );
+insert into appointments (id, user_id, consultant_id, state, approach) values (4, 2, 4, 'DECLINED', 'OFFLINE' );
 
 insert into coursecategories (id, name) values(1, '亲子关系');
 insert into coursecategories (id, name) values(2, '家庭关系');
@@ -89,6 +89,10 @@ insert into coursecategories (id, name) values(3, '婚姻关系');
 insert into coursecategories (id, name) values(4, '职业心理');
 insert into coursecategories (id, name) values(5, '个人成长');
 
-insert into courses (id, title, description, category_id, consultant_id) values(1,'course title','course description',1,3)
+insert into courses (id, title, description, category_id, consultant_id) values(1,'心理学导论','心理学入门课程',1,3);
+insert into courses (id, title, description, category_id, consultant_id) values(2,'心理学进阶','心理学高级学员课程',1,3);
+insert into courses (id, title, description, category_id, consultant_id) values(3,'心理学高级','心理学辅导员课程',2,3);
 
-
+insert into user_course values (1, 2);
+insert into user_course values (2, 2);
+insert into user_course values (3, 2);

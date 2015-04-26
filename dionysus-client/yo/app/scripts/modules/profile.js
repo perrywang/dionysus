@@ -22,7 +22,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
       }).done(function() {
-        window.alert('update success');
+        //window.alert('update success');
         Dionysus.navigate('/site',{trigger:true});
       }).fail(function() {
         window.alert('update failure');
@@ -36,7 +36,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       $.when(userFetching).done(function(user) {
 	    var profileview = new ProfileView({ model: user});
         profileview.on("profile:update", function(data){
-          alert("update Called!");
+          //alert("update Called!");
         })
         Dionysus.mainRegion.show(profileview);
       }).fail(function(){

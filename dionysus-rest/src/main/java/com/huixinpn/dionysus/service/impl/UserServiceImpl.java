@@ -1,6 +1,5 @@
 package com.huixinpn.dionysus.service.impl;
 
-import com.huixinpn.dionysus.domain.*;
 import com.huixinpn.dionysus.domain.article.Article;
 import com.huixinpn.dionysus.domain.article.Category;
 import com.huixinpn.dionysus.domain.article.Comment;
@@ -67,6 +66,7 @@ public class UserServiceImpl implements UserService {
     manager.detach(user);
     user.setPassword("");
     user.setEncryptedPassword("");
+    user.setCourses(null);
     return user;
   }
 
@@ -99,6 +99,7 @@ public class UserServiceImpl implements UserService {
     manager.detach(user);
     user.setPassword("");
     user.setEncryptedPassword("");
+    user.setCourses(null);
     return user;
   }
 

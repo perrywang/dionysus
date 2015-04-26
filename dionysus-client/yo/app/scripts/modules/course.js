@@ -26,7 +26,13 @@ Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
       $.when(courseFetching).done(function(course) {
         Dionysus.mainRegion.show(new CourseView({ model: course}));
       });
-    } 
+    },
+    showCoursesByUser: function(userid){
+      var userFetchingcourses = Dionysus.request('course:bookedby', userid);
+      $.when(userFetchingcourses).done(function(courses) {
+        Dionysus.mainRegion.show(new CoursesView({ collection: courses}));
+      });
+    }
   });
 
   Dionysus.addInitializer(function() {
@@ -34,6 +40,7 @@ Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
       appRoutes : {
         'courses(/)': 'showCourses',
         'courses/:id(/)': 'showCourse'
+        'courses/bookedBy/:id' : 'showCoursesByUser',
       },
       controller: new CourseController()
     });

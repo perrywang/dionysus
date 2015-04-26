@@ -106,5 +106,13 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return defer.promise();
   });
 
+  Dionysus.reqres.setHandler('course:bookedby', function(userid) {
+    var courses = new Entities.CourseCollection({appendUrl:'/search/findByUser'});
+    var defer = $.Deferred();
+    courses.fetch({ data: { user:userid }}).then(function() {
+      defer.resolve(courses);
+    });
+    return defer.promise();
+  });
 });
 
