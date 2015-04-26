@@ -3,40 +3,41 @@ script#profile-tpl(type="text/template")
     img.ui.small.image(src!="<%= avatar%>")
     h3.ui.header <%= username %>
     p.description <%= about %>
-    .required.field
-    label 邮箱：    
-    .ui.left.icon.input
-      input(type="text", name="email", value!="<%= email %>", required)
-      i.mail.icon
-    .required.field
-    label 性别：   
-    select.ui.dropdown(name="gender")
-      option(value="male") 男
-      option(value="female") 女
-    .required.field
-    label 年龄：    
-    .ui.left.icon.input
-      input(type="text", name="age", value!="<%= age %>", required)
-      i.user.icon
-    .required.field
-    label 地址：    
-    .ui.left.icon.input
-      input(type="text", name="address", value!="<%= address %>", required)
-      i.home.icon
-    .required.field
-    label 手机：    
-    .ui.left.icon.input
-      input(type="text", name="mobile", value!="<%= mobile %>", required)
-      i.call.icon
-    .required.field
-    label 固定电话：  
-    .ui.left.icon.input
-      input(type="text", name="landline", value!="<%= landline %>", required)
-      i.call.icon
-    .ui.horizontal.divider
-    .ui.left.icon.input
-      input.ui.submit.button(type="submit", value="保存")
-      i.save.icon
+    form.ui.form  
+      .field
+        label 邮箱：    
+        .ui.left.icon.input
+          input(type="text", name="email", value!="<%= email %>", required)
+          i.mail.icon
+      .field
+        label 性别：   
+        select.ui.dropdown(name="gender")
+          option(value="male") 男
+          option(value="female") 女
+      .field
+        label 年龄：    
+        .ui.left.icon.input
+          input(type="text", name="age", value!="<%= age %>", required)
+          i.user.icon
+      .field
+        label 地址：    
+        .ui.left.icon.input
+          input(type="text", name="address", value!="<%= address %>", required)
+          i.home.icon
+      .field
+        label 手机：    
+        .ui.left.icon.input
+          input(type="text", name="mobile", value!="<%= mobile %>", required)
+          i.call.icon
+      .field
+        label 固定电话：  
+        .ui.left.icon.input
+          input(type="text", name="landline", value!="<%= landline %>", required)
+          i.call.icon
+      .ui.horizontal.divider
+      .ui.left.icon.input
+        input.ui.submit.button(type="submit", value="保存")
+        i.save.icon
     .ui.horizontal.divider
     .row
       ul
