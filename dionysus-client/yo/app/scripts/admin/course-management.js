@@ -66,10 +66,14 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="category"]').dropdown();
       this.$('[name="state"]').dropdown();
       this.$('[name="consultant"]').dropdown();
+      this.$('#courseTime').datetimepicker();
       this.$('#videoPart').hide();
+      this.$('#groupAddress').hide();
       this.$('[name="approach"]').dropdown();
       this.$('[name="approach"]').change(function(eventObject){
-        eventObject.target.value === 'VIDEO' ? $('#videoPart').show():$('#videoPart').hide()
+        eventObject.target.value === 'VIDEO' ? $('#videoPart').show():$('#videoPart').hide();
+        eventObject.target.value === 'ONE2MANY' ? $('#groupAddress').show():$('#groupAddress').hide();
+
       });
       this.$el.form(validationRules);
       var data = this.model.toJSON();

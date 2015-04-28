@@ -10,6 +10,7 @@
     "stomp-websocket": "~2.3.4",
     "froala": "~1.2.6",
     "semantic-ui": "~1.11.6",
-    "toastr": "~2.1.1"
+    "toastr": "~2.1.1",
+    "datetimepicker": "git://github.com/xdan/datetimepicker.git"
   }
 }
