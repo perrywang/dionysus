@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain.course;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.joda.time.DateTime;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -15,6 +17,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -38,7 +41,7 @@ public class Course extends AbstractDionysusNotifiable<User> {
   private CourseState state;
 
   @Column(name = "calendar")
-  @Temporal(TemporalType.DATE)
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy/MM/dd HH:mm")
   private Calendar date;
 
   @ManyToOne

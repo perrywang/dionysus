@@ -66,7 +66,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="category"]').dropdown();
       this.$('[name="state"]').dropdown();
       this.$('[name="consultant"]').dropdown();
-      this.$('#courseTime').datetimepicker();
+      this.$('#courseTime').datetimepicker({lang:'zh',step:30});
       this.$('#videoPart').hide();
       this.$('#groupAddress').hide();
       this.$('[name="approach"]').dropdown();
