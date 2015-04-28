@@ -14,6 +14,9 @@ import com.huixinpn.dionysus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -62,6 +65,9 @@ public class UserServiceImpl implements UserService {
     user.setRoles(roles);
     //user.setInbox(null);
     user.setProfile(null);
+    SecurityContext context = SecurityContextHolder.getContext();
+    context.setAuthentication(new UsernamePasswordAuthenticationToken(user.getUsername(),
+        user.getPassword(),user.getAuthorities()));
     userrepository.save(user);
     manager.detach(user);
     user.setPassword("");
