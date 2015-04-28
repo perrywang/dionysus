@@ -1,6 +1,43 @@
 Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
+  var validationRules = {
+    title: {
+      identifier  : 'title',
+      rules: [
+        {
+          type    : 'empty',
+          prompt  : '课程名称不能为空'
+        }
+      ]
+    },
+    capacity:{
+      identifier  : 'capacity',
+      rules: [
+        {
+          type    : 'integer',
+          prompt  : '人数限制必须输入整数'
+        }
+      ]
+    }
+  };
+
+  var empty2null = function(input){
+    return (input === '') ? null : input;
+  };
+
+  var string2Integer = function(input){
+    var output = parseInt(input);
+    return output == NaN ? null : output;
+  }
+
+  var courseTransformRules = {
+    category : empty2null,
+    consultant : empty2null,
+    approach : empty2null,
+    capacity : string2Integer
+  };
+
   var CourseItemView = Marionette.ItemView.extend({
     template: '#admin-course-tpl',
     tagName: 'li',
@@ -34,6 +71,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="approach"]').change(function(eventObject){
         eventObject.target.value === 'VIDEO' ? $('#videoPart').show():$('#videoPart').hide()
       });
+      this.$el.form(validationRules);
       var data = this.model.toJSON();
       this.$el.form('set values', data);
     },
@@ -49,6 +87,15 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     }
   });
 
+  function transform(source, rules){
+    var prop;
+    for(prop in source){
+      if(source.hasOwnProperty(prop) && rules[prop]){
+        source[prop] = rules[prop](source[prop]);
+      }
+    }
+  }
+
   var CourseController = Marionette.Controller.extend({
 
     createCourse: function() {
@@ -61,6 +108,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
             course.clear();
             json.id = id;
           }
+          transform(json,courseTransformRules);
           course.save(json, {
             error: function(model, response, options){
               toastr.error('课程保存失败');
@@ -89,6 +137,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
           editor.on('course:save', function(json) {
             course.clear();
             json.id = id;
+            transform(json,courseTransformRules);
             course.save(json, {
               error: function(model, response, options){
                 toastr.error('课程保存失败');

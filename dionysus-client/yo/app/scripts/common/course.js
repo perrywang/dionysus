@@ -17,7 +17,12 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       var category = new Backbone.Model();
       category.url = this.link('category').get('href');
       var defer = $.Deferred();
-      category.fetch().then(function(){
+      category.fetch({
+        error: function(){
+          category.set('name','');
+          defer.resolve(category);
+        }
+      }).then(function(){
         defer.resolve(category);
       });
       return defer.promise(category);
@@ -26,7 +31,12 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       var consultant = new Backbone.Model();
       consultant.url = this.link('consultant').get('href');
       var defer = $.Deferred();
-      consultant.fetch().then(function(){
+      consultant.fetch({
+        error: function(){
+          consultant.set('username','');
+          defer.resolve(consultant);
+        }
+      }).then(function(){
         defer.resolve(consultant);
       });
       return defer.promise(consultant);
