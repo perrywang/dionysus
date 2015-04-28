@@ -103,13 +103,9 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       $.when(Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(categories,consultants){
         var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
         editor.on('course:save', function(json) {
-          if(!course.isNew()){
-            var id = course.get('id');
-            course.clear();
-            json.id = id;
-          }
           transform(json,courseTransformRules);
           course.save(json, {
+            patch: true,
             error: function(model, response, options){
               toastr.error('课程保存失败');
           }}).done(function(){
@@ -135,10 +131,9 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
           course.set('consultant',consultant.get('username'));
           var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
           editor.on('course:save', function(json) {
-            course.clear();
-            json.id = id;
             transform(json,courseTransformRules);
             course.save(json, {
+              patch: true,
               error: function(model, response, options){
                 toastr.error('课程保存失败');
               }}).done(function(){
