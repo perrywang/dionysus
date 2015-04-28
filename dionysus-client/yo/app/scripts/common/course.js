@@ -68,12 +68,17 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('course:entity', function(id) {
-    var course = new Course({id:id});
-    var defer = $.Deferred();
-    course.fetch().then(function() {
-      defer.resolve(course);
-    });
-    return defer.promise();
+
+    var course = Course.find({id:id});
+    if(course == null){
+      course = new Course({id:id});
+      var defer = $.Deferred();
+       course.fetch().then(function() {
+       defer.resolve(course);
+       });
+       return defer.promise();
+    }
+    return course;
   });
 
   Dionysus.reqres.setHandler('course:entities', function(id) {
