@@ -1,3 +1,19 @@
-script#course-tpl(type="text/template")
-  header This is "course" page
-  p Courses are here ...
+script#course-list-item-tpl(type="text/template")
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.header 链接到课程详细信息
+    .meta
+      span.cinema 副标题
+    .description
+      p 课程描述
+    .extra
+      .ui.label 注册链接
+
+
+script#course-item-detail-tpl(type="text/template")
+
+script#course-registration-tpl(type="text/template")
+
+
+

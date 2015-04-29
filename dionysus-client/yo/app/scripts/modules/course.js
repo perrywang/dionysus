@@ -2,16 +2,13 @@ Dionysus.module('Course', function(Course, Dionysus, Backbone, Marionette) {
   'use strict';
   
   var CourseView = Marionette.ItemView.extend({ 
-    template: '#course-tpl',
-    tagName: 'li',
+    template: '#course-list-item-tpl',
     className: 'item'
   });
 
-  var CoursesView = Marionette.CompositeView.extend({
-    template: '#courses-tpl',
+  var CoursesView = Marionette.CollectionView.extend({
     childView: CourseView,
-    childViewContainer: '.items',
-    className: 'ui page'
+    className: 'ui divided items'
   });
 
   var CourseController = Marionette.Controller.extend({
