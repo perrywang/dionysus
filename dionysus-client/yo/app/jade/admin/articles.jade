@@ -12,6 +12,10 @@ script#admin-article-tpl(type="text/template")
       i.edit.icon
       | <%= title %>
     p.description <%= summary %>
+    .ui.tiny.vertical.animated.red.button.delete
+      .hidden.content 删除
+      .visible.content
+        i.large.trash.icon
 
 script#admin-article-editor-tpl(type="text/template")
   .two.fields

@@ -11,7 +11,17 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   var ArticleView = Marionette.ItemView.extend({ 
     template: '#admin-article-tpl',
     tagName: 'li',
-    className: 'item'
+    className: 'item',
+    ui: {
+      deleteMe: '.button.delete'
+    },
+    events: {
+      'click @ui.deleteMe': 'deleteArticle'
+    },
+    deleteArticle: function(e){
+      e.stopPropagation();
+      this.trigger('article:delete', this.model);
+    }
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
@@ -65,7 +75,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
       Dionysus.request('article:instances').then(function(articles) {
-        Dionysus.mainRegion.show(new ArticlesView({ collection: articles.embedded('articles') }));
+        var articleList = new ArticlesView({ collection: articles.embedded('articles') })
+        articleList.on('childview:article:delete',function(childView, model){
+            alert("delete this mode!");
+            model.destroy();
+        });
+        Dionysus.mainRegion.show(articleList);
       });
     },
     createArticle: function() {

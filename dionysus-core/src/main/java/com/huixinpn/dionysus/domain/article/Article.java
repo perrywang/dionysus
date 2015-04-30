@@ -59,6 +59,6 @@ public class Article extends AbstractDionysusAuditable<User> {
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
 	private Long version;
 
-	@OneToMany(mappedBy = "article")
+	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
 	private List<Comment> comments;
 }
