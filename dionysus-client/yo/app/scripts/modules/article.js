@@ -22,12 +22,19 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
+      
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+
       Dionysus.request('article:instances').done(function(resources) {
         var articles = resources.embedded('articles');
         Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
       });
     },
     showArticle: function(id) {
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      
       Dionysus.request('article:instance', id).done(function(article) {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
@@ -41,7 +48,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     }
   });
 
-  Dionysus.addInitializer(function() {
+  Dionysus.on("before:start",function() {
     new Marionette.AppRouter({
       appRoutes : {
         'articles/createdBy/:id' : 'showArticlesByAuthor',

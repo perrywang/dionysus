@@ -60,6 +60,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function () {
+      
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+
       Dionysus.request('article:instances').then(function(articles) {
         Dionysus.mainRegion.show(new ArticlesView({ collection: articles.embedded('articles') }));
       });
