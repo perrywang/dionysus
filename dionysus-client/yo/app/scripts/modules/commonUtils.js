@@ -8,15 +8,18 @@ Dionysus.module('Common.Views', function(Views, Dionysus, Backbone, Marionette, 
 	var MyController = Marionette.Controller.extend({
 		testloading:function(){
 			var loadingView = new Dionysus.Common.Views.Loading();
-			alert("hehe");
+			Dionysus.mainRegion.show(loadingView);
 		}
 	})
 
-	var myRoute = new Marionette.AppRouter({
+
+	Dionysus.on("before:start",function(){
+		new Marionette.AppRouter({
 		appRoutes:{
-			"testloading(/)":"testloading"
+			"admin/testloading(/)":"testloading"
 		},
-		controller:new MyController()	
+		controller: new MyController()	
+	})
 	})
 
 });
