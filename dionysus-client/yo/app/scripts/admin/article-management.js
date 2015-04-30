@@ -2,13 +2,37 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   'use strict';
 
   var validationRules = {
-    title:      { identifier: 'title',      rules: [{ type: 'empty', prompt: 'Please enter a title' }] },
-    category:   { identifier: 'category',   rules: [{ type: 'empty', prompt: 'Please enter a category' }] },
-    summary:    { identifier: 'summary',    rules: [{ type: 'empty', prompt: 'Please enter a summary' }] },
-    body:       { identifier: 'body',       rules: [{ type: 'empty', prompt: 'Please enter article body' }] }
+    title: {
+      identifier: 'title',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter a title'
+      }]
+    },
+    category: {
+      identifier: 'category',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter a category'
+      }]
+    },
+    summary: {
+      identifier: 'summary',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter a summary'
+      }]
+    },
+    body: {
+      identifier: 'body',
+      rules: [{
+        type: 'empty',
+        prompt: 'Please enter article body'
+      }]
+    }
   };
 
-  var ArticleView = Marionette.ItemView.extend({ 
+  var ArticleView = Marionette.ItemView.extend({
     template: '#admin-article-tpl',
     tagName: 'li',
     className: 'item',
@@ -18,7 +42,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     events: {
       'click @ui.deleteMe': 'deleteArticle'
     },
-    deleteArticle: function(e){
+    deleteArticle: function(e) {
       e.stopPropagation();
       this.trigger('article:delete', this.model);
     }
@@ -27,7 +51,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   var ArticlesView = Marionette.CompositeView.extend({
     template: '#admin-articles-tpl',
     childView: ArticleView,
-    childViewContainer: '.items'
+    childViewContainer: '.items',
+    onRender: function(){
+      this.$('.ui.dropdown').dropdown();
+    }
   });
 
   var ArticleEditorView = Marionette.ItemView.extend({
@@ -38,7 +65,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       this.model = options.model;
       this.categories = options.categories;
     },
-    serializeData: function(){
+    serializeData: function() {
       var data = this.model.toJSON();
       data.categories = this.categories.toSelection();
       return data;
@@ -50,35 +77,42 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       var category = data.category;
       this.$el.form('set values', data);
       this.$('.editor').editable({
-        inlineMode: false, 
+        inlineMode: false,
         language: 'zh_cn',
         imageUploadURL: '/api/v1/upload',
         fileUploadURL: '/api/v1/upload'
       });
     },
-    ui : {
-      save : '.button.submit'
+    ui: {
+      save: '.button.submit',
+      deleteMe: '.button.delete'
     },
     events: {
-      'click @ui.save' : 'saveArticle'
+      'click @ui.save': 'saveArticle',
+      //'click @ui.deleteMe': 'deleteArticle'
     },
     saveArticle: function() {
       var json = this.$el.form('get values');
       this.trigger('article:save', json);
+    },
+    triggers: {
+      'click @ui.deleteMe': 'article:delete'
     }
   });
 
   var ArticleController = Marionette.Controller.extend({
-    showArticles: function () {
-      
+    showArticles: function() {
+
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
       Dionysus.request('article:instances').then(function(articles) {
-        var articleList = new ArticlesView({ collection: articles.embedded('articles') })
-        articleList.on('childview:article:delete',function(childView, model){
-            alert("delete this mode!");
-            model.destroy();
+        var articleList = new ArticlesView({
+          collection: articles.embedded('articles')
+        })
+        articleList.on('childview:article:delete', function(childView, model) {
+          alert("delete this mode!");
+          model.destroy();
         });
         Dionysus.mainRegion.show(articleList);
       });
@@ -86,11 +120,25 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     createArticle: function() {
       $.when(Dionysus.request('article:new'), Dionysus.request('category:instances'))
         .done(function(article, categories) {
-          var editor = new ArticleEditorView({ model: article, categories: categories });
+          var editor = new ArticleEditorView({
+            model: article,
+            categories: categories
+          });
           editor.on('article:save', function(json) {
-            article.save(json,{patch:true}).done(function() {
+            article.save(json, {
+              patch: true
+            }).done(function() {
               toastr.info('文章保存成功');
             });
+          });
+          editor.on('article:delete', function() {
+            if (!this.model.isNew()) {
+              this.model.destroy();
+              this.destroy();
+              Dionysus.navigate('admin/articles', {
+                trigger: true
+              });
+            }
           });
           Dionysus.mainRegion.show(editor);
         });
@@ -98,10 +146,22 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     editArticle: function(id) {
       $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances'))
         .done(function(article, categories) {
-          var editor = new ArticleEditorView({ model: article, categories: categories});
+          var editor = new ArticleEditorView({
+            model: article,
+            categories: categories
+          });
           editor.on('article:save', function(json) {
-            article.save(json,{patch:true}).then(function() {
+            article.save(json, {
+              patch: true
+            }).then(function() {
               toastr.info('文章保存成功');
+            });
+          });
+          editor.on('article:delete', function() {
+            this.model.destroy();
+            this.destroy();
+            Dionysus.navigate('admin/articles', {
+              trigger: true
             });
           });
           Dionysus.mainRegion.show(editor);
@@ -111,7 +171,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
-      appRoutes : {
+      appRoutes: {
         'admin/articles(/)': 'showArticles',
         'admin/articles/create(/)': 'createArticle',
         'admin/articles/:id': 'editArticle'

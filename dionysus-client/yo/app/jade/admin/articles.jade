@@ -3,6 +3,22 @@ script#admin-articles-tpl(type="text/template")
     i.add.icon
     | Create
   ul.ui.relaxed.items
+  .ui.three.column.divided.grid
+    .column
+      p
+    .column
+      a.icon.button.left
+        i.left.large.chevron.icon
+      .ui.dropdown        
+        .default.text 1/2
+        i.dropdown.icon
+        .menu
+          .item 1
+          .item 2  
+      a.icon.button.right
+        i.right.large.chevron.icon
+    .column
+      p
 
 script#admin-article-tpl(type="text/template")
   .image
@@ -37,4 +53,7 @@ script#admin-article-editor-tpl(type="text/template")
     textarea.editor(name="body")
   .ui.button.submit
     i.save.icon
-    | Save
+    | 保存
+  .ui.red.button.delete
+    i.trash.icon
+    | 删除
