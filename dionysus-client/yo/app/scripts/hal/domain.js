@@ -59,13 +59,22 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('article:instances', function() {
+  Dionysus.reqres.setHandler('article:instances', function(pageId) {
     var resources = new ArticleResources(), defer = $.Deferred();
-    resources.fetch({ data: { projection: 'summary' }}).then(function() {
+    var pageX = pageId?pageId:0;
+    resources.fetch({ data: { projection: 'summary', page: pageX }}).then(function() {
       defer.resolve(resources);
     });
     return defer.promise();
   });
+
+  Dionysus.reqres.setHandler('article:instances:page', function(pageId) {
+    var resources = new ArticleResources(), defer = $.Deferred();
+    resources.fetch({data: { projection: 'summary', page: pageId}}).then(function(){
+      defer.resolve(resources);
+    });
+    return defer.promise();
+  })
 
   Dionysus.reqres.setHandler('article:instance', function(id) {
     // TODO: single resource fetch

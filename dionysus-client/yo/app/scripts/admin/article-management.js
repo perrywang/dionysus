@@ -52,8 +52,13 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     template: '#admin-articles-tpl',
     childView: ArticleView,
     childViewContainer: '.items',
-    onRender: function(){
-      this.$('.ui.dropdown').dropdown();
+    onDomRefresh: function(){
+      //console.log(this.model);
+      var page = this.model;
+      if(page.get('number') === 0) this.$('.button.left').hide();
+      else if(page.get('number') === page.get('totalPages')-1) this.$('.button.right').hide();
+      
+      //this.$('.ui.dropdown').dropdown();
     }
   });
 
@@ -101,19 +106,23 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   });
 
   var ArticleController = Marionette.Controller.extend({
-    showArticles: function() {
+    showArticles: function(pageId) {
 
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
-      Dionysus.request('article:instances').then(function(articles) {
+      Dionysus.request('article:instances', pageId).then(function(articles) {
+        
+        var pageObj = new Backbone.Model(articles.get('page'));
         var articleList = new ArticlesView({
-          collection: articles.embedded('articles')
+          collection: articles.embedded('articles'),
+          model:pageObj
         })
         articleList.on('childview:article:delete', function(childView, model) {
-          alert("delete this mode!");
+          //alert("delete this mode!");
           model.destroy();
         });
+        
         Dionysus.mainRegion.show(articleList);
       });
     },
@@ -172,7 +181,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/articles(/)': 'showArticles',
+        'admin/articles(/p:page)': 'showArticles',
         'admin/articles/create(/)': 'createArticle',
         'admin/articles/:id': 'editArticle'
       },

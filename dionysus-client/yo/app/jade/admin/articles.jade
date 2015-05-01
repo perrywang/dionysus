@@ -7,15 +7,10 @@ script#admin-articles-tpl(type="text/template")
     .column
       p
     .column
-      a.icon.button.left
+      a.icon.button.left(href!="/admin/articles/p<%= number-1 %>")
         i.left.large.chevron.icon
-      .ui.dropdown        
-        .default.text 1/2
-        i.dropdown.icon
-        .menu
-          .item 1
-          .item 2  
-      a.icon.button.right
+      a <%= number+1 %> / <%= totalPages %>  
+      a.icon.button.right(href!="/admin/articles/p<%= number+1 %>")
         i.right.large.chevron.icon
     .column
       p
