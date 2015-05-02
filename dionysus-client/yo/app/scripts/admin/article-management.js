@@ -129,7 +129,11 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
               articleList.render();
             },
             onApprove: function(){
-              model.destroy();
+              model.destroy({
+                error: function(model, response){
+                  if(response.status === 403) alert('你没有权限，先登录管理员账号！');
+                }
+              });
               articleList.render();
             }
           }).modal('show');
