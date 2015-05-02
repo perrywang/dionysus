@@ -11,8 +11,13 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     template: '#articles-tpl',
     childView: ArticleView,
     childViewContainer: '.items',
-    className: 'ui page'
-  });
+    className: 'ui page',
+    onDomRefresh: function(){
+      //console.log(this.model);
+      var page = this.model;
+      if(page.get('number') === 0) this.$('.button.left').hide();
+      else if(page.get('number') === page.get('totalPages')-1) this.$('.button.right').hide();
+  }});
 
   var ArticleDetailView = Marionette.ItemView.extend({
     template: '#article-detail-tpl',
@@ -21,14 +26,15 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   });
 
   var ArticleController = Marionette.Controller.extend({
-    showArticles: function () {
+    showArticles: function (pageId) {
       
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
-      Dionysus.request('article:instances').done(function(resources) {
+      Dionysus.request('article:instances', pageId).done(function(resources) {
         var articles = resources.embedded('articles');
-        Dionysus.mainRegion.show(new ArticlesView({ collection: articles }));
+        var pageObj = new Backbone.Model(resources.get('page'));
+        Dionysus.mainRegion.show(new ArticlesView({ collection: articles, model: pageObj }));
       });
     },
     showArticle: function(id) {
@@ -52,7 +58,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     new Marionette.AppRouter({
       appRoutes : {
         'articles/createdBy/:id' : 'showArticlesByAuthor',
-        'articles(/)': 'showArticles',
+        'articles(/p:page)': 'showArticles',
         'articles/:id(/)': 'showArticle'
 
       },

@@ -1,6 +1,17 @@
 script#articles-tpl(type="text/template")
   h2.ui.header 心理知识
   ul.ui.items.divided
+  .ui.three.column.divided.grid
+    .column
+      p
+    .column
+      a.icon.button.left(href!="/articles/p<%= number-1 %>")
+        i.left.large.chevron.icon
+      a <%= number+1 %> / <%= totalPages %>  
+      a.icon.button.right(href!="/articles/p<%= number+1 %>")
+        i.right.large.chevron.icon
+    .column
+      p
 
 script#article-tpl(type="text/template")
   .ui.small.image
