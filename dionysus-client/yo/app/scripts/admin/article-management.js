@@ -57,6 +57,8 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       var page = this.model;
       if(page.get('number') === 0) this.$('.button.left').hide();
       else if(page.get('number') === page.get('totalPages')-1) this.$('.button.right').hide();
+
+      //this.$('.ui.modal').modal('setting','detachable', false);
       
       //this.$('.ui.dropdown').dropdown();
     }
@@ -120,7 +122,19 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         })
         articleList.on('childview:article:delete', function(childView, model) {
           //alert("delete this mode!");
-          model.destroy();
+          //modal('setting','detachable', false)
+          this.$('.ui.modal').modal({
+            closable: false,
+            onDeny: function(){
+              articleList.render();
+            },
+            onApprove: function(){
+              model.destroy();
+              articleList.render();
+            }
+          }).modal('show');
+          //model.destroy();
+          //articleList.render();
         });
         
         Dionysus.mainRegion.show(articleList);
