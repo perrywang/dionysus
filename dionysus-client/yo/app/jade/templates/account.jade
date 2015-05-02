@@ -1,20 +1,31 @@
 script#account-login-tpl(type="text/template")
-  .required.field
-    label 用户名
-    .ui.left.icon.input
-      input(type="text", name="username", placeholder="请输入用户名")
-      i.user.icon
-  .required.field
-    label 密码
-    .ui.left.icon.input
-      input(type="password", name="password", placeholder="请输入密码")
-      i.lock.icon
-  .ui.horizontal.divider 或
-  .field
-    span
-      | 没有账号
-      a(href="/register") 注册
-  input.ui.submit.button(type="submit", value="登陆")
+  .ui.modal
+    .header 欢迎！
+    .content
+      .ui.two.column.middle.aligned.relaxed.fitted.stackable.grid
+        .column
+          form#loginform  
+            .ui.form.segment
+              .field
+                label 用户名 
+                .ui.left.icon.input
+                  input#name(type="text", name="username", placeholder="请输入用户名")
+                  i.user.icon
+              .field
+                label 密码      
+                .ui.left.icon.input
+                  input#pass(type="password", name="password", placeholder="请输入密码")
+                  i.lock.icon
+            input.ui.purple.submit.button#login(type="submit", value="登陆")              
+        .ui.vertical.divider 或
+        .center.aligned.column
+          .field
+            .huge.green.ui.labled.icon.button
+              i.signup.icon
+              | 没有账号? 
+              a#register(href="/register") 注册
+    .actions
+      .ui.button.cancel 我什么也不想干...
 
 script#account-register-tpl(type="text/template")
 

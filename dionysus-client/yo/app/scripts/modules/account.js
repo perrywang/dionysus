@@ -74,16 +74,50 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     className: 'ui form compact segment',
     onRender: function() {
       this.$el.form(ACCOUNT_RULES);
-    },
-    ui: {
-      submit: '.submit'
-    },
-    events: {
-      'click @ui.submit': 'login'
-    },
-    login: function() {
-      var user = this.$el.form('get values', ['username', 'password']);
-      this.trigger('user:login', user);
+      
+      var loginAction = function() {
+
+        var userName = $('.ui.modal*.active').find('#name').val();
+        var pass = $('.ui.modal*.active').find('#pass').val();
+        if ( userName != "" && pass != "") {
+          
+          var user = {username:userName, password:pass};
+          $.ajax({
+            url: '/api/v1/login',
+            method: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(user)
+          }).done(function(response) {
+            var data = response.id;
+            sessionStorage.setItem("authorized", "enabled");
+            sessionStorage.setItem("user", data);
+            Dionysus.navigate('/site', {
+              trigger: true
+            });
+            $('.ui.modal').modal('hide');
+            $('.ui.modal').remove();
+            Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
+          }).fail(function() {
+            window.alert('登录失败，请确认用户名或密码正确...');
+          });
+        }
+      }
+
+      //$('#name').val("");
+      //$('#pass').val("");
+      this.$('#user').keypress(function(event){ if(event.which === 13) loginAction();})
+      this.$('#pass').keypress(function(event){ if(event.which === 13) loginAction();})
+      this.$('#login').click(loginAction);
+      this.$('#register').click(function(event){ 
+        
+        $('.ui.modal').modal('hide');
+        //$('.ui.modal').detach();
+        Dionysus.navigate('/register', {
+              trigger: true
+            });
+        
+        
+       })
     }
   });
 
@@ -111,22 +145,21 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   var AccountController = Marionette.Controller.extend({
     login: function() {
       var view = new LoginView(), controller = this;
-      view.on('user:login', function(user) {
-        $.ajax({
-          url: '/api/v1/login',
-          method: 'POST',
-          contentType: 'application/json; charset=utf-8',
-          data: JSON.stringify(user)
-        }).done(function(response) {
-          var data = response.id;
-          sessionStorage.setItem("authorized", "enabled");
-          sessionStorage.setItem("user",data);
-          Dionysus.navigate('/site',{trigger:true});
-		  Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
-        }).fail(function() {
-          window.alert('login failure');
-        });
+      
+      view.on('render', function(){
+        this.$('.ui.modal').modal({
+          closable:false,
+          onDeny: function(){
+            Dionysus.navigate('/site',{trigger:true});
+          },
+          onAppoval: function(){
+            alert('ok');
+          }
+        })
+        .modal('setting','transition','horizontal flip')
+        .modal('show');
       });
+
       Dionysus.mainRegion.show(view);
     },
     register: function() {
@@ -157,7 +190,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           success: function(response) {
             sessionStorage.setItem("authorized", "disabled");
             sessionStorage.removeItem("user");
-            Dionysus.navigate('/login',{trigger:true});
+            Dionysus.navigate('/site',{trigger:true});
             Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
           }
         });
