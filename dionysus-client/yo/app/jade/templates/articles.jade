@@ -23,6 +23,28 @@ script#article-tpl(type="text/template")
       .ui.label XXXX
       .ui.label YYY
 
+script#articles-cards-tpl(type="text/template")
+  h2.ui.header 心理知识
+  .ui.cards
+  .ui.three.column.divided.grid
+    .column
+      p
+    .column
+      a.icon.button.left(href!="/articles/p<%= number-1 %>")
+        i.left.large.chevron.icon
+      a <%= number+1 %> / <%= totalPages %>  
+      a.icon.button.right(href!="/articles/p<%= number+1 %>")
+        i.right.large.chevron.icon
+    .column
+      p
+
+script#article-cards-tpl(type="text/template")
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.header(href!="/articles/<%= id %>") <%= title %>
+    .description <%= summary %>
+
 script#article-detail-tpl(type="text/template")
   header
     h5 <%= title %>

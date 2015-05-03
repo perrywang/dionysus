@@ -2,15 +2,15 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ArticleView = Marionette.ItemView.extend({
-    template: '#article-tpl',
-    tagName: 'li',
-    className: 'item'
+    template: '#article-cards-tpl',
+    tagName: 'div',
+    className: 'card'
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
-    template: '#articles-tpl',
+    template: '#articles-cards-tpl',
     childView: ArticleView,
-    childViewContainer: '.items',
+    childViewContainer: '.ui.cards',
     className: 'ui page',
     onDomRefresh: function(){
       //console.log(this.model);
