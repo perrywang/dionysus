@@ -158,7 +158,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
           editor.on('article:delete', function() {
             if (!this.model.isNew()) {
               this.model.destroy();
-              this.destroy();
+              //this.destroy();
               Dionysus.navigate('admin/articles', {
                 trigger: true
               });
