@@ -18,3 +18,13 @@ Dionysus.on('start', function() {
   Backbone.history.start({ pushState: true });
   Backbone.Intercept.start();
 });
+
+$(document).ajaxError(function (event, xhr, options,thrownError) {
+  var statusCode = xhr.status;
+  if(statusCode == 401){
+    console.log("return 401")
+  }else if(statusCode == 403){
+    console.log("return 403");
+  }
+
+});
