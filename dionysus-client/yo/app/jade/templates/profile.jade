@@ -1,12 +1,27 @@
 script#profile-layout-tpl(type="text/template")
-  .header.segment
-    .container
-      .item
-        .image
-          img.ui.small.circular.image(src="/public/images/placeholder.png")
-        .content
-          a.header <%= username %>
-          .description <%= about %>
+  h2.ui.header
+    img.ui.small.circular.image(src!="<%= avatar%>")
+    .content 你好，<%= username %>
+      .sub.header <%= about %>
+  h4.ui.horizontal.header.divider
+    i.bar.char.icon
+  .ui.page.grid
+    .four.wide.column
+      .ui.list
+        a.item
+          i.small.circular.book.icon
+          |我的文章
+        a.item
+          i.small.circular.chat.icon
+          |我的一对一咨询
+        a.item
+          i.small.circular.users.icon 
+          |我的课程
+        a.item
+          i.small.circular.question.icon 
+          |我的测试
+    .twelve.wide.column
+      p xxxx
 
 script#profile-mycourses-tpl(type="text/template")
 
