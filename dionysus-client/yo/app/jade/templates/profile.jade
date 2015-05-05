@@ -1,4 +1,22 @@
-script#profile-tpl(type="text/template")
+script#profile-layout-tpl(type="text/template")
+  .header.segment
+    .container
+      .item
+        .image
+          img.ui.small.circular.image(src="/public/images/placeholder.png")
+        .content
+          a.header <%= username %>
+          .description <%= about %>
+
+script#profile-mycourses-tpl(type="text/template")
+
+script#profile-myappointments-tpl(type="text/template")
+
+script#profile-mytests-tpl(type="text/template")
+
+script#profile-myarticles-tpl(type="text/template")
+
+script#profile-info-tpl(type="text/template")
   .ui.piled.segment
     img.ui.small.image(src!="<%= avatar%>")
     h3.ui.header <%= username %>

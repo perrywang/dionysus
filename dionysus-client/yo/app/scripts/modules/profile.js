@@ -1,8 +1,12 @@
 Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   'use strict';
 
+  var PofileLayoutView = Marionette.LayoutView.extend({
+    template: '#profile-layout-tpl'
+  });
+
   var ProfileView = Marionette.ItemView.extend({ 
-    template: '#profile-tpl',
+    template: '#profile-info-tpl',
     className: 'ui page',
     ui: {
       submit: '.submit'
@@ -36,7 +40,15 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   });
 
   var ProfileController = Marionette.Controller.extend({
-    showProfile: function (id) {
+    
+    showProfile: function(id){
+
+      $.when(Dionysus.request('user:entity', id)).done(function(user){
+        Dionysus.mainRegion.show(new PofileLayoutView({ model: user}));
+      })
+    },
+
+    showProfile_old: function (id) {
       var userFetching = Dionysus.request('user:entity', id);
       $.when(userFetching).done(function(user) {
 	    var profileview = new ProfileView({ model: user});
