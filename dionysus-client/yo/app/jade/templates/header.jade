@@ -3,7 +3,7 @@ script#header-tpl(type="text/template")
     i.home.icon 
     | 汇心网
   .right.menu
-    a.item(href="/login") 登陆
+    a#login.item 登陆
   .right.menu
     a.item(href="/register") 注册
 
@@ -17,3 +17,32 @@ script#headerlogin-tpl(type="text/template")
     a.item(href="/") 个人档案
   .right.menu
     a.item(href!="/profile/<%= id %>") 用户面板
+
+script#login-modal-tpl(type="text/template")
+  .ui.modal
+    .header 欢迎！
+    .content
+      .ui.two.column.middle.aligned.relaxed.fitted.stackable.grid
+        .column
+          form#loginform  
+            .ui.form.segment
+              .field
+                label 用户名 
+                .ui.left.icon.input
+                  input#name(type="text", name="username", placeholder="请输入用户名")
+                  i.user.icon
+              .field
+                label 密码      
+                .ui.left.icon.input
+                  input#pass(type="password", name="password", placeholder="请输入密码")
+                  i.lock.icon
+            input.ui.purple.submit.button#loginbutton(type="submit", value="登陆")              
+        .ui.vertical.divider 或
+        .center.aligned.column
+          .field
+            .huge.green.ui.labled.icon.button
+              i.signup.icon
+              | 没有账号? 
+              a#register(href="/register") 注册
+    .actions
+      .ui.button.cancel 我什么也不想干...

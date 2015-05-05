@@ -67,59 +67,6 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       this.trigger('user:logout');
     }
   });
-  
-  var LoginView = Marionette.ItemView.extend({ 
-    template: '#account-login-tpl',
-    tagName: 'form',
-    className: 'ui form compact segment',
-    onRender: function() {
-      this.$el.form(ACCOUNT_RULES);
-      
-      var loginAction = function() {
-
-        var userName = $('.ui.modal*.active').find('#name').val();
-        var pass = $('.ui.modal*.active').find('#pass').val();
-        if ( userName != "" && pass != "") {
-          
-          var user = {username:userName, password:pass};
-          $.ajax({
-            url: '/api/v1/login',
-            method: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(user)
-          }).done(function(response) {
-            var data = response.id;
-            sessionStorage.setItem("authorized", "enabled");
-            sessionStorage.setItem("user", data);
-            Dionysus.navigate('/site', {
-              trigger: true
-            });
-            $('.ui.modal').modal('hide');
-            $('.ui.modal').remove();
-            Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
-          }).fail(function() {
-            window.alert('登录失败，请确认用户名或密码正确...');
-          });
-        }
-      }
-
-      //$('#name').val("");
-      //$('#pass').val("");
-      this.$('#user').keypress(function(event){ if(event.which === 13) loginAction();})
-      this.$('#pass').keypress(function(event){ if(event.which === 13) loginAction();})
-      this.$('#login').click(loginAction);
-      this.$('#register').click(function(event){ 
-        
-        $('.ui.modal').modal('hide');
-        //$('.ui.modal').detach();
-        Dionysus.navigate('/register', {
-              trigger: true
-            });
-        
-        
-       })
-    }
-  });
 
   var RegisterView = Marionette.ItemView.extend({ 
     template: '#account-register-tpl',
@@ -131,37 +78,23 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
     ui: {
       submit: '.submit',
-      consultant: '.consultant'
+      consultant: '.consultant',
+      login: '#login'
     },
     events: {
-      'click @ui.submit': 'register'
+      'click @ui.submit': 'register',
+      'click @ui.login' : 'triggerLogin'
     },
     register: function() {
       var user = this.$el.form('get values', ['username', 'password', 'email', 'consultant']);
       this.trigger('user:register', user); 
+    },
+    triggerLogin: function(){
+      Dionysus.trigger("login");
     }
   });
 
   var AccountController = Marionette.Controller.extend({
-    login: function() {
-      var view = new LoginView(), controller = this;
-      
-      view.on('render', function(){
-        this.$('.ui.modal').modal({
-          closable:false,
-          onDeny: function(){
-            Dionysus.navigate('/site',{trigger:true});
-          },
-          onAppoval: function(){
-            alert('ok');
-          }
-        })
-        .modal('setting','transition','horizontal flip')
-        .modal('show');
-      });
-
-      Dionysus.mainRegion.show(view);
-    },
     register: function() {
       var view = new RegisterView();
       view.on('user:register', function(user) {
@@ -173,10 +106,11 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           contentType: 'application/json; charset=utf-8',
           data: JSON.stringify(user)
         }).done(function() {
-          window.alert('register success');
+          window.alert('注册成功！');
+          Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
           Dionysus.navigate('/site',{trigger:true});
         }).fail(function() {
-          window.alert('register failure');
+          window.alert('注册失败，用户已存在...');
         }); 
       });
       Dionysus.mainRegion.show(view);
@@ -202,7 +136,6 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'login(/)': 'login',
         'logout(/)': 'logout',
         'register(/)': 'register'
       },
