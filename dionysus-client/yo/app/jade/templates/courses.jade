@@ -2,13 +2,14 @@ script#course-list-item-tpl(type="text/template")
   .image
     img(src="/public/images/placeholder.png")
   .content
-    a.header 链接到课程详细信息
+    a.header <%= title %>
     .meta
       span 咨询师链接
     .description
-      p 课程描述
+      p <%= description %>
     .extra
-      .ui.label 注册链接
+      .ui.label 状态
+      a.ui.label(href!="/course/registration/<%= id %>") 注册
 
 
 script#course-item-detail-tpl(type="text/template")

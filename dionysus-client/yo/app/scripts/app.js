@@ -21,10 +21,7 @@ Dionysus.on('start', function() {
 
 $(document).ajaxError(function (event, xhr, options,thrownError) {
   var statusCode = xhr.status;
-  if(statusCode == 401){
-    console.log("return 401")
-  }else if(statusCode == 403){
-    console.log("return 403");
+  if(statusCode == 401 || statusCode == 403) {
+    Dionysus.trigger('login');
   }
-
 });

@@ -1,42 +1,42 @@
-Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
   var Course = Backbone.RelationalHalResource.extend({
-    url: function(){
+    url: function () {
       return this.id ? '/api/v1/courses/' + this.id : '/api/v1/courses';
     },
-    isNew: function(){
+    isNew: function () {
       return this.id == null || this.id == undefined;
     },
-    initialize: function(options){
-      if(options && options.id){
+    initialize: function (options) {
+      if (options && options.id) {
         this.id = options.id;
       }
     },
-    getCategory: function(){
+    getCategory: function () {
       var category = new Backbone.Model();
       category.url = this.link('category').get('href');
       var defer = $.Deferred();
       category.fetch({
-        error: function(){
-          category.set('name','');
+        error: function () {
+          category.set('name', '');
           defer.resolve(category);
         }
-      }).then(function(){
+      }).then(function () {
         defer.resolve(category);
       });
       return defer.promise(category);
     },
-    getConsultant: function(){
+    getConsultant: function () {
       var consultant = new Backbone.Model();
       consultant.url = this.link('consultant').get('href');
       var defer = $.Deferred();
       consultant.fetch({
-        error: function(){
-          consultant.set('username','');
+        error: function () {
+          consultant.set('username', '');
           defer.resolve(consultant);
         }
-      }).then(function(){
+      }).then(function () {
         defer.resolve(consultant);
       });
       return defer.promise(consultant);
@@ -66,65 +66,65 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
         relatedModel: CourseCategory
       }
     },
-    toSelection : function() {
+    toSelection: function () {
       var categories = this.embedded('courseCategories');
-      return categories.map(function(category) {
+      return categories.map(function (category) {
         return {
-          name : category.get('name'),
-          link : category.link('self').href()
+          name: category.get('name'),
+          link: category.link('self').href()
         }
       });
     }
   });
 
-  Dionysus.reqres.setHandler('course:entity', function(id) {
+  Dionysus.reqres.setHandler('course:entity', function (id) {
 
-    var course = Course.find({id:id});
-    if(course == null){
-      course = new Course({id:id});
+    var course = Course.find({id: id});
+    if (course == null) {
+      course = new Course({id: id});
       var defer = $.Deferred();
-       course.fetch().then(function() {
-       defer.resolve(course);
-       });
-       return defer.promise();
+      course.fetch().then(function () {
+        defer.resolve(course);
+      });
+      return defer.promise();
     }
     return course;
   });
 
-  Dionysus.reqres.setHandler('course:entities', function(id) {
+  Dionysus.reqres.setHandler('course:entities', function () {
     var courses = new CourseCollection();
     var defer = $.Deferred();
-    courses.fetch().then(function() {
+    courses.fetch().then(function () {
       defer.resolve(courses);
     });
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('course:new', function() {
+  Dionysus.reqres.setHandler('course:new', function () {
     return new Course();
   });
 
-  Dionysus.reqres.setHandler('course:category', function(id) {
+  Dionysus.reqres.setHandler('course:category', function (id) {
     var category = new CourseCategory(id);
     var defer = $.Deferred();
-    category.fetch().then(function() {
+    category.fetch().then(function () {
       defer.resolve(category);
     });
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('course:categories', function() {
+  Dionysus.reqres.setHandler('course:categories', function () {
     var resources = new CourseCategoryCollection(), defer = $.Deferred();
-    resources.fetch().then(function() {
+    resources.fetch().then(function () {
       defer.resolve(resources);
     });
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('course:bookedby', function(userid) {
-    var courses = new Entities.UserCourseCollection({appendUrl:'/' + userid + '/courses'});
+  Dionysus.reqres.setHandler('course:bookedby', function (userid) {
+    var courses = new Entities.UserCourseCollection({appendUrl: '/' + userid + '/courses'});
     var defer = $.Deferred();
-    courses.fetch().then(function() {
+    courses.fetch().then(function () {
       defer.resolve(courses);
     });
     return defer.promise();
