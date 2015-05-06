@@ -30,6 +30,20 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       return {
         "id": sessionStorage.getItem("user")
       }
+    },
+    onShow: function(){
+      if(!sessionStorage.getItem('role') || sessionStorage.getItem('role') != "ROLE_ADMIN"){
+        this.$el.form().find('#adminentry').remove();
+      }
+    },
+    ui: {
+      'adminlink': '#adminlink'
+    },
+    events: {
+      'click @ui.adminlink': 'jumpToAdmin'
+    },
+    jumpToAdmin: function(){
+      window.open(window.location.origin + '/admin');
     }
   });
 
@@ -72,8 +86,13 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
             data: JSON.stringify(user)
           }).done(function(response) {
             var data = response.id;
+            var roles = response.roles;
             sessionStorage.setItem("authorized", "enabled");
             sessionStorage.setItem("user", data);
+            for (var i = roles.length - 1; i >= 0; i--) {
+              if (roles[i].name === 'ROLE_ADMIN') sessionStorage.setItem('role',roles[i].name);
+            };
+
             Dionysus.navigate('/site', {
               trigger: true
             });

@@ -105,8 +105,10 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           method: 'POST',
           contentType: 'application/json; charset=utf-8',
           data: JSON.stringify(user)
-        }).done(function() {
+        }).done(function(response) {
           window.alert('注册成功！');
+          sessionStorage.setItem("authorized", "enabled");
+          sessionStorage.setItem("user", response.id);
           Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
           Dionysus.navigate('/site',{trigger:true});
         }).fail(function() {
@@ -124,6 +126,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           success: function(response) {
             sessionStorage.setItem("authorized", "disabled");
             sessionStorage.removeItem("user");
+            sessionStorage.removeItem("role");
             Dionysus.navigate('/site',{trigger:true});
             Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
           }

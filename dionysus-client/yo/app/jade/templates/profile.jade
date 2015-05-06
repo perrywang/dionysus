@@ -3,25 +3,28 @@ script#profile-layout-tpl(type="text/template")
     img.ui.small.circular.image(src!="<%= avatar%>")
     .content 你好，<%= username %>
       .sub.header <%= about %>
+      .sub.header 
+        a#update(href="#") 修改我的个人信息
   h4.ui.horizontal.header.divider
     i.bar.char.icon
   .ui.page.grid
-    .four.wide.column
+    .four.wide.left.aligned.column
       .ui.list
-        a.item
+        a#myarticles.item
           i.small.circular.book.icon
           |我的文章
-        a.item
+        a#myappointments.item
           i.small.circular.chat.icon
           |我的一对一咨询
-        a.item
+        a#mycourses.item
           i.small.circular.users.icon 
           |我的课程
-        a.item
+        a#mytests.item
           i.small.circular.question.icon 
           |我的测试
     .twelve.wide.column
-      p xxxx
+      .ui.stacked.segment
+        div#mycontent
 
 script#profile-mycourses-tpl(type="text/template")
 

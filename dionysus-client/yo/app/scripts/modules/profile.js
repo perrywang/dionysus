@@ -2,7 +2,14 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var PofileLayoutView = Marionette.LayoutView.extend({
-    template: '#profile-layout-tpl'
+    template: '#profile-layout-tpl',
+    regions: {
+      'myContent': '#mycontent'
+    },
+    ui: {
+      myArticles: '#myarticles'
+    }
+
   });
 
   var ProfileView = Marionette.ItemView.extend({ 
@@ -44,7 +51,8 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     showProfile: function(id){
 
       $.when(Dionysus.request('user:entity', id)).done(function(user){
-        Dionysus.mainRegion.show(new PofileLayoutView({ model: user}));
+        var layoutView = new PofileLayoutView({ model: user})
+        Dionysus.mainRegion.show(layoutView);
       })
     },
 
