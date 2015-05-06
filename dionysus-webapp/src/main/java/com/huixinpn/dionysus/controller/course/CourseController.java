@@ -29,12 +29,12 @@ public class CourseController {
     User login = (User) authentication.getPrincipal();
     User reloaded = userRepository.findOne(login.getId());
     Course course = courseRepository.findOne(id);
-    if (course != null
-        && (course.getCapacity() == null || course.getUsers().size() < course.getCapacity())
-        && !reloaded.getCourses().contains(course)) {
+    if (course != null &&
+        (course.getCapacity() == null || course.getUsers().size() < course.getCapacity()) &&
+        !reloaded.getCourses().contains(course)) {
       reloaded.getCourses().add(course);
+      userRepository.save(reloaded);
     }
-    userRepository.save(reloaded);
     return new ResponseEntity(HttpStatus.OK);
   }
 }
