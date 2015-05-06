@@ -76,7 +76,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     @RestResource(exported = false)
     private Set<Role> roles;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private Collection<Course> courses = new ArrayList<>();
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
