@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.Valid;
@@ -21,6 +23,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.user.User;
@@ -54,6 +59,9 @@ public class Article extends AbstractDionysusAuditable<User> {
 	@Lob
 	@Column(name = "body")
 	private String body;
+	
+	@Column(name = "cover")
+	private String cover;
 
 	@Version
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)
@@ -61,4 +69,16 @@ public class Article extends AbstractDionysusAuditable<User> {
 
 	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE)
 	private List<Comment> comments;
+
+	@PreUpdate
+    @PrePersist
+    public void extractCoverFromBody() {
+        String html = this.getBody();
+        Document doc = Jsoup.parse(html); 
+        Element el = doc.select("img").first();
+        if (el != null) {
+            String img = el.attr("src");
+            this.setCover(img);
+        }
+    }
 }

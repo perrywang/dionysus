@@ -29,6 +29,13 @@ module.exports = function (grunt) {
     if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\/icons\./.test(url) || (/.*\/public\//.test(url))) {
       return next();
     }
+    if (/^\/articles/.test(url) || 
+        /^\/site/.test(url) ||
+        /^\/logout/.test(url) ||
+        /^\/login/.test(url)
+      ) {
+      req.url = '/index.html';
+    }
     if (/^\/app(\/)?/.test(url)) {
       req.url = '/index.html';
     } else if (/^\/admin(\/)?/.test(url)) {
