@@ -9,4 +9,6 @@ public interface ArticleSummaryWithCategory {
 	public String getTitle();
 
 	public String getSummary();
+	
+	public String getCover();
 }

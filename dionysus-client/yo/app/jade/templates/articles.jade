@@ -40,7 +40,7 @@ script#articles-cards-tpl(type="text/template")
 
 script#article-cards-tpl(type="text/template")
   .image
-    img(src="/public/images/placeholder.png")
+    img(src!="<%= cover || '/public/images/placeholder.png' %>")
   .content
     a.header(href!="/articles/<%= id %>") <%= title %>
     .description <%= summary %>
