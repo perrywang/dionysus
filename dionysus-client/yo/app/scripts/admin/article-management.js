@@ -81,6 +81,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       var category = data.category;
       this.$el.form('set values', data);
       this.$('.editor').editable({
+        buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'fontFamily', 'color', 'sep',
+          'formatBlock', 'blockStyle', 'align', 'insertOrderedList', 'insertUnorderedList', 'outdent', 'indent', 'sep',
+          'createLink', 'insertImage', 'insertVideo', 'insertHorizontalRule', 'undo', 'redo', 'html', 'uploadFile'
+        ],
         inlineMode: false,
         language: 'zh_cn',
         imageUploadURL: '/api/v1/upload',
