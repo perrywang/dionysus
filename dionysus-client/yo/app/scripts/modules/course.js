@@ -35,7 +35,8 @@ Dionysus.module('Course', function (Course, Dionysus, Backbone, Marionette) {
         if (status == 'success') {
           toastr.info('注册课程成功');
         } else {
-          toastr.error('注册课程成功');
+          console.log('status is ' + status);
+          toastr.error('注册课程失败');
         }
       });
     }

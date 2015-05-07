@@ -26,6 +26,10 @@ public class CourseController {
   @RequestMapping(value = "/course/registration/{id}", method = RequestMethod.GET)
   public ResponseEntity registerColurse(@PathVariable Long id) throws Exception {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    Object principle = authentication.getPrincipal();
+    if(!(principle instanceof User)){
+      return new ResponseEntity(HttpStatus.FORBIDDEN);
+    }
     User login = (User) authentication.getPrincipal();
     User reloaded = userRepository.findOne(login.getId());
     Course course = courseRepository.findOne(id);
