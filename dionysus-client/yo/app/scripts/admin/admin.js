@@ -16,7 +16,8 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
     { name: 'Home',       href: '/admin',             icon: 'home'  },
     { name: 'Articles',   href: '/admin/articles',    icon: 'edit'  },
     { name: 'Categories', href: '/admin/categories',  icon: 'inbox' },
-    { name: 'Tests',      href: '/admin/tests',       icon: 'lab'   }
+    { name: 'Tests',      href: '/admin/tests',       icon: 'lab'   },
+    { name: 'Courses',    href: '/admin/courses',     icon: 'edit'  }
   ]);
 
   Dionysus.addInitializer(function() {
