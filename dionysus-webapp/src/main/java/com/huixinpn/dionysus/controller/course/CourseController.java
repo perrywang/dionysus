@@ -36,8 +36,8 @@ public class CourseController {
     if (course != null &&
         (course.getCapacity() == null || course.getUsers().size() < course.getCapacity()) &&
         !reloaded.getCourses().contains(course)) {
-      reloaded.getCourses().add(course);
-      userRepository.save(reloaded);
+      course.getUsers().add(reloaded);
+      courseRepository.save(course);
     }
     return new ResponseEntity(HttpStatus.OK);
   }
