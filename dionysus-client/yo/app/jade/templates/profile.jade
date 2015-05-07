@@ -4,7 +4,7 @@ script#profile-layout-tpl(type="text/template")
     .content 你好，<%= username %>
       .sub.header <%= about %>
       .sub.header 
-        a#update(href="#") 修改我的个人信息
+        a#myinfo 修改我的个人信息
   h4.ui.horizontal.header.divider
     i.bar.char.icon
   .ui.page.grid
@@ -26,9 +26,31 @@ script#profile-layout-tpl(type="text/template")
       .ui.stacked.segment
         div#mycontent
 
-script#profile-mycourses-tpl(type="text/template")
-
 script#profile-myappointments-tpl(type="text/template")
+  .ui.celled.list
+    |<% _.each(items, function(item){ %>
+    .item
+      img.ui.avatar.image(src!="<%= item.consultant_avatar %>")
+      .content
+        .header <%= item.consultant_name %>
+        .description 
+          .label 时间 <%= (new Date(item.date)).toLocaleString() %>
+          .label 状态 <%= item.state %>
+          a(href!="<%= item.consultant_qqAddress %>") QQ聊天
+    |<% }); %>
+
+script#profile-mycourses-tpl(type="text/template")
+  .ui.divided.list
+    |<% _.each(items, function(item){ %>
+    .item
+      i.map.marker.icon
+      .content
+        .header <%= item.consultant_name %>
+        .description 
+          .label 时间 <%= item.date %>
+          .label 状态 <%= item.state %>
+          a(href!="<%= item.qqAddress %>") QQ聊天
+    |<% }); %>
 
 script#profile-mytests-tpl(type="text/template")
 
@@ -85,13 +107,3 @@ script#profile-info-tpl(type="text/template")
         input.ui.submit.button(type="submit", value="保存")
         i.save.icon
     .ui.horizontal.divider
-    .row
-      ul
-        li
-          a(href!="/appointments/appointedBy/<%= id %>") 我的预约
-        li
-          a(href="/tests") 我的测试
-        li
-          a(href!="/courses/bookedBy/<%= id %>") 我的课程
-        li
-          a(href!="/articles/createdBy/<%= id %>") 我的文章

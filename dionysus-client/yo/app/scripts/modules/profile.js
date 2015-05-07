@@ -7,12 +7,66 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'myContent': '#mycontent'
     },
     ui: {
-      myArticles: '#myarticles'
+      myArticles: '#myarticles',
+      myAppointments: '#myappointments',
+      myCourses: '#mycourses',
+      myTests: '#mytests',
+      myInfo: '#myinfo'
+    },
+    events: {
+      'click @ui.myArticles': 'showMyArticles',
+      'click @ui.myAppointments': 'showMyAppointments',
+      'click @ui.myCourses': 'showMyCourses',
+      'click @ui.myTests': 'showMyTests',
+      'click @ui.myInfo' : 'updateInfo'
+    },
+    showMyArticles: function(){
+      //$.when(Dionysus.request())
+    },
+    showMyAppointments: function(){
+      var region = this.getRegion('myContent');
+      $.when(Dionysus.request('appointment:appointedby', sessionStorage.getItem("user"),5))
+      .done(function(appointments){
+        region.show(new ProfileAppointmentView({collection: appointments}))
+      });
+    },
+    showMyCourses: function(){
+      alert("you click myCourses")
+    },
+    showMyTests: function(){
+      alert("you click myTests")
+    },
+
+    updateInfo:function(){
+      this.getRegion('myContent').show(new ProfileView({model:this.model}));
     }
 
   });
 
-  var ProfileView = Marionette.ItemView.extend({ 
+  var ProfileAppointmentView = Marionette.ItemView.extend({
+    template:'#profile-myappointments-tpl',
+    serializeData: function(){
+      var dataCollection = this.collection.toJSON();
+      
+      var state_const = {'WAITING':'等待咨询师响应', 'ACCEPTED':'咨询师已接受', 'DECLINED':'咨询师已拒绝', 'FINISHED':'完成'};
+      var approach_const = {'ONLINE':'在线', 'OFFLINE':'面对面', 'BY_PHONE':'电话'};
+
+      for (var i = dataCollection.length - 1; i >= 0; i--) {
+        var data = dataCollection[i];
+        data.state = state_const[data.state];
+        data.approach = approach_const[data.approach];
+        data.consultant_qqAddress = data.consultant_qqAddress?data.consultant_qqAddress:"#"; 
+        
+      }
+      return {items:dataCollection};
+    },
+  });
+
+  var ProfileCourseView = Marionette.ItemView.extend({
+    template: '',
+  });
+
+  var ProfileView = Marionette.ItemView.extend({
     template: '#profile-info-tpl',
     className: 'ui page',
     ui: {
@@ -22,24 +76,24 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'click @ui.submit': 'update'
     },
     update: function(e) {
-      this.trigger('profile:update', this.model);	  
-      var user = this.$el.form('get values'/*, ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline','qq','qqAddress']*/);
-	  user['username'] = this.model.get('username');
+      this.trigger('profile:update', this.model);
+      var user = this.$el.form('get values' /*, ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline','qq','qqAddress']*/ );
+      user['username'] = this.model.get('username');
       user['password'] = this.model.get('password');
-	  var url = '/api/v1/updateprofile';
+      var url = '/api/v1/updateprofile';
       $.ajax({
         url: url,
         method: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
       }).done(function() {
-        //window.alert('update success');
-        Dionysus.navigate('/site',{trigger:true});
+        window.alert('更新成功');
+        //Dionysus.navigate('/site',{trigger:true});
       }).fail(function() {
-        window.alert('update failure');
-      }); 
+        window.alert('更新失败');
+      });
     },
-    onRender:function(){
+    onRender: function() {
       this.$('select.dropdown').dropdown();
       this.$el.form();
       this.$el.form('set values', this.model.toJSON());
@@ -56,7 +110,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       })
     },
 
-    showProfile_old: function (id) {
+    showInfo: function (id) {
       var userFetching = Dionysus.request('user:entity', id);
       $.when(userFetching).done(function(user) {
 	    var profileview = new ProfileView({ model: user});
@@ -73,7 +127,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'profile/:id(/)': 'showProfile'
+        'app/profile/:id(/)': 'showProfile'
       },
       controller: new ProfileController()
     });

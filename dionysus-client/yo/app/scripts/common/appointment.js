@@ -49,13 +49,38 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return new Entities.Appointment();
   });
 
-  Dionysus.reqres.setHandler('appointment:appointedby', function(userid) {
-    var appointments = new Entities.AppointmentCollection({appendUrl:'/search/findByUser'});
+  Dionysus.reqres.setHandler('appointment:appointedby', function(userid, size) {
+
+    var appointments = new Entities.AppointmentCollection({
+      appendUrl: '/search/findByUser'
+    });
     var defer = $.Deferred();
-    appointments.fetch({ data: { user:userid }}).then(function() {
+    appointments.fetch({
+      data: {
+        user: userid,
+        size: size
+      }
+    }).then(function() {
+
+      for (var i = appointments.models.length - 1; i >= 0; i--) {
+        var model = appointments.models[i];
+        var consultant_url = model.get('_links').consultant.href;
+        $.ajax({
+          url: consultant_url,
+          async: false,
+          success: function(consultant_instance) {
+            model.set({
+              consultant_name: consultant_instance.username,
+              consultant_id: consultant_instance.id,
+              consultant_avatar: consultant_instance.avatar,
+              consultant_qqAddress: consultant_instance.qqAddress
+            })
+          }
+        });
+      }
       defer.resolve(appointments);
     });
     return defer.promise();
   });
-});
+  });
 
