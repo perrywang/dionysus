@@ -31,7 +31,7 @@ Dionysus.module('Course', function (Course, Dionysus, Backbone, Marionette) {
       });
     },
     registerCourse: function (courseId) {
-      $.get('/api/v1/course/registration/' + courseId, function (data, status) {
+      $.get('/course/registration/' + courseId, function (data, status) {
         if (status == 'success') {
           toastr.info('注册课程成功');
         } else {
