@@ -2,6 +2,8 @@ package com.huixinpn.dionysus.controller.course;
 
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.dto.EntityCollectionData;
+import com.huixinpn.dionysus.dto.course.CourseData;
 import com.huixinpn.dionysus.repository.CourseRepository;
 import com.huixinpn.dionysus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/v1")
 public class CourseController {
   @Autowired
   private CourseRepository courseRepository;
@@ -40,5 +45,12 @@ public class CourseController {
       courseRepository.save(course);
     }
     return new ResponseEntity(HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/courses", method = RequestMethod.GET)
+  public @ResponseBody Collection<CourseData> listCourses(){
+    List<Course> courses = courseRepository.findAll();
+    EntityCollectionData<Course> col = new EntityCollectionData<>(courses);
+    return col.toDTOCollection(CourseData.class);
   }
 }

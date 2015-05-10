@@ -23,7 +23,7 @@ public class EntityCollectionData<S extends AbstractDionysusPersistable> {
     Collection<T> results = new ArrayList<>();
     for (S entity : entities) {
       try {
-        Constructor<T> constructor = klass.getConstructor(entities.getClass().getComponentType());
+        Constructor<T> constructor = klass.getConstructor(entity.getClass());
         results.add(constructor.newInstance(entity));
       } catch (NoSuchMethodException e) {
         log.error(klass.toString() + " lost constructor accept corresponding domain object");
