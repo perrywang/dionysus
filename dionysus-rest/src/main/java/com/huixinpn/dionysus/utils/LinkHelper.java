@@ -11,12 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class LinkHelper {
 
+  @Autowired
   private RepositoryEntityLinks links;
 
-  @Autowired
-  public void setLinks(RepositoryEntityLinks links) {
-    this.links = links;
-  }
+  private static LinkHelper instance = new LinkHelper();
 
   public Link getEntityLink(AbstractDionysusPersistable entity) {
     return links.linkToSingleResource(entity.getClass(), entity.getId());
@@ -28,5 +26,12 @@ public class LinkHelper {
 
   public Link getPagedLink(Class<?> entityKlass, Pageable pageable) {
     return links.linkToPagedResource(entityKlass, pageable);
+  }
+
+  public static LinkHelper instance() {
+    if(instance.links == null){
+      AutowireInjector.inject(instance, instance.links);
+    }
+    return instance;
   }
 }
