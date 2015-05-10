@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class UserData extends EntityData {
-  private Long id;
   private String username;
   public UserData(User user){
     super(user);
