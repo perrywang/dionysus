@@ -2,7 +2,6 @@ package com.huixinpn.dionysus.dto.course;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.course.Course;
-import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.dto.EntityData;
 import com.huixinpn.dionysus.dto.user.UserData;
 import lombok.Data;
@@ -29,7 +28,7 @@ public class CourseData extends EntityData {
 
   private UserData consultant;
 
-  public CourseData(Course course){
+  public CourseData(Course course) {
     super(course);
     this.title = course.getTitle();
     this.description = course.getDescription();

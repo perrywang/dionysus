@@ -9,7 +9,6 @@ import com.huixinpn.dionysus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -55,7 +54,7 @@ public class CourseController {
                                          @RequestParam(value = "size", required = false) Integer size) {
     int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
     int pageNumber = (page == null ? 0 : page);
-    Page<Course> pagedCourses = courseRepository.findAll(new PageRequest(pageNumber,pageSize));
+    Page<Course> pagedCourses = courseRepository.findAll(new PageRequest(pageNumber, pageSize));
     return new EntityPageData<>(pagedCourses, CourseData.class);
   }
 }

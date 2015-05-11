@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 public class UserData extends EntityData {
   private String username;
-  public UserData(User user){
+
+  public UserData(User user) {
     super(user);
     this.username = user.getUsername();
   }

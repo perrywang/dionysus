@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class CourseCategoryData extends EntityData {
   private String name;
 
-  public CourseCategoryData(CourseCategory courseCategory){
+  public CourseCategoryData(CourseCategory courseCategory) {
     super(courseCategory);
     this.name = courseCategory.getName();
   }

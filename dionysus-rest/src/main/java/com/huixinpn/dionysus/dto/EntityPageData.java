@@ -20,7 +20,7 @@ public class EntityPageData<T extends EntityData> {
     this.total = page.getTotalElements();
     this.number = page.getNumber();
     this.size = page.getSize();
-    this.content = new EntityCollectionData<T>(page.getContent()).toDTOCollection(klass);
+    this.content = new EntityCollectionData<T>(page.getContent(),klass).toDTOCollection();
   }
 
   public static int getDefaultPageSize() {
