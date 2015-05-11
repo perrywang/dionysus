@@ -138,8 +138,6 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
               articleList.render();
             }
           }).modal('show');
-          //model.destroy();
-          //articleList.render();
         });
         
         Dionysus.mainRegion.show(articleList);
@@ -153,16 +151,13 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             categories: categories
           });
           editor.on('article:save', function(json) {
-            article.save(json, {
-              patch: true
-            }).done(function() {
+            article.save(json).done(function() {
               toastr.info('文章保存成功');
             });
           });
           editor.on('article:delete', function() {
             if (!this.model.isNew()) {
               this.model.destroy();
-              //this.destroy();
               Dionysus.navigate('admin/articles', {
                 trigger: true
               });
@@ -179,9 +174,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             categories: categories
           });
           editor.on('article:save', function(json) {
-            article.save(json, {
-              patch: true
-            }).then(function() {
+            
+
+
+            article.save(json).then(function() {
               toastr.info('文章保存成功');
             });
           });

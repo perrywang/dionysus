@@ -8,6 +8,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -28,12 +29,14 @@ public abstract class AbstractDionysusAuditable<U> extends
 	private U createdBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
+    @JsonIgnore
 	private Date createdDate;
 
 	@ManyToOne
 	private U lastModifiedBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
+    @JsonIgnore
 	private Date lastModifiedDate;
 
 	@Override
