@@ -109,7 +109,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         editor.on('course:save', function(json) {
           transform(json,courseTransformRules);
           course.save(json, {
-            patch: true,
+            //patch: true,
             error: function(model, response, options){
               toastr.error('课程保存失败');
           }}).done(function(){
@@ -137,7 +137,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
           editor.on('course:save', function(json) {
             transform(json,courseTransformRules);
             course.save(json, {
-              patch: true,
+              //patch: true,
               error: function(model, response, options){
                 toastr.error('课程保存失败');
               }}).done(function(){
