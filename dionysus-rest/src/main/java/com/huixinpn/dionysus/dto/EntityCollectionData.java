@@ -11,22 +11,22 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Slf4j
-public class EntityCollectionData<S extends AbstractDionysusPersistable> {
+public class EntityCollectionData<T extends EntityData> {
 
-  private Iterable<S> entities;
+  private Iterable<? extends AbstractDionysusPersistable> entities;
 
-  public EntityCollectionData(Iterable<S> entities) {
+  public EntityCollectionData(Iterable<? extends AbstractDionysusPersistable> entities) {
     this.entities = entities;
   }
 
-  public <T extends EntityData> Collection<T> toDTOCollection(Class<T> klass) {
+  public Collection<T> toDTOCollection(Class<T> klass) {
     Collection<T> results = new ArrayList<>();
-    for (S entity : entities) {
+    for (AbstractDionysusPersistable entity : entities) {
       try {
         Constructor<T> constructor = klass.getConstructor(entity.getClass());
         results.add(constructor.newInstance(entity));
       } catch (NoSuchMethodException e) {
-        log.error(klass.toString() + " lost constructor accept corresponding domain object");
+        log.error(klass.toString() + " lost constructor accept correct domain object");
         throw new TransformException(e);
       } catch (Exception e) {
         log.error("Constructing dto failed.", e);
