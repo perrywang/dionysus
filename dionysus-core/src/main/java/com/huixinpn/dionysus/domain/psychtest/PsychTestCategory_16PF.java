@@ -2,10 +2,13 @@ package com.huixinpn.dionysus.domain.psychtest;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
@@ -14,6 +17,10 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336043876229L;
+	
+	@NotEmpty
+	@Column(name = "name", unique = true)
+	private String name;
 	
 	@OneToMany
 	private List<PsychTestCategory> categories;
@@ -26,6 +33,13 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	public PsychTestCategory_16PF() {
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public List<PsychTestCategory> getCategories() {
 		return categories;

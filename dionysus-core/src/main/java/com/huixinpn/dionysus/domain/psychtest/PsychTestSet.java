@@ -2,9 +2,13 @@ package com.huixinpn.dionysus.domain.psychtest;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
@@ -14,9 +18,33 @@ public class PsychTestSet  extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 	
+	@NotBlank
+	@Column(name = "title")
+	private String title;
+
+	@Lob
+	@Column(name = "description")
+	private String description;
+	  
 	@OneToMany
 	private List<PsychTest> tests;
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public PsychTestSet() {
 	}
 
