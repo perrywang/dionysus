@@ -16,4 +16,16 @@ public class PsychTestSet  extends AbstractDionysusPersistable {
 	
 	@OneToMany
 	private List<PsychTest> tests;
+	
+	public PsychTestSet() {
+	}
+
+	public List<PsychTest> getTests() {
+		return tests;
+	}
+
+	public void setTests(List<PsychTest> tests) {
+		this.tests = tests;
+	}
+	
 }
