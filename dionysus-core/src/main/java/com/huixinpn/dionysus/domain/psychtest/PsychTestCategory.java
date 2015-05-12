@@ -21,8 +21,8 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
   @ManyToOne
   private PsychTestCategory parent;
 
-  @OneToMany(mappedBy = "category")
-  private Collection<PsychTest> tests;
+  @OneToMany
+  private Collection<PsychTestItem> testitems;
 
   public PsychTestCategory() {
   }
