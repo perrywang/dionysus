@@ -26,10 +26,6 @@ public class PsychTesting extends AbstractDionysusAuditable<User> {
   @OneToOne
   private PsychTest test;
 
-  //can be null because not all test must be in a set
-  @OneToOne
-  private PsychTestSet set;
-
   @OneToMany(mappedBy = "testing")
   private Collection<PsychTestingSelection> selections = new ArrayList<>();
 
