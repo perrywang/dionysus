@@ -16,16 +16,22 @@ public class PsychTestItemOption extends AbstractDionysusPersistable {
   @Column(name = "description")
   private String description;
 
-  private Integer score;
+  @NotBlank
+  @Column(name = "score")
+  private String score;
+  
+  @NotBlank
+  @Column(name = "weight")
+  private String weight;
 
-  public PsychTestItemOption(String description, int score) {
+  public PsychTestItemOption(String description, String score) {
     this.score = score;
     this.description = description;
   }
 
   public PsychTestItemOption(String description) {
     this.description = description;
-    this.score = 0;
+    this.score = "0";
   }
 
   public PsychTestItemOption() {
@@ -39,11 +45,11 @@ public class PsychTestItemOption extends AbstractDionysusPersistable {
     this.description = description;
   }
 
-  public Integer getScore() {
+  public String getScore() {
     return score;
   }
 
-  public void setScore(Integer score) {
+  public void setScore(String score) {
     this.score = score;
   }
 

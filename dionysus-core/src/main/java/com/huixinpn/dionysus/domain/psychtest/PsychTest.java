@@ -22,12 +22,30 @@ public class PsychTest extends AbstractDionysusPersistable {
   @Lob
   @Column(name = "description")
   private String description;
+  
+  //测试针对对象
+  @Column(name = "object")
+  private String object;
 
-  @OneToMany(mappedBy = "test")
+  //测试时长
+  @Column(name = "duration")
+  private String duration;
+  
+  //测试收费
+  @Column(name = "cost")
+  private String cost;
+  
+  //测试方式 纸笔还是机检
+  @Column(name = "approach")
+  private String approach;
+  
+  //备注
+  @Column(name = "comment")
+  private String comment;
+  
+  @OneToMany
+  @JoinColumn(name = "test_id") 
   private List<PsychTestItem> items;
-
-  @ManyToOne
-  private PsychTestCategory category;
 
   public PsychTest(String title, String description, List<PsychTestItem> items) {
     this.title = title;
@@ -64,14 +82,6 @@ public class PsychTest extends AbstractDionysusPersistable {
 
   public void setItems(List<PsychTestItem> items) {
     this.items = items;
-  }
-
-  public PsychTestCategory getCategory() {
-    return category;
-  }
-
-  public void setCategory(PsychTestCategory category) {
-    this.category = category;
   }
 
   public void addTestItem(PsychTestItem item) {

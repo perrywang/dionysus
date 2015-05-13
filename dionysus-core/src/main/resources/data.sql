@@ -76,27 +76,36 @@ insert into menu (id, name, href) values (2, '在线心理咨询', '/consult');
 insert into menu (id, name, href) values (3, '心理知识', '/articles');
 insert into menu (id, name, href) values (4, '心理课程', '/cources');
 
-insert into psychtests(id, title, description) values (1, '你是一个心地善良的人吗？', '测试你是一个心地善良的人还是一个老好人');
+insert into psychtestset(id, title, description) values (1, '人格类', '常规检测项目');
 
-insert into psychtestitems(id, test_id, description) values (1, 1, '看到有人在你面前抢劫你会怎么做？');
-insert into psychtestitemoptions(id, item_id, description) values (1, 1, '装作没看见');
-insert into psychtestitemoptions(id, item_id, description) values (2, 1, '上前搏斗');
-insert into psychtestitemoptions(id, item_id, description) values (3, 1, '犹豫了一下，然后低头不语');
+insert into psychtests(id, set_id, title, description) values (1, 1, '16PF', '人格评定以及心理健康评定');
 
-insert into psychtestitems(id, test_id, description) values (2, 1, '看到有人在你面前乞讨你会怎么做？');
-insert into psychtestitemoptions(id, item_id, description) values (4, 2, '立刻给钱');
-insert into psychtestitemoptions(id, item_id, description) values (5, 2, '判断下是不是骗子，然后再决定给不给');
-insert into psychtestitemoptions(id, item_id, description) values (6, 2, '担心被骗，犹豫下走开');
+insert into psychtestcategories16pf(id, name) values (1, '适应与焦虑型');
 
-insert into psychtestitems(id, test_id, description) values (3, 1, '你会向慈善机构捐款吗？');
-insert into psychtestitemoptions(id, item_id, description) values (7, 3, '从不');
-insert into psychtestitemoptions(id, item_id, description) values (8, 3, '很少');
-insert into psychtestitemoptions(id, item_id, description) values (9, 3, '经常');
+insert into psytestresults(id, test_id) values (1, 1);
 
-insert into psychtestitems(id, test_id, description) values (4, 1, '亲眼目睹了一场车祸，你多久能够忘记？');
-insert into psychtestitemoptions(id, item_id, description) values (10, 4, '一天');
-insert into psychtestitemoptions(id, item_id, description) values (11, 4, '一周');
-insert into psychtestitemoptions(id, item_id, description) values (12, 4, '一个月');
+insert into psychtestcategories(id, result_id, category16pf_id, name, categoryweights) values (1, 1, 1, '乐群性', '10');
+
+insert into psychtestitems(id, test_id, category_id, description) values (1, 1, 1, '我很明了本测验的说明');
+insert into psychtestitems(id, test_id, category_id, description) values (2, 1, 1, '我对本测验的每一个问题，都能做到诚实的回答');
+insert into psychtestitems(id, test_id, category_id, description) values (3, 1, 1, '如果我有机会的话，我愿意');
+insert into psychtestitems(id, test_id, category_id, description) values (4, 1, 1, '我有能力应付各种困难');
+
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (1, 1, '是的', '2', '10');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (2, 1, '不一定', '1', '20');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (3, 1, '不是的', '0', '30');
+
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (4, 2, '是的', '2', '10');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (5, 2, '不一定', '1', '20');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (6, 2, '不同意', '0', '30');
+
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (7, 3, '到一个繁华的城市去旅行', '2', '10');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (8, 3, '介于A-C之间', '1', '20');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (9, 3, '游览清静的山区', '0', '30');
+
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (10, 4, '是的', '2', '10');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (11, 4, '不一定', '1', '20');
+insert into psychtestitemoptions(id, item_id, description, score, weight) values (12, 4, '不是的', '0', '30');
 
 insert into appointments (id, user_id, consultant_id, state, approach) values (1, 1, 4, 'WAITING', 'ONLINE' );
 insert into appointments (id, user_id, consultant_id, state, approach) values (2, 2, 4, 'WAITING', 'ONLINE' );

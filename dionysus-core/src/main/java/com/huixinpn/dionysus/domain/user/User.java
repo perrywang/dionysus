@@ -46,6 +46,12 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     @Column(name = "age")
     private String age;
 
+    @Column(name = "education")
+    private String education;
+    
+    @Column(name = "married")
+    private String married;
+    
     @Lob
     @Column(name = "address")
     private String address;
@@ -236,7 +242,23 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
         this.age = age;
     }
 
-    public String getAddress() {
+    public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	public String getMarried() {
+		return married;
+	}
+
+	public void setMarried(String married) {
+		this.married = married;
+	}
+
+	public String getAddress() {
         return address;
     }
 
