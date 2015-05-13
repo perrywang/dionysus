@@ -1,61 +1,33 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
-import java.util.List;
+import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
-
+@Data
+@NoArgsConstructor
 @Entity
-@Table(name = "psychtestset")
-public class PsychTestSet  extends AbstractDionysusPersistable {
+@Table(name = "psychtestsets")
+public class PsychTestSet extends AbstractDionysusPersistable {
 
-	private static final long serialVersionUID = -4860066336073876229L;
-	
-	@NotBlank
-	@Column(name = "title")
-	private String title;
+  private static final long serialVersionUID = -4860066336073876229L;
 
-	@Lob
-	@Column(name = "description")
-	private String description;
-	  
-	@OneToMany
-	@JoinColumn(name = "set_id")
-	private List<PsychTest> tests;
-	
-	public String getTitle() {
-		return title;
-	}
+  @NotBlank
+  private String title;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  @Lob
+  private String description;
 
-	public String getDescription() {
-		return description;
-	}
+  @ManyToMany(mappedBy = "sets")
+  private Collection<PsychTest> tests = new ArrayList<>();
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public PsychTestSet() {
-	}
-
-	public List<PsychTest> getTests() {
-		return tests;
-	}
-
-	public void setTests(List<PsychTest> tests) {
-		this.tests = tests;
-	}
-	
 }

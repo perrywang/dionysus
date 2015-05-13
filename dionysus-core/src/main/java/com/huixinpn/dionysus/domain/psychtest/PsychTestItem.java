@@ -1,12 +1,19 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
-import javax.persistence.*;
-
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "psychtestitems")
 public class PsychTestItem extends AbstractDionysusPersistable {
@@ -19,45 +26,11 @@ public class PsychTestItem extends AbstractDionysusPersistable {
   @ManyToOne
   private PsychTest test;
 
-  @OneToMany
-  @JoinColumn(name = "item_id")
-  private List<PsychTestItemOption> options;
+  @ManyToOne
+  private PsychTestCategory category;
 
-  public PsychTestItem(String description, List<PsychTestItemOption> options) {
-    this.description = description;
-    this.options = options;
-  }
-
-  public PsychTestItem(String description) {
-    this(description, new ArrayList<PsychTestItemOption>());
-  }
-
-  public PsychTestItem() {
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public List<PsychTestItemOption> getOptions() {
-    return options;
-  }
-
-  public void setOptions(List<PsychTestItemOption> options) {
-    this.options = options;
-  }
-
-  public PsychTest getTest() {
-    return test;
-  }
-
-  public void setTest(PsychTest test) {
-    this.test = test;
-  }
+  @OneToMany(mappedBy = "item")
+  private Collection<PsychTestItemOption> options = new ArrayList<>();
 
   public void addItemOption(PsychTestItemOption option) {
     options.add(option);
