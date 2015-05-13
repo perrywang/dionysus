@@ -17,7 +17,7 @@ public class LinkHelper {
   private static LinkHelper instance = new LinkHelper();
 
   public Link getEntityLink(AbstractDionysusPersistable entity) {
-    return links.linkToSingleResource(entity.getClass(), entity.getId());
+    return links.linkFor(entity.getClass()).slash(entity.getId()).withSelfRel();
   }
 
   public Link getRepositoryLink(Class<?> entityKlass) {
