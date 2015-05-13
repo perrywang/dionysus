@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
@@ -22,11 +23,15 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
 	private PsychTestCategory parent;
 
 	@OneToMany
+	@JoinColumn(name = "category_id")
 	private Collection<PsychTestItem> testitems;
+	
+	@NotBlank
+	@Column(name = "categoryweights")
+	private String categoryweights;
 
-	//serialized json format {itemid:optionid,...}
 	@Lob
-	String result;
+	private String result;
   
 	public PsychTestCategory() {
 	}
@@ -51,17 +56,16 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
 		return testitems;
 	}
 
-public void setTestitems(Collection<PsychTestItem> testitems) {
-	this.testitems = testitems;
-}
+	public void setTestitems(Collection<PsychTestItem> testitems) {
+		this.testitems = testitems;
+	}
 
-public String getResult() {
-	return result;
-}
+	public String getResult() {
+		return result;
+	}
 
-public void setResult(String result) {
-	this.result = result;
-}
-  
-  
+	public void setResult(String result) {
+		this.result = result;
+	}
+   
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,11 +24,11 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	private String name;
 	
 	@OneToMany
+	@JoinColumn(name = "category16pf_id")
 	private List<PsychTestCategory> categories;
 	
-	//serialized json format {itemid:optionid,...}
 	@Lob
-	String result;
+	private String result;
 	
 	  
 	public PsychTestCategory_16PF() {

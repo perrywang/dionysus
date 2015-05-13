@@ -22,8 +22,29 @@ public class PsychTest extends AbstractDionysusPersistable {
   @Lob
   @Column(name = "description")
   private String description;
+  
+  //测试针对对象
+  @Column(name = "object")
+  private String object;
 
-  @OneToMany(mappedBy = "test")
+  //测试时长
+  @Column(name = "duration")
+  private String duration;
+  
+  //测试收费
+  @Column(name = "cost")
+  private String cost;
+  
+  //测试方式 纸笔还是机检
+  @Column(name = "approach")
+  private String approach;
+  
+  //备注
+  @Column(name = "comment")
+  private String comment;
+  
+  @OneToMany
+  @JoinColumn(name = "test_id") 
   private List<PsychTestItem> items;
 
   public PsychTest(String title, String description, List<PsychTestItem> items) {

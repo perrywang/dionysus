@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,6 +28,7 @@ public class PsychTestSet  extends AbstractDionysusPersistable {
 	private String description;
 	  
 	@OneToMany
+	@JoinColumn(name = "set_id")
 	private List<PsychTest> tests;
 	
 	public String getTitle() {
