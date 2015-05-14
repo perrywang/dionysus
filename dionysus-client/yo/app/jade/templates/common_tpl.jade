@@ -1,3 +1,54 @@
 script#loading-view(type="text/template")
-	.ui.active.centered.large.inline.loader
-	p  正在加载...
+  .ui.active.centered.large.inline.loader
+  p  正在加载...
+
+script#page2-layout-tpl(type="text/template")
+  .ui.text.menu
+    .header.item
+      h1 心理知识
+    .ui.dropdown.item family issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+    .ui.dropdown.item personal issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+    .ui.dropdown.item work issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+  .ui.grid
+
+script#page2-sub-layout-tpl-doc-tpl(type="text/template")
+  a.ui.right.ribbon.red.label
+    i.ui.tiny.book.icon
+    | 微访谈
+    a
+  .ui.stackable.grid
+    .row
+      .column
+        h2 文章
+    .row
+      .column#sec0
+        p <%= items[0].title %>
+    .two.column.row
+      .column#sec1
+      .column#sec2
+    .two.column.row
+      .column#sec3
+      .column#sec4
+
+script#page2-item-tpl(type="text/template")
+  .item
+    .ui.small.image
+      img(src!="<%= cover || '/public/images/placeholder.png' %>")
+    .content
+      a.header(href!="/articles/<%= id %>") <%= title %>
+      .description <%= summary2 %>

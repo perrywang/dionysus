@@ -25,16 +25,51 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     className: 'ui page'
   });
 
+  var ArticleLayoutView = Dionysus.Common.Views.Page2Layout.extend({
+    regions:{
+      'doc': '#docsegment',
+      'video': '#videosegment',
+      'audio': '#audiosegment',
+      'original': '#originalsegment'
+    }
+  });
+
+  var ArticleItemView = Marionette.ItemView.extend({
+    template: '#article-item-tpl',
+    tagName: 'div',
+    className: 'item'
+  });
+
+  var ArticleSegmentView = Marionette.ItemView.extend({
+    template: '#article-doc-tpl',
+    onRender: function(){
+      var x;
+    }
+  });
+
+
   var ArticleController = Marionette.Controller.extend({
     showArticles: function (pageId) {
       
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      var layout = new ArticleLayoutView();
+      Dionysus.mainRegion.show(layout);
 
-      Dionysus.request('article:instances', pageId).done(function(resources) {
+      Dionysus.request('article:instances', pageId, 5).done(function(resources) {
         var articles = resources.embedded('articles');
+        //shorten the summay if it`s too long
+        for (var i = articles.models.length - 1; i >= 0; i--) {
+          var model = articles.models[i];
+          model.set('summary2',model.get('summary').slice(0,30) + '...');
+        };
+        
         var pageObj = new Backbone.Model(resources.get('page'));
-        Dionysus.mainRegion.show(new ArticlesView({ collection: articles, model: pageObj }));
+        //Dionysus.mainRegion.show(new ArticlesView({ collection: articles, model: pageObj }));      
+
+        var docsegment = new Dionysus.Common.Views.Page2Segment({collection:articles});    
+        layout.getRegion('doc').show(docsegment);
+
       });
     },
     showArticle: function(id) {

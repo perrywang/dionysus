@@ -9,6 +9,7 @@ html(class="no-js")
     // build:css({.,.tmp}) /styles/main.css
     link(rel="stylesheet", href="/styles/main.css")
     link(rel="stylesheet", href="/bower_components/datetimepicker/jquery.datetimepicker.css")
+    link(rel="stylesheet", href="/bower_components/flexslider/flexslider.css")
     // endbuild
 
     title Dionysus
@@ -19,6 +20,7 @@ html(class="no-js")
 
   // build:js({app,.tmp}) /scripts/app.js
   script(src="/scripts/app.js")
+  script(src="/scripts/modules/commonUtils.js")
   script(src="/scripts/hal/domain.js")
   script(src="/scripts/common/entity.js")
   script(src="/scripts/common/article.js")
@@ -43,7 +45,6 @@ html(class="no-js")
   script(src="/scripts/modules/appointment.js")
   script(src="/scripts/modules/error.js")
   script(src="/scripts/modules/course.js")
-  script(src="/scripts/modules/commonUtils.js")
   // endbuild
   
   script

@@ -1,5 +1,23 @@
 script#articles-tpl(type="text/template")
-  h2.ui.header 心理知识
+  .ui.pointing.menu
+    .header.items 心理支持
+    .ui.dropdown.item family issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+
+
+script#articles-tpl-bak(type="text/template")
+  .ui.pointing.menu
+    .header.items 心理支持
+    .ui.dropdown.item family issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
   ul.ui.items.divided
   .ui.three.column.divided.grid
     .column
@@ -23,23 +41,88 @@ script#article-tpl(type="text/template")
       .ui.label XXXX
       .ui.label YYY
 
-script#articles-cards-tpl(type="text/template")
-  h2.ui.header 心理知识
-  .ui.cards
-  .ui.three.column.divided.grid
-    .column
-      p
-    .column
-      a.icon.button.left(href!="/articles/p<%= number-1 %>")
-        i.left.large.chevron.icon
-      a <%= number+1 %> / <%= totalPages %>  
-      a.icon.button.right(href!="/articles/p<%= number+1 %>")
-        i.right.large.chevron.icon
-    .column
-      p
+script#articles-layout-tpl(type="text/template")
+  .ui.text.menu
+    .header.item
+      h1 心理知识
+    .ui.dropdown.item family issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+    .ui.dropdown.item personal issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+    .ui.dropdown.item work issue
+      i.dropdown.icon
+      .menu
+        a.item 1
+        a.item 2
+        a.item 3
+  .ui.grid
+    .row
+      .column
+        .ui.segment#docsegment
+    .row
+      .column
+        .ui.segment#videosegment
+    .row
+      .column
+        .ui.segment#audiosegment
+    .row
+      .column
+        .ui.segment#originalsegment
+
+script#article-doc-tpl(type="text/template")
+  a.ui.right.ribbon.red.label
+    i.ui.tiny.book.icon
+    | 微访谈
+    a
+  .ui.stackable.grid
+    .row
+      .column
+        h2 文章
+    .row
+      .column
+        p <%= items[0].title %>
+    .two.column.row
+      .column#sec1
+      .column#sec2
+    .two.column.row
+      .column#sec3
+      .column#sec4
+
+script#article-video-tpl(type="text/template")
+  a
+    h2 视频
+  .ui.divider
+  .ui.items#videocontentlist
+
+script#article-audio-tpl(type="text/template")
+  a
+    h2 音频
+  .ui.divider
+  .ui.items#audiocontentlist
+
+script#article-original-tpl(type="text/template")
+  a
+    h2 原创
+  .ui.divider
+  .ui.items#originalcontentlist
+
+script#article-item-tpl(type="text/template")
+  .ui.small.image
+    img(src!="<%= cover || '/public/images/placeholder.png' %>")
+  .content
+    a.header(href!="/articles/<%= id %>") <%= title %>
+    .description <%= summary2 %> 
 
 script#article-cards-tpl(type="text/template")
-  .image
+  .small.image
     img(src!="<%= cover || '/public/images/placeholder.png' %>")
   .content
     a.header(href!="/articles/<%= id %>") <%= title %>

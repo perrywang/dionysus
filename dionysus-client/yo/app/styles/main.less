@@ -19,7 +19,7 @@ main {
 }
 
 body {
-  padding-top: 1rem;
+  padding-top: 0rem;
 }
 
 content-holder{
@@ -28,21 +28,30 @@ content-holder{
 }
 
 #header {
-  margin-top: 1rem;
+  margin-top: 0rem;
   height: 3rem;
 }
 
-#footer {
-  margin: 1rem;
-  position: relative;
-  margin-top: -150px;
-  height: 150px;
-  clear:both;
-}
-#main, #header, #footer {
-  width: 85%;
+
+#header, #footer {
+  width: 100%;
   margin: 0 auto;
 }
+
+@media screen and (max-device-width: 480px) {
+  #main {
+  width: 90%;
+  margin: 0 auto;
+}  
+}
+
+@media screen and (min-device-width: 480px) {
+  #main {
+  width: 60%;
+  margin: 0 auto;
+}  
+}
+
 
 article {
   padding: 1rem;

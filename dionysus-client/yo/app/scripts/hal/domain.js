@@ -59,10 +59,11 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('article:instances', function(pageId) {
+  Dionysus.reqres.setHandler('article:instances', function(pageId,size) {
     var resources = new ArticleResources(), defer = $.Deferred();
     var pageX = pageId?pageId:0;
-    resources.fetch({ data: { projection: 'summary', page: pageX }}).then(function() {
+  
+    resources.fetch({ data: { projection: 'summary', page: pageX, size:size }}).then(function() {
       defer.resolve(resources);
     });
     return defer.promise();
