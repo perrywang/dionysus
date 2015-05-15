@@ -2,6 +2,7 @@ package com.huixinpn.dionysus.domain.course;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
+import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
@@ -46,6 +47,9 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @JoinTable(name = "user_course", joinColumns = @JoinColumn(name = "course_id"),
       inverseJoinColumns = @JoinColumn(name = "user_id"))
   private Collection<User> users = new ArrayList<>();
+
+  @ManyToMany(mappedBy = "courses")
+  private Collection<Tag> tags = new ArrayList<>();
 
   @OneToMany(mappedBy = "course")
   private Collection<CourseFeedback> feedbacks = new ArrayList<>();
