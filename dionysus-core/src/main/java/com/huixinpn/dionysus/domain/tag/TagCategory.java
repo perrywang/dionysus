@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Data
@@ -19,5 +20,5 @@ public class TagCategory extends AbstractDionysusPersistable {
   private String name;
 
   @ManyToMany(mappedBy = "categories")
-  private Collection<Tag> tags;
+  private Collection<Tag> tags = new ArrayList<>();
 }

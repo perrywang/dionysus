@@ -23,7 +23,7 @@ public class Tag extends AbstractDionysusPersistable {
   private String name;
 
   @ManyToMany
-  private Collection<TagCategory> categories;
+  private Collection<TagCategory> categories = new ArrayList<>();
 
   @ManyToMany
   private Collection<Course> courses = new ArrayList<>();
