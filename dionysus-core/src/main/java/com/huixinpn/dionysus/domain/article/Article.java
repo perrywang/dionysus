@@ -2,17 +2,7 @@ package com.huixinpn.dionysus.domain.article;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
-import javax.persistence.Version;
+import javax.persistence.*;
 import javax.validation.Valid;
 
 import lombok.Data;
@@ -62,6 +52,13 @@ public class Article extends AbstractDionysusAuditable<User> {
 	
 	@Column(name = "cover")
 	private String cover;
+
+    @Column(name = "articletype")
+    @Enumerated(EnumType.STRING)
+    private ArticleType type;
+
+    @Column(name = "interview")
+    private Boolean interview;
 
 	@Version
 	@Column(name = "version", columnDefinition = "integer DEFAULT 0", nullable = false)

@@ -53,10 +53,12 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      //show layout view in main block
       var layout = new ArticleLayoutView();
       Dionysus.mainRegion.show(layout);
 
-      Dionysus.request('article:instances', pageId, 5).done(function(resources) {
+      //get the data and show sections in layout view
+      Dionysus.request('article:instances', pageId, 8).done(function(resources) {
         var articles = resources.embedded('articles');
         //shorten the summay if it`s too long
         for (var i = articles.models.length - 1; i >= 0; i--) {
@@ -71,6 +73,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
         layout.getRegion('doc').show(docsegment);
 
       });
+    },
+    showArticlesByCategoryAndType: function( category, type){
+
     },
     showArticle: function(id) {
       //show loading before get any data
@@ -94,7 +99,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       appRoutes : {
         'articles/createdBy/:id' : 'showArticlesByAuthor',
         'articles(/p:page)': 'showArticles',
-        'articles/:id(/)': 'showArticle'
+        'articles/:id(/)': 'showArticle',
 
       },
       controller: new ArticleController()

@@ -1,0 +1,73 @@
+script#page2-layout-tpl(type="text/template")
+  .ui.close.right.rail
+    .ui.sticky
+      .ui.segment#railcontent
+        p hehehe
+  .ui.page.grid#categroynav
+    .sixteen.wide.column
+      .ui.text.menu
+        .header.item
+          h1 心理知识xxx
+        .ui.dropdown.item family issue
+          i.dropdown.icon
+          .menu
+            a.item 1
+            a.item 2
+            a.item 3
+        .ui.dropdown.item personal issue
+          i.dropdown.icon
+          .menu
+            a.item 1
+            a.item 2
+            a.item 3
+        .ui.dropdown.item work issue
+          i.dropdown.icon
+          .menu
+            a.item 1
+            a.item 2
+            a.item 3
+  .ui.grid#gridrows
+
+script#page2-sub-layout-tpl-doc-tpl(type="text/template")
+  a.ui.right.ribbon.red.label
+    i.ui.tiny.book.icon
+    | 微访谈
+    a
+  .ui.stackable.grid
+    .row
+      .column
+        h2 文章   
+    .row
+      .column#slides
+    .two.column.row
+      .column#sec0
+      .column#sec1
+    .two.column.row
+      .column#sec2
+      .column#sec3
+
+script#page2-item-tpl(type="text/template")
+  .item
+    .ui.small.image
+      img(src!="<%= cover || '/public/images/placeholder.png' %>")
+    .content
+      a.header(href!="/articles/<%= id %>") <%= title %>
+      .description <%= summary2 %>
+
+script#page2-slides-tpl(type="text/template")
+  ul.slides
+    li
+      a.ui.meduim.image(href!="/articles/<%= items[0].id %>")
+        img.ui.medium.image(src!="<%= items[0].cover || '/public/images/placeholder.png' %>")
+    li
+      a.ui.meduim.image(href!="/articles/<%= items[1].id %>")
+        img.ui.medium.image(src!="<%= items[1].cover || '/public/images/placeholder.png' %>")
+    li
+      a.ui.meduim.image(href!="/articles/<%= items[2].id %>")
+        img.ui.medium.image(src!="<%= items[2].cover || '/public/images/placeholder.png' %>")
+
+script#site-layout-tpl(type="text/template")
+  .ui.segment#seg hehehehehehe
+    .ui.right.rail#xrail
+      .ui.segment hehehehe
+  
