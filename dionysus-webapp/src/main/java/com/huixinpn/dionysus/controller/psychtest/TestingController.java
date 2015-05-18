@@ -67,22 +67,40 @@ public class TestingController {
     }
   }
 
+  @RequestMapping(value = "/testings/{id}", method = RequestMethod.POST)
+  public
+  @ResponseBody
+  ResponseEntity<Void> finishTesting(@PathVariable Long id) {
+    PsychTesting testing = testingRepository.findOne(id);
+    if (testing == null || testing.getState() == PsychTestingState.CANCELED) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    } else if (testing.getState() == PsychTestingState.IN_PROGRESS) {
+      testing.setState(PsychTestingState.FINISHED);
+      return new ResponseEntity<>(HttpStatus.OK); // TODO calculating and display testing result page
+    } else {
+      return new ResponseEntity<>(HttpStatus.OK); //TODO directly goto testing result page
+    }
+  }
+
+
   @RequestMapping(value = "/testings/{id}/{item_id}", method = RequestMethod.GET)
   public
   @ResponseBody
-  PsychTestItemData
+  ResponseEntity<PsychTestItemData>
   gotoItem(@PathVariable Long id, @PathVariable Long item_id, @RequestParam(required = false) boolean answered) {
     PsychTestItemData itemData = new PsychTestItemData(testItemRepository.findOne(item_id));
-    PsychTestingSelection selection = null;
     if (answered) {
-      selection = selectionRepository.findByTestingAndItem(id, item_id);
+      PsychTestingSelection selection = selectionRepository.findByTestingAndItem(id, item_id);
       itemData.setSelected(selection.getSelected().getId());
     }
-    return itemData;
+    return new ResponseEntity<>(itemData, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/testings/{id}/{item_id}", method = RequestMethod.POST)
-  public void saveAnswer(@PathVariable Long id, @PathVariable Long item_id, @RequestBody PsychTestingSelectionData selectionData) {
+  public
+  @ResponseBody
+  ResponseEntity<Void>
+  saveAnswer(@PathVariable Long id, @PathVariable Long item_id, @RequestBody PsychTestingSelectionData selectionData) {
     PsychTestingSelection selection = selectionRepository.findByTestingAndItem(id, item_id);
     if (selection != null) {
       selection.setSelected(new PsychTestItemOption(selectionData.getOption_id()));
@@ -96,5 +114,6 @@ public class TestingController {
       selection.setAnswer(selectionData.getAnswer());
       selectionRepository.save(selection);
     }
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }
