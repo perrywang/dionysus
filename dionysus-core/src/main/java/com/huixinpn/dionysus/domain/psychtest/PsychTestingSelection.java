@@ -19,6 +19,11 @@ public class PsychTestingSelection extends AbstractDionysusPersistable {
 
   private static final long serialVersionUID = -4860166636073876229L;
 
+  //when tester modify the answer we need be able to quickly find which item he is modifying
+  //no need to iterate all the answered items to find.
+  @OneToOne
+  private PsychTestItem item;
+
   @OneToOne
   private PsychTestItemOption selected;
 
