@@ -60,7 +60,9 @@ public class TestingController {
       result.setTesting_id(id);
       ArrayList<PsychTestingSelection> historySelections = (ArrayList<PsychTestingSelection>) testing.getSelections();
       int lastAnsweredIndex = historySelections.size() - 1;
-      result.setLastAnswered(historySelections.get(lastAnsweredIndex).getSelected().getId());
+      if(lastAnsweredIndex > -1){
+        result.setLastAnswered(historySelections.get(lastAnsweredIndex).getSelected().getId());
+      }
       return new ResponseEntity<>(result, HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.OK); //TODO goto testing result page
