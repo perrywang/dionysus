@@ -69,7 +69,7 @@ public class TestingController {
     }
   }
 
-  @RequestMapping(value = "/testings/{id}", method = RequestMethod.POST)
+  @RequestMapping(value = "/testings/{id}", method = {RequestMethod.PUT,RequestMethod.POST})
   public
   @ResponseBody
   ResponseEntity<Void> finishTesting(@PathVariable Long id) {
@@ -98,7 +98,7 @@ public class TestingController {
     return new ResponseEntity<>(itemData, HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/testings/{id}/{item_id}", method = RequestMethod.POST)
+  @RequestMapping(value = "/testings/{id}/{item_id}", method = {RequestMethod.POST,RequestMethod.PUT})
   public
   @ResponseBody
   ResponseEntity<Void>
