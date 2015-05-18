@@ -78,6 +78,7 @@ public class TestingController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     } else if (testing.getState() == PsychTestingState.IN_PROGRESS) {
       testing.setState(PsychTestingState.FINISHED);
+      testingRepository.save(testing);
       return new ResponseEntity<>(HttpStatus.OK); // TODO calculating and display testing result page
     } else {
       return new ResponseEntity<>(HttpStatus.OK); //TODO directly goto testing result page
