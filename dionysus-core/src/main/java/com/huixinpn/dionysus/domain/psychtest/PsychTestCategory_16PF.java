@@ -26,6 +26,9 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	@Column(name = "topname")
 	private String topname;
 	
+	//this will add a column in table psychtestcategories named category16pf_id. It is strange. Does function need this @DaFeng?
+	//This PsychTestCategory_16PF is not required. After get confirmation of @DaFeng we can delete it.
+	//If we can add top name in PsychTestCategory to implement this??
 	@OneToMany
 	@JoinColumn(name = "category16pf_id")
 	private List<PsychTestCategory> categories;
