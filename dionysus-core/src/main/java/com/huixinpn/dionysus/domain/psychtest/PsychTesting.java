@@ -29,6 +29,9 @@ public class PsychTesting extends AbstractDionysusAuditable<User> {
   @OneToMany(mappedBy = "testing")
   private Collection<PsychTestingSelection> selections = new ArrayList<>();
 
+  @ManyToOne
+  private PsychTestSetTesting setTesting;
+
   @Enumerated(EnumType.STRING)
   private PsychTestingState state;
 

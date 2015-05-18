@@ -5,7 +5,6 @@ import java.util.*;
 import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.domain.appointment.AppointmentApproach;
 import com.huixinpn.dionysus.domain.user.Consultant;
-import com.huixinpn.dionysus.repository.ConsultantRepository;
 import org.junit.Assert;
 import org.junit.Test;
 

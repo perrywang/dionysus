@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

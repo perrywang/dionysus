@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.huixinpn.dionysus.domain.user.User;
-import com.huixinpn.dionysus.repository.UserRepository;
+import com.huixinpn.dionysus.repository.user.UserRepository;
 
 @Service("dionysus")
 public class DionysusUserDetailsService implements UserDetailsService {

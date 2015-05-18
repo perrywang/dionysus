@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.psychtest;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTestItem;
 

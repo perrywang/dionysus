@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.course;
 
 import com.huixinpn.dionysus.domain.course.CourseFeedback;
 

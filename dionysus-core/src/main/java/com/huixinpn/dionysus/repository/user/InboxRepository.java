@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,5 +11,5 @@ public interface InboxRepository extends JpaRepository<Inbox, Long> {
 
 	@Override
 	//@PreAuthorize("#inbox.user.username == principal")
-	Inbox save(Inbox inbox);
+	<S extends Inbox> S save(S inbox);
 }

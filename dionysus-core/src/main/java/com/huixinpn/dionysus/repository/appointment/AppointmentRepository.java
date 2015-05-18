@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.appointment;
 
 import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.domain.user.Consultant;
@@ -10,10 +10,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
-/**
- * Created by huanghao on 4/5/15.
- */
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {

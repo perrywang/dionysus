@@ -6,10 +6,10 @@ import com.huixinpn.dionysus.domain.article.Comment;
 import com.huixinpn.dionysus.domain.user.Role;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.exception.InvalidUserException;
-import com.huixinpn.dionysus.repository.ArticleRepository;
-import com.huixinpn.dionysus.repository.CategoryRepository;
-import com.huixinpn.dionysus.repository.CommentRepository;
-import com.huixinpn.dionysus.repository.UserRepository;
+import com.huixinpn.dionysus.repository.article.ArticleRepository;
+import com.huixinpn.dionysus.repository.article.CategoryRepository;
+import com.huixinpn.dionysus.repository.article.CommentRepository;
+import com.huixinpn.dionysus.repository.user.UserRepository;
 import com.huixinpn.dionysus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

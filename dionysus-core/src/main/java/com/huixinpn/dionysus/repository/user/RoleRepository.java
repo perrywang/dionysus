@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.repository;
+package com.huixinpn.dionysus.repository.user;
 
 import com.huixinpn.dionysus.domain.user.Role;
 

@@ -3,10 +3,9 @@ package com.huixinpn.dionysus.domain.event;
 import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.domain.user.Notification;
 import com.huixinpn.dionysus.domain.user.User;
-import com.huixinpn.dionysus.repository.NotificationRepository;
+import com.huixinpn.dionysus.repository.user.NotificationRepository;
 import com.huixinpn.dionysus.utils.AutowireInjector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.PostPersist;
 import java.util.Collection;

@@ -1,6 +1,6 @@
 package com.huixinpn.dionysus.service;
 
-import com.huixinpn.dionysus.repository.AppointmentRepository;
+import com.huixinpn.dionysus.repository.appointment.AppointmentRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.huixinpn.dionysus.domain.appointment.Appointment;
-import com.huixinpn.dionysus.repository.AppointmentRepository;
+import com.huixinpn.dionysus.repository.appointment.AppointmentRepository;
 
 /**
  * Created by huanghao on 4/6/15.

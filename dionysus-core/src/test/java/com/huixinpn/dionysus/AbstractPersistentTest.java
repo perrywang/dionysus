@@ -5,9 +5,7 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.huixinpn.dionysus.domain.user.Consultant;
-import com.huixinpn.dionysus.domain.user.Inbox;
-import com.huixinpn.dionysus.repository.ConsultantRepository;
+import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.huixinpn.dionysus.domain.user.User;
-import com.huixinpn.dionysus.repository.UserRepository;
+import com.huixinpn.dionysus.repository.user.UserRepository;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
