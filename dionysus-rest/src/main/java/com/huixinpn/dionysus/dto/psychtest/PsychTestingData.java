@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @Data
 @NoArgsConstructor
-public class PsychTestData extends EntityData {
+public class PsychTestingData extends EntityData {
 
   private String title;
   private String description;
@@ -19,7 +19,7 @@ public class PsychTestData extends EntityData {
   private Long lastAnswered;
   private Long testing_id;
 
-  public PsychTestData(PsychTest test) {
+  public PsychTestingData(PsychTest test) {
     super(test);
     this.title = test.getTitle();
     this.description = test.getDescription();

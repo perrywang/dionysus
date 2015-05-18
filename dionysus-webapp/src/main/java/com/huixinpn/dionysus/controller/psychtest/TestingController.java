@@ -1,7 +1,7 @@
 package com.huixinpn.dionysus.controller.psychtest;
 
 import com.huixinpn.dionysus.domain.psychtest.*;
-import com.huixinpn.dionysus.dto.psychtest.PsychTestData;
+import com.huixinpn.dionysus.dto.psychtest.PsychTestingData;
 import com.huixinpn.dionysus.dto.psychtest.PsychTestItemData;
 import com.huixinpn.dionysus.dto.psychtest.PsychTestingSelectionData;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestItemRepository;
@@ -33,7 +33,7 @@ public class TestingController {
   @RequestMapping(value = "/testing", method = RequestMethod.GET)
   public
   @ResponseBody
-  ResponseEntity<PsychTestData> startTesting(@RequestParam Long tid) { //must have /testing?tid= format to start a testing against PsychTest.getId() == tid
+  ResponseEntity<PsychTestingData> startTesting(@RequestParam Long tid) { //must have /testing?tid= format to start a testing against PsychTest.getId() == tid
     PsychTest test = testRepository.findOne(tid);
     if (test == null) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -42,7 +42,7 @@ public class TestingController {
     testing.setTest(test);
     testing.setState(PsychTestingState.IN_PROGRESS);
     testing = testingRepository.save(testing);
-    PsychTestData result = new PsychTestData(test);
+    PsychTestingData result = new PsychTestingData(test);
     result.setTesting_id(testing.getId());
     return new ResponseEntity<>(result, HttpStatus.OK);
   }
@@ -50,13 +50,13 @@ public class TestingController {
   @RequestMapping(value = "/testings/{id}", method = RequestMethod.GET)
   public
   @ResponseBody
-  ResponseEntity<PsychTestData> getTesting(@PathVariable Long id) {
+  ResponseEntity<PsychTestingData> getTesting(@PathVariable Long id) {
     PsychTesting testing = testingRepository.findOne(id);
     if (testing == null || testing.getState() == PsychTestingState.CANCELED) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     } else if (testing.getState() == PsychTestingState.IN_PROGRESS) {
       PsychTest test = testing.getTest();
-      PsychTestData result = new PsychTestData(test);
+      PsychTestingData result = new PsychTestingData(test);
       result.setTesting_id(id);
       ArrayList<PsychTestingSelection> historySelections = (ArrayList<PsychTestingSelection>) testing.getSelections();
       int lastAnsweredIndex = historySelections.size() - 1;
