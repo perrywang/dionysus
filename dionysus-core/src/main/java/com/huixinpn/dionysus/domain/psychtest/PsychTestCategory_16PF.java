@@ -23,6 +23,9 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	@Column(name = "name", unique = true)
 	private String name;
 	
+	@Column(name = "topname")
+	private String topname;
+	
 	@OneToMany
 	@JoinColumn(name = "category16pf_id")
 	private List<PsychTestCategory> categories;
@@ -30,7 +33,6 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	@Lob
 	private String result;
 	
-	  
 	public PsychTestCategory_16PF() {
 	}
 
@@ -60,6 +62,13 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 	public void setResult(String result) {
 		this.result = result;
 	}
-	
-	
+
+	public String getTopname() {
+		return topname;
+	}
+
+	public void setTopname(String topname) {
+		this.topname = topname;
+	}
+
 }
