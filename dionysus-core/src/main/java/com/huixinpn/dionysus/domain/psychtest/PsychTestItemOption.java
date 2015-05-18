@@ -27,4 +27,8 @@ public class PsychTestItemOption extends AbstractDionysusPersistable {
   @ManyToOne
   private PsychTestItem item;
 
+  public PsychTestItemOption(Long id){
+    super(id);
+  }
+
 }

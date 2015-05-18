@@ -35,4 +35,8 @@ public class PsychTesting extends AbstractDionysusAuditable<User> {
   @Enumerated(EnumType.STRING)
   private PsychTestingState state;
 
+  public PsychTesting(Long id){
+    super(id);
+  }
+
 }

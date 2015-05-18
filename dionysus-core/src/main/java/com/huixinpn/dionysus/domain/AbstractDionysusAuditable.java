@@ -12,11 +12,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import lombok.NoArgsConstructor;
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Auditable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
@@ -38,6 +40,10 @@ public abstract class AbstractDionysusAuditable<U> extends
 	@Temporal(TemporalType.TIMESTAMP)
     @JsonIgnore
 	private Date lastModifiedDate;
+
+	public AbstractDionysusAuditable(Long id){
+		super(id);
+	}
 
 	@Override
 	public U getCreatedBy() {

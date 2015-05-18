@@ -4,11 +4,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -31,6 +27,10 @@ public class PsychTestItem extends AbstractDionysusPersistable {
 
   @OneToMany(mappedBy = "item")
   private Collection<PsychTestItemOption> options = new ArrayList<>();
+
+  public PsychTestItem(Long id) {
+    super(id);
+  }
 
   public void addItemOption(PsychTestItemOption option) {
     options.add(option);

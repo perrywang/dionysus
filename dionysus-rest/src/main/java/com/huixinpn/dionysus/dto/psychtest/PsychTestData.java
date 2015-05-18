@@ -16,12 +16,14 @@ public class PsychTestData extends EntityData {
   private String title;
   private String description;
   private Collection<Long> items = new ArrayList<>();
+  private Long lastAnswered;
+  private Long testing_id;
 
   public PsychTestData(PsychTest test) {
     super(test);
     this.title = test.getTitle();
     this.description = test.getDescription();
-    for(PsychTestItem item : test.getItems()){
+    for (PsychTestItem item : test.getItems()) {
       items.add(item.getId());
     }
   }

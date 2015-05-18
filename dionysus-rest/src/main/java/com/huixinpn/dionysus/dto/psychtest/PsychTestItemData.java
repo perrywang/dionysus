@@ -16,6 +16,8 @@ public class PsychTestItemData extends EntityData {
 
   private Collection<PsychTestItemOptionData> options;
 
+  private Long selected;
+
   public PsychTestItemData(PsychTestItem item) {
     super(item);
     this.description = item.getDescription();
