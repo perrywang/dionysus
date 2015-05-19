@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.controller.course;
 
 import com.huixinpn.dionysus.domain.course.Course;
+import com.huixinpn.dionysus.domain.course.CourseCategory;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseData;
@@ -59,6 +60,18 @@ public class CourseController {
     int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
     int pageNumber = (page == null ? 0 : page);
     Page<Course> pagedCourses = courseRepository.findAll(new PageRequest(pageNumber, pageSize));
+    return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  @RequestMapping(value = "/courses/category/{cid}", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  EntityPageData<CourseData> searchCourses(@RequestParam(value = "page", required = false) Integer page,
+                                           @RequestParam(value = "size", required = false) Integer size,
+                                           @PathVariable Long cid) {
+    int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
+    int pageNumber = (page == null ? 0 : page);
+    Page<Course> pagedCourses = courseRepository.findByCategory(new CourseCategory(cid),new PageRequest(pageNumber, pageSize));
     return new EntityPageData<>(pagedCourses, CourseData.class);
   }
 

@@ -36,6 +36,10 @@ public class CourseCategory extends AbstractDionysusPersistable {
     this.name = name;
   }
 
+  public CourseCategory(Long id){
+    super(id);
+  }
+
   public String getName() {
     return name;
   }
