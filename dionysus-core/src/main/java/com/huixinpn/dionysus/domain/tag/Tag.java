@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +17,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "tags")
 public class Tag extends AbstractDionysusPersistable {
 
   @NotBlank

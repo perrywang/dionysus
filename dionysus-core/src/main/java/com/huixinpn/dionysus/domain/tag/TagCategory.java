@@ -14,7 +14,7 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "tagcategories")
 public class TagCategory extends AbstractDionysusPersistable {
   @NotBlank
   private String name;

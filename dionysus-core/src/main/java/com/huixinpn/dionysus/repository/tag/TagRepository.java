@@ -1,0 +1,14 @@
+package com.huixinpn.dionysus.repository.tag;
+
+import com.huixinpn.dionysus.domain.tag.Tag;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface TagRepository extends JpaRepository<Tag, Long> {
+  @Query(value = "select a.tags_id as id,b.name from tags_courses a join tags b on a.tags_id=b.id group by a.tags_id order by count(a.tags_id) desc limit ?1", nativeQuery = true)
+  List<Tag> findTopNTagForCourse(int N);
+}
