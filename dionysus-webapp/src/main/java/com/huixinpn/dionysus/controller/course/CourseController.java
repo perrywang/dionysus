@@ -5,6 +5,7 @@ import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseData;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
+import com.huixinpn.dionysus.repository.tag.TagRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,10 +27,13 @@ public class CourseController {
   private CourseRepository courseRepository;
 
   @Autowired
+  private TagRepository tagRepository;
+
+  @Autowired
   private UserRepository userRepository;
 
-  @RequestMapping(value = "/course/registration/{id}", method = RequestMethod.GET)
-  public ResponseEntity registerColurse(@PathVariable Long id) throws Exception {
+  @RequestMapping(value = "/course/{id}/reg", method = RequestMethod.GET)
+  public ResponseEntity registerColurse(@PathVariable Long id) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Object principle = authentication.getPrincipal();
     if (!(principle instanceof User)) {
@@ -56,5 +60,13 @@ public class CourseController {
     int pageNumber = (page == null ? 0 : page);
     Page<Course> pagedCourses = courseRepository.findAll(new PageRequest(pageNumber, pageSize));
     return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  CourseData listCourse(@PathVariable Long id) {
+    Course course = courseRepository.findOne(id);
+    return new CourseData(course);
   }
 }
