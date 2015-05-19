@@ -22,12 +22,4 @@ public class EntityPageData<T extends EntityData> {
     this.size = page.getSize();
     this.content = new EntityCollectionData<T>(page.getContent(),klass).toDTOCollection();
   }
-
-  public static int getDefaultPageSize() {
-    return defaultPageSize;
-  }
-
-  public static void setDefaultPageSize(int defaultPageSize) {
-    EntityPageData.defaultPageSize = defaultPageSize;
-  }
 }

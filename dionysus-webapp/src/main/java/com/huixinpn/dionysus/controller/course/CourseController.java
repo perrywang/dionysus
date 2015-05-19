@@ -1,7 +1,10 @@
 package com.huixinpn.dionysus.controller.course;
 
+import com.huixinpn.dionysus.controller.util.PagingHelper;
 import com.huixinpn.dionysus.domain.course.Course;
+import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseData;
@@ -57,9 +60,8 @@ public class CourseController {
   @ResponseBody
   EntityPageData<CourseData> listCourses(@RequestParam(value = "page", required = false) Integer page,
                                          @RequestParam(value = "size", required = false) Integer size) {
-    int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
-    int pageNumber = (page == null ? 0 : page);
-    Page<Course> pagedCourses = courseRepository.findAll(new PageRequest(pageNumber, pageSize));
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Course> pagedCourses = courseRepository.findAll(paging);
     return new EntityPageData<>(pagedCourses, CourseData.class);
   }
 
@@ -67,11 +69,34 @@ public class CourseController {
   public
   @ResponseBody
   EntityPageData<CourseData> searchCoursesByCategory(@RequestParam(value = "page", required = false) Integer page,
-                                           @RequestParam(value = "size", required = false) Integer size,
-                                           @PathVariable Long cid) {
-    int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
-    int pageNumber = (page == null ? 0 : page);
-    Page<Course> pagedCourses = courseRepository.findByCategory(new CourseCategory(cid),new PageRequest(pageNumber, pageSize));
+                                                     @RequestParam(value = "size", required = false) Integer size,
+                                                     @RequestParam(value = "approach", required = false) CourseApproach approach,
+                                                     @PathVariable Long cid) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Course> pagedCourses;
+    if (approach != null) {
+      pagedCourses = courseRepository.findByCategoryAndApproach(new CourseCategory(cid), approach, paging);
+    } else {
+      pagedCourses = courseRepository.findByCategory(new CourseCategory(cid), paging);
+    }
+    return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  @RequestMapping(value = "/courses/tag/{tid}", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  EntityPageData<CourseData> searchCoursesByTag(@RequestParam(value = "page", required = false) Integer page,
+                                                @RequestParam(value = "size", required = false) Integer size,
+                                                @RequestParam(value = "approach", required = false) CourseApproach approach,
+                                                @PathVariable Long tid) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Course> pagedCourses;
+    if (approach != null) {
+      pagedCourses = courseRepository.findByTagAndApproach(new Tag(tid),approach,paging);
+    } else {
+      Course tmp = courseRepository.findOne(1L);
+      pagedCourses = courseRepository.findByTag(new Tag(tid), paging);
+    }
     return new EntityPageData<>(pagedCourses, CourseData.class);
   }
 
