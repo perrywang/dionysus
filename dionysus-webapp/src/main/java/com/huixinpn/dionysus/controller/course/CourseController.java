@@ -66,7 +66,7 @@ public class CourseController {
   @RequestMapping(value = "/courses/category/{cid}", method = RequestMethod.GET)
   public
   @ResponseBody
-  EntityPageData<CourseData> searchCourses(@RequestParam(value = "page", required = false) Integer page,
+  EntityPageData<CourseData> searchCoursesByCategory(@RequestParam(value = "page", required = false) Integer page,
                                            @RequestParam(value = "size", required = false) Integer size,
                                            @PathVariable Long cid) {
     int pageSize = (size == null ? EntityPageData.getDefaultPageSize() : size);
