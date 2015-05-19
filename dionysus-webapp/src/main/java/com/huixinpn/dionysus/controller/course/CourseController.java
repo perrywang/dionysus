@@ -32,12 +32,12 @@ public class CourseController {
   @Autowired
   private UserRepository userRepository;
 
-  @RequestMapping(value = "/course/{id}/reg", method = RequestMethod.GET)
-  public ResponseEntity registerColurse(@PathVariable Long id) {
+  @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
+  public ResponseEntity<Void> registerColurse(@PathVariable Long id) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Object principle = authentication.getPrincipal();
     if (!(principle instanceof User)) {
-      return new ResponseEntity(HttpStatus.FORBIDDEN);
+      return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
     User login = (User) authentication.getPrincipal();
     User reloaded = userRepository.findOne(login.getId());
@@ -48,7 +48,7 @@ public class CourseController {
       course.getUsers().add(reloaded);
       courseRepository.save(course);
     }
-    return new ResponseEntity(HttpStatus.OK);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses", method = RequestMethod.GET)
