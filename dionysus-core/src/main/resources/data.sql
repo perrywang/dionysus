@@ -291,10 +291,14 @@ insert into coursecategories (id, name) values(3, '婚姻关系');
 insert into coursecategories (id, name) values(4, '职业心理');
 insert into coursecategories (id, name) values(5, '个人成长');
 
-insert into courses (id, title, description, category_id, consultant_id) values(1,'心理学导论','心理学入门课程',1,3);
+insert into courses (id, title, description, category_id, consultant_id, approach) values(1,'心理学导论','心理学入门课程',1,3,'OFFLINE');
 insert into courses (id, title, description, category_id, consultant_id) values(2,'心理学进阶','心理学高级学员课程',1,3);
 insert into courses (id, title, description, category_id, consultant_id) values(3,'心理学高级','心理学辅导员课程',2,3);
 
 insert into user_course values (1, 2);
 insert into user_course values (2, 2);
 insert into user_course values (3, 2);
+
+insert into tags(id,name) values(1,'ttttaaaaaggggg');
+
+insert into tags_courses values(1,1);
