@@ -1,0 +1,48 @@
+html
+  header
+    link(rel="stylesheet", href="./dist/semantic.min.css")
+    script(src="./dist/jquery.min.js")
+    script(src="./dist/semantic.min.js")
+  body
+    .ui.fixed.inverted.purple.menu(style="height:55")
+      .ui.one.column.page.grid
+        ui.title.item
+          p(style="color:#FFF;") 菜单栏
+    .ui.grid
+      .three.wide.column
+      .eight.wide.column(style="margin-top:65")
+        .ui.central.segment
+          .ui.segment
+            .ui.vertical.segment(style="margin-top:20;")
+              p 最新课程
+              .column
+                .ui.grid(style="margin-top:10;")
+                  .raw
+                    .eight.wide.column
+                      .ui.items
+                        .item
+                          .content
+                            a.header 专业心理咨询课程
+                            .description
+                              p 专业课程精心为专业人士打造
+                    .eight.wide.column
+                      .ui.items
+                        .item
+                          .content
+                            a.header 专业心理咨询课程
+                            .description
+                              p 专业课程精心为专业人士打造
+                .raw
+                  .eight.wide.column
+                  .eight.wide.column
+            .ui.vertical.segment
+              p 在线视频
+            .ui.vertical.segment
+              p 在线课堂
+            .ui.vertical.segment
+              p 专业辅导
+            .ui.vertical.segment(style="margin-bottom:20;")
+              p 离线课程
+      .three.wide.column
+
+
