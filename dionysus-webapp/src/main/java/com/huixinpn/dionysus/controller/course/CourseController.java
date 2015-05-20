@@ -4,6 +4,7 @@ import com.huixinpn.dionysus.controller.util.PagingHelper;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityPageData;
@@ -18,7 +19,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
@@ -84,23 +90,16 @@ public class CourseController {
   @ResponseBody
   EntityPageData<CourseData> searchCoursesByTag(@RequestParam(value = "page", required = false) Integer page,
                                                 @RequestParam(value = "size", required = false) Integer size,
-                                                @RequestParam(value = "approach", required = false) String approach,
+                                                @RequestParam(value = "approach", required = false) CourseApproach approach,
                                                 @PathVariable Long tid) {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
-    EntityPageData<CourseData> result = new EntityPageData<>();
-    Collection<Course> courses;
+    Page<Course> courses;
     if (approach != null) {
-      courses = courseRepository.findByTagAndApproach(tid, approach, new Long(paging.getPageSize()), new Long(paging.getPageNumber() * paging.getPageSize()));
-      result.setTotal(courseRepository.countByTagAndApproach(tid, approach));
+      courses = courseRepository.findByTagAndApproach(tid,approach,paging);
     } else {
-      courses = courseRepository.findByTag(tid, new Long(paging.getPageSize()), new Long(paging.getPageNumber() * paging.getPageSize()));
-      result.setTotal(courseRepository.countByTag(tid));
+      courses = courseRepository.findByTag(tid,paging);
     }
-    result.setNumber(paging.getPageNumber());
-    result.setSize(paging.getPageSize());
-    Collection<CourseData> content = new EntityCollectionData<>(courses, CourseData.class).toDTOCollection();
-    result.setContent(content);
-    return result;
+    return new EntityPageData<>(courses,CourseData.class);
   }
 
   @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)

@@ -75,6 +75,10 @@ public class Course extends AbstractDionysusNotifiable<User> {
     this.description = description;
   }
 
+  public Course(Long id){
+    super(id);
+  }
+
   @Override
   public Collection<User> sendTo() {
     if (this.state == CourseState.IN_PROGRESS) {

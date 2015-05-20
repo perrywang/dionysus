@@ -10,8 +10,10 @@ import lombok.EqualsAndHashCode;
 
 import com.huixinpn.dionysus.domain.event.Notifiable;
 import com.huixinpn.dionysus.domain.event.NotificationListener;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @EntityListeners(NotificationListener.class)
@@ -19,6 +21,10 @@ public abstract class AbstractDionysusNotifiable<U> extends
 		AbstractDionysusAuditable<U> implements Notifiable<U> {
 
 	private static final long serialVersionUID = 4497363688600667784L;
+
+	public AbstractDionysusNotifiable(Long id){
+		super(id);
+	}
 
 	public U receiveFrom() {
 		return this.getCreatedBy();

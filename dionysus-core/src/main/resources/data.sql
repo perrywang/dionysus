@@ -301,4 +301,4 @@ insert into user_course values (3, 2);
 
 insert into tags(id,name) values(1,'ttttaaaaaggggg');
 
-insert into tags_courses values(1,1);
+insert into tags_courses values(1,1,1);

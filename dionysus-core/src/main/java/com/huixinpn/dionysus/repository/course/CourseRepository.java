@@ -22,15 +22,9 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
   Page<Course> findByConsultant(@Param("id") Consultant consultant, Pageable pageable);
 
-  @Query(value = "select * from courses c join tags_courses t on c.id = t.courses_id where t.tags_id = ?1 limit ?2 offset ?3", nativeQuery = true)
-  Collection<Course> findByTag(Long tagId, Long count, Long offset);
+  @Query(value = "select c from Course as c, Tag_Course as t where c.id = t.courses_id and t.tags_id = ?1")
+  Page<Course> findByTag(Long tagId,Pageable pageable);
 
-  @Query(value = "select * from courses c join tags_courses t on c.id = t.courses_id where t.tags_id = ?1 and c.approach=?2 limit ?3 offset ?4", nativeQuery = true)
-  Collection<Course> findByTagAndApproach(Long tagId, String approach, Long count, Long offset);
-
-  @Query(value = "select count(*) from courses c join tags_courses t on c.id = t.courses_id where t.tags_id = ?1", nativeQuery = true)
-  Long countByTag(Long tagId);
-
-  @Query(value = "select * from courses c join tags_courses t on c.id = t.courses_id where t.tags_id = ?1 and c.approach=?2", nativeQuery = true)
-  Long countByTagAndApproach(Long tagId, String approach);
+  @Query(value = "select c from Course as c, Tag_Course as t where c.id = t.courses_id and t.tags_id = ?1 and c.approach = ?2")
+  Page<Course> findByTagAndApproach(Long tagId, CourseApproach approach, Pageable pageable);
 }
