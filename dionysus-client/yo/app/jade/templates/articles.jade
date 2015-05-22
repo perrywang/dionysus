@@ -41,61 +41,6 @@ script#article-tpl(type="text/template")
       .ui.label XXXX
       .ui.label YYY
 
-script#articles-layout-tpl(type="text/template")
-  .ui.text.menu
-    .header.item
-      h1 心理知识
-    .ui.dropdown.item family issue
-      i.dropdown.icon
-      .menu
-        a.item 1
-        a.item 2
-        a.item 3
-    .ui.dropdown.item personal issue
-      i.dropdown.icon
-      .menu
-        a.item 1
-        a.item 2
-        a.item 3
-    .ui.dropdown.item work issue
-      i.dropdown.icon
-      .menu
-        a.item 1
-        a.item 2
-        a.item 3
-  .ui.grid
-    .row
-      .column
-        .ui.segment#docsegment
-    .row
-      .column
-        .ui.segment#videosegment
-    .row
-      .column
-        .ui.segment#audiosegment
-    .row
-      .column
-        .ui.segment#originalsegment
-
-script#article-doc-tpl(type="text/template")
-  a.ui.right.ribbon.red.label
-    i.ui.tiny.book.icon
-    | 微访谈
-    a
-  .ui.stackable.grid
-    .row
-      .column
-        h2 文章
-    .row
-      .column
-        p <%= items[0].title %>
-    .two.column.row
-      .column#sec1
-      .column#sec2
-    .two.column.row
-      .column#sec3
-      .column#sec4
-
 script#article-video-tpl(type="text/template")
   a
     h2 视频
@@ -129,7 +74,10 @@ script#article-cards-tpl(type="text/template")
     .description <%= summary %>
 
 script#article-detail-tpl(type="text/template")
-  header
-    h5 <%= title %>
-  p <%= summary %>
-  p <%= body %>
+  .center.floated.sixteen.wide.mobile.ten.wide.tablet.eight.wide.computer.column
+    .ui.basic.segment
+      header
+        h2 <%= title %>
+      .ui.divider
+      p <%= summary %>
+      p <%= body %>
