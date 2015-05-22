@@ -10,14 +10,15 @@ html
           p(style="color:#FFF;text-align:center;") 顶部导航菜单
     .ui.two.column.centered.grid(style="margin-top:60;")
       .twelve.wide.column
-        form.ui.form.segment
+        form.ui.form.segment(style="padding-top:50;padding-bottom:30;")
           h3
             a 请填写您的真实信息
-          .ui.divider
+          .ui.divider(style="margin-top:20;")
           .two.fields
             .field
               label 姓名
               input(type="text" name="name" placeholder="")
+          .two.fields(style="margin-top:20")
             .field
               label 性别
               .ui.selection.dropdown
@@ -27,7 +28,13 @@ html
                 .menu
                   .item(data-value="male") 男
                   .item(data-value="female") 女
-
+          .two.fields(style="margin-top:20;margin-bottom:20;")
+            .field
+              label 电子邮件
+              .ui.left.icon.input
+                input(type="text")
+                i.mail.icon
+          .ui.submit.purple.button(style="margin-top:30;") 注册课程
       .four.wide.column
         .ui.segment
           a.ui.purple.right.ribbon.label 课程内容
