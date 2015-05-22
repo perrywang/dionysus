@@ -22,7 +22,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   var ArticleDetailView = Marionette.ItemView.extend({
     template: '#article-detail-tpl',
     tagName: 'article',
-    className: 'ui page'
+    className: 'ui centered grid article'
   });
 
   var ArticleLayoutView = Dionysus.Common.Views.Page2Layout.extend({
@@ -47,15 +47,48 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     }
   });
 
+  var ArticleRailCatView = Marionette.ItemView.extend({
+    template: '#category-layout-tpl',
+    className: 'ui vertical menu',
+    events: {
+      "click a": "clicked"
+    },
+    clicked: function(e) {
+     
+      e.preventDefault();
+      var id = $(e.currentTarget).data("id");
+      var item = this.collection.get(id);
+      var name = item.get("name");
+      //alert(name);
+      this.options.parentLayoutView.trigger("change:category", id);
+    }
+  });
+
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function (pageId) {
-      
+      /*
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
       //show layout view in main block
       var layout = new ArticleLayoutView();
+      layout.on("change:category", function(id){
+        //get doc
+
+      });
       Dionysus.mainRegion.show(layout);
+
+      //get category data, and show them in the rail sticky segment as vertical menu items
+      Dionysus.request('category:entities').done(function(categories){
+        
+        var railcontentView = new ArticleRailCatView({
+          collection: categories, 
+          parentLayoutView: layout 
+        });
+
+        layout.getRegion('railcontent').show(railcontentView);
+      });
+
 
       //get the data and show sections in layout view
       Dionysus.request('article:instances', pageId, 8).done(function(resources) {
@@ -71,10 +104,17 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
         var docsegment = new Dionysus.Common.Views.Page2Segment({collection:articles});    
         layout.getRegion('doc').show(docsegment);
-
+      
       });
+      */
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Layout1());
+
+
     },
     showArticlesByCategoryAndType: function( category, type){
+
+    },
+    showArticlesByCategory: function(category){
 
     },
     showArticle: function(id) {

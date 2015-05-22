@@ -127,7 +127,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'app/profile/:id(/)': 'showProfile'
+        'profile/:id(/)': 'showProfile'
       },
       controller: new ProfileController()
     });

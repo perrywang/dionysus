@@ -8,13 +8,15 @@ Dionysus.module('Common.Views', function(Views, Dionysus, Backbone, Marionette, 
 		template: "#page2-layout-tpl",
 		className: 'container ui basic center aligned segment',
 		onRender: function() {
-			var tpl = '<div class="row"><div class="column"><div class="ui segment" id="<%= region %>"></div></div></div>';
+			var tpl = '<div class="row"><div class="right floated sixteen wide mobile sixteen wide tablet fourteen wide computer column"><div class="ui segment" id="<%= region %>"></div></div></div>';
 			var thisView = this;
 			_.each( this.regions, function(regionValue){
 				var regionId = regionValue.slice(1, regionValue.length);
 				thisView.$el.find('#gridrows').append(_.template(tpl)({
 					region: regionId
 				}));
+			thisView.addRegion('railcontent','#railcontent');
+
 			});
 		},
 		onBeforeShow: function() {
@@ -34,7 +36,7 @@ Dionysus.module('Common.Views', function(Views, Dionysus, Backbone, Marionette, 
 	});
 
 	Views.Page2Segment = Marionette.LayoutView.extend({
-		template: "#page2-sub-layout-tpl-doc-tpl",
+		template: "#page2-sub-layout-tpl",
 		regions: {
 			slides: "#slides",
 			sec0: "#sec0",

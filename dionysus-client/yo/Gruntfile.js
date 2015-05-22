@@ -32,7 +32,8 @@ module.exports = function (grunt) {
     if (/^\/articles/.test(url) || 
         /^\/site/.test(url) ||
         /^\/logout/.test(url) ||
-        /^\/login/.test(url)
+        /^\/login/.test(url) ||
+        /^\/profile/.test(url)
       ) {
       req.url = '/index.html';
     }

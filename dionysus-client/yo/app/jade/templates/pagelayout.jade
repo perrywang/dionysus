@@ -1,42 +1,141 @@
-script#page2-layout-tpl(type="text/template")
-  .ui.close.right.rail
-    .ui.sticky
-      .ui.segment#railcontent
-        p hehehe
-  .ui.page.grid#categroynav
-    .sixteen.wide.column
-      .ui.text.menu
-        .header.item
-          h1 心理知识xxx
-        .ui.dropdown.item family issue
-          i.dropdown.icon
-          .menu
-            a.item 1
-            a.item 2
-            a.item 3
-        .ui.dropdown.item personal issue
-          i.dropdown.icon
-          .menu
-            a.item 1
-            a.item 2
-            a.item 3
-        .ui.dropdown.item work issue
-          i.dropdown.icon
-          .menu
-            a.item 1
-            a.item 2
-            a.item 3
-  .ui.grid#gridrows
+script#layout1-tpl(type="text/template")
+  .mobile.only.row
+    .column
+      .ui.segment 666666
+  .two.column.equal.height.row
+    .sixteen.wide.moblie.twelve.wide.tablet.twelve.wide.computer.column
+      .ui.stackable.grid
+        .row
+          .column(style="padding:0")
+            .ui.basic.segment(style="padding:0")
+              .flexslider(style="margin-bottom:10px")
+                ul.slides
+                  li
+                    img(src="/public/images/slide1.png")
+                  li
+                    img(src="/public/images/slide2.png")
+                  li
+                    img(src="/public/images/slide3.png")
+        .three.column.row
+          .column
+            .ui.basic.segment(style="padding:0")
+              .item
+                .ui.medium.image
+                  a.ui.right.ribbon.green.label 更多文章
+                  img(src="public/images/temp/a33.jpg")
+                .content(style="margin-top:1rem")
+                  a.header 你不是真正的快乐
+                  .description 与其强颜欢笑苦了自己，还不如真诚地面对自己的感受，管理情绪，从尊重和了解自己的情绪开始。
+            .ui.divider
+            .ui.basic.segment(style="padding:0")
+              .ui.list
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 为什么我们有时候会幸灾乐祸？
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 成长，离不开听有帮助的声音
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 抑郁：一个人的战争
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 如何面对爱人的糟糕情绪？
+          .column
+            .ui.basic.segment(style="padding:0")
+              .item
+                .ui.medium.image
+                  a.ui.right.ribbon.orange.label 更多视频
+                  img(src="public/images/temp/a11.jpg")
+                .content(style="margin-top:1rem")
+                  a.header 525，如何爱自己？
+                  .description 我们总听说，一个人如果不先爱自己，就不会真正地爱别人，当我们看到了自己所创造的这些障碍时...
+            .ui.divider
+            .ui.basic.segment(style="padding:0")
+              .ui.list
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 为什么我们有时候会幸灾乐祸？
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 成长，离不开听有帮助的声音
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 抑郁：一个人的战争
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 如何面对爱人的糟糕情绪？
+          .column
+            .ui.basic.segment(style="padding:0")
+              .item
+                .ui.medium.image
+                  a.ui.right.ribbon.blue.label 更多原创
+                  img(src="public/images/temp/a22.jpg")
+                .content(style="margin-top:1rem")
+                  a.header 单纯的人，很难获得幸福？
+                  .description 18岁的爱情，大抵是我们一生中最为单纯的情感。可我们不可能永远18岁，我们终需成长，变得成熟...
+            .ui.divider
+            .ui.basic.segment(style="padding:0")
+              .ui.list
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 为什么我们有时候会幸灾乐祸？
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 成长，离不开听有帮助的声音
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 抑郁：一个人的战争
+                a.item
+                  i.right.triangle.icon
+                  .content
+                    .description 如何面对爱人的糟糕情绪？
+    .tablet.computer.only.four.wide.column
+      .ui.basic.center.aligned.segment
+        h2
+          i.circular.book.icon
+          |心理知识
+        .ui.fluid.vertical.menu
+          a.active.item 亲子关系
+          a.item 家庭关系
+          a.item 婚姻关系
+          a.item 职业心理
+          a.item 个人成长
+      .ui.divider
+      .ui.basic.center.aligned.segment
+        .center.aligned.item
+          .ui.medium.image
+            img(src="public/images/temp/adv.jpg")
+          .content(style="margin-top:1rem")
+            a.header 通过测试了解自己
+            .description 16PF 专业测试
+    
+    
 
-script#page2-sub-layout-tpl-doc-tpl(type="text/template")
-  a.ui.right.ribbon.red.label
-    i.ui.tiny.book.icon
-    | 微访谈
-    a
+
+
+script#page2-sub-layout-tpl(type="text/template")
   .ui.stackable.grid
     .row
       .column
-        h2 文章   
+        a.ui.right.ribbon.red.label
+          i.ui.tiny.book.icon
+          | 微访谈
+        h2 
+          |亲子关系
+          i.tiny.at.icon
+          |文章  
     .row
       .column#slides
     .two.column.row
@@ -65,6 +164,11 @@ script#page2-slides-tpl(type="text/template")
     li
       a.ui.meduim.image(href!="/articles/<%= items[2].id %>")
         img.ui.medium.image(src!="<%= items[2].cover || '/public/images/placeholder.png' %>")
+
+script#category-layout-tpl(type="text/template")
+  | <% _.each(items, function(item) { %>
+  | <a data-id="<%= item.id %>" class="item" value="<%= item.link %>"><%= item.name %></a>
+  | <% }) %>
 
 script#site-layout-tpl(type="text/template")
   .ui.segment#seg hehehehehehe
