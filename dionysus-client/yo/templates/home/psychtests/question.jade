@@ -3,7 +3,7 @@
   {{#each options}}
   .ui.basic.segment
     .ui.radio.checkbox
-      input(type="radio")
+      input(type="radio", name="choice", value="{{id}}")
       label {{ description }}
   {{/each}}
   

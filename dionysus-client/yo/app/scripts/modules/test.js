@@ -33,6 +33,9 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
       });
       this.collection = new Backbone.Collection(models);
     },
+    onRender : function() {
+      this.$('.ui.radio.checkbox').checkbox();
+    },
     initialize: function() {
       this._collection = this.collection;
       this.selectQuestion();
