@@ -2,7 +2,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
   var PsychTestItemOptionView = Marionette.ItemView.extend({
-    template: '#test-item-option-tpl',
+    template: JST['templates/home/psychtests/option'],
     initialize: function () {
       this.model.on('change:selected', this.render, this);
     },
@@ -30,7 +30,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
 
   var PsychTestView = Marionette.LayoutView.extend({
 
-    template: '#test-tpl',
+    template: JST['templates/home/psychtests/layout'],
     className: 'ui segment',
     regions: {
       TestHeaderRegion: '#test-header',
@@ -41,20 +41,20 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   });
 
   var HeaderView = Marionette.ItemView.extend({
-    template: '#test-header-tpl',
+    template: JST["templates/home/psychtests/header"],
     initialize: function () {
       this.model.on('change:current', this.render, this);
     }
   });
 
   var ItemView = Marionette.CompositeView.extend({
-    template: '#test-item-tpl',
+    template: JST["templates/home/psychtests/question"],
     childView: PsychTestItemOptionView,
     childViewContainer: '#item-options'
   });
 
   var WizardView = Marionette.ItemView.extend({
-    template: '#test-wizard-tpl',
+    template: JST["templates/home/psychtests/wizard"],
     className: 'ui grid',
     initialize: function () {
       this.model.on('change:current', this.render, this);
@@ -91,16 +91,22 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
-  var TestSetListView = Marionette.ItemView.extend({
-    template: '#testset-list-tpl',
+
+  var TestSuiteView = Marionette.ItemView.extend({
+    template: JST["templates/home/psychtests/suite"],
     className : 'ui card'
+  });
+
+  var TestSuiteCollectionView = Marionette.CollectionView.extend({
+    childView : TestSuiteView,
+    className : 'ui list'
   });
 
   var TestController = Marionette.Controller.extend({
     showTestSuites : function() {
       var testsets = Dionysus.request('psychtestsuite:instances');
       $.when(testsets).done(function(tests) {
-        var view = new TestSetListView({ collection: tests });
+        var view = new TestSuiteCollectionView({ collection: tests });
         Dionysus.mainRegion.show(view);
       });
     },

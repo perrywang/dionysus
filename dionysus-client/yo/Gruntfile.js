@@ -19,7 +19,8 @@ module.exports = function (grunt) {
   // Configurable paths
   var config = {
     app: 'app',
-    dist: 'dist'
+    dist: 'dist',
+    templates : 'templates'
   };
 
   var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest ;
@@ -78,6 +79,10 @@ module.exports = function (grunt) {
         ],
         tasks: ['jade:compile']
       },
+      jade_handlebars : {
+        files: ['<%= config.templates %>/**/*.jade'],
+        tasks: ['jade_handlebars']
+      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -96,6 +101,7 @@ module.exports = function (grunt) {
         files: [
           '<%= config.app %>/images/{,*/}*',
           '.tmp/{,*/}*.html',
+          '.tmp/{,*/}*.js',
           '.tmp/styles/{,*/}*.css'
         ]
       }
@@ -236,6 +242,15 @@ module.exports = function (grunt) {
           dest: '.tmp',
           ext: '.html'
         }]
+      }
+    },
+
+    jade_handlebars: {
+      all : {
+        files : {
+          '.tmp/templates/precompiled.handlebars.home.js': ['templates/home/**/*.jade'],
+          '.tmp/templates/precompiled.handlebars.admin.js' : ['templates/admin/**/*.jade']
+        }
       }
     },
 
@@ -468,6 +483,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'jade:compile',
+      'jade_handlebars',
       'concurrent:server',
       'configureProxies:server',
       'autoprefixer',
@@ -500,6 +517,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep',
     'jade:compile',
+    'jade_handlebars',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
