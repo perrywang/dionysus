@@ -29,7 +29,7 @@ public class PsychTestQuestionOption extends AbstractDionysusPersistable {
 	private Integer weight;
 
 	@ManyToOne
-	private PsychTestQuestion item;
+	private PsychTestQuestion question;
 	
 	public PsychTestQuestionOption(Long id) {
 		super(id);

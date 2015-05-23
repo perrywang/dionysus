@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.repository.psychtest;
 
-import com.huixinpn.dionysus.domain.psychtest.PsychTestingSelection;
+import com.huixinpn.dionysus.domain.psychtest.results.PsychTestingSelection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

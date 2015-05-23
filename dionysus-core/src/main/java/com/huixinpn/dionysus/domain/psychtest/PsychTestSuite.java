@@ -20,8 +20,8 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "psychtestsets")
-public class PsychTestSet extends AbstractDionysusPersistable {
+@Table(name = "psychtestsuites")
+public class PsychTestSuite extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 
@@ -31,7 +31,7 @@ public class PsychTestSet extends AbstractDionysusPersistable {
 	@Lob
 	private String description;
 
-	@ManyToMany(mappedBy = "sets")
+	@ManyToMany(mappedBy = "suite")
 	private Collection<PsychTest> tests = new ArrayList<>();
 
 }

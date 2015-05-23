@@ -22,29 +22,26 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 @Table(name = "psychtestquestions")
 public class PsychTestQuestion extends AbstractDionysusPersistable {
 
-  private static final long serialVersionUID = -3202875107419512957L;
+	private static final long serialVersionUID = -3202875107419512957L;
 
-  @Column(name = "description")
-  private String description;
+	@Column(name = "description")
+	private String description;
 
-  @ManyToOne
-  private PsychTest test;
+	@ManyToOne
+	private PsychTest test;
 
-  @ManyToOne
-  private PsychTestCategory category;
+	@OneToMany(mappedBy = "question")
+	private Collection<PsychTestQuestionOption> options = new ArrayList<>();
 
-  @OneToMany(mappedBy = "item")
-  private Collection<PsychTestQuestionOption> options = new ArrayList<>();
-  
-  public PsychTestQuestion(Long id) {
-  	super(id);
-  }
+	public PsychTestQuestion(Long id) {
+		super(id);
+	}
 
-  public void addItemOption(PsychTestQuestionOption option) {
-    options.add(option);
-  }
+	public void addQuestionOption(PsychTestQuestionOption option) {
+		options.add(option);
+	}
 
-  public void removeItemOption(PsychTestQuestionOption option) {
-    options.remove(option);
-  }
+	public void removeQuestionOption(PsychTestQuestionOption option) {
+		options.remove(option);
+	}
 }

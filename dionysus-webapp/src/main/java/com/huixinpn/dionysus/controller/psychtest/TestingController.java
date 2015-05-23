@@ -1,13 +1,17 @@
 package com.huixinpn.dionysus.controller.psychtest;
 
 import com.huixinpn.dionysus.domain.psychtest.*;
+import com.huixinpn.dionysus.domain.psychtest.results.PsychTesting;
+import com.huixinpn.dionysus.domain.psychtest.results.PsychTestingSelection;
+import com.huixinpn.dionysus.domain.psychtest.results.PsychTestingState;
 import com.huixinpn.dionysus.dto.psychtest.PsychTestingData;
 import com.huixinpn.dionysus.dto.psychtest.PsychTestItemData;
 import com.huixinpn.dionysus.dto.psychtest.PsychTestingSelectionData;
-import com.huixinpn.dionysus.repository.psychtest.PsychTestItemRepository;
+import com.huixinpn.dionysus.repository.psychtest.PsychTestQuestionRepository;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestRepository;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestingRepository;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestingSelectionRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +26,7 @@ public class TestingController {
   private PsychTestRepository testRepository;
 
   @Autowired
-  private PsychTestItemRepository testItemRepository;
+  private PsychTestQuestionRepository testItemRepository;
 
   @Autowired
   private PsychTestingRepository testingRepository;

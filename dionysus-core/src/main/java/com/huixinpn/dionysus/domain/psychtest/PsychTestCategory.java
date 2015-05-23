@@ -1,18 +1,19 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
-import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.Collection;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
 @Table(name = "psychtestcategories")
@@ -25,8 +26,5 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
 
   @ManyToOne
   private PsychTest test;
-
-  @OneToMany(mappedBy = "category")
-  private Collection<PsychTestQuestion> items = new ArrayList<>();
 
 }

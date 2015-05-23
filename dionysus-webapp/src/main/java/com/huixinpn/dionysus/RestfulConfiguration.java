@@ -7,7 +7,7 @@ import com.huixinpn.dionysus.domain.course.CourseCategory;
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestSet;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestSuite;
 import com.huixinpn.dionysus.domain.site.Menu;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
@@ -30,7 +30,7 @@ public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
         PsychTest.class, PsychTestQuestion.class,
         PsychTestQuestionOption.class, Consultant.class, User.class, 
         CourseCategory.class, Course.class, 
-        PsychTestSet.class);
+        PsychTestSuite.class);
     try {
       config.setReturnBodyOnCreate(true);
       config.setReturnBodyOnUpdate(true);
