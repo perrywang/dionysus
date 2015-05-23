@@ -1,7 +1,6 @@
 Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-
   var PsychTestQuestion = Backbone.RelationalHalResource.extend({
     urlRoot: '/api/v1/psychtestquestions'
   });

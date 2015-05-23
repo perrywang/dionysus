@@ -23,6 +23,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
 
   var PsychTestView = Marionette.CompositeView.extend({
     template : JST['templates/home/psychtests/workspace'],
+    className : 'ui segment',
     childView : PsychTestQuestionView,
     childViewContainer : '.question',
     // TODO: move collection filter into PsychTest model
