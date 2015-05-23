@@ -92,6 +92,9 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   });
 
   var TestController = Marionette.Controller.extend({
+    showTestSet : function() {
+
+    },
     showTest: function (id) {
       var testFetching = Dionysus.request('test:entity', id);
       $.when(testFetching).done(function (test) {
@@ -149,10 +152,13 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
+  
+
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'tests/:id(/)': 'showTest'
+        'tests/:id(/)': 'showTest',
+        'tests(/)' : 'showTestSet'
       },
       controller: new TestController()
     });
