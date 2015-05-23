@@ -23,7 +23,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   Home.HeaderloginView = Marionette.ItemView.extend({
-    template: '#headerlogin-tpl',
+    template: JST["templates/home/header/login"],
     tagName: 'nav',
     className: 'ui menu',
     serializeData: function(){
@@ -48,7 +48,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   Home.LoginModalView = Marionette.ItemView.extend({
-    template: '#login-modal-tpl',
+    template: JST["templates/home/header/modal"],
     //tagName: 'form',
     //className: 'ui form compact segment',
     onRender: function() {
@@ -125,7 +125,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
   
   Home.HeaderView = Marionette.ItemView.extend({
-    template: '#header-tpl',
+    template: JST["templates/home/header/nav"],
     tagName: 'nav',
     className: 'ui menu',
     ui:{
