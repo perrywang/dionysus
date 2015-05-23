@@ -167,7 +167,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     new Marionette.AppRouter({
       appRoutes: {
         'tests/:id(/)': 'showTest',
-        'tests(/)' : 'showTestSet'
+        'testsets(/)' : 'showTestSet'
       },
       controller: new TestController()
     });
