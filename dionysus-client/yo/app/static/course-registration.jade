@@ -16,11 +16,18 @@ html
           .ui.divider(style="margin-top:20;")
           .two.fields
             .field
-              label 姓名
+              h4
+                label 课程
+              input(type="text" name="name" disabled="disabled" value="如何有效的管理个人情绪?")
+          .two.fields(style="margin-top:20")
+            .field
+              h4
+                label 姓名
               input(type="text" name="name" placeholder="")
           .two.fields(style="margin-top:20")
             .field
-              label 性别
+              h4
+                label 性别
               .ui.selection.dropdown
                 input(type="hidden" name="gender")
                 .default.text 性别
@@ -30,13 +37,15 @@ html
                   .item(data-value="female") 女
           .two.fields(style="margin-top:20;margin-bottom:20;")
             .field
-              label 电子邮件
+              h4
+                label 电子邮件
               .ui.left.icon.input
                 input(type="text")
                 i.mail.icon
           .two.fields(style="margin-top:20;margin-bottom:20;")
             .field
-              label 联系电话
+              h4
+                label 联系电话
               .ui.left.icon.input
                 input(type="text")
                 i.call.icon
