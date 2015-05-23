@@ -1,24 +1,21 @@
-header.ui.vertical.segment
-  .ui.basic.segment
-    h2 {{ title }}
-  .ui.basic.segment
-    h4 {{ description }}
-  .ui.basic.segment
-    h5 第{{ current }}题，一共{{ total }}题
+h2.ui.dividing.header 
+  {{ title }}
+  .sub.header {{ description }}
 
 section.ui.vertical.segment.question
 
 footer.ui.vertical.segment
+  h5 第{{ current }}题，一共{{ total }}题
   {{#if hasPrev}}
-  .ui.purple.button.prev 上一题
+  .ui.primary.button.prev 上一题
   {{else}}
-  .ui.purple.button.prev.disabled 上一题
+  .ui.primary.button.prev.disabled 上一题
   {{/if}}
 
   {{#if hasNext}}
-  .ui.purple.button.next 下一题
-  .ui.purple.disabled.button 提交答案
+  .ui.primary.button.next 下一题
+  .ui.primary.disabled.button 提交答案
   {{else}}
-  .ui.purple.button.next.disabled 下一题
-  .ui.purple.button 提交答案
+  .ui.primary.button.next.disabled 下一题
+  .ui.primary.button 提交答案
   {{/if}}
