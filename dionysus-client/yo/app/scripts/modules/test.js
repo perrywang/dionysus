@@ -91,7 +91,19 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
+  var TestSetListView = Marionette.ItemView.extend({
+    template: '#testset-list-tpl',
+    className : 'ui card'
+  });
+
   var TestController = Marionette.Controller.extend({
+    showTestSet : function() {
+      var testsets = Dionysus.request('psychtestset:instances');
+      $.when(testsets).done(function(tests) {
+        var view = new TestSetListView({ collection: tests });
+        Dionysus.mainRegion.show(view);
+      });
+    },
     showTest: function (id) {
       var testFetching = Dionysus.request('test:entity', id);
       $.when(testFetching).done(function (test) {
@@ -149,10 +161,13 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
+  
+
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'tests/:id(/)': 'showTest'
+        'tests/:id(/)': 'showTest',
+        'testsets(/)' : 'showTestSet'
       },
       controller: new TestController()
     });

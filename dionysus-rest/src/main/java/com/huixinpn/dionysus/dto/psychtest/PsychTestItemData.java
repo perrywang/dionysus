@@ -1,6 +1,6 @@
 package com.huixinpn.dionysus.dto.psychtest;
 
-import com.huixinpn.dionysus.domain.psychtest.PsychTestItem;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityData;
 import lombok.Data;
@@ -18,7 +18,7 @@ public class PsychTestItemData extends EntityData {
 
   private Long selected;
 
-  public PsychTestItemData(PsychTestItem item) {
+  public PsychTestItemData(PsychTestQuestion item) {
     super(item);
     this.description = item.getDescription();
     this.options = new EntityCollectionData<>(item.getOptions(), PsychTestItemOptionData.class).toDTOCollection();
