@@ -1,5 +1,5 @@
 {
-  "name": "yo",
+  "name": "dionysus",
   "private": true,
   "dependencies": {
     "marionette": "~2.3.2",
@@ -11,7 +11,11 @@
     "froala": "~1.2.6",
     "semantic-ui": "~1.11.6",
     "toastr": "~2.1.1",
-    "datetimepicker": "git://github.com/xdan/datetimepicker.git",
-    "flexslider": "git://github.com/woothemes/FlexSlider.git"
+    "datetimepicker": "~2.4.3",
+    "flexslider": "*",
+    "underscore": "~1.8.3"
+  },
+  "resolutions": {
+    "underscore": ">=1.7.0"
   }
 }
