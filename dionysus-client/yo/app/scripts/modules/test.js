@@ -97,15 +97,15 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   });
 
   var TestController = Marionette.Controller.extend({
-    showTestSet : function() {
-      var testsets = Dionysus.request('psychtestset:instances');
+    showTestSuites : function() {
+      var testsets = Dionysus.request('psychtestsuite:instances');
       $.when(testsets).done(function(tests) {
         var view = new TestSetListView({ collection: tests });
         Dionysus.mainRegion.show(view);
       });
     },
-    showTest: function (id) {
-      var testFetching = Dionysus.request('test:entity', id);
+    showTestSuite: function (id) {
+      var testFetching = Dionysus.request('psychtestsuite:instance', id);
       $.when(testFetching).done(function (test) {
         var total = test.get('items').length;
         test.set('total', total);
@@ -161,13 +161,11 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
-  
-
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'tests/:id(/)': 'showTest',
-        'testsets(/)' : 'showTestSet'
+        'psychtestsuites/:id(/)': 'showTestSuite',
+        'psychtestsuites(/)' : 'showTestSuites'
       },
       controller: new TestController()
     });

@@ -38,6 +38,6 @@ script#testset-list-tpl(type="text/template")
   .image
     img(src="/public/images/placeholder.png")
   .content
-    a.header(href!="/testsets/<%= item.id %>") <%= item.title %>
+    a.header(href!="/psychtestsuites/<%= item.id %>") <%= item.title %>
     p.description <%= item.description %>
   <% }); %>

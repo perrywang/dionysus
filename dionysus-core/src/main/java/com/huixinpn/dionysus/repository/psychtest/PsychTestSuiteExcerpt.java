@@ -6,6 +6,8 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestSuite;
 
 @Projection(name = "excerpt", types = PsychTestSuite.class)
 public interface PsychTestSuiteExcerpt {
+	
+	Long getId();
 
 	String getTitle();
 

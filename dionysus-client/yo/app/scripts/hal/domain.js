@@ -3,7 +3,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     url: '/api/v1/categories'
   });
 
-  var Article = Backbone.RelationalHalResource.extend({
+  Domain.Article = Backbone.RelationalHalResource.extend({
     relations: [{
       type: Backbone.HasOne,
       key: 'category',
@@ -35,7 +35,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     halEmbedded: {
       articles: {
         type: Backbone.HasMany,
-        relatedModel: Article
+        relatedModel: Domain.Article
       }
     }
   });
