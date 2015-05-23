@@ -1,13 +1,13 @@
-package com.huixinpn.dionysus.repository.psychtest.proj;
+package com.huixinpn.dionysus.repository.psychtest;
 
 import org.springframework.data.rest.core.config.Projection;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
 
 @Projection(name = "excerpt", types = { PsychTest.class })
-public interface PsychTestExcerpt {
+public interface EmbeddedPsychTestExcerpt {
 
-	public String getTitle();
-	
-	public String getDescription();
+	String getTitle();
+
+	String getDescription();
 }

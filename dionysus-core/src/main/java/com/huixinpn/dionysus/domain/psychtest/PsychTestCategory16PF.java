@@ -15,28 +15,30 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
 @Entity
 @Table(name = "psychtestcategories16pf")
-public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
+public class PsychTestCategory16PF extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336043876229L;
-	
+
 	@NotEmpty
 	@Column(name = "name", unique = true)
 	private String name;
-	
+
 	@Column(name = "topname")
 	private String topname;
-	
-	//this will add a column in table psychtestcategories named category16pf_id. It is strange. Does function need this @DaFeng?
-	//This PsychTestCategory_16PF is not required. After get confirmation of @DaFeng we can delete it.
-	//If we can add top name in PsychTestCategory to implement this??
+
+	// this will add a column in table psychtestcategories named category16pf_id.
+	// It is strange. Does function need this @DaFeng?
+	// This PsychTestCategory_16PF is not required. After get confirmation of
+	// @DaFeng we can delete it.
+	// If we can add top name in PsychTestCategory to implement this??
 	@OneToMany
 	@JoinColumn(name = "category16pf_id")
-	private List<PsychTestCategory> categories;
-	
+	private List<PsychTestFactor> categories;
+
 	@Lob
 	private String result;
-	
-	public PsychTestCategory_16PF() {
+
+	public PsychTestCategory16PF() {
 	}
 
 	public String getName() {
@@ -47,20 +49,17 @@ public class PsychTestCategory_16PF  extends AbstractDionysusPersistable {
 		this.name = name;
 	}
 
-	public List<PsychTestCategory> getCategories() {
+	public List<PsychTestFactor> getCategories() {
 		return categories;
 	}
 
-
-	public void setCategories(List<PsychTestCategory> categories) {
+	public void setCategories(List<PsychTestFactor> categories) {
 		this.categories = categories;
 	}
-
 
 	public String getResult() {
 		return result;
 	}
-
 
 	public void setResult(String result) {
 		this.result = result;

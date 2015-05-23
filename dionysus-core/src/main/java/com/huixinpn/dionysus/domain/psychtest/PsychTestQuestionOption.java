@@ -30,8 +30,5 @@ public class PsychTestQuestionOption extends AbstractDionysusPersistable {
 
 	@ManyToOne
 	private PsychTestQuestion question;
-	
-	public PsychTestQuestionOption(Long id) {
-		super(id);
-	}
+
 }

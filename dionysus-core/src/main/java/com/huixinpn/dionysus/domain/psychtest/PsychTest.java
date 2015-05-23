@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
@@ -57,23 +58,23 @@ public class PsychTest extends AbstractDionysusPersistable {
 	@Column(name = "comment")
 	private String comment;
 
-	@OneToMany(mappedBy = "test")
-	private Collection<PsychTestCategory> categories = new ArrayList<>();
-
-	@OneToMany(mappedBy = "test")
+	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
 	private Collection<PsychTestQuestion> questions = new ArrayList<>();
 
 	@ManyToMany
-	@JoinTable(name = "suite_test", 
+	@JoinTable(name = "suite_test",
 		joinColumns = @JoinColumn(name = "test_id"), 
 		inverseJoinColumns = @JoinColumn(name = "suite_id"))
 	private Collection<PsychTestSuite> suite = new ArrayList<>();
-
-	public void addTestQuestion(PsychTestQuestion item) {
-		questions.add(item);
-	}
-
-	public void removeTestQuestion(PsychTestQuestion item) {
-		questions.remove(item);
+	
+	public double evaluate(/*args*/) {
+		// TODO: 在这里进行分数的计算，传入参数为用户输入的答案
+		double score = 0;
+		for (PsychTestQuestion question : questions) {
+			for (PsychTestQuestionOption option : question.getOptions()) {
+				score += option.getScore();
+			}
+		}
+		return score;
 	}
 }

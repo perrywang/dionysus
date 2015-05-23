@@ -30,7 +30,7 @@ public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
         PsychTest.class, PsychTestQuestion.class,
         PsychTestQuestionOption.class, Consultant.class, User.class, 
         CourseCategory.class, Course.class, 
-        PsychTestSuite.class);
+        PsychTest.class, PsychTestSuite.class);
     try {
       config.setReturnBodyOnCreate(true);
       config.setReturnBodyOnUpdate(true);

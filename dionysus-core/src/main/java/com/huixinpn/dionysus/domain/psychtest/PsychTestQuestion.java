@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,12 +31,11 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 	@ManyToOne
 	private PsychTest test;
 
-	@OneToMany(mappedBy = "question")
-	private Collection<PsychTestQuestionOption> options = new ArrayList<>();
+	@ManyToOne
+	private PsychTestFactor factor;
 
-	public PsychTestQuestion(Long id) {
-		super(id);
-	}
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	private Collection<PsychTestQuestionOption> options = new ArrayList<>();
 
 	public void addQuestionOption(PsychTestQuestionOption option) {
 		options.add(option);

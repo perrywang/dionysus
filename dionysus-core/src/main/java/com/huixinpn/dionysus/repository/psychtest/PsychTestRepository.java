@@ -5,10 +5,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
-import com.huixinpn.dionysus.repository.psychtest.proj.PsychTestExcerpt;
 
 @Repository
-@RepositoryRestResource(excerptProjection = PsychTestExcerpt.class)
+@RepositoryRestResource(path = "psychtests", 
+	collectionResourceRel = "psychtests", 
+	itemResourceRel = "psychtest",
+	excerptProjection = EmbeddedPsychTestExcerpt.class)
 public interface PsychTestRepository extends JpaRepository<PsychTest, Long> {
 
 }
