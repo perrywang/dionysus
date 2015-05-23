@@ -1,14 +1,9 @@
 Dionysus.module('Site', function(Site, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  var MenuView = Marionette.CollectionView.extend(
-    {
-      template: '#site-tpl'
-    }
-  );
 
   var SiteView = Marionette.ItemView.extend({
-    template : '#site-tpl'
+    template : JST["templates/home/site"]
   });
  
   var SiteController = Marionette.Controller.extend({
