@@ -2,12 +2,12 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ModuleView = Marionette.ItemView.extend({
-    template: '#module-tpl',
+    template: JST["templates/home/modules/item"],
     className: 'card fluid'
   });
 
   var ModulesView = Marionette.CompositeView.extend({
-    template: '#modules-tpl',
+    template: JST["templates/home/modules/collection"],
     childView: ModuleView,
     childViewContainer: '.cards',
     className: 'ui segment'
@@ -140,27 +140,26 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   var FooterView = Marionette.ItemView.extend({
-    template: '#footer-tpl'
+    template: JST["templates/home/footer"]
   });
 
   Dionysus.addInitializer(function() {
     if(sessionStorage.getItem("authorized") == "enabled") {
       Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
       Dionysus.footerRegion.show(new FooterView());
-	}
-	else {
-	  Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
+    }
+    else {
+      Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
       Dionysus.footerRegion.show(new FooterView());
-	}
+    }
 
-  //initial login modal view
-  Dionysus.loginModalRegion.show(new Dionysus.Home.LoginModalView());
-  Dionysus.on("login",function(){
-    $('.ui.modal')
-    .modal('setting','transition','horizontal flip')
-    .modal('show');
-  })
-
+    //initial login modal view
+    Dionysus.loginModalRegion.show(new Dionysus.Home.LoginModalView());
+    Dionysus.on("login",function(){
+      $('.ui.modal')
+      .modal('setting','transition','horizontal flip')
+      .modal('show');
+    });
   });
 
 
