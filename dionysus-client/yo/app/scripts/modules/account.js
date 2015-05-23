@@ -43,7 +43,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   };
   
   var LogoutView = Marionette.ItemView.extend({ 
-    template: '#logout-tpl',
+    template: JST["templates/home/logout"],
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
@@ -69,7 +69,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   });
 
   var RegisterView = Marionette.ItemView.extend({ 
-    template: '#account-register-tpl',
+    template: JST["templates/home/account"],
     tagName: 'form',
     className: 'ui form compact segment',
     onRender: function() {

@@ -1,0 +1,29 @@
+.required.field
+  label 用户名
+  input(type="text", name="username", placeholder="请输入用户名")
+.required.field
+  label 密码
+  input(type="password", name="password", placeholder="请输入密码")
+.required.field
+  label 确认密码
+  input(type="password", name="password1", placeholder="请再次输入密码")
+.required.field
+  label 电子邮件
+  input(type="text", name="email", placeholder="请输入电子邮件")
+.field
+  .ui.checkbox
+    input(type="checkbox", name="terms")
+    label
+      | I agree to the 
+      a(href="#") Term of Service
+.field
+  .ui.checkbox
+    input(type="checkbox", name="consultant")
+    label
+      | 注册咨询师?
+.ui.horizontal.divider 或
+.field
+  span
+    | 已经有账号
+    a#login(href="#") 登陆
+input.ui.submit.button(type="submit", value="注册")
