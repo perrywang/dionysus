@@ -1,5 +1,10 @@
-.image
-  img(src="/public/images/placeholder.png")
 .content
-  a.header(href="/psychtestsuites/{{ id }}") {{ title }}
-  p.description {{ description }} 
+  h4.header {{ title }}
+  p.description {{ description }}
+  .ui.list
+    {{#each tests}}
+    .item
+      i.right.triangle.icon
+      .content
+        a.header(title="{{ description }}", href="/psychtest/{{ id }}") {{title}}
+    {{/each}}

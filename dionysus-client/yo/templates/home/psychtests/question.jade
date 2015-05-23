@@ -1,3 +1,10 @@
 .ui.basic.segment
   .label {{ description }}
-#item-options
+.options
+  {{#each options}}
+  .ui.basic.segment
+    .ui.radio.checkbox
+      input(type="radio")
+      label {{ description }}
+  {{/each}}
+  
