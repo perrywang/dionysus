@@ -8,7 +8,9 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 
 @Projection(name = "excerpt", types = PsychTestQuestion.class)
-public interface EmbeddedPsychTestQuestionExcerpt {
+public interface PsychTestQuestionExcerpt {
+	
+	Long getId();
 
 	String getDescription();
 

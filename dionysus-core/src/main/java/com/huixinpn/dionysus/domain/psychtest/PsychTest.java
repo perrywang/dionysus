@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
@@ -58,7 +57,7 @@ public class PsychTest extends AbstractDionysusPersistable {
 	@Column(name = "comment")
 	private String comment;
 
-	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "test")
 	private Collection<PsychTestQuestion> questions = new ArrayList<>();
 
 	@ManyToMany

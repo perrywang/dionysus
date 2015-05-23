@@ -8,11 +8,11 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Data
+@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class AbstractDionysusPersistable implements Serializable {

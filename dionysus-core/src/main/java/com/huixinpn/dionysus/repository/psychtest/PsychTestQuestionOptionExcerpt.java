@@ -5,7 +5,9 @@ import org.springframework.data.rest.core.config.Projection;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 
 @Projection(name = "excerpt", types = PsychTestQuestionOption.class)
-public interface EmbeddedPsychTestQuestionOptionExcerpt {
+public interface PsychTestQuestionOptionExcerpt {
+
+	Long getId();
 
 	String getDescription();
 }

@@ -1,8 +1,10 @@
 insert into psychtestsuites(id, title, description) values (1, '人格类', '常规检测项目');
 insert into psychtests(id, title, description) values (1, '16PF', '人格评定以及心理健康评定');
+insert into psychtests(id, title, description) values (2, '卡特尔十六项人格因素测验', '卡特尔十六项人格因素测验');
+insert into psychtests(id, title, description) values (3, '凯尔西气质类型测试', '别想太多，下手的时候别哆嗦，想选什么就选什么，又不是考试卷子，也不打分儿');
 insert into suite_test(suite_id, test_id) values (1, 1);
-insert into psychtestings(id, test_id) values (1, 1);
-
+insert into suite_test(suite_id, test_id) values (1, 2);
+insert into suite_test(suite_id, test_id) values (1, 3);
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');
@@ -20,16 +22,6 @@ insert into psychtestfactors(id, factor, name) values (13, 'Q1', '实验性');
 insert into psychtestfactors(id, factor, name) values (14, 'Q2', '独立性');
 insert into psychtestfactors(id, factor, name) values (15, 'Q3', '自律性');
 insert into psychtestfactors(id, factor, name) values (16, 'Q4', '紧张性');
-
-
-insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (2, '内向与外向型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (3, '感情用事与安详机警型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (4, '怯懦与果断型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (5, '心理健康因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (6, '专业而有成就者的人格因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (7, '创造能力人格因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (8, '在新的环境中有成长能力的人格因素', '16种人格因素测验应用的计算');
 
 
 insert into psychtestquestions(id, test_id, factor_id, description) values (1,  1, 1, '我很明了本测验的说明');
@@ -222,3 +214,67 @@ insert into psychtestquestions(id, test_id, factor_id, description) values (32, 
 insert into psychtestquestionoptions(id, question_id, description, score, weight) values (94, 32, '是的', 2, 10);
 insert into psychtestquestionoptions(id, question_id, description, score, weight) values (95, 32, '介于A-C之间', 1, 20);
 insert into psychtestquestionoptions(id, question_id, description, score, weight) values (96, 32, '不是的', 0, 30);
+
+
+
+
+
+
+
+
+
+
+
+insert into psychtestquestions(id, test_id, factor_id, description) values (33,  2, 2, '我很明了本测验的说明');
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (97, 33, '是的', 2, 10);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (98, 33, '不一定', 1, 20);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (99, 33, '不是的', 0, 30);
+
+
+insert into psychtestquestions(id, test_id, factor_id, description) values (34,  2, 2, '我对本测验的每一个问题，都能做到诚实的回答');
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (100, 34, '是的', 2, 10);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (101, 34, '不一定', 1, 20);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (102, 34, '不同意', 0, 30);
+
+
+insert into psychtestquestions(id, test_id, factor_id, description) values (35,  2, 2, '如果我有机会的话，我愿意');
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (103, 35, '到一个繁华的城市去旅行', 2, 10);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (104, 35, '介于A-C之间', 1, 20);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (105, 35, '游览清静的山区', 0, 30);
+
+
+
+
+
+
+
+
+
+
+
+
+insert into psychtestquestions(id, test_id, factor_id, description) values (36,  3, 3, '电话铃响的时候，你会：');
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (106, 36, '马上第一个去接', 2, 10);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (107, 36, '希望别人去接', 1, 20);
+
+
+insert into psychtestquestions(id, test_id, factor_id, description) values (37,  3, 3, '你更倾向于：');
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (108, 37, '迅速做出反应', 2, 10);
+insert into psychtestquestionoptions(id, question_id, description, score, weight) values (109, 37, '时常自我反省', 1, 20);
+
+
+
+
+
+
+
+insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');
+insert into psychtestcategories16pf(id, name, topname) values (2, '内向与外向型', '次级人格因素分析');
+insert into psychtestcategories16pf(id, name, topname) values (3, '感情用事与安详机警型', '次级人格因素分析');
+insert into psychtestcategories16pf(id, name, topname) values (4, '怯懦与果断型', '次级人格因素分析');
+insert into psychtestcategories16pf(id, name, topname) values (5, '心理健康因素', '16种人格因素测验应用的计算');
+insert into psychtestcategories16pf(id, name, topname) values (6, '专业而有成就者的人格因素', '16种人格因素测验应用的计算');
+insert into psychtestcategories16pf(id, name, topname) values (7, '创造能力人格因素', '16种人格因素测验应用的计算');
+insert into psychtestcategories16pf(id, name, topname) values (8, '在新的环境中有成长能力的人格因素', '16种人格因素测验应用的计算');
+
+insert into psychtestings(id, test_id) values (1, 1);
