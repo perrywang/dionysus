@@ -46,8 +46,4 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('testitem:entities', function () {
-
-  });
-
 })

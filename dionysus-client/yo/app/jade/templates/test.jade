@@ -1,12 +1,9 @@
 script#test-tpl(type="text/template")
-  //- test name and description
-
   #test-header.ui.vertical.segment
   #test-item.ui.vertical.segment
   #test-wizard.ui.vertical.segment
 
 script#test-header-tpl(type="text/template")
-  //- test name and description
   .ui.basic.segment
     h2 <%= title %>
   .ui.basic.segment
@@ -36,3 +33,11 @@ script#test-wizard-tpl(type="text/template")
     .ui.basic.segment
       #submit.ui.purple.disabled.button 提交答案
 
+script#testset-list-tpl(type="text/template")
+  <% _.each(items, function(item) { %>
+  .image
+    img(src="/public/images/placeholder.png")
+  .content
+    a.header(href!="/tests/<%= item.id %>") <%= item.title %>
+    p.description <%= item.description %>
+  <% }); %>

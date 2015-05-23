@@ -34,3 +34,4 @@ dionysus-test.db
 src/main/webapp/wro
 bin/
 dionysus-client/yo/app/scripts/modules/account.js
+rebel.xml
