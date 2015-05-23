@@ -2,15 +2,14 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ModuleView = Marionette.ItemView.extend({
-    template: JST["templates/home/modules/item"],
+    template: JST["templates/home/modules/module"],
     className: 'card fluid'
   });
 
-  var ModulesView = Marionette.CompositeView.extend({
-    template: JST["templates/home/modules/collection"],
+  var ModulesView = Marionette.CollectionView.extend({
     childView: ModuleView,
     childViewContainer: '.cards',
-    className: 'ui segment'
+    className : 'ui three doubling cards'
   });
 
   var HomeController = Marionette.Controller.extend({
