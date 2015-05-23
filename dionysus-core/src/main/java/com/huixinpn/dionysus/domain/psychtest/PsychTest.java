@@ -56,18 +56,18 @@ public class PsychTest extends AbstractDionysusPersistable {
   private Collection<PsychTestCategory> categories = new ArrayList<>();
 
   @OneToMany(mappedBy = "test")
-  private Collection<PsychTestItem> items = new ArrayList<>();
+  private Collection<PsychTestQuestion> items = new ArrayList<>();
 
   @ManyToMany
   @JoinTable(name = "set_test", joinColumns = @JoinColumn(name = "test_id"),
       inverseJoinColumns = @JoinColumn(name = "set_id"))
   private Collection<PsychTestSet> sets = new ArrayList<>();
 
-  public void addTestItem(PsychTestItem item) {
+  public void addTestItem(PsychTestQuestion item) {
     items.add(item);
   }
 
-  public void removeTestItem(PsychTestItem item) {
+  public void removeTestItem(PsychTestQuestion item) {
     items.remove(item);
   }
 

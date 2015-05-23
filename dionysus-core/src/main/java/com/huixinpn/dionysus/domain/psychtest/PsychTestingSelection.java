@@ -22,10 +22,10 @@ public class PsychTestingSelection extends AbstractDionysusPersistable {
   //when tester modify the answer we need be able to quickly find which item he is modifying
   //no need to iterate all the answered items to find.
   @OneToOne
-  private PsychTestItem item;
+  private PsychTestQuestion item;
 
   @OneToOne
-  private PsychTestItemOption selected;
+  private PsychTestQuestionOption selected;
 
   //if some option need input text
   @Lob

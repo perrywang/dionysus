@@ -1,7 +1,7 @@
 package com.huixinpn.dionysus.dto.psychtest;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestItem;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.dto.EntityData;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class PsychTestingData extends EntityData {
     super(test);
     this.title = test.getTitle();
     this.description = test.getDescription();
-    for (PsychTestItem item : test.getItems()) {
+    for (PsychTestQuestion item : test.getItems()) {
       items.add(item.getId());
     }
   }

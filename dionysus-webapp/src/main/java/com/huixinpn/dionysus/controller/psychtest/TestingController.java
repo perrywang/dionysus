@@ -106,14 +106,14 @@ public class TestingController {
   saveAnswer(@PathVariable Long id, @PathVariable Long item_id, @RequestBody PsychTestingSelectionData selectionData) {
     PsychTestingSelection selection = selectionRepository.findByTestingAndItem(id, item_id);
     if (selection != null) {
-      selection.setSelected(new PsychTestItemOption(selectionData.getOption_id()));
+      selection.setSelected(new PsychTestQuestionOption(selectionData.getOption_id()));
       selection.setAnswer(selectionData.getAnswer());
       selectionRepository.save(selection);
     } else {
       selection = new PsychTestingSelection();
       selection.setTesting(new PsychTesting(id));
-      selection.setItem(new PsychTestItem(item_id));
-      selection.setSelected(new PsychTestItemOption(selectionData.getOption_id()));
+      selection.setItem(new PsychTestQuestion(item_id));
+      selection.setSelected(new PsychTestQuestionOption(selectionData.getOption_id()));
       selection.setAnswer(selectionData.getAnswer());
       selectionRepository.save(selection);
     }

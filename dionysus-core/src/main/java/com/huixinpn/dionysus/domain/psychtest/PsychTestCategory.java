@@ -27,6 +27,6 @@ public class PsychTestCategory extends AbstractDionysusPersistable {
   private PsychTest test;
 
   @OneToMany(mappedBy = "category")
-  private Collection<PsychTestItem> items = new ArrayList<>();
+  private Collection<PsychTestQuestion> items = new ArrayList<>();
 
 }
