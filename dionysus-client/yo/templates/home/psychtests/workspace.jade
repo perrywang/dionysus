@@ -9,12 +9,16 @@ header.ui.vertical.segment
 section.ui.vertical.segment.question
 
 footer.ui.vertical.segment
-  .four.wide.column
-    .ui.basic.segment
-      .ui.purple.button.last 上一题
-  .four.wide.column
-    .ui.basic.segment
-      .ui.purple.button.next 下一题
-  .four.wide.column
-    .ui.basic.segment
-      .ui.purple.disabled.button 提交答案
+  {{#if hasPrev}}
+  .ui.purple.button.prev 上一题
+  {{else}}
+  .ui.purple.button.prev.disabled 上一题
+  {{/if}}
+
+  {{#if hasNext}}
+  .ui.purple.button.next 下一题
+  .ui.purple.disabled.button 提交答案
+  {{else}}
+  .ui.purple.button.next.disabled 下一题
+  .ui.purple.button 提交答案
+  {{/if}}

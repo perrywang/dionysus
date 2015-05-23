@@ -16,6 +16,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     className : 'ui list'
   });
 
+
   var PsychTestQuestionView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/question']
   });
@@ -23,7 +24,31 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   var PsychTestView = Marionette.CompositeView.extend({
     template : JST['templates/home/psychtests/workspace'],
     childView : PsychTestQuestionView,
-    childViewContainer : '.question'
+    childViewContainer : '.question',
+    // TODO: move collection filter into PsychTest model
+    selectQuestion: function() {
+      var index = this.model.get('current') - 1;
+      var models = this._collection.filter(function(item, i) {
+        return index === i;
+      });
+      this.collection = new Backbone.Collection(models);
+    },
+    initialize: function() {
+      this._collection = this.collection;
+      this.selectQuestion();
+      this.listenTo(this.model, 'change', function() {
+        this.selectQuestion();
+        this.render();
+      }, this);
+    },
+    events : {
+      'click .prev' : function() {
+        this.model.prevQuestion();
+      },
+      'click .next' : function() {
+        this.model.nextQuestion();
+      }
+    }
   });
 
   var TestController = Marionette.Controller.extend({

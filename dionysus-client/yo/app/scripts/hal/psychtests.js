@@ -8,13 +8,6 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   var PsychTest = Backbone.RelationalHalResource.extend({
     urlRoot: '/api/v1/psychtests',
-    initialize: function() {
-      this.bind('change', this.updateCalculated, this);
-    },
-    updateCalculated : function(){
-      var questions = this.embedded('questions') || [];
-      this.set('total', questions.length, { silent : true });
-    },
     defaults : {
       current : 1
     },
@@ -22,6 +15,30 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       questions: {
         type: Backbone.HasMany,
         relatedModel: PsychTestQuestion
+      }
+    },
+    initialize: function() {
+      this.bind('change', this.updateCalculated, this);
+    },
+    updateCalculated : function(){
+      var questions = this.embedded('questions') || [],
+          total = questions.length,
+          current = this.get('current');
+
+      var index = current - 1;
+      
+      this.set('hasPrev', index > 0, { silent : true });
+      this.set('hasNext', index < total - 1, { silent : true });
+      this.set('total', questions.length, { silent : true });
+    },
+    prevQuestion : function() {
+      if (this.get('hasPrev')) {
+        this.set('current', this.get('current') - 1); 
+      }
+    },
+    nextQuestion : function() {
+      if (this.get('hasNext')) {
+        this.set('current', this.get('current') + 1);
       }
     }
   });
