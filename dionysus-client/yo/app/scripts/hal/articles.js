@@ -3,7 +3,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     url: '/api/v1/categories'
   });
 
-  Domain.Article = Backbone.RelationalHalResource.extend({
+  var Article = Backbone.RelationalHalResource.extend({
     relations: [{
       type: Backbone.HasOne,
       key: 'category',
@@ -11,7 +11,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }]
   });
 
-  var CategoryResources = Backbone.RelationalHalResource.extend({
+  var CategoryCollection = Backbone.RelationalHalResource.extend({
     url: '/api/v1/categories',
     halEmbedded: {
       categories: {
@@ -30,18 +30,18 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
-  var ArticleResources = Backbone.RelationalHalResource.extend({
+  var ArticleCollection = Backbone.RelationalHalResource.extend({
     url: '/api/v1/articles',
     halEmbedded: {
       articles: {
         type: Backbone.HasMany,
-        relatedModel: Domain.Article
+        relatedModel: Article
       }
     }
   });
 
   Dionysus.reqres.setHandler('category:instances', function() {
-    var resources = new CategoryResources(), defer = $.Deferred();
+    var resources = new CategoryCollection(), defer = $.Deferred();
     resources.fetch().then(function() {
       defer.resolve(resources);
     });
@@ -49,10 +49,11 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   Dionysus.reqres.setHandler('category:instance', function(id) {
-    var Category = Backbone.RelationalHalResource.extend({
-      url: '/api/v1/categories/' + id
-    });
-    var category = new Category(), defer = $.Deferred();
+    var category = Category.findOrCreate({
+      id : id,
+      _links : { self: { href : '/api/v1/categories/' + id } }
+    }), defer = $.Deferred();
+
     category.fetch().then(function() {
       defer.resolve(category);
     });
@@ -60,8 +61,8 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   Dionysus.reqres.setHandler('article:instances', function(pageId,size) {
-    var resources = new ArticleResources(), defer = $.Deferred();
-    var pageX = pageId?pageId:0;
+    var resources = new ArticleCollection(), defer = $.Deferred();
+    var pageX = pageId ? pageId : 0;
   
     resources.fetch({ data: { projection: 'summary', page: pageX, size:size }}).then(function() {
       defer.resolve(resources);
@@ -70,7 +71,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   Dionysus.reqres.setHandler('article:instances:page', function(pageId) {
-    var resources = new ArticleResources(), defer = $.Deferred();
+    var resources = new ArticleCollection(), defer = $.Deferred();
     resources.fetch({data: { projection: 'summary', page: pageId}}).then(function(){
       defer.resolve(resources);
     });
@@ -78,11 +79,10 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   })
 
   Dionysus.reqres.setHandler('article:instance', function(id) {
-    // TODO: single resource fetch
-    var Article = Backbone.RelationalHalResource.extend({ 
-      url: '/api/v1/articles/' + id
-    });
-    var article = new Article(), defer = $.Deferred();
+    var article = Article.findOrCreate({
+      id : id,
+      _links : { self: { href : '/api/v1/articles/' + id } }
+    }), defer = $.Deferred();
 
     article.fetch({ data: { projection: 'details'}}).then(function() {
       article.link('category').fetchResource().then(function(data) {
