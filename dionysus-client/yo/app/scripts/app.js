@@ -5,8 +5,7 @@ Dionysus.addRegions({
   subNavRegion: '#submenu',
   mainRegion: '#main',
   footerRegion: '#footer',
-  dialogRegion: '#dialog',
-  loginModalRegion: '#loginmodal'
+  dialogRegion: '#dialog'
 });
 
 Dionysus.navigate = function(route,options) { 

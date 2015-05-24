@@ -153,11 +153,11 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
     }
 
     //initial login modal view
-    Dionysus.loginModalRegion.show(new Dionysus.Home.LoginModalView());
+    Dionysus.dialogRegion.show(new Dionysus.Home.LoginModalView());
     Dionysus.on("login",function(){
       $('.ui.modal')
-      .modal('setting','transition','horizontal flip')
-      .modal('show');
+        .modal('setting','transition','horizontal flip')
+        .modal('show');
     });
   });
 
