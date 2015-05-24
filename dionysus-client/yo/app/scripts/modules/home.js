@@ -64,7 +64,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   var FooterView = Marionette.ItemView.extend({
-    template: JST["templates/home/footer"]
+    template: JST["templates/home/footer"],
+    className : 'ui segment'
   });
 
   Home.LoginModalView = Marionette.ItemView.extend({
