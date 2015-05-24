@@ -1,9 +1,59 @@
 script#consultants-tpl(type="text/template")
-  ul.ui.items
+  .sixteen.wide.moblie.twelve.wide.tablet.twelve.wide.computer.column
+    .row
+      .column
+        .ui.raised.segment
+          .ui.header 预约心理咨询师
+    .row
+      .left.aligned.column
+        .ui.items
+    .row
+      .center.aligned.column
+        .ui.divider
+        .ui.pagination.menu
+          a.icon.item
+            i.left.arrow.icon
+          a.active.item 1
+          a.item ...
+          a.item 10
+          a.item 11
+          a.item 12
+          a.icon.item
+            i.right.arrow.icon
 
 script#consultant-tpl(type="text/template")
   .item(style="padding-top:2rem")
-    .ui.piled.segment
+    .ui.piled.left.aligned.segment
+      .ui.small.image
+        img(src="/public/images/temp/consultant.jpg")
+      .content(style="padding-top:1rem")
+        a.ui.header 胡丽萍
+        p.description 1、儿童、青少年心理咨询及行为矫正。 2、情感纠葛、婚姻危机干预。 3、多动症、厌学、考前焦虑等学生心理咨询。 4、认识自我、科学释梦。 5、亲子教育、婚恋情感讲座及沙龙 咨询风格：亲切温暖...
+        .ui.divider
+        .ui.accordion
+          .title 预约信息
+            i.dropdown.icon
+          .content
+            form.ui.form  
+              .field
+                label 日期:  
+                input(type="date", name="date", placeHolder="Date")
+              .field
+                label 方式:  
+                select.ui.dropdown(name="approach")
+                  option(value="ONLINE") 在线
+                  option(value="OFFLINE") 面对面
+                  option(value="BY_PHONE") 电话
+              .field
+                label 留言:  
+                textarea(name="reason")
+              .ui.button.submit 预约
+
+script#new-appointment-tpl(type="text/template")
+
+script#XXconsultant-tpl(type="text/template")
+  .item(style="padding-top:2rem")
+    .ui.piled.left.aligned.segment
       .ui.small.image
         img(src!="<%= avatar%>")
       .content
@@ -28,5 +78,3 @@ script#consultant-tpl(type="text/template")
                 label 留言:  
                 textarea(name="reason")
               .ui.button.submit 预约
-
-script#new-appointment-tpl(type="text/template")

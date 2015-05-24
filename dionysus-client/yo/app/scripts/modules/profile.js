@@ -4,7 +4,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   var PofileLayoutView = Marionette.LayoutView.extend({
     template: JST["templates/home/profile/menu"],
     regions: {
-      'myContent': '#mycontent'
+      'myContent': '#mycontent',
     },
     ui: {
       myArticles: '#myarticles',
@@ -21,7 +21,8 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'click @ui.myInfo' : 'updateInfo'
     },
     showMyArticles: function(){
-      //$.when(Dionysus.request())
+      var view = new Marionette.ItemView({template:"#profile-myarticles-tpl"});
+      this.getRegion('myContent').show(view);
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
