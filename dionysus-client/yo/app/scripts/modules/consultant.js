@@ -28,7 +28,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     template: '#consultants-tpl',
     childView: ConsultantView,
     childViewContainer: '.items',
-    className: 'ui page',
+    className: 'ui center aligned page grid',
     onDomRefresh:function(){
       this.$('.ui.accordion').accordion();
     }

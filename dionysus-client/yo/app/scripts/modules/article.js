@@ -112,7 +112,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
     },
     showArticlesByCategoryAndType: function( category, type){
-
+      console.log("xxx");
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.ItemListLayout());
     },
     showArticlesByCategory: function(category){
 
@@ -138,9 +139,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     new Marionette.AppRouter({
       appRoutes : {
         'articles/createdBy/:id' : 'showArticlesByAuthor',
+        'articles/list(/)': 'showArticlesByCategoryAndType',
         'articles(/p:page)': 'showArticles',
         'articles/:id(/)': 'showArticle',
-
       },
       controller: new ArticleController()
     });
