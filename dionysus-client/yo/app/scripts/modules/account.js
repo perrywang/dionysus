@@ -4,46 +4,31 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   var ACCOUNT_RULES = {
     username: {
       identifier: 'username',
-      rules: [{
-        type: 'empty',
-        prompt: '请输入用户名'
-      }]
+      rules: [{ type: 'empty', prompt: '请输入用户名' }]
     },
     password: {
       identifier: 'password',
-      rules: [{
-        type: 'empty',
-        prompt: '请输入密码'
-      }]
+      rules: [{ type: 'empty', prompt: '请输入密码' }]
     }, 
     password1: {
       identifier: 'password1',
-      rules: [{
-        type: 'empty',
-        prompt: '请再次输入密码'
-      }, {
-        type: 'match[password]',
-        prompt: '两次输入的密码不匹配'
-      }]
+      rules: [
+        { type: 'empty', prompt: '请再次输入密码' }, 
+        { type: 'match[password]', prompt: '两次输入的密码不匹配' }
+      ]
     },
     email: {
       identifier: 'email',
-      rules: [{
-        type: 'email',
-        prompt: '请输入您的电子邮件地址'
-      }]
+      rules: [{ type: 'email', prompt: '请输入您的电子邮件地址' }]
     },
     terms: {
       identifier : 'terms',
-      rules: [{
-        type   : 'checked',
-        prompt : '还没有同意用户协议'
-      }]
+      rules: [{ type : 'checked', prompt : '还没有同意用户协议' }]
     }
   };
   
   var LogoutView = Marionette.ItemView.extend({ 
-    template: JST["templates/home/logout"],
+    template: JST['templates/home/logout'],
     tagName: 'form',
     className: 'ui form',
     onRender: function() {
@@ -69,7 +54,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
   });
 
   var RegisterView = Marionette.ItemView.extend({ 
-    template: JST["templates/home/account"],
+    template: JST['templates/home/account'],
     tagName: 'form',
     className: 'ui form compact segment',
     onRender: function() {
@@ -90,7 +75,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       this.trigger('user:register', user); 
     },
     triggerLogin: function(){
-      Dionysus.trigger("login");
+      Dionysus.trigger('login');
     }
   });
 
@@ -107,8 +92,8 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           data: JSON.stringify(user)
         }).done(function(response) {
           window.alert('注册成功！');
-          sessionStorage.setItem("authorized", "enabled");
-          sessionStorage.setItem("user", response.id);
+          sessionStorage.setItem('authorized', 'enabled');
+          sessionStorage.setItem('user', response.id);
           Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
           Dionysus.navigate('/site',{trigger:true});
         }).fail(function() {
@@ -123,15 +108,15 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         $.ajax({
           url: '/api/v1/logout',
           cache: false,
-          success: function(response) {
-            sessionStorage.setItem("authorized", "disabled");
-            sessionStorage.removeItem("user");
-            sessionStorage.removeItem("role");
+          success: function() {
+            sessionStorage.setItem('authorized', 'disabled');
+            sessionStorage.removeItem('user');
+            sessionStorage.removeItem('role');
             Dionysus.navigate('/site',{trigger:true});
             Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
           }
         });
-      })
+      });
       Dionysus.mainRegion.show(view);
     }
   });

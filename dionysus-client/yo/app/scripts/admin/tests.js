@@ -1,7 +1,8 @@
-Dionysus.module('DionysusApp.AdminTest', function(Test, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('DionysusApp.AdminTest', function(Test, Dionysus, Backbone, Marionette) {
+  'use strict';
 
   var TestView = Marionette.ItemView.extend({
-    template: JST["templates/admin/psychtests/psychtests"],
+    template: JST['templates/admin/psychtests/psychtests'],
     className: 'container'
   });
 
@@ -14,7 +15,7 @@ Dionysus.module('DionysusApp.AdminTest', function(Test, Dionysus, Backbone, Mari
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : { 
-        "admin/tests(/)": "showTests" 
+        'admin/tests(/)': 'showTests' 
       },
       controller: new TestController()
     });

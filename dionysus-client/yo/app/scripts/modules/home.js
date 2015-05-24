@@ -2,7 +2,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var ModuleView = Marionette.ItemView.extend({
-    template: JST["templates/home/modules/module"],
+    template: JST['templates/home/modules/module'],
     className: 'card fluid'
   });
 
@@ -22,16 +22,16 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   Home.HeaderLoginView = Marionette.ItemView.extend({
-    template: JST["templates/home/header/login"],
+    template: JST['templates/home/header/login'],
     tagName: 'nav',
     className: 'ui menu',
     serializeData: function(){
       return {
-        "id": sessionStorage.getItem("user")
-      }
+        'id': sessionStorage.getItem('user')
+      };
     },
     onShow: function(){
-      if(!sessionStorage.getItem('role') || sessionStorage.getItem('role') != "ROLE_ADMIN"){
+      if(!sessionStorage.getItem('role') || sessionStorage.getItem('role') !== 'ROLE_ADMIN'){
         this.$el.form().find('#adminentry').remove();
       }
     },
@@ -49,7 +49,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   
   
   Home.HeaderView = Marionette.ItemView.extend({
-    template: JST["templates/home/header/nav"],
+    template: JST['templates/home/header/nav'],
     tagName: 'nav',
     className: 'ui menu',
     ui:{
@@ -64,12 +64,12 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   var FooterView = Marionette.ItemView.extend({
-    template: JST["templates/home/footer"],
+    template: JST['templates/home/footer'],
     className : 'ui segment'
   });
 
   Home.LoginModalView = Marionette.ItemView.extend({
-    template: JST["templates/home/header/modal"],
+    template: JST['templates/home/header/modal'],
     className : 'ui modal',
     events : {
       'click #register' : function() {
@@ -93,12 +93,13 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       }).done(function(response) {
         var data = response.id;
         var roles = response.roles;
-        sessionStorage.setItem("authorized", "enabled");
-        sessionStorage.setItem("user", data);
+        sessionStorage.setItem('authorized', 'enabled');
+        sessionStorage.setItem('user', data);
         for (var i = roles.length - 1; i >= 0; i--) {
-          if (roles[i].name === 'ROLE_ADMIN')
+          if (roles[i].name === 'ROLE_ADMIN') {
             sessionStorage.setItem('role',roles[i].name);
-        };
+          }
+        }
 
         dialog.$el.modal('hide');
         Dionysus.navigate('/site', { trigger: true });
@@ -126,14 +127,14 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   Dionysus.addInitializer(function() {
-    if (sessionStorage.getItem("authorized") === "enabled") {
+    if (sessionStorage.getItem('authorized') === 'enabled') {
       Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderLoginView());
     } else {
       Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
     }
 
     Dionysus.footerRegion.show(new FooterView());
-    Dionysus.on("login",function(){
+    Dionysus.on('login',function(){
       Dionysus.dialogRegion.show(new Dionysus.Home.LoginModalView());
     });
   });

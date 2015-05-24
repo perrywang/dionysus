@@ -6,7 +6,7 @@ Dionysus.module('About', function(About, Dionysus, Backbone, Marionette) {
   });
 
   var AboutView = Marionette.ItemView.extend({ 
-    template: JST["templates/home/about"],
+    template: JST['templates/home/about'],
     tagName: 'article'
   });
 

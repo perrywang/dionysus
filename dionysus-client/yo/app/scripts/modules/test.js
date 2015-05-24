@@ -1,8 +1,8 @@
-Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
+Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
   var TestSuiteView = Marionette.ItemView.extend({
-    template : JST["templates/home/psychtests/suite"],
+    template : JST['templates/home/psychtests/suite'],
     className : 'ui card',
     serializeData : function() {
       var data = this.serializeModel(this.model);
@@ -12,7 +12,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
   });
 
   var TestSuiteCollectionView = Marionette.CompositeView.extend({
-    template : JST["templates/home/psychtests/psychtest"],
+    template : JST['templates/home/psychtests/psychtest'],
     childView : TestSuiteView,
     childViewContainer : '.ui.cards'
   });

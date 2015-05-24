@@ -1,4 +1,4 @@
-Dionysus.module('Common', function(Common, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('Common', function(Common, Dionysus, Backbone, Marionette, $, _) {
   'use strict';
 
   var LinkView = Marionette.ItemView.extend({
