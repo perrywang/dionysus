@@ -266,6 +266,9 @@ insert into psychtestquestionoptions(id, question_id, description, score, weight
 
 
 
+insert into psychtestsuites(id, title, description) values (2, '非正常类', '非正常人类测试');
+insert into suite_test(suite_id, test_id) values (2, 2);
+insert into suite_test(suite_id, test_id) values (2, 3);
 
 
 insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');

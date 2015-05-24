@@ -13,7 +13,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
 
   var TestSuiteCollectionView = Marionette.CollectionView.extend({
     childView : TestSuiteView,
-    className : 'ui list'
+    className : 'ui cards'
   });
 
 
