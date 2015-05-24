@@ -21,15 +21,16 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'click @ui.myInfo' : 'updateInfo'
     },
     showMyArticles: function(){
-      var view = new Marionette.ItemView({template:"#profile-myarticles-tpl"});
-      this.getRegion('myContent').show(view);
+      this.getRegion('myContent').show(new Marionette.ItemView({
+        template : JST["templates/home/profile/articles"]
+      }));
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
       $.when(Dionysus.request('appointment:appointedby', sessionStorage.getItem("user"),5))
-      .done(function(appointments){
-        region.show(new ProfileAppointmentView({collection: appointments}))
-      });
+        .done(function(appointments){
+          region.show(new ProfileAppointmentView({collection: appointments}))
+        });
     },
     showMyCourses: function(){
       alert("you click myCourses")
@@ -41,11 +42,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
     }
-
   });
 
   var ProfileAppointmentView = Marionette.ItemView.extend({
-    template:'#profile-myappointments-tpl',
+    template: JST["templates/home/profile/appointments"],
     serializeData: function(){
       var dataCollection = this.collection.toJSON();
       
@@ -96,13 +96,11 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     onRender: function() {
       this.$('select.dropdown').dropdown();
-      this.$el.form();
       this.$el.form('set values', this.model.toJSON());
     }
   });
 
   var ProfileController = Marionette.Controller.extend({
-    
     showProfile: function(id){
 
       $.when(Dionysus.request('user:entity', id)).done(function(user){
@@ -111,9 +109,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       })
     },
 
+    // XXX: should not expose user id, otherwise user id can be guess by hackers !
     showInfo: function (id) {
-      var userFetching = Dionysus.request('user:entity', id);
-      $.when(userFetching).done(function(user) {
+      var fetching = Dionysus.request('user:entity', id);
+      $.when(fetching).done(function(user) {
 	    var profileview = new ProfileView({ model: user});
         profileview.on("profile:update", function(data){
           //alert("update Called!");

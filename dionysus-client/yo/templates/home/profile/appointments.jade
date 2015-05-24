@@ -1,0 +1,11 @@
+.ui.celled.list
+  {{#each items}}
+  .item
+    img.ui.avatar.image(src="{{ consultant_avatar }}")
+    .content
+      .header {{ consultant_name }}
+      .description 
+        .label 时间 {{ date }}
+        .label 状态 {{ state }}
+        a(href="{{ item.consultant_qqAddress }}") QQ聊天
+  {{/each}}
