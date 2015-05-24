@@ -6,38 +6,38 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       identifier: 'username',
       rules: [{
         type: 'empty',
-        prompt: 'Please enter a username'
+        prompt: '请输入用户名'
       }]
     },
     password: {
       identifier: 'password',
       rules: [{
         type: 'empty',
-        prompt: 'Please enter a password'
+        prompt: '请输入密码'
       }]
     }, 
     password1: {
       identifier: 'password1',
       rules: [{
         type: 'empty',
-        prompt: 'Please retype your password'
+        prompt: '请再次输入密码'
       }, {
         type: 'match[password]',
-        prompt: 'Password should match'
+        prompt: '两次输入的密码不匹配'
       }]
     },
     email: {
       identifier: 'email',
       rules: [{
         type: 'email',
-        prompt: 'Please enter an valid email'
+        prompt: '请输入您的电子邮件地址'
       }]
     },
     terms: {
       identifier : 'terms',
       rules: [{
         type   : 'checked',
-        prompt : 'You must agree to the terms and conditions'
+        prompt : '还没有同意用户协议'
       }]
     }
   };

@@ -9,19 +9,23 @@ script#profile-layout-tpl(type="text/template")
     i.bar.char.icon
   .ui.page.grid
     .four.wide.left.aligned.column
-      .ui.list
-        a#myarticles.item
-          i.small.circular.book.icon
-          |我的文章
-        a#myappointments.item
-          i.small.circular.chat.icon
-          |我的一对一咨询
-        a#mycourses.item
-          i.small.circular.users.icon 
-          |我的课程
-        a#mytests.item
-          i.small.circular.question.icon 
-          |我的测试
+      .ui.link.list
+        .item
+          a(href="#")#myarticles 
+            i.small.circular.book.icon
+            | 我的文章
+        .item
+          a(href="#")#myappointments 
+            i.small.circular.chat.icon
+            | 我的一对一咨询
+        .item
+          a(href="#")#mycourses 
+            i.small.circular.users.icon 
+            | 我的课程 
+        .item
+          a(href="#")#mytests 
+            i.small.circular.question.icon 
+            | 我的测试
     .twelve.wide.column
       .ui.stacked.segment
         div#mycontent
