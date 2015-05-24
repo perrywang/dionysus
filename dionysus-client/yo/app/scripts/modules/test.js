@@ -11,9 +11,10 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $, _) {
     }
   });
 
-  var TestSuiteCollectionView = Marionette.CollectionView.extend({
+  var TestSuiteCollectionView = Marionette.CompositeView.extend({
+    template : JST["templates/home/psychtests/psychtest"],
     childView : TestSuiteView,
-    className : 'ui cards'
+    childViewContainer : '.ui.cards'
   });
 
 
