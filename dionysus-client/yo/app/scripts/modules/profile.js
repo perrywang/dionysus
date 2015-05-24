@@ -2,7 +2,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var PofileLayoutView = Marionette.LayoutView.extend({
-    template: JST["templates/home/profile/personal"],
+    template: JST["templates/home/profile/menu"],
     regions: {
       'myContent': '#mycontent'
     },
@@ -67,7 +67,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   });
 
   var ProfileView = Marionette.ItemView.extend({
-    template: '#profile-info-tpl',
+    template: JST["templates/home/profile/personal"],
     className: 'ui page',
     ui: {
       submit: '.submit'

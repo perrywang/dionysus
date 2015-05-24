@@ -1,30 +1,51 @@
-h2.ui.header
-  img.ui.small.circular.image(src="{{ avatar }}")
-  .content 你好，{{ username  }}
-    .sub.header {{ about  }}
-    .sub.header 
-      a#myinfo 修改我的个人信息
-h4.ui.horizontal.header.divider
-  i.bar.char.icon
-.ui.page.grid
-  .four.wide.left.aligned.column
-    .ui.link.list
-      .item
-        a(href="#")#myarticles 
-          i.small.circular.book.icon
-          | 我的文章
-      .item
-        a(href="#")#myappointments 
-          i.small.circular.chat.icon
-          | 我的一对一咨询
-      .item
-        a(href="#")#mycourses 
-          i.small.circular.users.icon 
-          | 我的课程 
-      .item
-        a(href="#")#mytests 
-          i.small.circular.question.icon 
-          | 我的测试
-  .twelve.wide.column
-    .ui.stacked.segment
-      div#mycontent
+img.ui.small.image(src="{{ avatar}}")
+h3.ui.header {{ username }}
+p.description {{ about }}
+form.ui.form  
+  .field
+    label 邮箱：    
+    .ui.left.icon.input
+      input(type="text", name="email", value="{{ email }}", required)
+      i.mail.icon
+  .two.fields
+    .field
+      label 性别：   
+      select.ui.dropdown(name="gender")
+        option(value="male") 男
+        option(value="female") 女
+    .field
+      label 年龄：    
+      .ui.left.icon.input
+        input(type="text", name="age", value="{{ age }}", required)
+        i.user.icon
+  .two.fields
+    .field
+      label 手机：    
+      .ui.left.icon.input
+        input(type="text", name="mobile", value="{{ mobile }}", required)
+        i.mobile.icon
+    .field
+      label QQ：    
+      .ui.left.icon.input
+        input(type="text", name="qq", value="{{ qq }}", required)
+        i.qq.icon
+  .field
+    label QQ 地址：    
+    .ui.left.icon.input
+      input(type="text", name="qqAddress", value="{{ qqAddress }}", alt="外链地址，可不填", required)
+      i.qq.icon
+  .field
+    label 固定电话：  
+    .ui.left.icon.input
+      input(type="text", name="landline", value="{{ landline }}", required)
+      i.call.icon
+  .field
+    label 地址：    
+    .ui.left.icon.input
+      input(type="text", name="address", value="{{ address }}", required)
+      i.home.icon
+  .ui.horizontal.divider
+.ui.actions
+  .ui.primary.button
+    i.save.icon
+    | 保存
