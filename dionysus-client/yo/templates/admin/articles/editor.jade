@@ -1,0 +1,23 @@
+.two.fields
+  .field
+    label Title
+    input(name="title", type="text", placeholder="Title") 
+  .field
+    label 类别
+    select.ui.dropdown(name="category")
+      option(value="") 选择类别
+      {{#each categories}}
+      <option value="{{link}}">{{name}}</option>
+      {{/each}}
+.field
+  label Summary
+  textarea(name="summary")
+.field
+  label Body
+  textarea.editor(name="body")
+.ui.button.primary.submit
+  i.save.icon
+  | 保存
+.ui.red.button.delete
+  i.trash.icon
+  | 删除

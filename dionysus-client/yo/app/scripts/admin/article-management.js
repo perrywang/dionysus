@@ -33,7 +33,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   };
 
   var ArticleView = Marionette.ItemView.extend({
-    template: '#admin-article-tpl',
+    template: JST["templates/admin/articles/detail"],
     tagName: 'li',
     className: 'item',
     ui: {
@@ -49,20 +49,21 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
-    template: '#admin-articles-tpl',
+    template: JST["templates/admin/articles/articles"],
     childView: ArticleView,
     childViewContainer: '.items',
-    onDomRefresh: function(){
-      //console.log(this.model);
+    onDomRefresh: function() {
       var page = this.model;
-      if(page.get('number') === 0) this.$('.button.left').hide();
-      else if(page.get('number') === page.get('totalPages')-1) this.$('.button.right').hide();
-
+      if(page.get('number') === 0) {
+        this.$('.button.left').hide();
+      } else if(page.get('number') === page.get('totalPages') - 1) {
+        this.$('.button.right').hide();
+      }
     }
   });
 
   var ArticleEditorView = Marionette.ItemView.extend({
-    template: '#admin-article-editor-tpl',
+    template: JST["templates/admin/articles/editor"],
     tagName: 'form',
     className: 'ui form',
     initialize: function(options) {

@@ -1,0 +1,65 @@
+.ui.segment
+  form.ui.form
+    .fields
+      .ui.header 基本信息
+      .ui.divider
+      .field
+        label 课程名称
+        input(name="title", type="text", placeholder="课程名称")
+      .field
+        label 课程内容
+        select(name="category").ui.dropdown
+          option(value="") 选择课程类别
+          {{#each categories}}
+          <option value="{{ link }}">{{ name }}</option>
+          {{/each}}
+
+      .field
+        label 课程状态
+        select(name="state").ui.dropdown
+          option(value="OPEN") 开放
+          option(value="IN_PROGRESS") 准备中
+          option(value="FINISHED") 已结束
+
+      .field
+        label 上课形式
+        select(name="approach").ui.dropdown
+          option(value="") 选择课程类别
+          option(value="ONE2ONE") 一对一在线辅导
+          option(value="ONE2MANY") 在线课堂
+          option(value="VIDEO") 在线视频
+          option(value="OFFLINE") 线下课程
+
+      .field
+        label 授课老师
+        select(name="consultant").ui.dropdown
+          option(value="") 选择讲师
+          {{#each consultants}}
+          <option value="{{link}}">{{username}}</option>
+          {{/each}}
+
+      .ui.header 详细信息
+      .ui.divider
+      .field
+        label 上课时间
+        input(name="date", id= "courseTime", type="text", placeholder="时间")
+      .field
+        label 上课地点
+        input(name="address", type="text", placeholder="地址")
+      .field
+        label 人数限制
+        input(name="capacity", type="text", placeholder="人数")
+      #videoPart.field
+        label 视频链接
+        input(name="videoLink", type="text", placeholder="视频链接")
+      #groupAddress.field
+        label QQ群地址
+        input(name="groupAddress", type="text", placeholder="QQ群地址")
+
+      .field
+        label 课程简介
+        textarea(name="description")
+
+      .ui.button.submit
+        i.save.icon
+        | 保存

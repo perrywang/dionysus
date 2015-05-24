@@ -1,7 +1,7 @@
 Dionysus.module('DionysusApp.AdminTest', function(Test, Dionysus, Backbone, Marionette, $) {
 
   var TestView = Marionette.ItemView.extend({
-    template: '#admin-tests-tpl',
+    template: JST["templates/admin/psychtests/psychtests"],
     className: 'container'
   });
 

@@ -5,23 +5,23 @@ Dionysus.module('AdminCategory', function(Category, Dionysus, Backbone, Marionet
     identifier: 'name',
     rules: [{
       type: 'empty',
-      prompt: 'Please enter category name'
+      prompt: '请输入文章类别的名字'
     }]
   };
 
   var CategoryLineView = Marionette.ItemView.extend({
     tagName: "li",
-    template: "#admin-category-tpl"
+    template: JST["templates/admin/categories/detail"]
   });
 
   var CategoryListView = Marionette.CompositeView.extend({
-    template: '#admin-categories-tpl',
+    template: JST["templates/admin/categories/categories"],
     childViewContainer: 'ul',
     childView: CategoryLineView
   });
 
   var CategoryEditorView = Marionette.ItemView.extend({
-    template: '#admin-category-editor-tpl',
+    template: JST["templates/admin/categories/editor"],
     tagName: 'form',
     className: 'ui form',
     onRender: function() {

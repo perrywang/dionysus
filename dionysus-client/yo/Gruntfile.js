@@ -417,8 +417,8 @@ module.exports = function (grunt) {
           dest: '<%= config.dist %>/.htaccess'
         }, {
           expand: true,
-          cwd: 'bower_components/materialize/dist',
-          src: 'font/{,*/}*.*',
+          cwd: 'bower_components/fontawesome',
+          src: 'fonts/{,*/}*.*',
           dest: '<%= config.dist %>'
         }, {
           expand: true,

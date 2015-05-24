@@ -2,7 +2,7 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var HomeView = Marionette.ItemView.extend({
-    template: '#admin-home-tpl',
+    template: JST["templates/admin/home"],
     className: 'container'
   });
 
@@ -13,11 +13,11 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
   });
 
   var links = new Dionysus.Entities.LinkCollection([
-    { name: 'Home',       href: '/admin',             icon: 'home'  },
-    { name: 'Articles',   href: '/admin/articles',    icon: 'edit'  },
-    { name: 'Categories', href: '/admin/categories',  icon: 'inbox' },
-    { name: 'Tests',      href: '/admin/tests',       icon: 'lab'   },
-    { name: 'Courses',    href: '/admin/courses',     icon: 'edit'  }
+    { name: '管理首页', href: '/admin',             icon: 'home'  },
+    { name: '文章列表', href: '/admin/articles',    icon: 'edit'  },
+    { name: '文章类别', href: '/admin/categories',  icon: 'inbox' },
+    { name: '心理测试', href: '/admin/tests',       icon: 'lab'   },
+    { name: '心理课程', href: '/admin/courses',     icon: 'edit'  }
   ]);
 
   Dionysus.addInitializer(function() {

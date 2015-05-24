@@ -14,7 +14,8 @@
     "datetimepicker": "~2.4.3",
     "flexslider": "*",
     "underscore": "~1.8.3",
-    "handlebars": "~1.3.0"
+    "handlebars": "~1.3.0",
+    "fontawesome": "~4.3.0"
   },
   "resolutions": {
     "underscore": ">=1.7.0"

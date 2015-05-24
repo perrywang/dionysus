@@ -3,22 +3,12 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
   var validationRules = {
     title: {
-      identifier  : 'title',
-      rules: [
-        {
-          type    : 'empty',
-          prompt  : '课程名称不能为空'
-        }
-      ]
+      identifier : 'title',
+      rules: [{ type : 'empty', prompt  : '课程名称不能为空' }]
     },
     capacity:{
-      identifier  : 'capacity',
-      rules: [
-        {
-          type    : 'integer',
-          prompt  : '人数限制必须输入整数'
-        }
-      ]
+      identifier : 'capacity',
+      rules: [{ type : 'integer', prompt  : '人数限制必须输入整数' }]
     }
   };
 
@@ -39,19 +29,19 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
   };
 
   var CourseItemView = Marionette.ItemView.extend({
-    template: '#admin-course-tpl',
+    template: JST["templates/admin/cources/detail"],
     tagName: 'li',
     className: 'item'
   });
 
   var CourseCollectionView = Marionette.CompositeView.extend({
-    template: '#admin-courses-tpl',
+    template: JST["templates/admin/cources/cources"],
     childView: CourseItemView,
     childViewContainer: '.items'
   });
 
   var CourseEditorView = Marionette.ItemView.extend({
-    template: '#admin-course-editor-tpl',
+    template: JST["templates/admin/cources/editor"],
     initialize: function(options) {
       this.categories = options.categories;
       this.consultants = options.consultants;

@@ -7,7 +7,7 @@ html(class="no-js")
     link(rel="shortcut icon", href="/favicon.ico")
 
     // build:css({.,.tmp}) /styles/admin.css
-    link(rel="stylesheet", href="/bower_components/froala/css/font-awesome.css")
+    link(rel="stylesheet", href="/bower_components/fontawesome/css/font-awesome.css")
     link(rel="stylesheet", href="/bower_components/froala/css/froala_editor.css")
     link(rel="stylesheet", href="/bower_components/froala/css/froala_style.css")
     link(rel="stylesheet", href="/bower_components/toastr/toastr.css")
@@ -32,8 +32,9 @@ html(class="no-js")
     | $.Editable.DEFAULTS.key = 'ZqordtponD3fveuvA6kfg==';
 
   // build:js({app,.tmp}) /scripts/admin/app.js
+  script(src="/templates/precompiled.handlebars.admin.js")
   script(src="/scripts/app.js")
-  script(src="/scripts/hal/domain.js")
+  script(src="/scripts/hal/articles.js")
   script(src="/scripts/common/entity.js")
   script(src="/scripts/common/article.js")
   script(src="/scripts/common/category.js")

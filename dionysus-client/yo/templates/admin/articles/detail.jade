@@ -1,0 +1,9 @@
+.content
+  a.ui.header(href="/admin/articles/{{ id }}") 
+    i.edit.icon
+    | {{ title }}
+  p.description {{ summary }}
+  .ui.tiny.vertical.animated.red.button.delete
+    .hidden.content 删除
+    .visible.content
+      i.large.trash.icon
