@@ -2,7 +2,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var PofileLayoutView = Marionette.LayoutView.extend({
-    template: '#profile-layout-tpl',
+    template: JST["templates/home/profile/personal"],
     regions: {
       'myContent': '#mycontent'
     },
