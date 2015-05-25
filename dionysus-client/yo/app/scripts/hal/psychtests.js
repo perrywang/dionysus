@@ -39,6 +39,11 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       if (this.get('hasNext')) {
         this.set('current', this.get('current') + 1);
       }
+    },
+    getQuestion : function() {
+      var questions = this.embedded('questions'),
+          index = this.get('current') - 1;
+      return questions.find(function(item, i) { return index === i; });
     }
   });
 

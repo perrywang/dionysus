@@ -3,12 +3,13 @@ package com.huixinpn.dionysus.domain.psychtest.results;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,25 +24,23 @@ import com.huixinpn.dionysus.domain.user.User;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "psychtestings")
-public class PsychTesting extends AbstractDionysusAuditable<User> {
+@Table(name = "psychtestresults")
+public class PsychTestResult extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -4860166336073876229L;
 
-	@OneToOne
+	@ManyToOne
 	private PsychTest test;
 
-	@OneToMany(mappedBy = "testing")
-	private Collection<PsychTestingSelection> selections = new ArrayList<>();
+	@ElementCollection
+	@CollectionTable(name = "psychtestresultoptions", 
+		joinColumns = @JoinColumn(name = "answer_id"))
+	private Collection<PsychTestQuestionResult> answers = new ArrayList<>();
 
 	@ManyToOne
-	private PsychTestSetTesting setTesting;
+	private PsychTestSuiteResult suite;
 
 	@Enumerated(EnumType.STRING)
-	private PsychTestingState state;
-
-	public PsychTesting(Long id) {
-		super(id);
-	}
+	private PsychTestState state;
 
 }

@@ -22,21 +22,18 @@ import com.huixinpn.dionysus.domain.user.User;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "psychtestsettestings")
-public class PsychTestSetTesting extends AbstractDionysusAuditable<User> {
+@Table(name = "psychtestsuiteresults")
+public class PsychTestSuiteResult extends AbstractDionysusAuditable<User> {
 
-  private static final long serialVersionUID = -4860166334673876429L;
+	private static final long serialVersionUID = -4860166334673876429L;
 
-  @OneToOne
-  private PsychTestSuite set;
+	@OneToOne
+	private PsychTestSuite suite;
 
-  @OneToMany(mappedBy = "setTesting")
-  private Collection<PsychTesting> testings = new ArrayList<>();
+	@OneToMany(mappedBy = "suite")
+	private Collection<PsychTestResult> results = new ArrayList<>();
 
-  @OneToOne
-  private PsychTesting current;
-
-  @Enumerated(EnumType.STRING)
-  private PsychTestingState state;
+	@Enumerated(EnumType.STRING)
+	private PsychTestState state;
 
 }

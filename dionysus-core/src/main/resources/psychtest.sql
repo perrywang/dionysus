@@ -279,5 +279,3 @@ insert into psychtestcategories16pf(id, name, topname) values (5, '心理健康�
 insert into psychtestcategories16pf(id, name, topname) values (6, '专业而有成就者的人格因素', '16种人格因素测验应用的计算');
 insert into psychtestcategories16pf(id, name, topname) values (7, '创造能力人格因素', '16种人格因素测验应用的计算');
 insert into psychtestcategories16pf(id, name, topname) values (8, '在新的环境中有成长能力的人格因素', '16种人格因素测验应用的计算');
-
-insert into psychtestings(id, test_id) values (1, 1);
