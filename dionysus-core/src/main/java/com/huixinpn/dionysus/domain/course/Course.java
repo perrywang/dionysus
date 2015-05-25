@@ -64,7 +64,7 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   private String address;
 
-  private Float price;
+  private Float price = 0.00f;
 
   private Integer capacity;
 

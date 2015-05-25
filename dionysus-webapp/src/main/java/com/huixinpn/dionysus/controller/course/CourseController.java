@@ -66,7 +66,7 @@ public class CourseController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @RequestMapping(value = {"/courses", "/admin/courses"}, method = RequestMethod.GET)
+  @RequestMapping(value = "/courses", method = RequestMethod.GET)
   public
   @ResponseBody
   EntityPageData<CourseData> listCourses(@RequestParam(value = "page", required = false) Integer page,
@@ -157,13 +157,13 @@ public class CourseController {
     return new ResponseEntity("{}",HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
+  @RequestMapping(value = "/courses", method = RequestMethod.POST)
   public
   @ResponseBody
-  CourseData addCourse(@RequestBody CourseData data) {
-    Course updating = data.toEntity();
-    courseRepository.save(updating);
-    return new CourseData(updating);
+  ResponseEntity<String> addCourse(@RequestBody CourseData data) {
+    Course adding = data.toEntity();
+    courseRepository.save(adding);
+    return new ResponseEntity<>("{}",HttpStatus.OK);
   }
 
 }

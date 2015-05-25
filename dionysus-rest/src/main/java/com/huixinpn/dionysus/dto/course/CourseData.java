@@ -57,10 +57,14 @@ public class CourseData extends EntityData {
     this.state = course.getState() == null ? "unknown" : course.getState().toString();
     this.approach = course.getApproach() == null ? "unknown" : course.getApproach().toString();
     this.date = course.getDate();
-    this.category = new CourseCategoryData(course.getCategory());
+    if(course.getCategory() != null){
+      this.category = new CourseCategoryData(course.getCategory());
+    }
+    if(course.getConsultant() != null){
+      this.consultant = new UserData(course.getConsultant());
+    }
     this.capacity = course.getCapacity();
     this.price = course.getPrice();
-    this.consultant = new UserData(course.getConsultant());
     this.tags = new EntityCollectionData<TagData>(course.getTags(), TagData.class).toDTOCollection();
     this.cover = course.getCover();
   }
@@ -75,8 +79,13 @@ public class CourseData extends EntityData {
     course.setDate(this.getDate());
     course.setCapacity(this.getCapacity());
     course.setPrice(this.getPrice());
-    course.setCategory(new CourseCategory(this.getCategory().getId()));
-    course.setConsultant(new Consultant(this.getConsultant().getId()));
+    if(this.getCategory() != null){
+      course.setCategory(new CourseCategory(this.getCategory().getId()));
+    }
+    if(this.getConsultant() != null){
+      course.setConsultant(new Consultant(this.getConsultant().getId()));
+    }
+
     course.setCover(ExtractCover(body));
     Collection<Tag> tagsList = new ArrayList<>();
     for (TagData tagData : tags) {

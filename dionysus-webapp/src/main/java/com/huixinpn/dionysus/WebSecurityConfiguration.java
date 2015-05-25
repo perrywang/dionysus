@@ -21,8 +21,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET, "/", "/themes/**", "/public/**", "/styles/**", "/fonts/**", "/images/**", "/scripts/**").permitAll()
         .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
         .antMatchers("/api/v1/courses/**").authenticated()
-        .regexMatchers("/courses/\\d+/reg").authenticated()
+        .regexMatchers("/controllers/courses/\\d+/reg").authenticated()
         .regexMatchers(HttpMethod.GET, ".*/api/v1/(users|consultants|inbox|appointments|notifications|profiles)(/|/\\d+)?.*").authenticated()
+        .antMatchers(HttpMethod.POST, "/controllers/courses/**").hasRole("ADMIN")
+        .antMatchers(HttpMethod.PUT,"/controllers/courses/**").hasRole("ADMIN")
         .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
         .antMatchers(HttpMethod.PUT, "/api/v1/**").authenticated()
         .antMatchers(HttpMethod.DELETE, "/api/v1/**").authenticated();

@@ -9,7 +9,13 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     capacity:{
       identifier : 'capacity',
       rules: [{ type : 'integer', prompt  : '人数限制必须输入整数' }]
+    },
+
+    price:{
+      identifier : 'price',
+      rules: [{ type : 'integer', prompt  : '必须输入一个有效的价格' }]
     }
+
   };
 
   var empty2null = function(input){
@@ -18,14 +24,20 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
   var string2Integer = function(input){
     var number = parseInt(input);
-    return isNaN(number) ? null : number;
+    return isNaN(number) ? input : number;
+  };
+
+  var string2Float = function(input){
+    var number = parseFloat(input);
+    return isNaN(number) ? input : number;
   };
 
   var courseTransformRules = {
     category : empty2null,
     consultant : empty2null,
     approach : empty2null,
-    capacity : string2Integer
+    capacity : string2Integer,
+    price    : string2Float
   };
 
   var CourseItemView = Marionette.ItemView.extend({
@@ -70,6 +82,16 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$el.form(validationRules);
       var data = this.model.toJSON();
       this.$el.form('set values', data);
+      this.$('.editor').editable({
+        buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'fontFamily', 'color', 'sep',
+          'formatBlock', 'blockStyle', 'align', 'insertOrderedList', 'insertUnorderedList', 'outdent', 'indent', 'sep',
+          'createLink', 'insertImage', 'insertVideo', 'insertHorizontalRule', 'undo', 'redo', 'html', 'uploadFile'
+        ],
+        inlineMode: false,
+        language: 'zh_cn',
+        imageUploadURL: '/api/v1/upload',
+        fileUploadURL: '/api/v1/upload'
+      });
     },
     ui : {
       save : '.button.submit'
@@ -100,8 +122,12 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
         editor.on('course:save', function(json) {
           transform(json,courseTransformRules);
-          json.category = string2Integer(json.category);
-          json.consultant = string2Integer(json.consultant);
+          if(json.category != null){
+            json.category = {"id" : string2Integer(json.category)};
+          }
+          if(json.consultant != null){
+            json.consultant = {"id" : string2Integer(json.consultant)};
+          }
           course.save(json, {
             error: function(model, response, options){
               console.log(response);
@@ -124,13 +150,21 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     editCourse: function(id){
       $.when(Dionysus.request('course:entity',id),Dionysus.request('course:categories'),Dionysus.request('course:consultants')).done(function(course,categories,consultants){
         var couseData = course.toJSON();
-        course.set('category',couseData.category.name);
-        course.set('consultant',couseData.consultant.username);
+        if(couseData.category != null){
+          course.set('category',couseData.category.name);
+        }
+        if(couseData.consultant != null){
+          course.set('consultant',couseData.consultant.username);
+        }
         var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
         editor.on('course:save', function(json) {
           transform(json,courseTransformRules);
-          json.category = {"id":string2Integer(json.category)};
-          json.consultant = {"id":string2Integer(json.consultant)};
+          if(json.category != null){
+            json.category = {"id" : string2Integer(json.category)};
+          }
+          if(json.consultant != null){
+            json.consultant = {"id" : string2Integer(json.consultant)};
+          }
           course.save(json, {
             error: function(model, response, options){
               console.log(response);
