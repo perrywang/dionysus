@@ -66,6 +66,12 @@ public class PsychTest extends AbstractDionysusPersistable {
 		inverseJoinColumns = @JoinColumn(name = "suite_id"))
 	private Collection<PsychTestSuite> suite = new ArrayList<>();
 	
+	@ManyToMany
+	@JoinTable(name = "category_test",
+		joinColumns = @JoinColumn(name = "test_id"), 
+		inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private Collection<PsychTestCategory> category = new ArrayList<>();
+	
 	public double evaluate(/*args*/) {
 		// TODO: 在这里进行分数的计算，传入参数为用户输入的答案
 		double score = 0;
