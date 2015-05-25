@@ -16,7 +16,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseCollection = Backbone.Collection.extend({
-    url: '/courses',
+    url: '/controllers/courses',
     model: Course,
     parse: function (response) {
       return response.content;
@@ -38,7 +38,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseCategoryCollection = Backbone.Collection.extend({
-    url: '/courses/categories',
+    url: '/controllers/courses/categories',
     model: CourseCategory
   });
 
@@ -57,7 +57,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseConsultantCollection = Backbone.Collection.extend({
-    url: '/courses/consultants',
+    url: '/controllers/courses/consultants',
     model: CourseConsultant
   });
 

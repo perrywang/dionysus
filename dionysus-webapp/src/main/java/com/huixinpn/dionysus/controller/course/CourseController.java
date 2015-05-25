@@ -28,7 +28,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.List;
 
-@RestController(value="/controllers")
+@RestController
+@RequestMapping(value="/controllers")
 public class CourseController {
   @Autowired
   private CourseRepository courseRepository;
@@ -147,13 +148,13 @@ public class CourseController {
   @RequestMapping(value = "/courses/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
   public
   @ResponseBody
-  ResponseEntity<Void> updateCourse(@RequestBody CourseData data, @PathVariable Long id) {
+  ResponseEntity<String> updateCourse(@RequestBody CourseData data, @PathVariable Long id) {
     if (!id.equals(data.getId())) {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
     Course updating = data.toEntity();
     courseRepository.save(updating);
-    return new ResponseEntity(HttpStatus.OK);
+    return new ResponseEntity("{}",HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
