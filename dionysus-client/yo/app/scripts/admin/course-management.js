@@ -29,19 +29,19 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
   };
 
   var CourseItemView = Marionette.ItemView.extend({
-    template: JST["templates/admin/cources/detail"],
+    template: JST["templates/admin/courses/detail"],
     tagName: 'li',
     className: 'item'
   });
 
   var CourseCollectionView = Marionette.CompositeView.extend({
-    template: JST["templates/admin/cources/cources"],
+    template: JST["templates/admin/courses/courses"],
     childView: CourseItemView,
     childViewContainer: '.items'
   });
 
   var CourseEditorView = Marionette.ItemView.extend({
-    template: JST["templates/admin/cources/editor"],
+    template: JST["templates/admin/courses/editor"],
     initialize: function(options) {
       this.categories = options.categories;
       this.consultants = options.consultants;
