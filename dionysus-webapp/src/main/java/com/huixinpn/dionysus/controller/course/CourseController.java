@@ -4,9 +4,7 @@ import com.huixinpn.dionysus.controller.util.PagingHelper;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
-import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.User;
-import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseData;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
@@ -19,14 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CourseController {
@@ -95,11 +86,11 @@ public class CourseController {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
     Page<Course> courses;
     if (approach != null) {
-      courses = courseRepository.findByTagAndApproach(tid,approach,paging);
+      courses = courseRepository.findByTagAndApproach(tid, approach, paging);
     } else {
-      courses = courseRepository.findByTag(tid,paging);
+      courses = courseRepository.findByTag(tid, paging);
     }
-    return new EntityPageData<>(courses,CourseData.class);
+    return new EntityPageData<>(courses, CourseData.class);
   }
 
   @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
@@ -108,5 +99,14 @@ public class CourseController {
   CourseData listCourse(@PathVariable Long id) {
     Course course = courseRepository.findOne(id);
     return new CourseData(course);
+  }
+
+  @RequestMapping(value = "/courses/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
+  public
+  @ResponseBody
+  ResponseEntity<Void> updateCourse(@RequestBody CourseData data) {
+    Course updating = data.toEntity();
+    courseRepository.save(updating);
+    return new ResponseEntity(HttpStatus.OK);
   }
 }

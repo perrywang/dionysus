@@ -32,6 +32,9 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @Column(name = "description")
   private String description;
 
+  @Lob
+  private String body;
+
   @Column(name = "state")
   @Enumerated(EnumType.STRING)
   private CourseState state;
@@ -57,6 +60,8 @@ public class Course extends AbstractDionysusNotifiable<User> {
   @ManyToOne
   private CourseCategory category;
 
+  private String cover;
+
   private String address;
 
   private Integer price;
@@ -75,7 +80,7 @@ public class Course extends AbstractDionysusNotifiable<User> {
     this.description = description;
   }
 
-  public Course(Long id){
+  public Course(Long id) {
     super(id);
   }
 

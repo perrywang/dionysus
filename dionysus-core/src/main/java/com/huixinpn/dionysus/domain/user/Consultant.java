@@ -1,13 +1,12 @@
 package com.huixinpn.dionysus.domain.user;
 
+import com.huixinpn.dionysus.domain.appointment.Appointment;
+import com.huixinpn.dionysus.domain.course.Course;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import com.huixinpn.dionysus.domain.appointment.Appointment;
-import com.huixinpn.dionysus.domain.course.Course;
-
 import java.util.Collection;
 
 @Entity
@@ -27,12 +26,16 @@ public class Consultant extends User {
     super();
   }
 
-  public Consultant(String name, String pass){
-      super(name, pass);
+  public Consultant(String name, String pass) {
+    super(name, pass);
   }
 
   public Collection<Course> getTeachings() {
     return teachings;
+  }
+
+  public Consultant(Long id) {
+    super(id);
   }
 
   public void setTeachings(Collection<Course> teachings) {
