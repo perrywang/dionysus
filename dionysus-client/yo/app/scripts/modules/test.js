@@ -19,32 +19,17 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
 
 
   var PsychTestQuestionView = Marionette.ItemView.extend({
-    template : JST['templates/home/psychtests/question']
-  });
-
-  var PsychTestView = Marionette.CompositeView.extend({
-    template : JST['templates/home/psychtests/workspace'],
-    className : 'ui segment',
-    childView : PsychTestQuestionView,
-    childViewContainer : '.question',
-    // TODO: move collection filter into PsychTest model
-    selectQuestion: function() {
-      var index = this.model.get('current') - 1;
-      var models = this._collection.filter(function(item, i) {
-        return index === i;
-      });
-      this.collection = new Backbone.Collection(models);
-    },
+    template : JST['templates/home/psychtests/question'],
     onRender : function() {
       this.$('.ui.radio.checkbox').checkbox();
     },
     initialize: function() {
-      this._collection = this.collection;
-      this.selectQuestion();
-      this.listenTo(this.model, 'change', function() {
-        this.selectQuestion();
-        this.render();
-      }, this);
+      this.listenTo(this.model, 'change', this.render, this);
+    },
+    serializeData : function() {
+      var data = this.serializeModel(this.model);
+      data.question = this.serializeModel(this.model.getQuestion());
+      return data;
     },
     events : {
       'click .prev' : function() {
@@ -66,11 +51,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     showTest: function (id) {
       var fetching = Dionysus.request('psychtest:instance', id);
       $.when(fetching).done(function (test) {
-        var questions = test.embedded('questions');
-        Dionysus.mainRegion.show(new PsychTestView({ 
-          model : test,
-          collection : questions
-        }));
+        Dionysus.mainRegion.show(new PsychTestQuestionView({ model : test }));
       });
     }
   });
