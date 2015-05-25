@@ -14,4 +14,12 @@ public class CourseCategoryData extends EntityData {
     super(courseCategory);
     this.name = courseCategory.getName();
   }
+
+  public CourseCategory toEntity(){
+    CourseCategory category = new CourseCategory();
+    category.setId(this.getId());
+    category.setName(this.getName());
+    return category;
+  }
+  
 }

@@ -51,7 +51,7 @@ public class Course extends AbstractDionysusNotifiable<User> {
       inverseJoinColumns = @JoinColumn(name = "user_id"))
   private Collection<User> users = new ArrayList<>();
 
-  @ManyToMany(mappedBy = "courses")
+  @ManyToMany
   private Collection<Tag> tags = new ArrayList<>();
 
   @OneToMany(mappedBy = "course")
@@ -64,7 +64,7 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   private String address;
 
-  private Integer price;
+  private Float price;
 
   private Integer capacity;
 

@@ -27,10 +27,11 @@ module.exports = function (grunt) {
 
   var singlePage = function(req, res, next) {
     var url = req.url;
+    console.log("url is ************* " + url);
     if (/.*\.js/.test(url) || /.*\.css/.test(url) || /.*fonts\/icons\./.test(url) || (/.*\/public\//.test(url))) {
       return next();
     }
-    if (/^\/articles/.test(url) || 
+    if (/^\/articles/.test(url) ||
         /^\/site/.test(url) ||
         /^\/logout/.test(url) ||
         /^\/login/.test(url) ||
@@ -38,13 +39,17 @@ module.exports = function (grunt) {
         /^\/register/.test(url) ||
         /^\/psychtest/.test(url)
       ) {
+      console.log("aaaaaaaaaaaaaaaaaaaaa");
       req.url = '/index.html';
     }
     if (/^\/app(\/)?/.test(url)) {
+      console.log("bbbbbbbbbbbbbbbbbbbbbb");
       req.url = '/index.html';
     } else if (/^\/admin(\/)?/.test(url)) {
+      console.log("cccccccccccccccccccccc");
       req.url = '/admin.html';
     } else if (/^\/consultant(\/)?/.test(url)) {
+      console.log("ddddddddddddddddddddddddd");
       req.url = '/consultant.html';
     }
     return next();
@@ -118,7 +123,7 @@ module.exports = function (grunt) {
         hostname: 'localhost'
       },
       proxies: [{
-        context: ['/api/v1', '/topic', '/chat', '/dionysus', '/upload'],
+        context: ['/api/v1', '/topic', '/chat', '/dionysus', '/upload','/controllers'],
         host: 'localhost',
         port: 8080,
         https: false,

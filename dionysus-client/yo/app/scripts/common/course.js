@@ -1,9 +1,9 @@
 Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  var Course = Backbone.RelationalHalResource.extend({
+  var Course = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/api/v1/courses/' + this.id : '/api/v1/courses';
+      return this.id ? '/controllers/courses/' + this.id : '/controllers/courses';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -12,83 +12,62 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
       if (options && options.id) {
         this.id = options.id;
       }
-    },
-    getCategory: function () {
-      var category = new Backbone.Model();
-      category.url = this.link('category').get('href');
-      var defer = $.Deferred();
-      category.fetch({
-        error: function () {
-          category.set('name', '');
-          defer.resolve(category);
-        }
-      }).then(function () {
-        defer.resolve(category);
-      });
-      return defer.promise(category);
-    },
-    getConsultant: function () {
-      var consultant = new Backbone.Model();
-      consultant.url = this.link('consultant').get('href');
-      var defer = $.Deferred();
-      consultant.fetch({
-        error: function () {
-          consultant.set('username', '');
-          defer.resolve(consultant);
-        }
-      }).then(function () {
-        defer.resolve(consultant);
-      });
-      return defer.promise(consultant);
     }
   });
 
-  var CourseCollection = Backbone.RelationalHalResource.extend({
-    url: '/api/v1/courses',
-    halEmbedded: {
-      courses: {
-        type: Backbone.HasMany,
-        relatedModel: Course
+  var CourseCollection = Backbone.Collection.extend({
+    url: '/courses',
+    model: Course,
+    parse: function (response) {
+      return response.content;
+    }
+  });
+
+  var CourseCategory = Backbone.Model.extend({
+    url: function () {
+      return this.id ? '/controllers/courses/categories' + this.id : '/controllers/courses/categories';
+    },
+    isNew: function () {
+      return this.id == null || this.id == undefined;
+    },
+    initialize: function (options) {
+      if (options && options.id) {
+        this.id = options.id;
       }
     }
   });
 
-  var CourseCategory = Backbone.RelationalHalResource.extend({
-    url: '/api/v1/courseCategories'
-
+  var CourseCategoryCollection = Backbone.Collection.extend({
+    url: '/courses/categories',
+    model: CourseCategory
   });
 
-  var CourseCategoryCollection = Backbone.RelationalHalResource.extend({
-    url: '/api/v1/courseCategories',
-    halEmbedded: {
-      courseCategories: {
-        type: Backbone.HasMany,
-        relatedModel: CourseCategory
-      }
+  var CourseConsultant = Backbone.Model.extend({
+    url: function () {
+      return this.id ? '/controllers/courses/consultants' + this.id : '/controllers/courses/consultants';
     },
-    toSelection: function () {
-      var categories = this.embedded('courseCategories');
-      return categories.map(function (category) {
-        return {
-          name: category.get('name'),
-          link: category.link('self').href()
-        }
-      });
+    isNew: function () {
+      return this.id == null || this.id == undefined;
+    },
+    initialize: function (options) {
+      if (options && options.id) {
+        this.id = options.id;
+      }
     }
+  });
+
+  var CourseConsultantCollection = Backbone.Collection.extend({
+    url: '/courses/consultants',
+    model: CourseConsultant
   });
 
   Dionysus.reqres.setHandler('course:entity', function (id) {
-
-    var course = Course.find({id: id});
-    if (course == null) {
-      course = new Course({id: id});
-      var defer = $.Deferred();
-      course.fetch().then(function () {
-        defer.resolve(course);
-      });
-      return defer.promise();
-    }
-    return course;
+    var course = new Course({id: id});
+    var defer = $.Deferred();
+    course.fetch().then(function () {
+      defer.resolve(course);
+    });
+    return defer.promise();
   });
 
   Dionysus.reqres.setHandler('course:entities', function () {
@@ -104,17 +83,16 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return new Course();
   });
 
-  Dionysus.reqres.setHandler('course:category', function (id) {
-    var category = new CourseCategory(id);
-    var defer = $.Deferred();
-    category.fetch().then(function () {
-      defer.resolve(category);
+  Dionysus.reqres.setHandler('course:categories', function () {
+    var resources = new CourseCategoryCollection(), defer = $.Deferred();
+    resources.fetch().then(function () {
+      defer.resolve(resources);
     });
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('course:categories', function () {
-    var resources = new CourseCategoryCollection(), defer = $.Deferred();
+  Dionysus.reqres.setHandler('course:consultants', function () {
+    var resources = new CourseConsultantCollection(), defer = $.Deferred();
     resources.fetch().then(function () {
       defer.resolve(resources);
     });

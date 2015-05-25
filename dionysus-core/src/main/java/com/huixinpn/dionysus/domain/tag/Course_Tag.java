@@ -12,8 +12,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "tags_courses",uniqueConstraints = {@UniqueConstraint(columnNames = {"tags_id","courses_id"})})
-public class Tag_Course extends AbstractDionysusPersistable{
+@Table(name = "courses_tags",uniqueConstraints = {@UniqueConstraint(columnNames = {"courses_id","tags_id"})})
+public class Course_Tag extends AbstractDionysusPersistable{
 
   private static final long serialVersionUID = -1815965727913284764L;
 

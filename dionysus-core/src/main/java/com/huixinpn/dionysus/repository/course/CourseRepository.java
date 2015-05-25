@@ -22,9 +22,9 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
   Page<Course> findByConsultant(@Param("id") Consultant consultant, Pageable pageable);
 
-  @Query(value = "select c from Course as c, Tag_Course as t where c.id = t.courses_id and t.tags_id = ?1")
+  @Query(value = "select c from Course as c, Course_Tag as t where c.id = t.courses_id and t.tags_id = ?1")
   Page<Course> findByTag(Long tagId,Pageable pageable);
 
-  @Query(value = "select c from Course as c, Tag_Course as t where c.id = t.courses_id and t.tags_id = ?1 and c.approach = ?2")
+  @Query(value = "select c from Course as c, Course_Tag as t where c.id = t.courses_id and t.tags_id = ?1 and c.approach = ?2")
   Page<Course> findByTagAndApproach(Long tagId, CourseApproach approach, Pageable pageable);
 }

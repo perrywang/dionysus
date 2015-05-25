@@ -48,8 +48,8 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     },
     serializeData: function(){
       var data = this.model.toJSON();
-      data.categories = this.categories.toSelection();
-      data.consultants = this.consultants.toSelection();
+      data.categories = this.categories.toJSON();
+      data.consultants = this.consultants.toJSON();
       return data;
     },
     onRender: function() {
@@ -96,17 +96,16 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
     createCourse: function() {
       var course = Dionysus.request('course:new');
-      $.when(Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(categories,consultants){
+      $.when(Dionysus.request('course:categories'),Dionysus.request('course:consultants')).done(function(categories,consultants){
         var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
         editor.on('course:save', function(json) {
-          if(!course.isNew()){
-            var id = course.get('id');
-            course.clear();
-            json.id = id;
-          }
           transform(json,courseTransformRules);
+          json.category = string2Integer(json.category);
+          json.consultant = string2Integer(json.consultant);
           course.save(json, {
             error: function(model, response, options){
+              console.log(response);
+              console.log(options);
               toastr.error('课程保存失败');
           }}).done(function(){
             toastr.info('课程保存成功');
@@ -118,31 +117,32 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
 
     showCourses: function(){
       $.when(Dionysus.request('course:entities')).done(function(courses){
-        Dionysus.mainRegion.show(new CourseCollectionView({ collection: courses.embedded('courses') }));
+        Dionysus.mainRegion.show(new CourseCollectionView({ collection: courses }));
       });
     },
 
     editCourse: function(id){
-      $.when(Dionysus.request('course:entity',id),Dionysus.request('course:categories'),Dionysus.request('consultant:entities')).done(function(course,categories,consultants){
-        var category = course.getCategory();
-        var consultant = course.getConsultant();
-        $.when(category,consultant).done(function(category,consultant){
-          course.set('category',category.get('name'));
-          course.set('consultant',consultant.get('username'));
-          var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
-          editor.on('course:save', function(json) {
-            course.clear();
-            json.id = id;
-            transform(json,courseTransformRules);
-            course.save(json, {
-              error: function(model, response, options){
-                toastr.error('课程保存失败');
-              }}).done(function(){
-              toastr.info('课程保存成功');
-            });
+      $.when(Dionysus.request('course:entity',id),Dionysus.request('course:categories'),Dionysus.request('course:consultants')).done(function(course,categories,consultants){
+        var couseData = course.toJSON();
+        course.set('category',couseData.category.name);
+        course.set('consultant',couseData.consultant.username);
+        var editor = new CourseEditorView({model:course,categories:categories,consultants: consultants});
+        editor.on('course:save', function(json) {
+          transform(json,courseTransformRules);
+          json.category = {"id":string2Integer(json.category)};
+          json.consultant = {"id":string2Integer(json.consultant)};
+          course.save(json, {
+            error: function(model, response, options){
+              console.log(response);
+              console.log(options);
+              toastr.error('课程保存失败');
+            }}).done(function(model, response, options){
+            console.log(response);
+            console.log(options);
+            toastr.info('课程保存成功');
           });
-          Dionysus.mainRegion.show(editor);
         });
+        Dionysus.mainRegion.show(editor);
       });
     }
 

@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TagRepository extends JpaRepository<Tag, Long> {
-  @Query(value = "select a.tags_id as id,b.name from tags_courses a join tags b on a.tags_id=b.id group by a.tags_id order by count(a.tags_id) desc limit ?1", nativeQuery = true)
+  @Query(value = "select a.tags_id as id,b.name from courses_tags a join tags b on a.tags_id=b.id group by a.tags_id order by count(a.tags_id) desc limit ?1", nativeQuery = true)
   List<Tag> findTopNTagForCourse(int N);
 }

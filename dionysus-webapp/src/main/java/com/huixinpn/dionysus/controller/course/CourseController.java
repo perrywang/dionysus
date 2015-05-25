@@ -4,11 +4,17 @@ import com.huixinpn.dionysus.controller.util.PagingHelper;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityPageData;
+import com.huixinpn.dionysus.dto.course.CourseCategoryData;
 import com.huixinpn.dionysus.dto.course.CourseData;
+import com.huixinpn.dionysus.dto.user.ConsultantData;
+import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
 import com.huixinpn.dionysus.repository.tag.TagRepository;
+import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +25,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import java.util.Collection;
+import java.util.List;
+
+@RestController(value="/controllers")
 public class CourseController {
   @Autowired
   private CourseRepository courseRepository;
@@ -29,6 +38,13 @@ public class CourseController {
 
   @Autowired
   private UserRepository userRepository;
+
+  @Autowired
+  private CourseCategoryRepository courseCategoryRepository;
+
+  @Autowired
+  private ConsultantRepository consultantRepository;
+
 
   @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
   public ResponseEntity<Void> registerColurse(@PathVariable Long id) {
@@ -49,7 +65,7 @@ public class CourseController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/courses", method = RequestMethod.GET)
+  @RequestMapping(value = {"/courses", "/admin/courses"}, method = RequestMethod.GET)
   public
   @ResponseBody
   EntityPageData<CourseData> listCourses(@RequestParam(value = "page", required = false) Integer page,
@@ -57,6 +73,33 @@ public class CourseController {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
     Page<Course> pagedCourses = courseRepository.findAll(paging);
     return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  @RequestMapping(value = "/courses/categories", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<CourseCategoryData> listCategories() {
+    List<CourseCategory> categories = courseCategoryRepository.findAll();
+    return new EntityCollectionData<>(categories, CourseCategoryData.class).toDTOCollection();
+  }
+
+  @RequestMapping(value = "/courses/categories/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
+  public
+  @ResponseBody
+  ResponseEntity<Void> updateCategory(@RequestBody CourseCategoryData data, @PathVariable Long id) {
+    if (!id.equals(data.getId())) {
+      return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+    CourseCategory category = courseCategoryRepository.save(data.toEntity());
+    return new ResponseEntity(HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/courses/consultants", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<ConsultantData> listConsultants() {
+    List<Consultant> consultants = consultantRepository.findAll();
+    return new EntityCollectionData<>(consultants, ConsultantData.class).toDTOCollection();
   }
 
   @RequestMapping(value = "/courses/category/{cid}", method = RequestMethod.GET)
@@ -104,9 +147,22 @@ public class CourseController {
   @RequestMapping(value = "/courses/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
   public
   @ResponseBody
-  ResponseEntity<Void> updateCourse(@RequestBody CourseData data) {
+  ResponseEntity<Void> updateCourse(@RequestBody CourseData data, @PathVariable Long id) {
+    if (!id.equals(data.getId())) {
+      return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
     Course updating = data.toEntity();
     courseRepository.save(updating);
     return new ResponseEntity(HttpStatus.OK);
   }
+
+  @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
+  public
+  @ResponseBody
+  CourseData addCourse(@RequestBody CourseData data) {
+    Course updating = data.toEntity();
+    courseRepository.save(updating);
+    return new CourseData(updating);
+  }
+
 }

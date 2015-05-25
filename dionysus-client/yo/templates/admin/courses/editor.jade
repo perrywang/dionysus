@@ -11,7 +11,7 @@
         select(name="category").ui.dropdown
           option(value="") 选择课程类别
           {{#each categories}}
-          <option value="{{ link }}">{{ name }}</option>
+          <option value="{{ id }}">{{ name }}</option>
           {{/each}}
 
       .field
@@ -35,7 +35,7 @@
         select(name="consultant").ui.dropdown
           option(value="") 选择讲师
           {{#each consultants}}
-          <option value="{{link}}">{{username}}</option>
+          <option value="{{id}}">{{username}}</option>
           {{/each}}
 
       .ui.header 详细信息

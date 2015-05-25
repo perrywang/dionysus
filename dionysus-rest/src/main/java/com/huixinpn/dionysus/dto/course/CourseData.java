@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
 import com.huixinpn.dionysus.domain.course.CourseState;
+import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityData;
+import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.UserData;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +16,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
@@ -38,6 +43,12 @@ public class CourseData extends EntityData {
 
   private UserData consultant;
 
+  private Integer capacity;
+
+  private Float price;
+
+  private Collection<TagData> tags = new ArrayList<>();
+
   public CourseData(Course course) {
     super(course);
     this.title = course.getTitle();
@@ -47,7 +58,10 @@ public class CourseData extends EntityData {
     this.approach = course.getApproach() == null ? "unknown" : course.getApproach().toString();
     this.date = course.getDate();
     this.category = new CourseCategoryData(course.getCategory());
+    this.capacity = course.getCapacity();
+    this.price = course.getPrice();
     this.consultant = new UserData(course.getConsultant());
+    this.tags = new EntityCollectionData<TagData>(course.getTags(), TagData.class).toDTOCollection();
     this.cover = course.getCover();
   }
 
@@ -59,18 +73,29 @@ public class CourseData extends EntityData {
     course.setBody(this.getBody());
     course.setState(CourseState.valueOf(state));
     course.setDate(this.getDate());
+    course.setCapacity(this.getCapacity());
+    course.setPrice(this.getPrice());
     course.setCategory(new CourseCategory(this.getCategory().getId()));
     course.setConsultant(new Consultant(this.getConsultant().getId()));
     course.setCover(ExtractCover(body));
+    Collection<Tag> tagsList = new ArrayList<>();
+    for (TagData tagData : tags) {
+      tagsList.add(tagData.toEntity());
+    }
+    course.setTags(tagsList);
     return course;
   }
 
   private String ExtractCover(String body) {
-    Document doc = Jsoup.parse(body);
     String img = null;
-    Element el = doc.select("img").first();
-    if (el != null) {
-      img = el.attr("src");
+    if (body != null) {
+      Document doc = Jsoup.parse(body);
+
+      Element el = doc.select("img").first();
+      if (el != null) {
+        img = el.attr("src");
+      }
+
     }
     return img;
   }

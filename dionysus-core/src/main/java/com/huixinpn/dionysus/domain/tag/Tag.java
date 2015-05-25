@@ -28,7 +28,7 @@ public class Tag extends AbstractDionysusPersistable {
   @ManyToMany
   private Collection<TagCategory> categories = new ArrayList<>();
 
-  @ManyToMany
+  @ManyToMany(mappedBy = "tags")
   private Collection<Course> courses = new ArrayList<>();
 
   @ManyToMany
