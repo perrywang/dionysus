@@ -13,15 +13,15 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 @Data
 @NoArgsConstructor
 @Embeddable
-public class PsychTestResultOption {
+public class PsychTestQuestionResult {
 
 	@ManyToOne
 	private PsychTestQuestion question;
 
+	// XXX: how about multiple-choice ?
 	@ManyToOne
-	private PsychTestQuestionOption selected;
+	private PsychTestQuestionOption option;
 
 	@Lob
 	private String answer;
-
 }

@@ -35,7 +35,7 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 	@ElementCollection
 	@CollectionTable(name = "psychtestresultoptions", 
 		joinColumns = @JoinColumn(name = "answer_id"))
-	private Collection<PsychTestResultOption> answers = new ArrayList<>();
+	private Collection<PsychTestQuestionResult> answers = new ArrayList<>();
 
 	@ManyToOne
 	private PsychTestSuiteResult suite;
