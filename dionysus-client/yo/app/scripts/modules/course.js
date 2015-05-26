@@ -15,7 +15,7 @@ Dionysus.module('Course', function (Course, Dionysus, Backbone, Marionette) {
     showCourses: function () {
       var fetchingCourses = Dionysus.request('course:entities');
       $.when(fetchingCourses).done(function (courses) {
-        Dionysus.mainRegion.show(new CoursesView({collection: courses.embedded('courses')}));
+        Dionysus.mainRegion.show(new CoursesView({collection: courses}));
       });
     },
     showCourse: function (id) {
@@ -31,7 +31,7 @@ Dionysus.module('Course', function (Course, Dionysus, Backbone, Marionette) {
       });
     },
     registerCourse: function (courseId) {
-      $.get('/course/registration/' + courseId, function (data, status) {
+      $.get('/controllers/courses/' + courseId + '/reg', function (data, status) {
         if (status == 'success') {
           toastr.info('注册课程成功');
         } else {
