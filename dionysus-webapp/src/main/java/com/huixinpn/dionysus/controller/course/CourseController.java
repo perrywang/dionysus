@@ -93,7 +93,7 @@ public class CourseController {
     if (!id.equals(data.getId())) {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
-    CourseCategory category = courseCategoryRepository.save(data.toEntity());
+    courseCategoryRepository.save(data.toEntity());
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
