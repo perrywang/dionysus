@@ -134,6 +134,15 @@ public class CourseController {
     return new EntityPageData<>(tags, TagData.class);
   }
 
+  @RequestMapping(value = "/courses/tags/top", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<TagData> getTopTags(@RequestParam(value = "n") Integer topN) {
+    List<Tag> tags = tagRepository.findTopNTagForCourse(topN);
+    return new EntityCollectionData<>(tags,TagData.class).toDTOCollection();
+  }
+
+
   @RequestMapping(value = "/courses/tag/{tid}", method = RequestMethod.GET)
   public
   @ResponseBody
