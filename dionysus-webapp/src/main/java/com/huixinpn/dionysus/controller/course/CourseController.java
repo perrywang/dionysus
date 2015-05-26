@@ -4,12 +4,14 @@ import com.huixinpn.dionysus.controller.util.PagingHelper;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseCategoryData;
 import com.huixinpn.dionysus.dto.course.CourseData;
+import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
 import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
@@ -120,6 +122,16 @@ public class CourseController {
       pagedCourses = courseRepository.findByCategory(new CourseCategory(cid), paging);
     }
     return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  @RequestMapping(value = "/courses/tags", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  EntityPageData<TagData> getCourseTags(@RequestParam(value = "page", required = false) Integer page,
+                                        @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Tag> tags = tagRepository.findAllCourseTags(paging);
+    return new EntityPageData<>(tags, TagData.class);
   }
 
   @RequestMapping(value = "/courses/tag/{tid}", method = RequestMethod.GET)
