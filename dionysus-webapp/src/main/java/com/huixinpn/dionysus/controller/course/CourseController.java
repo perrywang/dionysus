@@ -29,7 +29,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/controllers")
+@RequestMapping(value = "/controllers")
 public class CourseController {
   @Autowired
   private CourseRepository courseRepository;
@@ -45,6 +45,8 @@ public class CourseController {
 
   @Autowired
   private ConsultantRepository consultantRepository;
+
+  public static final String EMPTY_JSON_OBJECT = "{}";
 
 
   @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
@@ -63,7 +65,7 @@ public class CourseController {
       course.getUsers().add(reloaded);
       courseRepository.save(course);
     }
-    return new ResponseEntity<>("{}",HttpStatus.OK);
+    return new ResponseEntity<>(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses", method = RequestMethod.GET)
@@ -92,7 +94,7 @@ public class CourseController {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
     CourseCategory category = courseCategoryRepository.save(data.toEntity());
-    return new ResponseEntity("{}",HttpStatus.OK);
+    return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/consultants", method = RequestMethod.GET)
@@ -154,7 +156,7 @@ public class CourseController {
     }
     Course updating = data.toEntity();
     courseRepository.save(updating);
-    return new ResponseEntity("{}",HttpStatus.OK);
+    return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses", method = RequestMethod.POST)
@@ -163,7 +165,7 @@ public class CourseController {
   ResponseEntity<String> addCourse(@RequestBody CourseData data) {
     Course adding = data.toEntity();
     courseRepository.save(adding);
-    return new ResponseEntity<>("{}",HttpStatus.OK);
+    return new ResponseEntity<>(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
 }
