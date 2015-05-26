@@ -52,7 +52,7 @@ public class CourseController {
 
 
   @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
-  public ResponseEntity<String> registerColurse(@PathVariable Long id) {
+  public ResponseEntity<String> registerCourse(@PathVariable Long id) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Object principle = authentication.getPrincipal();
     if (!(principle instanceof User)) {
