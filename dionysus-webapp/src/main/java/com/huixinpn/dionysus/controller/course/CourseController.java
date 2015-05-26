@@ -48,7 +48,7 @@ public class CourseController {
 
 
   @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
-  public ResponseEntity<Void> registerColurse(@PathVariable Long id) {
+  public ResponseEntity<String> registerColurse(@PathVariable Long id) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     Object principle = authentication.getPrincipal();
     if (!(principle instanceof User)) {
@@ -63,7 +63,7 @@ public class CourseController {
       course.getUsers().add(reloaded);
       courseRepository.save(course);
     }
-    return new ResponseEntity<>(HttpStatus.OK);
+    return new ResponseEntity<>("{}",HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses", method = RequestMethod.GET)
@@ -87,12 +87,12 @@ public class CourseController {
   @RequestMapping(value = "/courses/categories/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
   public
   @ResponseBody
-  ResponseEntity<Void> updateCategory(@RequestBody CourseCategoryData data, @PathVariable Long id) {
+  ResponseEntity<String> updateCategory(@RequestBody CourseCategoryData data, @PathVariable Long id) {
     if (!id.equals(data.getId())) {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
     CourseCategory category = courseCategoryRepository.save(data.toEntity());
-    return new ResponseEntity(HttpStatus.OK);
+    return new ResponseEntity("{}",HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/consultants", method = RequestMethod.GET)
