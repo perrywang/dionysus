@@ -27,6 +27,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.CollationElementIterator;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -88,6 +90,15 @@ public class CourseController {
     return new EntityCollectionData<>(categories, CourseCategoryData.class).toDTOCollection();
   }
 
+  @RequestMapping(value = "/courses/categories/tree", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<CourseCategoryData> listCategoriesTree() {
+    Collection<CourseCategory> categories = courseCategoryRepository.findRootCategories();
+    return new EntityCollectionData<>(categories, CourseCategoryData.class).toDTOCollection();
+  }
+
+
   @RequestMapping(value = "/courses/categories/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
   public
   @ResponseBody
@@ -116,12 +127,29 @@ public class CourseController {
                                                      @PathVariable Long cid) {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
     Page<Course> pagedCourses;
+    CourseCategory root = courseCategoryRepository.findOne(cid);
+    Collection<CourseCategory> categories = getCategoryTree(root);
+
     if (approach != null) {
-      pagedCourses = courseRepository.findByCategoryAndApproach(new CourseCategory(cid), approach, paging);
+      pagedCourses = courseRepository.findByCategoryAndApproach(categories, approach, paging);
     } else {
-      pagedCourses = courseRepository.findByCategory(new CourseCategory(cid), paging);
+      pagedCourses = courseRepository.findByCategory(categories, paging);
     }
     return new EntityPageData<>(pagedCourses, CourseData.class);
+  }
+
+  private Collection<CourseCategory> getCategoryTree(CourseCategory root){
+    if(root == null){
+      return new ArrayList<>();
+    }else{
+      List<CourseCategory> result = new ArrayList<>();
+      Collection<CourseCategory> children = root.getChildren();
+      for(CourseCategory child : children){
+        result.addAll(getCategoryTree(child));
+      }
+      result.add(root);
+      return result;
+    }
   }
 
   @RequestMapping(value = "/courses/tags", method = RequestMethod.GET)

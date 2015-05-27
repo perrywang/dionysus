@@ -18,7 +18,13 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
   Page<Course> findByCategory(@Param("cid") CourseCategory category, Pageable pagable);
 
+  @Query(value = "select c from Course c where c.category in ?1")
+  Page<Course> findByCategory(Collection<CourseCategory> categories, Pageable pagable);
+
   Page<Course> findByCategoryAndApproach(CourseCategory category, CourseApproach approach, Pageable pagable);
+
+  @Query(value = "select c from Course c where c.category in ?1 and c.approach = ?2")
+  Page<Course> findByCategoryAndApproach(Collection<CourseCategory> category, CourseApproach approach, Pageable pagable);
 
   Page<Course> findByConsultant(@Param("id") Consultant consultant, Pageable pageable);
 

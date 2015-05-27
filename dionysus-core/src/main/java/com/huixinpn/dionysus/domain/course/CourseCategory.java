@@ -1,5 +1,7 @@
 package com.huixinpn.dionysus.domain.course;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "coursecategories")
 public class CourseCategory extends AbstractDionysusPersistable {
@@ -26,11 +30,11 @@ public class CourseCategory extends AbstractDionysusPersistable {
   @ManyToOne
   private CourseCategory parent;
 
+  @OneToMany(mappedBy = "parent")
+  private Collection<CourseCategory> children = new ArrayList<>();
+
   @OneToMany(mappedBy = "category")
   private Collection<Course> courses = new ArrayList<>();
-
-  public CourseCategory() {
-  }
 
   public CourseCategory(String name) {
     this.name = name;
@@ -38,30 +42,6 @@ public class CourseCategory extends AbstractDionysusPersistable {
 
   public CourseCategory(Long id){
     super(id);
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public CourseCategory getParent() {
-    return parent;
-  }
-
-  public void setParent(CourseCategory parent) {
-    this.parent = parent;
-  }
-
-  public Collection<Course> getCourses() {
-    return courses;
-  }
-
-  public void setCourses(Collection<Course> courses) {
-    this.courses = courses;
   }
 
   public void addCourse(Course course) {
