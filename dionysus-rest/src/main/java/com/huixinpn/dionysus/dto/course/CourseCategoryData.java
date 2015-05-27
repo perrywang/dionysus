@@ -12,12 +12,15 @@ import java.util.Collection;
 @NoArgsConstructor
 public class CourseCategoryData extends EntityData {
   private String name;
-  private CourseCategoryData parent;
+  private Long parent;
   private Collection<CourseCategoryData> children;
 
   public CourseCategoryData(CourseCategory courseCategory) {
     super(courseCategory);
     this.name = courseCategory.getName();
+    if(courseCategory.getParent() != null){
+      this.parent = courseCategory.getParent().getId();
+    }
     this.children = new EntityCollectionData<>(courseCategory.getChildren(),CourseCategoryData.class).toDTOCollection();
   }
 
@@ -25,6 +28,7 @@ public class CourseCategoryData extends EntityData {
     CourseCategory category = new CourseCategory();
     category.setId(this.getId());
     category.setName(this.getName());
+    category.setParent(new CourseCategory(this.parent));
     return category;
   }
   

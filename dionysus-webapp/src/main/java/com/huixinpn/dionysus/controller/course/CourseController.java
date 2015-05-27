@@ -98,6 +98,22 @@ public class CourseController {
     return new EntityCollectionData<>(categories, CourseCategoryData.class).toDTOCollection();
   }
 
+  @RequestMapping(value = "/courses/categories", method = RequestMethod.POST)
+  public
+  @ResponseBody
+  ResponseEntity<String> addCategory(@RequestBody CourseCategoryData data) {
+    CourseCategory category = data.toEntity();
+    courseCategoryRepository.save(category);
+    return new ResponseEntity<>(EMPTY_JSON_OBJECT,HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/courses/categories/{id}", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  CourseCategoryData getCategory(@PathVariable Long id) {
+    CourseCategory category = courseCategoryRepository.findOne(id);
+    return new CourseCategoryData(category);
+  }
 
   @RequestMapping(value = "/courses/categories/{id}", method = {RequestMethod.PUT, RequestMethod.POST})
   public
