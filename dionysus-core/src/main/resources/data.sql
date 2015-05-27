@@ -70,9 +70,9 @@ insert into articles (id, articletype, interview, category_id, title, summary, b
 
 
 
-insert into comments (id, article_id, content) values (1, 1, '测试用Comment');
-insert into comments (id, article_id, content) values (2, 1, '第二条测试用Comment');
-insert into comments (id, article_id, content) values (3, 2, '测试用Comment');
+insert into comments (id, article_id, content, created_by_id) values (1, 1, '测试用Comment', 1);
+insert into comments (id, article_id, content, created_by_id) values (2, 1, '第二条测试用Comment', 2);
+insert into comments (id, article_id, content, created_by_id) values (3, 2, '测试用Comment', 3);
 
 insert into modules (id, title, subtitle, href, image, body) values (1, '汇心网', '汇心网络中心', '/site', '/public/images/slide-2.jpeg', '关怀无处不在');
 insert into modules (id, title, subtitle, href, image, body) values (2, '心理服务小站', '心灵避风港.汇心心理', '/colleges', '/public/images/slide-3.jpeg', '国内最专业的校园心理服务提供商');

@@ -31,14 +31,12 @@ public abstract class AbstractDionysusAuditable<U> extends
 	private U createdBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
-    @JsonIgnore
 	private Date createdDate;
 
 	@ManyToOne
 	private U lastModifiedBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
-    @JsonIgnore
 	private Date lastModifiedDate;
 
 	public AbstractDionysusAuditable(Long id){
