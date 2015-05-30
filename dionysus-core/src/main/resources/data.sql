@@ -67,7 +67,38 @@ insert into articles (id, articletype, interview, category_id, title, summary, b
 insert into articles (id, articletype, interview, category_id, title, summary, body) values (30, 'DOC',FALSE, 2, '如何完美地失败', '知性上，我们知道失败能使我们领悟机遇，从而为我们人生最终的胜利导航。因此，当拒绝降临、老板说不；当你投资失利、丢了房子，或者失去了任何你想要的东西时，放慢速度，看看有哪里不对。', '正文内容');
 insert into articles (id, articletype, interview, category_id, title, summary, body) values (31, 'DOC',FALSE, 2, '萨提亚自我成长工作坊', '真正的力量绝不是要强、计较、防御，那样只会让自己累与孤独。真正的力量是温暖。你可以做一个内心有力量的人，可以温暖自己，也温暖身边的人。可以放下抗拒与控制，活出爱与光。这个世界上的烦恼，归根结底就是对自己的不了解。才会延伸出一系列的问题：对自己要求高、敏感、拖延、完美主义、抑郁、忧伤、挫败，继而自我否定。以为得到通过努力就会得到更多的成就，就会得到认可。', '正文内容');
 
+insert into blog (id) values (10);
+insert into blog (id) values (11);
+insert into blog (id) values (12);
+insert into blog (id) values (13);
+insert into blog (id) values (14);
+insert into blog (id) values (15);
+insert into blog (id) values (16);
+insert into blog (id) values (17);
+insert into blog (id) values (18);
+insert into blog (id) values (19);
+insert into blog (id) values (20);
 
+insert into official_articles (id) values (1);
+insert into official_articles (id) values (2);
+insert into official_articles (id) values (3);
+insert into official_articles (id) values (4);
+insert into official_articles (id) values (5);
+insert into official_articles (id) values (6);
+insert into official_articles (id) values (7);
+insert into official_articles (id) values (8);
+insert into official_articles (id) values (9);
+insert into official_articles (id) values (21);
+insert into official_articles (id) values (22);
+insert into official_articles (id) values (23);
+insert into official_articles (id) values (24);
+insert into official_articles (id) values (25);
+insert into official_articles (id) values (26);
+insert into official_articles (id) values (27);
+insert into official_articles (id) values (28);
+insert into official_articles (id) values (29);
+insert into official_articles (id) values (30);
+insert into official_articles (id) values (31);
 
 
 insert into comments (id, article_id, content, created_by_id) values (1, 1, '测试用Comment', 1);

@@ -20,9 +20,29 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   }});
 
   var ArticleDetailView = Marionette.ItemView.extend({
-    template: '#article-detail-tpl',
+    template: JST['templates/home/article/detail'],
     tagName: 'article',
-    className: 'ui centered grid article'
+    className: 'ui centered grid article',
+
+    initialize: function(){
+      this.listenTo(this.model.get('comments'), 'add', this.render, this);
+    },
+
+    onRender: function(){
+      var x;
+    },
+
+    events: {
+      'click .icon.button': function() {
+        if (sessionStorage.getItem("user")) {
+          var data = Backbone.Syphon.serialize(this);
+          if (data.mycomment && data.mycomment != "") {
+            this.model.newComment(data);
+          }
+        }
+        else alert("你需要先登录");
+      }
+    }
   });
 
   var ArticleLayoutView = Dionysus.Common.Views.Page2Layout.extend({
@@ -122,7 +142,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
       
-      Dionysus.request('article:instance', id).done(function(article) {
+      Dionysus.request('article:instance:excerpt', id).done(function(article) {
         Dionysus.mainRegion.show(new ArticleDetailView({ model: article}));
       });
     },

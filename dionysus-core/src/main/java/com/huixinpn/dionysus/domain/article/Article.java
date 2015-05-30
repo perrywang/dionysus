@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain.article;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ import com.huixinpn.dionysus.domain.user.User;
 @ToString(of = { "title" })
 @Entity
 @Table(name = "articles")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Article extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = 4106093798545531113L;
@@ -65,7 +67,7 @@ public class Article extends AbstractDionysusAuditable<User> {
 	private Long version;
 
 	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
-	private List<Comment> comments;
+	private List<Comment> comments = new ArrayList<>();
 
 	@PreUpdate
     @PrePersist
