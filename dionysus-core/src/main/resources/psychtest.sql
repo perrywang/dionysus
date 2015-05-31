@@ -271,11 +271,11 @@ insert into suite_test(suite_id, test_id) values (2, 2);
 insert into suite_test(suite_id, test_id) values (2, 3);
 
 
-insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (2, '内向与外向型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (3, '感情用事与安详机警型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (4, '怯懦与果断型', '次级人格因素分析');
-insert into psychtestcategories16pf(id, name, topname) values (5, '心理健康因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (6, '专业而有成就者的人格因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (7, '创造能力人格因素', '16种人格因素测验应用的计算');
-insert into psychtestcategories16pf(id, name, topname) values (8, '在新的环境中有成长能力的人格因素', '16种人格因素测验应用的计算');
+-- insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');
+-- insert into psychtestcategories16pf(id, name, topname) values (2, '内向与外向型', '次级人格因素分析');
+-- insert into psychtestcategories16pf(id, name, topname) values (3, '感情用事与安详机警型', '次级人格因素分析');
+-- insert into psychtestcategories16pf(id, name, topname) values (4, '怯懦与果断型', '次级人格因素分析');
+-- insert into psychtestcategories16pf(id, name, topname) values (5, '心理健康因素', '16种人格因素测验应用的计算');
+-- insert into psychtestcategories16pf(id, name, topname) values (6, '专业而有成就者的人格因素', '16种人格因素测验应用的计算');
+-- insert into psychtestcategories16pf(id, name, topname) values (7, '创造能力人格因素', '16种人格因素测验应用的计算');
+-- insert into psychtestcategories16pf(id, name, topname) values (8, '在新的环境中有成长能力的人格因素', '16种人格因素测验应用的计算');
