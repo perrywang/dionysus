@@ -1,6 +1,10 @@
 Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
+  /*
+  View
+  */
+
   var ArticleView = Marionette.ItemView.extend({
     template: '#article-cards-tpl',
     tagName: 'div',
@@ -84,6 +88,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     }
   });
 
+/*
+Controller
+*/
 
   var ArticleController = Marionette.Controller.extend({
     showArticles: function (pageId) {

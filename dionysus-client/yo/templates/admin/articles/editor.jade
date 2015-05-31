@@ -1,14 +1,33 @@
 .two.fields
   .field
-    label Title
-    input(name="title", type="text", placeholder="Title") 
+    label 类型
+    select.ui.dropdown(name="type")
+      option(value="") 选择类型
+      option(value="VIDEO") 视频
+      option(value="DOC") 文章
+      option(value="AUDIO") 音频
   .field
     label 类别
     select.ui.dropdown(name="category")
       option(value="") 选择类别
       {{#each categories}}
-      <option value="{{link}}">{{name}}</option>
+      <option value="{{id}}">{{name}}</option>
       {{/each}}
+.field
+  .ui.checkbox
+    input(type="checkbox", name="interview")
+    label 心理微访谈
+.two.fields
+  .field
+    lable 页面位置
+    select.ui.dropdown(name="location")
+      option(value="") 选择位置
+      option(value="slider") 首页滚动栏
+  .field
+.ui.divider
+.field
+  label Title
+  input(name="title", type="text", placeholder="Title") 
 .field
   label Summary
   textarea(name="summary")

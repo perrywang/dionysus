@@ -19,4 +19,5 @@ public interface OfficialArticleExcerpt {
     ArticleType getType();
     Boolean getInterview();
     Collection<CommentExcerpt> getComments();
+    String getLocation();
 }

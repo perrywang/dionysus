@@ -1,0 +1,10 @@
+.content
+  a.header(href="/admin/blogs/{{ id }}") {{title}}
+  .meta
+    span  作者: {{createdBy.username}}
+  .description {{summary}}
+  .extra
+    .ui.left.floated.tiny.vertical.animated.red.button.delete
+      .hidden.content 删除
+      .visible.content
+        i.large.trash.icon

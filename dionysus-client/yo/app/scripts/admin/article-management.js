@@ -77,9 +77,12 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     },
     onRender: function() {
       this.$('select.dropdown').dropdown();
+      this.$('.ui.checkbox').checkbox();
       this.$el.form();
       var data = this.model.toJSON();
-      var category = data.category;
+      var category = this.model.get('category');
+      //data.category = category?category.link('self').href():category;
+      data.category = category?category.id:category;
       this.$el.form('set values', data);
       this.$('.editor').editable({
         buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'fontFamily', 'color', 'sep',
@@ -101,7 +104,8 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       //'click @ui.deleteMe': 'deleteArticle'
     },
     saveArticle: function() {
-      var json = this.$el.form('get values');
+      //var json = this.$el.form('get values');
+      var json = Backbone.Syphon.serialize(this);
       this.trigger('article:save', json);
     },
     triggers: {
@@ -109,7 +113,43 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     }
   });
 
+
+  var BlogListItemView = Marionette.ItemView.extend({
+    template: JST["templates/admin/articles/bloglistitem"],
+    className: "item"
+  });
+
+  var BlogListView = Marionette.CompositeView.extend({
+    template: JST["templates/admin/articles/bloglist"],
+    childView: BlogListItemView,
+    childViewContainer: '.items'
+  });
+
   var ArticleController = Marionette.Controller.extend({
+    
+    showBlogList: function(page){
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+
+      Dionysus.request('blog:list', page).then(function(blogs){
+        var bloglist = new BlogListView({
+          collection: blogs.embedded('blogs')
+        });
+
+        Dionysus.mainRegion.show(bloglist);
+      });
+
+    },
+
+    showBlog: function(id){
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+
+      Dionysus.request('blog:item', id).then(function(blog){
+
+      });
+    },
+
     showArticles: function(pageId) {
 
       //show loading before get any data
@@ -119,7 +159,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         
         var pageObj = new Backbone.Model(articles.get('page'));
         var articleList = new ArticlesView({
-          collection: articles.embedded('articles'),
+          collection: articles.embedded('officialArticles'),
           model:pageObj
         })
         articleList.on('childview:article:delete', function(childView, model) {
@@ -144,6 +184,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         Dionysus.mainRegion.show(articleList);
       });
     },
+
     createArticle: function() {
       $.when(Dionysus.request('article:new'), Dionysus.request('category:instances'))
         .done(function(article, categories) {
@@ -156,7 +197,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
               toastr.info('文章保存成功');
             });
           });
-          editor.on('article:delete', function() {
+          editor.on('article:delete', function() {  
             if (!this.model.isNew()) {
               this.model.destroy();
               Dionysus.navigate('admin/articles', {
@@ -167,6 +208,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
           Dionysus.mainRegion.show(editor);
         });
     },
+
     editArticle: function(id) {
       $.when(Dionysus.request('article:instance', id), Dionysus.request('category:instances'))
         .done(function(article, categories) {
@@ -178,7 +220,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             
 
 
-            article.save(json).then(function() {
+            article.save(json,{useRelationUri:true}).then(function() {
               toastr.info('文章保存成功');
             });
           });
@@ -199,7 +241,9 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       appRoutes: {
         'admin/articles(/p:page)': 'showArticles',
         'admin/articles/create(/)': 'createArticle',
-        'admin/articles/:id': 'editArticle'
+        'admin/articles/:id': 'editArticle',
+        'admin/blogs(/p:page)': 'showBlogList',
+        'admin/blogs/:id': 'showBlog'
       },
       controller: new ArticleController()
     });
