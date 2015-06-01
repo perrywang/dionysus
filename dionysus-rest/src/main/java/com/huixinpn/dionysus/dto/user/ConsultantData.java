@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ConsultantData extends UserData{
+  private int appointmentaNum;
   public ConsultantData(Consultant consultant){
     super(consultant);
+    this.appointmentaNum = consultant.getAppointments().size();
   }
 }

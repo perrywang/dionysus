@@ -20,7 +20,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
   @PreAuthorize("#user.username == principal.username or hasRole('ADMIN')")
   List<Appointment> findByUser(@Param("user") User user);
 
-  @Query(value = "select a from Appointment a where a.consultant = ?1 and a.state = ?2 order by a.date desc")
+  @Query(value = "select a from Appointment a where a.consultant = ?1 and a.state = ?2 order by a.date desc, a.state asc")
   Page<Appointment> findByConsultantAndState(Consultant consultant, AppointmentStatus status, Pageable pageable);
 
 }
