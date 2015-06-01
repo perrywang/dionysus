@@ -83,8 +83,22 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return new Course();
   });
 
+  Dionysus.reqres.setHandler('course:category:new', function () {
+    return new CourseCategory();
+  });
+
   Dionysus.reqres.setHandler('course:categories', function () {
     var resources = new CourseCategoryCollection(), defer = $.Deferred();
+    resources.fetch().then(function () {
+      defer.resolve(resources);
+    });
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:categories:tree', function () {
+    var resources = new CourseCategoryCollection();
+    resources.url = '/controllers/courses/categories/tree';
+    var defer = $.Deferred();
     resources.fetch().then(function () {
       defer.resolve(resources);
     });

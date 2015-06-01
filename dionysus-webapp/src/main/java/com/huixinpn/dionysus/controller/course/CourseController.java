@@ -126,6 +126,14 @@ public class CourseController {
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/courses/categories/{id}", method = RequestMethod.DELETE)
+  public
+  @ResponseBody
+  ResponseEntity<String> deleteCategory(@PathVariable Long id) {
+    courseCategoryRepository.delete(id);
+    return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
+  }
+
   @RequestMapping(value = "/courses/consultants", method = RequestMethod.GET)
   public
   @ResponseBody

@@ -76,8 +76,12 @@ public class CourseData extends EntityData {
     course.setTitle(this.getTitle());
     course.setDescription(this.getDescription());
     course.setBody(this.getBody());
-    course.setApproach(CourseApproach.valueOf(this.getApproach()));
-    course.setState(CourseState.valueOf(state));
+    if(this.getApproach() != null){
+      course.setApproach(CourseApproach.valueOf(this.getApproach()));
+    }
+    if(this.state != null){
+      course.setState(CourseState.valueOf(state));
+    }
     course.setDate(this.getDate());
     course.setCapacity(this.getCapacity());
     course.setPrice(this.getPrice());

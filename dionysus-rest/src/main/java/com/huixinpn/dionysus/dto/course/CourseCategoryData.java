@@ -28,7 +28,9 @@ public class CourseCategoryData extends EntityData {
     CourseCategory category = new CourseCategory();
     category.setId(this.getId());
     category.setName(this.getName());
-    category.setParent(new CourseCategory(this.parent));
+    if(this.parent != null){
+      category.setParent(new CourseCategory(this.parent));
+    }
     return category;
   }
   

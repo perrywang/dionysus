@@ -1,0 +1,20 @@
+form.ui.form(style="padding-top:30px;")
+  .field
+    h3
+      label 类别名称
+    input(name="name", type="text", placeholder="类别名称")
+  .field
+    h3
+      label 父类别
+    select(name="parent").ui.dropdown
+       option(value="") 选择父类别
+          |{{#each categories}}
+          <option value="{{ id }}">{{ name }}</option>
+          |{{/each}}
+  .editPanel(style="margin-top:30px;")
+    .ui.button.primary.submit
+      i.save.icon
+      | 保存
+    .ui.red.button.delete
+      i.trash.icon
+      | 删除
