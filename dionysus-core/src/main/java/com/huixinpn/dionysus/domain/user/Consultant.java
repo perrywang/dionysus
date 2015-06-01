@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -20,7 +21,7 @@ public class Consultant extends User {
   private Collection<Course> teachings;
 
   @OneToMany(mappedBy = "consultant")
-  private Collection<Appointment> appointments;
+  private Collection<Appointment> appointments = new ArrayList<>();
 
   public Consultant() {
     super();
