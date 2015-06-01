@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.repository.user;
 
+import com.huixinpn.dionysus.domain.appointment.AppointmentStatus;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +16,7 @@ import java.util.List;
 public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Override
   @PreAuthorize("#user.username == principal or hasRole('ADMIN')")
-  Consultant save(Consultant user);
+  <T extends Consultant> T save(T user);
 
   @Override
   @PreAuthorize("#user.username == principal or hasRole('ADMIN')")
@@ -28,11 +29,14 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Query(value = "select c from Consultant c where size(c.appointments) > 0 order by size(c.appointments) desc")
   Page<Consultant> findConsultantsHasAppointments(Pageable pageable);
 
-  @Query("select c from Consultant c where c.username like %:name%")
+  @Query(value = "select c from Consultant c where c.username like %:name%")
   List<Consultant> nameContains(@Param("name") String name);
 
   @Override
-  @Query("select c from Consultant c order by size(c.appointments) desc")
+  @Query(value = "select c from Consultant c order by size(c.appointments) desc")
   Page<Consultant> findAll(Pageable pageable);
+
+  @Query(value = "select c from Consultant c join c.appointments a where a.state = ?1 and size(c.appointments) > 0 order by size(c.appointments)")
+  Page<Consultant> findConsultantsOrderByAppointmentState(AppointmentStatus state, Pageable pageable);
 
 }
