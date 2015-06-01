@@ -95,6 +95,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         var roles = response.roles;
         sessionStorage.setItem('authorized', 'enabled');
         sessionStorage.setItem('user', data);
+        sessionStorage.setItem('username', response.username);
+        sessionStorage.setItem('avatar', response.avatar);
         for (var i = roles.length - 1; i >= 0; i--) {
           if (roles[i].name === 'ROLE_ADMIN') {
             sessionStorage.setItem('role',roles[i].name);

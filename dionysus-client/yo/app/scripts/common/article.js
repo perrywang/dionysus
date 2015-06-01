@@ -2,12 +2,12 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   'use strict';
 
   Entities.Article = Backbone.Model.extend({
-    urlRoot: '/api/v1/articles'
+    urlRoot: '/api/v1/officialArticles'
   });
 
   Entities.ArticleCollection = Backbone.Collection.extend({
     model: Entities.Article,
-    url: '/api/v1/articles',
+    url: '/api/v1/officialArticles',
     parse: function(response) {
       var embedded = response._embedded;
       return embedded ? embedded.articles : [];

@@ -10,4 +10,5 @@ import org.springframework.data.rest.core.config.Projection;
 public interface UserExcerpt {
     Long getId();
     String getUsername();
+    String getAvatar();
 }

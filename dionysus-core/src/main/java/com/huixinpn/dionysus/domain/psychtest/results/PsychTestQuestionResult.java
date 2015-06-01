@@ -21,6 +21,14 @@ public class PsychTestQuestionResult {
 	// XXX: how about multiple-choice ?
 	@ManyToOne
 	private PsychTestQuestionOption option;
+	
+	// raw value
+	private double score;
+	
+	// 16pf will normalize score
+	// difference testee may have different result
+	// by default it should be same as 'score'
+	private double normalizedScore;
 
 	@Lob
 	private String answer;
