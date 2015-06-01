@@ -72,6 +72,14 @@ public class CourseController {
     return new ResponseEntity<>(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/courses/me", method = RequestMethod.GET)
+  public  Collection<CourseData> myCourses() {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    User login = (User) authentication.getPrincipal();
+    User reloaded = userRepository.findOne(login.getId());
+    return new EntityCollectionData<>(reloaded.getCourses(),CourseData.class).toDTOCollection();
+  }
+
   @RequestMapping(value = "/courses", method = RequestMethod.GET)
   public
   @ResponseBody
@@ -127,10 +135,18 @@ public class CourseController {
   }
 
   @RequestMapping(value = "/courses/categories/{id}", method = RequestMethod.DELETE)
+   public
+   @ResponseBody
+   ResponseEntity<String> deleteCategory(@PathVariable Long id) {
+    courseCategoryRepository.delete(id);
+    return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
   public
   @ResponseBody
-  ResponseEntity<String> deleteCategory(@PathVariable Long id) {
-    courseCategoryRepository.delete(id);
+  ResponseEntity<String> deleteCourse(@PathVariable Long id) {
+    courseRepository.delete(id);
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 

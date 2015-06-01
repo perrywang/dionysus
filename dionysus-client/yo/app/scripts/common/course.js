@@ -23,9 +23,18 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     }
   });
 
+  var PageCourseModel = Backbone.Model.extend({
+    url :function(){
+      return '/controllers/courses?page='+this.page;
+    },
+    initialize : function(page){
+      this.page = page;
+    }
+  });
+
   var CourseCategory = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/controllers/courses/categories' + this.id : '/controllers/courses/categories';
+      return this.id ? '/controllers/courses/categories/' + this.id : '/controllers/courses/categories';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -44,7 +53,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
 
   var CourseConsultant = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/controllers/courses/consultants' + this.id : '/controllers/courses/consultants';
+      return this.id ? '/controllers/courses/consultants/' + this.id : '/controllers/courses/consultants';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -70,8 +79,9 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('course:entities', function () {
-    var courses = new CourseCollection();
+  Dionysus.reqres.setHandler('course:entities', function (page) {
+
+    var courses = new PageCourseModel(page - 1);
     var defer = $.Deferred();
     courses.fetch().then(function () {
       defer.resolve(courses);
@@ -101,6 +111,14 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     var defer = $.Deferred();
     resources.fetch().then(function () {
       defer.resolve(resources);
+    });
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:category', function (id) {
+    var resource = new CourseCategory({id : id}), defer = $.Deferred();
+    resource.fetch().then(function () {
+      defer.resolve(resource);
     });
     return defer.promise();
   });

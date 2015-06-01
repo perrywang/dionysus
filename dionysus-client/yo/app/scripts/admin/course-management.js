@@ -43,13 +43,46 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
   var CourseItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/courses/detail"],
     tagName: 'li',
-    className: 'item'
+    className: 'item',
+    ui: {
+      deleteMe: '.button.delete'
+    },
+    events: {
+      'click @ui.deleteMe': 'deleteCourse'
+    },
+    deleteCourse: function (e) {
+      e.stopPropagation();
+      this.trigger('course:delete', this.model);
+    }
   });
 
   var CourseCollectionView = Marionette.CompositeView.extend({
     template: JST["templates/admin/courses/courses"],
     childView: CourseItemView,
-    childViewContainer: '.items'
+    childViewContainer: '.items',
+    initialize: function(options){
+      if (options && options.totalPages){
+        this.totalPages =options.totalPages;
+      }
+      if(options && options.current){
+        this.current =options.current;
+      }
+    },
+    onRender:function(){
+      this.$('#paging').twbsPagination({
+        totalPages: this.totalPages,
+        startPage: this.current,
+        visiblePages: 6,
+        first: '第一页',
+        prev: '前一页',
+        next: '后一页',
+        last: '最后一页',
+        loop:true,
+        onPageClick: function(event,page){
+          Dionysus.navigate('/admin/courses?page=' + page,{trigger:true});
+        }
+      });
+    }
   });
 
   var CourseEditorView = Marionette.ItemView.extend({
@@ -65,7 +98,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       return data;
     },
     onRender: function () {
-      var that= this;
+      var that = this;
       this.$('[name="state"]').dropdown();
       this.$('[name="consultant"]').dropdown();
       this.$('#courseTime').datetimepicker({lang: 'zh', step: 30});
@@ -74,7 +107,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="approach"]').dropdown();
       this.$('.course-categories').html(getCategoriesHtml(this.categories.toJSON()));
       this.$('.ui.checkbox').checkbox();
-      this.$('input[type="checkbox"]').on('change', function() {
+      this.$('input[type="checkbox"]').on('change', function () {
         that.$('input[type="checkbox"]').not(this).prop('checked', false);
       });
       this.$('[name="approach"]').change(function (eventObject) {
@@ -86,8 +119,8 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       });
       this.$el.form(validationRules);
       var data = this.model.toJSON();
-      if(data.category != undefined && data.category != null){
-        data['CourseCategory-'+data.category] = true;
+      if (data.category != undefined && data.category != null) {
+        data['CourseCategory-' + data.category] = true;
       }
       this.$el.form('set values', data);
       this.$('.editor').editable({
@@ -102,16 +135,33 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       });
     },
     ui: {
-      save: '.button.submit'
+      save: '.button.submit',
+      delete: '.button.delete',
+      editcat: '.button.category.edit'
     },
     events: {
-      'click @ui.save': 'saveCourse'
+      'click @ui.save': 'saveCourse',
+      'click @ui.delete': 'deleteCourse',
+      'click @ui.editcat': 'editCategory'
     },
     saveCourse: function () {
       var json = this.$el.form('get values');
       var category = this.$('input:checked');
       json.category = category.prop('value');
       this.trigger('course:save', json);
+    },
+
+    deleteCourse: function () {
+      this.trigger('course:delete');
+    },
+
+    editCategory: function () {
+      var category = this.$('input:checked');
+      if (category.length == 0) {
+        toastr.error('请选择类别');
+      } else {
+        Dionysus.navigate('/admin/courses/categories/' + category.prop('value'), {trigger: true});
+      }
     }
   });
 
@@ -126,21 +176,27 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       return data;
     },
 
-    onRender: function (){
+    onRender: function () {
       this.$('.ui.dropdown').dropdown();
       var data = this.model.toJSON();
       this.$el.form('set values', data);
     },
 
     ui: {
-      save: '.button.submit'
+      save: '.button.submit',
+      delete: '.button.delete'
     },
     events: {
-      'click @ui.save': 'saveCategory'
+      'click @ui.save': 'saveCategory',
+      'click @ui.delete': 'deleteCategory'
     },
     saveCategory: function () {
       var json = this.$el.form('get values');
       this.trigger('category:save', json);
+    },
+
+    deleteCategory: function () {
+      this.trigger('category:delete');
     }
   });
 
@@ -151,6 +207,28 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         source[prop] = rules[prop](source[prop]);
       }
     }
+  }
+
+  function parseQueryString(queryString){
+    var params = {};
+    if(queryString){
+      _.each(
+        _.map(decodeURI(queryString).split(/&/g),function(el,i){
+          var aux = el.split('='), o = {};
+          if(aux.length >= 1){
+            var val = undefined;
+            if(aux.length == 2)
+              val = aux[1];
+            o[aux[0]] = val;
+          }
+          return o;
+        }),
+        function(o){
+          _.extend(params,o);
+        }
+      );
+    }
+    return params;
   }
 
   var CourseController = Marionette.Controller.extend({
@@ -181,13 +259,34 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       });
     },
 
-    showCourses: function () {
-      $.when(Dionysus.request('course:entities')).done(function (courses) {
-        Dionysus.mainRegion.show(new CourseCollectionView({collection: courses}));
+    showCourses: function (queryString) {
+      var params = parseQueryString(queryString);
+      var page = 1;
+      if(params.page){
+        page = parseInt(params.page);
+      }
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      $.when(Dionysus.request('course:entities',page)).done(function (pagedCourse) {
+        var courses = new Backbone.Collection(pagedCourse.get('content'));
+        var totalPages = pagedCourse.get('totalPages');
+        var listView = new CourseCollectionView({collection: courses,current:page, totalPages:totalPages});
+        listView.on('childview:course:delete', function (childView, model) {
+          model.url = '/controllers/courses/' + model.id;
+          model.destroy({
+            error: function (model, response) {
+              toastr.error('删除课程失败');
+            }
+          }).done(function (){
+            toastr.info('删除成功');
+            listView.render();
+          });
+        });
+        Dionysus.mainRegion.show(listView);
       });
     },
 
     editCourse: function (id) {
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
       $.when(Dionysus.request('course:entity', id), Dionysus.request('course:categories:tree'), Dionysus.request('course:consultants')).done(function (course, categories, consultants) {
         var couseData = course.toJSON();
         if (couseData.category != null) {
@@ -217,16 +316,54 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
             toastr.info('课程保存成功');
           });
         });
+        editor.on('course:delete', function () {
+          course.destroy({
+            error: function (model, response, options) {
+              console.log(response);
+              console.log(options);
+              toastr.error('课程删除失败');
+            }
+          }).done(function (model, response, options) {
+            console.log(response);
+            console.log(options);
+            toastr.info('删除成功');
+            Dionysus.navigate('/admin/courses', {trigger: true, replace: true});
+          });
+        });
         Dionysus.mainRegion.show(editor);
       });
     },
 
-    createCategory: function(){
+    createCategory: function () {
       var category = Dionysus.request('course:category:new');
-      $.when(Dionysus.request('course:categories')).done(function(categories){
-        var editor = new CategoryEditorView({model:category,categories:categories});
+      $.when(Dionysus.request('course:categories')).done(function (categories) {
+        var editor = new CategoryEditorView({model: category, categories: categories});
         editor.on('category:save', function (json) {
-            if (json.parent != null) {
+          if (json.parent != null) {
+            json.parent = string2Integer(json.parent);
+          }
+          category.save(json, {
+            error: function (model, response, options) {
+              //console.log(response);
+              //console.log(options);
+              toastr.error('类别保存失败');
+            }
+          }).done(function () {
+            toastr.info('类别保存成功');
+            Dionysus.navigate('/admin/courses', {trigger: true, replace: true});
+          });
+        });
+
+
+        Dionysus.mainRegion.show(editor);
+      });
+    },
+    editCategory: function (id) {
+      $.when(Dionysus.request('course:category', id), Dionysus.request('course:categories')).done(function (category, categories) {
+        categories.remove({id: parseInt(id)});
+        var editor = new CategoryEditorView({model: category, categories: categories});
+        editor.on('category:save', function (json) {
+          if (json.parent != null) {
             json.parent = string2Integer(json.parent);
           }
           category.save(json, {
@@ -239,11 +376,19 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
             toastr.info('类别保存成功');
           });
         });
+        editor.on('category:delete', function () {
+          category.destroy({
+            error: function (model, response, options) {
+              //console.log(response);
+              //console.log(options);
+              toastr.error('类别删除失败，请检查是否有仍然有课程使用这个类别');
+            }
+          }).done(function () {
+            toastr.info('删除成功');
+          });
+        });
         Dionysus.mainRegion.show(editor);
       });
-    },
-    editCategory: function(){
-
     }
   });
 
@@ -252,11 +397,11 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     for (var index = 0, length = categories.length; index < length; index++) {
       var category = categories[index];
       result += '<li><div class="ui checkbox"><input type="checkbox" name = "CourseCategory-' + category.id + '" value="' + categories[index].id + '"/><label>' + category.name + '</label></div>';
-      if(category.children.length > 0 ){
+      if (category.children.length > 0) {
         result += '<ul class="course-categories">';
         result += getCategoriesHtml(category.children);
         result += '</ul>';
-      }else{
+      } else {
         result += '</li>';
       }
     }
@@ -266,7 +411,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     new Marionette.AppRouter({
       appRoutes: {
         'admin/courses/create(/)': 'createCourse',
-        'admin/courses(/)': 'showCourses',
+        'admin/courses(?*querystring)': 'showCourses',
         'admin/courses/:id(/)': 'editCourse',
         'admin/courses/categories/create': 'createCategory',
         'admin/courses/categories/:id(/)': 'editCategory'

@@ -76,6 +76,10 @@ form.ui.form(style="padding-top:30px;")
           ul.course-categories
         h4
           .addCat(style="padding-left:40px;")
-            a.ui.tiny.purple.button(href="/admin/courses/categories/create") 添加类别
-            a.ui.tiny.purple.button.category.edit 编辑类别
+            a.ui.tiny.purple.button(href="/admin/courses/categories/create")
+              i.add.icon
+              | 添加
+            a.ui.tiny.purple.button.category.edit(style="margin-left:5px;")
+              i.edit.icon
+              | 编辑
 

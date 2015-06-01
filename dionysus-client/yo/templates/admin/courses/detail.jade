@@ -1,7 +1,9 @@
-.image
-  img(src="/public/images/placeholder.png")
 .content
   a.ui.header(href!="/admin/courses/{{ id }}")
     i.edit.icon
     | {{ title }}
   p.description {{ description }}
+  .ui.tiny.vertical.animated.red.button.delete
+    .hidden.content 删除
+    .visible.content
+      i.large.trash.icon
