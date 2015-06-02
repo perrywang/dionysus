@@ -36,7 +36,7 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Query(value = "select c from Consultant c order by size(c.appointments) desc")
   Page<Consultant> findAll(Pageable pageable);
 
-  @Query(value = "select c from Consultant c join c.appointments a where a.state = ?1 and size(c.appointments) > 0 order by size(c.appointments)")
+  @Query(value = "select c from Consultant c join c.appointments a where a.state = ?1 and size(c.appointments) > 0 order by size(c.appointments) desc")
   Page<Consultant> findConsultantsOrderByAppointmentState(AppointmentStatus state, Pageable pageable);
 
 }

@@ -34,7 +34,7 @@ Dionysus.module('Appointment', function(Appointment, Dionysus, Backbone, Marione
     new Marionette.AppRouter({
       appRoutes : {
         'appointments/appointedBy/:id' : 'showAppointmentsByUser',
-        'appointments(/)': 'showAppointments',
+        'appointments(/)': 'showAppointments'
         //'articles/:id(/)': 'showArticle'
 
       },
