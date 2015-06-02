@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,14 +27,18 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -3202875107419512957L;
 
+	public enum PsychTestQuestionType {
+		SINGLE_CHOICE, MULTIPLE_CHOICE, GAPFILL
+	}
+	
 	@Column(name = "description")
 	private String description;
 
 	@ManyToOne
 	private PsychTest test;
-
-	@ManyToOne
-	private PsychTestFactor factor;
+	
+	@Enumerated(EnumType.STRING)
+	private PsychTestQuestionType type;
 
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
 	private Collection<PsychTestQuestionOption> options = new ArrayList<>();
