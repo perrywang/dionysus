@@ -19,6 +19,7 @@
     "marionette.backbone.syphon": "~0.6.0",
     "twbs-pagination": "~1.2.5",
     "fullpage.js": "~2.6.5"
+    "uri-templates": "~0.1.5"
   },
   "resolutions": {
     "underscore": ">=1.7.0",
