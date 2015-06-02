@@ -1,7 +1,7 @@
 Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  var ConsultantView = Marionette.ItemView.extend({ 
+  var ConsultantView = Marionette.ItemView.extend({
     template: '#consultant-tpl',
     tagName: 'li',
     className: 'item',
@@ -38,17 +38,16 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     showConsultants: function () {
       var fetchingConsultants = Dionysus.request('consultant:entities');
       $.when(fetchingConsultants).done(function(consultants) {
-        var consultantsView = new ConsultantsView({ collection: consultants });
-        
+        var consultantsView = new ConsultantsView({ collection: consultants.embedded('consultants') });
         Dionysus.mainRegion.show(consultantsView);
       });
-    },
+    }
   });
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'consultants(/)': 'showConsultants',
+        'consultants(/)': 'showConsultants'
       //  'consultants/:id(/)': 'showConsultant'
       },
       controller: new ConsultantController()

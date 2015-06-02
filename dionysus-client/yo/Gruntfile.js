@@ -37,19 +37,15 @@ module.exports = function (grunt) {
         /^\/login/.test(url) ||
         /^\/profile/.test(url) ||
         /^\/register/.test(url) ||
-        /^\/psychtest/.test(url)
+        /^\/psychtest/.test(url) ||
+        /^\/consultants/.test(url)
       ) {
-      console.log("aaaaaaaaaaaaaaaaaaaaa");
       req.url = '/index.html';
-    }
-    if (/^\/app(\/)?/.test(url)) {
-      console.log("bbbbbbbbbbbbbbbbbbbbbb");
+    }else if (/^\/app(\/)?/.test(url)) {
       req.url = '/index.html';
     } else if (/^\/admin(\/)?/.test(url)) {
-      console.log("cccccccccccccccccccccc");
       req.url = '/admin.html';
     } else if (/^\/consultant(\/)?/.test(url)) {
-      console.log("ddddddddddddddddddddddddd");
       req.url = '/consultant.html';
     }
     return next();
@@ -205,7 +201,7 @@ module.exports = function (grunt) {
 
     less: {
       options: {
-        paths: ['./bower_components'],
+        paths: ['./bower_components']
       },
       dist: {
         options: {
