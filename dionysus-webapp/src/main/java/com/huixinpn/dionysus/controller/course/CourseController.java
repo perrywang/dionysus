@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.controller.course;
 
 import com.huixinpn.dionysus.controller.util.PagingHelper;
+import com.huixinpn.dionysus.controller.util.Utils;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
@@ -27,7 +28,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -50,7 +50,7 @@ public class CourseController {
   @Autowired
   private ConsultantRepository consultantRepository;
 
-  public static final String EMPTY_JSON_OBJECT = "{}";
+  public static final String EMPTY_JSON_OBJECT = Utils.EMPTY_JSON_OBJECT;
 
 
   @RequestMapping(value = "/courses/{id}/reg", method = RequestMethod.GET)
@@ -73,11 +73,11 @@ public class CourseController {
   }
 
   @RequestMapping(value = "/courses/me", method = RequestMethod.GET)
-  public  Collection<CourseData> myCourses() {
+  public Collection<CourseData> myCourses() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     User login = (User) authentication.getPrincipal();
     User reloaded = userRepository.findOne(login.getId());
-    return new EntityCollectionData<>(reloaded.getCourses(),CourseData.class).toDTOCollection();
+    return new EntityCollectionData<>(reloaded.getCourses(), CourseData.class).toDTOCollection();
   }
 
   @RequestMapping(value = "/courses", method = RequestMethod.GET)
@@ -111,8 +111,8 @@ public class CourseController {
   @ResponseBody
   ResponseEntity<String> addCategory(@RequestBody CourseCategoryData data) {
     CourseCategory category = data.toEntity();
-    courseCategoryRepository.save(category);
-    return new ResponseEntity<>(EMPTY_JSON_OBJECT,HttpStatus.OK);
+    CourseCategory added = courseCategoryRepository.save(category);
+    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/categories/{id}", method = RequestMethod.GET)
@@ -135,9 +135,9 @@ public class CourseController {
   }
 
   @RequestMapping(value = "/courses/categories/{id}", method = RequestMethod.DELETE)
-   public
-   @ResponseBody
-   ResponseEntity<String> deleteCategory(@PathVariable Long id) {
+  public
+  @ResponseBody
+  ResponseEntity<String> deleteCategory(@PathVariable Long id) {
     courseCategoryRepository.delete(id);
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
@@ -178,13 +178,13 @@ public class CourseController {
     return new EntityPageData<>(pagedCourses, CourseData.class);
   }
 
-  private Collection<CourseCategory> getCategoryTree(CourseCategory root){
-    if(root == null){
+  private Collection<CourseCategory> getCategoryTree(CourseCategory root) {
+    if (root == null) {
       return new ArrayList<>();
-    }else{
+    } else {
       List<CourseCategory> result = new ArrayList<>();
       Collection<CourseCategory> children = root.getChildren();
-      for(CourseCategory child : children){
+      for (CourseCategory child : children) {
         result.addAll(getCategoryTree(child));
       }
       result.add(root);
@@ -207,7 +207,7 @@ public class CourseController {
   @ResponseBody
   Collection<TagData> getTopTags(@RequestParam(value = "n") Integer topN) {
     List<Tag> tags = tagRepository.findTopNTagForCourse(topN);
-    return new EntityCollectionData<>(tags,TagData.class).toDTOCollection();
+    return new EntityCollectionData<>(tags, TagData.class).toDTOCollection();
   }
 
 
@@ -253,8 +253,8 @@ public class CourseController {
   @ResponseBody
   ResponseEntity<String> addCourse(@RequestBody CourseData data) {
     Course adding = data.toEntity();
-    courseRepository.save(adding);
-    return new ResponseEntity<>(EMPTY_JSON_OBJECT, HttpStatus.OK);
+    Course added = courseRepository.save(adding);
+    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
 }
