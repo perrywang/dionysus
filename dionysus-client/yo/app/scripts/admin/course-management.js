@@ -344,7 +344,6 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
             }
           }).done(function () {
             toastr.info('类别保存成功');
-            Dionysus.navigate('/admin/courses', {trigger: true, replace: true});
           });
         });
 
