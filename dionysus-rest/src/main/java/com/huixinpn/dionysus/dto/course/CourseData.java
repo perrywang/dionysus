@@ -93,6 +93,7 @@ public class CourseData extends EntityData {
     }
 
     course.setCover(ExtractCover(body));
+    course.setEmbeddedVideo(ExtractEmbeddedVideo(body));
     Collection<Tag> tagsList = new ArrayList<>();
     for (TagData tagData : tags) {
       tagsList.add(tagData.toEntity());
@@ -110,8 +111,25 @@ public class CourseData extends EntityData {
       if (el != null) {
         img = el.attr("src");
       }
-
     }
     return img;
   }
+
+  private String ExtractEmbeddedVideo(String body){
+    String embeddedVideo = null;
+    if (body != null) {
+      Document doc = Jsoup.parse(body);
+
+      Element el = doc.select("embed").first();
+      if (el != null) {
+        embeddedVideo = el.outerHtml();
+      }else{
+        el = doc.select("iframe").first();
+        if(el != null){
+          embeddedVideo = el.outerHtml();
+        }
+      }
+    }
+    return embeddedVideo;
+}
 }

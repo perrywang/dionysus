@@ -73,6 +73,8 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   private String videoLink;
 
+  private String embeddedVideo;
+
   private String groupAddress;
 
   public Course(String title, String description) {

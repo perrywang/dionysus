@@ -102,7 +102,6 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="state"]').dropdown();
       this.$('[name="consultant"]').dropdown();
       this.$('#courseTime').datetimepicker({lang: 'zh', step: 30});
-      this.$('#videoPart').hide();
       this.$('#groupAddress').hide();
       this.$('[name="approach"]').dropdown();
       this.$('.course-categories').html(getCategoriesHtml(this.categories.toJSON()));
@@ -111,9 +110,7 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
         that.$('input[type="checkbox"]').not(this).prop('checked', false);
       });
       this.$('[name="approach"]').change(function (eventObject) {
-        var videoPart = $('#videoPart');
         var groupAddress = $('#groupAddress');
-        eventObject.target.value === 'VIDEO' ? videoPart.show() : videoPart.hide();
         eventObject.target.value === 'ONE2MANY' ? groupAddress.show() : groupAddress.hide();
 
       });

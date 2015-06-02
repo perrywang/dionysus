@@ -1,7 +1,7 @@
 form.ui.form(style="padding-top:30px;")
   .ui.grid
     .twelve.wide.column
-      .ui.segment
+      .ui.segment(style="padding:50px 50px;")
         h3
           a 基本信息
         .ui.divider
@@ -48,9 +48,6 @@ form.ui.form(style="padding-top:30px;")
           .field
             label 价格
             input(name="price", type="text", placeholder="课程报价")
-        #videoPart.field
-          label 视频链接
-          input(name="videoLink", type="text", placeholder="视频链接")
         #groupAddress.field
           label QQ群地址
           input(name="groupAddress", type="text", placeholder="QQ群地址")
@@ -68,7 +65,7 @@ form.ui.form(style="padding-top:30px;")
           i.trash.icon
           | 删除
     .four.wide.column
-      .ui.segment
+      .ui.segment(style="padding-top:50px;")
         h3
           a 选择类别
         .ui.divider
