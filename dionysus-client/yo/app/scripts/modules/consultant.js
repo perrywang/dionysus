@@ -14,13 +14,14 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     openAppointment : function(e){
       var appointmentData = this.$el.form('get values');
       this.trigger("consultant:newAppointment", appointmentData);
-      appointmentData.user = Dionysus.Entities.User.prototype.urlRoot + '/' + sessionStorage.user;
+
+      //leave server to get user from login session not here
+     /* appointmentData.user = Dionysus.Entities.User.prototype.urlRoot + '/' + sessionStorage.user;
       appointmentData.consultant = this.model.url();
       var appointment = Dionysus.request('appointment:new');
       appointment.save(appointmentData).then(function(){
-        alert("预约提交成功，请等待咨询师稍后回复!");
-        //toastr.info('预约提交成功，请等待咨询师稍后回复！');
-      });
+        toastr.info('预约提交成功，请等待咨询师稍后回复！');
+      });*/
     }
   });
 
@@ -31,6 +32,10 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     className: 'ui center aligned page grid',
     onDomRefresh:function(){
       this.$('.ui.accordion').accordion();
+    },
+    onRender: function(){
+      this.$('.ui.dropdown').dropdown();
+      this.$('#appointmentDate').datetimepicker({lang: 'zh', step: 30});
     }
   });
 

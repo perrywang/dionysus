@@ -99,11 +99,9 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
     },
     onRender: function () {
       var that = this;
-      this.$('[name="state"]').dropdown();
-      this.$('[name="consultant"]').dropdown();
+      this.$('.ui.dropdown').dropdown();
       this.$('#courseTime').datetimepicker({lang: 'zh', step: 30});
       this.$('#groupAddress').hide();
-      this.$('[name="approach"]').dropdown();
       this.$('.course-categories').html(getCategoriesHtml(this.categories.toJSON()));
       this.$('.ui.checkbox').checkbox();
       this.$('input[type="checkbox"]').on('change', function () {
@@ -112,7 +110,6 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       this.$('[name="approach"]').change(function (eventObject) {
         var groupAddress = $('#groupAddress');
         eventObject.target.value === 'ONE2MANY' ? groupAddress.show() : groupAddress.hide();
-
       });
       this.$el.form(validationRules);
       var data = this.model.toJSON();

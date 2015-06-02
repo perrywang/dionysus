@@ -34,18 +34,18 @@ script#consultant-tpl(type="text/template")
           .title 预约信息
             i.dropdown.icon
           .content
-            form.ui.form  
+            form.ui.form
               .field
-                label 日期:  
-                input(type="date", name="date", placeHolder="Date")
+                label 日期:
+                input(type="text", id="appointmentDate", name="date", placeHolder="预约时间")
               .field
-                label 方式:  
+                label 方式:
                 select.ui.dropdown(name="approach")
                   option(value="ONLINE") 在线
                   option(value="OFFLINE") 面对面
                   option(value="BY_PHONE") 电话
               .field
-                label 留言:  
+                label 留言:
                 textarea(name="reason")
               .ui.button.submit 预约
 
@@ -64,17 +64,17 @@ script#XXconsultant-tpl(type="text/template")
           .title 预约信息
             i.dropdown.icon
           .content
-            form.ui.form  
+            form.ui.form
               .field
-                label 日期:  
+                label 日期:
                 input(type="date", name="date", placeHolder="Date")
               .field
-                label 方式:  
+                label 方式:
                 select.ui.dropdown(name="approach")
                   option(value="ONLINE") 在线
                   option(value="OFFLINE") 面对面
                   option(value="BY_PHONE") 电话
               .field
-                label 留言:  
+                label 留言:
                 textarea(name="reason")
               .ui.button.submit 预约

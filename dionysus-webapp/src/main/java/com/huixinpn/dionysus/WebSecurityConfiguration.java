@@ -25,6 +25,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/controllers/courses/me/**").authenticated()
         .antMatchers(HttpMethod.GET, "/api/v1/consultants/**").permitAll()
         .regexMatchers(HttpMethod.GET, ".*/api/v1/(users|inbox|appointments|notifications|profiles)(/|/\\d+)?.*").authenticated()
+        .antMatchers(HttpMethod.POST, "/controllers/appointments/**").authenticated()
         .antMatchers(HttpMethod.POST, "/controllers/courses/**").hasRole("ADMIN")
         .antMatchers(HttpMethod.PUT,"/controllers/courses/**").hasRole("ADMIN")
         .antMatchers(HttpMethod.POST, "/api/v1/**").authenticated()
