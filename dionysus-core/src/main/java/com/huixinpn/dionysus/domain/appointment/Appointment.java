@@ -1,13 +1,12 @@
 package com.huixinpn.dionysus.domain.appointment;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -41,7 +40,7 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
   private AppointmentApproach approach;
 
   @Column(name = "calendar")
-  @Temporal(TemporalType.DATE)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
   private Calendar date;
 
   @Lob
@@ -49,7 +48,7 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
   private String reason;
 
   public Appointment() {
-      this.state = AppointmentStatus.WAITING;
+    this.state = AppointmentStatus.WAITING;
   }
 
   public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason) {
@@ -122,26 +121,26 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
   }
 
   @Override
-  public String getSummary(){
-        return this.getReason();
+  public String getSummary() {
+    return this.getReason();
   }
 
 
-    @Override
-    public List<User> sendTo(){
-        User user = this.getUser();
-        User consultant = this.getConsultant();
-        List<User> users = new ArrayList<User>();
+  @Override
+  public List<User> sendTo() {
+    User user = this.getUser();
+    User consultant = this.getConsultant();
+    List<User> users = new ArrayList<User>();
 
-        if(consultant!=null){
-            users.add(consultant);
-        }
-
-        if(user!=null){
-            users.add(user);
-        }
-
-        return users;
-
+    if (consultant != null) {
+      users.add(consultant);
     }
+
+    if (user != null) {
+      users.add(user);
+    }
+
+    return users;
+
+  }
 }
