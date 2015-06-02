@@ -1,5 +1,5 @@
 insert into psychtestsuites(id, title, description) values (1, '人格类', '常规检测项目');
-insert into psychtests(id, title, description) values (1, '16PF', '人格评定以及心理健康评定');
+insert into psychtests(id, title, description) values (1, 'SCL—90  自评表', '人格评定以及心理健康评定');
 insert into psychtests(id, title, description) values (2, '卡特尔十六项人格因素测验', '卡特尔十六项人格因素测验');
 insert into psychtests(id, title, description) values (3, '凯尔西气质类型测试', '别想太多，下手的时候别哆嗦，想选什么就选什么，又不是考试卷子，也不打分儿');
 insert into suite_test(suite_id, test_id) values (1, 1);
@@ -22,6 +22,19 @@ insert into psychtestfactors(id, factor, name) values (13, 'Q1', '实验性');
 insert into psychtestfactors(id, factor, name) values (14, 'Q2', '独立性');
 insert into psychtestfactors(id, factor, name) values (15, 'Q3', '自律性');
 insert into psychtestfactors(id, factor, name) values (16, 'Q4', '紧张性');
+
+
+
+
+-- 卡特尔十六种人格因素测试(16PF)
+
+-- 指导语
+--     卡特尔十六种人格因素测验包括一些有关个人兴趣与态度的问题。每个人都有自己的看法，对问题的回答自然不同。无所谓正确或错误。请来试者尽量表达自己的意见。
+--     本测验共有187道题， 每道题有三种选择，请将你的选择用鼠标点击,并按回车键确认。作答时，请注意下列四点：
+--     １．请不要费时斟酌。应当顺其自然地依你个人的反应选答。一般地说来，问题都略嫌简短而不能包含所有有关的因素或条件。通常每分钟可作五六题，全部问题应在半小时内完成。
+--     ２．除非在万不得已的情形下，尽量避免如“介乎Ａ与Ｃ之间”或“不甚确定”这样的中性答案。
+--     ３．请不要遗漏，务必对每一个问题作答。 有些问题似乎不符合于你，有些问题又似乎涉及隐私，但本测验的目的，在于研究比较青年或成人的兴趣和态度，希望来试者真实作答。
+--     ４．作答时，请坦白表达自己的兴趣与态度，不必顾虑到主试者或其他人的意见与立场。
 
 
 insert into psychtestquestions(id, test_id, type, description) values (1, 1, 'SINGLE_CHOICE', '我很明了本测验的说明');
@@ -1150,27 +1163,738 @@ insert into psychtestquestionoptions(id, question_id, description) values (561, 
 
 
 
+-- SCL—90  自 评 表
+-- 以下表格中列出了有些人可能会有的问题，请仔细地阅读每一条，然后根据最近一星期以内下述情况影响您的实际感觉，在5个方格中选择一个，
+-- 1没有——指您在最近一周内无此症状；
+-- 2很轻——指最近一周有1~2天有此症状；
+-- 3中等——指最近一周有3~4天有此症状；
+-- 4偏重——指在最近一周有5~6天有此症状；
+-- 5严重——指最近一周7天都出现此症状。请在符合的选项框中划一个“√”。
+-- 答案无对错之分，请不要有顾虑，回答时请注意：回答每一道题都要根据自己的实际情况；
+-- 回答时不必费时去考虑，看懂后就回答。
+
+insert into psychtestquestions(id, test_id, type, description) values(188, 2, 'SINGLE_CHOICE', '头痛');
+insert into psychtestquestionoptions(id, question_id, description) values(562, 188, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(563, 188, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(564, 188, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(565, 188, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(566, 188, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(189, 2, 'SINGLE_CHOICE', '神经过敏，心中不踏实');
+insert into psychtestquestionoptions(id, question_id, description) values(567, 189, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(568, 189, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(569, 189, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(570, 189, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(571, 189, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(190, 2, 'SINGLE_CHOICE', '头脑中有不必要的想法或字句盘旋');
+insert into psychtestquestionoptions(id, question_id, description) values(572, 190, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(573, 190, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(574, 190, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(575, 190, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(576, 190, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(191, 2, 'SINGLE_CHOICE', '头昏或昏倒');
+insert into psychtestquestionoptions(id, question_id, description) values(577, 191, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(578, 191, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(579, 191, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(580, 191, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(581, 191, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(192, 2, 'SINGLE_CHOICE', '对偶异性的兴趣减退');
+insert into psychtestquestionoptions(id, question_id, description) values(582, 192, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(583, 192, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(584, 192, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(585, 192, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(586, 192, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(193, 2, 'SINGLE_CHOICE', '对旁人责备求全');
+insert into psychtestquestionoptions(id, question_id, description) values(587, 193, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(588, 193, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(589, 193, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(590, 193, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(591, 193, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(194, 2, 'SINGLE_CHOICE', '感到别人能控制您的思想');
+insert into psychtestquestionoptions(id, question_id, description) values(592, 194, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(593, 194, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(594, 194, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(595, 194, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(596, 194, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(195, 2, 'SINGLE_CHOICE', '责怪别人制造麻烦');
+insert into psychtestquestionoptions(id, question_id, description) values(597, 195, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(598, 195, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(599, 195, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(600, 195, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(601, 195, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(196, 2, 'SINGLE_CHOICE', '忘记性大');
+insert into psychtestquestionoptions(id, question_id, description) values(602, 196, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(603, 196, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(604, 196, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(605, 196, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(606, 196, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(197, 2, 'SINGLE_CHOICE', '担心自己的衣饰整齐及仪态的端庄');
+insert into psychtestquestionoptions(id, question_id, description) values(607, 197, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(608, 197, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(609, 197, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(610, 197, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(611, 197, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(198, 2, 'SINGLE_CHOICE', '容易烦恼和激动');
+insert into psychtestquestionoptions(id, question_id, description) values(612, 198, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(613, 198, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(614, 198, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(615, 198, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(616, 198, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(199, 2, 'SINGLE_CHOICE', '胸痛');
+insert into psychtestquestionoptions(id, question_id, description) values(617, 199, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(618, 199, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(619, 199, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(620, 199, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(621, 199, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(200, 2, 'SINGLE_CHOICE', '害怕空旷的场所或街道');
+insert into psychtestquestionoptions(id, question_id, description) values(622, 200, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(623, 200, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(624, 200, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(625, 200, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(626, 200, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(201, 2, 'SINGLE_CHOICE', '感到自己的精力下降，活动减慢');
+insert into psychtestquestionoptions(id, question_id, description) values(627, 201, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(628, 201, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(629, 201, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(630, 201, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(631, 201, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(202, 2, 'SINGLE_CHOICE', '想结束自己的生命');
+insert into psychtestquestionoptions(id, question_id, description) values(632, 202, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(633, 202, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(634, 202, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(635, 202, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(636, 202, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(203, 2, 'SINGLE_CHOICE', '听到旁人听不到的声音');
+insert into psychtestquestionoptions(id, question_id, description) values(637, 203, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(638, 203, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(639, 203, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(640, 203, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(641, 203, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(204, 2, 'SINGLE_CHOICE', '发抖');
+insert into psychtestquestionoptions(id, question_id, description) values(642, 204, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(643, 204, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(644, 204, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(645, 204, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(646, 204, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(205, 2, 'SINGLE_CHOICE', '感到大多数人都不可信任');
+insert into psychtestquestionoptions(id, question_id, description) values(647, 205, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(648, 205, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(649, 205, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(650, 205, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(651, 205, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(206, 2, 'SINGLE_CHOICE', '胃口不好');
+insert into psychtestquestionoptions(id, question_id, description) values(652, 206, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(653, 206, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(654, 206, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(655, 206, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(656, 206, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(207, 2, 'SINGLE_CHOICE', '容易哭泣');
+insert into psychtestquestionoptions(id, question_id, description) values(657, 207, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(658, 207, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(659, 207, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(660, 207, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(661, 207, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(208, 2, 'SINGLE_CHOICE', '同异性相处时感害羞不自在');
+insert into psychtestquestionoptions(id, question_id, description) values(662, 208, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(663, 208, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(664, 208, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(665, 208, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(666, 208, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(209, 2, 'SINGLE_CHOICE', '感到受骗、中了圈套或有人想抓住您');
+insert into psychtestquestionoptions(id, question_id, description) values(667, 209, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(668, 209, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(669, 209, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(670, 209, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(671, 209, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(210, 2, 'SINGLE_CHOICE', '无缘无故地感到害怕');
+insert into psychtestquestionoptions(id, question_id, description) values(672, 210, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(673, 210, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(674, 210, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(675, 210, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(676, 210, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(211, 2, 'SINGLE_CHOICE', '自己不能控制地大发脾气');
+insert into psychtestquestionoptions(id, question_id, description) values(677, 211, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(678, 211, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(679, 211, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(680, 211, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(681, 211, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(212, 2, 'SINGLE_CHOICE', '怕单独出门');
+insert into psychtestquestionoptions(id, question_id, description) values(682, 212, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(683, 212, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(684, 212, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(685, 212, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(686, 212, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(213, 2, 'SINGLE_CHOICE', '经常责怪自己');
+insert into psychtestquestionoptions(id, question_id, description) values(687, 213, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(688, 213, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(689, 213, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(690, 213, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(691, 213, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(214, 2, 'SINGLE_CHOICE', '腰痛');
+insert into psychtestquestionoptions(id, question_id, description) values(692, 214, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(693, 214, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(694, 214, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(695, 214, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(696, 214, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(215, 2, 'SINGLE_CHOICE', '感到难以完成任务');
+insert into psychtestquestionoptions(id, question_id, description) values(697, 215, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(698, 215, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(699, 215, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(700, 215, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(701, 215, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(216, 2, 'SINGLE_CHOICE', '感到孤独');
+insert into psychtestquestionoptions(id, question_id, description) values(702, 216, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(703, 216, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(704, 216, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(705, 216, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(706, 216, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(217, 2, 'SINGLE_CHOICE', '感到苦闷');
+insert into psychtestquestionoptions(id, question_id, description) values(707, 217, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(708, 217, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(709, 217, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(710, 217, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(711, 217, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(218, 2, 'SINGLE_CHOICE', '过分担忧');
+insert into psychtestquestionoptions(id, question_id, description) values(712, 218, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(713, 218, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(714, 218, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(715, 218, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(716, 218, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(219, 2, 'SINGLE_CHOICE', '对事物不感兴趣');
+insert into psychtestquestionoptions(id, question_id, description) values(717, 219, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(718, 219, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(719, 219, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(720, 219, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(721, 219, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(220, 2, 'SINGLE_CHOICE', '感到害怕');
+insert into psychtestquestionoptions(id, question_id, description) values(722, 220, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(723, 220, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(724, 220, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(725, 220, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(726, 220, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(221, 2, 'SINGLE_CHOICE', '您的感情容易受到伤害');
+insert into psychtestquestionoptions(id, question_id, description) values(727, 221, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(728, 221, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(729, 221, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(730, 221, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(731, 221, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(222, 2, 'SINGLE_CHOICE', '旁人能知道您的私下想法');
+insert into psychtestquestionoptions(id, question_id, description) values(732, 222, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(733, 222, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(734, 222, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(735, 222, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(736, 222, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(223, 2, 'SINGLE_CHOICE', '感到别人不理解您不同情您');
+insert into psychtestquestionoptions(id, question_id, description) values(737, 223, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(738, 223, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(739, 223, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(740, 223, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(741, 223, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(224, 2, 'SINGLE_CHOICE', '感到人们对您不友好，不喜欢您');
+insert into psychtestquestionoptions(id, question_id, description) values(742, 224, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(743, 224, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(744, 224, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(745, 224, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(746, 224, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(225, 2, 'SINGLE_CHOICE', '做事必须做得很慢以保证做得正确');
+insert into psychtestquestionoptions(id, question_id, description) values(747, 225, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(748, 225, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(749, 225, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(750, 225, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(751, 225, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(226, 2, 'SINGLE_CHOICE', '心跳得很厉害');
+insert into psychtestquestionoptions(id, question_id, description) values(752, 226, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(753, 226, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(754, 226, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(755, 226, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(756, 226, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(227, 2, 'SINGLE_CHOICE', '恶心或胃部不舒服');
+insert into psychtestquestionoptions(id, question_id, description) values(757, 227, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(758, 227, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(759, 227, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(760, 227, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(761, 227, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(228, 2, 'SINGLE_CHOICE', '感到比不上他人');
+insert into psychtestquestionoptions(id, question_id, description) values(762, 228, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(763, 228, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(764, 228, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(765, 228, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(766, 228, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(229, 2, 'SINGLE_CHOICE', '肌肉酸痛');
+insert into psychtestquestionoptions(id, question_id, description) values(767, 229, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(768, 229, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(769, 229, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(770, 229, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(771, 229, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(230, 2, 'SINGLE_CHOICE', '感到有人在监视您或谈论');
+insert into psychtestquestionoptions(id, question_id, description) values(772, 230, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(773, 230, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(774, 230, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(775, 230, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(776, 230, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(231, 2, 'SINGLE_CHOICE', '难以入睡');
+insert into psychtestquestionoptions(id, question_id, description) values(777, 231, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(778, 231, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(779, 231, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(780, 231, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(781, 231, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(232, 2, 'SINGLE_CHOICE', '做事必须反复检查');
+insert into psychtestquestionoptions(id, question_id, description) values(782, 232, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(783, 232, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(784, 232, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(785, 232, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(786, 232, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(233, 2, 'SINGLE_CHOICE', '难以做出决定');
+insert into psychtestquestionoptions(id, question_id, description) values(787, 233, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(788, 233, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(789, 233, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(790, 233, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(791, 233, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(234, 2, 'SINGLE_CHOICE', '怕乘电车、公共汽车、地铁或火车');
+insert into psychtestquestionoptions(id, question_id, description) values(792, 234, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(793, 234, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(794, 234, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(795, 234, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(796, 234, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(235, 2, 'SINGLE_CHOICE', '呼吸有困难');
+insert into psychtestquestionoptions(id, question_id, description) values(797, 235, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(798, 235, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(799, 235, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(800, 235, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(801, 235, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(236, 2, 'SINGLE_CHOICE', '一阵阵发冷或发热');
+insert into psychtestquestionoptions(id, question_id, description) values(802, 236, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(803, 236, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(804, 236, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(805, 236, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(806, 236, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(237, 2, 'SINGLE_CHOICE', '因为感到害怕而避开某些东西、场合或活动');
+insert into psychtestquestionoptions(id, question_id, description) values(807, 237, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(808, 237, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(809, 237, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(810, 237, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(811, 237, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(238, 2, 'SINGLE_CHOICE', '脑子变空了');
+insert into psychtestquestionoptions(id, question_id, description) values(812, 238, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(813, 238, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(814, 238, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(815, 238, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(816, 238, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(239, 2, 'SINGLE_CHOICE', '身体发麻或刺痛');
+insert into psychtestquestionoptions(id, question_id, description) values(817, 239, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(818, 239, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(819, 239, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(820, 239, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(821, 239, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(240, 2, 'SINGLE_CHOICE', '喉咙有梗塞感');
+insert into psychtestquestionoptions(id, question_id, description) values(822, 240, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(823, 240, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(824, 240, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(825, 240, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(826, 240, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(241, 2, 'SINGLE_CHOICE', '感到前途没有希望');
+insert into psychtestquestionoptions(id, question_id, description) values(827, 241, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(828, 241, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(829, 241, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(830, 241, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(831, 241, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(242, 2, 'SINGLE_CHOICE', '不能集中注意');
+insert into psychtestquestionoptions(id, question_id, description) values(832, 242, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(833, 242, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(834, 242, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(835, 242, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(836, 242, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(243, 2, 'SINGLE_CHOICE', '感到身体的某一部分软弱无力');
+insert into psychtestquestionoptions(id, question_id, description) values(837, 243, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(838, 243, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(839, 243, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(840, 243, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(841, 243, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(244, 2, 'SINGLE_CHOICE', '感到紧张或容易紧张');
+insert into psychtestquestionoptions(id, question_id, description) values(842, 244, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(843, 244, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(844, 244, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(845, 244, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(846, 244, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(245, 2, 'SINGLE_CHOICE', '感到手或脚发重');
+insert into psychtestquestionoptions(id, question_id, description) values(847, 245, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(848, 245, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(849, 245, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(850, 245, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(851, 245, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(246, 2, 'SINGLE_CHOICE', '想到死亡的事');
+insert into psychtestquestionoptions(id, question_id, description) values(852, 246, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(853, 246, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(854, 246, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(855, 246, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(856, 246, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(247, 2, 'SINGLE_CHOICE', '吃的太多');
+insert into psychtestquestionoptions(id, question_id, description) values(857, 247, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(858, 247, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(859, 247, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(860, 247, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(861, 247, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(248, 2, 'SINGLE_CHOICE', '当别人看者你或谈论您时感到不自在');
+insert into psychtestquestionoptions(id, question_id, description) values(862, 248, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(863, 248, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(864, 248, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(865, 248, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(866, 248, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(249, 2, 'SINGLE_CHOICE', '有一些不属于您自己的想法');
+insert into psychtestquestionoptions(id, question_id, description) values(867, 249, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(868, 249, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(869, 249, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(870, 249, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(871, 249, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(250, 2, 'SINGLE_CHOICE', '有想打人或伤害他人的冲动');
+insert into psychtestquestionoptions(id, question_id, description) values(872, 250, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(873, 250, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(874, 250, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(875, 250, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(876, 250, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(251, 2, 'SINGLE_CHOICE', '醒得太早');
+insert into psychtestquestionoptions(id, question_id, description) values(877, 251, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(878, 251, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(879, 251, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(880, 251, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(881, 251, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(252, 2, 'SINGLE_CHOICE', '必须反复洗手、点数目或触摸某些东西');
+insert into psychtestquestionoptions(id, question_id, description) values(882, 252, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(883, 252, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(884, 252, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(885, 252, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(886, 252, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(253, 2, 'SINGLE_CHOICE', '睡得不稳不深');
+insert into psychtestquestionoptions(id, question_id, description) values(887, 253, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(888, 253, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(889, 253, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(890, 253, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(891, 253, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(254, 2, 'SINGLE_CHOICE', '有想摔东西或破坏东西的冲动');
+insert into psychtestquestionoptions(id, question_id, description) values(892, 254, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(893, 254, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(894, 254, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(895, 254, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(896, 254, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(255, 2, 'SINGLE_CHOICE', '有一些别人没有的想法或念头');
+insert into psychtestquestionoptions(id, question_id, description) values(897, 255, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(898, 255, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(899, 255, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(900, 255, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(901, 255, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(256, 2, 'SINGLE_CHOICE', '感到对别人神经过敏');
+insert into psychtestquestionoptions(id, question_id, description) values(902, 256, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(903, 256, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(904, 256, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(905, 256, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(906, 256, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(257, 2, 'SINGLE_CHOICE', '在商店或电影院等人多的地方感到不自在');
+insert into psychtestquestionoptions(id, question_id, description) values(907, 257, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(908, 257, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(909, 257, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(910, 257, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(911, 257, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(258, 2, 'SINGLE_CHOICE', '感到任何事情都很困难');
+insert into psychtestquestionoptions(id, question_id, description) values(912, 258, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(913, 258, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(914, 258, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(915, 258, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(916, 258, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(259, 2, 'SINGLE_CHOICE', '一阵阵恐惧或惊恐');
+insert into psychtestquestionoptions(id, question_id, description) values(917, 259, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(918, 259, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(919, 259, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(920, 259, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(921, 259, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(260, 2, 'SINGLE_CHOICE', '感到在公共场合吃东西很不舒服');
+insert into psychtestquestionoptions(id, question_id, description) values(922, 260, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(923, 260, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(924, 260, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(925, 260, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(926, 260, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(261, 2, 'SINGLE_CHOICE', '经常与人争论');
+insert into psychtestquestionoptions(id, question_id, description) values(927, 261, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(928, 261, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(929, 261, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(930, 261, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(931, 261, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(262, 2, 'SINGLE_CHOICE', '单独一人时神经紧张');
+insert into psychtestquestionoptions(id, question_id, description) values(932, 262, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(933, 262, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(934, 262, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(935, 262, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(936, 262, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(263, 2, 'SINGLE_CHOICE', '别人对您的成绩没有作出恰当的评价');
+insert into psychtestquestionoptions(id, question_id, description) values(937, 263, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(938, 263, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(939, 263, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(940, 263, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(941, 263, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(264, 2, 'SINGLE_CHOICE', '即使和别人在一起也感到孤单');
+insert into psychtestquestionoptions(id, question_id, description) values(942, 264, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(943, 264, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(944, 264, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(945, 264, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(946, 264, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(265, 2, 'SINGLE_CHOICE', '感到坐立不安心神不定');
+insert into psychtestquestionoptions(id, question_id, description) values(947, 265, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(948, 265, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(949, 265, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(950, 265, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(951, 265, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(266, 2, 'SINGLE_CHOICE', '感到自己没有什么价值');
+insert into psychtestquestionoptions(id, question_id, description) values(952, 266, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(953, 266, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(954, 266, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(955, 266, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(956, 266, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(267, 2, 'SINGLE_CHOICE', '感到熟悉的东西变得陌生或不象是真的');
+insert into psychtestquestionoptions(id, question_id, description) values(957, 267, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(958, 267, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(959, 267, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(960, 267, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(961, 267, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(268, 2, 'SINGLE_CHOICE', '大叫或摔东西');
+insert into psychtestquestionoptions(id, question_id, description) values(962, 268, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(963, 268, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(964, 268, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(965, 268, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(966, 268, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(269, 2, 'SINGLE_CHOICE', '害怕会在公共场合昏倒');
+insert into psychtestquestionoptions(id, question_id, description) values(967, 269, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(968, 269, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(969, 269, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(970, 269, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(971, 269, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(270, 2, 'SINGLE_CHOICE', '感到别人想占您的便宜');
+insert into psychtestquestionoptions(id, question_id, description) values(972, 270, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(973, 270, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(974, 270, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(975, 270, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(976, 270, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(271, 2, 'SINGLE_CHOICE', '为一些有关“性”的想法而很苦恼');
+insert into psychtestquestionoptions(id, question_id, description) values(977, 271, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(978, 271, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(979, 271, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(980, 271, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(981, 271, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(272, 2, 'SINGLE_CHOICE', '您认为应该因为自己的过错而受到惩罚');
+insert into psychtestquestionoptions(id, question_id, description) values(982, 272, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(983, 272, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(984, 272, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(985, 272, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(986, 272, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(273, 2, 'SINGLE_CHOICE', '感到要赶快把事情做完');
+insert into psychtestquestionoptions(id, question_id, description) values(987, 273, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(988, 273, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(989, 273, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(990, 273, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(991, 273, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(274, 2, 'SINGLE_CHOICE', '感到自己的身体有严重问题');
+insert into psychtestquestionoptions(id, question_id, description) values(992, 274, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(993, 274, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(994, 274, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(995, 274, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(996, 274, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(275, 2, 'SINGLE_CHOICE', '从未感到和其他人很亲近');
+insert into psychtestquestionoptions(id, question_id, description) values(997, 275, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(998, 275, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(999, 275, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(1000, 275, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(1001, 275, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(276, 2, 'SINGLE_CHOICE', '感到自己有罪');
+insert into psychtestquestionoptions(id, question_id, description) values(1002, 276, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(1003, 276, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(1004, 276, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(1005, 276, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(1006, 276, '严重');
+
+
+insert into psychtestquestions(id, test_id, type, description) values(277, 2, 'SINGLE_CHOICE', '感到自己的脑子有毛病');
+insert into psychtestquestionoptions(id, question_id, description) values(1007, 277, '没有');
+insert into psychtestquestionoptions(id, question_id, description) values(1008, 277, '很轻');
+insert into psychtestquestionoptions(id, question_id, description) values(1009, 277, '中等');
+insert into psychtestquestionoptions(id, question_id, description) values(1010, 277, '偏重');
+insert into psychtestquestionoptions(id, question_id, description) values(1011, 277, '严重');
 
 
 
 
-
--- insert into psychtestquestions(id, test_id, description) values (36,  3, '电话铃响的时候，你会：');
--- insert into psychtestquestionoptions(id, question_id, description, score, weight) values (106, 36, '马上第一个去接', 2, 10);
--- insert into psychtestquestionoptions(id, question_id, description, score, weight) values (107, 36, '希望别人去接', 1, 20);
-
-
--- insert into psychtestquestions(id, test_id, description) values (37,  3, '你更倾向于：');
--- insert into psychtestquestionoptions(id, question_id, description, score, weight) values (108, 37, '迅速做出反应', 2, 10);
--- insert into psychtestquestionoptions(id, question_id, description, score, weight) values (109, 37, '时常自我反省', 1, 20);
-
-
-
-
-
--- insert into psychtestsuites(id, title, description) values (2, '非正常类', '非正常人类测试');
--- insert into suite_test(suite_id, test_id) values (2, 2);
--- insert into suite_test(suite_id, test_id) values (2, 3);
 
 
 -- insert into psychtestcategories16pf(id, name, topname) values (1, '适应与焦虑型', '次级人格因素分析');
