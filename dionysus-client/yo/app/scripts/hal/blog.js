@@ -58,7 +58,7 @@ Reqeust Handler
 		return defer.promise();
 	});
 
-	Dionysus.reqres.setHandler('blog:user'),
+	Dionysus.reqres.setHandler('blog:user',
 		function(userId, page, size) {
 			var blogResources = new BlogCollection({
 				url: "/api/v1/blogs/search/findByCreatedBy"
