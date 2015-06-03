@@ -23,7 +23,7 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   void delete(Consultant user);
 
   @Override
-  @PreAuthorize("#id == authentication.details")
+  @PreAuthorize("#id == authentication.details or hasRole('ADMIN')")
   void delete(Long id);
 
   @Query(value = "select c from Consultant c where size(c.appointments) > 0 order by size(c.appointments) desc")
