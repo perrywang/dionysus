@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
@@ -29,6 +31,18 @@ public class PsychTest extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = -4860066336073876229L;
 
+	public enum PsychTestRenderFormat {
+		// 所有的题目显示在一个表格中，例如:SCL——90量表
+		TABLE, 
+		
+		// 一次显示一道题，点击下一题直到结束
+		ONE_BY_ONE,
+		
+		// 所有的题目显示在一个页面
+		LIST
+	}
+	
+	
 	@NotBlank
 	@Column(name = "title")
 	private String title;
@@ -67,6 +81,9 @@ public class PsychTest extends AbstractDionysusPersistable {
 	private Collection<PsychTestSuite> suite = new ArrayList<>();
 	
 	private PsychTestType category;
+	
+	@Enumerated(EnumType.STRING)
+	private PsychTestRenderFormat format;
 
 	public double evaluate(/*args*/) {
 		// TODO: 在这里进行分数的计算，传入参数为用户输入的答案

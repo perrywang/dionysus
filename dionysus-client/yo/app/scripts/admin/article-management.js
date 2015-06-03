@@ -193,6 +193,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
             categories: categories
           });
           editor.on('article:save', function(json) {
+            if(json.category) json.category = "/api/v1/categories/"+json.category;
             article.save(json).done(function() {
               toastr.info('文章保存成功');
             });
