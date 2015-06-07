@@ -1,27 +1,20 @@
 Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  var empty2null = function (input) {
-    return (input === '') ? null : input;
-  };
-
-  var string2Integer = function (input) {
-    var number = parseInt(input);
-    return isNaN(number) ? input : number;
-  };
-
-  var string2Float = function (input) {
-    var number = parseFloat(input);
-    return isNaN(number) ? input : number;
-  };
-
   var AppointmentItemView = Marionette.ItemView.extend({
-    template: JST["templates/admin/appointments/appointmentitem"]
+    template: JST["templates/admin/appointments/appointmentitem"],
+    tagName: 'tr',
+    onRender:function(){
+      var dropdown = this.$el.find('.ui.dropdown');
+      dropdown.dropdown('set selected',this.model.get('state'));
+    }
   });
 
-  var AppointmentListView = Marionette.CollectionView.extend({
+  var AppointmentListView = Marionette.CompositeView.extend({
     template: JST["templates/admin/appointments/appointmentlist"],
     childView: AppointmentItemView,
+    tagName: 'table',
+    className: 'ui inverted purple table',
     childViewContainer: 'tbody',
     initialize: function(options){
       if (options && options.totalPages){
@@ -31,8 +24,9 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
         this.current =options.current;
       }
     },
-    onRender:function(){
-      this.$('#paging').twbsPagination({
+    onDomRefresh:function(){
+      this.$el.parent().append($('<div id="pagging"></div>'));
+      $('#pagging').twbsPagination({
         totalPages: this.totalPages,
         startPage: this.current,
         visiblePages: 6,
