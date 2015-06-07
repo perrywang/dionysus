@@ -132,7 +132,28 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
     return defer.promise();
 
-  })
+  });
+
+/*
+  Used for article home page summary articles.
+*/
+  Dionysus.reqres.setHandler('article:search:summary', function(searchMethod, criteria) {
+    var searchUrl = ArticleCollection.url + '/search/' + searchMethod;
+    var resources = new ArticleCollection({
+      url: searchUrl
+    }),
+      defer = $.Deferred();
+
+    criteria['projection'] = 'summary';
+
+    resources.fetch({
+      data: criteria
+    }).then(function() {
+      defet.resolve(resources);
+    });
+
+    return defer.promise();
+  });
 
   Dionysus.reqres.setHandler('article:instance', function(id) {
     var article = Article.findOrCreate({
