@@ -1,43 +1,38 @@
 Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
-  Entities.Appointment = Backbone.Model.extend({
-    urlRoot: '/api/v1/appointments',
-  });
-
-
-  Entities.AppointmentCollection = Backbone.Collection.extend({
-    model: Entities.Appointment,
-    url: '/api/v1/appointments',
-    parse: function(response) {
-      var embedded = response._embedded;
-      return embedded ? embedded.appointments : [];
+  var Appointment = Backbone.Model.extend({
+    url: function () {
+      return this.id ? '/controllers/appointments/' + this.id : '/controllers/appointments';
     },
-	initialize : function(options){
-      if(options && options.appendUrl){
-        this.url += options.appendUrl;
+    initialize: function (options) {
+      if (options && options.id) {
+        this.id = options.id;
       }
-    },
-    state: {
-      firstPage: 0
-    },
-    queryParams: {
-      currentPage: 'page',
-      pageSize: 'size'
     }
   });
 
-  Dionysus.reqres.setHandler('appointment:entities', function() {
-    var appointments = new Entities.AppointmentCollection();
+
+  var PageAppointmentModel = Backbone.Model.extend({
+    url :function(){
+      return '/controllers/appointments?page='+this.page;
+    },
+    initialize : function(page){
+      this.page = page;
+    }
+  });
+
+  Dionysus.reqres.setHandler('appointment:entities', function(page) {
+    var appintments = new PageAppointmentModel(page - 1);
     var defer = $.Deferred();
-    appointments.fetch().then(function() {
-      defer.resolve(appointments);
+    appintments.fetch().then(function () {
+      defer.resolve(appintments);
     });
     return defer.promise();
   });
 
   Dionysus.reqres.setHandler('appointment:entity', function(id) {
-    var appointment = new Entities.Consultant({id: id});
+    var appointment = new Appointment({id: id});
     var defer = $.Deferred();
     appointment.fetch().then(function() {
       defer.resolve(appointment);
@@ -46,41 +41,19 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   Dionysus.reqres.setHandler('appointment:new', function(){
-    return new Entities.Appointment();
+    return new Appointment();
   });
 
-  Dionysus.reqres.setHandler('appointment:appointedby', function(userid, size) {
+  Dionysus.reqres.setHandler('appointment:appointedby', function(userid,page) {
 
-    var appointments = new Entities.AppointmentCollection({
-      appendUrl: '/search/findByUser'
-    });
+    var appointments = new PageAppointmentModel(page);
+    appointments.url = '/controllers/appointments/user/'+userid;
     var defer = $.Deferred();
-    appointments.fetch({
-      data: {
-        user: userid,
-        size: size
-      }
-    }).then(function() {
-
-      for (var i = appointments.models.length - 1; i >= 0; i--) {
-        var model = appointments.models[i];
-        var consultant_url = model.get('_links').consultant.href;
-        $.ajax({
-          url: consultant_url,
-          async: false,
-          success: function(consultant_instance) {
-            model.set({
-              consultant_name: consultant_instance.username,
-              consultant_id: consultant_instance.id,
-              consultant_avatar: consultant_instance.avatar,
-              consultant_qqAddress: consultant_instance.qqAddress
-            })
-          }
-        });
-      }
+    appointments.fetch().then(function() {
       defer.resolve(appointments);
     });
     return defer.promise();
   });
-  });
+
+});
 
