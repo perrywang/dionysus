@@ -10,7 +10,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "profileitem")
 public class ProfileItem extends AbstractDionysusAuditable<User>{
@@ -34,36 +38,7 @@ public class ProfileItem extends AbstractDionysusAuditable<User>{
 	@NotNull
 	@Column(name = "linkid")
 	private String linkid;
-	
-	public Consultant getConsultant() {
-		return consultant;
-	}
 
-	public void setConsultant(Consultant consultant) {
-		this.consultant = consultant;
-	}
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public String getModule() {
-		return module;
-	}
-
-	public void setModule(String module) {
-		this.module = module;
-	}
-
-	public String getLinkid() {
-		return linkid;
-	}
-
-	public void setLinkid(String linkid) {
-		this.linkid = linkid;
-	}
+	@ManyToOne
+	Profile profile;
 }
