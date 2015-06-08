@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EntityData {
   private Long id;
-  private String href;
 
   public EntityData(AbstractDionysusPersistable entity) {
-
-    this.id = entity.getId();
-    this.href = LinkHelper.instance().getEntityLink(entity).getHref();
+    if(entity != null){
+      this.id = entity.getId();
+    }
   }
 }

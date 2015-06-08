@@ -23,11 +23,14 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   void delete(Consultant user);
 
   @Override
-  @PreAuthorize("#id == authentication.details")
+  @PreAuthorize("#id == authentication.details or hasRole('ADMIN')")
   void delete(Long id);
 
   @Query(value = "select c from Consultant c where size(c.appointments) > 0 order by size(c.appointments) desc")
   Page<Consultant> findConsultantsHasAppointments(Pageable pageable);
+
+  @Query(value = "select c from Consultant c where c.expertise.toString() like %:expertise%")
+  Page<Consultant> findConsultantsByExpertise(@Param("expertise") String expertise, Pageable pageable);
 
   @Query(value = "select c from Consultant c where c.username like %:name%")
   List<Consultant> nameContains(@Param("name") String name);

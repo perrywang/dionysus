@@ -6,6 +6,7 @@ import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,6 +27,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
   @Query(value = "select a from Appointment a where a.consultant = ?1 order by a.state asc, a.date desc")
   Page<Appointment> findByConsultant(Consultant consultant, Pageable pageable);
 
-  Page<Appointment> findByState(AppointmentStatus status, Pageable pageable);
+  Page<Appointment> findByState(AppointmentStatus state, Pageable pageable);
 
+  @Query(value = "select a from Appointment a order by a.date desc")
+  Page<Appointment> findAll(Pageable pageable);
+
+  Page<Appointment> findByUser(User user, Pageable pageable);
 }
