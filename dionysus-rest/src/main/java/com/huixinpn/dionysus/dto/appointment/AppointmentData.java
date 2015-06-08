@@ -32,9 +32,16 @@ public class AppointmentData extends EntityData {
 
   public Appointment toEntity(){
     Appointment appointment = new Appointment();
-    appointment.setUser(new User(this.getUser().getId()));
-    appointment.setConsultant(new Consultant(this.getConsultant().getId()));
-    appointment.setDate(this.getDate());
+    appointment.setId(this.getId());
+    if(this.getUser() != null){
+      appointment.setUser(new User(this.getUser().getId()));
+    }
+    if(this.getConsultant() != null){
+      appointment.setConsultant(new Consultant(this.getConsultant().getId()));
+    }
+    if(this.getDate() != null){
+      appointment.setDate(this.getDate());
+    }
     appointment.setState(AppointmentStatus.valueOf(this.getState()));
     return appointment;
   }

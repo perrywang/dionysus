@@ -5,8 +5,22 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
     template: JST["templates/admin/appointments/appointmentitem"],
     tagName: 'tr',
     onRender:function(){
+      var that = this;
+      var model =this.model;
       var dropdown = this.$el.find('.ui.dropdown');
-      dropdown.dropdown('set selected',this.model.get('state'));
+      dropdown.dropdown('set selected',model.get('state'));
+      this.$el.on('click.save','.save.button',function(){
+        var dropdown = that.$el.find('.ui.dropdown');
+        var selected = dropdown.dropdown('get value');
+        var appointment = new Backbone.Model();
+        appointment.set('id',model.id);
+        appointment.set('state',selected);
+        appointment.set('user',model.get('user'));
+        appointment.set('consultant',model.get('consultant'));
+        appointment.set('date',model.get('date'));
+        appointment.url = '/controllers/appointments/' + model.id;
+        appointment.save();
+      });
     }
   });
 

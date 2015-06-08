@@ -36,9 +36,9 @@ public class AppointmentController {
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/appointments", method = RequestMethod.PUT)
-  public ResponseEntity<String> updateAppointment(@RequestBody Appointment appointment) {
-    appointmentRepository.save(appointment);
+  @RequestMapping(value = "/appointments/{id}", method = RequestMethod.PUT)
+  public ResponseEntity<String> updateAppointment(@RequestBody AppointmentData appointment) {
+    appointmentRepository.save(appointment.toEntity());
     return new ResponseEntity<>(Utils.EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 

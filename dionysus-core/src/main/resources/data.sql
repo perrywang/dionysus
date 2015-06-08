@@ -21,11 +21,11 @@ values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', 
 insert into consultants (id) values (4);
 insert into consultants (id) values (3);
 
-insert into consultant_expertise (consultant_id, expertise) values (4, '抑郁症');
-insert into consultant_expertise (consultant_id, expertise) values (4, '家庭关系');
-insert into consultant_expertise (consultant_id, expertise) values (4, '恋爱与性');
-insert into consultant_expertise (consultant_id, expertise) values (3, '抑郁症');
-insert into consultant_expertise (consultant_id, expertise) values (3, '青少年心理健康');
+insert into consultant_expertise (consultant_id, expertise) values (4, 'Depression');
+insert into consultant_expertise (consultant_id, expertise) values (4, 'family');
+insert into consultant_expertise (consultant_id, expertise) values (4, 'LoveandSex');
+insert into consultant_expertise (consultant_id, expertise) values (3, 'PsychoAssess');
+insert into consultant_expertise (consultant_id, expertise) values (3, 'Youth');
 
 insert into roles(id, name) values (1, 'ROLE_ADMIN');
 insert into roles(id, name) values (2, 'ROLE_USER');
