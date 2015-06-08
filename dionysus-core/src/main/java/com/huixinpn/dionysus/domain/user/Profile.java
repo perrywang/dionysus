@@ -1,6 +1,10 @@
 package com.huixinpn.dionysus.domain.user;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,5 +31,10 @@ public class Profile extends AbstractDionysusPersistable {
 	@OneToOne(mappedBy = "profile")
 	@JsonIgnore
 	private User user;
+	
+	@OneToMany(mappedBy = "profile")
+	private Collection<ProfileItem> items = new ArrayList<>();
+	
+	
 
 }
