@@ -138,6 +138,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   Used for article home page summary articles.
 */
   Dionysus.reqres.setHandler('article:search:summary', function(searchMethod, criteria) {
+    
+    if(!criteria) criteria={};
+
     var searchUrl = ArticleCollection.url + '/search/' + searchMethod;
     var resources = new ArticleCollection({
       url: searchUrl
