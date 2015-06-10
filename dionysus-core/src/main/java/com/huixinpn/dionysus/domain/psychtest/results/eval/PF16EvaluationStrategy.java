@@ -42,7 +42,7 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 		Pattern pattern = Pattern.compile("(\\d+)([abc]+)");
 		
 		for (String line : RAW_ANSWERS) {
-			String[] row = line.split(" +");
+			String[] row = line.split("\\s+");
 			String factor = row[0];
 			String rawAnswer = row[1];
 			Matcher matcher = pattern.matcher(rawAnswer);

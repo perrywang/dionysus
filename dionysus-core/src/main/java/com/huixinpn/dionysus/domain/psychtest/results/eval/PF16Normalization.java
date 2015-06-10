@@ -164,7 +164,7 @@ public class PF16Normalization {
   public static Map<String, List<Range>> createNormalizeMap(String[] table) {
   	Map<String, List<Range>> map = new HashMap<String, List<Range>>();
     for (String line : table) {
-    	String[] row = line.split(" +");
+    	String[] row = line.split("\\s+");
     	String factor = row[0];
     	List<Range> ranges = new ArrayList<Range>();
     	for (int i = 1; i <= 10; i++) {
