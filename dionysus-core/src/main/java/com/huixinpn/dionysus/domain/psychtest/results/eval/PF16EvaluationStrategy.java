@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestEvaluationStrategy;
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestQuestionResult;
@@ -39,9 +40,18 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 	
 	@Data
 	@AllArgsConstructor
-	class Answer {
+	@NoArgsConstructor
+	static class Answer {
 		private String factor;
 		private String values;
+		
+		// 不是所有的题目均有计分
+		public static Answer nullObject = new Answer() {
+			@Override
+			public int calculateScore(String rawAnswer) {
+				return 0;
+			};
+		};
 		
 		public int calculateScore(String rawAnswer) {
 			// 所有答案均为小写
@@ -61,6 +71,11 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 		}
 	}
 	
+	public Answer requestAnswer(int index) {
+		Answer answer = answers.get(index);
+		return answer == null ? Answer.nullObject : answer;
+	}
+	
 	private Map<Integer, Answer> answers = new HashMap<Integer, Answer>();
 	
 	public PF16EvaluationStrategy() {
@@ -77,11 +92,6 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 				answers.put(num, new Answer(factor, values));
 			}
 		}
-	}
-	
-	// for testing
-	Map<Integer, Answer> getAnswers() {
-		return answers;
 	}
 
 	@Override
