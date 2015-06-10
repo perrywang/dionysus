@@ -39,7 +39,10 @@ public class PsychTest extends AbstractDionysusPersistable {
 		ONE_BY_ONE,
 		
 		// 所有的题目显示在一个页面
-		LIST
+		LIST,
+		
+		// 依据上一题的选择方式显示下一题
+		DEPS
 	}
 	
 	public enum PsychTestApproach {

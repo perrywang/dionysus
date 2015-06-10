@@ -6,7 +6,7 @@ import com.huixinpn.dionysus.domain.psychtest.results.PsychTestEvaluationStrateg
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestQuestionResult;
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestResult;
 
-public class PF16EvaluationStrategoy implements PsychTestEvaluationStrategy {
+public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 
 	@Override
 	public void evaluate(PsychTestResult result) {
@@ -17,5 +17,4 @@ public class PF16EvaluationStrategoy implements PsychTestEvaluationStrategy {
 			answer.setNormalizedScore(answer.getScore());
 		}
 	}
-
 }

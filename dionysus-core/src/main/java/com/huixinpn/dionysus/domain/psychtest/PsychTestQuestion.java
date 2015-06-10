@@ -28,12 +28,12 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 	private static final long serialVersionUID = -3202875107419512957L;
 
 	public enum PsychTestQuestionType {
-		SINGLE_CHOICE,
-		MULTIPLE_CHOICE,
+		SINGLE_CHOICE, 
+		MULTIPLE_CHOICE, 
 		GAPFILL, // 文字输入
 		YES_NO
 	}
-	
+
 	@Column(name = "description")
 	private String description;
 

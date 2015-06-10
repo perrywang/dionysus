@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
+import com.huixinpn.dionysus.domain.psychtest.results.eval.PsychTestValueVisitor;
 import com.huixinpn.dionysus.domain.user.User;
 
 @Data
@@ -42,5 +43,11 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 
 	@Enumerated(EnumType.STRING)
 	private PsychTestState state;
-
+	
+	public void accept(PsychTestValueVisitor visitor) {
+		Collection<PsychTestQuestionResult> answers = this.getAnswers();
+		for (PsychTestQuestionResult answer : answers) {
+			answer.accept(visitor);
+		}
+	}
 }
