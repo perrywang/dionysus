@@ -56,6 +56,9 @@ public class PsychTest extends AbstractDionysusPersistable {
 	@Lob
 	@Column(name = "description")
 	private String description;
+	
+	@Enumerated(EnumType.STRING)
+	private PsychTestType type;
 
 	// 测试针对对象
 	@Column(name = "object")
@@ -86,7 +89,6 @@ public class PsychTest extends AbstractDionysusPersistable {
 		inverseJoinColumns = @JoinColumn(name = "suite_id"))
 	private Collection<PsychTestSuite> suite = new ArrayList<>();
 	
-	private PsychTestType category;
 	
 	@Enumerated(EnumType.STRING)
 	private PsychTestRenderFormat format;

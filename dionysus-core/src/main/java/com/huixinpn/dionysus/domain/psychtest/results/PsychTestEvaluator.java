@@ -10,7 +10,7 @@ public class PsychTestEvaluator {
 
 	public void evaluate(PsychTestResult result) {
 		PsychTest test = result.getTest();
-		PsychTestEvaluationStrategy strategy = factory.create(test.getCategory());
+		PsychTestEvaluationStrategy strategy = factory.create(test.getType());
 		strategy.evaluate(result);
 	}
 }
