@@ -1,10 +1,17 @@
-insert into psychtestsuites(id, title, description) values (1, '人格类', '常规检测项目');
-insert into psychtests(id, title, description) values (1, 'SCL—90  自评表', '人格评定以及心理健康评定');
-insert into psychtests(id, title, description) values (2, '卡特尔十六项人格因素测验', '卡特尔十六项人格因素测验');
-insert into psychtests(id, title, description) values (3, '凯尔西气质类型测试', '别想太多，下手的时候别哆嗦，想选什么就选什么，又不是考试卷子，也不打分儿');
+insert into psychtestsuites(id, title, description) values (1, '人格类', '人格类');
+
+insert into psychtests(id, title, description, object, duration, cost, approach) values (1, '16PF', '人格评定以及心理健康评定', '12岁以上', '30', '120', 'MACHINE');
+insert into psychtests(id, title, description, object, duration, cost, approach) values (2, '艾森克量表', '人格评定以及心理健康评定', '3岁以上', '10', '100', 'MACHINE');
+insert into psychtests(id, title, description, object, duration, cost, approach) values (3, '明尼苏达', '人格评定及精神疾病评定', '12岁以上', '60', '300', 'MACHINE');
+insert into psychtests(id, title, description, object, duration, cost, approach) values (4, '爱德华个人偏好量表', '了解性格特点以及内在各项需求评定认知', '12岁以上', '40', '100', 'MACHINE');
+insert into psychtests(id, title, description, object, duration, cost, approach) values (5, 'TAT测试', '人格评定以及需求评定', '12岁以上', '10', '100', 'MANUAL');
+
 insert into suite_test(suite_id, test_id) values (1, 1);
 insert into suite_test(suite_id, test_id) values (1, 2);
 insert into suite_test(suite_id, test_id) values (1, 3);
+insert into suite_test(suite_id, test_id) values (1, 4);
+insert into suite_test(suite_id, test_id) values (1, 5);
+
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');

@@ -42,6 +42,12 @@ public class PsychTest extends AbstractDionysusPersistable {
 		LIST
 	}
 	
+	public enum PsychTestApproach {
+		MANUAL,		// 纸笔测试
+
+		MACHINE		// 机检
+	}
+	
 	
 	@NotBlank
 	@Column(name = "title")
@@ -64,8 +70,8 @@ public class PsychTest extends AbstractDionysusPersistable {
 	private String cost;
 
 	// 测试方式 纸笔还是机检
-	@Column(name = "approach")
-	private String approach;
+	@Enumerated(EnumType.STRING)
+	private PsychTestApproach approach;
 
 	// 备注
 	@Column(name = "comment")
