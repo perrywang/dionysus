@@ -17,49 +17,44 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     childViewContainer : '.ui.cards'
   });
 
-  // TODO: should put logic into controller
   var PsychTestQuestionOneByOneView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/onebyone'],
     onRender : function() {
       this.$('.ui.radio.checkbox').checkbox();
     },
     initialize: function() {
-      this.listenTo(this.model, 'change', this.updateCurrentQuestion, this);
-      this.updateCurrentQuestion();
-    },
-    updateCurrentQuestion : function() {
-      var model = this.model;
-      var questions = model.embedded('questions') || [],
-          total = questions.length,
-          current = model.get('current');
-
-      var index = current - 1;
-      model.set('hasPrev', index > 0, { silent : true });
-      model.set('hasNext', index < total - 1, { silent : true });
-      model.set('total', questions.length, { silent : true });
-      return this.render();
+      var questions = this.model.embedded('questions') || []
+      this.total = questions.length;
+      this.listenTo(this.model, 'change', this.render, this);
+      this.model.set('current', 1);
     },
     serializeData : function() {
       var model = this.model;
       var questions = model.embedded('questions'),
-          index = model.get('current') - 1;
-      var question = questions.find(function(item, i) { return index === i; });
+          current = model.get('current'),
+          total = this.total;
+
+      var question = questions.at(current - 1);
 
       var data = this.serializeModel(this.model);
       data.question = this.serializeModel(question);
+      data.hasPrev = (current > 1);
+      data.hasNext = (current < total);
+      data.total = total;
       return data;
     },
     events : {
       'click .prev' : function() {
-        var model = this.model;
-        if (model.get('hasPrev')) {
-          model.set('current', model.get('current') - 1); 
+        var current = this.model.get('current');
+        if (current > 1) {
+          this.model.set('current', current - 1); 
         }
       },
       'click .next' : function() {
-        var model = this.model;
-        if (model.get('hasNext')) {
-          model.set('current', model.get('current') + 1);
+        var current = this.model.get('current');
+        var total = this.total;
+        if (current < total) {
+          this.model.set('current', current + 1);
         }
       }
     }
