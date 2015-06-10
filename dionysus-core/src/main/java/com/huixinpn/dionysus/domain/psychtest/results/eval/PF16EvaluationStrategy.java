@@ -121,6 +121,12 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 		public Map<String, Integer> getScore() {
 			return this.scores;
 		}
+		
+		public Map<String, Integer> getNormalizedScore(String[] mode) {
+			Map<String, Integer> scores = this.getScore();
+			// TODO: 判断用户身份，选择对应的常模
+			return PF16Normalization.normalize(scores, PF16Normalization.ADULT_MALE);
+		}
 	}
 
 	@Override
