@@ -17,27 +17,64 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     childViewContainer : '.ui.cards'
   });
 
-
-  var PsychTestQuestionView = Marionette.ItemView.extend({
-    template : JST['templates/home/psychtests/question'],
+  // TODO: should put logic into controller
+  var PsychTestQuestionOneByOneView = Marionette.ItemView.extend({
+    template : JST['templates/home/psychtests/onebyone'],
     onRender : function() {
       this.$('.ui.radio.checkbox').checkbox();
     },
     initialize: function() {
-      this.listenTo(this.model, 'change', this.render, this);
+      this.listenTo(this.model, 'change', this.updateCurrentQuestion, this);
+      this.updateCurrentQuestion();
+    },
+    updateCurrentQuestion : function() {
+      var model = this.model;
+      var questions = model.embedded('questions') || [],
+          total = questions.length,
+          current = model.get('current');
+
+      var index = current - 1;
+      model.set('hasPrev', index > 0, { silent : true });
+      model.set('hasNext', index < total - 1, { silent : true });
+      model.set('total', questions.length, { silent : true });
+      return this.render();
     },
     serializeData : function() {
+      var model = this.model;
+      var questions = model.embedded('questions'),
+          index = model.get('current') - 1;
+      var question = questions.find(function(item, i) { return index === i; });
+
       var data = this.serializeModel(this.model);
-      data.question = this.serializeModel(this.model.getQuestion());
+      data.question = this.serializeModel(question);
       return data;
     },
     events : {
       'click .prev' : function() {
-        this.model.prevQuestion();
+        var model = this.model;
+        if (model.get('hasPrev')) {
+          model.set('current', model.get('current') - 1); 
+        }
       },
       'click .next' : function() {
-        this.model.nextQuestion();
+        var model = this.model;
+        if (model.get('hasNext')) {
+          model.set('current', model.get('current') + 1);
+        }
       }
+    }
+  });
+
+  var PsychTestQuestionTableView = Marionette.ItemView.extend({
+    template : JST['templates/home/psychtests/table'],
+    serializeData : function() {
+      var model = this.model;
+      var data = this.serializeModel(model);
+      data.questions = this.serializeCollection(model.embedded('questions'));
+      return data;
+    },
+    onRender : function() {
+      this.$('.ui.radio.checkbox').checkbox();
     }
   });
 
@@ -51,7 +88,16 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     showTest: function (id) {
       var fetching = Dionysus.request('psychtest:instance', id);
       $.when(fetching).done(function (test) {
-        Dionysus.mainRegion.show(new PsychTestQuestionView({ model : test }));
+        var format = test.get('format');
+        switch(format) {
+          case 'TABLE':
+            Dionysus.mainRegion.show(new PsychTestQuestionTableView({ model : test }));
+            break;
+          case 'ONE_BY_ONE':
+            Dionysus.mainRegion.show(new PsychTestQuestionOneByOneView({ model : test}));
+            break;
+        }
+        
       });
     }
   });
