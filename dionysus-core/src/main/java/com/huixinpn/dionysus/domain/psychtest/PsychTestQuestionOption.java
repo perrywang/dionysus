@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,11 +23,11 @@ public class PsychTestQuestionOption extends AbstractDionysusPersistable {
 	private static final long serialVersionUID = -3002875103419512957L;
 
 	@NotBlank
+	@Column(name = "description")
 	private String description;
 
-	private Integer score;
-
-	private Integer weight;
+	@Column(name = "identity")
+	private String identity;
 
 	@ManyToOne
 	private PsychTestQuestion question;

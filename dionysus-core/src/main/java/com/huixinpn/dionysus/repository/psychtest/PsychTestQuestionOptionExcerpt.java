@@ -8,6 +8,8 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 public interface PsychTestQuestionOptionExcerpt {
 
 	Long getId();
+	
+	String getIdentity();
 
 	String getDescription();
 }

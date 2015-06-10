@@ -10,7 +10,7 @@ section.ui.vertical.segment.question
       .field
         .ui.radio.checkbox
           input(type="radio", name="choice", value="{{id}}", id="option-{{id}}")
-          label(for="option-{{id}}") {{ description }}
+          label(for="option-{{id}}") {{identity}}. {{ description }}
       {{/each}}
 
 footer.ui.vertical.segment

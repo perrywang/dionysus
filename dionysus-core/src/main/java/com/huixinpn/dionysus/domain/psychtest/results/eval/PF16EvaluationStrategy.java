@@ -1,6 +1,5 @@
 package com.huixinpn.dionysus.domain.psychtest.results.eval;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -10,8 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestEvaluationStrategy;
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestQuestionResult;
 import com.huixinpn.dionysus.domain.psychtest.results.PsychTestResult;
 
 public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
@@ -93,14 +93,39 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 			}
 		}
 	}
+	
+	class PF16Visitor extends PsychTestValueVisitorAdaptor {
+		private Map<String, Integer> scores = new HashMap<String, Integer>();
+		private PF16EvaluationStrategy strategy;
+
+		public PF16Visitor(PF16EvaluationStrategy strategy) {
+			this.strategy = strategy;
+		}
+
+		@Override
+		public void accept(PsychTestQuestion question, PsychTestQuestionOption option) {
+			Integer subid = question.getSubId();
+			Answer answer = strategy.requestAnswer(subid);
+			String factor = answer.getFactor();
+			if (factor != null) {
+				String identity = option.getIdentity();
+				int score = answer.calculateScore(identity);
+				if (scores.containsKey(factor))	{
+					scores.put(factor, scores.get(factor) + score);
+				} else {
+					scores.put(factor, score);
+				}
+			}
+		}
+		
+		public Map<String, Integer> getScore() {
+			return this.scores;
+		}
+	}
 
 	@Override
 	public void evaluate(PsychTestResult result) {
-
-		Collection<PsychTestQuestionResult> answers = result.getAnswers();
-		for (PsychTestQuestionResult answer : answers) {
-			// TODO: 十六种个性因素常模
-			answer.setNormalizedScore(answer.getScore());
-		}
+		PF16Visitor visitor = new PF16Visitor(this);
+		result.accept(visitor);
 	}
 }

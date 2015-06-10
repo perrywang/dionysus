@@ -99,11 +99,6 @@ public class PsychTest extends AbstractDionysusPersistable {
 	public double evaluate(/*args*/) {
 		// TODO: 在这里进行分数的计算，传入参数为用户输入的答案
 		double score = 0;
-		for (PsychTestQuestion question : questions) {
-			for (PsychTestQuestionOption option : question.getOptions()) {
-				score += option.getScore();
-			}
-		}
 		return score;
 	}
 }
