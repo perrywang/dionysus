@@ -1,10 +1,10 @@
 insert into psychtestsuites(id, title, description) values (1, '人格类', '人格类');
 
-insert into psychtests(id, type, title, description, object, duration, cost, approach) values (1, 'PF16', '16PF', '人格评定以及心理健康评定', '12岁以上', '30', '120', 'MACHINE');
-insert into psychtests(id, type, title, description, object, duration, cost, approach) values (2, 'EPQ', '艾森克量表', '人格评定以及心理健康评定', '3岁以上', '10', '100', 'MACHINE');
-insert into psychtests(id, type, title, description, object, duration, cost, approach) values (3, 'MMPI', '明尼苏达', '人格评定及精神疾病评定', '12岁以上', '60', '300', 'MACHINE');
-insert into psychtests(id, type, title, description, object, duration, cost, approach) values (4, 'EPPS', '爱德华个人偏好量表', '了解性格特点以及内在各项需求评定认知', '12岁以上', '40', '100', 'MACHINE');
-insert into psychtests(id, type, title, description, object, duration, cost, approach) values (5, 'TAT', 'TAT测试', '人格评定以及需求评定', '12岁以上', '10', '100', 'MANUAL');
+insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (1, 'PF16', 'ONE_BY_ONE', '16PF', '人格评定以及心理健康评定', '12岁以上', '30', '120', 'MACHINE');
+insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (2, 'EPQ',  'TABLE', '艾森克量表', '人格评定以及心理健康评定', '3岁以上', '10', '100', 'MACHINE');
+insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (3, 'MMPI', 'TABLE', '明尼苏达', '人格评定及精神疾病评定', '12岁以上', '60', '300', 'MACHINE');
+insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (4, 'EPPS', 'ONE_BY_ONE', '爱德华个人偏好量表', '了解性格特点以及内在各项需求评定认知', '12岁以上', '40', '100', 'MACHINE');
+insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (5, 'TAT',  'ONE_BY_ONE', 'TAT测试', '人格评定以及需求评定', '12岁以上', '10', '100', 'MANUAL');
 
 insert into suite_test(suite_id, test_id) values (1, 1);
 insert into suite_test(suite_id, test_id) values (1, 2);
