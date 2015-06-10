@@ -33,6 +33,11 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 		GAPFILL, // 文字输入
 		YES_NO
 	}
+	
+	// 题目的需要，因为像16PF之类的题目，答案是根据题目的编号来安排的
+	// 而且有些题目依赖前一题的选择结果，需要根据这个ID来跳转到下一题
+	@Column(name = "sub_id")
+	private Long subid;
 
 	@Column(name = "description")
 	private String description;
