@@ -1688,1128 +1688,1128 @@ insert into psychtestquestions(id, sub_id, test_id, type, description) values (6
 -- 题目内容（共225题）： 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(675, 1, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(562, 675, '当我的朋友有麻烦时，我喜欢帮助他们');
-insert into psychtestquestionoptions(id, question_id, description) values(563, 675, '对我所承担的一切事情，我都喜欢尽我最大的努力去做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(562, 675, 'A', '当我的朋友有麻烦时，我喜欢帮助他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(563, 675, 'B', '对我所承担的一切事情，我都喜欢尽我最大的努力去做');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(676, 2, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(564, 676, '我喜欢探求伟人对我所感兴趣的各种问题有什么看法');
-insert into psychtestquestionoptions(id, question_id, description) values(565, 676, '我喜欢完成具有重大意义的事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(564, 676, 'A', '我喜欢探求伟人对我所感兴趣的各种问题有什么看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(565, 676, 'B', '我喜欢完成具有重大意义的事情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(677, 3, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(566, 677, '我喜欢我写的所有的东西都很精确、清楚、有条有理');
-insert into psychtestquestionoptions(id, question_id, description) values(567, 677, '我喜欢在某些职业、专业或专门项目上自己是公认的权威');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(566, 677, 'A', '我喜欢我写的所有的东西都很精确、清楚、有条有理');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(567, 677, 'B', '我喜欢在某些职业、专业或专门项目上自己是公认的权威');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(678, 4, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(568, 678, '我喜欢在宴会上讲些趣事与笑话');
-insert into psychtestquestionoptions(id, question_id, description) values(569, 678, '我喜欢写本伟大的小说或剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(568, 678, 'A', '我喜欢在宴会上讲些趣事与笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(569, 678, 'B', '我喜欢写本伟大的小说或剧本');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(679, 5, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(570, 679, '我喜欢我能随我的意志来去自如');
-insert into psychtestquestionoptions(id, question_id, description) values(571, 679, '我喜欢能够自豪地说我将一件难题成功地处理了');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(570, 679, 'A', '我喜欢我能随我的意志来去自如');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(571, 679, 'B', '我喜欢能够自豪地说我将一件难题成功地处理了');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(680, 6, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(572, 680, '我喜欢解答其他人觉得很困难的谜语与问题');
-insert into psychtestquestionoptions(id, question_id, description) values(573, 680, '我喜欢遵从指示去做人家期待我做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(572, 680, 'A', '我喜欢解答其他人觉得很困难的谜语与问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(573, 680, 'B', '我喜欢遵从指示去做人家期待我做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(681, 7, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(574, 681, '我喜欢在日常生活中体验到新奇与改变');
-insert into psychtestquestionoptions(id, question_id, description) values(575, 681, '当我认为我的上级做得对时，我喜欢对他表示我的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(574, 681, 'A', '我喜欢在日常生活中体验到新奇与改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(575, 681, 'B', '当我认为我的上级做得对时，我喜欢对他表示我的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(682, 8, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(576, 682, '对我所承担的任何工作，我喜欢对其细节作好计划与组织');
-insert into psychtestquestionoptions(id, question_id, description) values(577, 682, '我喜欢遵从指示做我所该做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(576, 682, 'A', '对我所承担的任何工作，我喜欢对其细节作好计划与组织');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(577, 682, 'B', '我喜欢遵从指示做我所该做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(683, 9, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(578, 683, '在公共场合中，我喜欢人们注意和评价我的外表');
-insert into psychtestquestionoptions(id, question_id, description) values(579, 683, '我喜欢读伟人的故事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(578, 683, 'A', '在公共场合中，我喜欢人们注意和评价我的外表');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(579, 683, 'B', '我喜欢读伟人的故事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(684, 10, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(580, 684, '我喜欢回避要我按照例行方法办事的场合');
-insert into psychtestquestionoptions(id, question_id, description) values(581, 684, '我喜欢读伟人的故事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(580, 684, 'A', '我喜欢回避要我按照例行方法办事的场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(581, 684, 'B', '我喜欢读伟人的故事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(685, 11, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(582, 685, '我喜欢在某些职业、专业或专门项目上自己是个公认的权威');
-insert into psychtestquestionoptions(id, question_id, description) values(583, 685, '我喜欢在工作开始之前对工作做好组织和计划');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(582, 685, 'A', '我喜欢在某些职业、专业或专门项目上自己是个公认的权威');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(583, 685, 'B', '我喜欢在工作开始之前对工作做好组织和计划');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(686, 12, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(584, 686, '我喜欢探求伟人对我所感兴趣的各种问题的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(585, 686, '假如我必须旅行时，我喜欢把事情事先安排好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(584, 686, 'A', '我喜欢探求伟人对我所感兴趣的各种问题的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(585, 686, 'B', '假如我必须旅行时，我喜欢把事情事先安排好');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(687, 13, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(586, 687, '我喜欢将我开了头的工作或任务完成');
-insert into psychtestquestionoptions(id, question_id, description) values(587, 687, '我喜欢保持我的书桌或工作间的清洁与整齐');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(586, 687, 'A', '我喜欢将我开了头的工作或任务完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(587, 687, 'B', '我喜欢保持我的书桌或工作间的清洁与整齐');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(688, 14, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(588, 688, '我喜欢告诉别人我所经历的冒险与奇特的事情');
-insert into psychtestquestionoptions(id, question_id, description) values(589, 688, '我喜欢饮食有规律，并且有固定时间吃东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(588, 688, 'A', '我喜欢告诉别人我所经历的冒险与奇特的事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(589, 688, 'B', '我喜欢饮食有规律，并且有固定时间吃东西');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(689, 15, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(590, 689, '我喜欢独立决定我所要做的事');
-insert into psychtestquestionoptions(id, question_id, description) values(591, 689, '我喜欢保持我的书桌或工作间的清洁与整齐');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(590, 689, 'A', '我喜欢独立决定我所要做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(591, 689, 'B', '我喜欢保持我的书桌或工作间的清洁与整齐');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(690, 16, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(592, 690, '我喜欢比其他人做得更好');
-insert into psychtestquestionoptions(id, question_id, description) values(593, 690, '我喜欢在宴会上讲些趣闻与笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(592, 690, 'A', '我喜欢比其他人做得更好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(593, 690, 'B', '我喜欢在宴会上讲些趣闻与笑话');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(691, 17, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(594, 691, '我喜欢遵从习俗，并避免做我所尊敬的人认为不合常规的事');
-insert into psychtestquestionoptions(id, question_id, description) values(595, 691, '我喜欢谈我的成就');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(594, 691, 'A', '我喜欢遵从习俗，并避免做我所尊敬的人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(595, 691, 'B', '我喜欢谈我的成就');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(692, 18, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(596, 692, '我喜欢我的生活安排好，过得顺利，而不用对我的计划作太多改变');
-insert into psychtestquestionoptions(id, question_id, description) values(597, 692, '我喜欢告诉别人我所经历的冒险与奇特的事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(596, 692, 'A', '我喜欢我的生活安排好，过得顺利，而不用对我的计划作太多改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(597, 692, 'B', '我喜欢告诉别人我所经历的冒险与奇特的事情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(693, 19, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(598, 693, '我喜欢阅读以性为主的书与剧本');
-insert into psychtestquestionoptions(id, question_id, description) values(599, 693, '我喜欢在团体中成为众目所瞩的对象');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(598, 693, 'A', '我喜欢阅读以性为主的书与剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(599, 693, 'B', '我喜欢在团体中成为众目所瞩的对象');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(694, 20, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(600, 694, '我喜欢批判权威人士');
-insert into psychtestquestionoptions(id, question_id, description) values(601, 694, '我喜欢用别人不懂其意义的字眼');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(600, 694, 'A', '我喜欢批判权威人士');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(601, 694, 'B', '我喜欢用别人不懂其意义的字眼');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(695, 21, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(602, 695, '我喜欢完成其他人认为需要技巧和努力的工作');
-insert into psychtestquestionoptions(id, question_id, description) values(603, 695, '我喜欢能随我的意志来去自如');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(602, 695, 'A', '我喜欢完成其他人认为需要技巧和努力的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(603, 695, 'B', '我喜欢能随我的意志来去自如');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(696, 22, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(604, 696, '我喜欢称赞我所崇拜的人');
-insert into psychtestquestionoptions(id, question_id, description) values(605, 696, '我喜欢很自如地做我想做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(604, 696, 'A', '我喜欢称赞我所崇拜的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(605, 696, 'B', '我喜欢很自如地做我想做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(697, 23, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(606, 697, '我喜欢将我的信、帐单和其他文件整齐地排列着并以某种系统存档');
-insert into psychtestquestionoptions(id, question_id, description) values(607, 697, '我希望独立决定我要做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(606, 697, 'A', '我喜欢将我的信、帐单和其他文件整齐地排列着并以某种系统存档');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(607, 697, 'B', '我希望独立决定我要做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(698, 24, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(608, 698, '我喜欢提出明知没有人能回答得出来的问题');
-insert into psychtestquestionoptions(id, question_id, description) values(609, 698, '我喜欢批判权威人士');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(608, 698, 'A', '我喜欢提出明知没有人能回答得出来的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(609, 698, 'B', '我喜欢批判权威人士');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(699, 25, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(610, 699, '当我动怒时，我想摔东西');
-insert into psychtestquestionoptions(id, question_id, description) values(611, 699, '我喜欢回避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(610, 699, 'A', '当我动怒时，我想摔东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(611, 699, 'B', '我喜欢回避责任与义务');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(700, 26, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(612, 700, '我喜欢将所承担的事办成功');
-insert into psychtestquestionoptions(id, question_id, description) values(613, 700, '我喜欢结交新朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(612, 700, 'A', '我喜欢将所承担的事办成功');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(613, 700, 'B', '我喜欢结交新朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(701, 27, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(614, 701, '我喜欢遵照指示去做我所该做的事');
-insert into psychtestquestionoptions(id, question_id, description) values(615, 701, '我喜欢与朋友有深厚的友谊');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(614, 701, 'A', '我喜欢遵照指示去做我所该做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(615, 701, 'B', '我喜欢与朋友有深厚的友谊');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(702, 28, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(616, 702, '我喜欢我写的所有东西都很精确、清楚、有条有理');
-insert into psychtestquestionoptions(id, question_id, description) values(617, 702, '我喜欢广交朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(616, 702, 'A', '我喜欢我写的所有东西都很精确、清楚、有条有理');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(617, 702, 'B', '我喜欢广交朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(703, 29, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(618, 703, '我喜欢在宴会中说趣闻与笑话');
-insert into psychtestquestionoptions(id, question_id, description) values(619, 703, '我喜欢写信给我的朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(618, 703, 'A', '我喜欢在宴会中说趣闻与笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(619, 703, 'B', '我喜欢写信给我的朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(704, 30, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(620, 704, '我喜欢能随我的意志来去自如');
-insert into psychtestquestionoptions(id, question_id, description) values(621, 704, '我喜欢与朋友分享一切');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(620, 704, 'A', '我喜欢能随我的意志来去自如');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(621, 704, 'B', '我喜欢与朋友分享一切');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(705, 31, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(622, 705, '我喜欢解答别人认为困难的谜语与问题');
-insert into psychtestquestionoptions(id, question_id, description) values(623, 705, '我喜欢就一个人为什么那样做去判断他，而不从他实际上做什么去判断他');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(622, 705, 'A', '我喜欢解答别人认为困难的谜语与问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(623, 705, 'B', '我喜欢就一个人为什么那样做去判断他，而不从他实际上做什么去判断他');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(706, 32, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(624, 706, '我喜欢接受我所崇拜的人领导');
-insert into psychtestquestionoptions(id, question_id, description) values(625, 706, '我喜欢了解我的朋友们对他们所面对的各种问题怎样感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(624, 706, 'A', '我喜欢接受我所崇拜的人领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(625, 706, 'B', '我喜欢了解我的朋友们对他们所面对的各种问题怎样感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(707, 33, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(626, 707, '我喜欢饮食有规律，并且在固定时间吃东西');
-insert into psychtestquestionoptions(id, question_id, description) values(627, 707, '我喜欢研究与分析别人的行为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(626, 707, 'A', '我喜欢饮食有规律，并且在固定时间吃东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(627, 707, 'B', '我喜欢研究与分析别人的行为');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(708, 34, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(628, 708, '我喜欢说别人认为机智与聪明的事');
-insert into psychtestquestionoptions(id, question_id, description) values(629, 708, '我喜欢将自己放在别人的立场上，看自己若处在相同的情境会有什么感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(628, 708, 'A', '我喜欢说别人认为机智与聪明的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(629, 708, 'B', '我喜欢将自己放在别人的立场上，看自己若处在相同的情境会有什么感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(709, 35, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(630, 709, '我喜欢照我的意思做我想做的事');
-insert into psychtestquestionoptions(id, question_id, description) values(631, 709, '我喜欢观察其他人在某个场合的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(630, 709, 'A', '我喜欢照我的意思做我想做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(631, 709, 'B', '我喜欢观察其他人在某个场合的感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(710, 36, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(632, 710, '我喜欢完成别人认为需要技巧和努力的工作');
-insert into psychtestquestionoptions(id, question_id, description) values(633, 710, '我喜欢在我失败时朋友们能鼓励我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(632, 710, 'A', '我喜欢完成别人认为需要技巧和努力的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(633, 710, 'B', '我喜欢在我失败时朋友们能鼓励我');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(711, 37, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(634, 711, '作计划时，我喜欢从其见解为我所尊重的人那里获得些建议');
-insert into psychtestquestionoptions(id, question_id, description) values(635, 711, '我喜欢我的朋友对我仁慈');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(634, 711, 'A', '作计划时，我喜欢从其见解为我所尊重的人那里获得些建议');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(635, 711, 'B', '我喜欢我的朋友对我仁慈');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(712, 38, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(636, 712, '我喜欢我的朋友的生活安排得好，过得顺利，而不用我的计划作太多的改变');
-insert into psychtestquestionoptions(id, question_id, description) values(637, 712, '当我生病时，我喜欢我的朋友感到不安');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(636, 712, 'A', '我喜欢我的朋友的生活安排得好，过得顺利，而不用我的计划作太多的改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(637, 712, 'B', '当我生病时，我喜欢我的朋友感到不安');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(713, 39, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(638, 713, '我喜欢在团体中成为众目所瞩的对象');
-insert into psychtestquestionoptions(id, question_id, description) values(639, 713, '当我受伤或生病时，我喜欢我的朋友为此小题大作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(638, 713, 'A', '我喜欢在团体中成为众目所瞩的对象');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(639, 713, 'B', '当我受伤或生病时，我喜欢我的朋友为此小题大作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(714, 40, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(640, 714, '我喜欢回避要我按照例行方式办事的场合');
-insert into psychtestquestionoptions(id, question_id, description) values(641, 714, '当我沮丧时，我喜欢我的朋友们同情我并使我愉快');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(640, 714, 'A', '我喜欢回避要我按照例行方式办事的场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(641, 714, 'B', '当我沮丧时，我喜欢我的朋友们同情我并使我愉快');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(715, 41, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(642, 715, '我想写一本伟大的小说或剧本');
-insert into psychtestquestionoptions(id, question_id, description) values(643, 715, '当作为群众团体的一个成员时，我喜欢被指定或选为领导者');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(642, 715, 'A', '我想写一本伟大的小说或剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(643, 715, 'B', '当作为群众团体的一个成员时，我喜欢被指定或选为领导者');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(716, 42, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(644, 716, '在团体中，我喜欢接受别人的领导来决定团体该作什么');
-insert into psychtestquestionoptions(id, question_id, description) values(645, 716, '只要可能，我喜欢监督与指导别人的行动');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(644, 716, 'A', '在团体中，我喜欢接受别人的领导来决定团体该作什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(645, 716, 'B', '只要可能，我喜欢监督与指导别人的行动');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(717, 43, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(646, 717, '我喜欢将我的信、帐单和其他文件整齐地排列着并以某种系统存档');
-insert into psychtestquestionoptions(id, question_id, description) values(647, 717, '我喜欢成为我所属的机构与团体的领导之一');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(646, 717, 'A', '我喜欢将我的信、帐单和其他文件整齐地排列着并以某种系统存档');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(647, 717, 'B', '我喜欢成为我所属的机构与团体的领导之一');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(718, 44, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(648, 718, '我喜欢问些明知别人回答不出来的问题');
-insert into psychtestquestionoptions(id, question_id, description) values(649, 718, '我喜欢告诉别人怎么做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(648, 718, 'A', '我喜欢问些明知别人回答不出来的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(649, 718, 'B', '我喜欢告诉别人怎么做他们的工作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(719, 45, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(650, 719, '我喜欢逃避责任与义务');
-insert into psychtestquestionoptions(id, question_id, description) values(651, 719, '我喜欢被人们叫去做和事佬');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(650, 719, 'A', '我喜欢逃避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(651, 719, 'B', '我喜欢被人们叫去做和事佬');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(720, 46, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(652, 720, '我喜欢在某种职业、专业或专门项目上成为公认的权威');
-insert into psychtestquestionoptions(id, question_id, description) values(653, 720, '每当我做错了事，我感到有罪恶感');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(652, 720, 'A', '我喜欢在某种职业、专业或专门项目上成为公认的权威');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(653, 720, 'B', '每当我做错了事，我感到有罪恶感');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(721, 47, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(654, 721, '我喜欢读伟人的故事');
-insert into psychtestquestionoptions(id, question_id, description) values(655, 721, '我觉得我必须承认我所做的一些错事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(654, 721, 'A', '我喜欢读伟人的故事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(655, 721, 'B', '我觉得我必须承认我所做的一些错事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(722, 48, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(656, 722, '对我所承担的任何工作，我喜欢对其细节作好计划与组织');
-insert into psychtestquestionoptions(id, question_id, description) values(657, 722, '当事情不顺时，我感到我比任何人更该受到责备');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(656, 722, 'A', '对我所承担的任何工作，我喜欢对其细节作好计划与组织');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(657, 722, 'B', '当事情不顺时，我感到我比任何人更该受到责备');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(723, 49, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(658, 723, '我喜欢用些别人常常不明白其意义的字眼');
-insert into psychtestquestionoptions(id, question_id, description) values(659, 723, '我觉得样样不如人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(658, 723, 'A', '我喜欢用些别人常常不明白其意义的字眼');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(659, 723, 'B', '我觉得样样不如人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(724, 50, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(660, 724, '我喜欢批评权威人士');
-insert into psychtestquestionoptions(id, question_id, description) values(661, 724, '在我认为是我上司的人面前，我感到胆怯');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(660, 724, 'A', '我喜欢批评权威人士');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(661, 724, 'B', '在我认为是我上司的人面前，我感到胆怯');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(725, 51, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(662, 725, '对我所承担的一切事情，我喜欢尽力而为');
-insert into psychtestquestionoptions(id, question_id, description) values(663, 725, '我喜欢帮助比我不幸的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(662, 725, 'A', '对我所承担的一切事情，我喜欢尽力而为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(663, 725, 'B', '我喜欢帮助比我不幸的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(726, 52, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(664, 726, '我喜欢探求伟人们对我所感兴趣的各种问题有什么看法');
-insert into psychtestquestionoptions(id, question_id, description) values(665, 726, '我喜欢对朋友们慷慨');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(664, 726, 'A', '我喜欢探求伟人们对我所感兴趣的各种问题有什么看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(665, 726, 'B', '我喜欢对朋友们慷慨');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(727, 53, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(666, 727, '在处理难题时，我喜欢在开始之前作计划');
-insert into psychtestquestionoptions(id, question_id, description) values(667, 727, '我喜欢为我的朋友做点小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(666, 727, 'A', '在处理难题时，我喜欢在开始之前作计划');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(667, 727, 'B', '我喜欢为我的朋友做点小事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(728, 54, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(668, 728, '我喜欢对别人谈我所经历的冒险与奇特的事');
-insert into psychtestquestionoptions(id, question_id, description) values(669, 728, '我喜欢我的朋友信任我，并对我倾诉他们的麻烦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(668, 728, 'A', '我喜欢对别人谈我所经历的冒险与奇特的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(669, 728, 'B', '我喜欢我的朋友信任我，并对我倾诉他们的麻烦');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(729, 55, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(670, 729, '我喜欢发表我对事情的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(671, 729, '我喜欢原谅有时可能伤害了我的朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(670, 729, 'A', '我喜欢发表我对事情的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(671, 729, 'B', '我喜欢原谅有时可能伤害了我的朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(730, 56, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(672, 730, '我喜欢自己能比其他人做得更好');
-insert into psychtestquestionoptions(id, question_id, description) values(673, 730, '我喜欢在新奇的餐厅里吃饭');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(672, 730, 'A', '我喜欢自己能比其他人做得更好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(673, 730, 'B', '我喜欢在新奇的餐厅里吃饭');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(731, 57, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(674, 731, '我喜欢遵从习俗避免做我所尊敬的人认为不合常规的事');
-insert into psychtestquestionoptions(id, question_id, description) values(675, 731, '我喜欢追求时髦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(674, 731, 'A', '我喜欢遵从习俗避免做我所尊敬的人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(675, 731, 'B', '我喜欢追求时髦');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(732, 58, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(676, 732, '在开始工作之前，我喜欢对它做好组织与计划');
-insert into psychtestquestionoptions(id, question_id, description) values(677, 732, '我喜欢旅行和到处观光');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(676, 732, 'A', '在开始工作之前，我喜欢对它做好组织与计划');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(677, 732, 'B', '我喜欢旅行和到处观光');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(733, 59, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(678, 733, '在公共场合，我喜欢人们注意和评价我的外表');
-insert into psychtestquestionoptions(id, question_id, description) values(679, 733, '我喜欢搬家，住在不同的地方');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(678, 733, 'A', '在公共场合，我喜欢人们注意和评价我的外表');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(679, 733, 'B', '我喜欢搬家，住在不同的地方');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(734, 60, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(680, 734, '我喜欢独立决定我所要做的事');
-insert into psychtestquestionoptions(id, question_id, description) values(681, 734, '我喜欢做些新鲜且有变化的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(680, 734, 'A', '我喜欢独立决定我所要做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(681, 734, 'B', '我喜欢做些新鲜且有变化的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(735, 61, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(682, 735, '我喜欢我能自豪地说我解决了一个难题');
-insert into psychtestquestionoptions(id, question_id, description) values(683, 735, '对我所承担的事，我喜欢认真去做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(682, 735, 'A', '我喜欢我能自豪地说我解决了一个难题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(683, 735, 'B', '对我所承担的事，我喜欢认真去做');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(736, 62, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(684, 736, '当我认为我的上司做得对时，我喜欢对他们表示我的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(685, 736, '我喜欢在接受其他事之前完成手头的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(684, 736, 'A', '当我认为我的上司做得对时，我喜欢对他们表示我的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(685, 736, 'B', '我喜欢在接受其他事之前完成手头的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(737, 63, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(686, 737, '假如我必须旅行时，我喜欢事先计划好');
-insert into psychtestquestionoptions(id, question_id, description) values(687, 737, '我喜欢继续解我的难题或问题，直到解决为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(686, 737, 'A', '假如我必须旅行时，我喜欢事先计划好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(687, 737, 'B', '我喜欢继续解我的难题或问题，直到解决为止');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(738, 64, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(688, 738, '我有时喜欢做些事，只为了想看别人对此事的反应');
-insert into psychtestquestionoptions(id, question_id, description) values(689, 738, '我喜欢固定在某一职业或问题上，甚至看来它好象没有什么希望');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(688, 738, 'A', '我有时喜欢做些事，只为了想看别人对此事的反应');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(689, 738, 'B', '我喜欢固定在某一职业或问题上，甚至看来它好象没有什么希望');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(739, 65, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(690, 739, '我喜欢做别人认为不合常规的事');
-insert into psychtestquestionoptions(id, question_id, description) values(691, 739, '我喜欢不受干扰地长时间工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(690, 739, 'A', '我喜欢做别人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(691, 739, 'B', '我喜欢不受干扰地长时间工作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(740, 66, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(692, 740, '我喜欢完成具有重大意义的事');
-insert into psychtestquestionoptions(id, question_id, description) values(693, 740, '我不在乎与迷人的异性表示亲近');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(692, 740, 'A', '我喜欢完成具有重大意义的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(693, 740, 'B', '我不在乎与迷人的异性表示亲近');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(741, 67, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(694, 741, '我喜欢称赞我所崇拜的人');
-insert into psychtestquestionoptions(id, question_id, description) values(695, 741, '我喜欢被异性认为身材吸引人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(694, 741, 'A', '我喜欢称赞我所崇拜的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(695, 741, 'B', '我喜欢被异性认为身材吸引人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(742, 68, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(696, 742, '我喜欢保持我的书桌与工作间的清洁与整齐');
-insert into psychtestquestionoptions(id, question_id, description) values(697, 742, '我喜欢与异性谈情说爱');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(696, 742, 'A', '我喜欢保持我的书桌与工作间的清洁与整齐');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(697, 742, 'B', '我喜欢与异性谈情说爱');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(743, 69, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(698, 743, '我喜欢谈我的成就');
-insert into psychtestquestionoptions(id, question_id, description) values(699, 743, '我喜欢听或说以性为主的笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(698, 743, 'A', '我喜欢谈我的成就');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(699, 743, 'B', '我喜欢听或说以性为主的笑话');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(744, 70, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(700, 744, '我喜欢依我的方式做事而不在乎别人的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(701, 744, '我喜欢看以性为主的书或剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(700, 744, 'A', '我喜欢依我的方式做事而不在乎别人的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(701, 744, 'B', '我喜欢看以性为主的书或剧本');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(745, 71, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(702, 745, '我喜欢写本伟大的小说或剧本');
-insert into psychtestquestionoptions(id, question_id, description) values(703, 745, '我喜欢考虑与我看法相反的观点');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(702, 745, 'A', '我喜欢写本伟大的小说或剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(703, 745, 'B', '我喜欢考虑与我看法相反的观点');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(746, 72, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(704, 746, '在团体中我喜欢接受别人的领导来决定团体该做什么');
-insert into psychtestquestionoptions(id, question_id, description) values(705, 746, '假如某人罪有应得的话我想公开的进行批评');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(704, 746, 'A', '在团体中我喜欢接受别人的领导来决定团体该做什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(705, 746, 'B', '假如某人罪有应得的话我想公开的进行批评');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(747, 73, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(706, 747, '我喜欢我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
-insert into psychtestquestionoptions(id, question_id, description) values(707, 747, '当我动怒时，我想摔东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(706, 747, 'A', '我喜欢我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(707, 747, 'B', '当我动怒时，我想摔东西');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(748, 74, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(708, 748, '我喜欢问些没有人能回答得出来的问题');
-insert into psychtestquestionoptions(id, question_id, description) values(709, 748, '我喜欢对别人说我对他们的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(708, 748, 'A', '我喜欢问些没有人能回答得出来的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(709, 748, 'B', '我喜欢对别人说我对他们的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(749, 75, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(710, 749, '我喜欢回避责任与义务');
-insert into psychtestquestionoptions(id, question_id, description) values(711, 749, '我想取笑那些我认为他们行为愚蠢的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(710, 749, 'A', '我喜欢回避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(711, 749, 'B', '我想取笑那些我认为他们行为愚蠢的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(750, 76, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(712, 750, '我喜欢对我的朋友忠实');
-insert into psychtestquestionoptions(id, question_id, description) values(713, 750, '对所有我承担的事，我喜欢尽力做好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(712, 750, 'A', '我喜欢对我的朋友忠实');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(713, 750, 'B', '对所有我承担的事，我喜欢尽力做好');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(751, 77, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(714, 751, '我喜欢观察别人在某些情况下的感觉');
-insert into psychtestquestionoptions(id, question_id, description) values(715, 751, '我喜欢我能自豪地说我成功地解决了一件难题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(714, 751, 'A', '我喜欢观察别人在某些情况下的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(715, 751, 'B', '我喜欢我能自豪地说我成功地解决了一件难题');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(752, 78, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(716, 752, '当我失败时，我喜欢我的朋友鼓励我');
-insert into psychtestquestionoptions(id, question_id, description) values(717, 752, '我喜欢将所承担的事做得很成功');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(716, 752, 'A', '当我失败时，我喜欢我的朋友鼓励我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(717, 752, 'B', '我喜欢将所承担的事做得很成功');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(753, 79, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(718, 753, '我喜欢成为所属机构与团体的领导之一');
-insert into psychtestquestionoptions(id, question_id, description) values(719, 753, '我喜欢能比别人做得更好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(718, 753, 'A', '我喜欢成为所属机构与团体的领导之一');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(719, 753, 'B', '我喜欢能比别人做得更好');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(754, 80, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(720, 754, '我喜欢当发生差错时，我觉得我比别人更该受到责备');
-insert into psychtestquestionoptions(id, question_id, description) values(721, 754, '我喜欢解答别人认为困难的谜语和问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(720, 754, 'A', '我喜欢当发生差错时，我觉得我比别人更该受到责备');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(721, 754, 'B', '我喜欢解答别人认为困难的谜语和问题');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(755, 81, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(722, 755, '我喜欢为我的朋友做事');
-insert into psychtestquestionoptions(id, question_id, description) values(723, 755, '作计划时，我喜欢从其见解为我所尊敬的人那里得到些建议');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(722, 755, 'A', '我喜欢为我的朋友做事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(723, 755, 'B', '作计划时，我喜欢从其见解为我所尊敬的人那里得到些建议');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(756, 82, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(724, 756, '我喜欢将自己放在别人的处境上，去想象在同样的情况下也会有什么感觉');
-insert into psychtestquestionoptions(id, question_id, description) values(725, 756, '当我认为上司做得对时，我喜欢对他们表示我的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(724, 756, 'A', '我喜欢将自己放在别人的处境上，去想象在同样的情况下也会有什么感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(725, 756, 'B', '当我认为上司做得对时，我喜欢对他们表示我的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(757, 83, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(726, 757, '当我有问题时，我喜欢我的朋友能同情与了解');
-insert into psychtestquestionoptions(id, question_id, description) values(727, 757, '我喜欢接受我所尊敬的人领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(726, 757, 'A', '当我有问题时，我喜欢我的朋友能同情与了解');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(727, 757, 'B', '我喜欢接受我所尊敬的人领导');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(758, 84, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(728, 758, '在群众团体中，我喜欢被指定或选为领导者');
-insert into psychtestquestionoptions(id, question_id, description) values(729, 758, '在团体中，我喜欢接受别人的领导来决定团体该怎么做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(728, 758, 'A', '在群众团体中，我喜欢被指定或选为领导者');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(729, 758, 'B', '在团体中，我喜欢接受别人的领导来决定团体该怎么做');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(759, 85, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(730, 759, '假如我作错了事，我觉得应该受处罚');
-insert into psychtestquestionoptions(id, question_id, description) values(731, 759, '我喜欢遵从习俗，避免做我所尊敬的人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(730, 759, 'A', '假如我作错了事，我觉得应该受处罚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(731, 759, 'B', '我喜欢遵从习俗，避免做我所尊敬的人认为不合常规的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(760, 86, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(732, 760, '我喜欢与朋友分享一切');
-insert into psychtestquestionoptions(id, question_id, description) values(733, 760, '在开始做困难的事情之前，我喜欢先做计划');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(732, 760, 'A', '我喜欢与朋友分享一切');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(733, 760, 'B', '在开始做困难的事情之前，我喜欢先做计划');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(761, 87, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(734, 761, '我喜欢了解我的朋友在面临各种问题时的感觉');
-insert into psychtestquestionoptions(id, question_id, description) values(735, 761, '假如我必须旅行时，我喜欢事先将事情安排好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(734, 761, 'A', '我喜欢了解我的朋友在面临各种问题时的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(735, 761, 'B', '假如我必须旅行时，我喜欢事先将事情安排好');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(762, 88, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(736, 762, '我喜欢我的朋友对我仁慈');
-insert into psychtestquestionoptions(id, question_id, description) values(737, 762, '在开始之前，我喜欢将工作组织与计划好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(736, 762, 'A', '我喜欢我的朋友对我仁慈');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(737, 762, 'B', '在开始之前，我喜欢将工作组织与计划好');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(763, 89, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(738, 763, '我喜欢被别人看作领导');
-insert into psychtestquestionoptions(id, question_id, description) values(739, 763, '我喜欢将我的信件、帐单与其他文件整齐地排列着并依某种系统存档');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(738, 763, 'A', '我喜欢被别人看作领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(739, 763, 'B', '我喜欢将我的信件、帐单与其他文件整齐地排列着并依某种系统存档');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(764, 90, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(740, 764, '我感到我所受的痛苦与折磨对我而言是好处多于坏处');
-insert into psychtestquestionoptions(id, question_id, description) values(741, 764, '我喜欢将我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(740, 764, 'A', '我感到我所受的痛苦与折磨对我而言是好处多于坏处');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(741, 764, 'B', '我喜欢将我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(765, 91, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(742, 765, '我喜欢与我的朋友有深厚的交情');
-insert into psychtestquestionoptions(id, question_id, description) values(743, 765, '我喜欢说些别人认为机智与聪明的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(742, 765, 'A', '我喜欢与我的朋友有深厚的交情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(743, 765, 'B', '我喜欢说些别人认为机智与聪明的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(766, 92, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(744, 766, '我喜欢观察我的朋友们的性格并尝试找出使他们成为这样的原因');
-insert into psychtestquestionoptions(id, question_id, description) values(745, 766, '我有时喜欢做些事，只为了想看别人对它的反应');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(744, 766, 'A', '我喜欢观察我的朋友们的性格并尝试找出使他们成为这样的原因');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(745, 766, 'B', '我有时喜欢做些事，只为了想看别人对它的反应');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(767, 93, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(746, 767, '当我受伤或生病时，我喜欢我的朋友们小题大作');
-insert into psychtestquestionoptions(id, question_id, description) values(747, 767, '我喜欢谈我的成就');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(746, 767, 'A', '当我受伤或生病时，我喜欢我的朋友们小题大作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(747, 767, 'B', '我喜欢谈我的成就');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(768, 94, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(748, 768, '我喜欢告诉别人该怎么做他们的工作');
-insert into psychtestquestionoptions(id, question_id, description) values(749, 768, '我喜欢成为团体中众目所瞩的对象');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(748, 768, 'A', '我喜欢告诉别人该怎么做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(749, 768, 'B', '我喜欢成为团体中众目所瞩的对象');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(769, 95, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(750, 769, '在所认定的强者面前我感到胆怯');
-insert into psychtestquestionoptions(id, question_id, description) values(751, 769, '我喜欢用些别人不懂其意义的字眼');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(750, 769, 'A', '在所认定的强者面前我感到胆怯');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(751, 769, 'B', '我喜欢用些别人不懂其意义的字眼');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(770, 96, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(752, 770, '我比较喜欢与朋友共事而不喜欢独自工作');
-insert into psychtestquestionoptions(id, question_id, description) values(753, 770, '我喜欢表达我对事情的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(752, 770, 'A', '我比较喜欢与朋友共事而不喜欢独自工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(753, 770, 'B', '我喜欢表达我对事情的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(771, 97, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(754, 771, '我喜欢研究与分析他人的行为');
-insert into psychtestquestionoptions(id, question_id, description) values(755, 771, '我喜欢做些别人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(754, 771, 'A', '我喜欢研究与分析他人的行为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(755, 771, 'B', '我喜欢做些别人认为不合常规的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(772, 98, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(756, 772, '当我生病时，我喜欢朋友们为我感伤');
-insert into psychtestquestionoptions(id, question_id, description) values(757, 772, '我喜欢避免需要依常规做事的场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(756, 772, 'A', '当我生病时，我喜欢朋友们为我感伤');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(757, 772, 'B', '我喜欢避免需要依常规做事的场合');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(773, 99, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(758, 773, '只要可能，我喜欢监督与指导别人的行为');
-insert into psychtestquestionoptions(id, question_id, description) values(759, 773, '我喜欢依我的方式做事而不在乎别人的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(758, 773, 'A', '只要可能，我喜欢监督与指导别人的行为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(759, 773, 'B', '我喜欢依我的方式做事而不在乎别人的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(774, 100, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(760, 774, '我觉得我处处不如人');
-insert into psychtestquestionoptions(id, question_id, description) values(761, 774, '我喜欢回避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(760, 774, 'A', '我觉得我处处不如人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(761, 774, 'B', '我喜欢回避责任与义务');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(775, 101, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(762, 775, '我喜欢将我所承担的事办成功');
-insert into psychtestquestionoptions(id, question_id, description) values(763, 775, '我喜欢结交新朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(762, 775, 'A', '我喜欢将我所承担的事办成功');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(763, 775, 'B', '我喜欢结交新朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(776, 102, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(764, 776, '我喜欢分析我自己的动机与感情');
-insert into psychtestquestionoptions(id, question_id, description) values(765, 776, '我喜欢广交朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(764, 776, 'A', '我喜欢分析我自己的动机与感情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(765, 776, 'B', '我喜欢广交朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(777, 103, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(766, 777, '当我有困难时，我喜欢我的朋友帮助我');
-insert into psychtestquestionoptions(id, question_id, description) values(767, 777, '我喜欢为我的朋友做事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(766, 777, 'A', '当我有困难时，我喜欢我的朋友帮助我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(767, 777, 'B', '我喜欢为我的朋友做事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(778, 104, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(768, 778, '当我的观点被冲击时，我喜欢为之辩护');
-insert into psychtestquestionoptions(id, question_id, description) values(769, 778, '我喜欢写信给我的朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(768, 778, 'A', '当我的观点被冲击时，我喜欢为之辩护');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(769, 778, 'B', '我喜欢写信给我的朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(779, 105, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(770, 779, '每当我做错事时，我感到内疚');
-insert into psychtestquestionoptions(id, question_id, description) values(771, 779, '我喜欢与朋友有深交');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(770, 779, 'A', '每当我做错事时，我感到内疚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(771, 779, 'B', '我喜欢与朋友有深交');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(780, 106, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(772, 780, '我喜欢与朋友分享一切');
-insert into psychtestquestionoptions(id, question_id, description) values(773, 780, '我喜欢分析我自己的动机与情感');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(772, 780, 'A', '我喜欢与朋友分享一切');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(773, 780, 'B', '我喜欢分析我自己的动机与情感');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(781, 107, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(774, 781, '我喜欢接受我所尊敬的人的领导');
-insert into psychtestquestionoptions(id, question_id, description) values(775, 781, '我喜欢了解我的朋友在面临各种问题时的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(774, 781, 'A', '我喜欢接受我所尊敬的人的领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(775, 781, 'B', '我喜欢了解我的朋友在面临各种问题时的感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(782, 108, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(776, 782, '我喜欢我的朋友们高兴地为我办些小事');
-insert into psychtestquestionoptions(id, question_id, description) values(777, 782, '我喜欢从人们为什么那样做而不从他实际做什么来判断人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(776, 782, 'A', '我喜欢我的朋友们高兴地为我办些小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(777, 782, 'B', '我喜欢从人们为什么那样做而不从他实际做什么来判断人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(783, 109, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(778, 783, '大家在一起时，我喜欢决定我们该做什么');
-insert into psychtestquestionoptions(id, question_id, description) values(779, 783, '我喜欢预测我的朋友们在各种情况下的反应');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(778, 783, 'A', '大家在一起时，我喜欢决定我们该做什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(779, 783, 'B', '我喜欢预测我的朋友们在各种情况下的反应');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(784, 110, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(780, 784, '当我退让或避免了冲突时，我觉得比争取达到目标时还好些');
-insert into psychtestquestionoptions(id, question_id, description) values(781, 784, '我喜欢分析他人的感情与动机');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(780, 784, 'A', '当我退让或避免了冲突时，我觉得比争取达到目标时还好些');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(781, 784, 'B', '我喜欢分析他人的感情与动机');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(785, 111, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(782, 785, '我喜欢结交新朋友');
-insert into psychtestquestionoptions(id, question_id, description) values(783, 785, '当我有麻烦时，我喜欢我的朋友帮助我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(782, 785, 'A', '我喜欢结交新朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(783, 785, 'B', '当我有麻烦时，我喜欢我的朋友帮助我');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(786, 112, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(784, 786, '我喜欢从人们为什么那样做而不从他实际做什么来判断人');
-insert into psychtestquestionoptions(id, question_id, description) values(785, 786, '我喜欢我的朋友们对我有深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(784, 786, 'A', '我喜欢从人们为什么那样做而不从他实际做什么来判断人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(785, 786, 'B', '我喜欢我的朋友们对我有深情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(787, 113, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(786, 787, '我喜欢将我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
-insert into psychtestquestionoptions(id, question_id, description) values(787, 787, '当我生病时，我喜欢朋友们为我感伤');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(786, 787, 'A', '我喜欢将我的生活安排得好，过得顺利，而不用对我的计划做太多的改变');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(787, 787, 'B', '当我生病时，我喜欢朋友们为我感伤');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(788, 114, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(788, 788, '我喜欢被人叫做和事佬');
-insert into psychtestquestionoptions(id, question_id, description) values(789, 788, '我喜欢我的朋友高兴地为我办点小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(788, 788, 'A', '我喜欢被人叫做和事佬');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(789, 788, 'B', '我喜欢我的朋友高兴地为我办点小事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(789, 115, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(790, 789, '我觉得我必须承认自己做错了的事');
-insert into psychtestquestionoptions(id, question_id, description) values(791, 789, '当我沮丧时，我喜欢我的朋友们同情我，并使我愉快');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(790, 789, 'A', '我觉得我必须承认自己做错了的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(791, 789, 'B', '当我沮丧时，我喜欢我的朋友们同情我，并使我愉快');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(790, 116, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(792, 790, '我喜欢与朋友们共事而不喜欢独自进行工作');
-insert into psychtestquestionoptions(id, question_id, description) values(793, 790, '当我的观点被攻击时，我喜欢为之辩护');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(792, 790, 'A', '我喜欢与朋友们共事而不喜欢独自进行工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(793, 790, 'B', '当我的观点被攻击时，我喜欢为之辩护');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(791, 117, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(794, 791, '我喜欢观察我的朋友们的性格，试着找出究竟是什么缘故使他们成为现在这样');
-insert into psychtestquestionoptions(id, question_id, description) values(795, 791, '我喜欢能说服与影响其他人去做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(794, 791, 'A', '我喜欢观察我的朋友们的性格，试着找出究竟是什么缘故使他们成为现在这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(795, 791, 'B', '我喜欢能说服与影响其他人去做他们的工作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(792, 118, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(796, 792, '当我沮丧时，我喜欢我的朋友们同情我，并使我愉快');
-insert into psychtestquestionoptions(id, question_id, description) values(797, 792, '在团体中，我喜欢决定我们该做什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(796, 792, 'A', '当我沮丧时，我喜欢我的朋友们同情我，并使我愉快');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(797, 792, 'B', '在团体中，我喜欢决定我们该做什么');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(793, 119, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(798, 793, '我喜欢问明知没有人回答得出来的问题');
-insert into psychtestquestionoptions(id, question_id, description) values(799, 793, '我喜欢告诉别人怎么做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(798, 793, 'A', '我喜欢问明知没有人回答得出来的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(799, 793, 'B', '我喜欢告诉别人怎么做他们的工作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(794, 120, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(800, 794, '在我所认定的强者面前，我感到胆怯');
-insert into psychtestquestionoptions(id, question_id, description) values(801, 794, '只要我能够的话，我喜欢监督与指导别人的行动');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(800, 794, 'A', '在我所认定的强者面前，我感到胆怯');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(801, 794, 'B', '只要我能够的话，我喜欢监督与指导别人的行动');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(795, 121, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(802, 795, '我喜欢加入一个成员之间彼此温暖与友善的团体');
-insert into psychtestquestionoptions(id, question_id, description) values(803, 795, '我知道自己做错了些事时会感到内疚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(802, 795, 'A', '我喜欢加入一个成员之间彼此温暖与友善的团体');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(803, 795, 'B', '我知道自己做错了些事时会感到内疚');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(796, 122, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(804, 796, '我喜欢分析别人的感情与动机');
-insert into psychtestquestionoptions(id, question_id, description) values(805, 796, '由于自己无能力处理各种情况使我感到沮丧');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(804, 796, 'A', '我喜欢分析别人的感情与动机');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(805, 796, 'B', '由于自己无能力处理各种情况使我感到沮丧');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(797, 123, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(806, 797, '当我生病时，我喜欢朋友们为我感伤');
-insert into psychtestquestionoptions(id, question_id, description) values(807, 797, '当我退让或避免争执时，我感到比争取达到目的时还好些');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(806, 797, 'A', '当我生病时，我喜欢朋友们为我感伤');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(807, 797, 'B', '当我退让或避免争执时，我感到比争取达到目的时还好些');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(798, 124, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(808, 798, '我喜欢我能够说服与影响他人做我想做的事');
-insert into psychtestquestionoptions(id, question_id, description) values(809, 798, '由于自己无能力处理各种情况使我感到沮丧');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(808, 798, 'A', '我喜欢我能够说服与影响他人做我想做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(809, 798, 'B', '由于自己无能力处理各种情况使我感到沮丧');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(799, 125, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(810, 799, '我喜欢批评权威人士');
-insert into psychtestquestionoptions(id, question_id, description) values(811, 799, '在我认为是上司的人面前，我感到胆怯');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(810, 799, 'A', '我喜欢批评权威人士');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(811, 799, 'B', '在我认为是上司的人面前，我感到胆怯');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(800, 126, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(812, 800, '我喜欢加入在成员之间彼此具有温暖与友爱的感情的团体');
-insert into psychtestquestionoptions(id, question_id, description) values(813, 800, '当我的朋友有麻烦时，我喜欢帮助他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(812, 800, 'A', '我喜欢加入在成员之间彼此具有温暖与友爱的感情的团体');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(813, 800, 'B', '当我的朋友有麻烦时，我喜欢帮助他们');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(801, 127, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(814, 801, '我喜欢分析我的动机与情感');
-insert into psychtestquestionoptions(id, question_id, description) values(815, 801, '当我的朋友受伤时，我喜欢同情他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(814, 801, 'A', '我喜欢分析我的动机与情感');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(815, 801, 'B', '当我的朋友受伤时，我喜欢同情他们');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(802, 128, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(816, 802, '当我有麻烦时，我喜欢我的朋友帮助我');
-insert into psychtestquestionoptions(id, question_id, description) values(817, 802, '我喜欢待人以仁慈与同情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(816, 802, 'A', '当我有麻烦时，我喜欢我的朋友帮助我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(817, 802, 'B', '我喜欢待人以仁慈与同情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(803, 129, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(818, 803, '我喜欢成为我所属机构与团体的领导之一');
-insert into psychtestquestionoptions(id, question_id, description) values(819, 803, '当我的朋友受伤或生病时，我喜欢同情他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(818, 803, 'A', '我喜欢成为我所属机构与团体的领导之一');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(819, 803, 'B', '当我的朋友受伤或生病时，我喜欢同情他们');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(804, 130, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(820, 804, '我觉得所受的痛苦与不幸是好处多于坏处');
-insert into psychtestquestionoptions(id, question_id, description) values(821, 804, '我喜欢对我的朋友表示自己的深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(820, 804, 'A', '我觉得所受的痛苦与不幸是好处多于坏处');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(821, 804, 'B', '我喜欢对我的朋友表示自己的深情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(805, 131, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(822, 805, '我喜欢与朋友共事而不喜欢独立工作');
-insert into psychtestquestionoptions(id, question_id, description) values(823, 805, '我喜欢试验与尝试新东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(822, 805, 'A', '我喜欢与朋友共事而不喜欢独立工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(823, 805, 'B', '我喜欢试验与尝试新东西');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(806, 132, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(824, 806, '我喜欢思索我的朋友们的性格，探讨为什么他们象现在这样');
-insert into psychtestquestionoptions(id, question_id, description) values(825, 806, '我喜欢尝试新职业，而不喜欢一直做同样的老事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(824, 806, 'A', '我喜欢思索我的朋友们的性格，探讨为什么他们象现在这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(825, 806, 'B', '我喜欢尝试新职业，而不喜欢一直做同样的老事情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(807, 133, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(826, 807, '当我有问题时，我喜欢我的朋友们能同情与了解');
-insert into psychtestquestionoptions(id, question_id, description) values(827, 807, '我喜欢见些原来不熟悉的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(826, 807, 'A', '当我有问题时，我喜欢我的朋友们能同情与了解');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(827, 807, 'B', '我喜欢见些原来不熟悉的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(808, 134, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(828, 808, '当我的观点被攻击时，我喜欢为之辩护');
-insert into psychtestquestionoptions(id, question_id, description) values(829, 808, '我喜欢在日常生活中经历新奇与变迁');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(828, 808, 'A', '当我的观点被攻击时，我喜欢为之辩护');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(829, 808, 'B', '我喜欢在日常生活中经历新奇与变迁');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(809, 135, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(830, 809, '当我退让避免了争执时，我感到比照自己的方式做还好些');
-insert into psychtestquestionoptions(id, question_id, description) values(831, 809, '我喜欢搬家住到不同的地方');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(830, 809, 'A', '当我退让避免了争执时，我感到比照自己的方式做还好些');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(831, 809, 'B', '我喜欢搬家住到不同的地方');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(810, 136, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(832, 810, '我喜欢为我的朋友办事');
-insert into psychtestquestionoptions(id, question_id, description) values(833, 810, '当我有功课要做时，我喜欢及时做并一直工作至完成为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(832, 810, 'A', '我喜欢为我的朋友办事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(833, 810, 'B', '当我有功课要做时，我喜欢及时做并一直工作至完成为止');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(811, 137, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(834, 811, '我喜欢分析别人的感情与动机');
-insert into psychtestquestionoptions(id, question_id, description) values(835, 811, '当我工作时，我喜欢避开干扰');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(834, 811, 'A', '我喜欢分析别人的感情与动机');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(835, 811, 'B', '当我工作时，我喜欢避开干扰');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(812, 138, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(836, 812, '我喜欢我的朋友们高兴地为我办点小事');
-insert into psychtestquestionoptions(id, question_id, description) values(837, 812, '我喜欢熬夜将工作完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(836, 812, 'A', '我喜欢我的朋友们高兴地为我办点小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(837, 812, 'B', '我喜欢熬夜将工作完成');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(813, 139, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(838, 813, '我喜欢被人当作领导');
-insert into psychtestquestionoptions(id, question_id, description) values(839, 813, '我喜欢长时间地工作而不受别人干扰');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(838, 813, 'A', '我喜欢被人当作领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(839, 813, 'B', '我喜欢长时间地工作而不受别人干扰');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(814, 140, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(840, 814, '假如我做错了事的话，我觉得我应当受责备');
-insert into psychtestquestionoptions(id, question_id, description) values(841, 814, '我喜欢坚持我的职业与方向，甚至看起来好象没什么进展时，我也不在乎');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(840, 814, 'A', '假如我做错了事的话，我觉得我应当受责备');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(841, 814, 'B', '我喜欢坚持我的职业与方向，甚至看起来好象没什么进展时，我也不在乎');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(815, 141, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(842, 815, '我喜欢对我的朋友忠实');
-insert into psychtestquestionoptions(id, question_id, description) values(843, 815, '我喜欢与迷人的异性约会');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(842, 815, 'A', '我喜欢对我的朋友忠实');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(843, 815, 'B', '我喜欢与迷人的异性约会');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(816, 142, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(844, 816, '我喜欢预测我的朋友在各种情况下的行动');
-insert into psychtestquestionoptions(id, question_id, description) values(845, 816, '我喜欢参与有关性与性行为的讨论');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(844, 816, 'A', '我喜欢预测我的朋友在各种情况下的行动');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(845, 816, 'B', '我喜欢参与有关性与性行为的讨论');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(817, 143, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(846, 817, '我喜欢我的朋友对我有深情');
-insert into psychtestquestionoptions(id, question_id, description) values(847, 817, '我喜欢变得性兴奋');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(846, 817, 'A', '我喜欢我的朋友对我有深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(847, 817, 'B', '我喜欢变得性兴奋');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(818, 144, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(848, 818, '在一群人中，我喜欢由我决定该做什么');
-insert into psychtestquestionoptions(id, question_id, description) values(849, 818, '我喜欢参与有异性的社交场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(848, 818, 'A', '在一群人中，我喜欢由我决定该做什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(849, 818, 'B', '我喜欢参与有异性的社交场合');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(819, 145, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(850, 819, '我为自己无力处理各种情况感到内疚');
-insert into psychtestquestionoptions(id, question_id, description) values(851, 819, '我喜欢看以性为主的书与剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(850, 819, 'A', '我为自己无力处理各种情况感到内疚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(851, 819, 'B', '我喜欢看以性为主的书与剧本');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(820, 146, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(852, 820, '我喜欢写信给我的朋友');
-insert into psychtestquestionoptions(id, question_id, description) values(853, 820, '我喜欢看报上有关谋杀与其他暴力方面的新闻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(852, 820, 'A', '我喜欢写信给我的朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(853, 820, 'B', '我喜欢看报上有关谋杀与其他暴力方面的新闻');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(821, 147, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(854, 821, '我喜欢预测我的朋友们在各种情况下将怎么做');
-insert into psychtestquestionoptions(id, question_id, description) values(855, 821, '我喜欢攻击与我观点相反的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(854, 821, 'A', '我喜欢预测我的朋友们在各种情况下将怎么做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(855, 821, 'B', '我喜欢攻击与我观点相反的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(822, 148, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(856, 822, '当我受伤或生病时，我喜欢我的朋友们为我小题大作');
-insert into psychtestquestionoptions(id, question_id, description) values(857, 822, '当事情不顺时，我想责怪别人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(856, 822, 'A', '当我受伤或生病时，我喜欢我的朋友们为我小题大作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(857, 822, 'B', '当事情不顺时，我想责怪别人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(823, 149, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(858, 823, '我喜欢告诉别人如何做他们的工作');
-insert into psychtestquestionoptions(id, question_id, description) values(859, 823, '当有人侮辱我时，我想报复');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(858, 823, 'A', '我喜欢告诉别人如何做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(859, 823, 'B', '当有人侮辱我时，我想报复');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(824, 150, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(860, 824, '我喜欢我处处不如人');
-insert into psychtestquestionoptions(id, question_id, description) values(861, 824, '当我不赞同他们的看法时，我喜欢说服他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(860, 824, 'A', '我喜欢我处处不如人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(861, 824, 'B', '当我不赞同他们的看法时，我喜欢说服他们');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(825, 151, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(862, 825, '当我的朋友有麻烦时，我喜欢帮助他们');
-insert into psychtestquestionoptions(id, question_id, description) values(863, 825, '对我所承担的一切事情，我喜欢认真去做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(862, 825, 'A', '当我的朋友有麻烦时，我喜欢帮助他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(863, 825, 'B', '对我所承担的一切事情，我喜欢认真去做');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(826, 152, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(864, 826, '我喜欢旅行，到各处看看');
-insert into psychtestquestionoptions(id, question_id, description) values(865, 826, '我喜欢完成别人认为需要技巧与努力的任务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(864, 826, 'A', '我喜欢旅行，到各处看看');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(865, 826, 'B', '我喜欢完成别人认为需要技巧与努力的任务');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(827, 153, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(866, 827, '对我所承担的一切事情，我喜欢认真去做');
-insert into psychtestquestionoptions(id, question_id, description) values(867, 827, '我喜欢完成某些具有重大意义的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(866, 827, 'A', '对我所承担的一切事情，我喜欢认真去做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(867, 827, 'B', '我喜欢完成某些具有重大意义的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(828, 154, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(868, 828, '我喜欢与迷人的异性约会');
-insert into psychtestquestionoptions(id, question_id, description) values(869, 828, '对我所承担的事我希望能够成功');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(868, 828, 'A', '我喜欢与迷人的异性约会');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(869, 828, 'B', '对我所承担的事我希望能够成功');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(829, 155, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(870, 829, '我喜欢看报纸上有关谋杀与其他形式的暴力新闻');
-insert into psychtestquestionoptions(id, question_id, description) values(871, 829, '我想写本伟大的小说或剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(870, 829, 'A', '我喜欢看报纸上有关谋杀与其他形式的暴力新闻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(871, 829, 'B', '我想写本伟大的小说或剧本');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(830, 156, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(872, 830, '我喜欢对我的朋友做点小事');
-insert into psychtestquestionoptions(id, question_id, description) values(873, 830, '做计划时，我喜欢我所尊敬的人给我提出些建议');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(872, 830, 'A', '我喜欢对我的朋友做点小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(873, 830, 'B', '做计划时，我喜欢我所尊敬的人给我提出些建议');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(831, 157, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(874, 831, '我喜欢在日常生活经历新奇与变异');
-insert into psychtestquestionoptions(id, question_id, description) values(875, 831, '当我认为我的上司做得对时，我喜欢对他们表示我的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(874, 831, 'A', '我喜欢在日常生活经历新奇与变异');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(875, 831, 'B', '当我认为我的上司做得对时，我喜欢对他们表示我的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(832, 158, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(876, 832, '我喜欢熬夜将工作完成');
-insert into psychtestquestionoptions(id, question_id, description) values(877, 832, '我喜欢称赞我所仰慕的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(876, 832, 'A', '我喜欢熬夜将工作完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(877, 832, 'B', '我喜欢称赞我所仰慕的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(833, 159, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(878, 833, '我喜欢变得性兴奋');
-insert into psychtestquestionoptions(id, question_id, description) values(879, 833, '我喜欢接受我所仰慕的人领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(878, 833, 'A', '我喜欢变得性兴奋');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(879, 833, 'B', '我喜欢接受我所仰慕的人领导');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(834, 160, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(880, 834, '当有人欺负我时，我想报复');
-insert into psychtestquestionoptions(id, question_id, description) values(881, 834, '在团体中，我喜欢接受别人的领导来决定团体该做什么');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(880, 834, 'A', '当有人欺负我时，我想报复');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(881, 834, 'B', '在团体中，我喜欢接受别人的领导来决定团体该做什么');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(835, 161, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(882, 835, '我喜欢对我的朋友慷慨');
-insert into psychtestquestionoptions(id, question_id, description) values(883, 835, '在做困难的事之前，我喜欢先作个计划');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(882, 835, 'A', '我喜欢对我的朋友慷慨');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(883, 835, 'B', '在做困难的事之前，我喜欢先作个计划');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(836, 162, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(884, 836, '我喜欢交新朋友');
-insert into psychtestquestionoptions(id, question_id, description) values(885, 836, '我希望我的一切作品都是严密、整齐而有条理的');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(884, 836, 'A', '我喜欢交新朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(885, 836, 'B', '我希望我的一切作品都是严密、整齐而有条理的');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(837, 163, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(886, 837, '我喜欢将我开了头的事情或工作完成');
-insert into psychtestquestionoptions(id, question_id, description) values(887, 837, '我喜欢使我的书桌与工作间保持清洁与整齐');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(886, 837, 'A', '我喜欢将我开了头的事情或工作完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(887, 837, 'B', '我喜欢使我的书桌与工作间保持清洁与整齐');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(838, 164, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(888, 838, '我喜欢被异性认为身材迷人');
-insert into psychtestquestionoptions(id, question_id, description) values(889, 838, '对我所承担的任何事，我喜欢仔细无遗地进行计划与组织');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(888, 838, 'A', '我喜欢被异性认为身材迷人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(889, 838, 'B', '对我所承担的任何事，我喜欢仔细无遗地进行计划与组织');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(839, 165, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(890, 839, '我喜欢告诉别人我对他们的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(891, 839, '我喜欢饮食有规律，并在固定的时间吃东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(890, 839, 'A', '我喜欢告诉别人我对他们的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(891, 839, 'B', '我喜欢饮食有规律，并在固定的时间吃东西');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(840, 166, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(892, 840, '我喜欢对我的朋友表示深情');
-insert into psychtestquestionoptions(id, question_id, description) values(893, 840, '我喜欢说些别人认为机智与聪明的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(892, 840, 'A', '我喜欢对我的朋友表示深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(893, 840, 'B', '我喜欢说些别人认为机智与聪明的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(841, 167, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(894, 841, '我喜欢尝试新工作而不喜欢一直做同样的老事情');
-insert into psychtestquestionoptions(id, question_id, description) values(895, 841, '我有时想做一些事情的目的只为了想看别人对它的反应');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(894, 841, 'A', '我喜欢尝试新工作而不喜欢一直做同样的老事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(895, 841, 'B', '我有时想做一些事情的目的只为了想看别人对它的反应');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(842, 168, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(896, 842, '我喜欢坚持自己的工作与方向，即便看来好象已进入了无底深渊。我也不在乎');
-insert into psychtestquestionoptions(id, question_id, description) values(897, 842, '在工作场合中我喜欢别人注意我和评价我的外表');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(896, 842, 'A', '我喜欢坚持自己的工作与方向，即便看来好象已进入了无底深渊。我也不在乎');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(897, 842, 'B', '在工作场合中我喜欢别人注意我和评价我的外表');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(843, 169, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(898, 843, '我喜欢看以性为主题的书与剧本');
-insert into psychtestquestionoptions(id, question_id, description) values(899, 843, '在团体中，我喜欢成为人所注目的对象');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(898, 843, 'A', '我喜欢看以性为主题的书与剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(899, 843, 'B', '在团体中，我喜欢成为人所注目的对象');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(844, 170, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(900, 844, '当事情不顺时，我想责怪别人');
-insert into psychtestquestionoptions(id, question_id, description) values(901, 844, '我喜欢问些明知没有人能回答的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(900, 844, 'A', '当事情不顺时，我想责怪别人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(901, 844, 'B', '我喜欢问些明知没有人能回答的问题');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(845, 171, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(902, 845, '当我的朋友受伤或生病时，我喜欢对他们表示同情');
-insert into psychtestquestionoptions(id, question_id, description) values(903, 845, '我喜欢发表我对事情的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(902, 845, 'A', '当我的朋友受伤或生病时，我喜欢对他们表示同情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(903, 845, 'B', '我喜欢发表我对事情的看法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(846, 172, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(904, 846, '我喜欢在新奇的餐厅吃饭');
-insert into psychtestquestionoptions(id, question_id, description) values(905, 846, '我喜欢做些别人认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(904, 846, 'A', '我喜欢在新奇的餐厅吃饭');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(905, 846, 'B', '我喜欢做些别人认为不合常规的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(847, 173, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(906, 847, '在承担其他事之前，我喜欢每次只做一件事并将它完成');
-insert into psychtestquestionoptions(id, question_id, description) values(907, 847, '我喜欢能自如地做我想做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(906, 847, 'A', '在承担其他事之前，我喜欢每次只做一件事并将它完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(907, 847, 'B', '我喜欢能自如地做我想做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(848, 174, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(908, 848, '我喜欢参与有关性与性行为的讨论');
-insert into psychtestquestionoptions(id, question_id, description) values(909, 848, '我喜欢照我自己的方式来做而不管别人有什么想法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(908, 848, 'A', '我喜欢参与有关性与性行为的讨论');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(909, 848, 'B', '我喜欢照我自己的方式来做而不管别人有什么想法');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(849, 175, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(910, 849, '当我动怒时，我想摔东西');
-insert into psychtestquestionoptions(id, question_id, description) values(911, 849, '我喜欢回避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(910, 849, 'A', '当我动怒时，我想摔东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(911, 849, 'B', '我喜欢回避责任与义务');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(850, 176, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(912, 850, '当我的朋友有困难时，我喜欢帮助他们');
-insert into psychtestquestionoptions(id, question_id, description) values(913, 850, '我喜欢对我的朋友们忠诚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(912, 850, 'A', '当我的朋友有困难时，我喜欢帮助他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(913, 850, 'B', '我喜欢对我的朋友们忠诚');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(851, 177, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(914, 851, '我喜欢做些新鲜的事');
-insert into psychtestquestionoptions(id, question_id, description) values(915, 851, '我喜欢交新朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(914, 851, 'A', '我喜欢做些新鲜的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(915, 851, 'B', '我喜欢交新朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(852, 178, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(916, 852, '当我有工作要做时，我喜欢立即开始并持续到工作完成为止');
-insert into psychtestquestionoptions(id, question_id, description) values(917, 852, '我喜欢参与那些成员之间具有温暖与友善情感的团体');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(916, 852, 'A', '当我有工作要做时，我喜欢立即开始并持续到工作完成为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(917, 852, 'B', '我喜欢参与那些成员之间具有温暖与友善情感的团体');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(853, 179, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(918, 853, '我喜欢与迷人的异性约会');
-insert into psychtestquestionoptions(id, question_id, description) values(919, 853, '我喜欢广交朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(918, 853, 'A', '我喜欢与迷人的异性约会');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(919, 853, 'B', '我喜欢广交朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(854, 180, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(920, 854, '我喜欢攻击与我观点相反的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(921, 854, '我喜欢给朋友写信');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(920, 854, 'A', '我喜欢攻击与我观点相反的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(921, 854, 'B', '我喜欢给朋友写信');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(855, 181, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(922, 855, '我喜欢我的朋友们慷慨');
-insert into psychtestquestionoptions(id, question_id, description) values(923, 855, '我喜欢观察别人在某一情况下的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(922, 855, 'A', '我喜欢我的朋友们慷慨');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(923, 855, 'B', '我喜欢观察别人在某一情况下的感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(856, 182, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(924, 856, '我喜欢在新奇的餐厅吃饭');
-insert into psychtestquestionoptions(id, question_id, description) values(925, 856, '我喜欢将自己放在别人的立场上，来想象在同样的情况下我会有什么感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(924, 856, 'A', '我喜欢在新奇的餐厅吃饭');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(925, 856, 'B', '我喜欢将自己放在别人的立场上，来想象在同样的情况下我会有什么感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(857, 183, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(926, 857, '我喜欢熬夜将工作完成');
-insert into psychtestquestionoptions(id, question_id, description) values(927, 857, '我喜欢了解我的朋友们在面临各种问题时的感觉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(926, 857, 'A', '我喜欢熬夜将工作完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(927, 857, 'B', '我喜欢了解我的朋友们在面临各种问题时的感觉');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(858, 184, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(928, 858, '我喜欢变得性兴奋');
-insert into psychtestquestionoptions(id, question_id, description) values(929, 858, '我喜欢研究分析别人的行为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(928, 858, 'A', '我喜欢变得性兴奋');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(929, 858, 'B', '我喜欢研究分析别人的行为');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(859, 185, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(930, 859, '我喜欢取笑那些我觉得是做了蠢事的人');
-insert into psychtestquestionoptions(id, question_id, description) values(931, 859, '我喜欢预测我的朋友们在各种情况下会怎么做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(930, 859, 'A', '我喜欢取笑那些我觉得是做了蠢事的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(931, 859, 'B', '我喜欢预测我的朋友们在各种情况下会怎么做');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(860, 186, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(932, 860, '对有时伤害我的朋友，我喜欢原谅他们');
-insert into psychtestquestionoptions(id, question_id, description) values(933, 860, '当我失败时，我喜欢我的朋友们鼓励我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(932, 860, 'A', '对有时伤害我的朋友，我喜欢原谅他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(933, 860, 'B', '当我失败时，我喜欢我的朋友们鼓励我');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(861, 187, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(934, 861, '我喜欢试验与尝试新的事情');
-insert into psychtestquestionoptions(id, question_id, description) values(935, 861, '当我有问题时，我喜欢我的朋友们能同情与了解');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(934, 861, 'A', '我喜欢试验与尝试新的事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(935, 861, 'B', '当我有问题时，我喜欢我的朋友们能同情与了解');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(862, 188, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(936, 862, '我喜欢持续地解谜语与问题，直到解决为止');
-insert into psychtestquestionoptions(id, question_id, description) values(937, 862, '我喜欢我的朋友对我仁慈');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(936, 862, 'A', '我喜欢持续地解谜语与问题，直到解决为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(937, 862, 'B', '我喜欢我的朋友对我仁慈');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(863, 189, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(938, 863, '我喜欢被异性认为身材迷人');
-insert into psychtestquestionoptions(id, question_id, description) values(939, 863, '我喜欢我的朋友们对我有深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(938, 863, 'A', '我喜欢被异性认为身材迷人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(939, 863, 'B', '我喜欢我的朋友们对我有深情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(864, 190, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(940, 864, '假如某人是罪有应得，我会公开批评他');
-insert into psychtestquestionoptions(id, question_id, description) values(941, 864, '当我受伤或生病时，我喜欢我的朋友们小题大作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(940, 864, 'A', '假如某人是罪有应得，我会公开批评他');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(941, 864, 'B', '当我受伤或生病时，我喜欢我的朋友们小题大作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(865, 191, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(942, 865, '我喜欢对我的朋友们有深情');
-insert into psychtestquestionoptions(id, question_id, description) values(943, 865, '我喜欢被人当作领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(942, 865, 'A', '我喜欢对我的朋友们有深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(943, 865, 'B', '我喜欢被人当作领导');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(866, 192, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(944, 866, '我喜欢尝试新的工作，而不喜欢一直做同样的老事情');
-insert into psychtestquestionoptions(id, question_id, description) values(945, 866, '在群众团体中，我喜欢被指定或被选为领导');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(944, 866, 'A', '我喜欢尝试新的工作，而不喜欢一直做同样的老事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(945, 866, 'B', '在群众团体中，我喜欢被指定或被选为领导');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(867, 193, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(946, 867, '对我起了头的一切事情，我都喜欢将它完成');
-insert into psychtestquestionoptions(id, question_id, description) values(947, 867, '我喜欢我能够说服与影响别人做我所要做的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(946, 867, 'A', '对我起了头的一切事情，我都喜欢将它完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(947, 867, 'B', '我喜欢我能够说服与影响别人做我所要做的事');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(868, 194, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(948, 868, '我喜欢参与有关性行为的讨论');
-insert into psychtestquestionoptions(id, question_id, description) values(949, 868, '我愿意被人们叫做和事佬');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(948, 868, 'A', '我喜欢参与有关性行为的讨论');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(949, 868, 'B', '我愿意被人们叫做和事佬');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(869, 195, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(950, 869, '当我动怒时，我想摔东西');
-insert into psychtestquestionoptions(id, question_id, description) values(951, 869, '我喜欢告诉别人怎么做他们的工作');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(950, 869, 'A', '当我动怒时，我想摔东西');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(951, 869, 'B', '我喜欢告诉别人怎么做他们的工作');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(870, 196, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(952, 870, '我喜欢对我的朋友们表示深情');
-insert into psychtestquestionoptions(id, question_id, description) values(953, 870, '当事情有差错时，我觉得我比任何人都该受到责备');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(952, 870, 'A', '我喜欢对我的朋友们表示深情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(953, 870, 'B', '当事情有差错时，我觉得我比任何人都该受到责备');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(871, 197, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(954, 871, '我喜欢搬家，住在不同的地方');
-insert into psychtestquestionoptions(id, question_id, description) values(955, 871, '当我做错事时，我觉得我比任何人都更该受到责备');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(954, 871, 'A', '我喜欢搬家，住在不同的地方');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(955, 871, 'B', '当我做错事时，我觉得我比任何人都更该受到责备');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(872, 198, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(956, 872, '我喜欢坚持自己的工作与方向，即便看来好象已使我陷入无底深渊时，我也不在乎');
-insert into psychtestquestionoptions(id, question_id, description) values(957, 872, '我觉得我所受的痛苦与不幸是好处多于坏处');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(956, 872, 'A', '我喜欢坚持自己的工作与方向，即便看来好象已使我陷入无底深渊时，我也不在乎');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(957, 872, 'B', '我觉得我所受的痛苦与不幸是好处多于坏处');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(873, 199, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(958, 873, '我喜欢看性为主的书与剧本');
-insert into psychtestquestionoptions(id, question_id, description) values(959, 873, '我觉得我必须承认有些事我做错了');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(958, 873, 'A', '我喜欢看性为主的书与剧本');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(959, 873, 'B', '我觉得我必须承认有些事我做错了');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(874, 200, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(960, 874, '当事情不顺时，我想责怪别人');
-insert into psychtestquestionoptions(id, question_id, description) values(961, 874, '我觉得我处处不如人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(960, 874, 'A', '当事情不顺时，我想责怪别人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(961, 874, 'B', '我觉得我处处不如人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(875, 201, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(962, 875, '对我所承担的一切事情，我喜欢尽力而为');
-insert into psychtestquestionoptions(id, question_id, description) values(963, 875, '我喜欢帮助比我更不幸的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(962, 875, 'A', '对我所承担的一切事情，我喜欢尽力而为');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(963, 875, 'B', '我喜欢帮助比我更不幸的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(876, 202, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(964, 876, '我喜欢做新的和各不相同的事');
-insert into psychtestquestionoptions(id, question_id, description) values(965, 876, '我喜欢待人仁慈和同情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(964, 876, 'A', '我喜欢做新的和各不相同的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(965, 876, 'B', '我喜欢待人仁慈和同情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(877, 203, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(966, 877, '当我有功课要做时，我喜欢及时开始并一直做到完成为止');
-insert into psychtestquestionoptions(id, question_id, description) values(967, 877, '我喜欢帮助比我不幸的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(966, 877, 'A', '当我有功课要做时，我喜欢及时开始并一直做到完成为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(967, 877, 'B', '我喜欢帮助比我不幸的人');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(878, 204, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(968, 878, '我喜欢参与有异性的社交场合');
-insert into psychtestquestionoptions(id, question_id, description) values(969, 878, '我喜欢原谅有时可能伤害了我的朋友');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(968, 878, 'A', '我喜欢参与有异性的社交场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(969, 878, 'B', '我喜欢原谅有时可能伤害了我的朋友');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(879, 205, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(970, 879, '我喜欢攻击与我观点相反的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(971, 879, '我喜欢我的朋友们信任我并告诉他们的问题');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(970, 879, 'A', '我喜欢攻击与我观点相反的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(971, 879, 'B', '我喜欢我的朋友们信任我并告诉他们的问题');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(880, 206, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(972, 880, '我喜欢待人仁慈和同情');
-insert into psychtestquestionoptions(id, question_id, description) values(973, 880, '我喜欢旅行，到各处看看');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(972, 880, 'A', '我喜欢待人仁慈和同情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(973, 880, 'B', '我喜欢旅行，到各处看看');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(881, 207, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(974, 881, '我喜欢遵照习俗，避免做人家认为不合常规的事');
-insert into psychtestquestionoptions(id, question_id, description) values(975, 881, '我喜欢追求新潮流与时髦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(974, 881, 'A', '我喜欢遵照习俗，避免做人家认为不合常规的事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(975, 881, 'B', '我喜欢追求新潮流与时髦');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(882, 208, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(976, 882, '对我所承担的一切事情，我喜欢认真去做');
-insert into psychtestquestionoptions(id, question_id, description) values(977, 882, '我喜欢在日常生活中经历新奇与变异');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(976, 882, 'A', '对我所承担的一切事情，我喜欢认真去做');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(977, 882, 'B', '我喜欢在日常生活中经历新奇与变异');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(883, 209, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(978, 883, '我不在乎与迷人的异性表示亲近');
-insert into psychtestquestionoptions(id, question_id, description) values(979, 883, '我喜欢试验与尝试新的事情');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(978, 883, 'A', '我不在乎与迷人的异性表示亲近');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(979, 883, 'B', '我喜欢试验与尝试新的事情');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(884, 210, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(980, 884, '当我不赞同他人的意见时，我想指责别人');
-insert into psychtestquestionoptions(id, question_id, description) values(981, 884, '我喜欢追求新潮流与时髦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(980, 884, 'A', '当我不赞同他人的意见时，我想指责别人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(981, 884, 'B', '我喜欢追求新潮流与时髦');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(885, 211, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(982, 885, '我喜欢帮助比我不幸的人');
-insert into psychtestquestionoptions(id, question_id, description) values(983, 885, '我喜欢将我开了头的任何事情或工作完成 ');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(982, 885, 'A', '我喜欢帮助比我不幸的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(983, 885, 'B', '我喜欢将我开了头的任何事情或工作完成 ');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(886, 212, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(984, 886, '我喜欢搬家，住在不同的地方');
-insert into psychtestquestionoptions(id, question_id, description) values(985, 886, '我喜欢长时间地工作而不受干扰');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(984, 886, 'A', '我喜欢搬家，住在不同的地方');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(985, 886, 'B', '我喜欢长时间地工作而不受干扰');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(887, 213, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(986, 887, '假如我必须旅行的话，我喜欢先将事情安排好');
-insert into psychtestquestionoptions(id, question_id, description) values(987, 887, '我喜欢持续地解谜底直到解出为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(986, 887, 'A', '假如我必须旅行的话，我喜欢先将事情安排好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(987, 887, 'B', '我喜欢持续地解谜底直到解出为止');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(888, 214, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(988, 888, '我喜欢与异性谈恋爱');
-insert into psychtestquestionoptions(id, question_id, description) values(989, 888, '在承担别的事之前，我喜欢将现在的工作或任务完成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(988, 888, 'A', '我喜欢与异性谈恋爱');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(989, 888, 'B', '在承担别的事之前，我喜欢将现在的工作或任务完成');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(889, 215, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(990, 889, '我喜欢对别人说我对他们的看法');
-insert into psychtestquestionoptions(id, question_id, description) values(991, 889, '当我工作时，我喜欢避免干扰');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(990, 889, 'A', '我喜欢对别人说我对他们的看法');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(991, 889, 'B', '当我工作时，我喜欢避免干扰');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(890, 216, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(992, 890, '我喜欢为我的朋友们办点小事');
-insert into psychtestquestionoptions(id, question_id, description) values(993, 890, '我喜欢参与有异性的社交场合');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(992, 890, 'A', '我喜欢为我的朋友们办点小事');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(993, 890, 'B', '我喜欢参与有异性的社交场合');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(891, 217, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(994, 891, '我喜欢见到不熟悉的人');
-insert into psychtestquestionoptions(id, question_id, description) values(995, 891, '我不在乎与迷人的异性表示亲近');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(994, 891, 'A', '我喜欢见到不熟悉的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(995, 891, 'B', '我不在乎与迷人的异性表示亲近');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(892, 218, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(996, 892, '我喜欢持续解谜底直到解出为止');
-insert into psychtestquestionoptions(id, question_id, description) values(997, 892, '我喜欢与异性谈恋爱');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(996, 892, 'A', '我喜欢持续解谜底直到解出为止');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(997, 892, 'B', '我喜欢与异性谈恋爱');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(893, 219, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(998, 893, '我喜欢谈论我的成就');
-insert into psychtestquestionoptions(id, question_id, description) values(999, 893, '我喜欢听或说以性为主的笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(998, 893, 'A', '我喜欢谈论我的成就');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(999, 893, 'B', '我喜欢听或说以性为主的笑话');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(894, 220, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1000, 894, '我想取笑那些我认为做了蠢事的人');
-insert into psychtestquestionoptions(id, question_id, description) values(1001, 894, '我喜欢听或说以性为主的笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1000, 894, 'A', '我想取笑那些我认为做了蠢事的人');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1001, 894, 'B', '我喜欢听或说以性为主的笑话');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(895, 221, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1002, 895, '我喜欢我的朋友们信任并告诉我他们的麻烦');
-insert into psychtestquestionoptions(id, question_id, description) values(1003, 895, '我喜欢看报上有关谋杀与其他形式暴力的新闻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1002, 895, 'A', '我喜欢我的朋友们信任并告诉我他们的麻烦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1003, 895, 'B', '我喜欢看报上有关谋杀与其他形式暴力的新闻');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(896, 222, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1004, 896, '我喜欢追求新潮流与时髦');
-insert into psychtestquestionoptions(id, question_id, description) values(1005, 896, '假如某人罪有应得，我会公开批评他');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1004, 896, 'A', '我喜欢追求新潮流与时髦');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1005, 896, 'B', '假如某人罪有应得，我会公开批评他');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(897, 223, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1006, 897, '当我工作时，我喜欢避免干扰');
-insert into psychtestquestionoptions(id, question_id, description) values(1007, 897, '当我不赞同别人的看法，我想责怪他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1006, 897, 'A', '当我工作时，我喜欢避免干扰');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1007, 897, 'B', '当我不赞同别人的看法，我想责怪他们');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(898, 224, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1008, 898, '我喜欢听或说与性为主的笑话');
-insert into psychtestquestionoptions(id, question_id, description) values(1009, 898, '当有人侮辱我时，我想报复');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1008, 898, 'A', '我喜欢听或说与性为主的笑话');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1009, 898, 'B', '当有人侮辱我时，我想报复');
 
 
 insert into psychtestquestions(id, sub_id, test_id, type, description) values(899, 225, 4, 'SINGLE_CHOICE', '');
-insert into psychtestquestionoptions(id, question_id, description) values(1010, 899, '我喜欢回避责任与义务');
-insert into psychtestquestionoptions(id, question_id, description) values(1011, 899, '当有人做了我认为很蠢的事情时，我想取笑他们');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1010, 899, 'A', '我喜欢回避责任与义务');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1011, 899, 'B', '当有人做了我认为很蠢的事情时，我想取笑他们');
 
 
 
