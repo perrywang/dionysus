@@ -98,6 +98,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	var LatestView = Marionette.ItemView.extend();
 
 
+
 	/*
 		Controller
 	*/
@@ -202,10 +203,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		new Marionette.AppRouter({
 			appRoutes: {
 				'articles(/cat:category)': 'showArticleHome',
-				'articles/list/cat:category/type:type': 'showArticleList'
+				//'articles/list/cat:category/type:type': 'showArticleList'
 				/*'articles/list/cat:category': 'showArticlesByCategoryAndType',
 				'articles(/p:page)': 'showArticles',*/
-				'articles/:id(/)': 'showArticle',
+				//'articles/:id(/)': 'showArticle',
 			},
 			controller: new ArticleController()
 		});

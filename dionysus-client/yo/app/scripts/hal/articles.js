@@ -81,6 +81,54 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
+  var ArticleModel = Backbone.Model.extend({
+    urlRoot: '/api/v1/officialArticles'
+  });
+  var ArticlePageableCollection = Backbone.PageableCollection.extend({
+    url: '/api/v1/officialArticles',
+    model: ArticleModel,
+    state: {
+      firstPage : 0,
+      currentPage: 0, 
+    },
+    queryParams: {
+      currentPage: "page",
+      pageSize: "size",
+      totalPages: "totalPages",
+      totalRecords: "totalElements"
+    },
+
+    parseRecords: function(resp){
+      var embedded = resp._embedded;
+      return embedded ? embedded.officialArticles : [];
+    },
+
+    parseState: function(resp) {
+      var page = resp.page;
+      return {
+        currentPage: page.number,
+        pageSize: page.size,
+        totalPages: page.totalPages,
+        totalRecords: page.totalElements
+      }
+    }
+  });
+
+  Domain.ArticlePageableCollection = ArticlePageableCollection;
+
+/*
+"page" : {
+    "size" : 20,
+    "totalElements" : 31,
+    "totalPages" : 2,
+    "number" : 1
+  }
+
+*/
+  /*
+    Request Handler
+  */
+
 
   Dionysus.reqres.setHandler('category:instances', function() {
     var resources = new CategoryCollection(), defer = $.Deferred();
