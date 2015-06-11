@@ -160,7 +160,8 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
         var pageObj = new Backbone.Model(articles.get('page'));
         var articleList = new ArticlesView({
           collection: articles.embedded('officialArticles'),
-          model:pageObj
+          model:pageObj,
+          resources:articles
         })
         articleList.on('childview:article:delete', function(childView, model) {
           //alert("delete this mode!");

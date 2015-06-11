@@ -140,8 +140,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   Dionysus.reqres.setHandler('article:search:summary', function(searchMethod, criteria) {
     
     if(!criteria) criteria={};
+    var orderSuffix = "OrderByLastModifiedDateDesc";
 
-    var searchUrl = ArticleCollection.url + '/search/' + searchMethod;
+    var searchUrl = ArticleCollection.url + '/search/' + searchMethod + orderSuffix;
     var resources = new ArticleCollection({
       url: searchUrl
     }),

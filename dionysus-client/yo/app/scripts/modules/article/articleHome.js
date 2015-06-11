@@ -23,20 +23,75 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 		},
 
+		childEvents: {
+			"category:change": "changeCategory"
+		},
+
+		changeCategory: function(childView, id){
+			//user clicked a category, refresh the regions` data
+			var docView = this.getRegion("docSummary").currentView.changeCategory(id);
+			var videoView = this.getRegion("videoSummary").currentView.changeCategory(id);
+			var blogView = this.getRegion("blogSummary").currentView.changeCategory(id);
+		}
+
 	});
 
 	/*
 		Region Sub-Views
 	*/
+
+	var RegionSummaryView = Marionette.ItemView.extend({
+		//template:?
+		initialize: function() {
+			this.listenTo(this.collection, 'reset', this.render, this);
+		},
+
+		changeCategory: function(category) {
+
+			var articleType = this.articleType ? this.articleType : this.options.articleType;
+			var thisView = this;
+			var criteria = {
+				category: category,
+				type: articleType,
+				size: 10
+			};
+
+			Dionysus.request('article:search:summary', 'findByCategoryAndType', criteria).done(function(data) {
+				var models = data.embedded("officialArticles").models;
+				thisView.collection.reset(models);
+			});
+		}
+	});
+
 	var SliderView = Marionette.ItemView.extend();
 
-	var CategoryView = Marionette.ItemView.extend();
+	var CategoryView = Marionette.ItemView.extend({
+		//TODO template: ?
+		events: {
+			'click a': "clicked"
+		},
 
-	var DocSummaryView = Marionette.ItemView.extend();
+		clicked: function(e){
+			e.preventDefault();
+			var id = $(e.currentTarget).data("id");
+			this.triggerMethod("category:change", id);
+		}
+	});
 
-	var VideoSummaryView = Marionette.ItemView.extend();
+	var DocSummaryView = RegionSummaryView.extend({
+		//template:?
+		articleType : "DOC"
+	});
 
-	var BlogSummaryView = Marionette.ItemView.extend();
+	var VideoSummaryView = RegionSummaryView.extend({
+		//template:?,
+		articleType : "VIDEO"
+	});
+
+	var BlogSummaryView = RegionSummaryView.extend({
+		//template:?,
+		articleType: "BLOG"
+	});
 
 	var TagView = Marionette.ItemView.extend();
 
@@ -51,13 +106,17 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		showArticleHome: function(category){
 			if (!category) category = 1;
 
-			//step 1 show the funcking layout view in-advance
-			var layout = new Layout();
+			//step 1 show the fucking layout view in-advance
+			var layout = new Layout({
+				model: {
+					category: category
+				}
+			});
 			Dionysus.mainRegion.show(layout);
 
 			//step 2 get slider data and show the sider view
 			Dionysus.request('article:search:summary', "findByLocation", {
-				category: category,
+				//category: category,
 				location: "slider",
 				size: 5
 			}).done(function(data) {
