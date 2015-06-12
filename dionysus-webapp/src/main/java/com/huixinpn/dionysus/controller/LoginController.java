@@ -1,6 +1,8 @@
 package com.huixinpn.dionysus.controller;
 
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.service.ConsultantService;
 import com.huixinpn.dionysus.service.UserService;
 
 import org.slf4j.Logger;
@@ -23,12 +25,14 @@ public class LoginController {
 
   private static Logger logger = LoggerFactory.getLogger(LoginController.class);
   private UserService userService;
+  private ConsultantService consultantService;
 
   private HttpSessionSecurityContextRepository sessionSecurityContextRepository = new HttpSessionSecurityContextRepository();
 
   @Autowired
-  public LoginController(UserService service) {
-    this.userService = service;
+  public LoginController(UserService userservice, ConsultantService consultantservice) {
+    this.userService = userservice;
+    this.consultantService = consultantservice;
   }
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -60,8 +64,8 @@ public class LoginController {
   }
 
   @RequestMapping(value = "/consultant", method = RequestMethod.POST)
-  public User consultant(@RequestBody User user) {
-    return userService.notifyuser(user, "Consultant Validation & Register");
+  public User consultant(@RequestBody User consultant) {
+    return consultantService.registerconsultant(consultant);
   }
   
   @RequestMapping(value = "/updateprofile", method = RequestMethod.POST)

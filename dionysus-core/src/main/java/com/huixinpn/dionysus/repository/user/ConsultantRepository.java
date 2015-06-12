@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Override
-  @PreAuthorize("#user.username == principal or hasRole('ADMIN')")
+  //@PreAuthorize("#user.username == principal or hasRole('ADMIN')")
   <T extends Consultant> T save(T user);
 
   @Override

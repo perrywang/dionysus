@@ -1,15 +1,12 @@
 package com.huixinpn.dionysus.service.impl;
 
-import com.huixinpn.dionysus.domain.article.Article;
-import com.huixinpn.dionysus.domain.article.Category;
-import com.huixinpn.dionysus.domain.article.Comment;
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.Role;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.exception.InvalidUserException;
-import com.huixinpn.dionysus.repository.article.ArticleRepository;
-import com.huixinpn.dionysus.repository.article.CategoryRepository;
-import com.huixinpn.dionysus.repository.article.CommentRepository;
+import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
+import com.huixinpn.dionysus.service.ConsultantService;
 import com.huixinpn.dionysus.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +25,7 @@ import javax.persistence.PersistenceContext;
 import java.util.HashSet;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, ConsultantService {
 
 
   @Autowired
@@ -36,16 +33,8 @@ public class UserServiceImpl implements UserService {
   private UserRepository userrepository;
 
   @Autowired
-  @Qualifier("articleRepository")
-  private ArticleRepository articlerepository;
-
-  @Autowired
-  @Qualifier("commentRepository")
-  private CommentRepository commentrepository;
-
-  @Autowired
-  @Qualifier("categoryRepository")
-  private CategoryRepository categoryRepository;
+  @Qualifier("consultantRepository")
+  private ConsultantRepository consultantRepository;
 
   @Autowired
   private PasswordEncoder encoder;
@@ -124,42 +113,18 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User notifyuser(User user, String summary) {
-    User admin = userrepository.findByUsername("admin");
-    Article article = new Article(summary, summary);
-    Category category = categoryRepository.findByname("notification");
-    if (category == null)
-      category = new Category("notification");
-    article.setCategory(category);
-    article.setCreatedBy(user);
-    article.setLastModifiedBy(admin);
-    articlerepository.save(article);
-    Comment comment = new Comment("from " + user.getUsername(), article);
-    commentrepository.save(comment);
-    return admin;
+  public User registerconsultant(User consultant) {
+	Consultant _consultant = new Consultant(consultant.getUsername(), consultant.getPassword());
+	_consultant.setEmail(consultant.getEmail());
+	consultantRepository.save(_consultant);
+    consultant.setPassword("");
+    consultant.setEncryptedPassword("");
+    consultant.setCourses(null);
+    return consultant;
   }
 
   @Override
   public boolean sendemailtouser(User user) {
-//		String to = user.getEmail();
-//	    String from = "web@gmail.com";
-//	    String host = "localhost";
-//	    Properties properties = System.getProperties();
-//	    properties.setProperty("mail.smtp.host", host);
-//	    Session session = Session.getDefaultInstance(properties);
-
-//	    try{
-//	    	MimeMessage message = new MimeMessage(session);
-//	        message.setFrom(new InternetAddress(from));
-//	        message.addRecipient(Message.RecipientType.TO,	       
-//	        message.setSubject("This is the Subject Line!");	        
-//	        message.setContent("<h1>This is actual message</h1>",
-//	                            "text/html" );
-    // Send message
-//	        Transport.send(message);
-//	    }catch (MessagingException mex) {
-//	         mex.printStackTrace();
-//	    }
     return true;
   }
 }
