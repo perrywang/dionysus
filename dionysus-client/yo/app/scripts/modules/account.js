@@ -96,7 +96,6 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           sessionStorage.setItem('user', response.id);
           sessionStorage.setItem('username', response.username);
           sessionStorage.setItem('avatar', response.avatar);
-          Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderloginView());
           Dionysus.navigate('/site',{trigger:true});
         }).fail(function() {
           window.alert('注册失败，用户已存在...');
