@@ -83,6 +83,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     manager.detach(_user);
     _user.setPassword("");
     _user.setEncryptedPassword("");
+    _user.setCourses(null);
     return _user;
   }
   
