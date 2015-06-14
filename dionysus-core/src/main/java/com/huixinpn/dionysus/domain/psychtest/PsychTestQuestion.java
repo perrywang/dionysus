@@ -34,6 +34,12 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 		YES_NO
 	}
 	
+	// TODO: May use single character to save bandwidth
+	public enum RequireMode {
+		REQUIRED,  // 必填项
+		OPTIONAL
+	}
+	
 	// 题目的需要，因为像16PF之类的题目，答案是根据题目的编号来安排的
 	// 而且有些题目依赖前一题的选择结果，需要根据这个ID来跳转到下一题
 	@Column(name = "sub_id")
@@ -44,6 +50,9 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 
 	@ManyToOne
 	private PsychTest test;
+	
+	@Enumerated(EnumType.STRING)
+	private RequireMode require = RequireMode.OPTIONAL;
 	
 	@Enumerated(EnumType.STRING)
 	private PsychTestQuestionType type;

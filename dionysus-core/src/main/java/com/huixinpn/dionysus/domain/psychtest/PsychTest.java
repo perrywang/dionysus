@@ -51,6 +51,11 @@ public class PsychTest extends AbstractDionysusPersistable {
 		MACHINE		// 机检
 	}
 	
+	// 有些心理测试是不需要全部做完的
+	// 0 表示所有题目都需要填写
+	// n 表示至少n道题需要完成
+	@Column(name = "min")
+	private Integer min = 0;
 	
 	@NotBlank
 	@Column(name = "title")
