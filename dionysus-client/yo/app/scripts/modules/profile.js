@@ -78,19 +78,19 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     update: function(e) {
       this.trigger('profile:update', this.model);
-      var user = this.$el.form('get values' /*, ['username', 'password', 'email', 'gender', 'age', 'address', 'mobile', 'landline','qq','qqAddress']*/ );
+      var user = this.$el.form('get values', ['username', 'email', 'gender', 'age', 'address', 'mobile', 'landline', 'qq', 'qqAddress'] );
       user['username'] = this.model.get('username');
-      user['password'] = this.model.get('password');
+      //user['password'] = this.model.get('password');
       var url = '/api/v1/updateprofile';
       $.ajax({
         url: url,
         method: 'POST',
         contentType: 'application/json; charset=utf-8',
         data: JSON.stringify(user)
-      }).done(function() {
+      }).done(function(response) {
         window.alert('更新成功');
         //Dionysus.navigate('/site',{trigger:true});
-      }).fail(function() {
+      }).fail(function(response) {
         window.alert('更新失败');
       });
     },
