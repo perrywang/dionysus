@@ -98,6 +98,11 @@ public class UserServiceImpl implements UserService, ConsultantService {
     user.setPassword("");
     user.setEncryptedPassword("");
     user.setCourses(null);
+    if(user instanceof Consultant)
+    {
+    	((Consultant)user).setTeachings(null);
+    	((Consultant)user).setAppointments(null);
+    }
     return user;
   }
 
