@@ -30,6 +30,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
+
   Dionysus.reqres.setHandler('psychtestsuite:instances', function() {
     var resources = new PsychTestSuiteCollection(), defer = $.Deferred();
     resources.fetch().then(function() {
