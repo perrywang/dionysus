@@ -53,7 +53,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			var criteria = {
 				category: category,
 				type: articleType,
-				size: 10
+				size: 10,
+				sort: 'lastModifiedDate,desc'
 			};
 
 			Dionysus.request('article:search:summary', 'findByCategoryAndType', criteria).done(function(data) {
@@ -62,6 +63,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 		}
 	});
+	//make this view public
+	Article.RegionSummaryView = RegionSummaryView;
 
 	var SliderView = Marionette.ItemView.extend();
 
@@ -93,9 +96,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		articleType: "BLOG"
 	});
 
-	var TagView = Marionette.ItemView.extend();
+	var TagView = RegionSummaryView.extend();
 
-	var LatestView = Marionette.ItemView.extend();
+	var LatestView = RegionSummaryView.extend();
 
 
 
@@ -103,7 +106,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		Controller
 	*/
 
-	ArticleController = Marionette.Object.extend({
+	var ArticleController = Marionette.Object.extend({
 		showArticleHome: function(category){
 			if (!category) category = 1;
 
@@ -119,7 +122,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			Dionysus.request('article:search:summary', "findByLocation", {
 				//category: category,
 				location: "slider",
-				size: 5
+				size: 5,
+				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
 				var sliders = data.embedded('officialArticles');
 				var sliderView = new SliderView({
@@ -143,7 +147,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
 				category: category,
 				type: 'DOC',
-				size: 10
+				size: 10,
+				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
 				var docs = data.embedded('officialArticles');
 				var docView = new DocSummaryView({
@@ -157,7 +162,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
 				category: category,
 				type: 'VIDEO',
-				size: 10
+				size: 10,
+				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
 				var videos = data.embedded('officialArticles');
 				var videoView = new VideoSummaryView({
@@ -171,7 +177,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
 				category: category,
 				type: 'BLOG',
-				size: 10
+				size: 10,
+				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
 				var blogs = data.embedded('officialArticles');
 				var blogView = new BlogSummaryView({

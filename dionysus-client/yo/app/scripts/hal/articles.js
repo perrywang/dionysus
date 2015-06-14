@@ -72,7 +72,13 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   var ArticleCollection = Backbone.RelationalHalResource.extend({
+    
     url: '/api/v1/officialArticles',
+
+    initialize: function(options){
+      if(options && options.searchMethod) this.url += '/search/'+options.searchMethod;
+    },
+
     halEmbedded: {
       officialArticles: {
         type: Backbone.HasMany,
@@ -85,7 +91,13 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     urlRoot: '/api/v1/officialArticles'
   });
   var ArticlePageableCollection = Backbone.PageableCollection.extend({
+    
     url: '/api/v1/officialArticles',
+
+    initialize: function(options){
+      if(options && options.searchMethod) this.url += '/search/'+options.searchMethod;
+    },
+
     model: ArticleModel,
     state: {
       firstPage : 0,
@@ -188,11 +200,28 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   Dionysus.reqres.setHandler('article:search:summary', function(searchMethod, criteria) {
     
     if(!criteria) criteria={};
-    var orderSuffix = "OrderByLastModifiedDateDesc";
 
-    var searchUrl = ArticleCollection.url + '/search/' + searchMethod + orderSuffix;
     var resources = new ArticleCollection({
-      url: searchUrl
+      searchMethod : searchMethod
+    }),
+      defer = $.Deferred();
+
+    criteria['projection'] = 'summary';
+
+    resources.fetch({
+      data: criteria
+    }).then(function() {
+      defet.resolve(resources);
+    });
+
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('article:list:pageable', function(search, criteria){
+    if(!criteria) criteria={};
+
+    var resources = new ArticlePageableCollection({
+      searchMethod : searchMethod
     }),
       defer = $.Deferred();
 
