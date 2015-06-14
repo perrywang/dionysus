@@ -1,11 +1,12 @@
 Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 	'use strict';
+	var baseTemplatePath = 'templates/home/article/';
 	/*
 		Layout: Article Home
 	*/
 	var Layout = Marionette.LayoutView.extend({
-		template:JST['templates/home/article/articleHome'],
+		template:JST[baseTemplatePath+'homePage/articleHome'],
 		regions: {
 			slider: "#slider",
 			category: "#category",
@@ -67,11 +68,11 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	Article.RegionSummaryView = RegionSummaryView;
 
 	var SliderView = Marionette.ItemView.extend({
-		template:JST['templates/home/article/articleSlider']
+		template:JST[baseTemplatePath+'homePage/articleSlider']
 	});
 
 	var CategoryView = Marionette.ItemView.extend({
-		template: JST['templates/home/article/articleCategory'],
+		template: JST[baseTemplatePath+'homePage/articleCategory'],
 		events: {
 			'click a': "clicked"
 		},
@@ -84,26 +85,26 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	});
 
 	var DocSummaryView = RegionSummaryView.extend({
-		template: JST['templates/home/article/articleDocSummary'],
+		template: JST[baseTemplatePath+'homePage/articleDocSummary'],
 		articleType : "DOC"
 	});
 
 	var VideoSummaryView = RegionSummaryView.extend({
-		template:JST['templates/home/article/articleVideoSummary'],
+		template:JST[baseTemplatePath+'homePage/articleVideoSummary'],
 		articleType : "VIDEO"
 	});
 
 	var BlogSummaryView = RegionSummaryView.extend({
-		template:JST['templates/home/article/articleBlogSummary'],
+		template:JST[baseTemplatePath+'homePage/articleBlogSummary'],
 		articleType: "BLOG"
 	});
 
 	var TagView = RegionSummaryView.extend({
-		template: JST['templates/home/article/articleTag']
+		template: JST[baseTemplatePath+'articleTag']
 	});
 
 	var LatestView = RegionSummaryView.extend({
-		template: JST['templates/home/article/articleLatest']
+		template: JST[baseTemplatePath+'articleLatest']
 	});
 
 
@@ -216,10 +217,6 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		new Marionette.AppRouter({
 			appRoutes: {
 				'articles(/cat:category)': 'showArticleHome',
-				//'articles/list/cat:category/type:type': 'showArticleList'
-				/*'articles/list/cat:category': 'showArticlesByCategoryAndType',
-				'articles(/p:page)': 'showArticles',*/
-				//'articles/:id(/)': 'showArticle',
 			},
 			controller: new ArticleController()
 		});

@@ -96,18 +96,20 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
     initialize: function(options){
       if(options && options.searchMethod) this.url += '/search/'+options.searchMethod;
+      _.extend(this.queryParams, options.criteria);
     },
 
     model: ArticleModel,
     state: {
       firstPage : 0,
       currentPage: 0, 
+      pageSize:3 //TODO larget size
     },
     queryParams: {
       currentPage: "page",
       pageSize: "size",
-      totalPages: "totalPages",
-      totalRecords: "totalElements"
+      totalPages: null,
+      totalRecords: null
     },
 
     parseRecords: function(resp){
@@ -217,20 +219,19 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('article:list:pageable', function(search, criteria){
+  Dionysus.reqres.setHandler('article:list:pageable', function(searchMethod, criteria){
     if(!criteria) criteria={};
 
     var resources = new ArticlePageableCollection({
-      searchMethod : searchMethod
+      searchMethod : searchMethod,
+      criteria:criteria
     }),
       defer = $.Deferred();
 
     criteria['projection'] = 'summary';
 
-    resources.fetch({
-      data: criteria
-    }).then(function() {
-      defet.resolve(resources);
+    resources.fetch().then(function() {
+      defer.resolve(resources);
     });
 
     return defer.promise();

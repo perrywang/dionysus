@@ -1,11 +1,12 @@
 Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 	'use strict';
+	var baseTemplatePath = 'templates/home/article/';
 	/*
 		Layout: Article Home
 	*/
-	var Layout = Marionette.LayoutView.extend({
-		//template:?
+	var LayoutView = Marionette.LayoutView.extend({
+		template: JST[baseTemplatePath+'listPage/articleList'],
 		regions: {
 			list: "#list",
 			tag: "#tag",
@@ -27,19 +28,26 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	*/
 
 	var ListView = Dionysus.Article.RegionSummaryView.extend({
-		//template:?,
+		template:JST[baseTemplatePath+'listPage/articleListItems'],
+
+		initialize: function() {
+			if(this.collection) this.listenTo(this.collection, 'add', this.render, this);
+		},
+		testrender:function(e){
+			var x
+		},
 
 		events:{
 			"gotoPage #paging": "gotoPage"
 		},
 		gotoPage: function(event, page){
-			this.collection.getPage(page);
+			this.collection.getPage(page-1);
 		},
 		onRender: function(){
 			var state = this.collection.state;
-			this.$('#page').twbsPagination({
+			this.$('#paging').twbsPagination({
 				totalPages: state['totalPages'],
-				startPage: state['firstPage'],
+				startPage: state['currentPage']+1,
 				visiblePages: 6,
 				first: '第一页',
         		prev: '前一页',
@@ -61,13 +69,17 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	var ArticleListController = Marionette.Object.extend({
 		showArticleList: function(category, type){
 
+			category = category?category:1;
+			type = type?type:"DOC";
+			
 			var layoutView = new LayoutView();
+			Dionysus.mainRegion.show(layoutView);
 
 			//get list
 			Dionysus.request('article:list:pageable','findByCategoryAndType', {
 				category: category,
 				type: type,
-				sort: 'lastModifiedDate,desc'
+				sort: 'id,desc'//TODO update sql to add datatime info, to sort
 			}).done(function(articles){
 				
 				var list = new ListView({
@@ -78,13 +90,13 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//get latest
-			Dionysus.request('articles:list:pageable', null, {
+			Dionysus.request('article:list:pageable', null, {
 				sort: 'lastModifiedDate,desc',
 				size: 5
 			}).done(function(articles){
 
 				var latest = new Dionysus.Article.RegionSummaryView({
-					//TODO template:?
+					template:JST[baseTemplatePath+'articleLatest'],
 					collection: articles
 				});
 				layoutView.getRegion('latest').show(latest);
@@ -101,8 +113,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	Dionysus.on("before:start", function(){
 		new Marionette.AppRouter({
 			appRoutes: {
-				'articles/list/cat:category/type:type': 'showArticleList'
-			}
+				'articles/list/(cat:category/type:type)': 'showArticleList',
+			},
+			controller: new ArticleListController()
 		});
 	});
 

@@ -24,7 +24,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   }});
 
   var ArticleDetailView = Marionette.ItemView.extend({
-    template: JST['templates/home/article/detail'],
+    template: JST['templates/home/article/detailPage/detail'],
     tagName: 'article',
     className: 'ui centered grid article',
 
