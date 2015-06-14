@@ -5,7 +5,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		Layout: Article Home
 	*/
 	var Layout = Marionette.LayoutView.extend({
-		//TODO template:"?"
+		template:JST['templates/home/article/articleHome'],
 		regions: {
 			slider: "#slider",
 			category: "#category",
@@ -43,7 +43,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	var RegionSummaryView = Marionette.ItemView.extend({
 		//template:?
 		initialize: function() {
-			this.listenTo(this.collection, 'reset', this.render, this);
+			if(this.collection) this.listenTo(this.collection, 'reset', this.render, this);
 		},
 
 		changeCategory: function(category) {
@@ -66,10 +66,12 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	//make this view public
 	Article.RegionSummaryView = RegionSummaryView;
 
-	var SliderView = Marionette.ItemView.extend();
+	var SliderView = Marionette.ItemView.extend({
+		template:JST['templates/home/article/articleSlider']
+	});
 
 	var CategoryView = Marionette.ItemView.extend({
-		//TODO template: ?
+		template: JST['templates/home/article/articleCategory'],
 		events: {
 			'click a': "clicked"
 		},
@@ -82,23 +84,27 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	});
 
 	var DocSummaryView = RegionSummaryView.extend({
-		//template:?
+		template: JST['templates/home/article/articleDocSummary'],
 		articleType : "DOC"
 	});
 
 	var VideoSummaryView = RegionSummaryView.extend({
-		//template:?,
+		template:JST['templates/home/article/articleVideoSummary'],
 		articleType : "VIDEO"
 	});
 
 	var BlogSummaryView = RegionSummaryView.extend({
-		//template:?,
+		template:JST['templates/home/article/articleBlogSummary'],
 		articleType: "BLOG"
 	});
 
-	var TagView = RegionSummaryView.extend();
+	var TagView = RegionSummaryView.extend({
+		template: JST['templates/home/article/articleTag']
+	});
 
-	var LatestView = RegionSummaryView.extend();
+	var LatestView = RegionSummaryView.extend({
+		template: JST['templates/home/article/articleLatest']
+	});
 
 
 
@@ -112,9 +118,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 			//step 1 show the fucking layout view in-advance
 			var layout = new Layout({
-				model: {
+				model: new Backbone.Model({
 					category: category
-				}
+				})
 			});
 			Dionysus.mainRegion.show(layout);
 

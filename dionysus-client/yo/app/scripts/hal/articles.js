@@ -211,7 +211,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     resources.fetch({
       data: criteria
     }).then(function() {
-      defet.resolve(resources);
+      defer.resolve(resources);
     });
 
     return defer.promise();

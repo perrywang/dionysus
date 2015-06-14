@@ -27,7 +27,30 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	*/
 
 	var ListView = Dionysus.Article.RegionSummaryView.extend({
-		//template:?
+		//template:?,
+
+		events:{
+			"gotoPage #paging": "gotoPage"
+		},
+		gotoPage: function(event, page){
+			this.collection.getPage(page);
+		},
+		onRender: function(){
+			var state = this.collection.state;
+			this.$('#page').twbsPagination({
+				totalPages: state['totalPages'],
+				startPage: state['firstPage'],
+				visiblePages: 6,
+				first: '第一页',
+        		prev: '前一页',
+        		next: '后一页',
+        		last: '最后一页',
+        		loop:true,
+        		onPageClick: function(event, page){
+        			$(this).trigger("gotoPage", page);
+        		}
+			});
+		}
 
 	});
 
