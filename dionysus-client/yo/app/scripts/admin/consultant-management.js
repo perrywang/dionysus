@@ -14,26 +14,19 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
 
   var ConsultantController = Marionette.Controller.extend({
     
-    showConsultantList: function(page){
-      //show loading before get any data
+    showConsultantList: function(){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-
-      Dionysus.request('consultant:entities', page).then(function(consultants){
+      Dionysus.request('consultant:finddisabled').then(function(consultants){
         var consultantlist = new ConsultantListView({
-          collection: consultants.embedded('consultants')
+          collection: consultants
         });
-
         Dionysus.mainRegion.show(consultantlist);
       });
-
     },
 
     showConsultant: function(id){
-      //show loading before get any data
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-
       Dionysus.request('consultant:item', id).then(function(consultant){
-
       });
     }
   });
@@ -41,7 +34,7 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/consultants(/p:page)': 'showConsultantList',
+        'admin/consultants': 'showConsultantList',
         'admin/consultants/:id': 'showConsultant'
       },
       controller: new ConsultantController()

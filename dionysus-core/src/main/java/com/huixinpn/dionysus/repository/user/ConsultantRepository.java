@@ -32,8 +32,11 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Query(value = "select c from Consultant c where c.expertise.toString() like %:expertise%")
   Page<Consultant> findConsultantsByExpertise(@Param("expertise") String expertise, Pageable pageable);
 
-  @Query(value = "select c from Consultant c where c.username like %:name%")
-  List<Consultant> nameContains(@Param("name") String name);
+  @Query(value = "select c from Consultant c where c.username like %:username%")
+  List<Consultant> nameContains(@Param("username") String username);
+  
+  @Query(value = "select c from Consultant c where c.enabled = false")
+  Page<Consultant> findConsultantsDisabled(Pageable pageable);
 
   @Override
   @Query(value = "select c from Consultant c order by size(c.appointments) desc")
