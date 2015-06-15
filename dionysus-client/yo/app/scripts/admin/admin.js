@@ -19,6 +19,7 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
     { name: '个人博客', href: '/admin/blogs',       icon: 'edit'  },
     { name: '心理测试', href: '/admin/tests',       icon: 'lab'   },
     { name: '心理课程', href: '/admin/courses',     icon: 'edit'  },
+    { name: '咨询师管理', href: '/admin/consultants',     icon: 'edit'  },
   ]);
 
   Dionysus.addInitializer(function() {

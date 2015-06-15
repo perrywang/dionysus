@@ -126,6 +126,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
   public User registerconsultant(User consultant) {
 	Consultant _consultant = new Consultant(consultant.getUsername(), consultant.getPassword());
 	_consultant.setEmail(consultant.getEmail());
+	_consultant.setEnabled(false);
 	consultantRepository.save(_consultant);
     consultant.setPassword("");
     consultant.setEncryptedPassword("");
