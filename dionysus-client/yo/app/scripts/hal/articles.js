@@ -243,10 +243,11 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       _links : { self: { href : '/api/v1/officialArticles/' + id } }
     }), defer = $.Deferred();
 
+
+
     article.fetch().then(function() {
       article.link('category').fetchResource().then(function(data) {
         var category = Category.findOrCreate({id:data.id});
-        var category_uri = category.link('self').href();
         article.set('category', category);
         defer.resolve(article);
       });

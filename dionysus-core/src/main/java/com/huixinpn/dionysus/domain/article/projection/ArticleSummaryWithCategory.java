@@ -16,5 +16,5 @@ public interface ArticleSummaryWithCategory {
 
     public CategoryExcerpt getCategory();
 
-    public UserExcerpt getCreatedBy();
+    //public UserExcerpt getCreatedBy();
 }
