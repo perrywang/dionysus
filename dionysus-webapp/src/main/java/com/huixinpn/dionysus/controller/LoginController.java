@@ -63,7 +63,7 @@ public class LoginController {
     return userService.register(user);
   }
 
-  @RequestMapping(value = "/consultant", method = RequestMethod.POST)
+  @RequestMapping(value = "/registerconsultant", method = RequestMethod.POST)
   public User consultant(@RequestBody User consultant) {
     return consultantService.registerconsultant(consultant);
   }

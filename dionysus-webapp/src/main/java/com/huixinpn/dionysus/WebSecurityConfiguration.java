@@ -18,6 +18,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
         .antMatchers(HttpMethod.POST, "/api/v1/register").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/v1/registerconsultant").permitAll()
         .antMatchers(HttpMethod.GET, "/", "/themes/**", "/public/**", "/styles/**", "/fonts/**", "/images/**", "/scripts/**").permitAll()
         .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
         .antMatchers("/api/v1/courses/**").authenticated()

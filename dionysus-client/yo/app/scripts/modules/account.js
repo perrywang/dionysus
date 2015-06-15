@@ -84,7 +84,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
       var view = new RegisterView();
       view.on('user:register', function(user) {
         var consultant = user.consultant;
-        var url = consultant ? '/api/v1/consultant' : '/api/v1/register';
+        var url = consultant ? '/api/v1/registerconsultant' : '/api/v1/register';
         $.ajax({
           url: url,
           method: 'POST',
