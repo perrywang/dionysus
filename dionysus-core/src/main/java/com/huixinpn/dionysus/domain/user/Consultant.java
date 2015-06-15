@@ -2,6 +2,8 @@ package com.huixinpn.dionysus.domain.user;
 
 import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.domain.course.Course;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -18,6 +20,8 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "consultants")
 @PrimaryKeyJoinColumn
@@ -31,9 +35,6 @@ public class Consultant extends User {
   @OneToMany(mappedBy = "consultant")
   private Collection<Appointment> appointments = new ArrayList<>();
 
-  public Consultant() {
-    super();
-  }
 
   public Consultant(String name, String pass) {
     super(name, pass);
@@ -53,15 +54,4 @@ public class Consultant extends User {
   @Column(name="expertise")
   private Collection<ConsExpertise> expertises = new ArrayList<>();
 
-  public void setTeachings(Collection<Course> teachings) {
-    this.teachings = teachings;
-  }
-
-  public Collection<Appointment> getAppointments() {
-    return appointments;
-  }
-
-  public void setAppointments(Collection<Appointment> appointments) {
-    this.appointments = appointments;
-  }
 }
