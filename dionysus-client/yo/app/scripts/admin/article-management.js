@@ -52,13 +52,28 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     template: JST["templates/admin/articles/articles"],
     childView: ArticleView,
     childViewContainer: '.items',
-    onDomRefresh: function() {
+    /*onDomRefresh: function() {
       var page = this.model;
       if(page.get('number') === 0) {
         this.$('.button.left').hide();
       } else if(page.get('number') === page.get('totalPages') - 1) {
         this.$('.button.right').hide();
       }
+    },*/
+    onRender:function(){
+      this.$('#paging').twbsPagination({
+        totalPages: this.model.get('totalPages'),
+        startPage: this.model.get('number')+1,
+        visiblePages: 6,
+        first: '第一页',
+        prev: '前一页',
+        next: '后一页',
+        last: '最后一页',
+        loop:true,
+        onPageClick: function(event,page){
+          Dionysus.navigate('/admin/articles/p' + (page-1),{trigger:true});
+        }
+      });
     }
   });
 

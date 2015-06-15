@@ -2,14 +2,4 @@ a.ui.button.edit.blue(href="/admin/articles/create")
   i.add.icon
   | 添加
 ul.ui.relaxed.items
-.ui.three.column.divided.grid
-  .column
-    p
-  .column
-    a.icon.button.left(href="/admin/articles/p{{ number }}")
-      i.left.large.chevron.icon
-    a {{ number }} / {{ totalPages }}  
-    a.icon.button.right(href="/admin/articles/p{{ number }}")
-      i.right.large.chevron.icon
-  .column
-    p
+div#paging
