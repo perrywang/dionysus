@@ -1,8 +1,8 @@
 Dionysus = new Marionette.Application();
 
 Dionysus.addRegions({
-  mainNavRegion: '#navigation',
-  subNavRegion: '#submenu',
+  mainNavRegion: '#header',
+  //subNavRegion: '#submenu',
   mainRegion: '#main',
   footerRegion: '#footer',
   dialogRegion: '#dialog'

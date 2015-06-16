@@ -50,8 +50,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   
   Home.HeaderView = Marionette.ItemView.extend({
     template: JST['templates/home/header/nav'],
-    tagName: 'nav',
-    className: 'ui menu',
+    //tagName: 'nav',
+    //className: 'ui menu',
     ui:{
       login: '#login'
     },
