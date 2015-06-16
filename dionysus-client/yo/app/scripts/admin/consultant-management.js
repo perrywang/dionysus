@@ -3,16 +3,15 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
 
   var ConsultantListItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/consultants/consultantlistitem"],
-    className: "item"
-    ui: {
-      enableMe: '.button.delete'
-    },
-    events: {
-      'click @ui.enableMe': 'enableConsultant'
-    },
-    enableConsultant: function(e) {
-      e.stopPropagation();
-      this.trigger('consultant:enable', this.model);
+    className: "item",
+	onRender:function(){
+      var consultant =this.model;
+      this.$el.on('click.enableMe','.button.delete',function(){
+        consultant.set('enabled',true);
+        consultant.save();
+		window.alert('审核成功');
+		Dionysus.navigate('admin', {trigger: true});
+      });
     }
   });
 
