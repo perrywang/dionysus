@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.repository.user;
 
 import com.huixinpn.dionysus.domain.appointment.AppointmentStatus;
+import com.huixinpn.dionysus.domain.user.ConsExpertise;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ public interface ConsultantRepository extends JpaRepository<Consultant, Long> {
   @Query(value = "select c from Consultant c where size(c.appointments) > 0 order by size(c.appointments) desc")
   Page<Consultant> findConsultantsHasAppointments(Pageable pageable);
 
-  @Query(value = "select c from Consultant c where c.expertise.toString() like %:expertise%")
+  @Query(value = "select c from Consultant c join c.expertises e where e.name like %:expertise%")
   Page<Consultant> findConsultantsByExpertise(@Param("expertise") String expertise, Pageable pageable);
 
   @Query(value = "select c from Consultant c where c.username like %:username%")

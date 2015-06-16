@@ -10,11 +10,16 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class ArticleCategory extends EntityData {
+public class ArticleCategory extends EntityData<Category> {
     private String name;
 
     public ArticleCategory(Category category){
         super(category);
         this.name = category.getName();
+    }
+
+    @Override
+    public void update(Category entity) {
+        entity.setName(this.getName());
     }
 }

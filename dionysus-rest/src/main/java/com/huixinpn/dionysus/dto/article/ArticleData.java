@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class ArticleData extends EntityData {
+public class ArticleData extends EntityData<Article> {
     private String title;
     private String summary;
     private String cover;
@@ -27,5 +27,14 @@ public class ArticleData extends EntityData {
         this.category = new ArticleCategory(article.getCategory());
 
 
+    }
+
+    @Override
+    public void update(Article article){
+        this.title = article.getTitle();
+        this.summary = article.getSummary();
+        this.cover = article.getCover();
+        this.type = article.getType() == null? "unknown" : article.getType().toString();
+        this.category = new ArticleCategory(article.getCategory());
     }
 }

@@ -1,5 +1,27 @@
 package com.huixinpn.dionysus.domain.user;
 
-public enum ConsExpertise {
-	Depression, family, LoveandSex, PsychoAssess, Youth, Neurosis
+
+import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.Collection;
+
+@Data
+@NoArgsConstructor
+@Entity
+@Table(name = "expertises")
+public class ConsExpertise extends AbstractDionysusPersistable {
+  private String name;
+
+  @ManyToMany(mappedBy = "expertises")
+  private Collection<Consultant> consultants = new ArrayList<>();
+
+  public ConsExpertise(Long id){
+    super(id);
+  }
 }

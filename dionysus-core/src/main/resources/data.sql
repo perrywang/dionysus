@@ -21,11 +21,17 @@ values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', 
 insert into consultants (id) values (4);
 insert into consultants (id) values (3);
 
-insert into consultant_expertise (consultant_id, expertise) values (4, 'Depression');
-insert into consultant_expertise (consultant_id, expertise) values (4, 'family');
-insert into consultant_expertise (consultant_id, expertise) values (4, 'LoveandSex');
-insert into consultant_expertise (consultant_id, expertise) values (3, 'PsychoAssess');
-insert into consultant_expertise (consultant_id, expertise) values (3, 'Youth');
+insert into expertises (id, name) values (1,'Depression');
+insert into expertises (id, name) values (2,'family');
+insert into expertises (id, name) values (3,'LoveandSex');
+insert into expertises (id, name) values (4,'PsychoAssess');
+insert into expertises (id, name) values (5,'Youth');
+
+insert into consultants_expertises (consultants_id, expertises_id) values (4, 1);
+insert into consultants_expertises (consultants_id, expertises_id) values (4, 2);
+insert into consultants_expertises (consultants_id, expertises_id) values (4, 3);
+insert into consultants_expertises (consultants_id, expertises_id) values (3, 4);
+insert into consultants_expertises (consultants_id, expertises_id) values (3, 5);
 
 insert into roles(id, name) values (1, 'ROLE_ADMIN');
 insert into roles(id, name) values (2, 'ROLE_USER');

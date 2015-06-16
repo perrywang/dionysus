@@ -48,10 +48,7 @@ public class Consultant extends User {
     super(id);
   }
 
-  @ElementCollection(targetClass=ConsExpertise.class)
-  @CollectionTable(name="consultant_expertise")
-  @Enumerated(EnumType.STRING)
-  @Column(name="expertise")
+  @ManyToMany
   private Collection<ConsExpertise> expertises = new ArrayList<>();
 
 }

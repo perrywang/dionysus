@@ -5,6 +5,8 @@ import com.huixinpn.dionysus.controller.util.Utils;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.statistic.Counter;
+import com.huixinpn.dionysus.domain.statistic.Module;
 import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
@@ -16,6 +18,7 @@ import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
 import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
+import com.huixinpn.dionysus.repository.statistic.CounterRepository;
 import com.huixinpn.dionysus.repository.tag.TagRepository;
 import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
@@ -49,6 +52,9 @@ public class CourseController {
 
   @Autowired
   private ConsultantRepository consultantRepository;
+
+  @Autowired
+  private CounterRepository counterRepository;
 
   public static final String EMPTY_JSON_OBJECT = Utils.EMPTY_JSON_OBJECT;
 
@@ -110,8 +116,9 @@ public class CourseController {
   public
   @ResponseBody
   ResponseEntity<String> addCategory(@RequestBody CourseCategoryData data) {
-    CourseCategory category = data.toEntity();
-    CourseCategory added = courseCategoryRepository.save(category);
+    CourseCategory adding = new CourseCategory();
+    data.update(adding);
+    CourseCategory added = courseCategoryRepository.save(adding);
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
@@ -130,7 +137,9 @@ public class CourseController {
     if (!id.equals(data.getId())) {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
-    courseCategoryRepository.save(data.toEntity());
+    CourseCategory updating = courseCategoryRepository.findOne(id);
+    data.update(updating);
+    courseCategoryRepository.save(updating);
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
@@ -233,6 +242,10 @@ public class CourseController {
   @ResponseBody
   CourseData listCourse(@PathVariable Long id) {
     Course course = courseRepository.findOne(id);
+    Long count = course.getReadCount();
+    count++;
+    course.setReadCount(count);
+    courseRepository.save(course);
     return new CourseData(course);
   }
 
@@ -243,7 +256,8 @@ public class CourseController {
     if (!id.equals(data.getId())) {
       return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
-    Course updating = data.toEntity();
+    Course updating = courseRepository.findOne(id);
+    data.update(updating);
     courseRepository.save(updating);
     return new ResponseEntity(EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
@@ -252,7 +266,8 @@ public class CourseController {
   public
   @ResponseBody
   ResponseEntity<String> addCourse(@RequestBody CourseData data) {
-    Course adding = data.toEntity();
+    Course adding = new Course();
+    data.update(adding);
     Course added = courseRepository.save(adding);
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }

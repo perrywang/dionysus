@@ -8,14 +8,21 @@ import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.dto.EntityData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
 import com.huixinpn.dionysus.dto.user.UserData;
+import com.huixinpn.dionysus.repository.appointment.AppointmentRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Calendar;
 
 @Data
 @NoArgsConstructor
-public class AppointmentData extends EntityData {
+@Component
+public class AppointmentData extends EntityData<Appointment> {
+
+  @Autowired
+  private AppointmentRepository appointmentRepository;
   private ConsultantData consultant;
   private UserData user;
   private String state;
@@ -30,9 +37,7 @@ public class AppointmentData extends EntityData {
     this.date = appointment.getDate();
   }
 
-  public Appointment toEntity(){
-    Appointment appointment = new Appointment();
-    appointment.setId(this.getId());
+  public void update(Appointment appointment){
     if(this.getUser() != null){
       appointment.setUser(new User(this.getUser().getId()));
     }
@@ -42,7 +47,8 @@ public class AppointmentData extends EntityData {
     if(this.getDate() != null){
       appointment.setDate(this.getDate());
     }
-    appointment.setState(AppointmentStatus.valueOf(this.getState()));
-    return appointment;
+    if(this.getState() != null) {
+      appointment.setState(AppointmentStatus.valueOf(this.getState()));
+    }
   }
 }

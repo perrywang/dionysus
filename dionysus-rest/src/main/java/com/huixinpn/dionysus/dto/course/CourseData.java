@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.dto.course;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
@@ -11,11 +12,14 @@ import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityData;
 import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.UserData;
+import com.huixinpn.dionysus.repository.course.CourseRepository;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +27,11 @@ import java.util.Collection;
 
 @Data
 @NoArgsConstructor
-public class CourseData extends EntityData {
+@Component
+public class CourseData extends EntityData<Course> {
+
+  @Autowired
+  private CourseRepository courseRepository;
 
   private String title;
 
@@ -50,6 +58,8 @@ public class CourseData extends EntityData {
 
   private Collection<TagData> tags = new ArrayList<>();
 
+  private Long readCount;
+
   public CourseData(Course course) {
     super(course);
     this.title = course.getTitle();
@@ -68,11 +78,11 @@ public class CourseData extends EntityData {
     this.price = course.getPrice();
     this.tags = new EntityCollectionData<TagData>(course.getTags(), TagData.class).toDTOCollection();
     this.cover = course.getCover();
+    this.readCount = course.getReadCount();
   }
 
-  public Course toEntity() {
-    Course course = new Course();
-    course.setId(this.getId());
+  @Override
+  public void update(Course course){
     course.setTitle(this.getTitle());
     course.setDescription(this.getDescription());
     course.setBody(this.getBody());
@@ -99,7 +109,6 @@ public class CourseData extends EntityData {
       tagsList.add(tagData.toEntity());
     }
     course.setTags(tagsList);
-    return course;
   }
 
   private String ExtractCover(String body) {

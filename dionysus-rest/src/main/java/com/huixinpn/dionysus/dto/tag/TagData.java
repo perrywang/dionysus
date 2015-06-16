@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class TagData extends EntityData {
+public class TagData extends EntityData<Tag> {
   private String name;
 
   public TagData(Tag tag) {
@@ -22,4 +22,10 @@ public class TagData extends EntityData {
     tag.setName(this.getName());
     return tag;
   }
+
+  @Override
+  public void update(Tag tag){
+    tag.setName(this.getName());
+  }
+
 }

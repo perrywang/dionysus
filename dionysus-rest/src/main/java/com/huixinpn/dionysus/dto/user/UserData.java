@@ -7,11 +7,16 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class UserData extends EntityData {
+public class UserData extends EntityData<User> {
   private String username;
 
   public UserData(User user) {
     super(user);
     this.username = user.getUsername();
+  }
+
+  @Override
+  public void update(User entity) {
+    entity.setUsername(this.getUsername());
   }
 }

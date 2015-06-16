@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class EntityData {
+public abstract class EntityData<T extends AbstractDionysusPersistable> {
   private Long id;
 
-  public EntityData(AbstractDionysusPersistable entity) {
+  public EntityData(T entity) {
     if(entity != null){
       this.id = entity.getId();
     }
   }
+
+  public abstract void update(T entity);
 }

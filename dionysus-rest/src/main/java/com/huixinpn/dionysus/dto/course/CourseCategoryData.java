@@ -10,7 +10,7 @@ import java.util.Collection;
 
 @Data
 @NoArgsConstructor
-public class CourseCategoryData extends EntityData {
+public class CourseCategoryData extends EntityData<CourseCategory> {
   private String name;
   private Long parent;
   private Collection<CourseCategoryData> children;
@@ -24,14 +24,11 @@ public class CourseCategoryData extends EntityData {
     this.children = new EntityCollectionData<>(courseCategory.getChildren(),CourseCategoryData.class).toDTOCollection();
   }
 
-  public CourseCategory toEntity(){
-    CourseCategory category = new CourseCategory();
-    category.setId(this.getId());
-    category.setName(this.getName());
+  @Override
+  public void update(CourseCategory courseCategory){
+    courseCategory.setName(this.getName());
     if(this.parent != null){
-      category.setParent(new CourseCategory(this.parent));
+      courseCategory.setParent(new CourseCategory(this.parent));
     }
-    return category;
   }
-  
 }

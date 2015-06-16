@@ -30,15 +30,18 @@ public class AppointmentController {
   public ResponseEntity<String> addAppointment(@RequestBody AppointmentData data) {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     User login = (User) authentication.getPrincipal();
-    Appointment appointment = data.toEntity();
+    Appointment appointment = new Appointment();
+    data.update(appointment);
     appointment.setUser(login);
     Appointment added = appointmentRepository.save(appointment);
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/appointments/{id}", method = RequestMethod.PUT)
-  public ResponseEntity<String> updateAppointment(@RequestBody AppointmentData appointment) {
-    appointmentRepository.save(appointment.toEntity());
+  public ResponseEntity<String> updateAppointment(@RequestBody AppointmentData data,@PathVariable Long id) {
+    Appointment updating = appointmentRepository.findOne(id);
+    data.update(updating);
+    appointmentRepository.save(updating);
     return new ResponseEntity<>(Utils.EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
