@@ -221,14 +221,12 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   Dionysus.reqres.setHandler('article:list:pageable', function(searchMethod, criteria){
     if(!criteria) criteria={};
-
+    criteria['projection'] = 'summary';
     var resources = new ArticlePageableCollection({
       searchMethod : searchMethod,
       criteria:criteria
     }),
       defer = $.Deferred();
-
-    criteria['projection'] = 'summary';
 
     resources.fetch().then(function() {
       defer.resolve(resources);

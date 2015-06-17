@@ -6,6 +6,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		Layout: Article Home
 	*/
 	var LayoutView = Marionette.LayoutView.extend({
+		tagName: 'div',
+		className: 'article-list',
 		template: JST[baseTemplatePath+'listPage/articleList'],
 		regions: {
 			list: "#list",

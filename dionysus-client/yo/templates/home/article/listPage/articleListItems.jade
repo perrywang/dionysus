@@ -1,4 +1,14 @@
+.pure-g
+	h3 {{items.[0].type}} - {{items.[0].category.name}}
 {{#each items}}
-p {{id}}
+.pure-g.article-list-item
+	.pure-u-md-1-2.pure-u-lg-1-2
+		.ui.basic.segment
+			img.pure-img(src="/public/images/slide1.png")
+	.pure-u-md-1-2.pure-u-lg-1-2
+		.ui.basic.segment
+			h4 {{title}}
+			p {{summary}}
+			p 作者： 来源： 浏览数：
 {{/each}}
-div#paging
+div#paging.paging
