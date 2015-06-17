@@ -58,8 +58,6 @@ public class CourseData extends EntityData<Course> {
 
   private Collection<TagData> tags = new ArrayList<>();
 
-  private Long readCount;
-
   public CourseData(Course course) {
     super(course);
     this.title = course.getTitle();
@@ -78,7 +76,6 @@ public class CourseData extends EntityData<Course> {
     this.price = course.getPrice();
     this.tags = new EntityCollectionData<TagData>(course.getTags(), TagData.class).toDTOCollection();
     this.cover = course.getCover();
-    this.readCount = course.getReadCount();
   }
 
   @Override
