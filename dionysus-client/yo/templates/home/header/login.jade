@@ -1,13 +1,32 @@
-a.active.purple.item(href="/")
-  i.home.icon 
-  | 汇心网
-div#adminentry.right.menu
-  a#adminlink.item
-    i.small.settings.icon
-    |管理员系统
-.right.menu
-  a.item(href="/logout") 退出
-.right.menu
-  a.item(href="/") 个人档案
-.right.menu
-  a.item(href="/profile/{{ id }}") 用户面板
+.pure-g
+	.pure-u-1-5
+		a.logo.pure-menu-heading
+			p LOGO
+	.pure-u-4-5.login-menu
+		.pure-menu.pure-menu-horizontal
+			ul.pure-menu-list
+				li.pure-menu-item
+					a.pure-menu-link(href="/profile/{{ id }}") 用户面板
+				li.pure-menu-item
+					a.pure-menu-link(href="＃") 个人档案
+				li#adminentry.pure-menu-item
+					a#adminlink.pure-menu-link(href="#") 管理员
+				li.pure-menu-item
+					a.pure-menu-link(href="/logout") 退出
+.home-menu.pure-menu.pure-menu-horizontal
+	ul.pure-menu-list
+		li.pure-menu-item
+			a.absolute-center.pure-menu-link(href="/site") 首页
+		li.pure-menu-item
+			a.pure-menu-link(href="/articles") 心理知识
+		li.pure-menu-item
+			a.pure-menu-link(href="/consultants") 心理咨询
+		li.pure-menu-item
+			a.pure-menu-link(href="/courses") 心理课程
+		li.pure-menu-item
+			a.pure-menu-link(href="/psychtestsuites") 心理测试
+		li.pure-menu-item
+			a.pure-menu-link(href="#") 心理fm
+		li.pure-menu-item
+			a.pure-menu-link(href="#") 其他
+
