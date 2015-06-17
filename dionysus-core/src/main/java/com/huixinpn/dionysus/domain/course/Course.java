@@ -77,6 +77,8 @@ public class Course extends AbstractDionysusNotifiable<User> {
 
   private String groupAddress;
 
+  private String location;
+
   public Course(String title, String description) {
     this.title = title;
     this.description = description;
