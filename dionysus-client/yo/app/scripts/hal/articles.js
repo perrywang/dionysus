@@ -103,7 +103,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     state: {
       firstPage : 0,
       currentPage: 0, 
-      pageSize:3 //TODO larget size
+      pageSize:10
     },
     queryParams: {
       currentPage: "page",

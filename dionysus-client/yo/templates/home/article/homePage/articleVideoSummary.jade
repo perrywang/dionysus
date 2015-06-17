@@ -1,0 +1,26 @@
+.pure-g
+	.pure-u-1-2
+		a(href="/articles/{{items.[0].id}}")
+			img(src="{{items.[0].cover}}")
+	.pure-u-1-2
+		.pure-g
+			.pure-u-1.article-more
+				a(href="/articles/list/cat{{items.[0].category.id}}/typeDOC")
+					h2 更多视频
+		.pure-g
+			.pure-u-1-2
+				.ui.list
+					.item
+						a(href="/articles/{{items.[0].id}}") {{items.[0].title}}
+					.item
+						a(href="/articles/{{items.[1].id}}") {{items.[1].title}}
+					.item
+						a(href="/articles/{{items.[2].id}}") {{items.[2].title}}
+			.pure-u-1-2
+				.ui.list
+					.item
+						a(href="/articles/{{items.[3].id}}") {{items.[3].title}}
+					.item
+						a(href="/articles/{{items.[4].id}}") {{items.[4].title}}
+					.item
+						a(href="/articles/{{items.[5].id}}") {{items.[5].title}}

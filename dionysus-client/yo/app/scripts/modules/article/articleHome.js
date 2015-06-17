@@ -25,16 +25,13 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		},
 
 		childEvents: {
-			"category:change": "changeCategory"
+			"category:change": function(childView, id) {
+				//user clicked a category, refresh the regions` data
+				var docView = this.getRegion("docSummary").currentView.changeCategory(id);
+				var videoView = this.getRegion("videoSummary").currentView.changeCategory(id);
+				var blogView = this.getRegion("blogSummary").currentView.changeCategory(id);
+			}
 		},
-
-		changeCategory: function(childView, id){
-			//user clicked a category, refresh the regions` data
-			var docView = this.getRegion("docSummary").currentView.changeCategory(id);
-			var videoView = this.getRegion("videoSummary").currentView.changeCategory(id);
-			var blogView = this.getRegion("blogSummary").currentView.changeCategory(id);
-		}
-
 	});
 
 	/*
@@ -42,7 +39,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	*/
 
 	var RegionSummaryView = Marionette.ItemView.extend({
-		//template:?
+		tagName: "div",
+		className: "region-summary",
 		initialize: function() {
 			if(this.collection) this.listenTo(this.collection, 'reset', this.render, this);
 		},
@@ -59,8 +57,11 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			};
 
 			Dionysus.request('article:search:summary', 'findByCategoryAndType', criteria).done(function(data) {
-				var models = data.embedded("officialArticles").models;
-				thisView.collection.reset(models);
+				if (data.embedded("officialArticles")) {
+					var models = data.embedded("officialArticles").models;
+					models = models ? models : [];
+					thisView.collection.reset(models);
+				}
 			});
 		}
 	});
@@ -68,7 +69,13 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	Article.RegionSummaryView = RegionSummaryView;
 
 	var SliderView = Marionette.ItemView.extend({
-		template:JST[baseTemplatePath+'homePage/articleSlider']
+		template:JST[baseTemplatePath+'homePage/articleSlider'],
+		tagName: "div",
+		className: "flexslider",
+		onDomRefresh: function(){
+			$('.flexslider').flexslider();
+		}
+
 	});
 
 	var CategoryView = Marionette.ItemView.extend({
@@ -123,6 +130,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 					category: category
 				})
 			});
+
 			Dionysus.mainRegion.show(layout);
 
 			//step 2 get slider data and show the sider view
