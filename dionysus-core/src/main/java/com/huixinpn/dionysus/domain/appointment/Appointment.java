@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,131 +17,92 @@ import java.util.List;
  * Used to represent the one-one appointment
  */
 
-
+@Data
 @Entity
 @Table(name = "appointments")
 public class Appointment extends AbstractDionysusNotifiable<User> {
 
-  private static final long serialVersionUID = 4106091118545531113L;
+    private static final long serialVersionUID = 4106091118545531113L;
 
-  @NotNull
-  @ManyToOne(fetch = FetchType.EAGER)
-  private User user;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User user;
 
-  @NotNull
-  @ManyToOne(fetch = FetchType.EAGER)
-  private Consultant consultant;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Consultant consultant;
 
-  @Column(name = "state")
-  @Enumerated(EnumType.STRING)
-  private AppointmentStatus state;
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus state;
 
-  @Column(name = "approach")
-  @Enumerated(EnumType.STRING)
-  private AppointmentApproach approach;
+    @Column(name = "approach")
+    @Enumerated(EnumType.STRING)
+    private AppointmentApproach approach;
 
-  @Column(name = "calendar")
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
-  private Calendar date;
+    @Column(name = "calendar")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
+    private Calendar date;
 
-  @Lob
-  @Column(name = "reason")
-  private String reason;
+    @Lob
+    @Column(name = "reason")
+    private String reason;
 
-  public Appointment() {
-    this.state = AppointmentStatus.WAITING;
-  }
+    private String name;
 
-  public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason) {
-    this.user = user;
-    this.consultant = consultant;
-    this.approach = approach;
-    this.state = AppointmentStatus.WAITING;
-    this.date = date;
-    this.reason = reason;
-  }
+    private Integer age;
 
-  public User getUser() {
-    return user;
-  }
+    private String phone;
+    private String email;
+    private String gender;
 
-  public void setUser(User user) {
-    this.user = user;
-  }
-
-  public Consultant getConsultant() {
-    return consultant;
-  }
-
-  public void setConsultant(Consultant consultant) {
-    this.consultant = consultant;
-  }
-
-  public AppointmentStatus getState() {
-    return state;
-  }
-
-  public void setState(AppointmentStatus state) {
-    this.state = state;
-  }
-
-  public AppointmentApproach getApproach() {
-    return approach;
-  }
-
-  public void setApproach(AppointmentApproach approach) {
-    this.approach = approach;
-  }
-
-  public Calendar getDate() {
-    return date;
-  }
-
-  public void setDate(Calendar date) {
-    this.date = date;
-  }
-
-  public String getReason() {
-    return reason;
-  }
-
-  public void setReason(String reason) {
-    this.reason = reason;
-  }
-
-  @Override
-  public String toString() {
-    return "Appointment{" +
-        "user=" + user +
-        ", consultant=" + consultant +
-        ", state=" + state +
-        ", approach=" + approach +
-        ", date=" + date +
-        ", reason='" + reason + '\'' +
-        '}';
-  }
-
-  @Override
-  public String getSummary() {
-    return this.getReason();
-  }
-
-
-  @Override
-  public List<User> sendTo() {
-    User user = this.getUser();
-    User consultant = this.getConsultant();
-    List<User> users = new ArrayList<User>();
-
-    if (consultant != null) {
-      users.add(consultant);
+    public Appointment() {
+        this.state = AppointmentStatus.WAITING;
     }
 
-    if (user != null) {
-      users.add(user);
+    public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason) {
+        this.user = user;
+        this.consultant = consultant;
+        this.approach = approach;
+        this.state = AppointmentStatus.WAITING;
+        this.date = date;
+        this.reason = reason;
     }
 
-    return users;
 
-  }
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "user=" + user +
+                ", consultant=" + consultant +
+                ", state=" + state +
+                ", approach=" + approach +
+                ", date=" + date +
+                ", reason='" + reason + '\'' +
+                '}';
+    }
+
+    @Override
+    public String getSummary() {
+        return this.getReason();
+    }
+
+
+    @Override
+    public List<User> sendTo() {
+        User user = this.getUser();
+        User consultant = this.getConsultant();
+        List<User> users = new ArrayList<User>();
+
+        if (consultant != null) {
+            users.add(consultant);
+        }
+
+        if (user != null) {
+            users.add(user);
+        }
+
+        return users;
+
+    }
 }

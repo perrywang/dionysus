@@ -105,6 +105,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "qq_address")
   private String qqAddress;
 
+  private String realName;
+
   public String getQq() {
     return qq;
   }
