@@ -7,7 +7,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	*/
 	var LayoutView = Marionette.LayoutView.extend({
 		tagName: 'div',
-		className: 'article-list',
+		className: 'layout-view',
 		template: JST[baseTemplatePath+'listPage/articleList'],
 		regions: {
 			list: "#list",
@@ -34,9 +34,25 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 		initialize: function() {
 			if(this.collection) this.listenTo(this.collection, 'add', this.render, this);
+			this.typeMapping = {
+				'DOC': "心理文章",
+				'VIDEO': "心理视频",
+				'AUDIO': "心理FM",
+				'BLOG': "心理博客"
+			};
 		},
-		testrender:function(e){
-			var x
+		serializeData:function(){
+			var items = [];
+			var typeMapping = this.typeMapping;
+			if(this.collection){
+				_.each(this.collection.models, function(model){
+					var json = model.toJSON();
+					json.summary = json.summary.slice(0,50)+"...";
+					json.type = typeMapping[json.type];
+					items.push(json);
+				});
+			}
+			return {items:items};
 		},
 
 		events:{

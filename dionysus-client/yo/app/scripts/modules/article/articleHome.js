@@ -110,10 +110,13 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		template: JST[baseTemplatePath+'articleTag']
 	});
 
+	Article.TagView = TagView;
+
 	var LatestView = RegionSummaryView.extend({
 		template: JST[baseTemplatePath+'articleLatest']
 	});
 
+	Article.LatestView = LatestView;
 
 
 	/*
@@ -204,6 +207,18 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//step 7 get latest articles
+			Dionysus.request('article:list:pageable', null, {
+				sort: 'lastModifiedDate,desc',
+				size: 5
+			}).done(function(articles){
+
+				var latest = new Dionysus.Article.RegionSummaryView({
+					template:JST[baseTemplatePath+'articleLatest'],
+					collection: articles
+				});
+				layout.getRegion('latest').show(latest);
+			});
+
 
 			//step 8 get hot tags
 

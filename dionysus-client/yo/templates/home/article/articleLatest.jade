@@ -1,0 +1,11 @@
+.ui.basic.segment
+	.ui.header
+		h3 最新心理知识
+	.ui.list
+		{{#each items}}
+		.item
+			.contnet
+				.header
+					a(href="/articles/{{id}}") {{title}}
+				.article-meta 更新时间：  浏览数：
+		{{/each}}

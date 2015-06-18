@@ -23,8 +23,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
 
   Home.HeaderLoginView = Marionette.ItemView.extend({
     template: JST['templates/home/header/login'],
-    //tagName: 'nav',
-    //className: 'ui menu',
+    tagName: 'div',
+    className: 'header-view',
     serializeData: function(){
       return {
         'id': sessionStorage.getItem('user')
@@ -50,8 +50,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   
   Home.HeaderView = Marionette.ItemView.extend({
     template: JST['templates/home/header/nav'],
-    //tagName: 'nav',
-    //className: 'ui menu',
+    tagName: 'div',
+    className: 'header-view',
     ui:{
       login: '#login'
     },
@@ -65,7 +65,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
 
   var FooterView = Marionette.ItemView.extend({
     template: JST['templates/home/footer'],
-    className : 'ui segment'
+    className : 'footer-view'
   });
 
   Home.LoginModalView = Marionette.ItemView.extend({

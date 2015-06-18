@@ -3,6 +3,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var PofileLayoutView = Marionette.LayoutView.extend({
     template: JST["templates/home/profile/menu"],
+    className: 'layout-view',
     regions: {
       'myContent': '#mycontent',
     },
