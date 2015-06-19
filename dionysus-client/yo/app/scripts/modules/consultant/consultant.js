@@ -150,10 +150,11 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     },
 
     filterConsultants: function(expertiseValue) {
-      Dionysus.request("consultant:search:pageable","findConsultantsByExpertise",{expertise:expertiseValue}).done(function(consultants){
+      $.when(Dionysus.request("consultant:search:pageable","findConsultantsByExpertise",{expertise:expertiseValue}), Dionysus.request("consultant:expertises")).done(function(consultants, expertises){
 
         var view = new ConsultantHomeView({
           expertise: expertiseValue,
+          expertises: expertises,
           collection: consultants
         });
 

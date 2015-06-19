@@ -1,11 +1,13 @@
 .pure-g
 	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2
-		p {{expertises.[0].name}}
-		p {{items.[0].realName}}
-		p {{expertise}}
+		#expertise
+			h3 在线心理咨询
+			p 咨询话题：
+				{{#each expertises}}
+				a.expertise-link(href="/consultants/list/{{name}}"){{name}}
+				{{/each}}
 	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2
-		p ggggggg
-		p ggggggg
+		img.pure-img(src="/public/images/info.jpg")
 .pure.g
 	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
 		p hehehehe
@@ -36,5 +38,5 @@
 		p xixixix
 		p hahaha
 .pure-g
-	.pureu-u-1
+	.pure-u-1
 		#paging
