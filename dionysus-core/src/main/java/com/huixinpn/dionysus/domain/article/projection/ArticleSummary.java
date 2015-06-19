@@ -6,6 +6,7 @@ import com.huixinpn.dionysus.domain.article.ArticleType;
 import org.joda.time.DateTime;
 import org.springframework.data.rest.core.config.Projection;
 
+
 @Projection(name = "read", types = Article.class)
 public interface ArticleSummary {
 	public Long getId();

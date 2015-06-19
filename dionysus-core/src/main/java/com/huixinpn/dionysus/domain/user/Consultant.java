@@ -5,20 +5,11 @@ import com.huixinpn.dionysus.domain.course.Course;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -48,7 +39,7 @@ public class Consultant extends User {
     super(id);
   }
 
-  @ManyToMany
-  private Collection<ConsExpertise> expertises = new ArrayList<>();
+  @ManyToMany(fetch = FetchType.EAGER)
+  private Set<ConsExpertise> expertises;
 
 }

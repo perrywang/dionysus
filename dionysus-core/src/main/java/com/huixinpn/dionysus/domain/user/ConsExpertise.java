@@ -16,7 +16,9 @@ import java.util.Collection;
 @Entity
 @Table(name = "expertises")
 public class ConsExpertise extends AbstractDionysusPersistable {
-  private String name;
+    private static final long serialVersionUID = -4397869977138590219L;
+
+    private String name;
 
   @ManyToMany(mappedBy = "expertises")
   private Collection<Consultant> consultants = new ArrayList<>();

@@ -121,7 +121,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//TODO get tags
-
+			var tags = new Dionysus.Article.RegionSummaryView({
+					template:JST[baseTemplatePath+'articleTag'],
+				});
+			layoutView.getRegion('tag').show(tags);
 		}
 	});
 

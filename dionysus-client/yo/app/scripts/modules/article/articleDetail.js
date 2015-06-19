@@ -89,6 +89,12 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
         layoutView.getRegion('latest').show(latest);
       });
 
+      //get tags
+      var tags = new Dionysus.Article.RegionSummaryView({
+          template:JST[baseTemplatePath+'articleTag'],
+        });
+        layoutView.getRegion('tag').show(tags);
+      
     }
   });
 

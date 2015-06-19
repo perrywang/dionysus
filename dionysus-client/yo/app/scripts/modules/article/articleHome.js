@@ -221,6 +221,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 
 			//step 8 get hot tags
+			var tags = new Dionysus.Article.RegionSummaryView({
+					template:JST[baseTemplatePath+'articleTag'],
+				});
+			layout.getRegion('tag').show(tags);
 
 
 

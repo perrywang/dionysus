@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.huixinpn.dionysus.auth.PasswordListener;
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import com.huixinpn.dionysus.domain.course.Course;
+import lombok.Data;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +18,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -105,6 +107,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "qq_address")
   private String qqAddress;
 
+  @Column(name = "realname")
   private String realName;
 
   public String getQq() {
