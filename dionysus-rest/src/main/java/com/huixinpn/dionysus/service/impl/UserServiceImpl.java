@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     _user.setAge(user.getAge());
     _user.setQq(user.getQq());
     _user.setQqAddress(user.getQqAddress());
+    _user.setRealName(user.getRealName());
     userrepository.saveAndFlush(_user);
     manager.detach(_user);
     _user.setPassword("");
