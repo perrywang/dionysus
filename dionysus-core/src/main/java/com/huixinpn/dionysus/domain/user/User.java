@@ -90,7 +90,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
   private Profile profile;
 
-  @OneToOne
+  @OneToOne(cascade = {CascadeType.ALL})
   private Inbox inbox;
 
   @Lob
