@@ -21,8 +21,24 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
 	onRender:function(){
       var consultant =this.model;
       this.$el.on('click.enableMe','.button.delete',function(){
+        Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+        Dionysus.request('consultant:expertises').then(function(expertises){
+          var expertiselist = new ExpertiseListView({
+            collection: expertises
+          });
+          Dionysus.mainRegion.show(expertiselist);
+        });
+      });
+    }
+  });
+  
+  var ExpertiseListItemView = Marionette.ItemView.extend({
+    template: JST["templates/admin/consultants/expertiselistitem"],
+    className: "item",
+	onRender:function(){
+      var expertise = this.model;
+      this.$el.on('click.enableMe','.button.delete',function(){
 		window.alert('添加成功');
-		Dionysus.navigate('admin', {trigger: true});
       });
     }
   });
@@ -36,6 +52,12 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
   var ConsultantExpertiseListView = Marionette.CompositeView.extend({
     template: JST["templates/admin/consultants/consultantexpertiselist"],
     childView: ConsultantExpertiseListItemView,
+    childViewContainer: '.items'
+  });
+  
+  var ExpertiseListView = Marionette.CompositeView.extend({
+    template: JST["templates/admin/consultants/expertiselist"],
+    childView: ExpertiseListItemView,
     childViewContainer: '.items'
   });
 
@@ -63,7 +85,11 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
 	
     showConsultant: function(id){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      Dionysus.request('consultant:item', id).then(function(consultant){
+      Dionysus.request('consultant:expertises').then(function(expertises){
+        var expertiselist = new ExpertiseListView({
+          collection: expertises
+        });
+        Dionysus.mainRegion.show(expertiselist);
       });
     }
   });

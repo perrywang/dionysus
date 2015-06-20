@@ -33,7 +33,7 @@ insert into expertises (id, name) values (1,'Depression');
 insert into expertises (id, name) values (2,'family');
 insert into expertises (id, name) values (3,'LoveandSex');
 insert into expertises (id, name) values (4,'PsychoAssess');
-insert into expertises (id, name) values (5,'青少年');
+insert into expertises (id, name) values (5,'Youth');
 
 insert into consultants_expertises (consultants_id, expertises_id) values (4, 1);
 insert into consultants_expertises (consultants_id, expertises_id) values (4, 2);
