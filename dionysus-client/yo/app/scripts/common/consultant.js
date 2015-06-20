@@ -163,4 +163,13 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     });
     return defer.promise();
   });
+  
+  Dionysus.reqres.setHandler('consultant:simplelist', function() {
+    var consultants = new Entities.ConsultantSelectionCollection({appendUrl:'/'});
+    var defer = $.Deferred();
+    consultants.fetch().then(function() {
+      defer.resolve(consultants);
+    });
+    return defer.promise();
+  });
 });
