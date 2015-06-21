@@ -57,6 +57,18 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
+
+
+
+
+
+
+
+
+
+
+
+
   var PsychTestSuite = Backbone.RelationalHalResource.extend({});
 
   var PsychTestSuiteCollection = Backbone.RelationalHalResource.extend({
@@ -68,6 +80,32 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       }
     }
   });
+
+
+
+
+  var PsychTestQuestionResult = Backbone.RelationalHalResource.extend({});
+
+  var PsychTestResult = Backbone.RelationalHalResource.extend({
+    url : '/api/v1/psychtestresults',
+    halEmbedded: {
+      test : {
+        type : Backbone.One,
+        relatedModel : PsychTest
+      }
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
   Dionysus.reqres.setHandler('psychtestsuite:instances', function() {
