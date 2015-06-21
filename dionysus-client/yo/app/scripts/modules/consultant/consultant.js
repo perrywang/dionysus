@@ -122,8 +122,78 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     }
   });
 
+  var validationRules = {
+    name: {
+      identifier: 'name',
+      rules: [{type: 'empty', prompt: '请填入您的姓名'}]
+    },
+    age: {
+      identifier: 'age',
+      rules: [{type: 'integer', prompt: '请填入一个合法数字'},{type:'empty', prompt:'请输入您的年龄'}]
+    },
+
+    gender: {
+      identifier: 'gender',
+      rules: [{type: 'checked', prompt: '请选择您的年龄'}]
+    },
+
+    phone: {
+      identifier: 'phone',
+      rules: [{type:'empty', prompt:'请填入联系方式'}]
+    },
+
+    approach: {
+      identifier: 'approach',
+      rules: [{type:'checked', prompt: '请选择咨询方式'}]
+    },
+
+    readpolicy: {
+      identifier: 'readpolicy',
+      rules: [{type:'checked', prompt: '您必须同意咨询协议'}]
+    }
+
+  };
+
   var ConsultantDetailView = Marionette.ItemView.extend({
     template: JST['templates/home/consultant/consultantDetail'],
+    tagName: "div",
+    className: "layout-view",
+    events: {
+      'click .button': function(){
+
+        var json = Backbone.Syphon.serialize(this);
+        if(json.readpolicy && json.name && json.age && json.gender && json.phone && json.approach){
+          
+          var data = _.pick(json, 'name', 'gender', 'phone', 'date', 'approach', 'reason');
+          data.age = parseInt(json.age, 10);
+          data.consultant = this.model.url;
+          data.user = '/api/1/users/' + sessionStorage.getItem('user');
+
+          $.ajax({
+          url: '/api/v1/appointments',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(data)
+        }).done(function(response){
+          toastr.info('预约提交成功');
+        })
+
+          //var appointment = Dionysus.request("appointment:new");
+          /*appointment.set(data);
+          appointment.save().done(function(){
+            toastr.info('预约提交成功');
+          });*/
+        }
+
+        
+
+      }
+    },
+    onRender: function(){
+      this.$('.checkbox').checkbox();
+      this.$('#date').datetimepicker({lang: 'zh', step: 30});
+      this.$('.ui.form').form(validationRules);
+    }
 
   });
 

@@ -66,7 +66,12 @@ public class NotificationTest extends AbstractPersistentTest {
         User user = createUser(UUID.randomUUID().toString());
         Consultant consultant = new Consultant("consultant","password");
         consultantRepository.save(consultant);
-        Appointment appointment = new Appointment(user,consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason");
+        String name="hehe";
+        String phone="233";
+        Integer age = 12;
+        String gender = "male";
+
+        Appointment appointment = new Appointment(consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
 
         entityManager.persist(appointment);
         entityManager.refresh(user);
