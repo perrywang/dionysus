@@ -23,6 +23,9 @@ import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.domain.user.Notification;
 import com.huixinpn.dionysus.domain.user.User;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class NotificationTest extends AbstractPersistentTest {
 
@@ -71,6 +74,10 @@ public class NotificationTest extends AbstractPersistentTest {
     public void testSendNotificationOnAppointment(){
 
         User user = createUser(UUID.randomUUID().toString());
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(new UsernamePasswordAuthenticationToken(user, "some token"));
+
+
         Consultant consultant = new Consultant("consultant","password");
         consultantRepository.save(consultant);
         String name="hehe";
@@ -82,7 +89,7 @@ public class NotificationTest extends AbstractPersistentTest {
         SecurityContext context = SecurityContextHolder.getContext();
         context.setAuthentication(new UsernamePasswordAuthenticationToken(user, "some token"));
 
-        Appointment appointment = new Appointment(consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
+        Appointment appointment = new Appointment(user, consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
 
         entityManager.persist(appointment);
         entityManager.refresh(user);

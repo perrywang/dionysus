@@ -1,11 +1,30 @@
-.ui.page.grid
-	.two.column.row
-		.column
-			.ui.segment
+.ui.page.stackable.grid
+	.two.column.equal.height.row
+		.column#expertise
+			.ui.basic.segment
 				h3.ui.header 在线心理咨询
 				p 咨询话题:
-				{{#each expertises}}
-				a.expertise-link(href="/consultants/list/{{name}}"){{name}}
-				{{/each}}
+				.ui.secondary.menu
+					{{#each expertises}}
+					a.item(href="/consultants/list/{{name}}"){{name}}
+					{{/each}}
 		.column
 			img(src="/public/images/info.jpg")
+	.row
+		.ui.three.column.stackable.grid
+			{{#each items}}
+			.column
+				{{#if avatar}}
+				img.ui.centered.circular.small.image(src="{{avatar}}")
+				{{else}}
+				img.ui.centered.small.image(src="/public/images/placeholder.png")
+				{{/if}}
+				.ui.basic.center.aligned.segment
+					h4.ui.center.aligned.header					
+						.content {{realName}}
+							.sub.header {{about}}
+					a.ui.green.basic.button(href="/consultants/{{id}}") 预约咨询
+			{{/each}}
+	.row
+		.column
+			#paging
