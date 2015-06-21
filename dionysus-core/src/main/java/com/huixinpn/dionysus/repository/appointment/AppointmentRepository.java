@@ -19,7 +19,7 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
   @PreAuthorize("#user.username == principal.username or hasRole('ADMIN')")
-  List<Appointment> findByUser(@Param("user") User user);
+  Page<Appointment> findByUser(@Param("user") User user, Pageable pageable);
 
   @Query(value = "select a from Appointment a where a.consultant = ?1 and a.state = ?2 order by a.date desc")
   Page<Appointment> findByConsultantAndState(Consultant consultant, AppointmentStatus status, Pageable pageable);
@@ -31,6 +31,4 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
   @Query(value = "select a from Appointment a order by a.date desc")
   Page<Appointment> findAll(Pageable pageable);
-
-  Page<Appointment> findByUser(User user, Pageable pageable);
 }

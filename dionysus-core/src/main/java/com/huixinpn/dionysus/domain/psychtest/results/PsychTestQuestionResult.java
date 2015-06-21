@@ -25,23 +25,18 @@ public class PsychTestQuestionResult {
 	private PsychTestQuestionOption option;
 
 	@Column(name = "score")
-	private double score;
+	private Double score = 0.0;
 
 	@Column(name = "yesno")
-	private boolean yesno;
-
-	// 16pf will normalize score
-	// difference testee may have different result
-	// by default it should be same as 'score'
-	private double normalizedScore;
+	private Boolean yesno;
 
 	@Lob
 	private String answer;
-	
+
 	public void accept(PsychTestValueVisitor visitor) {
 		PsychTestQuestionType type = question.getType();
-		switch(type) {
-		case SINGLE_CHOICE :
+		switch (type) {
+		case SINGLE_CHOICE:
 			visitor.accept(question, option);
 			break;
 		case YES_NO:

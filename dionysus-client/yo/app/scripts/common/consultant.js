@@ -111,7 +111,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       defer = $.Deferred();
     consultant.fetch({
       data: {
-        projection: "expertise"
+        projection: "excerpt"
       }
     }).then(function() {
       defer.resolve(consultant);

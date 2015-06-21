@@ -38,9 +38,6 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 		joinColumns = @JoinColumn(name = "answer_id"))
 	private Collection<PsychTestQuestionResult> answers = new ArrayList<>();
 
-	@ManyToOne
-	private PsychTestSuiteResult suite;
-
 	@Enumerated(EnumType.STRING)
 	private PsychTestState state;
 	

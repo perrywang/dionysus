@@ -99,16 +99,18 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     },
 
     events: {
-      "gotoPage" : function(page){
+      "gotoPage" : function(e,page){
         this.collection.getPage(page-1);
       }
     },
 
     onRender: function(){
       var state = this.collection.state;
+      var currentPage = state['currentPage']+1;
+      var total = state['totalPages']==0? 1 : state['totalPages'];
       this.$('#paging').twbsPagination({
-        totalPages: state['totalPages'],
-        startPage: state['currentPage']+1,
+        totalPages: total,
+        startPage: currentPage,
         visiblePages: 6,
         first: '第一页',
             prev: '前一页',
@@ -122,8 +124,73 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     }
   });
 
+  var validationRules = {
+    name: {
+      identifier: 'name',
+      rules: [{type: 'empty', prompt: '请填入您的姓名'}]
+    },
+    age: {
+      identifier: 'age',
+      rules: [{type: 'integer', prompt: '请填入一个合法数字'},{type:'empty', prompt:'请输入您的年龄'}]
+    },
+
+    gender: {
+      identifier: 'gender',
+      rules: [{type: 'checked', prompt: '请选择您的年龄'}]
+    },
+
+    phone: {
+      identifier: 'phone',
+      rules: [{type:'empty', prompt:'请填入联系方式'}]
+    },
+
+    approach: {
+      identifier: 'approach',
+      rules: [{type:'checked', prompt: '请选择咨询方式'}]
+    },
+
+    readpolicy: {
+      identifier: 'readpolicy',
+      rules: [{type:'checked', prompt: '您必须同意咨询协议'}]
+    }
+
+  };
+
   var ConsultantDetailView = Marionette.ItemView.extend({
     template: JST['templates/home/consultant/consultantDetail'],
+    tagName: "div",
+    className: "layout-view",
+    events: {
+      'click .button': function(){
+
+        var json = Backbone.Syphon.serialize(this);
+        if(json.readpolicy && json.name && json.age && json.gender && json.phone && json.approach){
+          
+          var data = _.pick(json, 'name', 'gender', 'phone', 'date', 'approach', 'reason');
+          data.age = parseInt(json.age, 10);
+          data.consultant = this.model.url;
+          data.user = '/api/1/users/' + sessionStorage.getItem('user'); 
+
+          $.ajax({
+          url: '/api/v1/appointments',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(data)
+        }).done(function(response){
+          alert('您的预约系统已经收到，请等待咨询师的响应，您可以通过 用户面板－>我的咨询 页面查看预约状态');
+        })
+
+        }
+
+        
+
+      }
+    },
+    onRender: function(){
+      this.$('.checkbox').checkbox();
+      this.$('#date').datetimepicker({lang: 'zh', step: 30});
+      this.$('.ui.form').form(validationRules);
+    }
 
   });
 

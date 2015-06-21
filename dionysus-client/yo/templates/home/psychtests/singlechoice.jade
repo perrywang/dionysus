@@ -1,0 +1,9 @@
+.ui.form.large.options
+  .grouped.fields
+    .label {{ description }}
+    {{#each options}}
+    .field
+      .ui.radio.checkbox
+        input(type="radio", name="choice", value="{{id}}", id="option-{{id}}")
+        label(for="option-{{id}}") {{identity}}. {{ description }}
+    {{/each}}

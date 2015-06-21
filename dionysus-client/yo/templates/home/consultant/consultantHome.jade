@@ -1,44 +1,30 @@
-.pure-g
-	.pure-u-1.pure-u-md-11-24.pure-u-lg-11-24.expertise
-		#expertise.ui.segment
-			h3 在线心理咨询
-			p 咨询话题：
-				{{#each expertises}}
-				a.expertise-link(href="/consultants/list/{{name}}"){{name}}
-				{{/each}}
-	.pure-u-1.pure-u-md-1-24.pure-u-lg-1-24.info
-	.pure-u-1.pure-u-md-11-24.pure-u-lg-11-24.info
-		#info
-			img.pure-img(src="/public/images/info.jpg")
-.pure.g
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-.pure-g
-	.pure-u-1
-		#paging
+.ui.page.stackable.grid
+	.two.column.equal.height.row
+		.column#expertise
+			.ui.basic.segment
+				h3.ui.header 在线心理咨询
+				p 咨询话题:
+				.ui.secondary.menu
+					{{#each expertises}}
+					a.item(href="/consultants/list/{{name}}"){{name}}
+					{{/each}}
+		.column
+			img(src="/public/images/info.jpg")
+	.row
+		.ui.three.column.stackable.grid
+			{{#each items}}
+			.column
+				{{#if avatar}}
+				img.ui.centered.circular.small.image(src="{{avatar}}")
+				{{else}}
+				img.ui.centered.small.image(src="/public/images/placeholder.png")
+				{{/if}}
+				.ui.basic.center.aligned.segment
+					h4.ui.center.aligned.header					
+						.content {{realName}}
+							.sub.header {{about}}
+					a.ui.green.basic.button(href="/consultants/{{id}}") 预约咨询
+			{{/each}}
+	.row
+		.column
+			#paging

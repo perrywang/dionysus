@@ -5,6 +5,8 @@ import com.huixinpn.dionysus.domain.AbstractDionysusNotifiable;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -60,13 +62,18 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
         this.state = AppointmentStatus.WAITING;
     }
 
-    public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason) {
+    public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason, String name, Integer age, String phone, String gender) {
+
         this.user = user;
         this.consultant = consultant;
         this.approach = approach;
         this.state = AppointmentStatus.WAITING;
         this.date = date;
         this.reason = reason;
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.gender = gender;
     }
 
 
@@ -104,5 +111,12 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
 
         return users;
 
+    }
+
+    @PrePersist
+    public void fillDefaultUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User login = (User) authentication.getPrincipal();
+        this.user = login;
     }
 }

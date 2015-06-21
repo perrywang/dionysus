@@ -28,10 +28,13 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
-      $.when(Dionysus.request('appointment:appointedby', sessionStorage.getItem("user"),5))
-        .done(function(appointments){
-          region.show(new ProfileAppointmentView({collection: appointments}))
-        });
+      Dionysus.request("appointments:search:pageable", "findByUser", {
+        user: sessionStorage.getItem('user')
+      }).done(function(appointments) {
+        region.show(new ProfileAppointmentView({collection: appointments}));
+
+      });
+
     },
     showMyCourses: function(){
       alert("you click myCourses")

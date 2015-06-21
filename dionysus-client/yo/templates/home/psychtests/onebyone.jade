@@ -3,30 +3,4 @@ h2.ui.dividing.header
   .sub.header {{ description }}
 
 section.ui.vertical.segment.question
-  .ui.form.large.options
-    .grouped.fields
-      .label {{ question.description }}
-      {{#each question.options}}
-      .field
-        .ui.radio.checkbox
-          input(type="radio", name="choice", value="{{id}}", id="option-{{id}}")
-          label(for="option-{{id}}") {{identity}}. {{ description }}
-      {{/each}}
-
-footer.ui.vertical.segment
-  h5 第{{ current }}题，一共{{ total }}题
-  {{#if hasPrev}}
-  .ui.primary.button.prev 上一题
-  {{else}}
-  .ui.primary.button.prev.disabled 上一题
-  {{/if}}
-
-  {{#if hasNext}}
-  .ui.primary.button.next 下一题
-  .ui.primary.disabled.button 提交答案
-  {{else}}
-  .ui.primary.button.next.disabled 下一题
-  .ui.primary.button 提交答案
-  {{/if}}
-
-  
+footer.ui.vertical.segment.nav
