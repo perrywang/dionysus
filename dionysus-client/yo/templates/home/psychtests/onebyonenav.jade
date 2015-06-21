@@ -1,14 +1,14 @@
 h5 第{{ current }}题，一共{{ total }}题
 {{#if hasPrev}}
-.ui.primary.button.prev 上一题
+a.ui.primary.button(href="/psychtest/{{question}}/{{prev}}") 上一题
 {{else}}
-.ui.primary.button.prev.disabled 上一题
+.ui.primary.button.disabled 上一题
 {{/if}}
 
 {{#if hasNext}}
-.ui.primary.button.next 下一题
+a.ui.primary.button(href="/psychtest/{{question}}/{{next}}") 下一题
 .ui.primary.disabled.button 提交答案
 {{else}}
-.ui.primary.button.next.disabled 下一题
+.ui.primary.button.disabled 下一题
 .ui.primary.button 提交答案
 {{/if}}

@@ -21,39 +21,47 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       this.total = questions.length;
     },
     hasNext : function() {
-      return this.current < this.total;
+      var questions = this.embedded('questions');
+      var index = questions.indexOf(this.current);
+      return index + 1 < this.total;
     },
     hasPrev : function() {
-      return this.current > 1;
+      var questions = this.embedded('questions');
+      var index = questions.indexOf(this.current);
+      return index + 1 > 1;
     },
     getNavData : function() {
+      var questions = this.embedded('questions');
+      var index = questions.indexOf(this.current), next = {}, prev = {};
+      if (this.hasPrev()) {
+        prev = questions.at(index - 1);
+      }
+      if (this.hasNext()) {
+        next = questions.at(index + 1);
+      }
       return {
-        current : this.current,
+        current : index + 1,
+        prev : prev.id,
+        next : next.id,
         hasPrev : this.hasPrev(),
         hasNext : this.hasNext(),
+        question : this.id,
         total : this.total
       };
     },
-    navigateTo : function(index) {
-      this.current = index;
-      this.trigger('nav', this.current);
+    select : function(question) {
+      this.current = question;
+      this.trigger('select', question);
+    },
+    selectById : function(id) {
+      var questions = this.embedded('questions');
+      var question = questions.get(id);
+      this.select(question);
     },
     startTest : function() {
-      this.navigateTo(1);
-    },
-    currentQuestion : function() {
       var questions = this.embedded('questions');
-      return questions.at(this.current - 1);
-    },
-    nextQuestion : function() {
-      if (this.hasNext()) {
-        this.navigateTo(this.current + 1);
-      }
-    },
-    prevQuestion : function() {
-      if (this.hasPrev()) {
-        this.navigateTo(this.current - 1);
-      }
+      var first = questions.at(0);
+      this.select(first);
     }
   });
 
