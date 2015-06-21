@@ -78,7 +78,7 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
     onRender: function(){
       var that = this;
       this.$('#slider').flexslider();
-      this.$('.ui.small.basic.button:first-child').toggleClass('basic green');
+      this.$('.ui.small.basic.button:nth-child(2)').toggleClass('basic green');
       this.$('#pagenation-video').twbsPagination({
         totalPages: this.videosTotal,
         startPage: this.videoCurrent,
@@ -133,7 +133,7 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
           var subTemplate = JST[baseTemplatePath+'/subcats'];
           var html = subTemplate({sub:clickedCategory.children});
           $('#subCats').html(html);
-          var sub = $('#subCats').find('.button:first-child');
+          var sub = $('#subCats').find('.button:nth-child(2)');
           sub.toggleClass('basic green');
           var id = sub.prop('id');
           that.updatePage(id);

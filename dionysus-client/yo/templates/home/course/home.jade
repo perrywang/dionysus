@@ -13,14 +13,17 @@
       .row.centered
         .twelve.wide.column
           #topCats
+            a(style="margin-right:20px;") 受众人群
             |{{#each top}}
             .top.ui.small.basic.button(id="{{id}}") {{name}}
             |{{/each}}
           #subCats(style="margin-top:10px;")
+            a(style="margin-right:20px;") 内容类别
             |{{#each sub}}
             .sub.ui.small.basic.button(id="{{id}}") {{name}}
             |{{/each}}
           #approach(style="margin-top:10px;")
+            a(style="margin-right:20px;") 授课方式
             |{{#each approach}}
             a.approach.ui.small.basic.button(href="{{href}}") {{name}}
             |{{/each}}
