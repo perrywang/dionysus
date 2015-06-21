@@ -1,18 +1,25 @@
 package com.huixinpn.dionysus;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.domain.appointment.AppointmentApproach;
-import com.huixinpn.dionysus.domain.user.Consultant;
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.huixinpn.dionysus.domain.article.Article;
 import com.huixinpn.dionysus.domain.article.Category;
 import com.huixinpn.dionysus.domain.article.Comment;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseState;
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.domain.user.Notification;
 import com.huixinpn.dionysus.domain.user.User;
@@ -70,6 +77,10 @@ public class NotificationTest extends AbstractPersistentTest {
         String phone="233";
         Integer age = 12;
         String gender = "male";
+        
+        
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(new UsernamePasswordAuthenticationToken(user, "some token"));
 
         Appointment appointment = new Appointment(consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
 
