@@ -9,8 +9,8 @@ import java.util.Collection;
 /**
  * Created by huanghao on 6/19/15.
  */
-@Projection(name="expertise", types= Consultant.class)
-public interface ConsultantExpertise {
+@Projection(name="excerpt", types= Consultant.class)
+public interface ConsultantExcerpt {
     Long getId();
     String getUsername();
     String getEmail();

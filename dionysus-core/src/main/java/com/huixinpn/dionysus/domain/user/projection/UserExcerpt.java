@@ -8,7 +8,13 @@ import org.springframework.data.rest.core.config.Projection;
  */
 @Projection(name = "excerpt", types = User.class)
 public interface UserExcerpt {
-    Long getId();
     String getUsername();
+    String getEmail();
+    String getLandline();
+    String getQq();
+    String getQqAddress();
+    String getAbout();
+    String getRealName();
     String getAvatar();
+    String getMobile();
 }

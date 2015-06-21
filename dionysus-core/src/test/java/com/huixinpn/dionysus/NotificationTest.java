@@ -84,10 +84,6 @@ public class NotificationTest extends AbstractPersistentTest {
         String phone="233";
         Integer age = 12;
         String gender = "male";
-        
-        
-        SecurityContext context = SecurityContextHolder.getContext();
-        context.setAuthentication(new UsernamePasswordAuthenticationToken(user, "some token"));
 
         Appointment appointment = new Appointment(user, consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
 
