@@ -46,7 +46,7 @@
 .pagination > .active > span:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #337ab7;
+  background-color: #008000;
   border-color: #337ab7;
   cursor: default;
 }

@@ -21,7 +21,6 @@ import java.util.Collection;
 @Table(name = "courses")
 @EntityListeners(AuditingEntityListener.class)
 public class Course extends AbstractDionysusNotifiable<User> {
-
   private static final long serialVersionUID = 2523934617928638918L;
 
   @NotBlank

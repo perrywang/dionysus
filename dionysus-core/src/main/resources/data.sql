@@ -173,9 +173,21 @@ insert into coursecategories (id, name, parent_id) values(6, '职业心理', 4);
 insert into coursecategories (id, name, parent_id) values(7, '个人成长', 4);
 
 
-insert into courses (id, title, description, category_id, consultant_id, approach) values(1,'心理学导论','心理学入门课程',2,3,'OFFLINE');
-insert into courses (id, title, description, category_id, consultant_id) values(2,'心理学进阶','心理学高级学员课程',2,3);
-insert into courses (id, title, description, category_id, consultant_id) values(3,'心理学高级','心理学辅导员课程',3,3);
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(1,'心理学导论','心理学入门课程',2,3,'OFFLINE','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(2,'心理学进阶','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location) values(3,'心理学高级','心理学辅导员课程',3,3,'ONE2MANY','slider');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(4,'心理学进阶2','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(5,'心理学进阶3','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(6,'心理学进阶4','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(7,'心理学进阶5','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(8,'心理学进阶6','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,location,state) values(9,'心理学进阶7','心理学高级学员课程',2,3, 'VIDEO','slider','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,state) values(10,'心理学高级2','心理学辅导员课程',2,3,'ONE2MANY','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,state) values(11,'心理学高级3','心理学辅导员课程',2,3,'ONE2MANY','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,state) values(12,'心理学高级4','心理学辅导员课程',2,3,'ONE2MANY','OPEN');
+insert into courses (id, title, description, category_id, consultant_id, approach,state) values(13,'心理学高级5','心理学辅导员课程',2,3,'ONE2MANY','OPEN');
+
+
 
 insert into user_course values (1, 2);
 insert into user_course values (2, 2);
