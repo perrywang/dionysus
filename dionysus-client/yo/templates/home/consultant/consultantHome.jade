@@ -1,44 +1,11 @@
-.pure-g
-	.pure-u-1.pure-u-md-11-24.pure-u-lg-11-24.expertise
-		#expertise.ui.basic.segment
-			h3 在线心理咨询
-			p 咨询话题：
+.ui.page.grid
+	.two.column.row
+		.column
+			.ui.segment
+				h3.ui.header 在线心理咨询
+				p 咨询话题:
 				{{#each expertises}}
 				a.expertise-link(href="/consultants/list/{{name}}"){{name}}
 				{{/each}}
-	.pure-u-1.pure-u-md-1-24.pure-u-lg-1-24.info
-	.pure-u-1.pure-u-md-11-24.pure-u-lg-11-24.info
-		#info
-			img.pure-img(src="/public/images/info.jpg")
-.pure.g
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-3
-		p hehehehe
-		p xixixix
-		p hahaha
-.pure-g
-	.pure-u-1
-		#paging
+		.column
+			img(src="/public/images/info.jpg")

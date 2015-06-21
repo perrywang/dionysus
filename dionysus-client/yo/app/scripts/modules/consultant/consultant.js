@@ -167,7 +167,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
           var data = _.pick(json, 'name', 'gender', 'phone', 'date', 'approach', 'reason');
           data.age = parseInt(json.age, 10);
           data.consultant = this.model.url;
-          data.user = '/api/1/users/' + sessionStorage.getItem('user');
+          data.user = '/api/1/users/' + sessionStorage.getItem('user'); 
 
           $.ajax({
           url: '/api/v1/appointments',
@@ -175,14 +175,9 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
           contentType: 'application/json; charset=utf-8',
           data: JSON.stringify(data)
         }).done(function(response){
-          toastr.info('预约提交成功');
+          alert('您的预约系统已经收到，请等待咨询师的响应，您可以通过 用户面板－>我的咨询 页面查看预约状态');
         })
 
-          //var appointment = Dionysus.request("appointment:new");
-          /*appointment.set(data);
-          appointment.save().done(function(){
-            toastr.info('预约提交成功');
-          });*/
         }
 
         
