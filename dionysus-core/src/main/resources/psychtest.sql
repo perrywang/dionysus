@@ -2855,9 +2855,9 @@ insert into psychtestfactors(id, factor, name) values (16, 'Q4', '紧张性');
 
 
 insert into psychtestresults(id, test_id, state) values(1, 1, 'IN_PROGRESS');
-insert into psychtestresultoptions(id, result_id, question_id, option_id) values(1, 1, 1, 1);
-insert into psychtestresultoptions(id, result_id, question_id, option_id) values(1, 1, 2, 4);
-insert into psychtestresultoptions(id, result_id, question_id, option_id) values(1, 1, 3, 7);
+insert into psychtestresultoptions(answer_id, question_id, option_id) values(1, 1, 1);
+insert into psychtestresultoptions(answer_id, question_id, option_id) values(1, 2, 4);
+insert into psychtestresultoptions(answer_id, question_id, option_id) values(1, 3, 7);
 
 
 

@@ -84,7 +84,8 @@ public class NotificationTest extends AbstractPersistentTest {
         String phone="233";
         Integer age = 12;
         String gender = "male";
-
+        
+        
         Appointment appointment = new Appointment(user, consultant, AppointmentApproach.OFFLINE,Calendar.getInstance(),"reason", name, age, phone, gender);
 
         entityManager.persist(appointment);
