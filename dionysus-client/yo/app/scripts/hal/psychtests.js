@@ -7,13 +7,52 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   var PsychTest = Backbone.RelationalHalResource.extend({
     urlRoot: '/api/v1/psychtests',
-    defaults : {
-      current : 1
-    },
     halEmbedded: {
       questions: {
         type: Backbone.HasMany,
         relatedModel: PsychTestQuestion
+      }
+    },
+    initialize : function() {
+      this.on('sync', this.updateMeta, this);
+    },
+    updateMeta : function() {
+      var questions = this.embedded('questions');  // TODO: use backbone.choice
+      this.total = questions.length;
+    },
+    hasNext : function() {
+      return this.current < this.total;
+    },
+    hasPrev : function() {
+      return this.current > 1;
+    },
+    getNavData : function() {
+      return {
+        current : this.current,
+        hasPrev : this.hasPrev(),
+        hasNext : this.hasNext(),
+        total : this.total
+      };
+    },
+    navigateTo : function(index) {
+      this.current = index;
+      this.trigger('nav', this.current);
+    },
+    startTest : function() {
+      this.navigateTo(1);
+    },
+    currentQuestion : function() {
+      var questions = this.embedded('questions');
+      return questions.at(this.current - 1);
+    },
+    nextQuestion : function() {
+      if (this.hasNext()) {
+        this.navigateTo(this.current + 1);
+      }
+    },
+    prevQuestion : function() {
+      if (this.hasPrev()) {
+        this.navigateTo(this.current - 1);
       }
     }
   });

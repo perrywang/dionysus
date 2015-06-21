@@ -17,48 +17,68 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     childViewContainer : '.ui.cards'
   });
 
-  var PsychTestQuestionOneByOneView = Marionette.ItemView.extend({
-    template : JST['templates/home/psychtests/onebyone'],
+
+
+
+
+
+
+  var SingleChoiceQuestionView = Marionette.ItemView.extend({
+    template : JST['templates/home/psychtests/singlechoice'],
     onRender : function() {
       this.$('.ui.radio.checkbox').checkbox();
+    }
+  });
+
+  var OneByOneNavView = Marionette.ItemView.extend({
+    template : JST['templates/home/psychtests/onebyonenav'],
+    initialize : function() {
+      this.listenTo(this.model, 'nav', this.render, this);
     },
-    initialize: function() {
-      var questions = this.model.embedded('questions') || []
-      this.total = questions.length;
-      this.listenTo(this.model, 'change', this.render, this);
-      this.model.set('current', 1);
+    onShow : function() {
+      this.model.startTest();
     },
     serializeData : function() {
-      var model = this.model;
-      var questions = model.embedded('questions'),
-          current = model.get('current'),
-          total = this.total;
-
-      var question = questions.at(current - 1);
-
-      var data = this.serializeModel(this.model);
-      data.question = this.serializeModel(question);
-      data.hasPrev = (current > 1);
-      data.hasNext = (current < total);
-      data.total = total;
-      return data;
+      return this.model.getNavData();
     },
     events : {
       'click .prev' : function() {
-        var current = this.model.get('current');
-        if (current > 1) {
-          this.model.set('current', current - 1); 
-        }
+        this.model.prevQuestion();
       },
       'click .next' : function() {
-        var current = this.model.get('current');
-        var total = this.total;
-        if (current < total) {
-          this.model.set('current', current + 1);
-        }
+        this.model.nextQuestion();
       }
     }
   });
+
+  var PsychTestQuestionOneByOneView = Marionette.LayoutView.extend({
+    template : JST['templates/home/psychtests/onebyone'],
+    regions : {
+      question : 'section.question',
+      navigator : 'footer.nav'
+    },
+    initialize: function() {
+      this.listenTo(this.model, 'nav', this.renderQuestion, this);
+    },
+    onRender : function() {
+      this.showChildView('navigator', new OneByOneNavView({ model : this.model }));
+    },
+    renderQuestion : function() {
+      var question = this.model.currentQuestion();
+      if (question.get('type') === 'SINGLE_CHOICE') {
+        this.showChildView('question', new SingleChoiceQuestionView({ model : question }));  
+      } else {
+        throw new Error('cannot handle question type: ' + question.get('type'));
+      }
+    }
+  });
+
+
+
+
+
+
+
 
   var PsychTestQuestionTableView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/table'],
