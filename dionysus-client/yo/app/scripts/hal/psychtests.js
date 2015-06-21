@@ -18,26 +18,24 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     },
     updateMeta : function() {
       var questions = this.embedded('questions');  // TODO: use backbone.choice
+      this.questions = questions;
       this.total = questions.length;
     },
     hasNext : function() {
-      var questions = this.embedded('questions');
-      var index = questions.indexOf(this.current);
-      return index + 1 < this.total;
+      var index = this.questions.indexOf(this.current);
+      return index >= 0 && index + 1 < this.total;
     },
     hasPrev : function() {
-      var questions = this.embedded('questions');
-      var index = questions.indexOf(this.current);
-      return index + 1 > 1;
+      var index = this.questions.indexOf(this.current);
+      return index > 0;
     },
     getNavData : function() {
-      var questions = this.embedded('questions');
-      var index = questions.indexOf(this.current), next = {}, prev = {};
+      var index = this.questions.indexOf(this.current), next = {}, prev = {};
       if (this.hasPrev()) {
-        prev = questions.at(index - 1);
+        prev = this.questions.at(index - 1);
       }
       if (this.hasNext()) {
-        next = questions.at(index + 1);
+        next = this.questions.at(index + 1);
       }
       return {
         current : index + 1,
@@ -50,18 +48,12 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       };
     },
     select : function(question) {
+      if (!question) { question = this.questions.at(0); }
+      if (_.isString(question)) { question = parseInt(question, 10); }
+      if (_.isNumber(question)) { question = this.questions.get(question); }
+
       this.current = question;
       this.trigger('select', question);
-    },
-    selectById : function(id) {
-      var questions = this.embedded('questions');
-      var question = questions.get(id);
-      this.select(question);
-    },
-    startTest : function() {
-      var questions = this.embedded('questions');
-      var first = questions.at(0);
-      this.select(first);
     }
   });
 

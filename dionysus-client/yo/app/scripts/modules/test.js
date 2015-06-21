@@ -110,14 +110,10 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
               default:
                 throw new Error("cannot handle test format: " + format);
             }
-            if (question) {
-              currentTest.selectById(question);
-            } else {
-              currentTest.startTest();  
-            }
+            currentTest.select(question);
           });
         } else {
-          currentTest.selectById(question);
+          currentTest.select(question);
         }
       }
     };
