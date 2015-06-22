@@ -29,7 +29,8 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
       Dionysus.request("appointments:search:pageable", "findByUser", {
-        user: sessionStorage.getItem('user')
+        user: sessionStorage.getItem('user'),
+        projection: "myappointment"
       }).done(function(appointments) {
         region.show(new ProfileAppointmentView({collection: appointments}));
 
@@ -54,11 +55,16 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       var dataCollection = this.collection.toJSON();
       
       var state_const = {'WAITING':'等待咨询师响应', 'ACCEPTED':'咨询师已接受', 'DECLINED':'咨询师已拒绝', 'FINISHED':'完成'};
+      var state_color = {'WAITING':'', 'ACCEPTED':'green', 'DECLINED':'red', 'FINISHED':'teal'};
       var approach_const = {'ONLINE':'在线', 'OFFLINE':'面对面', 'BY_PHONE':'电话'};
 
       for (var i = dataCollection.length - 1; i >= 0; i--) {
         var data = dataCollection[i];
+        data.state_value = data.state;
+        data.state_color = state_color[data.state];
         data.state = state_const[data.state];
+        data.approach_value = data.approach;
+        data.approach_online = data.approach=="ONLINE"?true:false;
         data.approach = approach_const[data.approach];
         data.consultant_qqAddress = data.consultant_qqAddress?data.consultant_qqAddress:"#"; 
         

@@ -1,11 +1,13 @@
 package com.huixinpn.dionysus.domain.appointment.projection;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.appointment.Appointment;
 import com.huixinpn.dionysus.domain.appointment.AppointmentApproach;
 import com.huixinpn.dionysus.domain.appointment.AppointmentStatus;
 import com.huixinpn.dionysus.domain.user.projection.ConsultantExcerpt;
-import org.joda.time.DateTime;
 import org.springframework.data.rest.core.config.Projection;
+
+import java.util.Calendar;
 
 /**
  * Created by huanghao on 6/22/15.
@@ -15,7 +17,10 @@ public interface MyAppointment {
 
     AppointmentStatus getState();
     AppointmentApproach getApproach();
-    DateTime getDate();
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
+    Calendar getDate();
+
     String  getName();
     ConsultantExcerpt getConsultant();
 
