@@ -81,8 +81,9 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
           collection: expertises, consultant: consultant
         });
 		expertiselist.on("childview:add:expertise", function(childView, model){
-		  var initconsultant = this.options.consultant.toJSON();		
-          initconsultant.expertises = ['/api/v1/consExpertises/' + model.id];
+		  var initconsultant = this.options.consultant.toJSON();
+          var jsonstring = model.model.id;	  
+          initconsultant.expertises = ['/api/v1/consExpertises/' + jsonstring];
           var url = '/api/v1/consultants/' + initconsultant.id;		  
           $.ajax({
             url: url,
