@@ -172,4 +172,13 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     });
     return defer.promise();
   });
+  
+  Dionysus.reqres.setHandler('consultant:entity', function(id) {
+    var consultant = new Entities.ConsultantSelection({id: id});
+    var defer = $.Deferred();
+    consultant.fetch().then(function() {
+      defer.resolve(consultant);
+    });
+    return defer.promise();
+  });
 });
