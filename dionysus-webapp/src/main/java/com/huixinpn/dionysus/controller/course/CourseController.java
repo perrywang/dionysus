@@ -13,6 +13,7 @@ import com.huixinpn.dionysus.dto.EntityCollectionData;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.dto.course.CourseCategoryData;
 import com.huixinpn.dionysus.dto.course.CourseData;
+import com.huixinpn.dionysus.dto.course.CourseFeedbackData;
 import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
 import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
@@ -275,10 +276,31 @@ public class CourseController {
     return new EntityCollectionData<>(courses,CourseData.class).toDTOCollection();
   }
 
-  @RequestMapping(value = "/courses/{{id}}/feedbacks", method = RequestMethod.GET)
+  @RequestMapping(value = "/courses/{id}/feedbacks", method = RequestMethod.GET)
   public
   @ResponseBody
-  Collection<CourseFeedback> feedbacks(@PathVariable Long id) {
-    return courseFeedbackRepository.findByCourse(new Course(id));
+  Collection<CourseFeedbackData> feedbacks(@PathVariable Long id) {
+    Collection<CourseFeedback> feedbacks = courseFeedbackRepository.findByCourse(new Course(id));
+    return new EntityCollectionData<>(feedbacks,CourseFeedbackData.class).toDTOCollection();
+  }
+
+  @RequestMapping(value = "/courses/{id}/feedbacks", method = RequestMethod.POST)
+  public
+  @ResponseBody
+  ResponseEntity<String> addFeedbacks(@PathVariable Long id, @RequestBody CourseFeedbackData data) {
+    CourseFeedback adding = new CourseFeedback();
+    adding.setCourse(new Course(id));
+    adding.setComment(data.getComment());
+    CourseFeedback added = courseFeedbackRepository.save(adding);
+    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+  }
+
+  @RequestMapping(value = "/courses/approach/{name}", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  EntityPageData<CourseData> searchByApproach(@RequestParam(value = "page", required = false) Integer page,
+                                                     @RequestParam(value = "size", required = false) Integer size,
+                                                     @PathVariable String name) {
+    return null;
   }
 }

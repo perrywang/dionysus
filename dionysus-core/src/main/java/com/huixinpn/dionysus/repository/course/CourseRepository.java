@@ -34,5 +34,8 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
   @Query(value = "select c from Course as c, Course_Tag as t where c.id = t.courses_id and t.tags_id = ?1 and c.approach = ?2")
   Page<Course> findByTagAndApproach(Long tagId, CourseApproach approach, Pageable pageable);
 
+  @Query(value = "select c from Course c where c.approach = ?1")
+  Page<Course> findByApproach(CourseApproach approach, Pageable pageable);
+
   Collection<Course> findByLocation(String location);
 }

@@ -1,3 +1,29 @@
-//
-   Created by user on 6/22/2015.
+.ui.centered.grid
+  .eight.wide.column
+    .basic.ui.segment
+      h3
+        a {{title}}
+      .ui.mini.green.label 类别
+      img.ui.fluid.image(src="{{cover}}")
+      p
+        |{{description}}
+      p
+        |{{embeddedVideo}}
+      #comments(style="margin-top:20px;")
+        h3
+          a 发表留言
+        .ui.form
+          textarea(name="comment")
+          .ui.small.submit.green.button(style="float:right;margin-top:15px;") 提交
+        #commentsList(style="clear:both;margin-top:100px;")
+          |{{#each comment}}
+          |{{/each}}
+  .four.wide.column
+    .basic.ui.segment
+      h5 更多心理课程
+      |{{#each courses}}
+      a {{title}}
+      |{{/each}}
+
+
 

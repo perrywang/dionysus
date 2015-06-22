@@ -182,12 +182,14 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
                       Dionysus.mainRegion.show(view);
                     });
             });
-    }
+    },
+    showCourse : function(id){}
   });
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'courses(/)': 'showCourseHome'
+        'courses(/)': 'showCourseHome',
+        'courses/:id(/)' : 'showCourse'
       },
       controller: new CourseController()
     });

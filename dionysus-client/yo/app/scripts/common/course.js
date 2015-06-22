@@ -184,12 +184,42 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return courses.promise();
   });
 
+  Dionysus.reqres.setHandler('course:home:search',function(cid,approach,options){
+    var courses = $.Deferred();
+    var page = options.page || 0;
+    var size = options.size || 6;
+    $.getJSON(baseUrl+"/category/" + cid + "?approach=" + approach + "&page="+page+"&size=" + size).done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
+
   Dionysus.reqres.setHandler('course:home:slider',function(){
     var courses = $.Deferred();
     $.getJSON(baseUrl+"/slider").done(function(data){
       courses.resolve(data);
     });
     return courses.promise();
-  })
+  });
+
+  Dionysus.reqres.setHandler('course:home:feedback',function(id){
+    var feedbacks = $.Deferred();
+    $.getJSON(baseUrl+ "/" + id + "/feedbacks").done(function(data){
+      feedbacks.resolve(data);
+    });
+    return feedbacks.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:home:detail',function(id){
+    var course = $.Deferred();
+    $.getJSON(baseUrl+ "/" + id).done(function(data){
+      course.resolve(data);
+    });
+    return course.promise();
+  });
+
+
+
+
 });
 
