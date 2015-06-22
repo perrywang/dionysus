@@ -1,9 +1,10 @@
 Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
+  var baseUrl = '/controllers/courses';
   var Course = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/controllers/courses/' + this.id : '/controllers/courses';
+      return this.id ? baseUrl+ '/' + this.id : '/controllers/courses';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -16,7 +17,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseCollection = Backbone.Collection.extend({
-    url: '/controllers/courses',
+    url: baseUrl,
     model: Course,
     parse: function (response) {
       return response.content;
@@ -25,7 +26,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
 
   var PageCourseModel = Backbone.Model.extend({
     url :function(){
-      return '/controllers/courses?page='+this.page;
+      return baseUrl+'?page='+this.page;
     },
     initialize : function(page){
       this.page = page;
@@ -34,7 +35,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
 
   var CourseCategory = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/controllers/courses/categories/' + this.id : '/controllers/courses/categories';
+      return this.id ? baseUrl+'/categories/' + this.id : baseUrl+'/categories';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -47,13 +48,13 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseCategoryCollection = Backbone.Collection.extend({
-    url: '/controllers/courses/categories',
+    url: baseUrl+'/categories',
     model: CourseCategory
   });
 
   var CourseConsultant = Backbone.Model.extend({
     url: function () {
-      return this.id ? '/controllers/courses/consultants/' + this.id : '/controllers/courses/consultants';
+      return this.id ? baseUrl+'/consultants/' + this.id : baseUrl+'/consultants';
     },
     isNew: function () {
       return this.id == null || this.id == undefined;
@@ -66,7 +67,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
   });
 
   var CourseConsultantCollection = Backbone.Collection.extend({
-    url: '/controllers/courses/consultants',
+    url: baseUrl+'/consultants',
     model: CourseConsultant
   });
 
@@ -107,7 +108,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
 
   Dionysus.reqres.setHandler('course:categories:tree', function () {
     var resources = new CourseCategoryCollection();
-    resources.url = '/controllers/courses/categories/tree';
+    resources.url = baseUrl+'/categories/tree';
     var defer = $.Deferred();
     resources.fetch().then(function () {
       defer.resolve(resources);
@@ -139,5 +140,56 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     });
     return defer.promise();
   });
+
+  Dionysus.reqres.setHandler('course:home:categories',function(){
+    var categories = $.Deferred();
+    $.getJSON(baseUrl+"/categories/tree").done(function(data){
+      categories.resolve(data);
+    });
+    return categories.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:home:videos',function(cid,page){
+    var courses = $.Deferred();
+    if(page == undefined){
+      page = 0;
+    }
+    $.getJSON(baseUrl+"/category/"+cid+"?approach=VIDEO&page="+page+"&size=6").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
+
+
+
+  Dionysus.reqres.setHandler('course:home:room',function(cid,page){
+    var courses = $.Deferred();
+    if(page == undefined){
+      page = 0;
+    }
+    $.getJSON(baseUrl+"/category/"+cid+"?approach=ONE2MANY&page="+page+"&size=4").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:home:offline',function(cid,page){
+    var courses = $.Deferred();
+    if(page == undefined){
+      page = 0;
+    }
+    $.getJSON(baseUrl+"/category/"+cid+"?approach=OFFLINE&page="+page+"&size=4").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:home:slider',function(){
+    var courses = $.Deferred();
+    $.getJSON(baseUrl+"/slider").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  })
 });
 

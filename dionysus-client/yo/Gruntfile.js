@@ -38,7 +38,8 @@ module.exports = function (grunt) {
         /^\/profile/.test(url) ||
         /^\/register/.test(url) ||
         /^\/psychtest/.test(url) ||
-        /^\/consultants/.test(url)
+        /^\/consultants/.test(url)||
+        /^\/courses/.test(url)
       ) {
       req.url = '/index.html';
     }else if (/^\/app(\/)?/.test(url)) {

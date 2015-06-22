@@ -33,21 +33,10 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
   var OneByOneNavView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/onebyonenav'],
     initialize : function() {
-      this.listenTo(this.model, 'nav', this.render, this);
-    },
-    onShow : function() {
-      this.model.startTest();
+      this.listenTo(this.model, 'select', this.render, this);
     },
     serializeData : function() {
       return this.model.getNavData();
-    },
-    events : {
-      'click .prev' : function() {
-        this.model.prevQuestion();
-      },
-      'click .next' : function() {
-        this.model.nextQuestion();
-      }
     }
   });
 
@@ -58,13 +47,12 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
       navigator : 'footer.nav'
     },
     initialize: function() {
-      this.listenTo(this.model, 'nav', this.renderQuestion, this);
+      this.listenTo(this.model, 'select', this.renderQuestion, this);
     },
     onRender : function() {
       this.showChildView('navigator', new OneByOneNavView({ model : this.model }));
     },
-    renderQuestion : function() {
-      var question = this.model.currentQuestion();
+    renderQuestion : function(question) {
       if (question.get('type') === 'SINGLE_CHOICE') {
         this.showChildView('question', new SingleChoiceQuestionView({ model : question }));  
       } else {
@@ -93,37 +81,51 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     }
   });
 
-  var TestController = Marionette.Controller.extend({
-    showTestSuites : function() {
-      var fetching = Dionysus.request('psychtestsuite:instances');
-      $.when(fetching).done(function(suites) {
-        Dionysus.mainRegion.show(new TestSuiteCollectionView({ collection: suites }));
-      });
-    },
-    showTest: function (id) {
-      var fetching = Dionysus.request('psychtest:instance', id);
-      $.when(fetching).done(function (test) {
-        var format = test.get('format');
-        switch(format) {
-          case 'TABLE':
-            Dionysus.mainRegion.show(new PsychTestQuestionTableView({ model : test }));
-            break;
-          case 'ONE_BY_ONE':
-            Dionysus.mainRegion.show(new PsychTestQuestionOneByOneView({ model : test}));
-            break;
+  var psychtestController = (function() {
+
+    var currentTest;
+
+    return {
+      showTestSuites : function() {
+        var fetching = Dionysus.request('psychtestsuite:instances');
+        $.when(fetching).done(function(suites) {
+          Dionysus.mainRegion.show(new TestSuiteCollectionView({ collection: suites }));
+        });
+      },
+      showTest: function (id, question) {
+        var qid = parseInt(question, 10);
+        if (!currentTest || currentTest.id === qid) {
+          // loading at the first time
+          var fetching = Dionysus.request('psychtest:instance', id);
+          $.when(fetching).done(function (test) {
+            currentTest = test;
+            var format = test.get('format');
+            switch(format) {
+              case 'TABLE':
+                Dionysus.mainRegion.show(new PsychTestQuestionTableView({ model : test }));
+                break;
+              case 'ONE_BY_ONE':
+                Dionysus.mainRegion.show(new PsychTestQuestionOneByOneView({ model : test }));
+                break;
+              default:
+                throw new Error("cannot handle test format: " + format);
+            }
+            currentTest.select(question);
+          });
+        } else {
+          currentTest.select(question);
         }
-        
-      });
-    }
-  });
+      }
+    };
+  })();
 
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'psychtest/:id(/)': 'showTest',
+        'psychtest/:id(/)(:question)': 'showTest',
         'psychtestsuites(/)' : 'showTestSuites'
       },
-      controller: new TestController()
+      controller: psychtestController
     });
   });
 });

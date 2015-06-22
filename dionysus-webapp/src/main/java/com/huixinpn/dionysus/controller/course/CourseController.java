@@ -262,4 +262,11 @@ public class CourseController {
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
+  @RequestMapping(value = "/courses/slider", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<CourseData> slider() {
+    Collection<Course> courses = courseRepository.findByLocation("slider");
+    return new EntityCollectionData<>(courses,CourseData.class).toDTOCollection();
+  }
 }

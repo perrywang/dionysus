@@ -7,24 +7,26 @@ h2.ui.header
 h4.ui.horizontal.header.divider
   i.bar.char.icon
 .ui.page.grid
-  .four.wide.left.aligned.column
-    .ui.link.list
-      .item
-        a(href="#")#myarticles 
-          i.small.circular.book.icon
-          | 我的文章
-      .item
-        a(href="#")#myappointments 
-          i.small.circular.chat.icon
-          | 我的一对一咨询
-      .item
-        a(href="#")#mycourses 
-          i.small.circular.users.icon 
-          | 我的课程 
-      .item
-        a(href="#")#mytests 
-          i.small.circular.question.icon 
-          | 我的测试
-  .twelve.wide.column
-    .ui.stacked.segment
-      div#mycontent
+  .row
+    .centered.column
+      .ui.horizontal.list
+        .item
+          a(href="#")#myarticles 
+            i.small.circular.book.icon
+            | 我的文章
+        .item
+          a(href="#")#myappointments 
+            i.small.circular.chat.icon
+            | 我的一对一咨询
+        .item
+          a(href="#")#mycourses 
+            i.small.circular.users.icon 
+            | 我的课程 
+        .item
+          a(href="#")#mytests 
+            i.small.circular.question.icon 
+            | 我的测试
+  .row
+    .column
+      .ui.stacked.segment
+        div#mycontent

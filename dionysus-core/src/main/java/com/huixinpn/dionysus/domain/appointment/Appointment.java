@@ -62,9 +62,9 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
         this.state = AppointmentStatus.WAITING;
     }
 
-    public Appointment(Consultant consultant, AppointmentApproach approach, Calendar date, String reason, String name, Integer age, String phone, String gender) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        this.user = (User) authentication.getPrincipal();
+    public Appointment(User user, Consultant consultant, AppointmentApproach approach, Calendar date, String reason, String name, Integer age, String phone, String gender) {
+
+        this.user = user;
         this.consultant = consultant;
         this.approach = approach;
         this.state = AppointmentStatus.WAITING;
@@ -111,5 +111,12 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
 
         return users;
 
+    }
+
+    @PrePersist
+    public void fillDefaultUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User login = (User) authentication.getPrincipal();
+        this.user = login;
     }
 }

@@ -99,16 +99,18 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     },
 
     events: {
-      "gotoPage" : function(page){
+      "gotoPage" : function(e,page){
         this.collection.getPage(page-1);
       }
     },
 
     onRender: function(){
       var state = this.collection.state;
+      var currentPage = state['currentPage']+1;
+      var total = state['totalPages']==0? 1 : state['totalPages'];
       this.$('#paging').twbsPagination({
-        totalPages: state['totalPages'],
-        startPage: state['currentPage']+1,
+        totalPages: total,
+        startPage: currentPage,
         visiblePages: 6,
         first: '第一页',
             prev: '前一页',

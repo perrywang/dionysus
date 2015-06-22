@@ -1,0 +1,10 @@
+.ui.four.column.grid
+  |{{#each room}}
+  .column
+    .ui.basic.segment
+      img.ui.fluid.image(src="/static/img/1.jpg")
+      .link(style="text-align:center;")
+        a {{title}}
+      .reg(style="text-align:center;")
+        .ui.tiny.basic.button 加入
+  |{{/each}}

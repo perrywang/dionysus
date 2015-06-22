@@ -18,44 +18,56 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     },
     updateMeta : function() {
       var questions = this.embedded('questions');  // TODO: use backbone.choice
+      this.questions = questions;
       this.total = questions.length;
     },
     hasNext : function() {
-      return this.current < this.total;
+      var index = this.questions.indexOf(this.current);
+      return index >= 0 && index + 1 < this.total;
     },
     hasPrev : function() {
-      return this.current > 1;
+      var index = this.questions.indexOf(this.current);
+      return index > 0;
     },
     getNavData : function() {
+      var index = this.questions.indexOf(this.current), next = {}, prev = {};
+      if (this.hasPrev()) {
+        prev = this.questions.at(index - 1);
+      }
+      if (this.hasNext()) {
+        next = this.questions.at(index + 1);
+      }
       return {
-        current : this.current,
+        current : index + 1,
+        prev : prev.id,
+        next : next.id,
         hasPrev : this.hasPrev(),
         hasNext : this.hasNext(),
+        question : this.id,
         total : this.total
       };
     },
-    navigateTo : function(index) {
-      this.current = index;
-      this.trigger('nav', this.current);
-    },
-    startTest : function() {
-      this.navigateTo(1);
-    },
-    currentQuestion : function() {
-      var questions = this.embedded('questions');
-      return questions.at(this.current - 1);
-    },
-    nextQuestion : function() {
-      if (this.hasNext()) {
-        this.navigateTo(this.current + 1);
-      }
-    },
-    prevQuestion : function() {
-      if (this.hasPrev()) {
-        this.navigateTo(this.current - 1);
-      }
+    select : function(question) {
+      if (!question) { question = this.questions.at(0); }
+      if (_.isString(question)) { question = parseInt(question, 10); }
+      if (_.isNumber(question)) { question = this.questions.get(question); }
+
+      this.current = question;
+      this.trigger('select', question);
     }
   });
+
+
+
+
+
+
+
+
+
+
+
+
 
   var PsychTestSuite = Backbone.RelationalHalResource.extend({});
 
@@ -68,6 +80,32 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       }
     }
   });
+
+
+
+
+  var PsychTestQuestionResult = Backbone.RelationalHalResource.extend({});
+
+  var PsychTestResult = Backbone.RelationalHalResource.extend({
+    url : '/api/v1/psychtestresults',
+    halEmbedded: {
+      test : {
+        type : Backbone.One,
+        relatedModel : PsychTest
+      }
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
   Dionysus.reqres.setHandler('psychtestsuite:instances', function() {
