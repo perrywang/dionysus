@@ -5,11 +5,18 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
+import com.huixinpn.dionysus.domain.user.User;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractAuditable;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "coursefeedbacks")
-public class CourseFeedback extends AbstractDionysusPersistable{
+public class CourseFeedback extends AbstractDionysusAuditable<User> {
 
   private static final long serialVersionUID = 2523934637928638928L;
 
@@ -21,30 +28,7 @@ public class CourseFeedback extends AbstractDionysusPersistable{
   @ManyToOne
   private Course course;
 
-  public CourseFeedback() {
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  public Integer getScore() {
-    return score;
-  }
-
-  public void setScore(Integer score) {
-    this.score = score;
-  }
-
-  public Course getCourse() {
-    return course;
-  }
-
-  public void setCourse(Course course) {
-    this.course = course;
+  public CourseFeedback(Long id) {
+    super(id);
   }
 }

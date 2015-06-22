@@ -5,6 +5,7 @@ import com.huixinpn.dionysus.controller.util.Utils;
 import com.huixinpn.dionysus.domain.course.Course;
 import com.huixinpn.dionysus.domain.course.CourseApproach;
 import com.huixinpn.dionysus.domain.course.CourseCategory;
+import com.huixinpn.dionysus.domain.course.CourseFeedback;
 import com.huixinpn.dionysus.domain.tag.Tag;
 import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
@@ -15,6 +16,7 @@ import com.huixinpn.dionysus.dto.course.CourseData;
 import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
 import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
+import com.huixinpn.dionysus.repository.course.CourseFeedbackRepository;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
 import com.huixinpn.dionysus.repository.tag.TagRepository;
 import com.huixinpn.dionysus.repository.user.ConsultantRepository;
@@ -49,6 +51,9 @@ public class CourseController {
 
   @Autowired
   private ConsultantRepository consultantRepository;
+
+  @Autowired
+  private CourseFeedbackRepository courseFeedbackRepository;
 
   public static final String EMPTY_JSON_OBJECT = Utils.EMPTY_JSON_OBJECT;
 
@@ -268,5 +273,12 @@ public class CourseController {
   Collection<CourseData> slider() {
     Collection<Course> courses = courseRepository.findByLocation("slider");
     return new EntityCollectionData<>(courses,CourseData.class).toDTOCollection();
+  }
+
+  @RequestMapping(value = "/courses/{{id}}/feedbacks", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<CourseFeedback> feedbacks(@PathVariable Long id) {
+    return courseFeedbackRepository.findByCourse(new Course(id));
   }
 }
