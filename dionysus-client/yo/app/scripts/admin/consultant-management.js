@@ -30,7 +30,7 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
     template: JST["templates/admin/consultants/expertiselistitem"],
     className: "item",
 	triggers: {
-      "click .save.button":"add:expertise"
+      'click .save.button':'add:expertise'
     }
   });
   
@@ -49,7 +49,16 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
   var AddExpertiseListView = Marionette.CompositeView.extend({
     template: JST["templates/admin/consultants/expertiselist"],
     childView: AddExpertiseListItemView,
-    childViewContainer: '.items'
+    childViewContainer: '.items',	
+	ui: {
+      save: '.submit.button'
+    },
+    events: {
+      'click @ui.save': 'saveExpertise'
+    },
+    saveExpertise: function() {
+      this.trigger('expertise:save');
+    },
   });
 
   var ConsultantController = Marionette.Controller.extend({
@@ -75,25 +84,33 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
     },
 	
     showExpertises: function(id){
-      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());    	  
 	  $.when(Dionysus.request('consultant:entity', id), Dionysus.request('consultant:expertises')).done(function (consultant, expertises){
         var expertiselist = new AddExpertiseListView({
           collection: expertises, consultant: consultant
         });
-		expertiselist.on("childview:add:expertise", function(childView, model){
+		var consultant_put = {};
+        expertiselist.on('childview:add:expertise', function(childView, model){
 		  var initconsultant = this.options.consultant.toJSON();
-          var jsonstring = model.model.id;	  
-          initconsultant.expertises = ['/api/v1/consExpertises/' + jsonstring];
-          var url = '/api/v1/consultants/' + initconsultant.id;		  
+		  if(consultant_put)
+		    consultant_put = initconsultant;
+          var jsonstring = model.model.id;
+		  consultant_put.expertises = [];
+          consultant_put.expertises.push('/api/v1/consExpertises/' + jsonstring);
+		  window.alert('添加成功');
+		});
+        expertiselist.on('expertise:save', function(){
+          //var initconsultant = this.options.consultant.toJSON();
+          var url = '/api/v1/consultants/' + consultant_put.id;		  
           $.ajax({
             url: url,
             method: 'PUT',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(initconsultant)
+            data: JSON.stringify(consultant_put)
           }).done(function(response) {
-            window.alert('添加成功');
+            window.alert('提交成功');
           }).fail(function() {
-            window.alert('添加失败');
+            window.alert('提交失败');
           }); 
 		});
         Dionysus.mainRegion.show(expertiselist);	  
