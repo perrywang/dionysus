@@ -82,7 +82,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     
     template: JST['templates/home/consultant/consultantHome'],
     tagName: "div",
-    className: "layout-view",
+    className: "ui centered stackable grid",
 
     initialize: function(options){
       this.expertises = options.expertises;
@@ -159,7 +159,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   var ConsultantDetailView = Marionette.ItemView.extend({
     template: JST['templates/home/consultant/consultantDetail'],
     tagName: "div",
-    className: "layout-view",
+    className: "ui centered stackable grid",
     events: {
       'click .button': function(){
 

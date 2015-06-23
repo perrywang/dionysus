@@ -1,74 +1,75 @@
-.ui.page.grid
-	.row#consultant-desc
-		.ten.wide.column
-			.ui.basic.segment
-				.ui.header 预约咨询师
+.twelve.wide.column
+	.ui.page.grid
+		.row#consultant-desc
+			.ten.wide.column
 				.ui.basic.segment
-					h3.ui.center.aligned.header 咨询师： {{realName}}
-					.content
-						{{about}}
-		.six.wide.column
-			.ui.basic.center.aligned.segment
-				{{#if avatar}}
-				img.ui.medium.circular.image(src="{{avatar}}")
-				{{else}}
-				img.ui.medium.circular.image(src="/public/images/placeholder.png")
-				{{/if}}
-	.row
-		.fourteen.wide.column
-			.ui.basic.segment
-				h3.ui.center.aligned.header 请填写预约资料
-					.sub.header 请如实填写您的资料，以便工作人员更好的为您服务.
-	.centered.row
-		.thirteen.wide.column
-			form.ui.form
-				.required.inline.field
-					label 姓名
-					input(type="text", name="name")
-				.required.inline.field
-					label 年龄
-					input(type="text", name="age")
-				.grouped.inline.fields
-					.required.field
-						label(for="gender") 性别
-					.field
-						.ui.radio.checkbox
-							input(type="radio", name="gender", value="男")
-							label 男
-					.field
-						.ui.radio.checkbox
-							input(type="radio", name="gender", value="女")
-							label 女	
-				.required.inline.field
-					label 电话
-					input(type="text", name="phone")
-				.required.inline.field
-					label 时间
-					input#date(type="text", name="date", placeholder="期望时间")
-				.grouped.inline.fields
-					.required.field
-						label 方式
-					.field
-						.ui.radio.checkbox
-							input(type="radio", name="approach", value="ONLINE")
-							label 在线咨询
-					.field
-						.ui.radio.checkbox
-							input(type="radio", name="approach", value="BY_PHONE")
-							label 电话咨询
-					.field
-						.ui.radio.checkbox
-							input(type="radio", name="approach", value="OFFLINE")
-							label 面对面咨询
-				.required.inline.field
-					label 咨询问题
-					textarea(name="reason")
-				.required.inline.field
-					.ui.checkbox
-						input(type="checkbox", name="readpolicy")
-						label 我已阅读并同意
-							a《咨询协议》
-				.ui.centered.grid
-					.ten.wide.centered.column
-						.fluid.ui.submit.green.button 提交
-				.ui.error.message
+					.ui.header 预约咨询师
+					.ui.basic.segment
+						h3.ui.center.aligned.header 咨询师： {{realName}}
+						.content
+							{{about}}
+			.six.wide.column
+				.ui.basic.center.aligned.segment
+					{{#if avatar}}
+					img.ui.medium.circular.image(src="{{avatar}}")
+					{{else}}
+					img.ui.medium.circular.image(src="/public/images/placeholder.png")
+					{{/if}}
+		.row
+			.fourteen.wide.column
+				.ui.basic.segment
+					h3.ui.center.aligned.header 请填写预约资料
+						.sub.header 请如实填写您的资料，以便工作人员更好的为您服务.
+		.centered.row
+			.thirteen.wide.column
+				form.ui.form
+					.required.inline.field
+						label 姓名
+						input(type="text", name="name")
+					.required.inline.field
+						label 年龄
+						input(type="text", name="age")
+					.grouped.inline.fields
+						.required.field
+							label(for="gender") 性别
+						.field
+							.ui.radio.checkbox
+								input(type="radio", name="gender", value="男")
+								label 男
+						.field
+							.ui.radio.checkbox
+								input(type="radio", name="gender", value="女")
+								label 女	
+					.required.inline.field
+						label 电话
+						input(type="text", name="phone")
+					.required.inline.field
+						label 时间
+						input#date(type="text", name="date", placeholder="期望时间")
+					.grouped.inline.fields
+						.required.field
+							label 方式
+						.field
+							.ui.radio.checkbox
+								input(type="radio", name="approach", value="ONLINE")
+								label 在线咨询
+						.field
+							.ui.radio.checkbox
+								input(type="radio", name="approach", value="BY_PHONE")
+								label 电话咨询
+						.field
+							.ui.radio.checkbox
+								input(type="radio", name="approach", value="OFFLINE")
+								label 面对面咨询
+					.required.inline.field
+						label 咨询问题
+						textarea(name="reason")
+					.required.inline.field
+						.ui.checkbox
+							input(type="checkbox", name="readpolicy")
+							label 我已阅读并同意
+								a《咨询协议》
+					.ui.centered.grid
+						.ten.wide.centered.column
+							.fluid.ui.submit.green.button 提交
+					.ui.error.message	
