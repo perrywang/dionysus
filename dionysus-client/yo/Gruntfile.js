@@ -90,7 +90,11 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       less: {
-        files: ['<%= config.app %>/styles/{,*/}*.less'],
+        files: [
+          '<%= config.app %>/styles/{,*/}*.less', 
+          '<%= config.app %>/styles/{,*/}*.overrides',
+          '<%= config.app %>/styles/{,*/}*.variables'
+        ],
         tasks: ['less:server', 'autoprefixer']
       },
       styles: {
