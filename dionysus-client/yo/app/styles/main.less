@@ -16,31 +16,12 @@ main {
   padding-top:16rem;
 }
 
-body {
-  padding-top: 0rem;
-  background: #FEFFFF;
-}
-
-content-holder{
-  height: auto;
-  min-height: 100%;
-}
-
-#header {
-  margin-top: 0rem;
-  //height: 3rem;
-}
-
-#header, #footer {
-  width: 100%;
+#header, #footer, #main {
+  display: block;
   margin: 0 auto;
 }
 
 @media screen and (max-device-width: 480px) {
-  #main {
-    width: 100%;
-    margin: 0 auto;
-  }
   .right.rail {
     display: none;
   }
@@ -53,9 +34,7 @@ content-holder{
 
 @media screen and (min-device-width: 480px) {
   #main {
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 3rem
+    padding-top: 2rem
   }
   .container {
     width: ~"calc(100% - 325px)";
@@ -77,8 +56,6 @@ article {
 .froala-view {
   min-height: 10rem;
 }
-
-
 
 .psychtest {
   max-width: 960px;
@@ -171,3 +148,4 @@ p.course.content {
     padding-right:30px;
   }
 }
+
