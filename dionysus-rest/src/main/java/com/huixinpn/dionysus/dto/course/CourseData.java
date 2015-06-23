@@ -56,6 +56,10 @@ public class CourseData extends EntityData<Course> {
 
   private Float price;
 
+  private String location;
+
+  private Integer registered;
+
   private Collection<TagData> tags = new ArrayList<>();
 
   public CourseData(Course course) {
@@ -76,6 +80,7 @@ public class CourseData extends EntityData<Course> {
     this.price = course.getPrice();
     this.tags = new EntityCollectionData<TagData>(course.getTags(), TagData.class).toDTOCollection();
     this.cover = course.getCover();
+    this.registered = course.getUsers().size();
   }
 
   @Override
@@ -101,6 +106,7 @@ public class CourseData extends EntityData<Course> {
 
     course.setCover(ExtractCover(body));
     course.setEmbeddedVideo(ExtractEmbeddedVideo(body));
+    course.setLocation(this.getLocation());
     Collection<Tag> tagsList = new ArrayList<>();
     for (TagData tagData : tags) {
       tagsList.add(tagData.toEntity());

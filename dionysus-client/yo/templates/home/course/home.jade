@@ -8,79 +8,82 @@
               |{{#each slider}}
               li
                 a(href="/courses/{{id}}")
-                  |<img src="/public/images/slidex.jpg">
+                  |<img src="{{cover}}">
               |{{/each}}
       .category.row.centered
         .twelve.wide.column
           #topCats
-            a(style="margin-right:20px;") 受众人群
+            label 受众人群
             |{{#each top}}
             .top.ui.small.basic.button(id="{{id}}") {{name}}
             |{{/each}}
-          #subCats(style="margin-top:10px;")
-            a(style="margin-right:20px;") 内容类别
+          #subCats
+            label 内容类别
             |{{#each sub}}
             .sub.ui.small.basic.button(id="{{id}}") {{name}}
             |{{/each}}
-          #approach(style="margin-top:10px;")
-            a(style="margin-right:20px;") 授课方式
+          #approach
+            label 授课方式
             |{{#each approach}}
             a.approach.ui.small.basic.button(href="{{href}}") {{name}}
             |{{/each}}
       .twelve.wide.column.centered
         .ui.divider
-      #videos.twelve.wide.column.centered(style="margin-top:10px;")
+      #videos.twelve.wide.column.centered
         .ui.three.column.grid
           |{{#each videos}}
           .column
             .ui.basic.segment
-              img.ui.fluid.image(src="/static/img/1.jpg")
-              .course.title.link(style="text-align:center;padding-top:20px;")
+              img.ui.fluid.image(src="{{cover}}")
+              .course.title.link
                 h4
-                  a(href="/courses/{{id}}") {{title}}
+                  a.title(href="/courses/{{id}}") {{title}}
           |{{/each}}
       .two.column.centered.row
         .centered.column
-          #pagenation-video(style="text-align:center;")
+          #pagenation-video.pagenation
       .twelve.wide.column.centered
         .ui.divider
   #second.section
     .ui.grid
       .twelve.wide.column.centered
         img.ui.fluid.image(src="/public/images/room-course-reporter.png")
+        h1.reporter.title "还想要点别的？"
       #room.twelve.wide.column.centered
-        h1(style="text-align:center;margin-top:30px;margin-bottom:20px;font-weight:bold;") "还想要点别的？"
         .ui.four.column.grid
           |{{#each room}}
           .column
             .ui.basic.segment
               img.ui.fluid.image(src="/static/img/1.jpg")
-              .course.title.link(style="text-align:center;padding-top:20px;")
+              .course.title.link
                 h5
-                  a(href="/courses/{{id}}") {{title}}
-              p.room.course.content(style="padding-top:20px;") {{description}}
+                  a.title(href="/courses/{{id}}") {{title}}
+              p.course.content {{description}}
               .reg(style="text-align:center;padding-top:20px;")
-                a.ui.purple.tiny.basic.button(href="/courses/{{id}}/reg") 加入
+                a.ui.purple.tiny.basic.button(href="/courses/{{id}}/regroom") 加 入
           |{{/each}}
       .two.column.centered.row
         .centered.column
-          #pagenation-room(style="text-align:center;")
+          #pagenation-room.pagenation
       .twelve.wide.centered.column
         .ui.divider
       #offline.twelve.wide.centered.column
         .ui.two.column.grid
           .column
             .ui.basic.segment
-              img.ui.fluid.image(src="/public/images/slidex.jpg")
+              img.ui.fluid.image(src="/public/images/offline-course.png")
           .column
             .ui.basic.segment
               .ui.grid
                 |{{#each offline}}
-                .two.column.row
+                .three.column.row
+                  .ten.wide.column
+                    h5
+                      a.title(href="/courses/{{id}}") {{title}}
+                    .offline.meta
+                      label 开课时间 {{date}}
+                      label#reg 已注册 {{registered}} 人
                   .column
-                    a(href="/courses/{{id}}") {{title}}
-                    p {{description}}
-                  .column
-                    a.ui.basic.tiny.purple.button 加入
+                    a.ui.basic.tiny.purple.button(href="/courses/{{id}}/regoffline") 加 入
                 |{{/each}}
 

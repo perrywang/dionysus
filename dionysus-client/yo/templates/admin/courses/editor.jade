@@ -31,6 +31,13 @@ form.ui.form(style="padding-top:30px;")
               |{{#each consultants}}
               <option value="{{ id }}">{{ username }}</option>
               |{{/each}}
+        .two.fields
+          .field
+            label 页面位置
+            select.ui.dropdown(name="location")
+              option(value="") 选择位置
+              option(value="slider") 首页滚动栏
+          .field
         h3
           a 详细信息
         .ui.divider
