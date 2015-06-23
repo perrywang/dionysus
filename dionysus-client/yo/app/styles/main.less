@@ -16,21 +16,12 @@ main {
   padding-top:16rem;
 }
 
-#header {
-  margin-top: 0rem;
-  //height: 3rem;
-}
-
-#header, #footer {
-  width: 100%;
+#header, #footer, #main {
+  display: block;
   margin: 0 auto;
 }
 
 @media screen and (max-device-width: 480px) {
-  #main {
-    width: 100%;
-    margin: 0 auto;
-  }
   .right.rail {
     display: none;
   }
@@ -43,8 +34,6 @@ main {
 
 @media screen and (min-device-width: 480px) {
   #main {
-    width: 100%;
-    margin: 0 auto;
     padding-top: 2rem
   }
   .container {
@@ -68,7 +57,6 @@ article {
   min-height: 10rem;
 }
 
-
 .psychtest {
   max-width: 960px;
   margin: 0 auto;
@@ -78,7 +66,6 @@ ul.course-categories {
   list-style:none;
   line-height:2;
 }
-
 
 .ui.form.psychtest .inline.fields {
   margin : 0;
