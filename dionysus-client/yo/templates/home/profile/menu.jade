@@ -1,12 +1,14 @@
-h2.ui.header
-  img.ui.small.circular.image(src="{{ avatar }}")
-  .content 你好，{{ username  }}
-    .sub.header {{ about  }}
-    .sub.header 
-      a#myinfo 修改我的个人信息
+.ui.centered.stackable.grid
+  .twelve.wide.column
+    h2.ui.header
+      img.ui.small.circular.image(src="{{ avatar }}")
+      .content 你好，{{ username  }}
+        .sub.header {{ about  }}
+        .sub.header 
+          a#myinfo 修改我的个人信息
 h4.ui.horizontal.header.divider
   i.bar.char.icon
-.ui.page.grid
+.ui.page.stackable.grid
   .row
     .centered.column
       .ui.horizontal.list

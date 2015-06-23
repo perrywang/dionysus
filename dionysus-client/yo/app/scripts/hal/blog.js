@@ -34,12 +34,16 @@ Entites
 
 	});
 
+	Domain.Blog = Blog;
+
 	var BlogModel = Backbone.Model.extend({
-		url: '/api/v1/blogs',
+		urlRoot: '/api/v1/blogs',
 		initialize: function(options) {
 			if (options && options.id) this.url += "/" + options.id;
 		}
 	});
+
+	Domain.BlogModel = BlogModel;
 
 /*
 Collection
@@ -55,23 +59,43 @@ Collection
 		}
 	});
 
+	var BlogPageableCollection = Dionysus.Domain.ArticlePageableCollection.extend({
+		url: '/api/v1/blogs',
+		parseRecords: function(resp) {
+			var embedded = resp._embedded;
+			return embedded ? embedded.blogs : [];
+		},
+	});
+
 /*
 Reqeust Handler
-*/
+*/	
+
+	Dionysus.reqres.setHandler('blog:my:pageable', function(user) {
+		var resourses = new BlogPageableCollection({
+				searchMethod: "findByCreatedBy",
+				criteria: {
+					author: user,
+					sort: 'lastModifiedDate,desc'
+				}
+			}),
+			defer = $.Deferred();
+
+		resourses.fetch().then(function(data) {
+			defer.resolve(resourses);
+		});
+
+		return defer.promise();
+	});
+
 
 	Dionysus.reqres.setHandler('blog:item', function(id) {
-		/*var blog = new BlogModel({
-				id: id
-			}),*/
+
 		var blog = Blog.findOrCreate({
 			id:id
 		})
 			defer = $.Deferred();
-		blog.fetch(/*{
-			data: {
-				projection: "detail"
-			}
-		}*/).then(function() {
+		blog.fetch().then(function() {
 			defer.resolve(blog);
 		});
 
@@ -116,5 +140,6 @@ Reqeust Handler
 
 		});
 
+	
 
 } );

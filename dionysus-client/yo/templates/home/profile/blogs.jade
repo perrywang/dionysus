@@ -1,0 +1,14 @@
+.ui.green.button#newBlog 创作
+.ui.divided.items
+	{{#each items}}
+	.item
+		.ui.tiny.image
+			{{#if cover}}
+			img(src="{{cover}}")
+			{{else}}
+			img(src="/public/images/placeholder.png")
+			{{/if}}
+		.middle.aligned.content
+			a.header(data-id="{{id}}") {{title}}
+	{{/each}}
+#paging

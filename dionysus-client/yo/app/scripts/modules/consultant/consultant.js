@@ -136,7 +136,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
 
     gender: {
       identifier: 'gender',
-      rules: [{type: 'checked', prompt: '请选择您的年龄'}]
+      rules: [{type: 'checked', prompt: '请选择您的性别'}]
     },
 
     phone: {

@@ -9,6 +9,9 @@ html(class="no-js")
     // build:css({.,.tmp}) /styles/main.css
     link(rel="stylesheet", href="/styles/semantic.css")
     link(rel="stylesheet", href="/styles/main.css")
+    link(rel="stylesheet", href="/bower_components/fontawesome/css/font-awesome.css")
+    link(rel="stylesheet", href="/bower_components/froala/css/froala_editor.css")
+    link(rel="stylesheet", href="/bower_components/froala/css/froala_style.css")
     link(rel="stylesheet", href="/bower_components/datetimepicker/jquery.datetimepicker.css")
     link(rel="stylesheet", href="/bower_components/flexslider/flexslider.css")
     link(rel="stylesheet", href="/styles/pagination.css")
@@ -28,6 +31,7 @@ html(class="no-js")
   script(src="/scripts/modules/commonUtils.js")
   script(src="/scripts/modules/layoutviews.js")
   script(src="/scripts/hal/articles.js")
+  script(src="/scripts/hal/blog.js")
   script(src="/scripts/hal/psychtests.js")
   script(src="/scripts/hal/psychtestresults.js")
   script(src="/scripts/common/entity.js")
@@ -57,6 +61,26 @@ html(class="no-js")
   script(src="/scripts/modules/course/home.js")
 
   // endbuild
+
+  // build:js(.) /scripts/froala_editor.js
+  script(src="/bower_components/froala/js/froala_editor.min.js")
+  script(src="/bower_components/froala/js/plugins/video.min.js")
+  script(src="/bower_components/froala/js/plugins/colors.min.js")
+  script(src="/bower_components/froala/js/plugins/font_family.min.js")
+  script(src="/bower_components/froala/js/plugins/font_size.min.js")
+  script(src="/bower_components/froala/js/plugins/block_styles.min.js")
+  script(src="/bower_components/froala/js/plugins/lists.min.js")
+  script(src="/bower_components/froala/js/plugins/tables.min.js")
+  script(src="/bower_components/froala/js/plugins/block_styles.min.js")
+  script(src="/bower_components/froala/js/plugins/inline_styles.min.js")
+  script(src="/bower_components/froala/js/plugins/urls.min.js")
+  script(src="/bower_components/froala/js/plugins/file_upload.min.js")
+  script(src="/scripts/froala_audio.js")
+  // endbuild
+
+  script(src="/public/langs/zh_cn.js")
+  script
+    | $.Editable.DEFAULTS.key = 'ZqordtponD3fveuvA6kfg==';
 
   script
     | Dionysus.start();
