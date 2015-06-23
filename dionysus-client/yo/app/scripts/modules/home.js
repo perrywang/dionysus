@@ -32,7 +32,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
     },
     onShow: function(){
       if(!sessionStorage.getItem('role') || sessionStorage.getItem('role') !== 'ROLE_ADMIN'){
-        this.$el.form().find('#adminentry').remove();
+        this.$el.form().find('#adminlink').remove();
       }
     },
     ui: {
