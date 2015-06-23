@@ -69,13 +69,13 @@ public class CourseController {
     User login = (User) authentication.getPrincipal();
     User reloaded = userRepository.findOne(login.getId());
     Course course = courseRepository.findOne(id);
+    int currentReg = course.getUsers().size();
     if (course != null &&
-        (course.getCapacity() == null || course.getUsers().size() < course.getCapacity()) &&
-        !reloaded.getCourses().contains(course)) {
+        (course.getCapacity() == null || currentReg < course.getCapacity())) {
       course.getUsers().add(reloaded);
       courseRepository.save(course);
     }
-    return new ResponseEntity<>(EMPTY_JSON_OBJECT, HttpStatus.OK);
+    return new ResponseEntity<>("{\"number:\"" + (currentReg+1) + "}", HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/me", method = RequestMethod.GET)

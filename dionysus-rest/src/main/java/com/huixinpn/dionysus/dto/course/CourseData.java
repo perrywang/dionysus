@@ -56,6 +56,8 @@ public class CourseData extends EntityData<Course> {
 
   private Float price;
 
+  private String location;
+
   private Integer registered;
 
   private Collection<TagData> tags = new ArrayList<>();
@@ -104,6 +106,7 @@ public class CourseData extends EntityData<Course> {
 
     course.setCover(ExtractCover(body));
     course.setEmbeddedVideo(ExtractEmbeddedVideo(body));
+    course.setLocation(this.getLocation());
     Collection<Tag> tagsList = new ArrayList<>();
     for (TagData tagData : tags) {
       tagsList.add(tagData.toEntity());
