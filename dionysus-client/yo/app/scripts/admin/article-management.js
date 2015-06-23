@@ -128,6 +128,28 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     }
   });
 
+  var BlogDetailView = Marionette.ItemView.extend({
+    template: JST['templates/admin/articles/blogdetail'],
+
+    initialize: function() {
+      this.listenTo(this.model.get('comments'), 'add', this.render, this);
+    },
+
+    onRender: function() {
+      var x;
+    },
+
+    events: {
+      'click .icon.button': function() {
+        if (sessionStorage.getItem("user")) {
+          var data = Backbone.Syphon.serialize(this);
+          if (data.mycomment && data.mycomment != "") {
+            this.model.newComment(data);
+          }
+        } else alert("你需要先登录");
+      }
+    }
+  });
 
   var BlogListItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/articles/bloglistitem"],
@@ -161,6 +183,10 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
       Dionysus.request('blog:item', id).then(function(blog){
+          var view = new BlogDetailView({
+            model: blog
+          });
+          Dionysus.mainRegion.show(view);
 
       });
     },

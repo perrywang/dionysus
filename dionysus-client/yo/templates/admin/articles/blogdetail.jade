@@ -1,0 +1,29 @@
+.center.floated.sixteen.wide.mobile.ten.wide.tablet.eight.wide.computer.column
+    .row
+      .ui.basic.segment
+        .ui.header
+          h2 {{ title }}
+        p {{ summary }}
+        p {{{ body }}}
+    .row
+      .ui.basic.segment
+        .ui.divider
+        .ui.comments
+          .ui.divided.header 评论
+          form.ui.reply.form
+            .field
+              textarea(name="mycomment", value="{{mycomment}}")
+            .ui.submit.labeled.icon.green.button
+              i.icon.edit
+              |发布
+          .ui.divider
+          {{#each comments}}
+          .comment
+            a.avatar
+              img(src="{{this.createdBy.avatar}}")
+            .content
+              a.author {{this.createdBy.username}}
+              .metadata {{this.lastModifiedDate.year}}-{{this.lastModifiedDate.monthOfYear}}-{{this.lastModifiedDate.dayOfMonth}}
+              .text
+                p {{this.content}}
+          {{/each}}

@@ -46,7 +46,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         lastModifiedDate:{year:"刚刚"}
       })
       this.get("comments").add(comment, {at:0});
-      this.trigger
+
     }
 
   });

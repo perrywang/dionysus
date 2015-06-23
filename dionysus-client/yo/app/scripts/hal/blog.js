@@ -3,12 +3,42 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $){
 Entites
 */
 	var Blog = Backbone.RelationalHalResource.extend({
-		relations:[{
+		url: '/api/v1/blogs',
+		relations: [{
 			type: "HasMany",
 			key: "comments",
 			relatedModel: Dionysus.Domain.Comment
 		}],
+		initialize: function(options) {
+			if (options && options.id) this.url += "/" + options.id;
+		},
+		newComment: function(data) {
+			var userId = sessionStorage.getItem("user");
+			var comment = new Dionysus.Domain.Comment({
+				content: data.mycomment,
+				article: this.link('self').href()
+			});
+			comment.save();
+			comment.set("createdBy", {
+				username: sessionStorage.getItem('username'),
+				avatar: sessionStorage.getItem('avatar'),
+				lastModifiedDate: {
+					year: "刚刚"
+				}
+			})
+			this.get("comments").add(comment, {
+				at: 0
+			});
 
+		}
+
+	});
+
+	var BlogModel = Backbone.Model.extend({
+		url: '/api/v1/blogs',
+		initialize: function(options) {
+			if (options && options.id) this.url += "/" + options.id;
+		}
 	});
 
 /*
@@ -30,11 +60,18 @@ Reqeust Handler
 */
 
 	Dionysus.reqres.setHandler('blog:item', function(id) {
-		var blog = Blog.findOrCreate({
+		/*var blog = new BlogModel({
 				id: id
-			}),
+			}),*/
+		var blog = Blog.findOrCreate({
+			id:id
+		})
 			defer = $.Deferred();
-		blog.fetch().then(function() {
+		blog.fetch(/*{
+			data: {
+				projection: "detail"
+			}
+		}*/).then(function() {
 			defer.resolve(blog);
 		});
 
