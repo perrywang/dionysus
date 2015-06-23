@@ -53,6 +53,74 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     }
   });
 
+  Account.RegisterModalView = Marionette.ItemView.extend({
+    template: JST['templates/home/header/register'],
+    className: 'ui modal',
+    events : {
+      //'click #register-me' : 'register',
+      'register:me': 'register',
+      'click #login-me' : 'login'
+    },
+
+    register: function() {
+      var dialog = this;
+
+      var user = this.$el.form('get values', ['username', 'password', 'email', 'consultant']);
+      var validated = true;
+
+      if (validated) {
+        var consultant = user.consultant;
+        var url = consultant ? '/api/v1/registerconsultant' : '/api/v1/register';
+        $.ajax({
+          url: url,
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify(user)
+        }).done(function(response) {
+          window.alert('注册成功！');
+          sessionStorage.setItem('authorized', 'enabled');
+          sessionStorage.setItem('user', response.id);
+          sessionStorage.setItem('username', response.username);
+          sessionStorage.setItem('avatar', response.avatar);
+
+          dialog.$el.modal('hide');
+
+          Dionysus.navigate('/', {
+            trigger: true
+          });
+        }).fail(function() {
+          window.alert('注册失败，用户已存在...');
+        });
+      }
+
+    },
+
+    login: function(){
+      this.$el.modal('hide');
+      Dionysus.trigger('login');
+    },
+
+    onRender: function(){
+
+      var dialog = this;
+
+      this.$('.ui.checkbox').checkbox();
+
+      this.$el.form(ACCOUNT_RULES, {
+        onSuccess: function(e) {
+          e.preventDefault();
+          $(this).trigger('register:me');
+        }
+      });
+
+      this.$el
+        .modal('setting', 'transition', 'horizontal flip')
+        .modal('show');
+    }
+
+
+  });
+
   var RegisterView = Marionette.ItemView.extend({ 
     template: JST['templates/home/account'],
     tagName: 'form',
@@ -113,13 +181,19 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
             sessionStorage.setItem('authorized', 'disabled');
             sessionStorage.removeItem('user');
             sessionStorage.removeItem('role');
-            Dionysus.navigate('/site',{trigger:true});
+            Dionysus.navigate('/',{trigger:true});
             Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderView());
           }
         });
       });
       Dionysus.mainRegion.show(view);
     }
+  });
+
+  Dionysus.addInitializer(function() {
+    Dionysus.on('register',function(){
+      Dionysus.registerRegion.show(new Dionysus.Account.RegisterModalView());
+    });
   });
 
   Dionysus.addInitializer(function() {

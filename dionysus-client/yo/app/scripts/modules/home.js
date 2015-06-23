@@ -56,10 +56,14 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       login: '#login'
     },
     events:{
-      'click @ui.login': 'triggerLogin'
+      'click @ui.login': 'triggerLogin',
+      'click #register': 'triggerRegister'
     },
     triggerLogin: function(){
       Dionysus.trigger('login');
+    },
+    triggerRegister: function(){
+      Dionysus.trigger('register');
     }
   });
 
@@ -74,7 +78,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
     events : {
       'click #register' : function() {
         this.$el.modal('hide');
-        Dionysus.navigate('/register', { trigger: true });
+        Dionysus.trigger('register');
+        //Dionysus.navigate('/register', { trigger: true });
       },
       'click #loginbutton' : 'login'
     },
@@ -104,7 +109,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         }
 
         dialog.$el.modal('hide');
-        Dionysus.navigate('/site', { trigger: true });
+        Dionysus.navigate('/', { trigger: true });
         Dionysus.mainNavRegion.show(new Dionysus.Home.HeaderLoginView());
       }).fail(function() {
         window.alert('登录失败，请确认用户名或密码正确...');
