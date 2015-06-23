@@ -237,6 +237,13 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
         });
         Dionysus.mainRegion.show(view);
       });
+    },
+
+    showAttention: function(){
+      var view = new Marionette.ItemView({
+        template: JST['templates/home/consultant/attention'],
+      });
+      Dionysus.mainRegion.show(view);
     }
   });
 
@@ -245,7 +252,8 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       appRoutes: {
         'consultants(/)': 'showConsultants',
         'consultants/list/:expertise': 'filterConsultants',
-        'consultants/:id(/)': 'showConsultantDetail'
+        'consultants/:id(/)': 'showConsultantDetail',
+        'consultants/info/detail(/)': 'showAttention'
       },
       controller: new ConsultantController()
     });
