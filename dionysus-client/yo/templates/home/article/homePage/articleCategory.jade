@@ -1,8 +1,6 @@
-h2 心理知识
-.category-menu.pure-menu.pure-menu-horizontal
-	ul.pure-menu-list
-		li.pure-menu-item 心理知识分类:  
+.ui.basic.segment
+	h2.ui.header 心理知识
+	p 心理知识分类:
 		{{#each items}}
-		li.pure-menu-item
-			<a data-id="{{id}}" class="pure-menu-link" href="#">{{name}}</a>
+		a.ui.green.basic.small.button(data-id="{{id}}", href="#") {{name}}
 		{{/each}}

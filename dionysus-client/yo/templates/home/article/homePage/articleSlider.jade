@@ -2,5 +2,9 @@ ul.slides
   {{#each items}}
   li
     a(href="/articles/{{id}}")
+      {{#if cover}}
+      img(src="{{cover}}")
+      {{else}}
       img(src="/public/images/slidex.jpg")
+      {{/if}}
   {{/each}}

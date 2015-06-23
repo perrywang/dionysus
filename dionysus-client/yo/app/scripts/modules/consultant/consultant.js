@@ -82,7 +82,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
     
     template: JST['templates/home/consultant/consultantHome'],
     tagName: "div",
-    className: "layout-view",
+    className: "ui centered stackable grid",
 
     initialize: function(options){
       this.expertises = options.expertises;
@@ -159,7 +159,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   var ConsultantDetailView = Marionette.ItemView.extend({
     template: JST['templates/home/consultant/consultantDetail'],
     tagName: "div",
-    className: "layout-view",
+    className: "ui centered stackable grid",
     events: {
       'click .button': function(){
 
@@ -237,6 +237,13 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
         });
         Dionysus.mainRegion.show(view);
       });
+    },
+
+    showAttention: function(){
+      var view = new Marionette.ItemView({
+        template: JST['templates/home/consultant/attention'],
+      });
+      Dionysus.mainRegion.show(view);
     }
   });
 
@@ -245,7 +252,8 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       appRoutes: {
         'consultants(/)': 'showConsultants',
         'consultants/list/:expertise': 'filterConsultants',
-        'consultants/:id(/)': 'showConsultantDetail'
+        'consultants/:id(/)': 'showConsultantDetail',
+        'consultants/info/detail(/)': 'showAttention'
       },
       controller: new ConsultantController()
     });

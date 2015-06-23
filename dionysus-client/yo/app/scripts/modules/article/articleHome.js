@@ -7,6 +7,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 	*/
 	var Layout = Marionette.LayoutView.extend({
 		template:JST[baseTemplatePath+'homePage/articleHome'],
+		tagName:"div",
+		className:"ui centered stackable grid",
 		regions: {
 			slider: "#slider",
 			category: "#category",

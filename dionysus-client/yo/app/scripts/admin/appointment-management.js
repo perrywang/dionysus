@@ -21,9 +21,27 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
         appointment.url = '/controllers/appointments/' + model.id;
         appointment.save();
       });
+    },
+	triggers: {
+      'click .input.button':'input:profile'
     }
   });
 
+  var PsychoProfileEditorView = Marionette.ItemView.extend({
+    template: JST["templates/admin/psychoprofile/psychoprofile"],
+    tagName: 'form',
+    className: 'ui form',
+    ui: {
+      save: '.button.submit'
+    },
+    events: {
+      'click @ui.save': 'saveProfile'
+    },
+    saveProfile: function() {
+      this.trigger('psychoprofile:save');
+    }
+  });
+  
   var AppointmentListView = Marionette.CompositeView.extend({
     template: JST["templates/admin/appointments/appointmentlist"],
     childView: AppointmentItemView,
@@ -80,6 +98,16 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
 
   var AppointmentController = Marionette.Controller.extend({
 
+    editPsychoProfile: function(){
+      //show loading before get any data
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      var editor = new PsychoProfileEditorView();
+      editor.on('psychoprofile:save', function(){
+        window.alert('提交成功');
+      });
+      Dionysus.mainRegion.show(editor);	  
+    },
+	
     showAppointments: function (queryString) {
       var params = parseQueryString(queryString);
       var page = 1;
@@ -91,15 +119,19 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
         var appointments = new Backbone.Collection(pagedAppointments.get('content'));
         var totalPages = pagedAppointments.get('totalPages');
         var listView = new AppointmentListView({collection:appointments,current:page,totalPages:totalPages});
+        listView.on('childview:input:profile', function(childView, model){
+		  Dionysus.navigate('/admin/appointments/psychoprofile', {trigger: true});
+		});
         Dionysus.mainRegion.show(listView);
       });
-    }
+	}
   });
 
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/appointments(?*querystring)': 'showAppointments'
+        'admin/appointments(?*querystring)': 'showAppointments',
+		'admin/appointments/psychoprofile': 'editPsychoProfile'
       },
       controller: new AppointmentController()
     });
