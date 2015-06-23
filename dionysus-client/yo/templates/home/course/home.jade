@@ -1,7 +1,7 @@
-#fullPage
+#fullPage.course
   #first.section
     .ui.grid
-      .row.centered
+      .slider.row.centered
         .twelve.wide.column
           #slider.flexslider
             ul.slides
@@ -10,7 +10,7 @@
                 a(href="/courses/{{id}}")
                   |<img src="/public/images/slidex.jpg">
               |{{/each}}
-      .row.centered
+      .category.row.centered
         .twelve.wide.column
           #topCats
             a(style="margin-right:20px;") 受众人群
@@ -27,36 +27,46 @@
             |{{#each approach}}
             a.approach.ui.small.basic.button(href="{{href}}") {{name}}
             |{{/each}}
+      .twelve.wide.column.centered
+        .ui.divider
       #videos.twelve.wide.column.centered(style="margin-top:10px;")
         .ui.three.column.grid
           |{{#each videos}}
           .column
             .ui.basic.segment
               img.ui.fluid.image(src="/static/img/1.jpg")
-              .link
-                a {{title}}
+              .course.title.link(style="text-align:center;padding-top:20px;")
+                h4
+                  a(href="/courses/{{id}}") {{title}}
           |{{/each}}
       .two.column.centered.row
         .centered.column
           #pagenation-video(style="text-align:center;")
+      .twelve.wide.column.centered
+        .ui.divider
   #second.section
     .ui.grid
       .twelve.wide.column.centered
-        img(src="/public/images/slidex.jpg")
+        img.ui.fluid.image(src="/public/images/room-course-reporter.png")
       #room.twelve.wide.column.centered
+        h1(style="text-align:center;margin-top:30px;margin-bottom:20px;font-weight:bold;") "还想要点别的？"
         .ui.four.column.grid
           |{{#each room}}
           .column
             .ui.basic.segment
               img.ui.fluid.image(src="/static/img/1.jpg")
-              .link
-                a {{title}}
-              .reg(style="text-align:center;")
-                a.ui.purple.tiny.basic.button 加入
+              .course.title.link(style="text-align:center;padding-top:20px;")
+                h5
+                  a(href="/courses/{{id}}") {{title}}
+              p.room.course.content(style="padding-top:20px;") {{description}}
+              .reg(style="text-align:center;padding-top:20px;")
+                a.ui.purple.tiny.basic.button(href="/courses/{{id}}/reg") 加入
           |{{/each}}
       .two.column.centered.row
         .centered.column
           #pagenation-room(style="text-align:center;")
+      .twelve.wide.centered.column
+        .ui.divider
       #offline.twelve.wide.centered.column
         .ui.two.column.grid
           .column
@@ -68,7 +78,7 @@
                 |{{#each offline}}
                 .two.column.row
                   .column
-                    a {{title}}
+                    a(href="/courses/{{id}}") {{title}}
                     p {{description}}
                   .column
                     a.ui.basic.tiny.purple.button 加入
