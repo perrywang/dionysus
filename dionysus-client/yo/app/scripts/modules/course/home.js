@@ -183,13 +183,23 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
                     });
             });
     },
-    showCourse : function(id){}
+    showCourse : function(id){},
+    registerRoom : function(id){
+      $.getJSON("/controllers/courses/" + id + "/reg");
+    },
+    registerOffline : function(id){
+      $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+        $('#reg').text('已注册 ' + data.number + ' 人')
+      });
+    }
   });
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
         'courses(/)': 'showCourseHome',
-        'courses/:id(/)' : 'showCourse'
+        'courses/:id(/)' : 'showCourse',
+        'courses/:id/regroom(/)' : 'registerRoom',
+        'courses/:id/regoffline(/)' : 'registerOffline'
       },
       controller: new CourseController()
     });

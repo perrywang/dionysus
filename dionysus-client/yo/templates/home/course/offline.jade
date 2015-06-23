@@ -12,7 +12,7 @@
               a.title(href="/courses/{{id}}") {{title}}
             .offline.meta
               label 开课时间 {{date}}
-              label 已注册 {{registered}} 人
+              label#reg 已注册 {{registered}} 人
           .column
-            a.ui.basic.tiny.purple.button(href="/courses/{{id}}/reg") 加 入
+            a.reg.ui.basic.tiny.purple.button(href="/courses/{{id}}/regoffline") 加 入
         |{{/each}}
