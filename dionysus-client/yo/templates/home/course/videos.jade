@@ -1,8 +1,9 @@
 .ui.three.column.grid
-   |{{#each videos}}
-   .column
-      .ui.basic.segment
-         img.ui.fluid.image(src="/static/img/1.jpg")
-         .link
-            a {{title}}
-   |{{/each}}
+  |{{#each videos}}
+  .column
+    .ui.basic.segment
+      img.ui.fluid.image(src="{{cover}}")
+      .course.title.link
+        h4
+          a.title(href="/courses/{{id}}") {{title}}
+  |{{/each}}

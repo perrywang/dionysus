@@ -1,15 +1,19 @@
 .ui.two.column.grid
-   .column
-      .ui.basic.segment
-         img.ui.fluid.image(src="/public/images/slidex.jpg")
-   .column
-      .ui.basic.segment
-         .ui.grid
-            |{{#each offline}}
-            .two.column.row
-               .column
-                  a {{title}}
-                  p {{description}}
-               .column
-                  a.ui.basic.tiny.purple.button 加入
-            |{{/each}}
+  .column
+    .ui.basic.segment
+      img.ui.fluid.image(src="/public/images/offline-course.png")
+  .column
+    .ui.basic.segment
+      .ui.grid
+        |{{#each offline}}
+        .three.column.row
+          .column
+            h5
+              a.title(href="/courses/{{id}}") {{title}}
+            .offline.meta
+              label 开课时间 {{date}}
+              label 已注册 {{registered}}
+          .column
+          .column
+            a.ui.basic.tiny.purple.button(href="/courses/{{id}}/reg") 加 入
+        |{{/each}}
