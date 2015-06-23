@@ -90,17 +90,20 @@ Dionysus.module('AdminConsultant', function(Consultant, Dionysus, Backbone, Mari
           collection: expertises, consultant: consultant
         });
 		var consultant_put = {};
+		var initconsultant = {};
+		//var expertises_put = {expertises:[]};
+		var expertises_put = [];
         expertiselist.on('childview:add:expertise', function(childView, model){
-		  var initconsultant = this.options.consultant.toJSON();
-		  if(consultant_put)
-		    consultant_put = initconsultant;
-          var jsonstring = model.model.id;
-		  consultant_put.expertises = [];
-          consultant_put.expertises.push('/api/v1/consExpertises/' + jsonstring);
+		  initconsultant = this.options.consultant.toJSON();
+          var jsonstring = model.model.id;		  
+          expertises_put.push('/api/v1/consExpertises/' + jsonstring);
 		  window.alert('添加成功');
 		});
         expertiselist.on('expertise:save', function(){
           //var initconsultant = this.options.consultant.toJSON();
+		  consultant_put = initconsultant;
+		  consultant_put.expertises = [];
+		  consultant_put.expertises = expertises_put;
           var url = '/api/v1/consultants/' + consultant_put.id;		  
           $.ajax({
             url: url,
