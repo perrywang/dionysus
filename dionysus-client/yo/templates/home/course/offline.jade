@@ -7,13 +7,12 @@
       .ui.grid
         |{{#each offline}}
         .three.column.row
-          .column
+          .ten.wide.column
             h5
               a.title(href="/courses/{{id}}") {{title}}
             .offline.meta
               label 开课时间 {{date}}
-              label 已注册 {{registered}}
-          .column
+              label 已注册 {{registered}} 人
           .column
             a.ui.basic.tiny.purple.button(href="/courses/{{id}}/reg") 加 入
         |{{/each}}
