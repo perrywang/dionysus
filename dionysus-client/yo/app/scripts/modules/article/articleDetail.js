@@ -7,7 +7,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
   var LayoutView = Marionette.LayoutView.extend({
     tagName: 'div',
-    className: 'layout-view',
+    className: 'ui centered grid',
     template: JST['templates/home/article/detailPage/detail'],
     regions: {
       detail: "#detail",

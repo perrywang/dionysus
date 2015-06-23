@@ -1,24 +1,14 @@
-.article-home-top
-	.pure-g
-		.pure-u-1
-			#slider
-	.pure-g
-		.pure-u-1
-			#category
-	.pure-g
-		.pure-u-1
-			#doc
-	.pure-g
-		.pure-u-1
-			#video
-	.pure-g
-		.pure-u-1
-			#blog
-.pure-g.article-home-bottom
-	.pure-u-1
-		.article-home-bottom-content
-			.pure-g
-				.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2
-					#tag
-				.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2		
-					#latest
+.centered.row
+	.twelve.wide.column
+		.row#slider
+		.row#category
+		.row#doc
+		.row#video
+		.row#blog
+.centered.row(style="background:#F4F5F6 !important;")
+	.twelve.wide.column
+		.ui.two.column.stackable.grid
+			.column
+				#tag
+			.column
+				#latest

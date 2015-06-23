@@ -6,8 +6,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		Layout: Article Home
 	*/
 	var LayoutView = Marionette.LayoutView.extend({
-		tagName: 'div',
-		className: 'layout-view',
+		tagName:"div",
+		className:"ui centered stackable grid",
 		template: JST[baseTemplatePath+'listPage/articleList'],
 		regions: {
 			list: "#list",
@@ -31,7 +31,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 
 	var ListView = Dionysus.Article.RegionSummaryView.extend({
 		template:JST[baseTemplatePath+'listPage/articleListItems'],
-
+		tagName: "div",
+		className: "ui grid",
 		initialize: function() {
 			if(this.collection) this.listenTo(this.collection, 'add', this.render, this);
 			this.typeMapping = {

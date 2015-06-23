@@ -1,20 +1,25 @@
-.pure-g
-	.pure-u-1
-		.ui.huge.breadcrumb
-			a {{items.[0].type}}
-			i.right.chevron.icon.divider
-			a {{items.[0].category.name}}
-{{#each items}}
-.pure-g.article-list-item
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2
-		img.pure-img(src="{{cover}}")
-	.pure-u-1.pure-u-md-1-2.pure-u-lg-1-2
-		.ui.basic.segment
-			.article-list-summary
-				.ui.header
-					a(href="/articles/{{id}}")
-						h4 {{title}}
-				p {{summary}}
-				p 作者： 来源： 浏览数：
-{{/each}}
-div#paging.paging
+.row
+	.ui.huge.breadcrumb
+		a {{items.[0].type}}
+		i.right.chevron.icon.divider
+		a {{items.[0].category.name}}
+.row
+	.column
+		.ui.items
+			{{#each items}}
+			.item
+				.ui.medium.image
+					{{#if cover}}
+					img(src="{{cover}}")
+					{{else}}
+					img(src="/public/images/placeholder.png")
+					{{/if}}
+				.middle.aligned.content
+					a(href="/articles/{{id}}").header {{title}}
+					.description
+						p {{summary}}
+					.extra 作者： 来源： 浏览数
+			{{/each}}
+.row
+	.center.aligned.column
+		#paging
