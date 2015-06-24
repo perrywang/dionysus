@@ -5,24 +5,31 @@ insert into inbox (id) values (4);
 insert into inbox (id) values (5);
 insert into inbox (id) values (6);
 
+insert into profile (id) values(1);
+insert into profile (id) values(2);
+insert into profile (id) values(3);
+insert into profile (id) values(4);
+insert into profile (id) values(5);
+insert into profile (id) values(6);
+
 -- password: 'password'
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '系统管理员', '/public/images/placeholder.png', 'admin@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 1, '管理员');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '系统管理员', '/public/images/placeholder.png', 'admin@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 1, '管理员', 1);
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '普通用户', '/public/images/placeholder.png', 'test1@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 2, '王鹏');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '普通用户', '/public/images/placeholder.png', 'test1@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 2, '王鹏', 2);
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '高级注册心理咨询师', '/public/images/placeholder.png', 'test2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 3, '达峰');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '高级注册心理咨询师', '/public/images/placeholder.png', 'test2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 3, '达峰', 3);
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '高级注册心理咨询师', '/public/images/placeholder.png', 'wp@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 4, '陆军');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '高级注册心理咨询师', '/public/images/placeholder.png', 'wp@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 4, '陆军', 4);
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (5, 'consultant1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '高级注册心理咨询师', '/public/images/placeholder.png', 'consultant1@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 5, '心理咨询师');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (5, 'consultant1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '高级注册心理咨询师', '/public/images/placeholder.png', 'consultant1@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 5, '心理咨询师', 5);
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname)
-values (6, 'consultant2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '高级注册心理咨询师', '/public/images/placeholder.png', 'consultant2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 6, '心理咨询师');
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
+values (6, 'consultant2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '高级注册心理咨询师', '/public/images/placeholder.png', 'consultant2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 6, '心理咨询师', 6);
 
 insert into consultants (id) values (3);
 insert into consultants (id) values (4);
@@ -199,3 +206,6 @@ insert into user_course values (3, 2);
 insert into tags(id,name) values(1,'ttttaaaaaggggg');
 
 insert into courses_tags values(1,1,1);
+
+insert into profileitem (id, profile_id, consultant_id, summary, module, linkid) values (1, 1, 4, '心理健全', 'courses', '2');
+insert into profileitem (id, profile_id, consultant_id, summary, module, linkid) values (2, 2, 3, '心理不健全', 'courses', '2');

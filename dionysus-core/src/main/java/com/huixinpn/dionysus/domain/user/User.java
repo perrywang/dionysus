@@ -87,7 +87,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
   private Collection<Course> courses = new ArrayList<>();
 
-  @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+  @OneToOne(cascade = {CascadeType.ALL})
   private Profile profile;
 
   @OneToOne(cascade = {CascadeType.ALL})
@@ -150,7 +150,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
     this.roles = new HashSet<Role>();
     this.inbox = new Inbox();
-    this.profile = new Profile(this);
+    this.profile = new Profile();
   }
 
   public User(String username, String password) {

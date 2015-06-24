@@ -22,7 +22,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "profiles")
+@Table(name = "profile")
 public class Profile extends AbstractDionysusPersistable {
 
 	private static final long serialVersionUID = 4546633052695670043L;

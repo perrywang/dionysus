@@ -103,6 +103,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     user.setPassword("");
     user.setEncryptedPassword("");
     user.setCourses(null);
+    user.setProfile(null);
     if(user instanceof Consultant)
     {
     	((Consultant)user).setTeachings(null);
