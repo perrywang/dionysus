@@ -1,6 +1,11 @@
-.ui.basic.segment
-	h2.ui.header 心理知识
-	p 心理知识分类:
-		{{#each items}}
-		a.ui.green.basic.small.button(data-id="{{id}}", href="#") {{name}}
-		{{/each}}
+.ui.stackable.grid
+	.row
+		.column
+			h2.ui.header 心理知识
+	.two.column.middle.aligned.row
+		.two.wide.column
+			h4 分类:
+		.twelve.wide.column
+			{{#each items}}
+			a.ui.green.basic.small.button(data-id="{{id}}", href="#") {{name}}
+			{{/each}}
