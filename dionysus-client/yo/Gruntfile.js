@@ -33,6 +33,7 @@ module.exports = function (grunt) {
     }
     if (/^\/articles/.test(url) ||
         /^\/site/.test(url) ||
+        /^\/fms/.test(url) ||
         /^\/logout/.test(url) ||
         /^\/login/.test(url) ||
         /^\/profile/.test(url) ||
@@ -121,7 +122,7 @@ module.exports = function (grunt) {
         open: true,
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
       proxies: [{
         context: ['/api/v1', '/topic', '/chat', '/dionysus', '/upload','/controllers'],

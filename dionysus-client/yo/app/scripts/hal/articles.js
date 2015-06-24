@@ -221,7 +221,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   Dionysus.reqres.setHandler('article:list:pageable', function(searchMethod, criteria){
     if(!criteria) criteria={};
-    criteria['projection'] = 'read';
+    if(!criteria['projection']) criteria['projection'] = 'read';
     var resources = new ArticlePageableCollection({
       searchMethod : searchMethod,
       criteria:criteria

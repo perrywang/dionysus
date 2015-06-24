@@ -43,7 +43,12 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showMyArticles: function(){
       var region = this.getRegion('myContent');
-      Dionysus.request("blog:my:pageable", sessionStorage.getItem('user')).done(function(blogs){
+      var user = sessionStorage.getItem('user');
+      if(!user || user==="") {
+        Dionysus.trigger('login');
+        return
+      }
+      Dionysus.request("blog:my:pageable", user).done(function(blogs){
         var view = new ProfileBlogListView({
           collection: blogs
         });

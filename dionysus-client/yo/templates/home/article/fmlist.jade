@@ -1,0 +1,14 @@
+.three.column.row
+	{{#each items}}
+	.column
+		.ui.basic.segment
+			a(data-id="{{id}}", href="#")
+				{{#if cover}}
+				img.ui.centered.image(src="{{cover}}")
+				{{else}}
+				img.ui.centered.image(src="/public/images/fm/2.png")
+				{{/if}}
+	{{/each}}
+.row
+	.center.aligned.column
+		#paging

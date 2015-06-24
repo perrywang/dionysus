@@ -30,4 +30,6 @@ public interface OfficialArticleRepository extends JpaRepository<OfficialArticle
     Page<OfficialArticle> findByCategoryAndType(@Param("category") Category category, @Param("type")ArticleType articleType, Pageable pageable);
 
     Page<OfficialArticle> findAll(Pageable pageable);
+
+    Page<OfficialArticle> findByType(@Param("type")ArticleType articleType, Pageable pageable);
 }
