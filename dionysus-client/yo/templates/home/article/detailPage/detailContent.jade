@@ -20,7 +20,11 @@
           {{#each comments}}
           .comment
             a.avatar
+              {{#if this.createdBy.avatar}}
               img(src="{{this.createdBy.avatar}}")
+              {{else}}
+              img(src="/public/images/placeholder.png")
+              {{/if}}
             .content
               a.author {{this.createdBy.username}}
               .metadata {{this.lastModifiedDate.year}}-{{this.lastModifiedDate.monthOfYear}}-{{this.lastModifiedDate.dayOfMonth}}

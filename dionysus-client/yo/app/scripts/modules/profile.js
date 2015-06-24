@@ -72,14 +72,14 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
     },
     showMyCourses: function(){
-      alert("you click myCourses")
+      alert("功能开发中");
     },
     showProfiles: function(){
       var region = this.getRegion('myContent');
       region.show(new ProfilePsychoProfileView());
     },	
     showMyTests: function(){
-      alert("you click myTests")
+      alert("功能开发中")
     },
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
