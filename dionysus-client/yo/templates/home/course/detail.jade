@@ -12,19 +12,24 @@
         h3
           a 发表留言
         .ui.form
-          textarea(name="comment")
+          textarea#comment
           .ui.small.submit.green.button(style="float:right;margin-top:15px;") 提交
         #commentsList(style="clear:both;margin-top:100px;")
-          |{{#each comments}}
-          .comment
-          a.avatar
-            img(src="{{createdBy.avatar}}")
-          .content
-            a.author {{createdBy.username}}
-            .metadata {{lastModifiedDate.year}}-{{this.lastModifiedDate.monthOfYear}}-{{this.lastModifiedDate.dayOfMonth}}
-            .text
-              p {{comment}}
-          |{{/each}}
+          .ui.comments
+            |{{#each comments}}
+            .comment
+              a.avatar
+                |{{#if createdBy.avatar}}
+                img(src="{{createdBy.avatar}}")
+                |{{else}}
+                img(src="/public/images/placeholder.png")
+                |{{/if}}
+              .content
+                a.author {{createdBy.username}}
+                .metadata {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
+                .text
+                  p {{comment}}
+            |{{/each}}
   .four.wide.column
     .basic.ui.segment
       .ui.header
@@ -32,7 +37,7 @@
       .ui.list
         |{{#each courses}}
         .item
-          .contnet
+          .content
             .header
               a(href="/courses/{{id}}") {{title}}
             .course-meta [{{category.name}}] 更新时间：{{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}  注册数：{{registered}}

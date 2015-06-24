@@ -287,19 +287,20 @@ public class CourseController {
   @RequestMapping(value = "/courses/{id}/feedbacks", method = RequestMethod.POST)
   public
   @ResponseBody
-  ResponseEntity<String> addFeedbacks(@PathVariable Long id, @RequestBody CourseFeedbackData data) {
+  CourseFeedbackData addFeedbacks(@PathVariable Long id, @RequestBody CourseFeedbackData data) {
     CourseFeedback adding = new CourseFeedback();
     adding.setCourse(new Course(id));
     adding.setComment(data.getComment());
     CourseFeedback added = courseFeedbackRepository.save(adding);
-    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+    return new CourseFeedbackData(added);
   }
 
   @RequestMapping(value = "/courses/top", method = RequestMethod.GET)
   public
   @ResponseBody
   Collection<CourseData> findTopN(@RequestParam(value = "N") Integer n) {
-    Collection<Course> courses = courseRepository.findTopRegisteredCourses(n);
-    return new EntityCollectionData<>(courses,CourseData.class).toDTOCollection();
+    PageRequest page = PagingHelper.getPageRequest(0,n);
+    Page<Course> courses = courseRepository.findTopRegisteredCourses(page);
+    return new EntityPageData<>(courses,CourseData.class).getContent();
   }
 }

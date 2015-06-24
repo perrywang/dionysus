@@ -179,6 +179,24 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
     },
     serializeData: function(){
       return this;
+    },
+    onRender: function(){
+      var id = this.course.id;
+      this.$('.submit.button').on('click',function(){
+        var comment = $('#comment').val();
+        $.ajax({
+          type: "POST",
+          url: "/controllers/courses/"+id + "/feedbacks",
+          data: JSON.stringify({comment:comment}),
+          success: function(data){
+            var templeComment = JST[baseTemplatePath+'/comment'];
+            var html = templeComment(data);
+            $('.ui.comments').prepend(html);
+          },
+          dataType: "json",
+          contentType: "application/json"
+        });
+      });
     }
   });
 
