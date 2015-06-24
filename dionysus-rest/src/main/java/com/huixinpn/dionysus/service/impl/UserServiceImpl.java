@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     user.setRoles(roles);
     //user.setInbox(null);
     user.setProfile(null);
+    user.setAbout("普通用户");
     SecurityContext context = SecurityContextHolder.getContext();
     context.setAuthentication(new UsernamePasswordAuthenticationToken(user.getUsername(),
         user.getPassword(),user.getAuthorities()));
@@ -85,6 +86,12 @@ public class UserServiceImpl implements UserService, ConsultantService {
     _user.setPassword("");
     _user.setEncryptedPassword("");
     _user.setCourses(null);
+    _user.setProfile(null);
+    if(_user instanceof Consultant)
+    {
+    	((Consultant)_user).setTeachings(null);
+    	((Consultant)_user).setAppointments(null);
+    }
     return _user;
   }
   
@@ -129,6 +136,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
 	Consultant _consultant = new Consultant(consultant.getUsername(), consultant.getPassword());
 	_consultant.setEmail(consultant.getEmail());
 	_consultant.setEnabled(false);
+	_consultant.setAbout("心理咨询师");
 	consultantRepository.save(_consultant);
     consultant.setPassword("");
     consultant.setEncryptedPassword("");
