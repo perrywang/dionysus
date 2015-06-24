@@ -19,7 +19,7 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
         appointment.set('consultant',model.get('consultant'));
         appointment.set('date',model.get('date'));
         appointment.url = '/controllers/appointments/' + model.id;
-        appointment.save();
+        appointment.save().done(function(){alert('保存成功')});
       });
     },
 	triggers: {
@@ -103,7 +103,7 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
       var editor = new PsychoProfileEditorView();
       editor.on('psychoprofile:save', function(){
-        window.alert('提交成功');
+        alert('提交成功');
       });
       Dionysus.mainRegion.show(editor);	  
     },
