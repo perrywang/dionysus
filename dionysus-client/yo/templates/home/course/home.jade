@@ -10,6 +10,9 @@
                 a(href="/courses/{{id}}")
                   |<img src="{{cover}}">
               |{{/each}}
+      .row.centered
+        .twelve.wide.column
+          h2.ui.header 心理课程
       .category.row.centered
         .twelve.wide.column
           #topCats
@@ -59,8 +62,8 @@
                 h5
                   a.title(href="/courses/{{id}}") {{title}}
               p.course.content {{description}}
-              .reg(style="text-align:center;padding-top:20px;")
-                a.ui.purple.tiny.basic.button(href="/courses/{{id}}/regroom") 加 入
+              .regBtn(style="text-align:center;padding-top:20px;")
+                a.reg.ui.purple.tiny.basic.button(href="/courses/{{id}}/regroom") 加 入
           |{{/each}}
       .two.column.centered.row
         .centered.column
@@ -84,6 +87,6 @@
                       label 开课时间 {{date}}
                       label#reg 已注册 {{registered}} 人
                   .column
-                    a.ui.basic.tiny.purple.button(href="/courses/{{id}}/regoffline") 加 入
+                    a.reg.ui.basic.tiny.purple.button(href="/courses/{{id}}/regoffline") 加 入
                 |{{/each}}
 

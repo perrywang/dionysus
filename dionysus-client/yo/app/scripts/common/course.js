@@ -218,6 +218,22 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return course.promise();
   });
 
+  Dionysus.reqres.setHandler('course:home:detail:courses',function(){
+    var courses = $.Deferred();
+    $.getJSON(baseUrl+ "/top?N=6").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
+
+  Dionysus.reqres.setHandler('course:home:detail:comments',function(id){
+    var feedbacks = $.Deferred();
+    $.getJSON(baseUrl+ "/" + id + "/feedbacks").done(function(data){
+      feedbacks.resolve(data);
+    });
+    return feedbacks.promise();
+  });
+
 
 
 

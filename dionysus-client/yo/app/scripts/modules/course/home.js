@@ -72,6 +72,12 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
             var offlineTemplate = JST[baseTemplatePath+'/offline'];
             var offlines = offlineTemplate({offline:offline.content});
             $('#offline').html(offlines);
+            $('a.reg').on('click', function(event){
+              event.preventDefault();
+              var clicking = $(event.target);
+              var href = clicking.prop('href');
+              Dionysus.navigate(href,{trigger:true});
+            });
           });
     },
 
@@ -147,8 +153,30 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
           clicking.toggleClass('basic green');
         }
       });
+      this.$('a.reg').on('click', function(event){
+        event.preventDefault();
+        var clicking = $(event.target);
+        var href = clicking.prop('href');
+        Dionysus.navigate(href,{trigger:true});
+      });
     },
 
+    serializeData: function(){
+      return this;
+    }
+  });
+
+  var detail = Marionette.ItemView.extend({
+     initialize : function(options){
+       this.course = options.course;
+       this.courses = options.courses;
+       this.comments = options.comments;
+     },
+    template:function(data){
+      var template = JST[baseTemplatePath+'/detail'];
+      var html = template(data);
+      return html;
+    },
     serializeData: function(){
       return this;
     }
@@ -183,13 +211,24 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
                     });
             });
     },
-    showCourse : function(id){},
+    showCourse:function(id){
+      $.when(Dionysus.request('course:home:detail',id),Dionysus.request('course:home:detail:courses'),Dionysus.request('course:home:detail:comments',id)).done(function(course,courses,comments){
+        var detailView = new detail({course:course,courses:courses,comments:comments});
+        Dionysus.mainRegion.show(detailView);
+      });
+    },
     registerRoom : function(id){
       $.getJSON("/controllers/courses/" + id + "/reg");
     },
     registerOffline : function(id){
       $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+        toastr.info('课程注册成功');
         $('#reg').text('已注册 ' + data.number + ' 人')
+      });
+    },
+    registerRoom : function(id){
+      $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+        toastr.info('课程注册成功');
       });
     }
   });

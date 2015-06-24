@@ -75,7 +75,7 @@ public class CourseController {
       course.getUsers().add(reloaded);
       courseRepository.save(course);
     }
-    return new ResponseEntity<>("{\"number:\"" + (currentReg+1) + "}", HttpStatus.OK);
+    return new ResponseEntity<>("{\"number\":" + (currentReg+1) + "}", HttpStatus.OK);
   }
 
   @RequestMapping(value = "/courses/me", method = RequestMethod.GET)
@@ -295,12 +295,11 @@ public class CourseController {
     return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "/courses/approach/{name}", method = RequestMethod.GET)
+  @RequestMapping(value = "/courses/top", method = RequestMethod.GET)
   public
   @ResponseBody
-  EntityPageData<CourseData> searchByApproach(@RequestParam(value = "page", required = false) Integer page,
-                                                     @RequestParam(value = "size", required = false) Integer size,
-                                                     @PathVariable String name) {
-    return null;
+  Collection<CourseData> findTopN(@RequestParam(value = "N") Integer n) {
+    Collection<Course> courses = courseRepository.findTopRegisteredCourses(n);
+    return new EntityCollectionData<>(courses,CourseData.class).toDTOCollection();
   }
 }

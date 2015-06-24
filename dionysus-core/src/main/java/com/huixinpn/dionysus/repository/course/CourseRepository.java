@@ -38,4 +38,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
   Page<Course> findByApproach(CourseApproach approach, Pageable pageable);
 
   Collection<Course> findByLocation(String location);
+
+  @Query(value = "select * from courses order by last_modified_date desc limit ?1",nativeQuery=true)
+  Collection<Course> findTopRegisteredCourses(Integer N);
 }

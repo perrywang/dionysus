@@ -1,14 +1,13 @@
-.ui.centered.grid
+.ui.centered.divided.grid
   .eight.wide.column
     .basic.ui.segment
-      h3
-        a {{title}}
-      .ui.mini.green.label 类别
-      img.ui.fluid.image(src="{{cover}}")
+      .ui.header
+        h2 {{course.title}}
+      img.ui.fluid.image(src="{{course.cover}}")
       p
-        |{{description}}
-      p
-        |{{embeddedVideo}}
+      |{{course.description}}
+      |{{course.embeddedVideo}}
+      .ui.divider(style="margin-top:50px;")
       #comments(style="margin-top:20px;")
         h3
           a 发表留言
@@ -16,14 +15,28 @@
           textarea(name="comment")
           .ui.small.submit.green.button(style="float:right;margin-top:15px;") 提交
         #commentsList(style="clear:both;margin-top:100px;")
-          |{{#each comment}}
+          |{{#each comments}}
+          .comment
+          a.avatar
+            img(src="{{createdBy.avatar}}")
+          .content
+            a.author {{createdBy.username}}
+            .metadata {{lastModifiedDate.year}}-{{this.lastModifiedDate.monthOfYear}}-{{this.lastModifiedDate.dayOfMonth}}
+            .text
+              p {{comment}}
           |{{/each}}
   .four.wide.column
     .basic.ui.segment
-      h5 更多心理课程
-      |{{#each courses}}
-      a {{title}}
-      |{{/each}}
+      .ui.header
+        h3 最热心理课程
+      .ui.list
+        |{{#each courses}}
+        .item
+          .contnet
+            .header
+              a(href="/courses/{{id}}") {{title}}
+            .course-meta [{{category.name}}] 更新时间：{{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}  注册数：{{registered}}
+        |{{/each}}
 
 
 
