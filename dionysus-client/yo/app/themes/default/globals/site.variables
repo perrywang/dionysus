@@ -37,13 +37,13 @@
 /*---  Colors  ---*/
 @black            : #1B1C1D;
 @blue             : #3B83C0;
-@green            : #5BBD72;
+@green            : #1AA69E;
 @grey             : #CCCCCC;
 @orange           : #E07B53;
 @pink             : #D9499A;
 @purple           : #564F8A;
 @red              : #D95C5C;
-@teal             : #00B5AD;
+@teal             : #39424F;
 @yellow           : #F2C61F;
 
 /*---  Light Colors  ---*/

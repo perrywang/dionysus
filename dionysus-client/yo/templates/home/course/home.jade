@@ -1,6 +1,6 @@
 #fullPage.course
   #first.section
-    .ui.grid
+    .ui.stackable.grid
       .slider.row.centered
         .twelve.wide.column
           #slider.flexslider
@@ -30,7 +30,7 @@
       .twelve.wide.column.centered
         .ui.divider
       #videos.twelve.wide.column.centered
-        .ui.three.column.grid
+        .ui.three.column.stackable.grid
           |{{#each videos}}
           .column
             .ui.basic.segment
@@ -45,12 +45,12 @@
       .twelve.wide.column.centered
         .ui.divider
   #second.section
-    .ui.grid
+    .ui.stackable.grid
       .twelve.wide.column.centered
         img.ui.fluid.image(src="/public/images/room-course-reporter.png")
         h1.reporter.title "还想要点别的？"
       #room.twelve.wide.column.centered
-        .ui.four.column.grid
+        .ui.four.column.stackable.grid
           |{{#each room}}
           .column
             .ui.basic.segment
@@ -68,13 +68,13 @@
       .twelve.wide.centered.column
         .ui.divider
       #offline.twelve.wide.centered.column
-        .ui.two.column.grid
+        .ui.two.column.stackable.grid
           .column
             .ui.basic.segment
               img.ui.fluid.image(src="/public/images/offline-course.png")
           .column
             .ui.basic.segment
-              .ui.grid
+              .ui.stackable.grid
                 |{{#each offline}}
                 .three.column.row
                   .ten.wide.column
