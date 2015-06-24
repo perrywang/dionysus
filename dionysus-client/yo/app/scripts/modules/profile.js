@@ -70,12 +70,12 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       alert("you click myCourses")
     },
     showProfiles: function(){
-      alert("you click myProfiles")
+      var region = this.getRegion('myContent');
+      region.show(new ProfilePsychoProfileView());
     },	
     showMyTests: function(){
       alert("you click myTests")
     },
-
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
     }
@@ -202,6 +202,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       }
       return {items:dataCollection};
     },
+  });
+  
+  var ProfilePsychoProfileView = Marionette.ItemView.extend({
+    template: JST["templates/home/profile/psychoprofiles"],
   });
 
   var ProfileCourseView = Marionette.ItemView.extend({
