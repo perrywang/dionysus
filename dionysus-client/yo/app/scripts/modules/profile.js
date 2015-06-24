@@ -12,7 +12,8 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       myAppointments: '#myappointments',
       myCourses: '#mycourses',
       myTests: '#mytests',
-      myInfo: '#myinfo'
+      myInfo: '#myinfo',
+	  myProfile: '#myprofiles'
     },
     childEvents:{
       "blog:open":'editBlog',
@@ -38,6 +39,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'click @ui.myCourses': 'showMyCourses',
       'click @ui.myTests': 'showMyTests',
       'click @ui.myInfo' : 'updateInfo',
+      'click @ui.myProfile' : 'showProfiles',
     },
     showMyArticles: function(){
       var region = this.getRegion('myContent');
@@ -67,6 +69,9 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     showMyCourses: function(){
       alert("you click myCourses")
     },
+    showProfiles: function(){
+      alert("you click myProfiles")
+    },	
     showMyTests: function(){
       alert("you click myTests")
     },
