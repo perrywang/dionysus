@@ -16,7 +16,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       if(options && options.appendUrl){
         this.url += options.appendUrl;
       }
-    }
+    },
     state: {
       firstPage: 0
     },
@@ -45,7 +45,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
   
   Dionysus.reqres.setHandler('psychoprofile:findbyUser', function(id) {
-    var profiles = new Entities.PsychoProfileCollection({appendUrl:id});
+    var profiles = new Entities.PsychoProfileCollection({appendUrl: '/' + id});
     var defer = $.Deferred();
     profiles.fetch().then(function() {
       defer.resolve(profiles);

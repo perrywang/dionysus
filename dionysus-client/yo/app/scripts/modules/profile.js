@@ -81,7 +81,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
         Dionysus.trigger('login');
         return
       }
-	  Dionysus.request('psychoprofile:findbyUser', user).done(function(profiles){
+      Dionysus.request("psychoprofile:findbyUser", user).done(function(profiles){
         region.show(new ProfilePsychoProfileView({collection: profiles}));
       });      
     },	
