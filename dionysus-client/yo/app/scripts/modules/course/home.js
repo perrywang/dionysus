@@ -32,43 +32,48 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
             var videoTemplate = JST[baseTemplatePath+'/videos'];
             var html = videoTemplate({videos:videos.content});
             $('#videos').html(html);
-            $('#pagenation-video').twbsPagination({
-              totalPages: videos.totalPages,
-              startPage: videos.number+1,
-              visiblePages: 6,
-              first: '第一页',
-              prev: '前一页',
-              next: '后一页',
-              last: '最后一页',
-              onPageClick: function(event,page){
-                var videoTemplate = JST[baseTemplatePath+'/videos'];
-                var category = $('.sub.green').prop('id');
-                $.when(Dionysus.request('course:home:videos',category,page-1)).done(function(data){
-                  var html = videoTemplate({videos:data.content});
-                  $('#videos').html(html);
-                });
-              }
-            });
+            if(videos.number+1 <= videos.totalPages){
+              $('#pagenation-video').twbsPagination({
+                totalPages: videos.totalPages,
+                startPage: videos.number+1,
+                visiblePages: 6,
+                first: '第一页',
+                prev: '前一页',
+                next: '后一页',
+                last: '最后一页',
+                onPageClick: function(event,page){
+                  var videoTemplate = JST[baseTemplatePath+'/videos'];
+                  var category = $('.sub.green').prop('id');
+                  $.when(Dionysus.request('course:home:videos',category,page-1)).done(function(data){
+                    var html = videoTemplate({videos:data.content});
+                    $('#videos').html(html);
+                  });
+                }
+              });
+            }
+
             var roomTemplate = JST[baseTemplatePath+'/room'];
             var rooms = roomTemplate({room:room.content});
             $('#room').html(rooms);
-            $('#pagenation-room').twbsPagination({
-              totalPages: room.totalPages,
-              startPage: room.number+1,
-              visiblePages: 6,
-              first: '第一页',
-              prev: '前一页',
-              next: '后一页',
-              last: '最后一页',
-              onPageClick: function(event,page){
-                var videoTemplate = JST[baseTemplatePath+'/room'];
-                var category = $('.sub.green').prop('id');
-                $.when(Dionysus.request('course:home:room',category,page-1)).done(function(data){
-                  var html = videoTemplate({room:data.content});
-                  $('#room').html(html);
-                });
-              }
-            });
+            if(room.number+1 <= room.totalPages){
+              $('#pagenation-room').twbsPagination({
+                totalPages: room.totalPages,
+                startPage: room.number+1,
+                visiblePages: 6,
+                first: '第一页',
+                prev: '前一页',
+                next: '后一页',
+                last: '最后一页',
+                onPageClick: function(event,page){
+                  var videoTemplate = JST[baseTemplatePath+'/room'];
+                  var category = $('.sub.green').prop('id');
+                  $.when(Dionysus.request('course:home:room',category,page-1)).done(function(data){
+                    var html = videoTemplate({room:data.content});
+                    $('#room').html(html);
+                  });
+                }
+              });
+            }
             var offlineTemplate = JST[baseTemplatePath+'/offline'];
             var offlines = offlineTemplate({offline:offline.content});
             $('#offline').html(offlines);
@@ -85,41 +90,44 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
       var that = this;
       this.$('#slider').flexslider();
       this.$('.ui.small.basic.button:nth-child(2)').toggleClass('basic green');
-      this.$('#pagenation-video').twbsPagination({
-        totalPages: this.videosTotal,
-        startPage: this.videoCurrent,
-        visiblePages: 6,
-        first: '第一页',
-        prev: '前一页',
-        next: '后一页',
-        last: '最后一页',
-        onPageClick: function(event,page){
-          var videoTemplate = JST[baseTemplatePath+'/videos'];
-          var category = $('.sub.green').prop('id');
-          $.when(Dionysus.request('course:home:videos',category,page-1)).done(function(data){
-            var html = videoTemplate({videos:data.content});
-            $('#videos').html(html);
-          });
-        }
-      });
-
-      this.$('#pagenation-room').twbsPagination({
-        totalPages: this.roomTotal,
-        startPage: this.roomCurrent,
-        visiblePages: 6,
-        first: '第一页',
-        prev: '前一页',
-        next: '后一页',
-        last: '最后一页',
-        onPageClick: function(event,page){
-          var roomTemplate = JST[baseTemplatePath+'/room'];
-          var category = $('.sub.green').prop('id');
-          $.when(Dionysus.request('course:home:room',category,page-1)).done(function(data){
-            var html = roomTemplate({room:data.content});
-            $('#room').html(html);
-          });
-        }
-      });
+      if(this.videoCurrent <= this.videosTotal){
+        this.$('#pagenation-video').twbsPagination({
+          totalPages: this.videosTotal,
+          startPage: this.videoCurrent,
+          visiblePages: 6,
+          first: '第一页',
+          prev: '前一页',
+          next: '后一页',
+          last: '最后一页',
+          onPageClick: function(event,page){
+            var videoTemplate = JST[baseTemplatePath+'/videos'];
+            var category = $('.sub.green').prop('id');
+            $.when(Dionysus.request('course:home:videos',category,page-1)).done(function(data){
+              var html = videoTemplate({videos:data.content});
+              $('#videos').html(html);
+            });
+          }
+        });
+      }
+      if(this.roomCurrent <= this.roomTotal){
+        this.$('#pagenation-room').twbsPagination({
+          totalPages: this.roomTotal,
+          startPage: this.roomCurrent,
+          visiblePages: 6,
+          first: '第一页',
+          prev: '前一页',
+          next: '后一页',
+          last: '最后一页',
+          onPageClick: function(event,page){
+            var roomTemplate = JST[baseTemplatePath+'/room'];
+            var category = $('.sub.green').prop('id');
+            $.when(Dionysus.request('course:home:room',category,page-1)).done(function(data){
+              var html = roomTemplate({room:data.content});
+              $('#room').html(html);
+            });
+          }
+        });
+      }
       this.$('#subCats').on('click',function(event){
         var clicking = $(event.target);
           var current = $(this).find('.green');
