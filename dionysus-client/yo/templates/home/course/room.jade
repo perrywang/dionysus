@@ -8,5 +8,5 @@
           a.title(href="/courses/{{id}}") {{title}}
       p.course.content {{description}}
       .regBtn(style="text-align:center;padding-top:20px;")
-        a.reg.ui.purple.tiny.basic.button(href="/courses/{{id}}/regroom") 加 入
+        .room.reg.ui.green.tiny.basic.button(data-id="{{id}}") 加 入
   |{{/each}}

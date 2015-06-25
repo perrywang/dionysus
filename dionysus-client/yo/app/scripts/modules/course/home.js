@@ -77,11 +77,21 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
             var offlineTemplate = JST[baseTemplatePath+'/offline'];
             var offlines = offlineTemplate({offline:offline.content});
             $('#offline').html(offlines);
-            $('a.reg').on('click', function(event){
-              event.preventDefault();
+            $('.button.room.reg').on('click', function(event){
               var clicking = $(event.target);
-              var href = clicking.prop('href');
-              Dionysus.navigate(href,{trigger:true});
+              var id = clicking.attr('data-id');
+              $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+                toastr.success('课程注册成功');
+              });
+            });
+
+            $('.button.offline.reg').on('click', function(event){
+              var clicking = $(event.target);
+              var id = clicking.attr('data-id');
+              $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+                toastr.success('课程注册成功');
+                $('#reg').text('已注册 ' + data.number + ' 人');
+              });
             });
           });
     },
@@ -161,11 +171,21 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
           clicking.toggleClass('basic green');
         }
       });
-      this.$('a.reg').on('click', function(event){
-        event.preventDefault();
+      this.$('.button.room.reg').on('click', function(event){
         var clicking = $(event.target);
-        var href = clicking.prop('href');
-        Dionysus.navigate(href,{trigger:true});
+        var id = clicking.attr('data-id');
+        $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+          toastr.success('课程注册成功');
+        });
+      });
+
+      this.$('.button.offline.reg').on('click', function(event){
+        var clicking = $(event.target);
+        var id = clicking.attr('data-id');
+        $.getJSON("/controllers/courses/" + id + "/reg",function(data){
+          toastr.success('课程注册成功');
+          $('#reg').text('已注册 ' + data.number + ' 人');
+        });
       });
     },
 
@@ -242,29 +262,13 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
         var detailView = new detail({course:course,courses:courses,comments:comments});
         Dionysus.mainRegion.show(detailView);
       });
-    },
-    registerRoom : function(id){
-      $.getJSON("/controllers/courses/" + id + "/reg");
-    },
-    registerOffline : function(id){
-      $.getJSON("/controllers/courses/" + id + "/reg",function(data){
-        toastr.info('课程注册成功');
-        $('#reg').text('已注册 ' + data.number + ' 人')
-      });
-    },
-    registerRoom : function(id){
-      $.getJSON("/controllers/courses/" + id + "/reg",function(data){
-        toastr.info('课程注册成功');
-      });
     }
   });
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
         'courses(/)': 'showCourseHome',
-        'courses/:id(/)' : 'showCourse',
-        'courses/:id/regroom(/)' : 'registerRoom',
-        'courses/:id/regoffline(/)' : 'registerOffline'
+        'courses/:id(/)' : 'showCourse'
       },
       controller: new CourseController()
     });

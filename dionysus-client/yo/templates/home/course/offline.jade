@@ -14,5 +14,5 @@
               label 开课时间 {{date}}
               label#reg 已注册 {{registered}} 人
           .column
-            a.reg.ui.basic.tiny.purple.button(href="/courses/{{id}}/regoffline") 加 入
+            .offline.reg.ui.basic.tiny.green.button(data-id="{{id}}") 加 入
         |{{/each}}
