@@ -207,6 +207,7 @@ insert into tags(id,name) values(1,'ttttaaaaaggggg');
 
 insert into courses_tags values(1,1,1);
 
-insert into profileitem (id, profile_id, consultant_id, summary, module, linkid) values (1, 1, 4, '心理健全', '心理课程', '2');
-insert into profileitem (id, profile_id, consultant_id, summary, module, linkid) values (2, 1, 5, '测试通过', '心理测试', '3');
-insert into profileitem (id, profile_id, consultant_id, summary, module, linkid) values (3, 2, 3, '心理不健全', '心理课程', '2');
+insert into profileitem (id, profile_id, consultantname, summary, module, linkid, datetime) values (1, 1, '陆军', '心理健全', '心理课程', '2', '2015/06/01');
+insert into profileitem (id, profile_id, consultantname, summary, module, linkid, datetime) values (2, 1, '王鹏', '测试通过', '心理测试', '3', '2015/06/11');
+insert into profileitem (id, profile_id, consultantname, summary, module, linkid, datetime) values (3, 1, '陆军', '心理健全', '心理课程', '2', '2015/06/14');
+insert into profileitem (id, profile_id, consultantname, summary, module, linkid, datetime) values (4, 2, '王鹏', '心理不健全', '心理课程', '2', '2015/06/21');

@@ -81,8 +81,9 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
         Dionysus.trigger('login');
         return
       }
+	  var username = this.model.toJSON().realName;
       Dionysus.request("psychoprofile:findbyUser", user).done(function(profiles){
-        region.show(new ProfilePsychoProfileView({collection: profiles}));
+        region.show(new ProfilePsychoProfileView({collection: profiles, name: username}));
       });      
     },	
     showMyTests: function(){
@@ -218,8 +219,15 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   
   var ProfilePsychoProfileView = Marionette.ItemView.extend({
     template: JST["templates/home/profile/psychoprofiles"],
+    initialize: function (options) {
+      this.username = options.name;
+    },
     serializeData: function(){
       var dataCollection = this.collection.toJSON();
+	  for (var i = dataCollection.length - 1; i >= 0; i--){
+          var data = dataCollection[i];
+		  data.username = this.username;
+	  }
       return {items:dataCollection};
     },	
   });
