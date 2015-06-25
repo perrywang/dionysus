@@ -76,7 +76,14 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showProfiles: function(){
       var region = this.getRegion('myContent');
-      region.show(new ProfilePsychoProfileView());
+	  var user = sessionStorage.getItem('user');
+	  if(!user || user==="") {
+        Dionysus.trigger('login');
+        return
+      }
+	  Dionysus.request('psychoprofile:findbyUser', user).done(function(profiles){
+        region.show(new ProfilePsychoProfileView({collection: profiles}));
+      });      
     },	
     showMyTests: function(){
       alert("功能开发中")
@@ -211,6 +218,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
   
   var ProfilePsychoProfileView = Marionette.ItemView.extend({
     template: JST["templates/home/profile/psychoprofiles"],
+    serializeData: function(){
+      var dataCollection = this.collection.toJSON();
+      return {items:dataCollection};
+    },	
   });
 
   var ProfileCourseView = Marionette.ItemView.extend({

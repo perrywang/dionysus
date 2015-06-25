@@ -12,6 +12,11 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       var embedded = response._embedded;
       return embedded ? embedded.users : [];
     },
+	initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    }
     state: {
       firstPage: 0
     },
@@ -35,6 +40,15 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     var defer = $.Deferred();
     profile.fetch().then(function() {
       defer.resolve(profile);
+    });
+    return defer.promise();
+  });
+  
+  Dionysus.reqres.setHandler('psychoprofile:findbyUser', function(id) {
+    var profiles = new Entities.PsychoProfileCollection({appendUrl:id});
+    var defer = $.Deferred();
+    profiles.fetch().then(function() {
+      defer.resolve(profiles);
     });
     return defer.promise();
   });
