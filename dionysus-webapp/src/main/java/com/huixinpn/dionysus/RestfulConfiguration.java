@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import com.huixinpn.dionysus.domain.article.Blog;
 import com.huixinpn.dionysus.domain.article.OfficialArticle;
 import com.huixinpn.dionysus.domain.user.ConsExpertise;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -20,6 +21,8 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 import com.huixinpn.dionysus.domain.site.Menu;
 import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.domain.user.Profile;
+import com.huixinpn.dionysus.domain.user.ProfileItem;
 import com.huixinpn.dionysus.domain.user.User;
 
 @Configuration
@@ -30,7 +33,7 @@ public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
   protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
     config.exposeIdsFor(Article.class, Category.class, Menu.class,
         PsychTest.class, PsychTestQuestion.class,
-        PsychTestQuestionOption.class, Consultant.class, User.class, 
+        PsychTestQuestionOption.class, Consultant.class, Profile.class, ProfileItem.class, User.class, 
         CourseCategory.class, Course.class, OfficialArticle.class, Blog.class, ConsExpertise.class);
     try {
       config.setReturnBodyOnCreate(true);

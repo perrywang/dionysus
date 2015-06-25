@@ -31,6 +31,18 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
     template: JST["templates/admin/psychoprofile/psychoprofile"],
     tagName: 'form',
     className: 'ui form',
+    initialize: function (options) {
+      this.username = this.model.model.toJSON().user.username;
+	  this.consultantname = this.model.model.toJSON().consultant.username;
+	  this.id = this.model.model.toJSON().user.id;
+    },
+	serializeData: function() {
+      var data = {};
+      data.username = this.username;
+	  data.consultantname = this.consultantname;
+	  data.id = this.id;
+      return data;
+    },
     ui: {
       save: '.button.submit'
     },
@@ -38,9 +50,32 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
       'click @ui.save': 'saveProfile'
     },
     saveProfile: function() {
-      this.trigger('psychoprofile:save');
+      var profileitem = {};
+	  var newprofile = {};
+	  var profileitem_put = [];
+      profileitem.consultantname = this.consultantname;
+	  profileitem.datetime = new Date().toLocaleTimeString();
+	  profileitem.module = "Appointment";
+	  profileitem_put.push(profileitem);
+	  Dionysus.request('psychoprofile:entity', this.id).done(function(profile){
+		  newprofile = profile.toJSON();
+		  newprofile.items = profileitem_put;
+		  var url = '/api/v1/profiles/' + profile.id;  
+          $.ajax({
+            url: url,
+            method: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(newprofile)
+          }).done(function(response) {
+            window.alert('提交成功');
+            Dionysus.navigate('/admin', {trigger: true});
+          }).fail(function() {
+            window.alert('提交失败');
+          });
+	  });
     }
   });
+
   
   var AppointmentListView = Marionette.CompositeView.extend({
     template: JST["templates/admin/appointments/appointmentlist"],
@@ -100,12 +135,7 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
 
     editPsychoProfile: function(){
       //show loading before get any data
-      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      var editor = new PsychoProfileEditorView();
-      editor.on('psychoprofile:save', function(){
-        alert('提交成功');
-      });
-      Dionysus.mainRegion.show(editor);	  
+      
     },
 	
     showAppointments: function (queryString) {
@@ -120,7 +150,8 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
         var totalPages = pagedAppointments.get('totalPages');
         var listView = new AppointmentListView({collection:appointments,current:page,totalPages:totalPages});
         listView.on('childview:input:profile', function(childView, model){
-		  Dionysus.navigate('/admin/appointments/psychoprofile', {trigger: true});
+		  var editor = new PsychoProfileEditorView({model:model});
+		  Dionysus.mainRegion.show(editor);          	  
 		});
         Dionysus.mainRegion.show(listView);
       });

@@ -2,16 +2,16 @@
   .field
     label 预约人
     .ui.left.icon.input
-      input(type="text", name="username")
+      input(type="text", name="username", value="{{ username }}")
       i.user.icon
   .field
     label 咨询师
     .ui.left.icon.input
-      input(type="text", name="consultantname")
+      input(type="text", name="consultantname", value="{{ consultantname }}")
       i.user.icon
 .field
   label 详细记录
-  textarea(name="summary")
+  textarea(name="summary", value="{{ summary }}")
 .ui.red.button.submit
   i.save.icon
   | 保存

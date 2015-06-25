@@ -35,7 +35,6 @@ public class ProfileItem extends AbstractDionysusAuditable<User>{
 	private String module;
 
 	//指明具体模块的链接ID, 比如test_id, course_id...
-	@NotNull
 	@Column(name = "linkid")
 	private String linkid;
 	
