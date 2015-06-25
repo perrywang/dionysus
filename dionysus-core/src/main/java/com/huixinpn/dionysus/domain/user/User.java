@@ -149,8 +149,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     this.enabled = true;
 
     this.roles = new HashSet<Role>();
-    this.inbox = new Inbox();
-    this.profile = new Profile();
+    this.inbox = new Inbox(this);
+    this.profile = new Profile(this);
   }
 
   public User(String username, String password) {

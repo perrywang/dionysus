@@ -111,7 +111,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			//get latest
 			Dionysus.request('article:list:pageable', null, {
 				sort: 'lastModifiedDate,desc',
-				size: 5
+				size: 10
 			}).done(function(articles){
 
 				var latest = new Dionysus.Article.RegionSummaryView({

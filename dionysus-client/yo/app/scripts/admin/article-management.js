@@ -93,7 +93,7 @@ Dionysus.module('AdminArticle', function(Article, Dionysus, Backbone, Marionette
     onRender: function() {
       this.$('select.dropdown').dropdown();
       this.$('.ui.checkbox').checkbox();
-      this.$el.form();
+      this.$el.form(validationRules);
       var data = this.model.toJSON();
       var category = this.model.get('category');
       //data.category = category?category.link('self').href():category;
