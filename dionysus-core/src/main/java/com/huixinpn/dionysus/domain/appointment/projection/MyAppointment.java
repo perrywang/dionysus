@@ -15,13 +15,24 @@ import java.util.Calendar;
 @Projection(name="myappointment", types = Appointment.class)
 public interface MyAppointment {
 
+    Long getId();
+
+    String getReason();
+    String  getName();
+    Integer getAge();
+    String getPhone();
+    String getEmail();
+    String getGender();
+    String getFeedBack();
+
+
     AppointmentStatus getState();
     AppointmentApproach getApproach();
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
     Calendar getDate();
 
-    String  getName();
+
     ConsultantExcerpt getConsultant();
 
 }

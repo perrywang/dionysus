@@ -13,7 +13,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
 
   var AppointmentModel = Backbone.Model.extend({
-    url:"/api/v1/appointments"
+    urlRoot:"/api/v1/appointments"
   });
 
   var AppointmentPageableCollection = Backbone.PageableCollection.extend({

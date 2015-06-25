@@ -7,6 +7,7 @@ table.ui.stackable.table
       th 日期
       th 状态
       th 动作
+      th 反馈
   tbody
     {{#each items}}
     tr
@@ -22,4 +23,6 @@ table.ui.stackable.table
       {{else}}
       td 请等待通知
       {{/if}}
+      td 
+        a.ui.basic.green.button.feedback(data-id="{{id}}") 反馈
     {{/each}}

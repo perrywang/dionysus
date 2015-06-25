@@ -16,8 +16,9 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 	  myProfile: '#myprofiles'
     },
     childEvents:{
-      "blog:open":'editBlog',
-      "blog:new":'editBlog'
+      "blog:open": 'editBlog',
+      "blog:new": 'editBlog',
+      "appointment:feedBack": 'editFeedBack'
     },
 
     editBlog: function(childView, id){
@@ -30,6 +31,14 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       else{
         var blog = new Dionysus.Domain.BlogModel();
         region.show(new BlogEditorView({model:blog}))
+      }
+    },
+
+    editFeedBack: function(childView, model){
+      if(model){
+        var region = this.getRegion('myContent');
+        var view = new ProfileAppointmentFeedbackView({model: model});
+        region.show(view);
       }
     },
 
@@ -132,7 +141,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
 
     events: {
-      'click .submit': function(){
+      'click .button': function(){
 
         var data = Backbone.Syphon.serialize(this);
         if(data.title!=="" && data.body!==""){
@@ -142,7 +151,6 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
           alert('文章保存成功');
         });
         }
-        
       }
     }
   });
@@ -193,8 +201,56 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     }
   });
 
+
+  var ProfileAppointmentFeedbackView = Marionette.ItemView.extend({
+    template: JST['templates/home/profile/appointmentFeedback'],
+    className: 'ui form',
+    events: {
+      'click .submit': function() {
+        var ori_value = this.model.get('feedBack');
+        var data = Backbone.Syphon.serialize(this);
+
+        if (ori_value !== data.feedBack) {
+          this.model.set('feedBack', data.feedBack);
+          var json = this.model.toJSON();
+          //json.consultant = '/api/v1/' + json.consultant.id;
+          json = _.omit(json, 'consultant');
+
+          $.ajax({
+            url: this.model.urlRoot+'/'+this.model.id,
+            method: 'PUT',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(json)
+          }).done(function(response) {
+            window.alert('提交成功');
+          }).fail(function(response) {
+            window.alert('提交失败');
+          });
+
+        };
+
+      }
+    },
+    onRender: function(){
+      var data = this.model.toJSON();
+      this.$el.form('set values', data);
+    }
+  });
+
   var ProfileAppointmentView = Marionette.ItemView.extend({
     template: JST["templates/home/profile/appointments"],
+
+    events: {
+      'click .feedback': 'feedBack'
+    },
+
+    feedBack: function(e){
+      e.preventDefault();
+      var id = $(e.currentTarget).data("id");
+      var model = this.collection.get(id);
+      this.triggerMethod("appointment:feedBack", model);
+    },
+
     serializeData: function(){
       var dataCollection = this.collection.toJSON();
       

@@ -58,6 +58,10 @@ public class Appointment extends AbstractDionysusNotifiable<User> {
     private String email;
     private String gender;
 
+    @Lob
+    @Column(name = "feedback")
+    private String feedBack;
+
     public Appointment() {
         this.state = AppointmentStatus.WAITING;
     }
