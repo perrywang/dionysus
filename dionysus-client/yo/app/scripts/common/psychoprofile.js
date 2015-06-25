@@ -9,8 +9,8 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     model: Entities.PsychoProfile,
     url: '/api/v1/profiles',
     parse: function(response) {
-      var embedded = response._embedded;
-      return embedded ? embedded.users : [];
+      var embedded = response.items;
+      return embedded ? embedded : [];
     },
 	initialize : function(options){
       if(options && options.appendUrl){

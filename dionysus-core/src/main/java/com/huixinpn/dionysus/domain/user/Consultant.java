@@ -25,8 +25,7 @@ public class Consultant extends User {
 
   @OneToMany(mappedBy = "consultant")
   private Collection<Appointment> appointments = new ArrayList<>();
-
-
+  
   public Consultant(String name, String pass) {
     super(name, pass);
   }
