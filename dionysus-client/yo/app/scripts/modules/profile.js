@@ -284,7 +284,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
           var data = dataCollection[i];
 		  data.username = this.username;
 	  }
-      return {items:dataCollection};
+      return {profileItems:dataCollection};
     },	
   });
 

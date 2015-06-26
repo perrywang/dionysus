@@ -9,8 +9,8 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     model: Entities.PsychoProfile,
     url: '/api/v1/profiles',
     parse: function(response) {
-      var embedded = response.items;
-      return embedded ? embedded : [];
+      var embedded = response._embedded;
+      return embedded ? embedded.profileItems : [];
     },
 	initialize : function(options){
       if(options && options.appendUrl){
@@ -45,7 +45,7 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
   });
   
   Dionysus.reqres.setHandler('psychoprofile:findbyUser', function(id) {
-    var profiles = new Entities.PsychoProfileCollection({appendUrl: '/' + id});
+    var profiles = new Entities.PsychoProfileCollection({appendUrl: '/' + id + '/items'});
     var defer = $.Deferred();
     profiles.fetch().then(function() {
       defer.resolve(profiles);
