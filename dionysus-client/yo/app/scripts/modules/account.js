@@ -55,7 +55,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 
   Account.RegisterModalView = Marionette.ItemView.extend({
     template: JST['templates/home/header/register'],
-    className: 'ui modal',
+    //className: 'ui modal',
     events : {
       //'click #register-me' : 'register',
       'register:me': 'register',
@@ -96,11 +96,11 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
     },
 
     login: function(){
-      this.$el.modal('hide');
+      //this.$el.modal('hide');
       Dionysus.trigger('login');
     },
 
-    onRender: function(){
+    onDomRefresh: function(){
 
       var dialog = this;
 
@@ -113,9 +113,9 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
         }
       });
 
-      this.$el
+      /*this.$el
         .modal('setting', 'transition', 'horizontal flip')
-        .modal('show');
+        .modal('show');*/
     }
 
 
@@ -192,7 +192,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
 
   Dionysus.addInitializer(function() {
     Dionysus.on('register',function(){
-      Dionysus.registerRegion.show(new Dionysus.Account.RegisterModalView());
+      Dionysus.mainRegion.show(new Dionysus.Account.RegisterModalView());
     });
   });
 

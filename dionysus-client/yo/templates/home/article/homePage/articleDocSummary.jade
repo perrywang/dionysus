@@ -21,7 +21,7 @@
 			.ui.basic.segment
 				a(href="/articles/{{items.[0].id}}")
 					{{#if items.[0].cover}}
-					img.ui.medium.image(src="{{items.[0].cover}}")
+					img.ui.centered.image(src="{{items.[0].cover}}")
 					{{else}}
-					img.ui.medium.image(src="/public/images/placeholder.png")
+					img.ui.centered.image(src="/public/images/doc-default.png")
 					{{/if}}

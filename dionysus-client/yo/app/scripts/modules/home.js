@@ -115,7 +115,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         window.alert('登录失败，请确认用户名或密码正确...');
       });
     },
-    onRender: function() {
+    onDomRefresh: function() {
       this.$el.form({
         username: {
           identifier: 'username',

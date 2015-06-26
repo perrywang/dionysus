@@ -1,7 +1,6 @@
-.header 欢迎来到汇心网
-.content
-  .ui.middle.aligned.relaxed.fitted.stackable.grid
-    .column
+.ui.centered.grid
+  .twelve.wide.column
+    .ui.raised.segment
       form.ui.form
         .required.field
           label 用户名
@@ -29,9 +28,7 @@
         .ui.horizontal.divider
         .field
           span
-            | 已经有账号
-            a#login-me(href="#") 登录
+            | 已经有账号:
+            a#login-me.ui.tiny.green.basic.button 登录
         input.ui.submit.green.button#register-me(type="submit", value="注册")
         .ui.error.message
-.actions
-  .ui.button.negative 取消
