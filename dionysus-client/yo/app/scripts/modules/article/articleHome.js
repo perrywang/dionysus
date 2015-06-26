@@ -54,15 +54,19 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			var criteria = {
 				category: category,
 				type: articleType,
+				location: "normal",
 				size: 10,
 				sort: 'lastModifiedDate,desc'
 			};
 
-			Dionysus.request('article:search:summary', 'findByCategoryAndType', criteria).done(function(data) {
+			Dionysus.request('article:search:summary', 'findByCategoryAndTypeAndLocation', criteria).done(function(data) {
 				if (data.embedded("officialArticles")) {
 					var models = data.embedded("officialArticles").models;
 					models = models ? models : [];
 					thisView.collection.reset(models);
+				}
+				else{
+					thisView.collection.reset([]);
 				}
 			});
 		}
@@ -147,7 +151,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			}).done(function(data) {
 				var sliders = data.embedded('officialArticles');
 				var sliderView = new SliderView({
-					collection: sliders
+					collection: sliders?sliders:new Backbone.Collection()
 				});
 
 				layout.getRegion("slider").show(sliderView);
@@ -173,7 +177,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			}).done(function(data) {
 				var docs = data.embedded('officialArticles');
 				var docView = new DocSummaryView({
-					collection: docs
+					collection: docs?docs:new Backbone.Collection()
 				});
 
 				layout.getRegion('docSummary').show(docView);
@@ -189,7 +193,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			}).done(function(data) {
 				var videos = data.embedded('officialArticles');
 				var videoView = new VideoSummaryView({
-					collection: videos
+					collection: videos?videos:new Backbone.Collection()
 				});
 
 				layout.getRegion('videoSummary').show(videoView);
@@ -205,7 +209,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			}).done(function(data) {
 				var blogs = data.embedded('officialArticles');
 				var blogView = new BlogSummaryView({
-					collection: blogs
+					collection: blogs?blogs:new Backbone.Collection()
 				});
 
 				layout.getRegion('blogSummary').show(blogView);

@@ -98,6 +98,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			Dionysus.request('article:list:pageable','findByCategoryAndType', {
 				category: category,
 				type: type,
+				size:10,
 				sort: 'id,desc'//TODO update sql to add datatime info, to sort
 			}).done(function(articles){
 				

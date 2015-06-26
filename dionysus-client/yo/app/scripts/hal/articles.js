@@ -87,6 +87,8 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
+  Domain.ArticleCollection = ArticleCollection;
+
   var ArticleModel = Backbone.Model.extend({
     urlRoot: '/api/v1/officialArticles'
   });
