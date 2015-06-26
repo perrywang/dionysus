@@ -51,21 +51,20 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
     },
     saveProfile: function() {
       var profileitem = {};
-	  var newprofile = {};
-	  var profileitem_put = [];
-      profileitem.consultantname = this.consultantname;
-	  profileitem.datetime = new Date().toLocaleTimeString();
-	  profileitem.module = "Appointment";
-	  profileitem_put.push(profileitem);
+	  var json = this.$el.form('get values');
+	  profileitem.consultantname = this.consultantname;
+	  profileitem.summary = json.summary;
+	  profileitem.module = "心理预约";
+	  profileitem.datetime = new Date().toDateString();
+	  
 	  Dionysus.request('psychoprofile:entity', this.id).done(function(profile){
-		  newprofile = profile.toJSON();
-		  newprofile.items = profileitem_put;
-		  var url = '/api/v1/profiles/' + profile.id;  
+          profileitem.profile = '/api/v1/profiles/' + profile.id;  
+		  var url = '/api/v1/profileItems/';  
           $.ajax({
             url: url,
-            method: 'PUT',
+            method: 'POST',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(newprofile)
+            data: JSON.stringify(profileitem)
           }).done(function(response) {
             window.alert('提交成功');
             Dionysus.navigate('/admin', {trigger: true});
