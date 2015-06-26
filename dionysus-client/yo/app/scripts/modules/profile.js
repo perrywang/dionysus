@@ -327,7 +327,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var ProfileController = Marionette.Controller.extend({
     showProfile: function(id){
-
+      if(sessionStorage.getItem('user')!==id) return;
       $.when(Dionysus.request('user:entity', id)).done(function(user){
         var layoutView = new PofileLayoutView({ model: user})
         Dionysus.mainRegion.show(layoutView);

@@ -164,9 +164,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//step 4 get doc articles and show them
-			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
+			Dionysus.request('article:search:summary', 'findByCategoryAndTypeAndLocation', {
 				category: category,
 				type: 'DOC',
+				location: 'normal',
 				size: 10,
 				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
@@ -179,9 +180,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//step 5 get videos
-			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
+			Dionysus.request('article:search:summary', 'findByCategoryAndTypeAndLocation', {
 				category: category,
 				type: 'VIDEO',
+				location: 'normal',
 				size: 10,
 				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
@@ -194,9 +196,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 			});
 
 			//step 6 get blogs
-			Dionysus.request('article:search:summary', 'findByCategoryAndType', {
+			Dionysus.request('article:search:summary', 'findByCategoryAndTypeAndLocation', {
 				category: category,
 				type: 'BLOG',
+				location: 'normal',
 				size: 10,
 				sort: 'lastModifiedDate,desc'
 			}).done(function(data) {
