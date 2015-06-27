@@ -86,19 +86,23 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     var currentTest;
 
     return {
-      showTestSuites : function() {
+      clear : function() {
+        currentTest = null;
+      },
+      showPsychTestSuites : function() {
         var fetching = Dionysus.request('psychtestsuite:instances');
         $.when(fetching).done(function(suites) {
           Dionysus.mainRegion.show(new TestSuiteCollectionView({ collection: suites }));
         });
       },
-      showTest: function (id, question) {
-        var qid = parseInt(question, 10);
-        if (!currentTest || currentTest.id === qid) {
+      showPsychTest: function (id, question) {
+        var tid = parseInt(id, 10);
+        // 如果测试数据没有没加载，或者加载的测试数据不是当前选择的
+        // 那么重新发起数据库查询
+        if (!currentTest || currentTest.id !== tid) {
           // loading at the first time
           var fetching = Dionysus.request('psychtest:instance', id);
           $.when(fetching).done(function (test) {
-            currentTest = test;
             var format = test.get('format');
             switch(format) {
               case 'TABLE':
@@ -110,9 +114,11 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
               default:
                 throw new Error("cannot handle test format: " + format);
             }
+            currentTest = test;
             currentTest.select(question);
           });
         } else {
+          // 如果数据已经加载，那么定位到选中的题目
           currentTest.select(question);
         }
       }
@@ -120,12 +126,19 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
   })();
 
   Dionysus.addInitializer(function () {
-    new Marionette.AppRouter({
+    var router = new Marionette.AppRouter({
       appRoutes: {
-        'psychtest/:id(/)(:question)': 'showTest',
-        'psychtestsuites(/)' : 'showTestSuites'
+        'psychtests/:id(/)(:question)': 'showPsychTest',
+        'psychtestsuites(/)' : 'showPsychTestSuites'
       },
       controller: psychtestController
+    });
+    router.on('route', function(route, params) {
+      // 心理测试的数据是一次读取并cache全部的测试题目，在题目之间迁移是不会再次发送数据请求
+      // 一旦超出当前测试就清空cache，释放内存，保证view的重新渲染
+      if (route !== 'showPsychTest') {
+        psychtestController.clear();
+      }
     });
   });
 });
