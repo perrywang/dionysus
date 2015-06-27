@@ -1,7 +1,7 @@
-package com.huixinpn.dionysus.domain.psychtest.results;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
-import com.huixinpn.dionysus.domain.psychtest.results.eval.PsychTestEvaluationFactoryImpl;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 public class PsychTestEvaluator {
 	

@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import java.util.ArrayList;
 import java.util.Collection;

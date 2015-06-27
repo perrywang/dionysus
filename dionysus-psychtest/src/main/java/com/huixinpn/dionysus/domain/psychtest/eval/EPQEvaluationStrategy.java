@@ -1,8 +1,7 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestEvaluationStrategy;
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestResult;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 // 艾森克量表
 public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {

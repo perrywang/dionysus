@@ -1,17 +1,15 @@
-package com.huixinpn.dionysus.domain.psychtest.results;
+package com.huixinpn.dionysus.domain.psychtest;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion.PsychTestQuestionType;
+import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestValueVisitor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion.PsychTestQuestionType;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
-import com.huixinpn.dionysus.domain.psychtest.results.eval.PsychTestValueVisitor;
 
 @Data
 @NoArgsConstructor

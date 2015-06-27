@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestEvaluationStrategy;
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestResult;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 

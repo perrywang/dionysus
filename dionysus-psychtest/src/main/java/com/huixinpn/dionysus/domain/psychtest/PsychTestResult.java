@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.psychtest.results;
+package com.huixinpn.dionysus.domain.psychtest;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,8 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
-import com.huixinpn.dionysus.domain.psychtest.PsychTest;
-import com.huixinpn.dionysus.domain.psychtest.results.eval.PsychTestValueVisitor;
+import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestValueVisitor;
 import com.huixinpn.dionysus.domain.user.User;
 
 @Data
@@ -30,6 +29,10 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -4860166336073876229L;
 
+	public enum PsychTestState {
+	  FINISHED, IN_PROGRESS, CANCELED
+	}
+	
 	@ManyToOne
 	private PsychTest test;
 

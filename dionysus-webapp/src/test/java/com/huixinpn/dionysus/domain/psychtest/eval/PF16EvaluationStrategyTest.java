@@ -1,9 +1,10 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.huixinpn.dionysus.domain.psychtest.results.eval.PF16EvaluationStrategy.Answer;
+import com.huixinpn.dionysus.domain.psychtest.eval.PF16EvaluationStrategy;
+import com.huixinpn.dionysus.domain.psychtest.eval.PF16EvaluationStrategy.Answer;
 
 public class PF16EvaluationStrategyTest {
 

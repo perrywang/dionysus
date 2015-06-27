@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,8 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.huixinpn.dionysus.domain.psychtest.results.eval.PF16Normalization.Range;
+import com.huixinpn.dionysus.domain.psychtest.eval.PF16Normalization;
+import com.huixinpn.dionysus.domain.psychtest.eval.PF16Normalization.Range;
 
 public class PF16NormalizationTest {
 

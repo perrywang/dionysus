@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.domain.psychtest.results.eval;
+package com.huixinpn.dionysus.domain.psychtest.eval;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import com.huixinpn.dionysus.domain.psychtest.results.PsychTestResult;
+import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 @RepositoryRestResource(path = "psychtestresults", 
 	collectionResourceRel = "psychtestresults", 
