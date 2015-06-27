@@ -20,6 +20,11 @@
 			<artifactId>dionysus-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>com.huixinpn.dionysus</groupId>
+      <artifactId>dionysus-psychtest</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 		<dependency>
 			<groupId>com.huixinpn.dionysus</groupId>
 			<artifactId>dionysus-rest</artifactId>
@@ -100,6 +105,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.9</version>
+      <scope>test</scope>
+    </dependency>
 	</dependencies>
 
 	<build>

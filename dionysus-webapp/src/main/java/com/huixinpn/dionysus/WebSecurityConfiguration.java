@@ -39,9 +39,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.PUT, "/api/v1/**").authenticated()
         .antMatchers(HttpMethod.DELETE, "/api/v1/**").authenticated()
 
-        .antMatchers(HttpMethod.GET, "/api/v1/psychtests/**").authenticated()
-        .antMatchers(HttpMethod.GET, "/api/v1/psychtestresults/**").authenticated();
-	    
+        // 普通用户只能查看自己的测试结果
+        .regexMatchers(HttpMethod.GET, "/api/v1/psychtestresults/mine").authenticated()
+        // 管理员和咨询师可以随意查看心理测试结果
+        .regexMatchers(HttpMethod.GET, "/api/v1/psychtestresults(/|/\\d+)?.*").hasAnyRole("ADMIN", "CONSULTANT")
+        .antMatchers(HttpMethod.GET, "/api/v1/psychtests/**").authenticated();
   }
 
 }

@@ -36,6 +36,7 @@
 	<modules>
 		<module>dionysus-runtime</module>
 		<module>dionysus-core</module>
+		<module>dionysus-psychtest</module>
 		<module>dionysus-rest</module>
 		<module>dionysus-client</module>
 		<module>dionysus-bae</module>
