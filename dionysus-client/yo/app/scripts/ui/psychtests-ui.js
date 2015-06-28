@@ -13,6 +13,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
 
   var TestSuiteCollectionView = Marionette.CompositeView.extend({
     template : JST['templates/home/psychtests/psychtest'],
+    className : 'ui centered stackable grid',
     childView : TestSuiteView,
     childViewContainer : '.ui.cards'
   });
