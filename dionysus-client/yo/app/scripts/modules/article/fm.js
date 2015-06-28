@@ -19,6 +19,12 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 			});
 		},
 
+		childEvents:{
+			"fm:change": function(childView, id){
+				alert(id);
+			}
+		}
+
 	});
 
 	var ListView = Marionette.ItemView.extend({
@@ -59,7 +65,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 		clicked: function(e){
 			e.preventDefault();
 			var id = $(e.currentTarget).data("id");
-			alert(id);
+			this.triggerMethod('fm:change', id);
 		}
 
 	});
@@ -77,6 +83,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
 			Dionysus.request('article:list:pageable', "findByType", {
 				type: 'AUDIO',
+				size: 6,
+				projection: 'excerpt',
 				sort: 'id,desc'
 			}).done(function(fms) {
 				var list = new ListView({
