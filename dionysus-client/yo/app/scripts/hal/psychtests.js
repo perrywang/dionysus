@@ -2,7 +2,11 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
   var PsychTestQuestion = Backbone.RelationalHalResource.extend({
-    urlRoot: '/api/v1/psychtestquestions'
+    urlRoot: '/api/v1/psychtestquestions',
+    getAnswer : function() {
+      var answers = this.answers;
+      return answers ? answers.findWhere({qid : this.id}) : null;
+    }
   });
 
   var PsychTest = Backbone.RelationalHalResource.extend({
@@ -15,7 +19,6 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     },
     mergetLastResult : function(result) {
       var answers = result.embedded('answers');
-      console.log(answers);
       this.answers = answers;
     },
     initialize : function() {
@@ -58,6 +61,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       if (_.isNumber(question)) { question = this.questions.get(question); }
 
       this.current = question;
+      question.answers = this.answers;
       this.trigger('select', question);
     }
   });

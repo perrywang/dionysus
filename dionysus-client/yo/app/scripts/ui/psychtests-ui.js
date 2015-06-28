@@ -27,6 +27,11 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     template : JST['templates/home/psychtests/singlechoice'],
     tagName : 'form',
     onRender : function() {
+      var answer = this.model.getAnswer();
+      if (answer) {
+        var value = answer.get('value');
+        this.$('#option-' + value).attr("checked", true)
+      }
       this.$('.ui.radio.checkbox').checkbox();
     }
   });
