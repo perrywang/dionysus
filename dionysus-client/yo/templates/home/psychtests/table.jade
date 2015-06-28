@@ -1,25 +1,26 @@
-h2.ui.dividing.header 
-  {{ title }}
-  .sub.header {{ description }}
-form.ui.form.psychtest
-  table.ui.striped.table.unstackable.collapsing
-    thead
-      tr
-        th 问题
-        th 回答
-    tbody
-      {{#each questions}}
-      tr
-        td {{description}}
-        td
-          .inline.fields
-            .field
-              .ui.radio.checkbox
-                input(type="radio", name="{{id}}")
-                label 是
-            .field
-              .ui.radio.checkbox
-                input(type="radio", name="{{id}}")
-                label 否
-      {{/each}}
-  .ui.primary.button 提交答案
+.twelve.wide.column
+  h2.ui.dividing.header 
+    {{ title }}
+    .sub.header {{ description }}
+  form.ui.form.psychtest
+    table.ui.striped.table.unstackable.collapsing
+      thead
+        tr
+          th 问题
+          th 回答
+      tbody
+        {{#each questions}}
+        tr
+          td {{description}}
+          td
+            .inline.fields
+              .field
+                .ui.radio.checkbox
+                  input(type="radio", name="{{id}}")
+                  label 是
+              .field
+                .ui.radio.checkbox
+                  input(type="radio", name="{{id}}")
+                  label 否
+        {{/each}}
+    .ui.primary.button 提交答案

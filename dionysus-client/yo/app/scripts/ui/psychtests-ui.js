@@ -27,6 +27,14 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
   var SingleChoiceQuestionView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/singlechoice'],
     tagName : 'form',
+    events : {
+      'change input[type="radio"]' : 'chooseAnswer'
+    },
+    chooseAnswer : function() {
+      var answer = this.$('input[type="radio"]:checked').val(),
+          question = this.model;
+      this.triggerMethod('answer:choose', question, answer);
+    },
     onRender : function() {
       var answer = this.model.getAnswer();
       if (answer) {
@@ -42,6 +50,10 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     initialize : function() {
       this.listenTo(this.model, 'select', this.render, this);
     },
+    triggers : {
+      'click button.save' : 'results:save',
+      'click button.submit' : 'results:submit'
+    },
     serializeData : function() {
       return this.model.getNavData();
     }
@@ -49,6 +61,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
 
   var PsychTestQuestionOneByOneView = Marionette.LayoutView.extend({
     template : JST['templates/home/psychtests/onebyone'],
+    className : 'ui centered stackable grid',
     regions : {
       question : 'section.question',
       navigator : 'footer.nav'
@@ -58,6 +71,17 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
     },
     onRender : function() {
       this.showChildView('navigator', new OneByOneNavView({ model : this.model }));
+    },
+    childEvents : {
+      'results:save' : function(view) {
+        this.model.saveResults();
+      },
+      'results:submit' : function(view) {
+        this.model.submitResults();
+      },
+      'answer:choose' : function(view, question, answer) {
+        this.model.updateResult(question, answer);
+      }
     },
     renderQuestion : function(question) {
       if (question.get('type') === 'SINGLE_CHOICE') {
@@ -77,6 +101,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
 
   var PsychTestQuestionTableView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/table'],
+    className : 'ui centered stackable grid',
     serializeData : function() {
       var model = this.model;
       var data = this.serializeModel(model);

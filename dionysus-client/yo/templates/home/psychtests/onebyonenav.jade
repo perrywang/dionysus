@@ -21,22 +21,24 @@ a.ui.primary.button(href="/psychtests/{{question}}/{{next}}")
   i.icon.chevron.right
 {{/if}}
 
+{{#if canUpdate}}
+button.ui.primary.button.save
+  i.icon.save 
+  | 保存
+{{else}}
+button.ui.primary.disabled.button
+  i.icon.save 
+  | 保存
+{{/if}}
 
 
 {{#if hasNext}}
-button.ui.primary.button
-  i.icon.save 
-  | 保存
 
 button.ui.primary.disabled.button(type="submit")
   i.icon.send 
   | 提交答案
 {{else}}
-button.ui.primary.button
-  i.icon.save 
-  | 保存
-
-button.ui.primary.button(type="submit")
+button.ui.primary.button.submit(type="submit")
   i.icon.send
   | 提交答案
 {{/if}}

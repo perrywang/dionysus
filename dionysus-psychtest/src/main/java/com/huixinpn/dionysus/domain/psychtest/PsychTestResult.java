@@ -28,6 +28,7 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 	private static final long serialVersionUID = -4860166336073876229L;
 
 	public enum PsychTestState {
+	  NOT_START,     // 默认状态
 	  IN_PROGRESS,   // 正在测试 
 	  FINISHED,      // 测试结果已经提交
 	  WAIT_FEEDBACK, // 等待咨询师反馈

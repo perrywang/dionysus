@@ -20,6 +20,17 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     mergetLastResult : function(result) {
       var answers = result.embedded('answers');
       this.answers = answers;
+      this.state = result.get('state');
+    },
+    saveResults : function() {
+
+    },
+    updateResult : function(question, answer) {
+      var type = question.get('type');
+      console.log(type);
+    },
+    canUpdate : function() {
+      return ['FINISHED', 'WAIT_FEEDBACK', 'DONE'].indexOf(this.state) === -1;
     },
     initialize : function() {
       this.on('sync', this.updateMeta, this);
@@ -52,7 +63,8 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         hasPrev : this.hasPrev(),
         hasNext : this.hasNext(),
         question : this.id,
-        total : this.total
+        total : this.total,
+        canUpdate : this.canUpdate()
       };
     },
     select : function(question) {
@@ -153,6 +165,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
 
   var PsychTestResult = Backbone.RelationalHalResource.extend({
+    defaults : {
+      state : 'NOT_START'
+    },
     halEmbedded : {
       test : {
         type : Backbone.HasOne,
