@@ -37,9 +37,24 @@ public class PsychTestAnswer extends AbstractDionysusPersistable {
 
   @Lob
   private String answer;
-
-	@Column(name = "score")
-	private Double score = 0.0;
+	
+	public Long getQid() {
+	  return this.question.getId();
+	}
+	
+	public Object getValue() {
+	  PsychTestQuestionType type = this.question.getType();
+	  switch(type) {
+	  case SINGLE_CHOICE: 
+	    return option.getId();
+	  case YES_NO: 
+	    return yesno;
+	  case GAPFILL:
+	    return answer;
+	  default:
+	    return null;
+	  }
+	}
 
 	public void accept(PsychTestValueVisitor visitor) {
 		PsychTestQuestionType type = question.getType();

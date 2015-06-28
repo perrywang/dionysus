@@ -25,6 +25,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
 
   var SingleChoiceQuestionView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/singlechoice'],
+    tagName : 'form',
     onRender : function() {
       this.$('.ui.radio.checkbox').checkbox();
     }

@@ -14,9 +14,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       }
     },
     mergetLastResult : function(result) {
-      console.log('anser merged');
       var answers = result.embedded('answers');
       console.log(answers);
+      this.answers = answers;
     },
     initialize : function() {
       this.on('sync', this.updateMeta, this);
