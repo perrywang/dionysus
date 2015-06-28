@@ -23,6 +23,35 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 			"fm:change": function(childView, id){
 				alert(id);
 			}
+		},
+
+		onDomRefresh: function() {
+				$('.player-1').jPlayer({
+					ready: function() {
+						$(this).jPlayer("setMedia", {
+							title: "Bubble",
+							mp3: "/public/images/tune.mp3"
+						});
+					},
+					solution: 'html',
+					supplied: 'MP3, M4A',
+					preload: 'auto',
+					muted: false,
+					volume: 0.8,
+					cssSelectorAncestor: '.player-container',
+					cssSelector: {
+						title: '#title',
+						play: '.play.icon',
+						pause: '.pause.icon',
+						stop: '.stop.icon',
+						seekBar: '.player-seekbar',
+						playBar: '.player-playbar',
+						smoothPlayBar:true,
+						currentTime: '.player-current',
+						duration: '.player-duration'
+
+					}
+				});
 		}
 
 	});

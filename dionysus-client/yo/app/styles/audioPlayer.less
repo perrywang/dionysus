@@ -1,0 +1,110 @@
+.player-container {
+	display: flex;
+	height: 400px;
+	background-image: url(/public/images/fm1.png);
+	background-size: cover;
+	box-shadow: 0 2px 16px #888888, 0 0 1px #888888, 0 0 1px #888888; 
+}
+
+.player-content {
+	width: 300px;
+	height: 300px;
+	margin: auto;
+	border-radius:50%;
+	background: rgba(109,172,144,0.5);
+}
+
+.player-title {
+	width: 70%;
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 15%;
+	text-align: center;
+	margin: auto;
+	word-break:break-all;
+
+}
+
+.player-scripts p {
+	width: 80%;
+	height: 50%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 15px;
+	text-align: center;
+	margin: auto;
+	word-break:break-all;
+}
+
+.player-seeking {
+	width: 90%;
+	height: 13px;
+	/*padding-top: 25px;
+	padding-bottom: 25px;*/
+	overflow: hidden;
+	margin: auto;
+}
+
+.player-seekbar {
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	background: #C2D2C5;
+}
+
+.player-playbar {
+	height: 100%;
+	overflow: hidden;
+	background: #6DAA8E;
+}
+
+.player-current {
+	float: left;
+	padding-left: 5px;
+}
+
+.player-duration {
+	float: right;
+	padding-right: 5px;
+}
+
+.player-buttons {
+	width: 80%;
+	padding-top: 10%;
+	/*padding-left: 15%;
+	padding-right: 15%;*/
+	margin: auto;
+	text-align: center;
+}
+
+.player-buttons .icon {
+	 -webkit-transition:
+    color 0.6s ease,
+    transform 0.2s ease
+  ;
+  -moz-transition:
+    color 0.6s ease,
+    transform 0.2s ease
+  ;
+  -o-transition:
+    color 0.6s ease,
+    transform 0.2s ease
+  ;
+  -ms-transition:
+    color 0.6s ease,
+    transform 0.2s ease
+  ;
+  transition:
+    color 0.6s ease,
+    transform 0.2s ease
+  ;
+}
+
+.player-buttons .icon:hover {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
