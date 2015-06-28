@@ -23,9 +23,6 @@ import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.Inbox;
 import com.huixinpn.dionysus.domain.user.Notification;
 import com.huixinpn.dionysus.domain.user.User;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 public class NotificationTest extends AbstractPersistentTest {
 

@@ -32,7 +32,6 @@ public class EntityIDTest extends AbstractPersistentTest {
 
 	@Test
 	public void makeSureEntityIDCanbeDetect() {
-		;
 		Metamodel model = entityManager.getMetamodel();
 		final Reflections reflections = new Reflections(EntityIDTest.class.getPackage().getName());
 		Set<Class<?>> entities = reflections.getTypesAnnotatedWith(Entity.class);

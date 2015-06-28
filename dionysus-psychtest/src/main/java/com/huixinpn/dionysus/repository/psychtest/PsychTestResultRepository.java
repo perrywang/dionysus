@@ -1,5 +1,7 @@
 package com.huixinpn.dionysus.repository.psychtest;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -18,7 +20,7 @@ public interface PsychTestResultRepository
 	PsychTestResult findOne(Long id);
 	
 	@Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0})")
-	Iterable<PsychTestResult> findAll();
+	List<PsychTestResult> findAll();
 	
 	PsychTestResult save(PsychTestResult entity);
 }

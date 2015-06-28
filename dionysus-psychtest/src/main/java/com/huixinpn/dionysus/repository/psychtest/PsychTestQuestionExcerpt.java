@@ -12,6 +12,8 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 public interface PsychTestQuestionExcerpt {
 	
 	Long getId();
+	
+	Integer getSubId();
 
 	String getDescription();
 	

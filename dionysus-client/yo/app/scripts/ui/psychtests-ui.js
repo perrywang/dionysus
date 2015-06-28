@@ -82,13 +82,11 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
   });
 
   var psychtestController = (function() {
-
-    var currentTest, currentResult;
+    var currentTest;
 
     return {
       clear : function() {
         currentTest = null;
-        currentResult = null;
       },
       showPsychTestSuites : function() {
         var fetching = Dionysus.request('psychtestsuite:instances');
@@ -105,27 +103,21 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
           var fetchTest = Dionysus.request('psychtests:instance', id),
               fetchResult = Dionysus.request('psychtestresults:instance', id);
 
-          currentResult = null;
-
-          $.when(fetchTest).done(function (test) {
-            $.when(fetchResult).done(function(result) {
-              console.log(result);
-              currentResult = result;
-            }).always(function() {
-              var format = test.get('format');
-              switch(format) {
-                case 'TABLE':
-                  Dionysus.mainRegion.show(new PsychTestQuestionTableView({ model : test }));
-                  break;
-                case 'ONE_BY_ONE':
-                  Dionysus.mainRegion.show(new PsychTestQuestionOneByOneView({ model : test }));
-                  break;
-                default:
-                  throw new Error("cannot handle test format: " + format);
-              }
-              currentTest = test;
-              currentTest.select(question);
-            });
+          $.when(fetchTest, fetchResult).done(function (test, result) {
+            test.mergetLastResult(result);
+            var format = test.get('format');
+            switch(format) {
+              case 'ONE_BY_ONE':
+                Dionysus.mainRegion.show(new PsychTestQuestionOneByOneView({ model : test }));
+                break;
+              case 'TABLE':
+                Dionysus.mainRegion.show(new PsychTestQuestionTableView({ model : test }));
+                break;
+              default:
+                throw new Error("cannot handle test format: " + format);
+            }
+            currentTest = test;
+            currentTest.select(question);
           });
         } else {
           // 如果数据已经加载，那么定位到选中的题目
