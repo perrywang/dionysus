@@ -1,24 +1,22 @@
 package com.huixinpn.dionysus.repository.psychtest;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 @RepositoryRestResource(path = "psychtestresults", 
 	collectionResourceRel = "psychtestresults", 
-	itemResourceRel = "psychtestresult")
+	itemResourceRel = "psychtestresult",
+	excerptProjection = PscyTestResultExcerpt.class )
 public interface PsychTestResultRepository
-	extends JpaRepository<PsychTestResult, Long> {
+	extends Repository<PsychTestResult, Long> {
 
-	@RestResource(path = "mine")
-	@Query("select p from PsychTestResult p")
-	public Iterable<PsychTestResult> findAllMineTestResults();
+	// 当前用户可以查看自己的测试结果，或者管理员可以查看所有的测试结果
+	@Query("select o from PsychTestResult o where o.test.id = ?1 and (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0}))")
+	PsychTestResult findOne(Long id);
 	
-//	@RestResource(path = "mine")
-//	@Query("select p from PsychTestResult p where p.test = ?1")
-//	public PsychTestResult findMineTestResult(PsychTest test);
-
+	@Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0})")
+	Iterable<PsychTestResult> findAll();
 }

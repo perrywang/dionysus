@@ -16,12 +16,13 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<tomcat.version>7.0.59</tomcat.version>
 		<lightadmin.version>1.0.1.RELEASE</lightadmin.version>
+		<spring-security.version>4.0.0.RELEASE</spring-security.version>
 	</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.2.RELEASE</version>
+		<version>1.2.4.RELEASE</version>
 	</parent>
 
 	<dependencies>
