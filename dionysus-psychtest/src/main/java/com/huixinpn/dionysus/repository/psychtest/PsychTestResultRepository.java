@@ -19,4 +19,6 @@ public interface PsychTestResultRepository
 	
 	@Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0})")
 	Iterable<PsychTestResult> findAll();
+	
+	PsychTestResult save(PsychTestResult entity);
 }

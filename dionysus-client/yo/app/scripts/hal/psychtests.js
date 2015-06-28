@@ -116,7 +116,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     return defer.promise();
   });
 
-  Dionysus.reqres.setHandler('psychtest:instance', function (id) {
+  Dionysus.reqres.setHandler('psychtests:instance', function (id) {
     var test = PsychTest.findOrCreate({
       id : id,
       _links : {
@@ -130,4 +130,66 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     });
     return defer.promise();
   });
+
+
+
+
+
+
+
+  var PsychTestAnswer = Backbone.RelationalHalResource.extend({
+    url: '/api/v1/psychtestanswers'
+  });
+
+
+
+  var PsychTestResult = Backbone.RelationalHalResource.extend({
+    halEmbedded : {
+      test : {
+        type : Backbone.HasOne,
+        relatedModel : PsychTest
+      },
+      answers : {
+        type : Backbone.HasMany,
+        relatedModel : PsychTestAnswer
+      }
+    }
+  });
+
+  var PsychTestResultCollection = Backbone.RelationalHalResource.extend({
+    url: '/api/v1/psychtestresults',
+    halEmbedded: {
+      type: Backbone.HasMany,
+      relatedModel: PsychTestResult
+    }
+  });
+
+  Dionysus.reqres.setHandler('psychtestresults:submit', function(results) {
+    var result = new PsychTestResult({
+
+    });
+    result.save();
+  });
+
+  Dionysus.reqres.setHandler('psychtestresults:instance', function(id) {
+    var result = PsychTestResult.findOrCreate({
+      id : id,
+      _links : {
+        self: {
+          href : '/api/v1/psychtestresults/' + id 
+        }
+      }
+    }), defer = $.Deferred();
+    result.fetch().then(function () {
+      defer.resolve(result);
+    }).fail(function(xhr) {
+      if (xhr.status === 404) {
+        defer.resolve(new PsychTestResult({}));
+      } else {
+        defer.reject();
+      }
+    });
+    return defer.promise();
+  });
+
 });

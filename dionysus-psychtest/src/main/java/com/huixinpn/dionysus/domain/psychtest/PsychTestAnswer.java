@@ -1,20 +1,30 @@
 package com.huixinpn.dionysus.domain.psychtest;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion.PsychTestQuestionType;
 import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestValueVisitor;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@Embeddable
-public class PsychTestQuestionResult {
+@Entity
+@Table(name = "psychtestanswers")
+public class PsychTestAnswer extends AbstractDionysusPersistable {
+  
+  private static final long serialVersionUID = -8260750036066011305L;
+
+  @ManyToOne
+  private PsychTestResult result;
 
 	@ManyToOne
 	private PsychTestQuestion question;
@@ -22,14 +32,14 @@ public class PsychTestQuestionResult {
 	@ManyToOne
 	private PsychTestQuestionOption option;
 
+  @Column(name = "yesno")
+  private Boolean yesno;
+
+  @Lob
+  private String answer;
+
 	@Column(name = "score")
 	private Double score = 0.0;
-
-	@Column(name = "yesno")
-	private Boolean yesno;
-
-	@Lob
-	private String answer;
 
 	public void accept(PsychTestValueVisitor visitor) {
 		PsychTestQuestionType type = question.getType();
