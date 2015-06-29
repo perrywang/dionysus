@@ -72,8 +72,11 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
 		playfm: function(fmData){
 			var title = fmData.title;
-			var url = $(fmData.body).find('.fr-file').attr('href');
-			var summary = fmData.summary.slice(0,50)+"...";
+			var url;
+			var dom = $(fmData.body);
+			if (dom.is('a')) url=dom.attr('href');
+			else url = dom.find('.fr-file').attr('href');
+			var summary = fmData.summary.slice(0,20)+"...";
 
 			$('.player-scripts').text(summary);
 

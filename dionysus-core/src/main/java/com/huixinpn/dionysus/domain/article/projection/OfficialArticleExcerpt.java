@@ -11,6 +11,7 @@ import java.util.Collection;
  */
 @Projection(name = "excerpt", types = OfficialArticle.class)
 public interface OfficialArticleExcerpt {
+    Long getId();
     String getTitle();
     String getSummary();
     String getBody();
