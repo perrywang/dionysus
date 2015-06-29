@@ -25,9 +25,9 @@
 
 }
 
-.player-scripts p {
+.player-scripts {
 	width: 80%;
-	height: 50%;
+	height: 20%;
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-bottom: 15px;
@@ -38,7 +38,7 @@
 
 .player-seeking {
 	width: 90%;
-	height: 13px;
+	height: 10px;
 	/*padding-top: 25px;
 	padding-bottom: 25px;*/
 	overflow: hidden;
@@ -77,7 +77,9 @@
 	text-align: center;
 }
 
-.player-buttons .icon {
+@media screen and (min-device-width: 1024px) {
+
+	.player-buttons .icon {
 	 -webkit-transition:
     color 0.6s ease,
     transform 0.2s ease
@@ -107,4 +109,6 @@
     -ms-transform: scale(1.5);
     transform: scale(1.5);
 }
+}
+
 

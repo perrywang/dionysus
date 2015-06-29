@@ -12,6 +12,11 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 			list: "#list"
 		},
 
+		initialize: function(options){
+			this.currentSong = 0;
+			this.playList = [];
+		},
+
 		onBeforeShow: function() {
 			var thisView = this;
 			_.each(this.regions, function(regionId, regionName) {
@@ -20,19 +25,76 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 		},
 
 		childEvents:{
-			"fm:change": function(childView, id){
-				alert(id);
+			"fm:change": function(childView, id, fmData){
+				//alert(id);
+				//get the index of fm in current playlist
+				var index = -1;
+				for (var i = this.playList.length - 1; i >= 0; i--) {
+					if(this.playList[i].id === id){
+						index = i;
+						break;
+					}
+				};
+
+				this.currentSong = index;
+
+				if(index >=0 ) this.playfm(this.playList[index]);
+				else this.playfm(fmData);	
+				
+			},
+			"fm:page:change": function(childView, fmList){
+				this.playList = fmList;
+				this.currentSong = -1;
 			}
 		},
 
+		events: {
+			
+			'click .fast.forward.icon': function(){
+				var index = this.currentSong + 1;
+				if(index > this.playList,length) return;
+				else if(this.playList[index]){
+					this.currentSong++;
+					this.playfm(this.playList[this.currentSong]);	
+				} 
+
+			},
+
+			'click .fast.backward.icon': function(){
+				var index = this.currentSong - 1;
+				if(index < 0) return;
+				else if(this.playList[index]){
+					this.currentSong--;
+					this.playfm(this.playList[this.currentSong]);
+				}
+			}
+		},
+
+		playfm: function(fmData){
+			var title = fmData.title;
+			var url = $(fmData.body).find('.fr-file').attr('href');
+			var summary = fmData.summary.slice(0,50)+"...";
+
+			$('.player-scripts').text(summary);
+
+			if(!url) alert('没找到音频文件');
+
+			$('.player-1').jPlayer("setMedia",{
+				title: title,
+				mp3: url
+			}).jPlayer("play");
+
+		},
+
 		onDomRefresh: function() {
+
 				$('.player-1').jPlayer({
-					ready: function() {
+					/*ready: function() {
 						$(this).jPlayer("setMedia", {
 							title: "Bubble",
 							mp3: "/public/images/tune.mp3"
 						});
-					},
+					},*/
 					solution: 'html',
 					supplied: 'MP3, M4A',
 					preload: 'auto',
@@ -67,7 +129,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
 		events:{
 			"gotoPage #paging": "gotoPage",
-			'click a': 'clicked'
+			'click .fmitem': 'clicked'
 		},
 		gotoPage: function(event, page){
 			this.collection.getPage(page-1);
@@ -89,13 +151,19 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 					$(this).trigger("gotoPage", page);
 				}
 			});
+
 		},
 
 		clicked: function(e){
 			e.preventDefault();
 			var id = $(e.currentTarget).data("id");
-			this.triggerMethod('fm:change', id);
-		}
+			this.triggerMethod('fm:change', id, this.collection.get(id).toJSON());
+		},
+
+		onDomRefresh: function(){
+			//push play list of current page to parent layout view - player
+			this.triggerMethod('fm:page:change', this.collection.toJSON());
+		},
 
 	});
 
