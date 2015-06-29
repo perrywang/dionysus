@@ -1,9 +1,9 @@
 Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   
   var Category = Backbone.RelationalHalResource.extend({
-    url: '/api/v1/categories',
+    urlRoot: '/api/v1/categories',
     toJSON: function(options) {
-      if (options && options.useRelationUri) return this.url + '/' + this.id;
+      if (options && options.useRelationUri) return this.urlRoot + '/' + this.id;
       else return {
         id: this.get('id'),
         name: this.get('name')
