@@ -83,7 +83,7 @@ Dionysus.module('Account', function(Account, Dionysus, Backbone, Marionette) {
           sessionStorage.setItem('username', response.username);
           sessionStorage.setItem('avatar', response.avatar);
 
-          dialog.$el.modal('hide');
+          //dialog.$el.modal('hide');
 
           Dionysus.navigate('/', {
             trigger: true

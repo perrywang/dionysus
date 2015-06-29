@@ -15,7 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	// List<User> findByRole(String rolename);
 
 	@Override
-	//@PreAuthorize("#user.username == principal or hasRole('ADMIN')")
+    //@PreAuthorize("#user.username == principal or hasRole('ADMIN')")
 	<S extends User> S save(S user);
 
 	@Override
