@@ -107,11 +107,11 @@ public class UserServiceImpl implements UserService, ConsultantService {
       throw new InvalidUserException("invalid user: " + username);
     }
 
-    //manager.detach(user);
+    manager.detach(user);
     user.setPassword("");
     user.setEncryptedPassword("");
     user.setCourses(null);
-    //user.setProfile(null);
+    user.setProfile(null);
     if(user instanceof Consultant)
     {
     	((Consultant)user).setTeachings(null);
