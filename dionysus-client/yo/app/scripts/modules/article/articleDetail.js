@@ -39,8 +39,25 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       this.listenTo(this.model.get('comments'), 'add', this.render, this);
     },
 
-    onRender: function() {
-      var x;
+    serializeData: function() {
+      var item = this.model.toJSON();
+      
+      //procee body content
+      //if the article location is slider, set the cover image width to 100%.
+      if (item.location === "slider") {
+        var body = "";
+        var jBody = $(item.body);
+        jBody.find('img').first().attr('width', '100%');
+
+        _.each(jBody, function(el) {
+          body += el.outerHTML;
+        });
+
+        item.body = body;
+      }
+
+      return item;
+
     },
 
     events: {

@@ -18,6 +18,7 @@ public interface ArticleExcerpt {
     CategoryExcerpt getCategory();
     String getCover();
     ArticleType getType();
+    String getLocation();
     Boolean getInterview();
     Collection<CommentExcerpt> getComments();
 }
