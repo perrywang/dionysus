@@ -91,6 +91,14 @@ public class PsychTest extends AbstractDionysusPersistable {
 			public String toString() {
 				return "TAT";
 			}
+		},
+		
+		// Zung氏焦虑自评量表系统(SAS)
+		SAS {
+			@Override
+			public String toString() {
+				return "SAS";
+			}
 		}
 	}
 	
