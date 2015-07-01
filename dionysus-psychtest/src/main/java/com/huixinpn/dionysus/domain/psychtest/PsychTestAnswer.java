@@ -42,8 +42,12 @@ public class PsychTestAnswer extends AbstractDionysusPersistable {
 	  return this.question.getId();
 	}
 	
+	public PsychTestQuestionType getType() {
+	  return this.question.getType();
+	}
+	
 	public Object getValue() {
-	  PsychTestQuestionType type = this.question.getType();
+	  PsychTestQuestionType type = this.getType();
 	  switch(type) {
 	  case SINGLE_CHOICE: 
 	    return option.getId();

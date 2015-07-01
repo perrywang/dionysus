@@ -73,14 +73,14 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
       this.showChildView('navigator', new OneByOneNavView({ model : this.model }));
     },
     childEvents : {
+      'answer:choose' : function(view, question, answer) {
+        this.model.updateResult(question, answer);
+      },
       'results:save' : function(view) {
         this.model.saveResults();
       },
       'results:submit' : function(view) {
         this.model.submitResults();
-      },
-      'answer:choose' : function(view, question, answer) {
-        this.model.updateResult(question, answer);
       }
     },
     renderQuestion : function(question) {
@@ -136,7 +136,7 @@ Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
               fetchResult = Dionysus.request('psychtestresults:instance', id);
 
           $.when(fetchTest, fetchResult).done(function (test, result) {
-            test.mergetLastResult(result);
+            test.initResult(result);
             var format = test.get('format');
             switch(format) {
               case 'ONE_BY_ONE':

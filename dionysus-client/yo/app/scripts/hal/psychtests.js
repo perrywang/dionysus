@@ -9,6 +9,10 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
+  var PsychTestQuestionOption = Backbone.RelationalHalResource.extend({
+    urlRoot: '/api/v1/psychtestquestionoptions'
+  });
+
   var PsychTest = Backbone.RelationalHalResource.extend({
     urlRoot: '/api/v1/psychtests',
     halEmbedded: {
@@ -17,13 +21,37 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         relatedModel: PsychTestQuestion
       }
     },
-    mergetLastResult : function(result) {
+    initResult : function(result) {
+      // 传入参数是一个经过projection的对象，不是原本的entity，需要重新建立answer对象
       var answers = result.embedded('answers');
+      answers.map(function(model) {
+        if (model.get('type') === 'SINGLE_CHOICE') {
+          model.set('option', PsychTestQuestionOption.findOrCreate({
+            id : model.get('value'),
+            _links : {
+              self: {
+                href : '/api/v1/psychtestquestionoptions/' + model.get('value')
+              }
+            }
+          }));
+          // model.set('value', undefined);
+        }
+        
+        // PsychTestAnswer.findOrCreate({
+
+        // });
+      });
       this.answers = answers;
       this.state = result.get('state');
+      result.set('answers', answers);
+      this.cachedResults = result;
     },
-    saveResults : function() {
-
+    saveResults : function() { // 保存中间状态
+      this.cachedResults.save();
+    },
+    submitResults : function() {
+      this.cachedResults.set('state', 'FINISHED');
+      this.cachedResults.save();
     },
     updateResult : function(question, answer) {
       var type = question.get('type');
@@ -165,8 +193,9 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
 
   var PsychTestResult = Backbone.RelationalHalResource.extend({
+    urlRoot: '/api/v1/psychtestresults',
     defaults : {
-      state : 'NOT_START'
+      state : 'IN_PROGRESS'
     },
     halEmbedded : {
       test : {
@@ -188,12 +217,6 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     }
   });
 
-  Dionysus.reqres.setHandler('psychtestresults:submit', function(results) {
-    var result = new PsychTestResult({
-
-    });
-    result.save();
-  });
 
   Dionysus.reqres.setHandler('psychtestresults:instance', function(id) {
     var result = PsychTestResult.findOrCreate({

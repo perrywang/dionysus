@@ -35,6 +35,11 @@ public class PsychTestResult extends AbstractDionysusAuditable<User> {
 	  DONE           // 结束
 	}
 	
+	public boolean canUpdate() {
+	  return this.state == PsychTestState.NOT_START ||
+	      this.state == PsychTestState.IN_PROGRESS;
+	}
+	
 	@ManyToOne
 	private PsychTest test;
 	
