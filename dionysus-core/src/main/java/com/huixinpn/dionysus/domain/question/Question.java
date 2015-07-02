@@ -23,7 +23,7 @@ public class Question extends AbstractDionysusAuditable<User> {
 
   private String description;
 
-  private boolean approved = false;
+  private boolean approved = true;
 
   @OneToMany(mappedBy = "question")
   private Collection<QAnswer> answers = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Question extends AbstractDionysusAuditable<User> {
 
   private Category category;
 
-  public Question(Long id){
+  public Question(Long id) {
     super(id);
   }
 }
