@@ -17,9 +17,10 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
     tagName: 'form',
     className: 'ui form',
     initialize: function (options) {
-      this.username = this.model.model.toJSON().user.username;
+      //this.username = this.model.model.toJSON().user.username;
 	  this.consultantname = this.model.model.toJSON().consultant.username;
-	  this.id = this.model.model.toJSON().user.id;
+	  //this.id = this.model.model.toJSON().user.id;
+	  this.id = 1;
     },
 	serializeData: function() {
       var data = {};
