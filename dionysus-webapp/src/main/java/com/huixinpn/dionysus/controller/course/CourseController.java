@@ -16,6 +16,7 @@ import com.huixinpn.dionysus.dto.course.CourseData;
 import com.huixinpn.dionysus.dto.course.CourseFeedbackData;
 import com.huixinpn.dionysus.dto.tag.TagData;
 import com.huixinpn.dionysus.dto.user.ConsultantData;
+import com.huixinpn.dionysus.dto.user.UserData;
 import com.huixinpn.dionysus.repository.course.CourseCategoryRepository;
 import com.huixinpn.dionysus.repository.course.CourseFeedbackRepository;
 import com.huixinpn.dionysus.repository.course.CourseRepository;
@@ -302,5 +303,13 @@ public class CourseController {
     PageRequest page = PagingHelper.getPageRequest(0,n);
     Page<Course> courses = courseRepository.findTopRegisteredCourses(page);
     return new EntityPageData<>(courses,CourseData.class).getContent();
+  }
+
+  @RequestMapping(value = "/courses/{id}/users", method = RequestMethod.GET)
+  public
+  @ResponseBody
+  Collection<UserData> getUsers(@PathVariable Long id) {
+    Course course = courseRepository.findOne(id);
+    return new EntityCollectionData<>(course.getUsers(),UserData.class).toDTOCollection();
   }
 }
