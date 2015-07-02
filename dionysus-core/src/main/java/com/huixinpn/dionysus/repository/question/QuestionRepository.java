@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
+
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
@@ -20,5 +22,11 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
   @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true)")
   Page<Question> findAll(Pageable pageable);
+
+  @Query(value = "select q from Question q where q.approved = true order by q.createdDate desc")
+  Page<Question> findLatestQueations(Pageable pageable);
+
+  @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true) order by size(q.answers) desc")
+  Page<Question> findPopularQueations(Pageable pageable);
 
 }

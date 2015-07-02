@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "answers")
 @Data
 @NoArgsConstructor
-public class QAnswer extends AbstractDionysusNotifiable<User> {
+public class Answer extends AbstractDionysusNotifiable<User> {
 
   @ManyToOne
   private Question question;
@@ -24,7 +24,7 @@ public class QAnswer extends AbstractDionysusNotifiable<User> {
 
   private boolean visibleAll = true;
 
-  public QAnswer(Long id) {
+  public Answer(Long id) {
     super(id);
   }
 
