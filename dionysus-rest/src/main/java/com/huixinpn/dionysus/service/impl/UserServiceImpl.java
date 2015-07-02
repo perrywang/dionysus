@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     context.setAuthentication(new UsernamePasswordAuthenticationToken(user.getUsername(),
         user.getPassword(),user.getAuthorities()));
     userrepository.save(user);
-    //manager.detach(user);
+    manager.detach(user);
     user.setPassword("");
     user.setEncryptedPassword("");
     user.setCourses(null);
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     _user.setQqAddress(user.getQqAddress());
     _user.setRealName(user.getRealName());
     userrepository.saveAndFlush(_user);
-    //manager.detach(_user);
+    manager.detach(_user);
     _user.setPassword("");
     _user.setEncryptedPassword("");
     _user.setCourses(null);
@@ -126,7 +126,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
     if (user == null) {
       throw new UsernameNotFoundException("user not found: " + username);
     }
-    //manager.detach(user);
+    manager.detach(user);
     user.setPassword("");
     user.setEncryptedPassword("");
     return user;
