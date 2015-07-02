@@ -169,7 +169,12 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
         if(current.text() !== clicking.text()){
           current.toggleClass('basic green');
           clicking.toggleClass('basic green');
+          var href = clicking.attr('href');
+          $('html,body').animate({
+            scrollTop: $(href).offset().top
+          }, 1000);
         }
+
       });
       this.$('.button.room.reg').on('click', function(event){
         var clicking = $(event.target);
@@ -230,6 +235,7 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
 
   var CourseController = Marionette.Controller.extend({
     showCourseHome: function(){
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
       $.when(Dionysus.request('course:home:categories'),Dionysus.request('course:home:slider'))
             .done(function(categories,slider){
                 var options = {slider:slider};
