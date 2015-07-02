@@ -3,23 +3,14 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
 
   var CourseItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/courses/courseitem"],
-    tagName: 'tr',
-    onRender:function(){
-      var model =this.model;
-    },
-	triggers: {
-      'click .input.button':'input:profile'
-    }
+    tagName: 'tr'
   });
 
   var CourseUserItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/courses/courseuseritem"],
     tagName: 'tr',
-    onRender:function(){
-      var model =this.model;
-    },
 	triggers: {
-      'click .input.button':'input:users'
+      'click .input.button':'input:profile'
     }
   });
   
@@ -27,11 +18,10 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
     template: JST["templates/admin/psychoprofile/psychoprofile"],
     tagName: 'form',
     className: 'ui form',
-    initialize: function (options) {
-      //this.username = this.model.model.toJSON().user.username;
-	  this.consultantname = this.model.model.toJSON().consultant.username;
-	  //this.id = this.model.model.toJSON().user.id;
-	  this.id = 1;
+	initialize: function (options) {
+      this.username = this.model.model.toJSON().username;
+	  this.id = this.model.model.toJSON().id;
+      this.consultantname = this.options.course.toJSON().consultant.username;	  
     },
 	serializeData: function() {
       var data = {};
@@ -118,22 +108,6 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
       if(options && options.current){
         this.current =options.current;
       }
-    },
-    onDomRefresh:function(){
-      this.$el.parent().append($('<div id="pagging"></div>'));
-      $('#pagging').twbsPagination({
-        totalPages: this.totalPages,
-        startPage: this.current,
-        visiblePages: 6,
-        first: '第一页',
-        prev: '前一页',
-        next: '后一页',
-        last: '最后一页',
-        loop:true,
-        onPageClick: function(event,page){
-          Dionysus.navigate('/admin/coursesummary?page=' + page,{trigger:true});
-        }
-      });
     }
   });
 
@@ -172,19 +146,29 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
         var courses = new Backbone.Collection(pagedCourses.get('content'));
         var totalPages = pagedCourses.get('totalPages');
         var listView = new CourseListView({collection:courses,current:page,totalPages:totalPages});
-        listView.on('childview:input:users', function(childView, model){
-		  var editor = new CourseUserListView({model:model});
-		  Dionysus.mainRegion.show(editor);          	  
-		});
         Dionysus.mainRegion.show(listView);
       });
+	},
+	
+	showUsers: function (id){
+      Dionysus.request('course:users', id).done(function(users){
+		var listview = new CourseUserListView({collection:users});
+		listview.on('childview:input:profile', function(childView, model){
+		  Dionysus.request('course:entity', id).done(function(course){
+		    var editor = new PsychoProfileEditorView({model:model, id:id, course:course});
+		    Dionysus.mainRegion.show(editor); 
+	      });	           	  
+		});
+		Dionysus.mainRegion.show(listview);          	  
+	  });		
 	}
   });
 
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/coursesummary(?*querystring)': 'showCourses'
+        'admin/coursesummary(?*querystring)': 'showCourses',
+		'admin/courseuserlist/:id(/)': 'showUsers'
       },
       controller: new CourseSummaryController()
     });
