@@ -71,6 +71,25 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     model: CourseConsultant
   });
 
+  var CourseUser = Backbone.Model.extend({
+    url: baseUrl + '/' + this.id + '/users',
+    initialize: function (options) {
+      if (options && options.id) {
+        this.id = options.id;
+      }
+    }
+  });
+
+  var CourseUserCollection = Backbone.Collection.extend({
+    url: baseUrl,
+    model: CourseUser,
+	initialize: function (options) {
+      if (options && options.id) {
+        this.url += '/' + options.id + '/users';
+      }
+    }
+  });
+  
   Dionysus.reqres.setHandler('course:entity', function (id) {
     var course = new Course({id: id});
     var defer = $.Deferred();
@@ -132,6 +151,14 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return defer.promise();
   });
 
+  Dionysus.reqres.setHandler('course:users', function (id) {
+    var resources = new CourseUserCollection({id : id}), defer = $.Deferred();
+    resources.fetch().then(function () {
+      defer.resolve(resources);
+    });
+    return defer.promise();
+  });
+  
   Dionysus.reqres.setHandler('course:bookedby', function (userid) {
     var courses = new Entities.UserCourseCollection({appendUrl: '/' + userid + '/courses'});
     var defer = $.Deferred();
