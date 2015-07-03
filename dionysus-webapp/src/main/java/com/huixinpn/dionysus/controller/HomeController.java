@@ -19,7 +19,8 @@ public class HomeController {
 			"/error/**",
 			"/profile/**",
 			"/tests/**",
-			"/site/**"
+			"/site/**",
+            "/fms/**"
 		}, 
 		method = RequestMethod.GET)
 	public String index() {
