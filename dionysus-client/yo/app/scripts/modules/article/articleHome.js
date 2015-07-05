@@ -97,6 +97,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		}
 	});
 
+	Article.CategoryView = CategoryView;
+
 	var DocSummaryView = RegionSummaryView.extend({
 		template: JST[baseTemplatePath+'homePage/articleDocSummary'],
 		articleType : "DOC"

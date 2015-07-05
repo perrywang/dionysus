@@ -9,7 +9,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 		tagName: 'div',
 		className: 'ui centered grid',
 		regions: {
-			list: "#list"
+			list: "#list",
+			category: '#category'
 		},
 
 		initialize: function(options){
@@ -45,6 +46,22 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 			"fm:page:change": function(childView, fmList){
 				this.playList = fmList;
 				this.currentSong = -1;
+			},
+			"category:change": function(childView, id){
+				var region = this.getRegion('list');
+				var criteria = {
+				type: 'AUDIO',
+				category: id,
+				size: 6,
+				projection: 'excerpt',
+				sort: 'id,desc'
+			}
+				Dionysus.request('article:list:pageable','findByCategoryAndType', criteria).done(function(fms){
+					var list = new ListView({
+						collection:fms
+					});
+					region.show(list);
+				});
 			}
 		},
 
@@ -178,8 +195,21 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 	var Controller = Marionette.Object.extend({
 
 		showFM: function() {
+
 			var layoutView = new Layout();
 			Dionysus.mainRegion.show(layoutView);
+
+			//get categories
+			Dionysus.request('category:instances').done(function(data) {
+				var categories = data.embedded('categories');
+				var categoryView = new Dionysus.Article.CategoryView({
+					template: JST['templates/home/article/simpleCategory'],
+					collection: categories
+				});
+
+				layoutView.getRegion('category').show(categoryView);
+			});
+
 
 			Dionysus.request('article:list:pageable', "findByType", {
 				type: 'AUDIO',

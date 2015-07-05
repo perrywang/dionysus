@@ -18,7 +18,9 @@
     "flexslider": "~2.5.0",
     "backbone.paginator": "~2.0.2",
     "pure": "~0.6.0",
-    "jplayer": "~2.9.2"
+    "jplayer": "~2.9.2",
+    "sockjs-client": "~1.0.0",
+    "stomp-websocket": "~2.3.4"
   },
   "resolutions": {
     "underscore": ">=1.7.0",
