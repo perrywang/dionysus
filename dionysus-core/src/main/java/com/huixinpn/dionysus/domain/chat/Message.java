@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.domain.chat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
@@ -10,16 +11,14 @@ import lombok.RequiredArgsConstructor;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 
-//@Data
+
 @Entity
-//@RequiredArgsConstructor
-//@EqualsAndHashCode(callSuper = true)
 @Table(name = "messages")
 public class Message extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = 7438768194716828137L;
 
-	//@NonNull
+    @NotNull
 	@Column(name="content")
 	private String content;
 
@@ -32,6 +31,14 @@ public class Message extends AbstractDionysusAuditable<User> {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setRoom(Room room){
+        this.room = room;
+    }
+
+    public Room getRoom(){
+        return room;
     }
 
 }

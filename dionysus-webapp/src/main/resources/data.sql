@@ -210,3 +210,6 @@ insert into courses_tags values(1,1,1);
 insert into profileitem (id, profile_id, consultantname, summary, module, datetime) values (1, 1, 'test2', '心理健全', '心理课程', '2015/06/01');
 insert into profileitem (id, profile_id, consultantname, summary, module, datetime) values (2, 1, 'test2', '测试通过', '心理测试', '2015/06/11');
 insert into profileitem (id, profile_id, consultantname, summary, module, datetime) values (3, 1, 'test2', '心理健全', '心理课程', '2015/06/14');
+
+
+insert into rooms (id, description) values (1, '欢迎来到聊天室')
