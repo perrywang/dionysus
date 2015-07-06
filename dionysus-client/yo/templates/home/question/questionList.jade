@@ -1,18 +1,14 @@
-#list.question
-  .ui.centered.grid
-    .twelve.wide.column
-      .ui.basic.segment
-        .ui.divided.items
-          |{{#each questions}}
-          .item
-            .ui.small.image.createdby
-              img(src="{{author.avatar}}")
-            .content
-              .header {{title}}
-              .meta
-                span.createdAt {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
-                span.numberAnswer {{numberOfAnswers}}
-              .description
-                p {{description}}
-          |{{/each}}
-        #pagnation
+.ui.divided.items
+  |{{#each questions}}
+  .item
+    .ui.small.image.createdby
+      img(src="{{author.avatar}}")
+    .content
+      .header {{title}}
+      .meta
+        span.createdAt {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
+        span.numberAnswer {{numberOfAnswers}}
+      .description
+        p {{description}}
+  |{{/each}}
+#pagnation
