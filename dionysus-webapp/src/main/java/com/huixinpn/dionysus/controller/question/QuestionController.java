@@ -23,6 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
@@ -64,11 +65,35 @@ public class QuestionController {
     return new EntityPageData<>(questions, QuestionData.class);
   }
 
+  @RequestMapping(value = "/bytagName/{name}", method = RequestMethod.GET)
+  public EntityPageData<QuestionData> findQuestionsByTagName(@PathVariable String name, @RequestParam(value = "page", required = false) Integer page,
+                                                             @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Question> questions = questionRepository.findByTagName(name, paging);
+    return new EntityPageData<>(questions, QuestionData.class);
+  }
+
   @RequestMapping(value = "/byauthor/{id}", method = RequestMethod.GET)
   public EntityPageData<QuestionData> findQuestionsByAuthor(@PathVariable Long id, @RequestParam(value = "page", required = false) Integer page,
                                                             @RequestParam(value = "size", required = false) Integer size) {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
     Page<Question> questions = questionRepository.findByAuthor(new User(id), paging);
+    return new EntityPageData<>(questions, QuestionData.class);
+  }
+
+  @RequestMapping(value = "/byDate", method = RequestMethod.GET)
+  public EntityPageData<QuestionData> findQuestionsByDate(@RequestParam(value = "page", required = false) Integer page,
+                                                          @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Question> questions = questionRepository.findLatestQueations(paging);
+    return new EntityPageData<>(questions, QuestionData.class);
+  }
+
+  @RequestMapping(value = "/bySize", method = RequestMethod.GET)
+  public EntityPageData<QuestionData> findQuestionsBySizeOfAnswers(@RequestParam(value = "page", required = false) Integer page,
+                                                                   @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest paging = PagingHelper.getPageRequest(page, size);
+    Page<Question> questions = questionRepository.findPopularQueations(paging);
     return new EntityPageData<>(questions, QuestionData.class);
   }
 
@@ -84,6 +109,22 @@ public class QuestionController {
     PageRequest page = PagingHelper.getPageRequest(0, n);
     Page<Question> popular = questionRepository.findPopularQueations(page);
     return new EntityPageData<>(popular, QuestionData.class).getContent();
+  }
+
+  @RequestMapping(value = "/answered", method = RequestMethod.GET)
+  public EntityPageData<QuestionData> getAllAnswered(@RequestParam(value = "page", required = false) Integer page,
+                                                     @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest pageRequest = PagingHelper.getPageRequest(page, size);
+    Page<Question> popular = questionRepository.findAllAnswered(pageRequest);
+    return new EntityPageData<>(popular, QuestionData.class);
+  }
+
+  @RequestMapping(value = "/unanswered", method = RequestMethod.GET)
+  public EntityPageData<QuestionData> getAllUnanswered(@RequestParam(value = "page", required = false) Integer page,
+                                                       @RequestParam(value = "size", required = false) Integer size) {
+    PageRequest pageRequest = PagingHelper.getPageRequest(page, size);
+    Page<Question> popular = questionRepository.findAllUnanswered(pageRequest);
+    return new EntityPageData<>(popular, QuestionData.class);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -139,4 +180,21 @@ public class QuestionController {
   public Collection<QTagData> getTags() {
     return new EntityCollectionData<QTagData>(qTagRepository.findAll(), QTagData.class).toDTOCollection();
   }
+
+  @RequestMapping(value = "/tags/autocomplete", method = RequestMethod.GET)
+  public Collection<String> getAutocmpleteTags() {
+    Collection<QTagData> tags = new EntityCollectionData<QTagData>(qTagRepository.findAll(), QTagData.class).toDTOCollection();
+    Collection<String> result = new ArrayList<>();
+    for (QTagData tag : tags) {
+      result.add(tag.getName());
+    }
+    return result;
+  }
+
+  @RequestMapping(value = "/tags/topN", method = RequestMethod.GET)
+  public Collection<QTagData> getTopNTags(@RequestParam(value = "N") Integer n) {
+    PageRequest page = PagingHelper.getPageRequest(0, n);
+    return new EntityPageData<QTagData>(qTagRepository.findTopNTag(page), QTagData.class).getContent();
+  }
+
 }

@@ -5,6 +5,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -17,6 +18,7 @@ import java.util.Collection;
 @NoArgsConstructor
 public class QTag extends AbstractDionysusPersistable{
 
+  @Column(unique = true)
   private String name;
 
   @ManyToMany(mappedBy = "tags")
