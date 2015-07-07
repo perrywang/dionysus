@@ -24,6 +24,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     initResult : function(result) {
       // 传入参数是一个经过projection的对象，不是原本的entity，需要重新建立answer对象
       var answers = result.embedded('answers');
+      answers = answers || new Backbone.Collection();
       answers.map(function(model) {
         if (model.get('type') === 'SINGLE_CHOICE') {
           model.set('option', PsychTestQuestionOption.findOrCreate({
