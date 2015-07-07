@@ -212,4 +212,8 @@ insert into profileitem (id, profile_id, consultantname, summary, module, dateti
 insert into profileitem (id, profile_id, consultantname, summary, module, datetime) values (3, 1, 'test2', '心理健全', '心理课程', '2015/06/14');
 
 
-insert into rooms (id, description) values (1, '欢迎来到聊天室')
+insert into rooms (id, description) values (1, '欢迎来到聊天室1');
+insert into rooms (id, description) values (2, '欢迎来到聊天室2');
+insert into rooms (id, description) values (3, '欢迎来到聊天室3');
+insert into rooms (id, description) values (4, '欢迎来到聊天室4');
+insert into rooms (id, description) values (5, '欢迎来到聊天室5');

@@ -27,6 +27,8 @@ public class Room extends AbstractDionysusAuditable<User> {
     @Column(name="description")
     private String description;
 
+    private Boolean open;
+
     @OneToMany(mappedBy = "room")
     private Collection<Message> messages = new ArrayList<>();
 }
