@@ -99,6 +99,14 @@ public class PsychTest extends AbstractDionysusPersistable {
 			public String toString() {
 				return "SAS";
 			}
+		},
+		
+		// 抑郁自评量表(SDS)
+		SDS {
+			@Override
+			public String toString() {
+				return "SDS";
+			}
 		}
 	}
 	

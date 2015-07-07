@@ -7,6 +7,7 @@ insert into psychtests(id, type, format, min, title, description, object, durati
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (4, 'EPPS', 'ONE_BY_ONE', 225, '爱德华个人偏好量表', '了解性格特点以及内在各项需求评定认知', '12岁以上', '40', '100', 'MACHINE');
 insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (5, 'TAT',  'ONE_BY_ONE', 'TAT测试', '人格评定以及需求评定', '12岁以上', '10', '100', 'MANUAL');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (6, 'SAS', 'ONE_BY_ONE', 20, '焦虑量表', '焦虑评定以及情绪评定', '14岁以上', '3', '60', 'MACHINE');
+insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (7, 'SDS', 'ONE_BY_ONE', 20, '抑郁量表', '抑郁评定以及情绪评定', '14岁以上', '3', '60', 'MACHINE');
 
 insert into suite_test(suite_id, test_id) values (1, 1);
 insert into suite_test(suite_id, test_id) values (1, 2);
@@ -14,7 +15,7 @@ insert into suite_test(suite_id, test_id) values (1, 3);
 insert into suite_test(suite_id, test_id) values (1, 4);
 insert into suite_test(suite_id, test_id) values (1, 5);
 insert into suite_test(suite_id, test_id) values (2, 6);
-
+insert into suite_test(suite_id, test_id) values (2, 7);
 
 
 -- 卡特尔十六种人格因素测试(16PF)
@@ -2938,7 +2939,128 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1091, 919, 'D', '绝大部分或全部时间');
 
 
+-- 抑郁自评量表(SDS)
+-- 指导语：独立的、不受任何人影响的自我评定。 评定的时间范围，应强调是现在或过去一周。每次评定一般可在十分钟内完成。
+-- 题目内容（共20题）： 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(920, 1, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得闷闷不乐，情绪低沉');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1092, 920, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1093, 920, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1094, 920, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1095, 920, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(921, 2, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得一天之中早晨最好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1096, 921, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1097, 921, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1098, 921, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1099, 921, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(922, 3, 7, 'SINGLE_CHOICE', 'REQUIRED', '我一阵阵哭出来或觉得想哭');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1100, 922, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1101, 922, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1102, 922, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1103, 922, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(923, 4, 7, 'SINGLE_CHOICE', 'REQUIRED', '我晚上睡眠不好');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1104, 923, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1105, 923, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1106, 923, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1107, 923, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(924, 5, 7, 'SINGLE_CHOICE', 'REQUIRED', '我吃的跟平常一样多');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1108, 924, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1109, 924, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1110, 924, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1111, 924, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(925, 6, 7, 'SINGLE_CHOICE', 'REQUIRED', '我与异性亲密接触时和以往一样感觉愉快');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1112, 925, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1113, 925, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1114, 925, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1115, 925, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(926, 7, 7, 'SINGLE_CHOICE', 'REQUIRED', '我发觉我的体重在下降');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1116, 926, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1117, 926, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1118, 926, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1119, 926, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(927, 8, 7, 'SINGLE_CHOICE', 'REQUIRED', '我有便秘的苦恼');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1120, 927, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1121, 927, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1122, 927, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1123, 927, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(928, 9, 7, 'SINGLE_CHOICE', 'REQUIRED', '我心跳比平时快');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1124, 928, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1125, 928, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1126, 928, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1127, 928, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(929, 10, 7, 'SINGLE_CHOICE', 'REQUIRED', '我无缘无故地感到疲乏');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1128, 929, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1129, 929, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1130, 929, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1131, 929, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(930, 11, 7, 'SINGLE_CHOICE', 'REQUIRED', '我的头脑跟平常一样清楚');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1132, 930, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1133, 930, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1134, 930, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1135, 930, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(931, 12, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得经常做的事情并没有困难');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1136, 931, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1137, 931, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1138, 931, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1139, 931, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(932, 13, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得不安而平静不下来');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1140, 932, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1141, 932, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1142, 932, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1143, 932, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(933, 14, 7, 'SINGLE_CHOICE', 'REQUIRED', '我对将来抱有希望');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1144, 933, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1145, 933, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1146, 933, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1147, 933, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(934, 15, 7, 'SINGLE_CHOICE', 'REQUIRED', '我比平常容易生气激动');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1148, 934, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1149, 934, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1150, 934, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1151, 934, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(935, 16, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得作出决定是容易的');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1152, 935, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1153, 935, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1154, 935, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1155, 935, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(936, 17, 7, 'SINGLE_CHOICE', 'REQUIRED', '我觉得自己是个有用的人，有人需要我');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1156, 936, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1157, 936, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1158, 936, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1159, 936, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(937, 18, 7, 'SINGLE_CHOICE', 'REQUIRED', '我的生活过得很有意思');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1160, 937, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1161, 937, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1162, 937, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1163, 937, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(938, 19, 7, 'SINGLE_CHOICE', 'REQUIRED', '我认为如果我死了别人会生活得好些');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1164, 938, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1165, 938, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1166, 938, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1167, 938, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(939, 20, 7, 'SINGLE_CHOICE', 'REQUIRED', '平常感兴趣的事我仍然照样感兴趣');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1168, 939, 'A', '没有或很少时间(过去一周内，出现这类情况的日子不超过一天)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1169, 939, 'B', '小部分时间(过去一周内，有1-2天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1170, 939, 'C', '相当多时间(过去一周内，3-4天有过这类情况)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1171, 939, 'D', '绝大部分或全部时间(过去一周内，有5-7天有过这类情况)');
 
 
 
