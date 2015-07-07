@@ -2,7 +2,12 @@ package com.huixinpn.dionysus.controller;
 
 import java.io.IOException;
 
+import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +23,8 @@ import com.huixinpn.dionysus.storage.StorageService;
 public class FileUploadController {
 
 	private StorageService storage;
+    @Autowired
+    private UserRepository userRepository;
 
 	@Autowired
 	public void setStorageService(StorageService service) {
@@ -43,5 +50,31 @@ public class FileUploadController {
 		}
 		return new UploadResult("");
 	}
+
+    @RequestMapping(value = "/upload/avatar", method = RequestMethod.POST)
+    public @ResponseBody UploadResult handleAvatarUpload(@RequestParam("file") MultipartFile file) throws StorageException {
+
+        if(!file.isEmpty()){
+            try{
+                Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                if (principal instanceof User){
+                    User login = (User) principal;
+                    User login_data = userRepository.findOne(login.getId());
+
+                    String id = storage.save(file.getBytes());
+                    String link = storage.url(id);
+
+                    login_data.setAvatar(link);
+                    userRepository.save(login_data);
+
+                    return new UploadResult(link);
+                }
+            } catch (IOException e){
+                throw new StorageException(e.getMessage());
+            }
+        }
+
+        return new UploadResult("");
+    }
 
 }
