@@ -1,4 +1,4 @@
-Dionysus.module('Test', function (Test, Dionysus, Backbone, Marionette, $) {
+Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
   var TestSuiteView = Marionette.ItemView.extend({
