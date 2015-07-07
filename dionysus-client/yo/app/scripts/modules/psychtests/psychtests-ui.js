@@ -3,7 +3,7 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
 
   var TestSuiteView = Marionette.ItemView.extend({
     template : JST['templates/home/psychtests/suite'],
-    className : 'ui card',
+    className : 'item',
     serializeData : function() {
       var data = this.serializeModel(this.model);
       data.tests = this.model.embedded('tests');
@@ -15,7 +15,7 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
     template : JST['templates/home/psychtests/psychtest'],
     className : 'ui centered stackable grid',
     childView : TestSuiteView,
-    childViewContainer : '.ui.cards'
+    childViewContainer : '.ui.list.suites'
   });
 
 

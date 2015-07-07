@@ -1,11 +1,22 @@
-.content
-  h4.header {{ title }}
-  p.description {{ description }}
-  .ui.list
-    {{#each tests}}
-    .item
-      i.right.triangle.icon
-      .content
-        a.header(title="{{ description }}", href="/psychtests/{{ id }}") {{title}}
-    {{/each}}
-.ui.bottom.attached.button 提交套餐
+h3.header {{ title }}
+.ui.grid
+  .six.wide.column
+    img.ui.image(src="/public/images/placeholder.png")
+
+  .ten.wide.column.ui.list
+    table.ui.very.basic.table
+      thead
+        tr
+          th 项目名称
+          th 测试对象
+          th 说明
+          th 人数
+      tbody
+        {{#each tests}}
+        tr
+          td 
+            a.header(title="{{ description }}", href="/psychtests/{{ id }}") {{title}}
+          td {{ object }}
+          td {{ description }}
+          td 0           
+        {{/each}}

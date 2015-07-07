@@ -134,6 +134,10 @@ public class PsychTest extends AbstractDionysusPersistable {
 	// 测试时长
 	@Column(name = "duration")
 	private String duration;
+	
+	// 封面图片url
+	@Column(name = "cover")
+	private String cover;
 
 	// 测试收费
 	@Column(name = "cost")

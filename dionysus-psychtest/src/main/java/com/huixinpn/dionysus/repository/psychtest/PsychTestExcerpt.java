@@ -12,4 +12,6 @@ public interface PsychTestExcerpt {
 	String getTitle();
 
 	String getDescription();
+	
+	String getObject();
 }
