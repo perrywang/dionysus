@@ -10,7 +10,6 @@ public class PagingHelper {
   public static PageRequest getPageRequest(Integer page, Integer size) {
     int pageNumber = (page == null ? 0 : page);
     int pageSize = (size == null ? defaultPageSize : size);
-    defaultPageSize = pageSize;
     return new PageRequest(pageNumber, pageSize);
   }
 }
