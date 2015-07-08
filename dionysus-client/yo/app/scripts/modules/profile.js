@@ -13,7 +13,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       myCourses: '#mycourses',
       myTests: '#mytests',
       myInfo: '#myinfo',
-	  myProfile: '#myprofiles'
+	    myProfile: '#myprofiles',
     },
     childEvents:{
       "blog:open": 'editBlog',
@@ -49,7 +49,18 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       'click @ui.myTests': 'showMyTests',
       'click @ui.myInfo' : 'updateInfo',
       'click @ui.myProfile' : 'showProfiles',
+      'click #uploadAvatar': 'uploadAvatar',
+      'click #changePass': 'changePass'
     },
+
+    uploadAvatar: function(){
+      this.getRegion('myContent').show(new uploadAvatarView({model:this.model}));
+    },
+
+    changePass: function(){
+      this.getRegion('myContent').show(new changePassView({model:this.model}));
+    },
+
     showMyArticles: function(){
       var region = this.getRegion('myContent');
       var user = sessionStorage.getItem('user');
@@ -104,6 +115,62 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
+    }
+  });
+
+
+/**
+  VIEW VIEW VIEW VIEW VIEW VIEW
+**/
+
+  var uploadAvatarView = Marionette.ItemView.extend({
+    template:JST['templates/home/profile/uploadAvatar'],
+    /*tagName:'form',
+    className: 'ui form',*/
+    events:{
+      'click .submit': function(){
+
+      }
+    }
+  });
+
+  var changePassView = Marionette.ItemView.extend({
+    template: JST['templates/home/profile/changePass'],
+    events: {
+      'click .submit': function() {
+        var data = Backbone.Syphon.serialize(this);
+        
+        //validation
+        if (!data.oldpass || data.oldpass == '') {
+          alert('旧密码不能为空');
+          return;
+        } else if (!data.newpass || data.newpass == '') {
+          alert('新密码不能为空');
+          return;
+        } else if (data.newpass !== data.newpass2) {
+          alert('两次密码输入不一致');
+          return;
+        }
+
+        //post
+        $.ajax({
+          //url: 'api/v1/changepass?oldpass='+data.oldpass+'&newpass='+data.newpass,
+          url: '/api/v1/changepass',
+          method: 'POST',
+          contentType: 'application/json; charset=utf-8',
+          data: JSON.stringify({
+            oldPass: data.oldpass,
+            newPass: data.newpass
+          })
+        }).done(function(data){
+          if (data.status === 'fail_pass') alert('原始密码错误');
+          else if(data.status === 'success') alert('密码修改成功');  
+        }).fail(function(){
+          alert('密码修改失败');
+        });
+
+
+      }
     }
   });
 
@@ -360,6 +427,12 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       this.$el.form('set values', this.model.toJSON());
     }
   });
+
+
+
+  /**
+  CONTROLLER CONTROLLER CONTROLLER CONTROLLER
+  **/
 
   var ProfileController = Marionette.Controller.extend({
     showProfile: function(id){

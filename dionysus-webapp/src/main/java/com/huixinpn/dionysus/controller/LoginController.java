@@ -13,11 +13,13 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -71,5 +73,13 @@ public class LoginController {
   @RequestMapping(value = "/updateprofile", method = RequestMethod.POST)
   public User updateprofile(@RequestBody User user) {
     return userService.updateprofile(user);
+  }
+
+  @RequestMapping(value = "/changepass", method = RequestMethod.POST)
+  public Object changePassword(@RequestBody PassTemplate pass){
+
+      HashMap<String, String> revalue = new HashMap<>();
+      userService.changePassword(pass.getOldPass(),pass.getNewPass(), revalue);
+      return revalue;
   }
 }
