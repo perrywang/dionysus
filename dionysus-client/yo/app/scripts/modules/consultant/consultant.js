@@ -81,7 +81,6 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   var ConsultantHomeView = Marionette.LayoutView.extend({
     
     template: JST['templates/home/consultant/consultantHome'],
-    tagName: "div",
     className: "ui centered stackable grid",
 
     initialize: function(options){
