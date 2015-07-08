@@ -1,17 +1,13 @@
-.container
-  .twelve.wide.column
-    .ui.middle.aligned.stackable.grid
-      .eight.wide.column
-        img.image(src="/public/images/logo.jpg")
-      .eight.wide.right.aligned.column
-        .ui.text.menu
-          a.item(href="/profile/{{ id }}") 用户面板
-          a.item#adminlink(href="#") 管理员
-          a.item(href="/logout") 退出
+.container.brand
+  .right.floated.six.wide.column
+    .ui.text.menu
+      a.item(href="/profile/{{ id }}") 用户面板
+      a.item#adminlink(href="#") 管理员
+      a.item(href="/logout") 退出
 
 .ui.inverted.teal.segment
   .container
-    .ui.menu.inverted.teal
+    .ui.menu.inverted.teal.primary
       a.item(href="/") 首页
       a.item(href="/articles") 心理知识
       a.item(href="/consultants") 心理咨询
