@@ -1,0 +1,13 @@
+.ui.divided.list
+  |{{#each courses}}
+  .item
+    i.map.marker.icon
+    .content
+      .header {{title}}
+      .ui.divider
+      .description
+        .label 授课老师 {{ consultant.username }}
+        .label 时间 {{ date }}
+        .label 形式 {{ approach }}
+        .label 状态 {{ state }}
+  |{{/each}}

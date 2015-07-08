@@ -89,7 +89,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
       }
     }
   });
-  
+
   Dionysus.reqres.setHandler('course:entity', function (id) {
     var course = new Course({id: id});
     var defer = $.Deferred();
@@ -158,7 +158,7 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     });
     return defer.promise();
   });
-  
+
   Dionysus.reqres.setHandler('course:bookedby', function (userid) {
     var courses = new Entities.UserCourseCollection({appendUrl: '/' + userid + '/courses'});
     var defer = $.Deferred();
@@ -261,6 +261,13 @@ Dionysus.module('Entities', function (Entities, Dionysus, Backbone, Marionette, 
     return feedbacks.promise();
   });
 
+  Dionysus.reqres.setHandler('course:profile:me',function(){
+    var courses = $.Deferred();
+    $.getJSON(baseUrl+ "/me").done(function(data){
+      courses.resolve(data);
+    });
+    return courses.promise();
+  });
 
 
 

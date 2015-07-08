@@ -81,7 +81,11 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
     },
     showMyCourses: function(){
-      alert("功能开发中");
+      var region = this.getRegion('myContent');
+      $.when(Dionysus.request('course:profile:me')).done(function(courses){
+        var courseView = new MyCourseView({'courses':courses});
+        region.show(courseView);
+      });
     },
     showProfiles: function(){
       var region = this.getRegion('myContent');
@@ -93,10 +97,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 	  var username = this.model.toJSON().realName;
       Dionysus.request("psychoprofile:findbyUser", user).done(function(profiles){
         region.show(new ProfilePsychoProfileView({collection: profiles, name: username}));
-      });      
-    },	
+      });
+    },
     showMyTests: function(){
-      alert("功能开发中")
+      alert("功能开发中");
     },
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
@@ -113,7 +117,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
 
     onRender: function(){
-      
+
       this.$el.form('set values', this.model.toJSON());
 
       var validate = {
@@ -155,12 +159,44 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     }
   });
 
+  var courseState = {
+    'OPEN':'开放注册',
+    'IN_PROGRESS': '正在进行',
+    'FINISHED': '已经结束'
+  };
+
+  var courseApproach = {
+    'ONE2MANY':'在线课堂',
+    'OFFLINE':'离线课程'
+  }
+
+  var MyCourseView = Marionette.ItemView.extend({
+    initialize : function(options){
+      this.courses = options.courses;
+    },
+    serializeData : function(){
+      return {'courses':this.courses};
+    },
+    template:function(data){
+      var template = JST['templates/home/profile/courses'];
+      for(var index = 0; index < data.courses.length; index++){
+        var course = data.courses[index];
+        var state = course.state;
+        var approach = course.approach;
+        course.state = courseState[state] || '未知';
+        course.approach = courseApproach[approach] || '未知';
+      }
+      var html = template(data);
+      return html;
+    }
+  });
+
   var ProfileBlogListView = Marionette.ItemView.extend({
     template:JST['templates/home/profile/blogs'],
     initialize: function(options){
       if(this.collection) this.listenTo(this.collection, 'add', this.render, this);
     },
-    
+
     events:{
       "gotoPage #paging": "gotoPage",
       "click a": "openBlog",
@@ -253,7 +289,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
     serializeData: function(){
       var dataCollection = this.collection.toJSON();
-      
+
       var state_const = {'WAITING':'等待咨询师响应', 'ACCEPTED':'咨询师已接受', 'DECLINED':'咨询师已拒绝', 'FINISHED':'完成'};
       var state_color = {'WAITING':'', 'ACCEPTED':'green', 'DECLINED':'red', 'FINISHED':'teal'};
       var approach_const = {'ONLINE':'在线', 'OFFLINE':'面对面', 'BY_PHONE':'电话'};
@@ -266,13 +302,13 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
         data.approach_value = data.approach;
         data.approach_online = data.approach=="ONLINE"?true:false;
         data.approach = approach_const[data.approach];
-        data.consultant_qqAddress = data.consultant_qqAddress?data.consultant_qqAddress:"#"; 
-        
+        data.consultant_qqAddress = data.consultant_qqAddress?data.consultant_qqAddress:"#";
+
       }
       return {items:dataCollection};
     },
   });
-  
+
   var ProfilePsychoProfileView = Marionette.ItemView.extend({
     template: JST["templates/home/profile/psychoprofiles"],
     initialize: function (options) {
@@ -285,7 +321,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 		  data.username = this.username;
 	  }
       return {profileItems:dataCollection};
-    },	
+    },
   });
 
   var ProfileCourseView = Marionette.ItemView.extend({
