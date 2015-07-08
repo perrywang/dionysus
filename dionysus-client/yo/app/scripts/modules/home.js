@@ -23,7 +23,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
 
   Home.HeaderLoginView = Marionette.ItemView.extend({
     template: JST['templates/home/header/login'],
-    className: 'ui stackable grid',
+    className: 'ui grid',
     serializeData: function(){
       return {
         'id': sessionStorage.getItem('user')
@@ -49,7 +49,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
   
   Home.HeaderView = Marionette.ItemView.extend({
     template: JST['templates/home/header/nav'],
-    className: 'ui stackable grid',
+    className: 'ui grid',
     ui:{
       login: '#login'
     },
