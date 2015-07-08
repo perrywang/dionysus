@@ -26,7 +26,7 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
   });
 
   var ConsultantsView = Marionette.CompositeView.extend({
-    template: '#consultants-tpl',
+    template: JST['templates/home/consultant/consultants'],
     childView: ConsultantView,
     childViewContainer: '.items',
     className: 'ui center aligned page grid',

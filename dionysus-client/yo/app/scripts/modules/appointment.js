@@ -2,13 +2,13 @@ Dionysus.module('Appointment', function(Appointment, Dionysus, Backbone, Marione
   'use strict';
 
   var AppointmentView = Marionette.ItemView.extend({
-    template: '#appointment-tpl',
+    template: JST['templates/home/appointment/appointment'],
     tagName: 'li',
     className: 'item'
   });
 
   var AppointmentsView = Marionette.CompositeView.extend({
-    template: '#appointments-tpl',
+    template: JST['templates/home/appointment/appointments'],
     childView: AppointmentView,
     childViewContainer: '.items',
     className: 'ui page'
@@ -35,8 +35,6 @@ Dionysus.module('Appointment', function(Appointment, Dionysus, Backbone, Marione
       appRoutes : {
         'appointments/appointedBy/:id' : 'showAppointmentsByUser',
         'appointments(/)': 'showAppointments'
-        //'articles/:id(/)': 'showArticle'
-
       },
       controller: new AppointmentController()
     });
