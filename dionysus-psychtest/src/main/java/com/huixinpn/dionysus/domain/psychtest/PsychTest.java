@@ -108,11 +108,20 @@ public class PsychTest extends AbstractDionysusPersistable {
 				return "SDS";
 			}
 		},
+		
 		// 康奈尔医学指数量表(CMI)
 		CMI {
 			@Override
 			public String toString() {
 				return "CMI";
+			}
+		},
+		
+		// 压力量表
+		STS {
+			@Override
+			public String toString() {
+				return "STS";
 			}
 		}
 	}
