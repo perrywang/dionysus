@@ -1,7 +1,20 @@
-img.ui.small.image(src="{{ avatar}}")
+.ui.two.column.middle.aligned.stackable.grid
+  .four.wide.column
+    {{#if avatar}}
+    img.ui.small.image(src="{{ avatar}}")
+    {{else}}
+    img.ui.small.image(src="/public/images/placeholder.png")
+    {{/if}}
+  .four.wide.column
+    .ui.basic.segment
+      a.ui.basic.green.button#uploadAvatar 上传头像
+    .ui.basic.segment
+      a.ui.basic.green.button#changePass 修改密码
 h3.ui.header {{ username }}
-p.description {{ about }}
-form.ui.form  
+form.ui.form
+  .field
+    label 关于我：
+    textarea(name="about", value="{{ about }}")  
   .field
     label 邮箱：    
     .ui.left.icon.input
