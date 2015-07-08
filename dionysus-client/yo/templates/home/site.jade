@@ -1,41 +1,43 @@
-.ui.stackable.equal.height.grid.jumbotron
-  .eight.wide.column
-  .eight.wide.column.dialogue
-    .ui.header
-      h1 汇心网，关怀无处不在
-      p 24小时x360度零距离与您贴心相伴
+.row
+  .jumbotron
+    .dialogue
+      h1.ui.header 汇心网，关怀无处不在
+      p.content 24小时x360度零距离与您贴心相伴
 
-.ui.divider
+.row.centered
+  .ui.four.column.grid
+    .column
+      a.ui.blue.card(href="/articles")
+        .content
+          .ui.icon.header 心理知识
+            i.circular.book.icon
+          .description 心理广播／文章／音视频
+        .ui.bottom.attached.button 进入
+          i.arrow.right.icon
 
-.ui.four.doubling.cards
-  a.blue.card(href="/articles")
-    .content
-      .ui.icon.header 心理知识
-        i.circular.book.icon
-      .description 心理广播／文章／音视频
-    .ui.bottom.attached.button 进入
-      i.arrow.right.icon
+    .column
+      a.ui.red.card(href="/consultants")
+        .content
+          .ui.icon.header 在线心理咨询
+            i.circular.chat.icon
+          .description 在线一对一心理咨询预约
+        .ui.bottom.attached.button 进入
+          i.arrow.right.icon
 
-  a.red.card(href="/consultants")
-    .content
-      .ui.icon.header 在线心理咨询
-        i.circular.chat.icon
-      .description 在线一对一心理咨询预约
-    .ui.bottom.attached.button 进入
-      i.arrow.right.icon
+    .column
+      a.ui.purple.card(href="/courses")
+        .content
+          .ui.icon.header 心理科课程 
+            i.circular.users.icon
+          .description 线下课程／线上课程／录制课程
+        .ui.bottom.attached.button 进入
+          i.arrow.right.icon
 
-  a.purple.card(href="/courses")
-    .content
-      .ui.icon.header 心理科课程 
-        i.circular.users.icon
-      .description 线下课程／线上课程／录制课程
-    .ui.bottom.attached.button 进入
-      i.arrow.right.icon
-
-  a.green.card(href="/psychtestsuites")
-    .content
-      .ui.icon.header 心理测试
-        i.circular.question.icon
-      .description 在线心理测试
-    .ui.bottom.attached.button 进入
-      i.arrow.right.icon
+    .column
+      a.ui.green.card(href="/psychtestsuites")
+        .content
+          .ui.icon.header 心理测试
+            i.circular.question.icon
+          .description 在线心理测试
+        .ui.bottom.attached.button 进入
+          i.arrow.right.icon

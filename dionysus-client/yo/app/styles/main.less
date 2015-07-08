@@ -37,10 +37,16 @@ main {
 .jumbotron {
   background-image: url(/public/images/site1.jpg);
   background-size: cover;
+  position: relative;
 }
 
-.ui.grid.jumbotron .dialogue{
+.jumbotron .dialogue{
+  position: absolute;
   padding-top:16rem;
+  left : 50%;
+  .content {
+    font-size: 1.5rem;
+  }
 }
 
 #header, #footer, #main {

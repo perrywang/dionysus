@@ -2,7 +2,8 @@ Dionysus.module('Site', function(Site, Dionysus, Backbone, Marionette) {
   'use strict';
 
   var SiteView = Marionette.ItemView.extend({
-    template : JST['templates/home/site']
+    template : JST['templates/home/site'],
+    className : 'ui grid'
   });
  
   var SiteController = Marionette.Controller.extend({
