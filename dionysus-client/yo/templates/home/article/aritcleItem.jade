@@ -1,0 +1,5 @@
+.ui.small.image
+  img(src!="<%= cover || '/public/images/placeholder.png' %>")
+.content
+  a.header(href!="/articles/<%= id %>") <%= title %>
+  .description <%= summary2 %> 

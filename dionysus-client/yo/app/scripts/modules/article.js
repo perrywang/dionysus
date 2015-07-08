@@ -1,27 +1,28 @@
 Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   'use strict';
 
-  /*
-  View
-  */
-
   var ArticleView = Marionette.ItemView.extend({
-    template: '#article-cards-tpl',
+    template: JST['templates/home/article/articleCard'],
     tagName: 'div',
     className: 'card'
   });
 
   var ArticlesView = Marionette.CompositeView.extend({
-    template: '#articles-cards-tpl',
+    // XXX: seems like not used
+    template: JST['templates/home/article/articleCards'],
     childView: ArticleView,
     childViewContainer: '.ui.cards',
     className: 'ui page',
     onDomRefresh: function(){
       //console.log(this.model);
       var page = this.model;
-      if(page.get('number') === 0) this.$('.button.left').hide();
-      else if(page.get('number') === page.get('totalPages')-1) this.$('.button.right').hide();
-  }});
+      if(page.get('number') === 0) {
+        this.$('.button.left').hide();
+      } else if(page.get('number') === page.get('totalPages')-1) {
+        this.$('.button.right').hide();
+      }
+    }
+  });
 
   var ArticleDetailView = Marionette.ItemView.extend({
     template: JST['templates/home/article/detailPage/detail'],
@@ -59,7 +60,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
   });
 
   var ArticleItemView = Marionette.ItemView.extend({
-    template: '#article-item-tpl',
+    template: JST['templates/home/article/aritcleItem'],
     tagName: 'div',
     className: 'item'
   });

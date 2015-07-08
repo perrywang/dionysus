@@ -1,21 +1,21 @@
-.ui.stackable.grid
-	.centered.row
-		.twelve.wide.column
-			.ui.middle.aligned.stackable.grid
-				.eight.wide.column
-					img.image(src="/public/images/logo.jpg")
-				.eight.wide.right.aligned.column
-					.ui.text.menu
-						a.item(href="/profile/{{ id }}") 用户面板
-						a#adminlink.item(href="#") 管理员
-						a.item(href="/logout") 退出
-	.ui.inverted.teal.vertical.segment
-		.ui.page.stackable.centered.grid
-			.twelve.wide.column.nav-line(style="padding:0;")
-				.nav-horizontal
-					a.nav-link(href="/") 首页
-					a.nav-link(href="/articles") 心理知识
-					a.nav-link(href="/consultants") 心理咨询
-					a.nav-link(href="/courses") 心理课程
-					a.nav-link(href="/psychtestsuites") 心理测试
-					a.nav-link(href="/fms") 心理FM
+
+.centered.row
+	.twelve.wide.column
+		.ui.middle.aligned.stackable.grid
+			.eight.wide.column
+				img.image(src="/public/images/logo.jpg")
+			.eight.wide.right.aligned.column
+				.ui.text.menu
+					a.item(href="/profile/{{ id }}") 用户面板
+					a#adminlink.item(href="#") 管理员
+					a.item(href="/logout") 退出
+.ui.inverted.teal.vertical.segment
+	.ui.page.stackable.centered.grid
+		.twelve.wide.column.nav-line(style="padding:0;")
+			.nav-horizontal
+				a.nav-link(href="/") 首页
+				a.nav-link(href="/articles") 心理知识
+				a.nav-link(href="/consultants") 心理咨询
+				a.nav-link(href="/courses") 心理课程
+				a.nav-link(href="/psychtestsuites") 心理测试
+				a.nav-link(href="/fms") 心理FM
