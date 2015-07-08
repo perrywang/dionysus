@@ -44,8 +44,6 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       window.open(window.location.origin + '/admin');
     }
   });
-
-  
   
   Home.HeaderView = Marionette.ItemView.extend({
     template: JST['templates/home/header/nav'],
@@ -82,7 +80,6 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       'click #loginbutton' : 'login'
     },
     login : function() {
-      var dialog = this;
       // already have semantic form validation
       var user = {
         username: this.$('#name').val(),
