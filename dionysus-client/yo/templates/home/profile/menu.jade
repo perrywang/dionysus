@@ -1,7 +1,11 @@
 .ui.centered.stackable.grid
   .twelve.wide.column
     h2.ui.header
-      img.ui.small.circular.image(src="{{ avatar }}")
+      {{#if avatar}}
+      img.ui.small.circular.image.mypic(src="{{ avatar }}")
+      {{else}}
+      img.ui.small.circular.image.mypic(src="/public/images/placeholder.png")
+      {{/if}}
       .content 你好，{{ username  }}
         .sub.header {{ about  }}
         .sub.header 

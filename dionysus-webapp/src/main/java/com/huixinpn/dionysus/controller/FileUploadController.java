@@ -65,7 +65,7 @@ public class FileUploadController {
                     String link = storage.url(id);
 
                     login_data.setAvatar(link);
-                    userRepository.save(login_data);
+                    userRepository.saveAndFlush(login_data);
 
                     return new UploadResult(link);
                 }

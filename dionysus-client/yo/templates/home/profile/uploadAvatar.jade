@@ -2,13 +2,16 @@
 	.column
 		.ui.basic.segment
 			{{#if avatar}}
-			img.ui.small.image(src="{{ avatar}}")
+			img.ui.small.image.mypic(src="{{ avatar}}")
 			{{else}}
-			img.ui.small.image(src="/public/images/placeholder.png")
+			img.ui.small.image.mypic(src="/public/images/placeholder.png")
 			{{/if}}
 	.column
 		form.ui.form
 			.field
 				label 选择图片文件(文件小于2M):
 				input#fileupload(type="file")
+			.field
+				.ui.green.tiny.active.progress#progress
+					.bar
 			.ui.primary.submit.button 提交

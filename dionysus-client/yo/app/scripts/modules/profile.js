@@ -125,10 +125,45 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
   var uploadAvatarView = Marionette.ItemView.extend({
     template:JST['templates/home/profile/uploadAvatar'],
-    /*tagName:'form',
-    className: 'ui form',*/
+    initialize: function(options){
+      this.uploadedFileName = "";
+    },
     events:{
       'click .submit': function(){
+        // This function uses pure HTML5 fileupload capability
+        var model = this.model;
+        var thisView = this;
+
+        var progressing = function(evt) {
+          if (evt.lengthComputable) {
+            var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+            $('#progress').progress({
+              percent: percentComplete
+            });
+          }
+        };
+
+
+        var files = $('#fileupload')[0].files;
+        if (files.length == 0 ) {alert('你还没有选择文件'); return;};
+        var file = files[0];
+        if (file.size > (2 * 1024 * 1024)) {alert('图片不能超过2M'); return;}
+        if (file.name === thisView.uploadedFileName){alert('请不要重复提交'); return;}
+        var url = "/api/v1/upload/avatar";
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        xhr.upload.addEventListener('progress', progressing, false);
+        xhr.open('POST', url, true);
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState ==4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+            $('img.mypic').attr('src',json.link);
+            model.set('avatar', json.link);
+            thisView.uploadedFileName = file.name;
+          };
+        };
+        fd.append('file', file);
+        xhr.send(fd);
 
       }
     }
