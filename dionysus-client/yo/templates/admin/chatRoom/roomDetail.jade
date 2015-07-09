@@ -1,0 +1,27 @@
+.ui.page.grid
+	.two.column.middle.aligned.row
+		.column
+			{{#if cover}}
+			img.ui.medium.image#cover(src="{{cover}}")
+			{{else}}
+			img.ui.medium.image#cover(src="/public/images/placeholder.png")
+			{{/if}}
+		.column
+			form.ui.form
+				.field
+					label 选择图片
+					input#fileupload(type="file")
+				.field
+					.ui.green.tiny.active.progress#progress
+						.bar
+				.ui.primary.submit.button#pic 提交
+	.row
+		.column
+			form.ui.form
+				.field
+					label 标题
+					input(type="text", name="name", value="{{name}}")
+				.field
+					label 简介
+					textarea(name="description")
+				.ui.primary.submit.button#detail 保存

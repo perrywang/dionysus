@@ -8,9 +8,9 @@ td
 	{{/if}}
 td	
 	{{#if open}}
-	.ui.primary.button 关闭
+	.ui.primary.button.close 关闭
 	{{else}}
-	.ui.primary.button 开启
+	.ui.primary.button.close 开启
 	{{/if}}
 	a.ui.primary.button(href="/admin/chatrooms/{{id}}") 修改
-	a.ui.primary.button(href="/admin/chatrooms/{{id}}") 查看历史消息
+	a.ui.primary.button(href="/admin/chatrooms/msg/{{id}}") 查看历史消息

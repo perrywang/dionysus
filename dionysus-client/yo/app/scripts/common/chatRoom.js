@@ -61,4 +61,17 @@ Dionysus.reqres.setHandler('rooms:list:pageable', function(searchMethod, criteri
 
 });
 
+Dionysus.reqres.setHandler('rooms:findOne', function(id){
+	var room = new RoomModel({id:id}), defer = $.Deferred();
+
+	room.fetch().then(function(){
+		defer.resolve(room);
+	})
+
+	return defer.promise();
+});
+
+
+
+
 });
