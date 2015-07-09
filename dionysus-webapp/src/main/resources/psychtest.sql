@@ -10,6 +10,7 @@ insert into psychtests(id, type, format, min, title, description, object, durati
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (7, 'SDS', 'ONE_BY_ONE', 20, '抑郁量表', '抑郁评定以及情绪评定', '14岁以上', '3', '60', 'MACHINE');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (8, 'CMI', 'TABLE', 195, '康奈尔健康问卷', '男女性多维度心理健康评定', '14岁以上', '30', '120', 'MACHINE');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (9, 'STS', 'ONE_BY_ONE', 20, '压力量表', '压力评定以及情绪评定', '18岁以上', '5', '80', 'MACHINE');
+insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (10, 'SCL90', 'ONE_BY_ONE', 90, 'SCL-90', '9个方面进行心理健康评定', '12岁以上', '10', '100', 'MACHINE');
 
 insert into suite_test(suite_id, test_id) values (1, 1);
 insert into suite_test(suite_id, test_id) values (1, 2);
@@ -20,6 +21,7 @@ insert into suite_test(suite_id, test_id) values (2, 6);
 insert into suite_test(suite_id, test_id) values (2, 7);
 insert into suite_test(suite_id, test_id) values (2, 8);
 insert into suite_test(suite_id, test_id) values (2, 9);
+insert into suite_test(suite_id, test_id) values (2, 10);
 
 -- 卡特尔十六种人格因素测试(16PF)
 
@@ -3274,304 +3276,939 @@ insert into psychtestquestions(id, sub_id, test_id, type, require, description) 
 -- 指导语：独立的、不受任何人影响的自我评定。 评定的时间范围，应强调是过去一个月内。每次评定一般可在十分钟内完成。
 -- 题目内容（共50题）： 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1135, 1, 9, 'SINGLE_CHOICE', 'REQUIRED', '我受背痛之苦。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1172, 920, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1173, 920, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1174, 920, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1175, 920, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1172, 1135, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1173, 1135, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1174, 1135, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1175, 1135, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1136, 2, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的睡眠不定，且睡不安稳。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1176, 921, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1177, 921, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1178, 921, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1179, 921, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1176, 1136, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1177, 1136, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1178, 1136, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1179, 1136, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1137, 3, 9, 'SINGLE_CHOICE', 'REQUIRED', '我有头痛。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1180, 922, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1181, 922, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1182, 922, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1183, 922, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1180, 1137, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1181, 1137, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1182, 1137, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1183, 1137, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1138, 4, 9, 'SINGLE_CHOICE', 'REQUIRED', '我额部疼痛。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1184, 923, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1185, 923, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1186, 923, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1187, 923, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1184, 1138, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1185, 1138, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1186, 1138, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1187, 1138, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1139, 5, 9, 'SINGLE_CHOICE', 'REQUIRED', '若须等候，我会不安。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1188, 924, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1189, 924, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1190, 924, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1191, 924, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1188, 1139, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1189, 1139, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1190, 1139, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1191, 1139, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1140, 6, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的后颈感到疼痛。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1192, 925, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1193, 925, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1194, 925, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1195, 925, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1192, 1140, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1193, 1140, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1194, 1140, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1195, 1140, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1141, 7, 9, 'SINGLE_CHOICE', 'REQUIRED', '我比少数人更神经紧张。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1196, 926, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1197, 926, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1198, 926, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1199, 926, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1196, 1141, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1197, 1141, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1198, 1141, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1199, 1141, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1142, 8, 9, 'SINGLE_CHOICE', 'REQUIRED', '我很难入睡。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1200, 927, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1201, 927, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1202, 927, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1203, 927, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1200, 1142, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1201, 1142, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1202, 1142, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1203, 1142, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1143, 9, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的头感到紧或痛。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1204, 928, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1205, 928, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1206, 928, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1207, 928, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1204, 1143, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1205, 1143, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1206, 1143, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1207, 1143, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1144, 10, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的胃有病。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1208, 929, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1209, 929, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1210, 929, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1211, 929, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1208, 1144, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1209, 1144, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1210, 1144, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1211, 1144, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1145, 11, 9, 'SINGLE_CHOICE', 'REQUIRED', '我对自己没有信心。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1212, 930, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1213, 930, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1214, 930, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1215, 930, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1212, 1145, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1213, 1145, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1214, 1145, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1215, 1145, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1146, 12, 9, 'SINGLE_CHOICE', 'REQUIRED', '我对自己说话。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1216, 931, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1217, 931, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1218, 931, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1219, 931, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1216, 1146, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1217, 1146, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1218, 1146, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1219, 1146, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1147, 13, 9, 'SINGLE_CHOICE', 'REQUIRED', '我忧虑财务问题。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1220, 932, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1221, 932, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1222, 932, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1223, 932, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1220, 1147, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1221, 1147, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1222, 1147, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1223, 1147, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1148, 14, 9, 'SINGLE_CHOICE', 'REQUIRED', '与人见面时，我会窘迫。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1224, 933, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1225, 933, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1226, 933, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1227, 933, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1224, 1148, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1225, 1148, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1226, 1148, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1227, 1148, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1149, 15, 9, 'SINGLE_CHOICE', 'REQUIRED', '我怕发生可怕的事。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1228, 934, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1229, 934, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1230, 934, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1231, 934, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1228, 1149, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1229, 1149, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1230, 1149, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1231, 1149, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1150, 16, 9, 'SINGLE_CHOICE', 'REQUIRED', '白天我觉得累。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1232, 935, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1233, 935, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1234, 935, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1235, 935, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1232, 1150, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1233, 1150, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1234, 1150, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1235, 1150, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1151, 17, 9, 'SINGLE_CHOICE', 'REQUIRED', '下午我感到喉咙痛，但并非忧郁得上感冒。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1236, 936, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1237, 936, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1238, 936, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1239, 936, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1236, 1151, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1237, 1151, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1238, 1151, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1239, 1151, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1152, 18, 9, 'SINGLE_CHOICE', 'REQUIRED', '我心情不安，无法静坐。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1240, 937, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1241, 937, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1242, 937, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1243, 937, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1240, 1152, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1241, 1152, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1242, 1152, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1243, 1152, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1153, 19, 9, 'SINGLE_CHOICE', 'REQUIRED', '我感到非常口干。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1244, 938, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1245, 938, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1246, 938, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1247, 938, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1244, 1153, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1245, 1153, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1246, 1153, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1247, 1153, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1154, 20, 9, 'SINGLE_CHOICE', 'REQUIRED', '我心脏有病。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1248, 939, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1249, 939, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1250, 939, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1251, 939, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1248, 1154, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1249, 1154, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1250, 1154, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1251, 1154, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1155, 21, 9, 'SINGLE_CHOICE', 'REQUIRED', '我觉得自己不是很有用。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1252, 920, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1253, 920, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1254, 920, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1255, 920, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1252, 1155, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1253, 1155, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1254, 1155, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1255, 1155, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1156, 22, 9, 'SINGLE_CHOICE', 'REQUIRED', '我吸烟。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1256, 921, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1257, 921, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1258, 921, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1259, 921, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1256, 1156, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1257, 1156, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1258, 1156, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1259, 1156, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1157, 23, 9, 'SINGLE_CHOICE', 'REQUIRED', '我肚子不舒服。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1260, 922, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1261, 922, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1262, 922, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1263, 922, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1260, 1157, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1261, 1157, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1262, 1157, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1263, 1157, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1158, 24, 9, 'SINGLE_CHOICE', 'REQUIRED', '我觉得不快乐。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1264, 923, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1265, 923, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1266, 923, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1267, 923, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1264, 1158, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1265, 1158, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1266, 1158, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1267, 1158, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1159, 25, 9, 'SINGLE_CHOICE', 'REQUIRED', '我流汗。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1268, 924, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1269, 924, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1270, 924, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1271, 924, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1268, 1159, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1269, 1159, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1270, 1159, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1271, 1159, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1160, 26, 9, 'SINGLE_CHOICE', 'REQUIRED', '我喝酒。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1272, 925, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1273, 925, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1274, 925, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1275, 925, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1272, 1160, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1273, 1160, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1274, 1160, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1275, 1160, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1161, 27, 9, 'SINGLE_CHOICE', 'REQUIRED', '我很自觉。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1276, 926, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1277, 926, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1278, 926, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1279, 926, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1276, 1161, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1277, 1161, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1278, 1161, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1279, 1161, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1162, 28, 9, 'SINGLE_CHOICE', 'REQUIRED', '我觉得自己像四分五裂。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1280, 927, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1281, 927, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1282, 927, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1283, 927, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1280, 1162, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1281, 1162, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1282, 1162, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1283, 1162, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1163, 29, 9, 'SINGLE_CHOICE', 'REQUIRED', '我得眼睛又酸又累。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1284, 928, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1285, 928, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1286, 928, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1287, 928, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1284, 1163, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1285, 1163, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1286, 1163, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1287, 1163, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1164, 30, 9, 'SINGLE_CHOICE', 'REQUIRED', '我得腿或脚抽筋。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1288, 929, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1289, 929, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1290, 929, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1291, 929, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1288, 1164, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1289, 1164, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1290, 1164, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1291, 1164, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1165, 31, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的心跳过速。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1292, 930, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1293, 930, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1294, 930, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1295, 930, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1292, 1165, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1293, 1165, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1294, 1165, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1295, 1165, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1166, 32, 9, 'SINGLE_CHOICE', 'REQUIRED', '我怕结识人。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1296, 931, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1297, 931, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1298, 931, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1299, 931, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1296, 1166, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1297, 1166, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1298, 1166, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1299, 1166, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1167, 33, 9, 'SINGLE_CHOICE', 'REQUIRED', '我手脚冰凉。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1300, 932, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1301, 932, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1302, 932, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1303, 932, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1300, 1167, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1301, 1167, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1302, 1167, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1303, 1167, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1168, 34, 9, 'SINGLE_CHOICE', 'REQUIRED', '我患便秘。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1304, 933, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1305, 933, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1306, 933, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1307, 933, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1304, 1168, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1305, 1168, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1306, 1168, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1307, 1168, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1169, 35, 9, 'SINGLE_CHOICE', 'REQUIRED', '我未经医师指示使用各种药物。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1308, 934, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1309, 934, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1310, 934, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1311, 934, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1308, 1169, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1309, 1169, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1310, 1169, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1311, 1169, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1170, 36, 9, 'SINGLE_CHOICE', 'REQUIRED', '我发现自己很容易哭。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1312, 935, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1313, 935, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1314, 935, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1315, 935, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1312, 1170, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1313, 1170, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1314, 1170, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1315, 1170, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1171, 37, 9, 'SINGLE_CHOICE', 'REQUIRED', '我消化不良。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1316, 936, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1317, 936, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1318, 936, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1319, 936, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1316, 1171, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1317, 1171, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1318, 1171, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1319, 1171, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1172, 38, 9, 'SINGLE_CHOICE', 'REQUIRED', '我咬指甲。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1320, 937, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1321, 937, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1322, 937, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1323, 937, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1320, 1172, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1321, 1172, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1322, 1172, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1323, 1172, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1173, 39, 9, 'SINGLE_CHOICE', 'REQUIRED', '我耳中有嗡嗡声。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1324, 938, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1325, 938, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1326, 938, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1327, 938, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1324, 1173, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1325, 1173, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1326, 1173, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1327, 1173, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1174, 40, 9, 'SINGLE_CHOICE', 'REQUIRED', '我小便频繁。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1328, 939, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1329, 939, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1330, 939, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1331, 939, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1328, 1174, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1329, 1174, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1330, 1174, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1331, 1174, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1175, 41, 9, 'SINGLE_CHOICE', 'REQUIRED', '我有胃溃疡。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1332, 930, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1333, 930, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1334, 930, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1335, 930, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1332, 1175, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1333, 1175, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1334, 1175, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1335, 1175, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1176, 42, 9, 'SINGLE_CHOICE', 'REQUIRED', '我有皮肤方面的病。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1336, 931, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1337, 931, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1338, 931, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1339, 931, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1336, 1176, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1337, 1176, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1338, 1176, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1339, 1176, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1177, 43, 9, 'SINGLE_CHOICE', 'REQUIRED', '我的喉咙很紧。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1340, 932, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1341, 932, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1342, 932, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1343, 932, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1340, 1177, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1341, 1177, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1342, 1177, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1343, 1177, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1178, 44, 9, 'SINGLE_CHOICE', 'REQUIRED', '我有十二指肠溃疡病');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1344, 933, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1345, 933, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1346, 933, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1347, 933, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1344, 1178, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1345, 1178, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1346, 1178, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1347, 1178, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1179, 45, 9, 'SINGLE_CHOICE', 'REQUIRED', '我担心我的工作。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1348, 934, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1349, 934, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1350, 934, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1351, 934, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1348, 1179, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1349, 1179, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1350, 1179, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1351, 1179, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1180, 46, 9, 'SINGLE_CHOICE', 'REQUIRED', '我口腔溃烂。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1352, 935, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1353, 935, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1354, 935, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1355, 935, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1352, 1180, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1353, 1180, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1354, 1180, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1355, 1180, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1181, 47, 9, 'SINGLE_CHOICE', 'REQUIRED', '我为琐事忧虑。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1356, 936, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1357, 936, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1358, 936, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1359, 936, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1356, 1181, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1357, 1181, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1358, 1181, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1359, 1181, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1182, 48, 9, 'SINGLE_CHOICE', 'REQUIRED', '我呼吸浅促。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1360, 937, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1361, 937, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1362, 937, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1363, 937, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1360, 1182, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1361, 1182, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1362, 1182, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1363, 1182, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1183, 49, 9, 'SINGLE_CHOICE', 'REQUIRED', '我觉得胸部紧迫。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1364, 938, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1365, 938, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1366, 938, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1367, 938, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1364, 1183, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1365, 1183, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1366, 1183, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1367, 1183, 'D', '总是发生(过去一月内)');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1184, 50, 9, 'SINGLE_CHOICE', 'REQUIRED', '我发现很难作决定。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1368, 939, 'A', '从未发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1369, 939, 'B', '偶尔发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1370, 939, 'C', '经常发生(过去一月内)');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1371, 939, 'D', '总是发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1368, 1184, 'A', '从未发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1369, 1184, 'B', '偶尔发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1370, 1184, 'C', '经常发生(过去一月内)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1371, 1184, 'D', '总是发生(过去一月内)');
+
+
+-- SCL-90
+-- 指导语：独立的、不受任何人影响的自我评定。 评定的时间范围，应强调是过去一个月内。每次评定一般可在十分钟内完成。
+-- 题目内容（共90题）： 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1185, 1, 10, 'SINGLE_CHOICE', 'REQUIRED', '头疼。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1372, 1185, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1373, 1185, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1374, 1185, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1375, 1185, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1376, 1185, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1186, 2, 10, 'SINGLE_CHOICE', 'REQUIRED', '神经过敏，心中不踏实。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1377, 1186, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1378, 1186, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1379, 1186, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1380, 1186, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1381, 1186, 'E', '严重)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1187, 3, 10, 'SINGLE_CHOICE', 'REQUIRED', '头脑中有不必要的想法和字句盘旋。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1382, 1187, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1383, 1187, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1384, 1187, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1385, 1187, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1386, 1187, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1188, 4, 10, 'SINGLE_CHOICE', 'REQUIRED', '头昏或昏倒。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1387, 1188, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1388, 1188, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1389, 1188, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1390, 1188, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1391, 1188, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1189, 5, 10, 'SINGLE_CHOICE', 'REQUIRED', '对异性的兴趣减退。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1392, 1189, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1393, 1189, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1394, 1189, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1395, 1189, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1396, 1189, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1190, 6, 10, 'SINGLE_CHOICE', 'REQUIRED', '对旁人责全求备。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1397, 1190, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1398, 1190, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1399, 1190, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1400, 1190, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1401, 1190, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1191, 7, 10, 'SINGLE_CHOICE', 'REQUIRED', '感觉别人能控制你的思想。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1402, 1191, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1403, 1191, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1404, 1191, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1405, 1191, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1406, 1191, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1192, 8, 10, 'SINGLE_CHOICE', 'REQUIRED', '责怪别人制造麻烦。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1407, 1192, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1408, 1192, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1409, 1192, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1410, 1192, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1411, 1192, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1193, 9, 10, 'SINGLE_CHOICE', 'REQUIRED', '忘记性大。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1412, 1193, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1413, 1193, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1414, 1193, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1415, 1193, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1416, 1193, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1194, 10, 10, 'SINGLE_CHOICE', 'REQUIRED', '担心自己的衣饰整齐及仪态的端庄。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1417, 1194, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1418, 1194, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1419, 1194, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1420, 1194, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1421, 1194, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1195, 11, 10, 'SINGLE_CHOICE', 'REQUIRED', '容易烦恼和激动。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1422, 1195, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1423, 1195, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1424, 1195, 'C', '中等)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1425, 1195, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1426, 1195, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1196, 12, 10, 'SINGLE_CHOICE', 'REQUIRED', '胸痛。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1427, 1196, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1428, 1196, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1429, 1196, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1430, 1196, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1431, 1196, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1197, 13, 10, 'SINGLE_CHOICE', 'REQUIRED', '害怕空旷的场所和街道。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1432, 1197, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1433, 1197, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1434, 1197, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1435, 1197, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1436, 1197, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1198, 14, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己的精力下降，活动减慢。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1437, 1198, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1438, 1198, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1439, 1198, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1440, 1198, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1441, 1198, 'E', '严重)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1199, 15, 10, 'SINGLE_CHOICE', 'REQUIRED', '想结束自己的生命。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1442, 1199, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1443, 1199, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1444, 1199, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1445, 1199, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1446, 1199, 'E', '严重)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1200, 16, 10, 'SINGLE_CHOICE', 'REQUIRED', '听到旁人听不到的声音。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1447, 1200, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1448, 1200, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1449, 1200, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1450, 1200, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1451, 1200, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1201, 17, 10, 'SINGLE_CHOICE', 'REQUIRED', '发抖。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1452, 1201, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1453, 1201, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1454, 1201, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1455, 1201, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1456, 1201, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1202, 18, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到大多数人都不可信任。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1457, 1202, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1458, 1202, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1459, 1202, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1460, 1202, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1461, 1202, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1203, 19, 10, 'SINGLE_CHOICE', 'REQUIRED', '胃口不好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1462, 1203, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1463, 1203, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1464, 1203, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1465, 1203, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1466, 1203, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1204, 20, 10, 'SINGLE_CHOICE', 'REQUIRED', '容易哭泣。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1467, 1204, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1468, 1204, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1469, 1204, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1470, 1204, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1471, 1204, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1205, 21, 10, 'SINGLE_CHOICE', 'REQUIRED', '同异性相处感到害羞不自在。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1472, 1205, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1473, 1205, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1474, 1205, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1475, 1205, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1476, 1205, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1206, 22, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到受骗，中了圈套或有人想抓住你。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1477, 1206, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1478, 1206, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1479, 1206, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1480, 1206, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1481, 1206, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1207, 23, 10, 'SINGLE_CHOICE', 'REQUIRED', '无缘无故的突然感到害怕。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1482, 1207, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1483, 1207, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1484, 1207, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1485, 1207, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1486, 1207, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1208, 24, 10, 'SINGLE_CHOICE', 'REQUIRED', '自己不能控制地大发脾气。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1487, 1208, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1488, 1208, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1489, 1208, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1490, 1208, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1491, 1208, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1209, 25, 10, 'SINGLE_CHOICE', 'REQUIRED', '怕单独出门。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1492, 1209, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1493, 1209, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1494, 1209, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1495, 1209, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1496, 1209, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1210, 26, 10, 'SINGLE_CHOICE', 'REQUIRED', '经常责怪自己。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1497, 1210, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1498, 1210, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1499, 1210, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1500, 1210, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1501, 1210, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1211, 27, 10, 'SINGLE_CHOICE', 'REQUIRED', '腰痛。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1502, 1211, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1503, 1211, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1504, 1211, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1505, 1211, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1506, 1211, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1212, 28, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到难以完成任务。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1507, 1212, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1508, 1212, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1509, 1212, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1510, 1212, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1511, 1212, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1213, 29, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到孤独。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1512, 1213, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1513, 1213, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1514, 1213, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1515, 1213, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1516, 1213, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1214, 30, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到苦闷。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1517, 1214, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1518, 1214, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1519, 1214, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1520, 1214, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1521, 1214, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1215, 31, 10, 'SINGLE_CHOICE', 'REQUIRED', '过分担忧。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1522, 1215, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1523, 1215, 'B', '很轻)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1524, 1215, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1525, 1215, 'D', '偏重)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1526, 1215, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1216, 32, 10, 'SINGLE_CHOICE', 'REQUIRED', '对事物不感兴趣。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1527, 1216, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1528, 1216, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1529, 1216, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1530, 1216, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1531, 1216, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1217, 33, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到害怕。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1532, 1217, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1533, 1217, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1534, 1217, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1535, 1217, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1536, 1217, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1218, 34, 10, 'SINGLE_CHOICE', 'REQUIRED', '您的感情容易受到伤害。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1537, 1218, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1538, 1218, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1539, 1218, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1540, 1218, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1541, 1218, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1219, 35, 10, 'SINGLE_CHOICE', 'REQUIRED', '旁人能知道你的私下想法。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1542, 1219, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1543, 1219, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1544, 1219, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1545, 1219, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1546, 1219, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1220, 36, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到别人不理解你不同情你。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1547, 1220, 'A', '从没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1548, 1220, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1549, 1220, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1550, 1220, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1551, 1220, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1221, 37, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到人们对你不友好，不喜欢你。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1552, 1221, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1553, 1221, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1554, 1221, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1555, 1221, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1556, 1221, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1222, 38, 10, 'SINGLE_CHOICE', 'REQUIRED', '做事必须做得很慢以保证做得很好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1557, 1222, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1558, 1222, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1559, 1222, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1560, 1222, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1561, 1222, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1223, 39, 10, 'SINGLE_CHOICE', 'REQUIRED', '心跳得很厉害。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1562, 1223, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1563, 1223, 'B', '很轻)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1564, 1223, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1565, 1223, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1566, 1223, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1224, 40, 10, 'SINGLE_CHOICE', 'REQUIRED', '恶心或胃部不舒服。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1567, 1224, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1568, 1224, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1569, 1224, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1570, 1224, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1571, 1224, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1225, 41, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到比不上别人。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1572, 1225, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1573, 1225, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1574, 1225, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1575, 1225, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1576, 1225, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1226, 42, 10, 'SINGLE_CHOICE', 'REQUIRED', '肌肉酸痛。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1577, 1226, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1578, 1226, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1579, 1226, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1580, 1226, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1581, 1226, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1227, 43, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到有人在监视您或谈论您。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1582, 1227, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1583, 1227, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1584, 1227, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1585, 1227, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1586, 1227, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1228, 44, 10, 'SINGLE_CHOICE', 'REQUIRED', '难以入睡。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1587, 1228, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1588, 1228, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1589, 1228, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1590, 1228, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1591, 1228, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1229, 45, 10, 'SINGLE_CHOICE', 'REQUIRED', '做事必须反复检查。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1592, 1229, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1593, 1229, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1594, 1229, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1595, 1229, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1596, 1229, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1230, 46, 10, 'SINGLE_CHOICE', 'REQUIRED', '难以做出决定。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1597, 1230, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1598, 1230, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1599, 1230, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1600, 1230, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1601, 1230, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1231, 47, 10, 'SINGLE_CHOICE', 'REQUIRED', '怕乘电梯，公共汽车，地铁或火车。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1602, 1231, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1603, 1231, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1604, 1231, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1605, 1231, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1606, 1231, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1232, 48, 10, 'SINGLE_CHOICE', 'REQUIRED', '呼吸有困难。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1607, 1232, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1608, 1232, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1609, 1232, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1610, 1232, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1611, 1232, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1233, 49, 10, 'SINGLE_CHOICE', 'REQUIRED', '一阵阵发冷或发热。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1612, 1233, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1613, 1233, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1614, 1233, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1615, 1233, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1616, 1233, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1234, 50, 10, 'SINGLE_CHOICE', 'REQUIRED', '因为感到害怕而避开某些东西，场合或活动。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1617, 1234, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1618, 1234, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1619, 1234, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1620, 1234, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1621, 1234, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1235, 51, 10, 'SINGLE_CHOICE', 'REQUIRED', '脑子变空了。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1622, 1235, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1623, 1235, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1624, 1235, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1625, 1235, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1626, 1235, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1236, 52, 10, 'SINGLE_CHOICE', 'REQUIRED', '身体发麻或刺痛。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1627, 1236, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1628, 1236, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1629, 1236, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1630, 1236, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1631, 1236, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1237, 53, 10, 'SINGLE_CHOICE', 'REQUIRED', '喉咙有哽咽感。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1632, 1237, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1633, 1237, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1634, 1237, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1635, 1237, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1636, 1237, 'E', '严重)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1238, 54, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到前途没有希望。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1637, 1238, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1638, 1238, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1639, 1238, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1640, 1238, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1641, 1238, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1239, 55, 10, 'SINGLE_CHOICE', 'REQUIRED', '不能集中精力。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1642, 1239, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1643, 1239, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1644, 1239, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1645, 1239, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1646, 1239, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1240, 56, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到身体的一部分软弱无力。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1647, 1240, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1648, 1240, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1649, 1240, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1650, 1240, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1651, 1240, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1241, 57, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到紧张或容易紧张。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1652, 1241, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1653, 1241, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1654, 1241, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1655, 1241, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1656, 1241, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1242, 58, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到手或脚发重。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1657, 1242, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1658, 1242, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1659, 1242, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1660, 1242, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1661, 1242, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1243, 59, 10, 'SINGLE_CHOICE', 'REQUIRED', '想到死亡的事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1662, 1243, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1663, 1243, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1664, 1243, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1665, 1243, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1666, 1243, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1244, 60, 10, 'SINGLE_CHOICE', 'REQUIRED', '吃得太多。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1667, 1244, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1668, 1244, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1669, 1244, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1670, 1244, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1671, 1244, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1245, 61, 10, 'SINGLE_CHOICE', 'REQUIRED', '当别人看着您或谈论您时感到不自在。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1672, 1245, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1673, 1245, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1674, 1245, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1675, 1245, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1676, 1245, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1246, 62, 10, 'SINGLE_CHOICE', 'REQUIRED', '有一些不属于你自己的想法。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1677, 1246, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1678, 1246, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1679, 1246, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1680, 1246, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1681, 1246, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1247, 63, 10, 'SINGLE_CHOICE', 'REQUIRED', '有想打人或伤害他人的冲动。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1682, 1247, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1683, 1247, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1684, 1247, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1685, 1247, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1686, 1247, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1248, 64, 10, 'SINGLE_CHOICE', 'REQUIRED', '醒得太早。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1687, 1248, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1688, 1248, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1689, 1248, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1690, 1248, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1691, 1248, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1249, 65, 10, 'SINGLE_CHOICE', 'REQUIRED', '必须反复洗手，点数目或触摸某些东西。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1692, 1249, 'A', '没有)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1693, 1249, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1694, 1249, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1695, 1249, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1696, 1249, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1250, 66, 10, 'SINGLE_CHOICE', 'REQUIRED', '睡得不稳不深。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1697, 1250, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1698, 1250, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1699, 1250, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1700, 1250, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1701, 1250, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1251, 67, 10, 'SINGLE_CHOICE', 'REQUIRED', '有想摔坏破坏东西的想法或念头。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1702, 1251, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1703, 1251, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1704, 1251, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1705, 1251, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1706, 1251, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1252, 68, 10, 'SINGLE_CHOICE', 'REQUIRED', '有一些别人没有的想法和念头。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1707, 1252, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1708, 1252, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1709, 1252, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1710, 1252, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1711, 1252, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1253, 69, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到对别人神经过敏。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1712, 1253, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1713, 1253, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1714, 1253, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1715, 1253, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1716, 1253, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1254, 70, 10, 'SINGLE_CHOICE', 'REQUIRED', '在商店或电影等人多的地方感到不自在。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1717, 1254, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1718, 1254, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1719, 1254, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1720, 1254, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1721, 1254, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1255, 71, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到任何事情都困难。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1722, 1255, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1723, 1255, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1724, 1255, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1725, 1255, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1726, 1255, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1256, 72, 10, 'SINGLE_CHOICE', 'REQUIRED', '一阵阵恐惧或惊恐。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1727, 1256, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1728, 1256, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1729, 1256, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1730, 1256, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1731, 1256, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1257, 73, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到在公共场合吃东西很不舒服。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1732, 1257, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1733, 1257, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1734, 1257, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1735, 1257, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1736, 1257, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1258, 74, 10, 'SINGLE_CHOICE', 'REQUIRED', '经常与人争论。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1737, 1258, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1738, 1258, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1739, 1258, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1740, 1258, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1741, 1258, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1259, 75, 10, 'SINGLE_CHOICE', 'REQUIRED', '单独一人是神经很紧张。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1742, 1259, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1743, 1259, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1744, 1259, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1745, 1259, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1746, 1259, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1260, 76, 10, 'SINGLE_CHOICE', 'REQUIRED', '别人对你的成绩没有做出恰当的评价。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1747, 1260, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1748, 1260, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1749, 1260, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1750, 1260, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1751, 1260, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1261, 77, 10, 'SINGLE_CHOICE', 'REQUIRED', '即使和别人在一起也感到孤单。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1752, 1261, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1753, 1261, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1754, 1261, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1755, 1261, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1756, 1261, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1262, 78, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到坐立不安心神不定。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1757, 1262, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1758, 1262, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1759, 1262, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1760, 1262, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1761, 1262, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1263, 79, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己没有什么价值。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1762, 1263, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1763, 1263, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1764, 1263, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1765, 1263, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1766, 1263, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1264, 80, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到熟悉的东西变成陌生或不像真的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1767, 1264, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1768, 1264, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1769, 1264, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1770, 1264, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1771, 1264, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1265, 81, 10, 'SINGLE_CHOICE', 'REQUIRED', '大叫或摔东西。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1772, 1265, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1773, 1265, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1774, 1265, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1775, 1265, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1776, 1265, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1266, 82, 10, 'SINGLE_CHOICE', 'REQUIRED', '害怕会在公共场合昏倒。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1777, 1266, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1778, 1266, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1779, 1266, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1780, 1266, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1781, 1266, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1267, 83, 10, 'SINGLE_CHOICE', 'REQUIRED', '害怕别人想占你的便宜。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1782, 1267, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1783, 1267, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1784, 1267, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1785, 1267, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1786, 1267, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1268, 84, 10, 'SINGLE_CHOICE', 'REQUIRED', '为一些有关"性"的想法而苦恼。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1787, 1268, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1788, 1268, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1789, 1268, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1790, 1268, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1791, 1268, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1269, 85, 10, 'SINGLE_CHOICE', 'REQUIRED', '您认为应该因为自己的过错而受到惩罚。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1792, 1269, 'A', '没有)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1793, 1269, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1794, 1269, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1795, 1269, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1796, 1269, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1270, 86, 10, 'SINGLE_CHOICE', 'REQUIRED', '严重感到要赶快把事情做完。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1797, 1270, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1798, 1270, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1799, 1270, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1800, 1270, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1801, 921, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1271, 87, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己的身体有严重问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1802, 1271, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1803, 1271, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1804, 1271, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1805, 936, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1806, 921, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1272, 88, 10, 'SINGLE_CHOICE', 'REQUIRED', '从未感到和其他人很亲近。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1807, 1272, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1808, 1272, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1809, 1272, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1810, 1272, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1811, 1272, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1273, 89, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己有罪。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1812, 1273, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1813, 1273, 'B', '很轻)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1814, 1273, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1815, 1273, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1816, 1273, 'E', '严重');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1274, 90, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己的脑子有毛病。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1817, 1274, 'A', '没有');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1818, 1274, 'B', '很轻');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1819, 1274, 'C', '中等');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1820, 1274, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1821, 1274, 'E', '严重');
+
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');

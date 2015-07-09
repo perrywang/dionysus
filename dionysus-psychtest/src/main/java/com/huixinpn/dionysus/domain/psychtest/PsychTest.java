@@ -123,6 +123,14 @@ public class PsychTest extends AbstractDionysusPersistable {
 			public String toString() {
 				return "STS";
 			}
+		},
+		
+		// SCL-90
+		SCL90 {
+			@Override
+			public String toString() {
+				return "SCL90";
+			}
 		}
 	}
 	
