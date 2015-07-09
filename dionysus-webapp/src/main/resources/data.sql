@@ -212,8 +212,18 @@ insert into profileitem (id, profile_id, consultantname, summary, module, dateti
 insert into profileitem (id, profile_id, consultantname, summary, module, datetime) values (3, 1, 'test2', '心理健全', '心理课程', '2015/06/14');
 
 
-insert into rooms (id, description) values (1, '欢迎来到聊天室1');
-insert into rooms (id, description) values (2, '欢迎来到聊天室2');
-insert into rooms (id, description) values (3, '欢迎来到聊天室3');
-insert into rooms (id, description) values (4, '欢迎来到聊天室4');
-insert into rooms (id, description) values (5, '欢迎来到聊天室5');
+insert into rooms (id, name, description, open) values (1, 'chatroom x xx', '欢迎来到聊天室1', true);
+insert into rooms (id, name, description, open) values (2, 'chatroom x xx', '欢迎来到聊天室2', true);
+insert into rooms (id, name, description, open) values (3, 'chatroom x xx', '欢迎来到聊天室3', true);
+insert into rooms (id, name, description, open) values (4, 'chatroom x xx', '欢迎来到聊天室4', true);
+insert into rooms (id, name, description, open) values (5, 'chatroom x xx', '欢迎来到聊天室5', true);
+insert into rooms (id, name, description, open) values (6, 'chatroom x xx', '欢迎来到聊天室1', true);
+insert into rooms (id, name, description, open) values (7, 'chatroom x xx', '欢迎来到聊天室2', true);
+insert into rooms (id, name, description, open) values (8, 'chatroom x xx', '欢迎来到聊天室3', false);
+insert into rooms (id, name, description, open) values (9, 'chatroom x xx', '欢迎来到聊天室4', true);
+insert into rooms (id, name, description, open) values (10, 'chatroom x xx', '欢迎来到聊天室5', false);
+insert into rooms (id, name, description, open) values (11, 'chatroom x xx', '欢迎来到聊天室1', true);
+insert into rooms (id, name, description, open) values (12, 'chatroom x xx', '欢迎来到聊天室2', true);
+insert into rooms (id, name, description, open) values (13, 'chatroom x xx', '欢迎来到聊天室3', true);
+insert into rooms (id, name, description, open) values (14, 'chatroom x xx', '欢迎来到聊天室4', true);
+insert into rooms (id, name, description, open) values (15, 'chatroom x xx', '欢迎来到聊天室5', true);

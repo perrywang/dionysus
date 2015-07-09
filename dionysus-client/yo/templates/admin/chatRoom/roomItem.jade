@@ -1,0 +1,16 @@
+td {{id}}
+td {{name}}
+td
+	{{#if open}}
+	i.ui.green.label 开启中
+	{{else}}
+	i.ui.red.label 已关闭
+	{{/if}}
+td	
+	{{#if open}}
+	.ui.primary.button 关闭
+	{{else}}
+	.ui.primary.button 开启
+	{{/if}}
+	a.ui.primary.button(href="/admin/chatrooms/{{id}}") 修改
+	a.ui.primary.button(href="/admin/chatrooms/{{id}}") 查看历史消息

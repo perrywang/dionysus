@@ -67,7 +67,7 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
     template: JST["templates/admin/courses/courselist"],
     childView: CourseItemView,
     tagName: 'table',
-    className: 'ui inverted purple table',
+    className: 'ui celled striped table',
     childViewContainer: 'tbody',
     initialize: function(options){
       if (options && options.totalPages){
@@ -99,7 +99,7 @@ Dionysus.module('AdminCourseSummary', function (Course, Dionysus, Backbone, Mari
     template: JST["templates/admin/courses/courseuserlist"],
     childView: CourseUserItemView,
     tagName: 'table',
-    className: 'ui inverted purple table',
+    className: 'ui celled striped table',
     childViewContainer: 'tbody',
     initialize: function(options){
       if (options && options.totalPages){

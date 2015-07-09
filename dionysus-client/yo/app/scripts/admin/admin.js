@@ -19,10 +19,11 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
     { name: '个人博客', href: '/admin/blogs',       icon: 'edit'  },
     { name: '心理测试', href: '/admin/tests',       icon: 'lab'   },
     { name: '课程列表', href: '/admin/courses',     icon: 'edit'  },
-	{ name: '课程汇总', href: '/admin/coursesummary',     icon: 'edit'  },
+	  { name: '课程汇总', href: '/admin/coursesummary',     icon: 'edit'  },
     { name: '咨询师审核', href: '/admin/consultants',     icon: 'edit'  },
-	{ name: '心理预约', href: '/admin/appointments',     icon: 'edit'  },
-	{ name: '咨询师特长', href: '/admin/consultantexpertise',     icon: 'edit'  },
+	  { name: '心理预约', href: '/admin/appointments',     icon: 'edit'  },
+	  { name: '咨询师特长', href: '/admin/consultantexpertise',     icon: 'edit'  },
+    { name: '聊天室', href: '/admin/chatrooms', icon: 'edit'}
   ]);
 
   Dionysus.addInitializer(function() {

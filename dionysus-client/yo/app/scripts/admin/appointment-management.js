@@ -80,7 +80,7 @@ Dionysus.module('AdminAppointment', function (Course, Dionysus, Backbone, Marion
     template: JST["templates/admin/appointments/appointmentlist"],
     childView: AppointmentItemView,
     tagName: 'table',
-    className: 'ui inverted purple table',
+    className: 'ui celled striped table',
     childViewContainer: 'tbody',
     initialize: function(options){
       if (options && options.totalPages){

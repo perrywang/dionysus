@@ -8,7 +8,7 @@ var RoomModel = Backbone.Model.extend({
 
 var RoomPageableCollection = Backbone.PageableCollection.extend({
 
-	urlRoot: '/api/v1/rooms',
+	url: '/api/v1/rooms',
 
 	initialize: function(options) {
 		if (options && options.searchMethod) this.url += '/search/' + options.searchMethod;
