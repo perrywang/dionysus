@@ -10,6 +10,6 @@ import java.util.Collection;
 
 public interface QTagRepository extends JpaRepository<QTag, Long> {
 
-  @Query(value = "select t from QTag t join t.questions order by size(t.questions) desc")
+  @Query(value = "select t from QTag t order by size(t.questions) desc")
   Page<QTag> findTopNTag(Pageable pageable);
 }

@@ -1,14 +1,14 @@
 .ui.divided.items
   |{{#each questions}}
   .item
-    .ui.small.image.createdby
+    .ui.tiny.image.createdby
       img(src="{{author.avatar}}")
     .content
-      a.header(href="/questions/{{id}}") {{title}}
-      .meta
-        span.author {{author.username}}
-        span.createdAt {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
-        span.numberAnswer {{numberOfAnswers}}
+      a(href="/questions/{{id}}") {{title}}
+      .meta(style="padding-top:10px;")
+        span.author 来自：{{author.username}}
+        span.createdAt 时间：{{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
+        span.numberAnswer 已回答：{{numberOfAnswers}}
       .description
         p {{description}}
   |{{/each}}

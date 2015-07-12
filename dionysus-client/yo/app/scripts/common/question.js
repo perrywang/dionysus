@@ -100,9 +100,6 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
 
   Dionysus.reqres.setHandler('questions:popularTags',function(number){
     var tags = $.Deferred();
-    if(page == undefined){
-      page = 0;
-    }
     $.getJSON(baseUrl+"/tags/topN?N="+number).done(function(data){
       tags.resolve(data);
     });

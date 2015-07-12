@@ -39,7 +39,7 @@ public class QuestionController {
   @Autowired
   QTagRepository qTagRepository;
 
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @RequestMapping(value = "", method = RequestMethod.GET)
   public EntityPageData<QuestionData> getAllQuestions(@RequestParam(value = "page", required = false) Integer page,
                                                       @RequestParam(value = "size", required = false) Integer size) {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
