@@ -1,5 +1,7 @@
 Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 
+	var MAX_LENGTH = 300;
+
 	/*
 		View
 	*/
@@ -36,6 +38,7 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 		sendMessage: function() {
 			var data = this.ui.message.val();
 			if(!data || data === '') return;
+			if(data.length > MAX_LENGTH) return;
 			this.triggerMethod('send:message', data);
 			this.ui.message.val('');
 		},
@@ -47,6 +50,20 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 		disconnected: function() {
 
 		},
+
+		onRender: function() {
+			var validationRules = {
+				name: {
+					identifier: 'msg',
+					rules: [{
+						type: 'maxLength['+MAX_LENGTH+']',
+						prompt: '长度不能超过'+MAX_LENGTH+'字符'
+					}]
+				},
+			};
+
+			this.$('.ui.form').form(validationRules,{inline:true, on: 'blur'});
+		}
 
 	});
 

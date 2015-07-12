@@ -3,7 +3,6 @@ package com.huixinpn.dionysus.domain.chat;
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -34,5 +33,5 @@ public class Room extends AbstractDionysusAuditable<User> {
     private String cover;
 
     @OneToMany(mappedBy = "room")
-    private Collection<Message> messages = new ArrayList<>();
+    private Collection<ChatMessage> chatMessages = new ArrayList<>();
 }

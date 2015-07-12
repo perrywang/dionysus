@@ -14,7 +14,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 
 @Entity
 @Table(name = "messages")
-public class Message extends AbstractDionysusAuditable<User> {
+public class ChatMessage extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = 7438768194716828137L;
 
