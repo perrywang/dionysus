@@ -12,4 +12,6 @@ public interface QTagRepository extends JpaRepository<QTag, Long> {
 
   @Query(value = "select t from QTag t order by size(t.questions) desc")
   Page<QTag> findTopNTag(Pageable pageable);
+
+  QTag findByName(String name);
 }

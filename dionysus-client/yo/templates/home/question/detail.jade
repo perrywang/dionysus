@@ -1,28 +1,33 @@
 #detail.question
-  .ui.header
-    h2 {{title}}
-  p
-  |{{description}}
-  .ui.divider(style="margin-top:50px;")
-  #comments(style="margin-top:20px;")
-    h3
-      a 发表答案
-    .ui.form
-      textarea#answer
-      .ui.small.submit.green.button(style="float:right;margin-top:15px;") 提交
-    #anwsers(style="clear:both;margin-top:100px;")
-      .ui.comments
-        |{{#each comments}}
-        .comment
-          a.avatar
-            |{{#if createdBy.avatar}}
-            img(src="{{createdBy.avatar}}")
-            |{{else}}
-            img(src="/public/images/placeholder.png")
-            |{{/if}}
-          .content
-            a.author {{createdBy.username}}
-            .metadata {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
-            .text
-              p {{comment}}
-        |{{/each}}
+  .ui.centered.grid
+    .eight.wide.column
+      .basic.ui.segment
+        .ui.header
+          h2 {{title}}
+        .meta
+          span 来自：{{author.username}}
+          span 回答：{{numberOfAnswers}}
+        p(style="margin-top:20px;") {{description}}
+        .ui.divider(style="margin-top:50px;")
+        #comments(style="margin-top:20px;")
+          h3
+            a 我来回答
+          .ui.form
+            textarea#answer
+            .ui.medium.submit.green.button(style="float:right;margin-top:15px;") 提交答案
+          #anwsers(style="clear:both;margin-top:100px;")
+            .ui.comments
+              |{{#each comments}}
+              .comment
+                a.avatar
+                  |{{#if createdBy.avatar}}
+                  img(src="{{createdBy.avatar}}")
+                  |{{else}}
+                  img(src="/public/images/placeholder.png")
+                  |{{/if}}
+                .content
+                  a.author {{createdBy.username}}
+                  .metadata {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
+                  .text
+                    p {{comment}}
+              |{{/each}}

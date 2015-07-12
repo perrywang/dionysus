@@ -106,4 +106,12 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return tags.promise();
   });
 
+  Dionysus.reqres.setHandler('questions:question',function(id){
+    var question = $.Deferred();
+    $.getJSON(baseUrl+"/"+id).done(function(data){
+      question.resolve(data);
+    });
+    return question.promise();
+  });
+
 })

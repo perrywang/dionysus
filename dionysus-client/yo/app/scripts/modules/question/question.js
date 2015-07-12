@@ -64,6 +64,22 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette) {
     }
   });
 
+  var DetailView = Marionette.ItemView.extend({
+    initialize:function(options){
+      this.question = options.question;
+    },
+
+    serializeData: function(){
+      return this.question;
+    },
+
+    template : function(data){
+      var template = JST[baseTemplatePath + '/detail'];
+      var html = template(data);
+      return html;
+    }
+  });
+
   var QuestionController = Marionette.Controller.extend({
     showQuestionHome: function(){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
@@ -81,6 +97,13 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette) {
     createQuestion: function(){
       var view = new CreateView();
       Dionysus.mainRegion.show(view);
+    },
+    showQuestion: function(id){
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+      $.when(Dionysus.request('questions:question',id)).done(function(question){
+        var view = new DetailView({question:question});
+        Dionysus.mainRegion.show(view);
+      });
     }
   });
 
@@ -88,7 +111,8 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette) {
     new Marionette.AppRouter({
       appRoutes: {
         'questions(/)': 'showQuestionHome',
-        'questions/create(/)': 'createQuestion'
+        'questions/create(/)': 'createQuestion',
+        'questions/:id(/)': 'showQuestion'
       },
       controller: new QuestionController()
     });
