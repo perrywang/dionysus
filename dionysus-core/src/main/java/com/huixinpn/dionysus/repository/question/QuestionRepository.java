@@ -29,7 +29,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
   @Query(value = "select q from Question q where (size(q.answers) > 0 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
   Page<Question> findAllAnswered(Pageable pageable);
 
-  @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true)")
+  @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true) order by q.createdDate desc")
   Page<Question> findAll(Pageable pageable);
 
   @Query(value = "select q from Question q where q.approved = true order by q.createdDate desc")

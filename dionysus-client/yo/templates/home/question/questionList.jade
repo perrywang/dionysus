@@ -4,8 +4,9 @@
     .ui.small.image.createdby
       img(src="{{author.avatar}}")
     .content
-      .header {{title}}
+      a.header(href="/questions/{{id}}") {{title}}
       .meta
+        span.author {{author.username}}
         span.createdAt {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
         span.numberAnswer {{numberOfAnswers}}
       .description

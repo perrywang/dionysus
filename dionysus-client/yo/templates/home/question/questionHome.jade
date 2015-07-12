@@ -1,14 +1,40 @@
 #home.question
   .ui.centered.divided.grid
     .eight.wide.column
+      lable.module 你问我答
       #content.basic.ui.segment
         #popular
+          .ui.divided.items
+            |{{#each popular}}
+            .item
+              a.header(href="/questions/{{id}}") {{title}}
+              .meta
+                span 来自： {{author.username}}
+                span 答案： {{numberOfAnswers}}
+            |{{/each}}
+        #latest
+          .ui.divided.items
+            |{{#each latest}}
+            .item
+              a.header(href="/questions/{{id}}") {{title}}
+              .meta
+                span 来自： {{author.username}}
+                span 答案： {{numberOfAnswers}}
+            |{{/each}}
         #cats
+          .ui.green.basic.button#all 所有问题
+          .ui.green.basic.button#answered 已有答案的问题
+          .ui.green.basic.buqtton#noAnwered 没有答案的问题
+          .ui.green.basic.button#myQuestions 我的问题
         #questions
-        #pagnation
     .sidebar.four.wide.column
       .basic.ui.segment
         #create
         #tags
+          |{{#each popularTags}}
+          .ui.mini.label {{name}}
+          |{{/each}}
+
+
 
 
