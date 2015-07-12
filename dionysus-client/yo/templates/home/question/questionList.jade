@@ -1,3 +1,6 @@
+|{{#if tag}}
+h2 {{tag}}
+|{{/if}}
 .ui.divided.items
   |{{#each questions}}
   .item
@@ -12,4 +15,3 @@
       .description
         p {{description}}
   |{{/each}}
-#pagnation
