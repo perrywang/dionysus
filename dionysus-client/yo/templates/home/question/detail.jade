@@ -7,15 +7,15 @@
         .meta
           span 来自：{{author.username}}
           span 回答：{{numberOfAnswers}}
-        p(style="margin-top:20px;") {{description}}
+        p.description {{description}}
         .ui.divider(style="margin-top:50px;")
-        #comments(style="margin-top:20px;")
+        #comments
           h3
             a 我来回答
           .ui.form
             textarea#answer
-            .ui.medium.submit.green.button(style="float:right;margin-top:15px;") 提交答案
-          #anwsers(style="clear:both;margin-top:100px;")
+            .ui.medium.submit.green.button 提交答案
+          #anwsers
             .ui.comments
               |{{#each comments}}
               .comment
