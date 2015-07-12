@@ -41,7 +41,8 @@ module.exports = function (grunt) {
         /^\/psychtest/.test(url) ||
         /^\/consultants/.test(url)||
         /^\/rooms/.test(url)||
-        /^\/courses/.test(url)
+        /^\/courses/.test(url)||
+        /^\/questions/.test(url)
       ) {
       req.url = '/index.html';
     }else if (/^\/app(\/)?/.test(url)) {
@@ -93,7 +94,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: [
-          '<%= config.app %>/styles/{,*/}*.less', 
+          '<%= config.app %>/styles/{,*/}*.less',
           '<%= config.app %>/styles/{,*/}*.overrides',
           '<%= config.app %>/styles/{,*/}*.variables'
         ],

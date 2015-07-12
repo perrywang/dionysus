@@ -1,5 +1,19 @@
 #create.question
-  #title
-  #description
-  #tagsInput
-  #submit.ui.button
+  .ui.centered.grid
+    .eight.wide.column
+      .basic.ui.segment
+        img.ui.image(src="/public/images/question.png")
+      #content.basic.ui.segment
+        .ui.form
+          .field
+            h3
+              a 问题
+            input#title
+          .field
+            h3
+              a 详细描述
+            textarea#description
+        h3
+          a 输入标签
+        input(id="tags",name="tags",value="")
+        #submit.green.medium.ui.button 提交问题

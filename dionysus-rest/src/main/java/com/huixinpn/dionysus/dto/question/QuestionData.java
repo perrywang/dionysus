@@ -27,6 +27,8 @@ public class QuestionData extends EntityData<Question> {
 
   private Collection<QTag> tags;
 
+  private String tagsInput;
+
   @JsonIgnore
   private boolean approved;
 

@@ -227,3 +227,15 @@ insert into rooms (id, name, description, open) values (12, 'chatroom x xx', '�
 insert into rooms (id, name, description, open) values (13, 'chatroom x xx', '欢迎来到聊天室3', true);
 insert into rooms (id, name, description, open) values (14, 'chatroom x xx', '欢迎来到聊天室4', true);
 insert into rooms (id, name, description, open) values (15, 'chatroom x xx', '欢迎来到聊天室5', true);
+
+insert into questions (id, title,description,approved,created_by_id) values (1,'心理变态是一种什么感觉？','心理变态是一种什么感觉？',true,2);
+insert into questions (id, title,description,approved,created_by_id) values (2,'如何快速评估心理状态？','如何快速评估心理状态？',true,3);
+insert into questions (id, title,description,approved,created_by_id) values (3,'心理变态是一种什么感觉？','心理变态是一种什么感觉？',true,1);
+
+insert into qtags (id, name) values (1, '亲子');
+insert into qtags (id, name) values (2, '心理医生');
+
+insert into questions_tags(questions_id,tags_id) values (1,1);
+insert into questions_tags(questions_id,tags_id) values (2,1);
+insert into questions_tags(questions_id,tags_id) values (3,2);
+

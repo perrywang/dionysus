@@ -1,14 +1,54 @@
 #home.question
-  .ui.centered.divided.grid
+  .ui.centered.grid
     .eight.wide.column
+      img.ui.image(src="/public/images/question.png")
       #content.basic.ui.segment
+        h2
+          label 最热
+        .ui.divider
         #popular
+          .ui.divided.items
+            |{{#each popular}}
+            .item
+              h3
+                a.header(href="/questions/{{id}}") {{title}}
+              .meta
+                span 来自： {{author.username}}
+                span 答案： {{numberOfAnswers}}
+            |{{/each}}
+        h2
+          label 最新
+        .ui.divider
+        #latest
+          .ui.divided.items
+            |{{#each latest}}
+            .item
+              h3
+                a.header(href="/questions/{{id}}") {{title}}
+              .meta
+                span 来自： {{author.username}}
+                span 答案： {{numberOfAnswers}}
+            |{{/each}}
+        .ui.divider
         #cats
+          .ui.large.basic.button#all 所有问题
+          .ui.large.basic.button#answered 已经解决
+          .ui.large.basic.button#noAnwered 等待解决
+          .ui.large.basic.button#myQuestions 我的问题
+        .ui.divider
         #questions
+      #pagnationWrapper
         #pagnation
     .sidebar.four.wide.column
-      .basic.ui.segment
-        #create
-        #tags
-
-
+      .ui.basic.segment#create
+        p
+          h4 在这里寻求最专业的解答，通过问答互动每天学点心理知识!
+        #createBtn
+          .ui.big.green.button#newQuestion 我要提问！
+      #tags
+        h4
+          label 热门标签
+        .ui.mini.button.tag.all 所有
+        |{{#each popularTags}}
+        .ui.mini.button.tag {{name}}
+        |{{/each}}

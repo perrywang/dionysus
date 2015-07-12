@@ -14,28 +14,29 @@ import java.util.Collection;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-  @Query(value = "select q from Question q where (q.createdBy = ?1 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
+  @Query(value = "select q from Question q where (q.createdBy = ?1 and q.approved = true)")
   Page<Question> findByAuthor(User user, Pageable pageable);
 
-  @Query(value = "select q from Question q join q.tags t where (t = ?1 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
+  @Query(value = "select q from Question q join q.tags t where (t = ?1 and q.approved = true)")
   Page<Question> findByTag(QTag tag, Pageable pageable);
 
-  @Query(value = "select q from Question q join q.tags t where (t.name = ?1 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
+  @Query(value = "select q from Question q join q.tags t where (t.name = ?1 and q.approved = true)")
   Page<Question> findByTagName(String tagName, Pageable pageable);
 
-  @Query(value = "select q from Question q where (size(q.answers) = 0 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
+  @Query(value = "select q from Question q where (size(q.answers) = 0 and q.approved = true)")
   Page<Question> findAllUnanswered(Pageable pageable);
 
-  @Query(value = "select q from Question q where (size(q.answers) > 0 and q.approved = true) or (q.createdBy.id = ?#{principal.id})")
+  @Query(value = "select q from Question q where (size(q.answers) > 0 and q.approved = true)")
   Page<Question> findAllAnswered(Pageable pageable);
 
-  @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true)")
+  @Query(value = "select q from Question q where q.approved = true order by q.createdDate desc")
   Page<Question> findAll(Pageable pageable);
+
 
   @Query(value = "select q from Question q where q.approved = true order by q.createdDate desc")
   Page<Question> findLatestQueations(Pageable pageable);
 
-  @Query(value = "select q from Question q where (q.createdBy.id = ?#{principal.id} or q.approved = true) order by size(q.answers) desc")
+  @Query(value = "select q from Question q where q.approved = true order by size(q.answers) desc")
   Page<Question> findPopularQueations(Pageable pageable);
 
 }
