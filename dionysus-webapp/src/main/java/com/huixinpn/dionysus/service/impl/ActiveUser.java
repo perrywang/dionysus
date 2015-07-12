@@ -39,5 +39,8 @@ public class ActiveUser implements ActiveUserService {
         return statsByRoom.getUnchecked(roomId).getActiveUsers();
     }
 
-
+    @Override
+    public Set<String> getActiveRooms() {
+        return statsByRoom.asMap().keySet();
+    }
 }

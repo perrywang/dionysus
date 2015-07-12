@@ -89,10 +89,18 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 
 			stompClient.connect({}, function() {
 				room.connected(true);
+				//initial tell server that I am alive
+				stompClient.send('/dionysus/activeUsers/'+id, {}, '');
+
 				stompClient.subscribe('/topic/chat/' + id + '/messages', function(response) {
 					var json = JSON.parse(response.body);
 					room.appendMessage(json);
 				});
+				stompClient.subscribe('/topic/chat/' + id + '/active', function(response){
+					var json = JSON.parse(response.body);
+					console.log(response.body);
+					stompClient.send('/dionysus/activeUsers/'+id, {}, '');
+				})
 			});
 
 			room.on('send:message', function(message){

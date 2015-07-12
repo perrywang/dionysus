@@ -5,6 +5,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Sets;
 import com.huixinpn.dionysus.domain.user.User;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,5 +44,7 @@ public class RoomState {
         }
         return active;
     }
+
+
 
 }

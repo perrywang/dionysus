@@ -16,6 +16,9 @@ public class UserState {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserServiceImpl userService;
+
     private AtomicLong lastAccess = new AtomicLong(System.currentTimeMillis());
     private String username;
     private String avatar;
@@ -27,11 +30,12 @@ public class UserState {
 
     public UserState(String username) {
         this.username = username;
-        User user = userRepository.findByUsername(username);
+        /*//User user = userRepository.findByUsername(username);
+        User user = userService.loadUserByUsername(username);
         if(user != null){
             this.avatar = user.getAvatar();
             this.id = user.getId();
-        }
+        }*/
 
     }
 

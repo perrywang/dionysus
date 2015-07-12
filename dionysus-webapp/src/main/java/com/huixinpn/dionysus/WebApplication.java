@@ -8,10 +8,12 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.repository.query.spi.EvaluationContextExtension;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
 @EnableJpaAuditing
 @SpringBootApplication
+@EnableScheduling
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class WebApplication extends SpringBootServletInitializer {
 	

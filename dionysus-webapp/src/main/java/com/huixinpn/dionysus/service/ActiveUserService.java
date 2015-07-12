@@ -16,5 +16,7 @@ public interface ActiveUserService {
 
     public HashMap<String, UserState> getActiveUsers(String roomId);
 
+    public Set<String> getActiveRooms();
+
 
 }
