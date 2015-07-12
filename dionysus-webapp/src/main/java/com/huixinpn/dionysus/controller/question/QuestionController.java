@@ -47,6 +47,27 @@ public class QuestionController {
     return new EntityPageData<>(questions, QuestionData.class);
   }
 
+  @RequestMapping(value = "", method = RequestMethod.POST)
+  public ResponseEntity<String> createQuestion(@RequestBody QuestionData data) {
+    Question q = new Question();
+    q.setTitle(data.getTitle());
+    q.setDescription(data.getDescription());
+    String tagsInput = data.getTagsInput();
+    String[] tags = tagsInput.split(",");
+    Collection<QTag> tagEntities = new ArrayList<>();
+    for(String tag : tags){
+      QTag entity = qTagRepository.findByName(tag);
+      if(entity == null){
+        entity = new QTag();
+        entity.setName(tag);
+      }
+      tagEntities.add(entity);
+    }
+    q.setTags(tagEntities);
+    Question added = questionRepository.save(q);
+    return new ResponseEntity<String>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+  }
+
   @RequestMapping(value = "/me", method = RequestMethod.GET)
   public EntityPageData<QuestionData> myQuestions(@RequestParam(value = "page", required = false) Integer page,
                                                   @RequestParam(value = "size", required = false) Integer size) {
