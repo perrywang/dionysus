@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +14,17 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.repository.user.ConsultantRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
+@WebAppConfiguration
 @SpringApplicationConfiguration(classes = DomainApplicationContext.class)
 public abstract class AbstractPersistentTest {
 

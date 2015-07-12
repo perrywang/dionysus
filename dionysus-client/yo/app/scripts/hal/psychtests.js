@@ -24,35 +24,28 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     initResult : function(result) {
       // 传入参数是一个经过projection的对象，不是原本的entity，需要重新建立answer对象
       var answers = result.embedded('answers');
-      answers = answers || new Backbone.Collection();
-      answers.map(function(model) {
-        if (model.get('type') === 'SINGLE_CHOICE') {
-          model.set('option', PsychTestQuestionOption.findOrCreate({
-            id : model.get('value'),
-            _links : {
-              self: {
-                href : '/api/v1/psychtestquestionoptions/' + model.get('value')
-              }
-            }
-          }));
-          // model.set('value', undefined);
-        }
-        
-        // PsychTestAnswer.findOrCreate({
-
-        // });
-      });
-      this.answers = answers;
+      this.answers = answers || new Backbone.Collection();
       this.state = result.get('state');
-      result.set('answers', answers);
       this.cachedResults = result;
     },
     saveResults : function() { // 保存中间状态
-      this.cachedResults.save();
+      // this.cachedResults.save();
+      // console.log(this.cachedResults.toJSON());
+      var data = this.cachedResults.toData();
+      $.ajax({
+        url: '/controllers/psychtest/' + this.id + '/submit',
+        method: 'POST',
+        dataType:"json",
+        contentType: 'application/json',
+        data: JSON.stringify(data)
+      }).done(function(data) {
+        console.log(data);
+      });
     },
     submitResults : function() {
       this.cachedResults.set('state', 'FINISHED');
-      this.cachedResults.save();
+      // this.cachedResults.save();
+      // console.log(this.cachedResults.toJSON());
     },
     updateResult : function(question, answer) {
       var type = question.get('type');
@@ -207,6 +200,12 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         type : Backbone.HasMany,
         relatedModel : PsychTestAnswer
       }
+    },
+    toData : function() {
+      var json = this.toJSON();
+      var answers = this.embedded('answers');
+      json.answers = answers.toJSON();
+      return json;
     }
   });
 
