@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by huanghao on 7/5/15.
  */
 @Repository
-public interface MessageRepository extends JpaRepository<ChatMessage, Long> {
+public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
 }

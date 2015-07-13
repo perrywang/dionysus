@@ -18,5 +18,7 @@ public interface ActiveUserService {
 
     public Set<String> getActiveRooms();
 
+    public UserState getActiveUser(String roomId, String username);
+
 
 }

@@ -86,19 +86,35 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 			//establish the connection
 			var socket = new SockJS('/chat');
 			var stompClient = Stomp.over(socket);
+			var me = null;
 
-			stompClient.connect({}, function() {
+			stompClient.connect({}, function(frame) {
+				
+				me = frame.headers['user-name'];
+
 				room.connected(true);
 				//initial tell server that I am alive
 				stompClient.send('/dionysus/activeUsers/'+id, {}, '');
 
 				stompClient.subscribe('/topic/chat/' + id + '/messages', function(response) {
+					//disconnect if page is not in the chat room
+					if (location.pathname.indexOf('rooms/'+id) == -1) {
+						stompClient.disconnect();
+						console.log("Disconnect server for not in the room now!");
+						return;
+					};
 					var json = JSON.parse(response.body);
 					room.appendMessage(json);
 				});
 				stompClient.subscribe('/topic/chat/' + id + '/active', function(response){
+					//disconnect if page is not in the chat room
+					if (location.pathname.indexOf('rooms/'+id) == -1) {
+						stompClient.disconnect();
+						console.log("Disconnect server for not in the room now!");
+						return;
+					};
 					var json = JSON.parse(response.body);
-					console.log(response.body);
+					//console.log(response.body);
 					stompClient.send('/dionysus/activeUsers/'+id, {}, '');
 				})
 			});

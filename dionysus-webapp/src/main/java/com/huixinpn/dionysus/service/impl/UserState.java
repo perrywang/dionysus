@@ -13,12 +13,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @Data
 public class UserState {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserServiceImpl userService;
-
     private AtomicLong lastAccess = new AtomicLong(System.currentTimeMillis());
     private String username;
     private String avatar;
@@ -28,14 +22,10 @@ public class UserState {
         lastAccess.set(System.currentTimeMillis());
     }
 
-    public UserState(String username) {
+    public UserState(String username, String avatar, Long id) {
         this.username = username;
-        /*//User user = userRepository.findByUsername(username);
-        User user = userService.loadUserByUsername(username);
-        if(user != null){
-            this.avatar = user.getAvatar();
-            this.id = user.getId();
-        }*/
+        this.avatar = avatar;
+        this.id = id;
 
     }
 

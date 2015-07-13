@@ -1,6 +1,11 @@
 .event
 	.label
+		{{#if userAvatar}}
+		img(src="{{userAvatar}}")
+		{{else}}
 		img(src="/public/images/elliot.jpg")
+		{{/if}}
+		
 	.content
-		.date date
+		.date {{timeStamp}}
 		.summary {{content}}

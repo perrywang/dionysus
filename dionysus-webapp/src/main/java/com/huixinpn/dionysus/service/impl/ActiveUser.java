@@ -4,7 +4,10 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.repository.chat.RoomRepository;
+import com.huixinpn.dionysus.repository.user.UserRepository;
 import com.huixinpn.dionysus.service.ActiveUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -17,6 +20,12 @@ import java.util.Set;
 
 @Service
 public class ActiveUser implements ActiveUserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoomRepository roomRepository;
+
 
     private LoadingCache<String, RoomState> statsByRoom = CacheBuilder.newBuilder()
             .maximumSize(50)
@@ -24,7 +33,7 @@ public class ActiveUser implements ActiveUserService {
 
                 @Override
                 public RoomState load(String key) throws Exception {
-                    return new RoomState();
+                    return new RoomState(userRepository);
                 }
 
             });
@@ -42,5 +51,10 @@ public class ActiveUser implements ActiveUserService {
     @Override
     public Set<String> getActiveRooms() {
         return statsByRoom.asMap().keySet();
+    }
+
+    @Override
+    public UserState getActiveUser(String roomId, String username) {
+        return statsByRoom.getUnchecked(roomId).getActiveUsers().get(username);
     }
 }
