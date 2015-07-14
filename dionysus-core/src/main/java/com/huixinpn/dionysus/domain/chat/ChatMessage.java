@@ -1,15 +1,13 @@
 package com.huixinpn.dionysus.domain.chat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-import com.huixinpn.dionysus.domain.user.User;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import com.huixinpn.dionysus.domain.user.User;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 //Use manual setter getter because the websocket can`t wrap the entity if use lOMBOK
 
