@@ -10,6 +10,7 @@ import com.huixinpn.dionysus.service.ActiveUserService;
 import com.huixinpn.dionysus.service.RoomService;
 import com.huixinpn.dionysus.service.impl.UserState;
 import com.mysql.fabric.Server;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -17,6 +18,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 
 import java.security.Principal;
@@ -43,18 +46,21 @@ public class ChatController {
 	public void handleChat(Message<Object> message, @Payload ChatMessage chatMessage,
 			@DestinationVariable("id") String id) throws Exception {
 
-        Principal user = message.getHeaders().get(SimpMessageHeaderAccessor.USER_HEADER, Principal.class);
-        String userName = user.getName();
-        UserState userState= activeUserService.getActiveUser(id, userName);
+        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(message);
+        Principal userPrincipal = headerAccessor.getUser();
+        String userName = userPrincipal.getName();
+        User userDetail = (User)(((UsernamePasswordAuthenticationToken)userPrincipal).getPrincipal());
+        //UserState userState= activeUserService.getActiveUser(id, userName);
         Room room = roomService.getRoom(id);
         DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String dateStr =format.format(new Date());
         if (room != null){
             if (room.getOpen()){
                 chatMessage.setRoom(room);
+                chatMessage.setSender(userDetail);
                 chatMessageRepository.saveAndFlush(chatMessage);
 
-                ServerMessage serverMessage = new ServerMessage(chatMessage.getContent(), user.getName(), userState.getId(), userState.getAvatar(),dateStr );
+                ServerMessage serverMessage = new ServerMessage(chatMessage.getContent(), userName, userDetail.getId(), userDetail.getAvatar(),dateStr );
                 simp.convertAndSend("/topic/chat/" + id + "/messages", serverMessage);
             }
             else{

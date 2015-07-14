@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 
+//Use manual setter getter because the websocket can`t wrap the entity if use lOMBOK
 
 @Entity
 @Table(name = "messages")
@@ -25,8 +26,31 @@ public class ChatMessage extends AbstractDionysusAuditable<User> {
     @ManyToOne
     private Room room;
 
+    @ManyToOne
+    private User sender;
+
+    @ManyToOne
+    private User recipient;
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(User recipient) {
+        this.recipient = recipient;
+    }
+
     public String getContent() {
         return content;
+
     }
 
     public void setContent(String content) {
@@ -40,5 +64,6 @@ public class ChatMessage extends AbstractDionysusAuditable<User> {
     public Room getRoom(){
         return room;
     }
+
 
 }
