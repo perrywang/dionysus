@@ -32,6 +32,8 @@ public class Room extends AbstractDionysusAuditable<User> {
 
     private String cover;
 
+    private Integer attendeeCount;
+
     @OneToMany(mappedBy = "room")
     private Collection<ChatMessage> chatMessages = new ArrayList<>();
 }

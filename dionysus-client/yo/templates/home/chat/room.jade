@@ -1,6 +1,14 @@
-.ui.segment
-	.ui.feed#feed
-form.ui.form
-	.field
-		input#message(type="text", name="msg", placeholder="说点什么...")
-	.ui.submit.button 提交
+.twelve.wide.column
+	.ui.center.aligned.segment
+		.ui.header {{name}}
+			.sub.header {{description}}
+	.ui.two.column.equal.height.stackable.grid
+		.ten.wide.column
+			.ui.segment
+				.ui.feed#feed
+			form.ui.form
+				.field
+					input#message(type="text", name="msg", placeholder="说点什么...")
+				.ui.submit.button 提交
+		.six.wide.column
+			.ui.raised.segment#attendee

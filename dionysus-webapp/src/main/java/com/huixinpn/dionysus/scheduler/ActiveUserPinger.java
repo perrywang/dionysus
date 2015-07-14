@@ -1,4 +1,4 @@
-package com.huixinpn.dionysus.service.impl;
+package com.huixinpn.dionysus.scheduler;
 
 import com.huixinpn.dionysus.service.ActiveUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class ActiveUserPinger {
     @Autowired
     private SimpMessagingTemplate msgTemplate;
 
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 5000)
     public void pingUsers(){
 
         for(String roomId : activeUserService.getActiveRooms()){

@@ -3,7 +3,6 @@ package com.huixinpn.dionysus.service.impl;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.repository.chat.RoomRepository;
 import com.huixinpn.dionysus.repository.user.UserRepository;
 import com.huixinpn.dionysus.service.ActiveUserService;
@@ -11,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by huanghao on 7/13/15.
@@ -28,6 +27,7 @@ public class ActiveUser implements ActiveUserService {
 
 
     private LoadingCache<String, RoomState> statsByRoom = CacheBuilder.newBuilder()
+            .expireAfterAccess(5, TimeUnit.MINUTES)
             .maximumSize(50)
             .build(new CacheLoader<String, RoomState>() {
 

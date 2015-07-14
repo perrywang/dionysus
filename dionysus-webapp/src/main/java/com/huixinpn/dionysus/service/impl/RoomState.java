@@ -3,16 +3,11 @@ package com.huixinpn.dionysus.service.impl;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Sets;
-import com.huixinpn.dionysus.domain.chat.Room;
 import com.huixinpn.dionysus.domain.user.User;
 import com.huixinpn.dionysus.repository.user.UserRepository;
-import lombok.Data;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by huanghao on 7/13/15.
@@ -22,6 +17,7 @@ public class RoomState {
     private UserRepository userRepository;
 
     private LoadingCache<String, UserState> statsByUser = CacheBuilder.newBuilder()
+            .expireAfterAccess(5, TimeUnit.MINUTES)
             .maximumSize(100)
             .build(new CacheLoader<String, UserState>() {
 
@@ -44,8 +40,8 @@ public class RoomState {
     public HashMap<String, UserState> getActiveUsers(){
         HashMap<String, UserState> active = new HashMap<>();
         for (String user : statsByUser.asMap().keySet()) {
-            // has the user checked in within the last 5 seconds?
-            if ((System.currentTimeMillis() - statsByUser.getUnchecked(user).getLastAccess()) < 5000) {
+            // has the user checked in within the last 10 seconds?
+            if ((System.currentTimeMillis() - statsByUser.getUnchecked(user).getLastAccess()) < 11000) {
 
                 active.put(user, statsByUser.getUnchecked(user));
             }

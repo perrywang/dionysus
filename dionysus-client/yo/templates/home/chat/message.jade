@@ -7,5 +7,7 @@
 		{{/if}}
 		
 	.content
-		.date {{timeStamp}}
+		.date 
+			a(){{userName}}
+			|@{{timeStamp}}
 		.summary {{content}}

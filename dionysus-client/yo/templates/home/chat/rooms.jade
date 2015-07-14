@@ -1,0 +1,60 @@
+.twelve.wide.column
+	.ui.three.column.equal.height.stackable.grid
+		.row
+			.column
+				{{#each column1}}
+				.ui.raised.segment.chatroom
+					{{#if cover}}
+					img.ui.centered.medium.image(src="{{cover}}")
+					{{else}}
+					img.ui.centered.medium.image(src="/public/images/placeholder.png")
+					{{/if}}
+					h4.ui.header {{name}}
+						.sub.header {{description}}
+					i.ui.left.ribbon.label
+						i.tiny.green.users.icon 
+						|在线人数: {{attendeeCount}}		
+					.ui.dimmer
+						.content
+							.center
+								a.ui.inverted.button(href="/rooms/{{id}}") 立刻加入
+				{{/each}}
+			.column
+				{{#each column2}}
+				.ui.raised.segment.chatroom
+					{{#if cover}}
+					img.ui.centered.medium.image(src="{{cover}}")
+					{{else}}
+					img.ui.centered.medium.image(src="/public/images/placeholder.png")
+					{{/if}}
+					h4.ui.header {{name}}
+						.sub.header {{description}}
+					i.ui.left.ribbon.label
+						i.tiny.green.users.icon 
+						|在线人数: {{attendeeCount}}		
+					.ui.dimmer
+						.content
+							.center
+								a.ui.inverted.button(href="/rooms/{{id}}") 立刻加入
+				{{/each}}
+			.column
+				{{#each column3}}
+				.ui.raised.segment.chatroom
+					{{#if cover}}
+					img.ui.centered.medium.image(src="{{cover}}")
+					{{else}}
+					img.ui.centered.medium.image(src="/public/images/placeholder.png")
+					{{/if}}
+					h4.ui.header {{name}}
+						.sub.header {{description}}
+					i.ui.left.ribbon.label
+						i.tiny.green.users.icon 
+						|在线人数: {{attendeeCount}}		
+					.ui.dimmer
+						.content
+							.center
+								a.ui.inverted.button(href="/rooms/{{id}}") 立刻加入
+				{{/each}}
+		.row
+			.center.aligned.column
+				#paging

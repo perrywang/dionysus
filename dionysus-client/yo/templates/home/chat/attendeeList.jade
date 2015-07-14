@@ -1,0 +1,10 @@
+{{#each items}}
+.item
+	{{#if avatar}}
+	img.ui.avatar.image(src="{{avatar}}")
+	{{else}}
+	img.ui.avatar.image(src="/public/images/placeholder.png")
+	{{/if}}
+	.content
+		.header {{username}}
+{{/each}}
