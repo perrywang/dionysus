@@ -1,0 +1,12 @@
+.comment
+  a.avatar
+    |{{#if createdBy.avatar}}
+    img(src="{{createdBy.avatar}}")
+    |{{else}}
+    img(src="/public/images/placeholder.png")
+    |{{/if}}
+  .content
+    a.author {{createdBy.username}}
+    .metadata {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
+    .text
+      p {{content}}

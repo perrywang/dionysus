@@ -188,12 +188,12 @@ public class QuestionController {
   }
 
   @RequestMapping(value = "/{id}/answers", method = RequestMethod.POST)
-  public ResponseEntity<String> addAnswer(@PathVariable Long id, @RequestBody AnswerData data) {
+  public AnswerData addAnswer(@PathVariable Long id, @RequestBody AnswerData data) {
     Answer answer = new Answer();
     answer.setQuestion(new Question(id));
     data.update(answer);
     Answer added = answerRepository.save(answer);
-    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+    return new AnswerData(added);
   }
 
   @RequestMapping(value = "/answers/{id}", method = RequestMethod.DELETE)

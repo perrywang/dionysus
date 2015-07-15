@@ -14,10 +14,10 @@
             a 我来回答
           .ui.form
             textarea#answer
-            .ui.medium.submit.green.button 提交答案
-          #anwsers
+            .ui.medium.green.button#submit 提交答案
+          #anwsers(style="clear:both;margin-top:100px;")
             .ui.comments
-              |{{#each comments}}
+              |{{#each answers}}
               .comment
                 a.avatar
                   |{{#if createdBy.avatar}}
@@ -27,7 +27,7 @@
                   |{{/if}}
                 .content
                   a.author {{createdBy.username}}
-                  .metadata {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
+                  .metadata {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
                   .text
-                    p {{comment}}
+                    p {{content}}
               |{{/each}}

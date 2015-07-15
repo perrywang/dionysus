@@ -50,5 +50,5 @@
           label 热门标签
         .ui.mini.button.tag.all 所有
         |{{#each popularTags}}
-        .ui.mini.button.tag {{name}}
+        .ui.mini.button.tag(tag-id="{{id}}") {{name}}
         |{{/each}}

@@ -3,11 +3,9 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
 
   var baseUrl = '/controllers/questions';
 
-  Dionysus.reqres.setHandler('questions',function(page){
+  Dionysus.reqres.setHandler('questions',function(options){
     var questions = $.Deferred();
-    if(page == undefined){
-      page = 0;
-    }
+    var page = options.page || 0;
     $.getJSON(baseUrl+"?page=" + page).done(function(data){
       questions.resolve(data);
     });
@@ -30,11 +28,9 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return questions.promise();
   });
 
-  Dionysus.reqres.setHandler('questions:me',function(page){
+  Dionysus.reqres.setHandler('questions:me',function(options){
     var questions = $.Deferred();
-    if(page == undefined){
-      page = 0;
-    }
+    var page = options.page || 0;
     $.getJSON(baseUrl+"/me?page=" + page).done(function(data){
       questions.resolve(data);
     });
@@ -85,13 +81,11 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     return questions.promise();
   });
 
-  Dionysus.reqres.setHandler('questions:answered',function(answered,page){
+  Dionysus.reqres.setHandler('questions:answered',function(options){
     var questions = $.Deferred();
 
-    if(page == undefined){
-      page = 0;
-    }
-    var path = answered ? "/answered" : "/unanswered";
+    var page = options.page || 0;
+    var path = options.answered ? "/answered" : "/unanswered";
     $.getJSON(baseUrl + path + "?page="+page).done(function(data){
       questions.resolve(data);
     });
@@ -112,6 +106,14 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
       question.resolve(data);
     });
     return question.promise();
+  });
+
+  Dionysus.reqres.setHandler('questions:answers',function(qid){
+    var answers = $.Deferred();
+    $.getJSON(baseUrl+"/"+qid+"/answers").done(function(data){
+      answers.resolve(data);
+    });
+    return answers.promise();
   });
 
 })

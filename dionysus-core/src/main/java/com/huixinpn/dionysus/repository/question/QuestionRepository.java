@@ -14,7 +14,7 @@ import java.util.Collection;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-  @Query(value = "select q from Question q where (q.createdBy = ?1 and q.approved = true)")
+  @Query(value = "select q from Question q where q.createdBy = ?1")
   Page<Question> findByAuthor(User user, Pageable pageable);
 
   @Query(value = "select q from Question q join q.tags t where (t = ?1 and q.approved = true)")
