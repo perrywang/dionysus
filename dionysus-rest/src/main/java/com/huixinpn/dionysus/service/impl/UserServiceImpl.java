@@ -115,6 +115,7 @@ public class UserServiceImpl implements UserService, ConsultantService {
         if (user instanceof Consultant) {
             ((Consultant) user).setTeachings(null);
             ((Consultant) user).setAppointments(null);
+            ((Consultant) user).setExpertises(null);
         }
         return user;
     }
