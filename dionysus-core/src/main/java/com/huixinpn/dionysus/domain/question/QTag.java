@@ -22,7 +22,7 @@ public class QTag extends AbstractDionysusPersistable{
   @Column(unique = true)
   private String name;
 
-    @JsonIgnore
+  @JsonIgnore
   @ManyToMany(mappedBy = "tags")
   private Collection<Question> questions = new ArrayList<>();
 

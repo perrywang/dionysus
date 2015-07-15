@@ -39,7 +39,7 @@ public class QuestionController {
   @Autowired
   QTagRepository qTagRepository;
 
-  @RequestMapping(value = "", method = RequestMethod.GET)
+  @RequestMapping(value = {"","/"}, method = RequestMethod.GET)
   public EntityPageData<QuestionData> getAllQuestions(@RequestParam(value = "page", required = false) Integer page,
                                                       @RequestParam(value = "size", required = false) Integer size) {
     PageRequest paging = PagingHelper.getPageRequest(page, size);
@@ -47,7 +47,7 @@ public class QuestionController {
     return new EntityPageData<>(questions, QuestionData.class);
   }
 
-  @RequestMapping(value = "", method = RequestMethod.POST)
+  @RequestMapping(value = {"","/"}, method = RequestMethod.POST)
   public ResponseEntity<String> createQuestion(@RequestBody QuestionData data) {
     Question q = new Question();
     q.setTitle(data.getTitle());
@@ -65,7 +65,7 @@ public class QuestionController {
     }
     q.setTags(tagEntities);
     Question added = questionRepository.save(q);
-    return new ResponseEntity<String>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+    return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
   }
 
   @RequestMapping(value = "/me", method = RequestMethod.GET)
@@ -156,9 +156,22 @@ public class QuestionController {
 
   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateQuestion(@PathVariable Long id, @RequestBody QuestionData data) {
-    Question question = questionRepository.findOne(id);
-    data.update(question);
-    questionRepository.save(question);
+    Question q = questionRepository.findOne(id);
+    q.setTitle(data.getTitle());
+    q.setDescription(data.getDescription());
+    String tagsInput = data.getTagsInput();
+    String[] tags = tagsInput.split(",");
+    Collection<QTag> tagEntities = new ArrayList<>();
+    for(String tag : tags){
+      QTag entity = qTagRepository.findByName(tag);
+      if(entity == null){
+        entity = new QTag();
+        entity.setName(tag);
+      }
+      tagEntities.add(entity);
+    }
+    q.setTags(tagEntities);
+    questionRepository.save(q);
     return new ResponseEntity(Utils.EMPTY_JSON_OBJECT, HttpStatus.OK);
   }
 
@@ -215,7 +228,7 @@ public class QuestionController {
   @RequestMapping(value = "/tags/topN", method = RequestMethod.GET)
   public Collection<QTagData> getTopNTags(@RequestParam(value = "N") Integer n) {
     PageRequest page = PagingHelper.getPageRequest(0, n);
-    return new EntityPageData<QTagData>(qTagRepository.findTopNTag(page), QTagData.class).getContent();
+    return new EntityPageData<>(qTagRepository.findTopNTag(page), QTagData.class).getContent();
   }
 
 }

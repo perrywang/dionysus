@@ -25,7 +25,7 @@ public class Question extends AbstractDionysusAuditable<User> {
   @OneToMany(mappedBy = "question",cascade = {CascadeType.REMOVE})
   private Collection<Answer> answers = new ArrayList<>();
 
-  @ManyToMany(cascade = {CascadeType.MERGE})
+  @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
   private Collection<QTag> tags = new ArrayList<>();
 
   private Category category;
