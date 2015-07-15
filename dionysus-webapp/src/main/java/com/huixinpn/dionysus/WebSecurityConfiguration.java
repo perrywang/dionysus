@@ -29,7 +29,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.PUT, "/controllers/courses/**").hasRole("ADMIN")
         .antMatchers(HttpMethod.POST, "/api/v1/rooms/**").hasRole("ADMIN")
         .antMatchers(HttpMethod.PUT, "/api/v1/rooms/**").hasRole("ADMIN")
-        .antMatchers(HttpMethod.GET, "/api/v1/rooms/**").authenticated()
+        .antMatchers(HttpMethod.GET, "/api/v1/rooms/{\\d+}").authenticated()
         .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
         .antMatchers("/api/v1/chatMessages/**").authenticated()
         .antMatchers("/chat/**").authenticated()
