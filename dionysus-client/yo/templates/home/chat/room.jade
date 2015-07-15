@@ -12,6 +12,15 @@
 			form.ui.form
 				.field
 					input#message(type="text", name="msg", placeholder="说点什么...")
-				.ui.submit.button 提交
+				.ui.submit.green.button 提交
 		.six.wide.column
 			.ui.raised.segment#attendee
+.ui.modal.chatinfo
+	.header
+		i.info.circle.icon
+		|聊天须知
+	.content
+		.description 请不要在聊天室发布煽动性，违法，违规，侵犯他人利益的言论和信息。汇心网保留任何对不法行为进行制止和诉讼的权利。
+	.actions
+		.ui.cancel.button 不同意
+		.ui.ok.green.button 同意

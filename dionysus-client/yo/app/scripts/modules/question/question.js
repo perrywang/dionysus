@@ -28,7 +28,7 @@ Dionysus.module('Question', function (Article, Dionysus, Backbone, Marionette) {
         var html = template({questions: questions.content});
         $('#questions').html(html);
         if (questions.number + 1 <= questions.totalPages) {
-          this.$('#pagnation').twbsPagination({
+          $('#pagnation').twbsPagination({
             totalPages: questions.totalPages,
             startPage: questions.number + 1,
             visiblePages: 6,

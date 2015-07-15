@@ -155,6 +155,16 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 				inline: true,
 				on: 'blur'
 			});
+
+			this.$('.ui.modal.chatinfo')
+			.modal({
+				closable: false,
+				onDeny: function(){
+					Dionysus.navigate('/rooms', {trigger: true});
+				}
+
+			})
+			.modal('show');
 		}
 
 	});
