@@ -3,7 +3,6 @@ Dionysus.module('Course', function (Course, Dionysus, Backbone, Marionette) {
 
   var CourseView = Marionette.ItemView.extend({
     template: JST['templates/home/course/listitem'],
-    template: '#course-list-item-tpl',
     className: 'item'
   });
 
