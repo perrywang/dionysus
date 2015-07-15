@@ -133,7 +133,7 @@ Dionysus.module('ChatRoom', function(ChatRoom, Dionysus, Backbone, Marionette) {
 		},
 
 		connected: function() {
-
+			this.$('#loading').hide();
 		},
 
 		disconnected: function() {

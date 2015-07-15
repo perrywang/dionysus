@@ -54,7 +54,7 @@ public class ChatController {
             if (room.getOpen()){
                 chatMessage.setRoom(room);
                 chatMessage.setSender(userDetail);
-                chatMessageRepository.saveAndFlush(chatMessage);
+                chatMessageRepository.save(chatMessage);
 
                 ServerMessage serverMessage = new ServerMessage(chatMessage.getContent(), userName, userDetail.getId(), userDetail.getAvatar(),dateStr );
                 simp.convertAndSend("/topic/chat/" + id + "/messages", serverMessage);
