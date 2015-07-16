@@ -8,8 +8,8 @@
             textarea#description
         #submit.green.medium.ui.button 发表
         #murmurs(style="clear:both;margin-top:100px;")
-          .ui.divided.items"
-            |{{#each murmur}}
+          .ui.divided.items
+            |{{#each murmurs}}
             .item
               a.avatar
                 |{{#if createdBy.avatar}}
