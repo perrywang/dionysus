@@ -72,7 +72,7 @@ public class ChatController {
 	}
 
     @MessageMapping("/activeUsers/{id}")
-    public void activeUsers(Message<Object> message, @DestinationVariable("id") String id, Principal principal) throws Exception{
+    public void activeUsers(Message<Object> message, @DestinationVariable("id") String id) throws Exception{
         Principal user = message.getHeaders().get(SimpMessageHeaderAccessor.USER_HEADER, Principal.class);
         activeUserService.mark(id, user.getName());
     }
