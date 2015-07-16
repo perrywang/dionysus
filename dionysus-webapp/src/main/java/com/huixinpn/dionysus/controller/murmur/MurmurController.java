@@ -39,6 +39,20 @@ public class MurmurController {
         return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateMurmur(@PathVariable Long id, @RequestBody MurmurData data) {
+        Murmur updating = murmurRepository.findOne(id);
+        updating.setContent(data.getContent());
+        Murmur updated = murmurRepository.save(updating);
+        return new ResponseEntity<>(Utils.wrapSaveResult(updated.getId()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> updateMurmur(@PathVariable Long id) {
+        murmurRepository.delete(id);
+        return new ResponseEntity(Utils.EMPTY_JSON_OBJECT, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/me", method = RequestMethod.GET)
     public EntityPageData<MurmurData> myQuestions(@RequestParam(value = "page", required = false) Integer page,
                                                   @RequestParam(value = "size", required = false) Integer size) {
