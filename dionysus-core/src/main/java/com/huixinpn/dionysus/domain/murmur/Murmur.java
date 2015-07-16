@@ -18,6 +18,8 @@ import java.util.Collection;
 @NoArgsConstructor
 public class Murmur extends AbstractDionysusAuditable<User> {
 
+    private static final long serialVersionUID = 2523934617908030908L;
+
     private String content;
 
     @OneToMany(mappedBy = "murmur", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})

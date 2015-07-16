@@ -19,6 +19,8 @@ import java.util.Collection;
 @NoArgsConstructor
 public class QTag extends AbstractDionysusPersistable{
 
+  private static final long serialVersionUID = 2523934617928630908L;
+
   @Column(unique = true)
   private String name;
 

@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Answer extends AbstractDionysusNotifiable<User> {
 
+  private static final long serialVersionUID = 2523934617928030908L;
+
   @ManyToOne
   private Question question;
 

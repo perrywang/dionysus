@@ -16,6 +16,8 @@ import java.util.Collection;
 @NoArgsConstructor
 public class Question extends AbstractDionysusAuditable<User> {
 
+  private static final long serialVersionUID = 2523934617928638908L;
+
   private String title;
 
   private String description;

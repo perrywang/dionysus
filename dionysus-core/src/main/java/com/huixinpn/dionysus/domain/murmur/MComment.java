@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class MComment extends AbstractDionysusNotifiable<User> {
 
+    private static final long serialVersionUID = 2523934017908030908L;
+
     @ManyToOne
     private Murmur murmur;
 
