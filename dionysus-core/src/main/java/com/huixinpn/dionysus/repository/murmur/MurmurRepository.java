@@ -10,4 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface MurmurRepository extends JpaRepository<Murmur, Long> {
     @Query(value = "select m from Murmur m where m.createdBy = ?1 order by m.createdDate desc")
     Page<Murmur> findByCreatedBy(User user, Pageable page);
+
+    @Query(value = "select m from Murmur m order by m.createdDate desc")
+    Page<Murmur> findAll(Pageable page);
 }
