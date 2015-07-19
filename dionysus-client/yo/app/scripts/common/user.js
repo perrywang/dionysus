@@ -42,6 +42,64 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     }
   });
 
+  Entities.Notification = Backbone.Model.extend({
+    urlRoot: '/api/v1/notifications'
+  });
+
+  Entities.NotificationPageableCollection = Backbone.PageableCollection.extend({
+    url: 'api/v1/notifications',
+    model: Entities.Notification,
+
+    initialize: function(options){
+      if(options && options.searchMethod) this.url += '/search/'+options.searchMethod;
+      _.extend(this.queryParams, options.criteria);
+    },
+
+    parseRecords: function(response){
+      var embedded = response._embedded;
+      return embedded ? embedded.notifications : [];
+    },
+
+    state: {
+      firstPage : 0,
+      currentPage: 0,
+    },
+
+    queryParams: {
+      currentPage: "page",
+      pageSize: "size",
+    },
+
+    parseState: function(resp) {
+      var page = resp.page;
+      return {
+        currentPage: page.number,
+        pageSize: page.size,
+        totalPages: page.totalPages,
+        totalRecords: page.totalElements
+      }
+    }
+
+  });
+
+  Dionysus.reqres.setHandler('user:notifications', function(searchMethod, criteria){
+
+    if(!criteria) criteria={};
+    criteria['projection'] = 'excerpt';
+
+    var notifications = new Entities.NotificationPageableCollection({
+      searchMethod : searchMethod,
+      criteria:criteria
+    });
+
+    var defer = $.Deferred();
+
+    notifications.fetch().then(function(){
+      defer.resolve(notifications);
+    });
+    return defer.promise();
+  });
+
   Dionysus.reqres.setHandler('user:entities', function() {
     var users = new Entities.UserCollection();
     var defer = $.Deferred();

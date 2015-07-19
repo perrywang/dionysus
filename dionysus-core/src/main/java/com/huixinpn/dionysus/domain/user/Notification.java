@@ -8,6 +8,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
+import com.huixinpn.dionysus.repository.user.NotificationRepository;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,7 @@ import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "notification")
-public class Notification extends AbstractDionysusPersistable {
+public class Notification extends AbstractDionysusAuditable<User> {
 
 	private static final long serialVersionUID = -7457760948182175014L;
 

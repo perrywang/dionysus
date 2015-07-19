@@ -33,6 +33,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       if(!sessionStorage.getItem('role') || sessionStorage.getItem('role') !== 'ROLE_ADMIN'){
         this.$el.form().find('#adminlink').remove();
       }
+      this.$el.form().find('#inboxcount').append(sessionStorage.getItem('notification'));
     },
     ui: {
       'adminlink': '#adminlink'
@@ -97,6 +98,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         sessionStorage.setItem('user', data);
         sessionStorage.setItem('username', response.username);
         sessionStorage.setItem('avatar', response.avatar);
+        sessionStorage.setItem('notification', response.notificationCount);
         /// !!!!! 不应该在客户端保存ROLE的信息，这样很容易被攻击
         for (var i = roles.length - 1; i >= 0; i--) {
           if (roles[i].name === 'ROLE_ADMIN') {
@@ -105,6 +107,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         }
 
         window.location.reload();
+
       }).fail(function() {
         window.alert('登录失败，请确认用户名或密码正确...');
       });

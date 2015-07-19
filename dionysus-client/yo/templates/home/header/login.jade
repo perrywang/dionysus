@@ -1,10 +1,11 @@
 .container.brand
   .right.floated.six.wide.column
     .ui.text.menu
+      a.item#inboxcount(href="/inbox")
+        i.mail.green.icon
       a.item(href="/profile/{{ id }}") 用户面板
       a.item#adminlink(href="#") 管理员
       a.item(href="/logout") 退出
-
 .ui.inverted.teal.segment
   .container
     .ui.menu.inverted.teal.primary

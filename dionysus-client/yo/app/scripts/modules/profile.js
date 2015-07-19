@@ -463,6 +463,12 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     }
   });
 
+  //Inbox View
+  var InboxView = Dionysus.Common.Views.PageableItemView.extend({
+    template: JST['templates/home/profile/inbox'],
+    className: "ui stackable centered grid"
+  });
+
 
 
   /**
@@ -490,13 +496,25 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       }).fail(function(){
         alert("fail");
       });
+    },
+
+    showInbox: function(){
+
+      Dionysus.request('user:notifications',"findMyNotification",{size:50}).done(function(notifications){
+        var view = new InboxView({
+          collection: notifications
+        });
+        Dionysus.mainRegion.show(view);
+      });
+
     }
   });
 
   Dionysus.addInitializer(function() {
     new Marionette.AppRouter({
       appRoutes : {
-        'profile/:id(/)': 'showProfile'
+        'profile/:id(/)': 'showProfile',
+        'inbox(/)': 'showInbox'
       },
       controller: new ProfileController()
     });

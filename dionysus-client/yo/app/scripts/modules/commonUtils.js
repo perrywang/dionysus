@@ -4,76 +4,35 @@ Dionysus.module('Common.Views', function(Views, Dionysus, Backbone, Marionette, 
 		template: "#loading-view"
 	});
 
-	Views.Page2Layout = Marionette.LayoutView.extend({
-		template: "#page2-layout-tpl",
-		className: 'container ui basic center aligned segment',
+	Views.PageableItemView = Marionette.ItemView.extend({
+
+		initialize: function(options){
+			if(this.collection) this.listenTo(this.collection, 'add', this.render, this);
+		},
+
+		gotoPage: function(event, page){
+			this.collection.getPage(page-1);
+		},
+
 		onRender: function() {
-			var tpl = '<div class="row"><div class="right floated sixteen wide mobile sixteen wide tablet fourteen wide computer column"><div class="ui segment" id="<%= region %>"></div></div></div>';
-			var thisView = this;
-			_.each( this.regions, function(regionValue){
-				var regionId = regionValue.slice(1, regionValue.length);
-				thisView.$el.find('#gridrows').append(_.template(tpl)({
-					region: regionId
-				}));
-			thisView.addRegion('railcontent','#railcontent');
-
-			});
-		},
-		onBeforeShow: function() {
-			//show loading before get any data
-			for (var region in this.regions) {
-				this.getRegion(region).show(new Dionysus.Common.Views.Loading());
-			}
-		},
-		onDomRefresh: function(){
-			$('.ui.sticky')
-			.sticky({
-				context: '#main'
+			var state = this.collection.state;
+			var currentPage = state['currentPage'] + 1;
+			var total = state['totalPages'] == 0 ? 1 : state['totalPages'];
+			this.$('#paging').twbsPagination({
+				totalPages: total,
+				startPage: currentPage,
+				visiblePages: 6,
+				first: '第一页',
+				prev: '前一页',
+				next: '后一页',
+				last: '最后一页',
+				loop: true,
+				onPageClick: function(event, page) {
+					$(this).trigger("gotoPage", page);
+				}
 			});
 
 		}
 
 	});
-
-	Views.Page2Segment = Marionette.LayoutView.extend({
-		template: "#page2-sub-layout-tpl",
-		regions: {
-			slides: "#slides",
-			sec0: "#sec0",
-			sec1: "#sec1",
-			sec2: "#sec2",
-			sec3: "#sec3"
-		},
-		onBeforeShow: function(){
-			
-			var segView = this;
-			//get models for slides
-			var secModels = this.collection.models.slice(3);
-
-			//initial slides view
-			this.getRegion('slides').show(new Dionysus.Common.Views.Page2Slides({collection: this.collection}));
-			this.$('.flexslider').flexslider();
-
-			
-			//show rest models for the rest sections
-			_.each(secModels, function(model, idx){
-				var region = segView.getRegion("sec" + idx);
-				if(region) region.show(new Dionysus.Common.Views.Page2Item({model: model}));	
-			});
-			
-		}
-
-	});
-
-	Views.Page2Item = Marionette.ItemView.extend({
-		template: "#page2-item-tpl",
-		tagName: "div",
-		className: "ui items"
-	});
-
-	Views.Page2Slides = Marionette.ItemView.extend({
-		template: '#page2-slides-tpl',
-		className :'flexslider'
-	});
-
 });

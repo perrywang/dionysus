@@ -35,6 +35,9 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Transient
   transient private String password;
 
+  @Transient
+  transient private Long notificationCount;
+
   @JsonIgnore
   @Column(name = "password")
   private String encryptedPassword;

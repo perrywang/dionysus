@@ -1,0 +1,19 @@
+.twelve.wide.column
+	.ui.stackable.grid
+		.row
+			.column
+				.ui.header 消息中心:
+		.row
+			.column
+				.ui.selection.list
+					{{#each items}}
+					.item
+						.right.floated.ui.label {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
+						i.mail.outline.icon
+						.content
+							a.header(href="/userpage/{{from.id}}") {{from.username}}
+							.description {{summary}}
+					{{/each}}
+		.row
+			.center.aligned.column
+				div#paging

@@ -42,7 +42,8 @@ module.exports = function (grunt) {
         /^\/consultants/.test(url)||
         /^\/rooms/.test(url)||
         /^\/courses/.test(url)||
-        /^\/questions/.test(url)
+        /^\/questions/.test(url)||
+        /^\/inbox/.test(url)
       ) {
       req.url = '/index.html';
     }else if (/^\/app(\/)?/.test(url)) {
