@@ -1,7 +1,9 @@
 package com.huixinpn.dionysus.domain.article.projection;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.huixinpn.dionysus.domain.article.Article;
 import com.huixinpn.dionysus.domain.article.ArticleType;
+import org.joda.time.DateTime;
 import org.springframework.data.rest.core.config.Projection;
 
 import java.util.Collection;
@@ -21,4 +23,6 @@ public interface ArticleExcerpt {
     String getLocation();
     Boolean getInterview();
     Collection<CommentExcerpt> getComments();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    public DateTime getLastModifiedDate();
 }

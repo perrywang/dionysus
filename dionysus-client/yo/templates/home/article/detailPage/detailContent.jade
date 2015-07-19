@@ -3,6 +3,7 @@
       .ui.basic.segment
         .ui.header
           h2 {{ title }}
+          .sub.header 时间: {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
         p {{ summary }}
         p {{{ body }}}
     .row

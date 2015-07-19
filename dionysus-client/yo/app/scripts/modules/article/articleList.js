@@ -39,7 +39,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 				'DOC': "心理文章",
 				'VIDEO': "心理视频",
 				'AUDIO': "心理FM",
-				'BLOG': "心理博客"
+				'BLOG': "心理博客",
+				'GAME': "心理游戏"
 			};
 		},
 		serializeData:function(){
@@ -127,6 +128,46 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 					template:JST[baseTemplatePath+'articleTag'],
 				});
 			layoutView.getRegion('tag').show(tags);
+		},
+
+		showGameArticleList: function(){
+			var layoutView = new LayoutView();
+			Dionysus.mainRegion.show(layoutView);
+
+			//get list
+			Dionysus.request('article:list:pageable','findByType', {
+				type: 'GAME',
+				size:10,
+				sort: 'id,desc'//TODO update sql to add datatime info, to sort
+			}).done(function(articles){
+				
+				var list = new ListView({
+					template:JST[baseTemplatePath+'listPage/gameListItems'],
+					collection: articles
+				});
+
+				layoutView.getRegion('list').show(list);
+			});
+
+			//get latest
+			Dionysus.request('article:list:pageable', null, {
+				sort: 'lastModifiedDate,desc',
+				size: 10
+			}).done(function(articles){
+
+				var latest = new Dionysus.Article.RegionSummaryView({
+					template:JST[baseTemplatePath+'articleLatest'],
+					collection: articles
+				});
+				layoutView.getRegion('latest').show(latest);
+			});
+
+			//TODO get tags
+			var tags = new Dionysus.Article.RegionSummaryView({
+					//template:JST[baseTemplatePath+'articleTag'],
+				});
+			layoutView.getRegion('tag').show(tags);
+
 		}
 	});
 
@@ -137,6 +178,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 		new Marionette.AppRouter({
 			appRoutes: {
 				'articles/list/(cat:category/type:type)': 'showArticleList',
+				//'articles/list/type:type':'showArticleListByType',
+				'articles/list/games': 'showGameArticleList'
 			},
 			controller: new ArticleListController()
 		});
