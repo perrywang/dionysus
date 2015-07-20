@@ -8,7 +8,13 @@
           .field
             textarea#content
         #submit.green.medium.ui.button 发表
-        .ui.divider(style="clear:both;margin-top:150px;")
+        .ui.secondary.pointing.menu#menu
+          a.active.item#allmurmurs
+            h3
+              所有吐槽
+          a.item#mymurmurs
+            h3
+              我的吐槽
         #murmurs
           .ui.divided.items#murmurList
             |{{#each murmurs}}

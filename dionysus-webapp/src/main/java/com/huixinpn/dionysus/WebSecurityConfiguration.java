@@ -43,6 +43,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers("/controllers/questions/me/**").authenticated()
         .antMatchers(HttpMethod.POST, "/controllers/questions/**").authenticated()
         .antMatchers(HttpMethod.PUT, "/controllers/questions/**").authenticated()
+        .antMatchers("/controllers/murmurs/me/**").authenticated()
         .antMatchers(HttpMethod.POST, "/controllers/murmurs/**").authenticated()
         .antMatchers(HttpMethod.PUT, "/controllers/murmurs/**").authenticated()
 
