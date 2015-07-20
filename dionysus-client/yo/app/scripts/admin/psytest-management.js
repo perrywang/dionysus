@@ -84,7 +84,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
         last: '最后一页',
         loop:true,
         onPageClick: function(event,page){
-          Dionysus.navigate('/admin/appointments?page=' + page,{trigger:true});
+          Dionysus.navigate('/admin/psychotests?page=' + page,{trigger:true});
         }
       });
     }
@@ -112,24 +112,19 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     return params;
   }
 
-  var AppointmentController = Marionette.Controller.extend({
+  var PsychTestController = Marionette.Controller.extend({
 
-    editPsychoProfile: function(){
-      //show loading before get any data
-      
-    },
-	
-    showAppointments: function (queryString) {
+    showPsychtests: function (queryString) {
       var params = parseQueryString(queryString);
       var page = 1;
       if(params.page){
         page = parseInt(params.page);
       }
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.when(Dionysus.request('appointment:entities',page)).done(function (pagedAppointments) {
-        var appointments = new Backbone.Collection(pagedAppointments.get('content'));
-        var totalPages = pagedAppointments.get('totalPages');
-        var listView = new AppointmentListView({collection:appointments,current:page,totalPages:totalPages});
+      $.when(Dionysus.request('appointment:entities',page)).done(function (pagedPsychtests) {
+        var psychtests = new Backbone.Collection(pagedPsychtests.get('content'));
+        var totalPages = pagedPsychtests.get('totalPages');
+        var listView = new PsychTestListView({collection:psychtests,current:page,totalPages:totalPages});
         listView.on('childview:input:profile', function(childView, model){
 		  var editor = new PsychoProfileEditorView({model:model});
 		  Dionysus.mainRegion.show(editor);          	  
@@ -142,10 +137,9 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/appointments(?*querystring)': 'showAppointments',
-		'admin/appointments/psychoprofile': 'editPsychoProfile'
+        'admin/psychotests(?*querystring)': 'showPsychtests'
       },
-      controller: new AppointmentController()
+      controller: new PsychTestController()
     });
   });
 });

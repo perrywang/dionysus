@@ -24,7 +24,7 @@ Dionysus.module('Admin.Home', function(Home, Dionysus, Backbone, Marionette) {
 	  { name: '心理预约', href: '/admin/appointments',     icon: 'edit'  },
 	  { name: '咨询师特长', href: '/admin/consultantexpertise',     icon: 'edit'  },
     { name: '聊天室', href: '/admin/chatrooms', icon: 'edit'},
-    { name: '心理测试', href: '/admin/chatrooms', icon: 'edit'}	
+    { name: '心理测试', href: '/admin/psychotests', icon: 'edit'}	
   ]);
 
   Dionysus.addInitializer(function() {
