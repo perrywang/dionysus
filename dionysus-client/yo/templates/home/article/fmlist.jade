@@ -2,7 +2,12 @@
 	{{#each items}}
 	.column
 		.ui.basic.segment
-			a.fmitem(data-id="{{id}}", href="#")
+			.ui.centered.image.fmitem
+				.ui.dimmer
+					.content
+						.center
+							h4.ui.inverted.header {{title}}
+							.ui.basic.inverted.green.tiny.button.playthis(data-id="{{id}}") 播放
 				{{#if cover}}
 				img.ui.centered.image(src="{{cover}}")
 				{{else}}

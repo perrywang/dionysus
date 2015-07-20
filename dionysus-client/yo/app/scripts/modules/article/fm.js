@@ -149,7 +149,8 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
 		events:{
 			"gotoPage #paging": "gotoPage",
-			'click .fmitem': 'clicked'
+			//'click .fmitem': 'clicked',
+			'click .playthis': 'clicked'
 		},
 		gotoPage: function(event, page){
 			this.collection.getPage(page-1);
@@ -183,6 +184,9 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 		onDomRefresh: function(){
 			//push play list of current page to parent layout view - player
 			this.triggerMethod('fm:page:change', this.collection.toJSON());
+			$('.fmitem').dimmer({
+				on: 'hover'
+			});
 		},
 
 	});
