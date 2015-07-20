@@ -43,6 +43,7 @@ module.exports = function (grunt) {
         /^\/rooms/.test(url)||
         /^\/courses/.test(url)||
         /^\/questions/.test(url)||
+        /^\/murmurs/.test(url)||
         /^\/inbox/.test(url)
       ) {
       req.url = '/index.html';

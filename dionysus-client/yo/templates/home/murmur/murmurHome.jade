@@ -1,27 +1,30 @@
 #home.murmur
   .ui.centered.stackable.grid
     .eight.wide.column
-      h2 我要吐槽
+      .basic.ui.segment
+        h2 我要吐槽
       .basic.ui.segment
         .ui.form
           .field
             textarea#content
         #submit.green.medium.ui.button 发表
-        #murmurs(style="clear:both;margin-top:100px;")
-          .ui.divided.items
+        .ui.divider(style="clear:both;margin-top:150px;")
+        #murmurs
+          .ui.divided.items#murmurList
             |{{#each murmurs}}
             .item
-              a.avatar
-                |{{#if createdBy.avatar}}
+              |{{#if createdBy.avatar}}
+              .ui.tiny.image
                 img(src="{{createdBy.avatar}}")
-                |{{else}}
-                img(src="/public/images/placeholder.png")
-                |{{/if}}
+              |{{else}}
+              .ui.tiny.image
+                img(src="{{createdBy.avatar}}")
+              |{{/if}}
               .content
                 a.author {{createdBy.username}}
                 .metadata {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
                 .text
                   p {{content}}
             |{{/each}}
-          #pagnationWrapper
-            #pagnation
+        #pagnationWrapper
+          #pagnation

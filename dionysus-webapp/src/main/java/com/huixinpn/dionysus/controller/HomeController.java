@@ -23,6 +23,7 @@ public class HomeController {
             "/fms/**",
             "/rooms/**",
             "/questions/**",
+			"/murmurs/**",
             "/inbox/**"
 		}, 
 		method = RequestMethod.GET)

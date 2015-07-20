@@ -1,10 +1,11 @@
 .item
-  a.avatar
-    |{{#if createdBy.avatar}}
+  |{{#if createdBy.avatar}}
+  .ui.tiny.image
     img(src="{{createdBy.avatar}}")
-    |{{else}}
-    img(src="/public/images/placeholder.png")
-    |{{/if}}
+  |{{else}}
+  .ui.tiny.image
+    img(src="{{createdBy.avatar}}")
+  |{{/if}}
   .content
     a.author {{createdBy.username}}
     .metadata {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}

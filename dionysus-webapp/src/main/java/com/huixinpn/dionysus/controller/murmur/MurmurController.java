@@ -32,11 +32,11 @@ public class MurmurController {
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ResponseEntity<String> addMurmur(@RequestBody MurmurData data) {
+    public MurmurData addMurmur(@RequestBody MurmurData data) {
         Murmur murmur = new Murmur();
         murmur.setContent(data.getContent());
         Murmur added = murmurRepository.save(murmur);
-        return new ResponseEntity<>(Utils.wrapSaveResult(added.getId()), HttpStatus.OK);
+        return new MurmurData(added);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)

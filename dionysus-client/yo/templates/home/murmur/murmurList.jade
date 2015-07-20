@@ -1,0 +1,16 @@
+.ui.divided.items#murmurList
+  |{{#each murmurs}}
+  .item
+    |{{#if createdBy.avatar}}
+    .ui.tiny.image
+      img(src="{{createdBy.avatar}}")
+    |{{else}}
+    .ui.tiny.image
+      img(src="{{createdBy.avatar}}")
+    |{{/if}}
+    .content
+      a.author {{createdBy.username}}
+      .metadata {{createdDate.year}}-{{createdDate.monthOfYear}}-{{createdDate.dayOfMonth}}
+      .text
+        p {{content}}
+  |{{/each}}
