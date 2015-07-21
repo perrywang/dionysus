@@ -25,15 +25,15 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     tagName: 'form',
     className: 'ui form',
     initialize: function (options) {
-      //this.username = this.model.model.toJSON().user.username;
+      this.username = this.model.model.toJSON().createdBy.username;
 	  //this.consultantname = this.model.model.toJSON().consultant.username;
-	  //this.id = this.model.model.toJSON().user.id;
+	  this.id = this.model.model.toJSON().createdBy.id;
     },
 	serializeData: function() {
       var data = {};
-      //data.username = this.username;
+      data.username = this.username;
 	  //data.consultantname = this.consultantname;
-	  //data.id = this.id;
+	  data.id = this.id;
       return data;
     },
     ui: {
@@ -45,7 +45,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     saveProfile: function() {
       var profileitem = {};
 	  var json = this.$el.form('get values');
-	  profileitem.consultantname = this.consultantname;
+	  profileitem.consultantname = json.consultantname;
 	  profileitem.summary = json.summary;
 	  profileitem.module = "心理测试";
 	  profileitem.datetime = new Date().toDateString();
