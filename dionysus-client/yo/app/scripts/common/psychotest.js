@@ -26,6 +26,16 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
     }
   });
   
+  Entities.PsychoTestUserCollection = Backbone.Model.extend({
+    model: Entities.User,
+    url: '/api/v1/psychtestresults',
+	initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    }
+  });
+  
   Dionysus.reqres.setHandler('psychotest:entities', function() {
     var psychotests = new Entities.PsychoTestCollection();
     var defer = $.Deferred();
@@ -44,8 +54,26 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
     return defer.promise();
   });
   
+  Dionysus.reqres.setHandler('psychotest:finduser', function(id) {
+    var user = new Entities.PsychoTestUserCollection({appendUrl: '/' + id + '/createdBy'});
+    var defer = $.Deferred();
+    user.fetch().then(function() {
+      defer.resolve(user);
+    });
+    return defer.promise();
+  });
+  
   Dionysus.reqres.setHandler('psychotest:findByUser', function(id) {
     var psychotests = new Entities.PsychoProfileCollection({appendUrl: '/' + id + '/items'});
+    var defer = $.Deferred();
+    psychotests.fetch().then(function() {
+      defer.resolve(psychotests);
+    });
+    return defer.promise();
+  });
+  
+  Dionysus.reqres.setHandler('psychotest:instances', function() {
+    var psychotests = new Entities.PsychoTestCollection({appendUrl: '?projection=summary'});
     var defer = $.Deferred();
     psychotests.fetch().then(function() {
       defer.resolve(psychotests);

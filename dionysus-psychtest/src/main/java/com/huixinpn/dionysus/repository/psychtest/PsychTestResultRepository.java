@@ -10,8 +10,8 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 @RepositoryRestResource(path = "psychtestresults", 
 	collectionResourceRel = "psychtestresults", 
-	itemResourceRel = "psychtestresult",
-	excerptProjection = PscyTestResultExcerpt.class )
+	itemResourceRel = "psychtestresult")
+	//excerptProjection = PscyTestResultExcerpt.class )
 public interface PsychTestResultRepository
 	extends Repository<PsychTestResult, Long> {
 

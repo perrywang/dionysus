@@ -3,7 +3,18 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
 
   var PsychTestItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/psychtests/psychtestitem"],
-    tagName: 'tr',
+    tagName: 'tr',	
+	initialize: function (options) {
+      this.id = this.model.toJSON().id;
+      this.title = this.model.toJSON().test.title;
+      this.username = this.model.toJSON().createdBy.username;	  
+    },	
+    serializeData: function() {
+      var data = {};
+      data.username = this.username;	  
+	  data.title = this.title;
+      return data;
+    },
 	triggers: {
       'click .input.button':'input:profile'
     }
@@ -75,7 +86,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
 
     showPsychtests: function () {
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.when(Dionysus.request('psychotest:entities')).done(function (psychtests) {
+      $.when(Dionysus.request('psychotest:instances')).done(function (psychtests) {  
         var listView = new PsychTestListView({collection:psychtests});
         listView.on('childview:input:profile', function(childView, model){
 		  var editor = new PsychoProfileEditorView({model:model});
