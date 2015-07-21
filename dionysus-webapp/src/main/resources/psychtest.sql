@@ -1,5 +1,8 @@
 insert into psychtestsuites(id, title, description) values (1, '人格类', '人格类');
 insert into psychtestsuites(id, title, description) values (2, '心理健康评定类', '心理健康评定类');
+insert into psychtestsuites(id, title, description) values (3, '认知发展类', '认知发展类');
+insert into psychtestsuites(id, title, description) values (4, '行为类', '行为类');
+insert into psychtestsuites(id, title, description) values (5, '学习与教育类', '学习与教育类');
 
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (1, 'PF16', 'ONE_BY_ONE', 187, '16PF', '人格评定以及心理健康评定', '12岁以上', '30', '120', 'MACHINE');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (2, 'EPQ',  'TABLE', 88, '艾森克量表', '人格评定以及心理健康评定', '3岁以上', '10', '100', 'MACHINE');
@@ -11,6 +14,9 @@ insert into psychtests(id, type, format, min, title, description, object, durati
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (8, 'CMI', 'TABLE', 195, '康奈尔健康问卷', '男女性多维度心理健康评定', '14岁以上', '30', '120', 'MACHINE');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (9, 'STS', 'ONE_BY_ONE', 20, '压力量表', '压力评定以及情绪评定', '18岁以上', '5', '80', 'MACHINE');
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (10, 'SCL90', 'ONE_BY_ONE', 90, 'SCL-90', '9个方面进行心理健康评定', '12岁以上', '10', '100', 'MACHINE');
+insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (11, 'OLSON', 'ONE_BY_ONE', 124, '婚姻质量', '评定婚姻状况', '22岁以上', '15', '100', 'MANUAL');
+insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (12, 'DCCC', 'ONE_BY_ONE', 57, '阅读障碍', '阅读能力，阅读行为', '3岁以上', '10', '80', 'MANUAL');
+insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (13, 'PLOC', 'ONE_BY_ONE', 47, '子女教育心理控制源量表', '评定父母教育控制因子', '父母', '15', '100', 'MANUAL');
 
 insert into suite_test(suite_id, test_id) values (1, 1);
 insert into suite_test(suite_id, test_id) values (1, 2);
@@ -22,6 +28,10 @@ insert into suite_test(suite_id, test_id) values (2, 7);
 insert into suite_test(suite_id, test_id) values (2, 8);
 insert into suite_test(suite_id, test_id) values (2, 9);
 insert into suite_test(suite_id, test_id) values (2, 10);
+insert into suite_test(suite_id, test_id) values (4, 11);
+insert into suite_test(suite_id, test_id) values (5, 12);
+insert into suite_test(suite_id, test_id) values (5, 13);
+
 
 -- 卡特尔十六种人格因素测试(16PF)
 

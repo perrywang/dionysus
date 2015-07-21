@@ -131,6 +131,30 @@ public class PsychTest extends AbstractDionysusPersistable {
 			public String toString() {
 				return "SCL90";
 			}
+		},
+		
+		// OLSON
+		OLSON {
+			@Override
+			public String toString() {
+				return "OLSON";
+			}
+		},
+		
+		// DCCC
+		DCCC {
+			@Override
+			public String toString() {
+				return "DCCC";
+			}
+		},
+		
+		// PLOC
+		PLOC {
+			@Override
+			public String toString() {
+				return "PLOC";
+			}
 		}
 	}
 	
