@@ -215,6 +215,7 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
     },
     onRender: function(){
       var id = this.course.id;
+      this.$('#body').append(this.course.body);
       this.$('.submit.button').on('click',function(){
         var comment = $('#comment').val();
         $.ajax({

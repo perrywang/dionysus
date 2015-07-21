@@ -3,11 +3,11 @@
     .basic.ui.segment
       .ui.header
         h2 {{course.title}}
+      |{{#if course.cover}}
       img.ui.fluid.image(src="{{course.cover}}")
-      p
-      |{{course.description}}
-      |{{course.embeddedVideo}}
-      .ui.divider(style="margin-top:50px;")
+      |{{/if}}
+      #body
+      .ui.divider(style="clear:both;margin-top:50px;")
       #comments(style="margin-top:20px;")
         h3
           a 发表留言

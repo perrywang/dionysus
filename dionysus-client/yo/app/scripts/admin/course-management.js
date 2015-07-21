@@ -69,19 +69,21 @@ Dionysus.module('AdminCourse', function (Course, Dionysus, Backbone, Marionette,
       }
     },
     onRender:function(){
-      this.$('#paging').twbsPagination({
-        totalPages: this.totalPages,
-        startPage: this.current,
-        visiblePages: 6,
-        first: '第一页',
-        prev: '前一页',
-        next: '后一页',
-        last: '最后一页',
-        loop:true,
-        onPageClick: function(event,page){
-          Dionysus.navigate('/admin/courses?page=' + page,{trigger:true});
-        }
-      });
+      if(this.current + 1 <= this.totalPages){
+        this.$('#paging').twbsPagination({
+          totalPages: this.totalPages,
+          startPage: this.current,
+          visiblePages: 6,
+          first: '第一页',
+          prev: '前一页',
+          next: '后一页',
+          last: '最后一页',
+          loop:true,
+          onPageClick: function(event,page){
+            Dionysus.navigate('/admin/courses?page=' + page,{trigger:true});
+          }
+        });
+      }
     }
   });
 
