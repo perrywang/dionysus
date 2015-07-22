@@ -1,6 +1,7 @@
 Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
 
   var baseTemplatePath = 'templates/home/course';
+  var loader = '<div class="ui active centered large inline loader"></div>';
 
   var home = Marionette.ItemView.extend({
     initialize: function(options){
@@ -25,6 +26,9 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
     },
 
     updatePage: function(category){
+      $('#videos').html(loader);
+      $('#room').html(loader);
+      $('#offline').html(loader);
       $.when(Dionysus.request('course:home:videos',category),
           Dionysus.request('course:home:room',category),
           Dionysus.request('course:home:offline',category)
