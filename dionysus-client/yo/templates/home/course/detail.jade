@@ -3,10 +3,7 @@
     .basic.ui.segment
       .ui.header
         h2 {{course.title}}
-      |{{#if course.cover}}
-      img.ui.fluid.image(src="{{course.cover}}")
-      |{{/if}}
-      #body
+      p#body
       .ui.divider(style="clear:both;margin-top:50px;")
       #comments(style="margin-top:20px;")
         h3
