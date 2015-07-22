@@ -32,6 +32,8 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
             var videoTemplate = JST[baseTemplatePath+'/videos'];
             var html = videoTemplate({videos:videos.content});
             $('#videos').html(html);
+            $('#pagenation-video').remove();
+            $('#videoWrapper').append('<div id="pagenation-video" class="pagenation"></div>');
             if(videos.number+1 <= videos.totalPages){
               $('#pagenation-video').twbsPagination({
                 totalPages: videos.totalPages,
@@ -55,6 +57,8 @@ Dionysus.module('Course', function(Article, Dionysus, Backbone, Marionette){
             var roomTemplate = JST[baseTemplatePath+'/room'];
             var rooms = roomTemplate({room:room.content});
             $('#room').html(rooms);
+            $('#pagenation-room').remove();
+            $('#roomWrapper').append('<div id="pagenation-room" class="pagenation"></div>');
             if(room.number+1 <= room.totalPages){
               $('#pagenation-room').twbsPagination({
                 totalPages: room.totalPages,

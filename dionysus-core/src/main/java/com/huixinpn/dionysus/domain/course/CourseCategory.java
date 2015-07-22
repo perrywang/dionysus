@@ -6,11 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,13 +14,12 @@ import java.util.Collection;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "coursecategories")
+@Table(name = "coursecategories",uniqueConstraints=@UniqueConstraint(columnNames = {"name", "parent_id"}))
 public class CourseCategory extends AbstractDionysusPersistable {
 
   private static final long serialVersionUID = -1815965724913284764L;
 
   @NotEmpty
-  @Column(name = "name", unique = true)
   private String name;
 
   @ManyToOne
