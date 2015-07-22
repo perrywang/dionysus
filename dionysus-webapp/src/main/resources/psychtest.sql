@@ -4219,6 +4219,410 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1820, 1274, 'D', '偏重');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1821, 1274, 'E', '严重');
 
+-- 儿童汉语阅读障碍量表（DCCC）
+-- 指导语：这是一份以了解小学三到五年级儿童汉语阅读行为与习惯的调查表，由熟悉儿童情况的家长或老师填写。
+-- 本表对所列的57个条目分别规定了5个等级：1从未出现，2偶尔出现，3有时出现，4较常出现，5经常出现。
+-- 请根据被评定的孩子的实际情况，选择你认为最接近的答案，并将代码涂黑。每题只选一个答案。
+-- 题目内容（共57题）： 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1275, 1, 12, 'SINGLE_CHOICE', 'REQUIRED', '经常混淆字母：如将b看成d，p看成q，u看成n，w看成m等。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1822, 1275, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1823, 1275, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1824, 1275, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1825, 1275, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1826, 1275, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1276, 2, 12, 'SINGLE_CHOICE', 'REQUIRED', '经常颠倒字的偏旁部首。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1827, 1276, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1828, 1276, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1829, 1276, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1830, 1276, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1831, 1276, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1277, 3, 12, 'SINGLE_CHOICE', 'REQUIRED', '阅读时重复阅读同一行或者跳行阅读。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1832, 1277, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1833, 1277, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1834, 1277, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1835, 1277, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1836, 1277, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1278, 4, 12, 'SINGLE_CHOICE', 'REQUIRED', '上课或做作业时注意力不集中。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1837, 1278, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1838, 1278, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1839, 1278, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1840, 1278, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1841, 1278, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1279, 5, 12, 'SINGLE_CHOICE', 'REQUIRED', '放大字体，减少每页内容或用物件标记读到哪里可以改善阅读。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1842, 1279, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1843, 1279, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1844, 1279, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1845, 1279, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1846, 1279, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1280, 6, 12, 'SINGLE_CHOICE', 'REQUIRED', '读字和写字时经常混淆形状相似的字，如拒和柜');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1847, 1280, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1848, 1280, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1849, 1280, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1850, 1280, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1851, 1280, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1281, 7, 12, 'SINGLE_CHOICE', 'REQUIRED', '前后排列错误，例如将was看成saw，将on看成no，将书写看成写书。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1852, 1281, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1853, 1281, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1854, 1281, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1855, 1281, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1856, 1281, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1282, 8, 12, 'SINGLE_CHOICE', 'REQUIRED', '听写中分不清同音字，如拒和据。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1857, 1282, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1858, 1282, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1859, 1282, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1860, 1282, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1861, 1282, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1283, 9, 12, 'SINGLE_CHOICE', 'REQUIRED', '写字字迹非常潦草，笔画不清晰，难以辨认。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1862, 1283, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1863, 1283, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1864, 1283, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1865, 1283, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1866, 1283, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1284, 10, 12, 'SINGLE_CHOICE', 'REQUIRED', '常常不理解字，词在句子中的意思。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1867, 1284, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1868, 1284, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1869, 1284, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1870, 1284, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1871, 1284, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1285, 11, 12, 'SINGLE_CHOICE', 'REQUIRED', '分不清汉字的声调，如情（第二声），清（第一声）。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1872, 1285, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1873, 1285, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1874, 1285, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1875, 1285, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1876, 1285, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1286, 12, 12, 'SINGLE_CHOICE', 'REQUIRED', '计数困难，数学计算能力差。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1877, 1286, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1878, 1286, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1879, 1286, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1880, 1286, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1881, 1286, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1287, 13, 12, 'SINGLE_CHOICE', 'REQUIRED', '父母或其他家庭成员也有阅读，语言或书写方面的问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1882, 1287, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1883, 1287, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1884, 1287, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1885, 1287, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1886, 1287, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1288, 14, 12, 'SINGLE_CHOICE', 'REQUIRED', '看图时，抓不住主要内容，只看到琐碎细节。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1887, 1288, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1888, 1288, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1889, 1288, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1890, 1288, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1891, 1288, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1289, 15, 12, 'SINGLE_CHOICE', 'REQUIRED', '口头交际能力差，不善于口语表达。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1892, 1289, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1893, 1289, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1894, 1289, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1895, 1289, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1896, 1289, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1290, 16, 12, 'SINGLE_CHOICE', 'REQUIRED', '书写速度慢，经常很晚才完成作业。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1897, 1290, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1898, 1290, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1899, 1290, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1900, 1290, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1901, 1290, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1291, 17, 12, 'SINGLE_CHOICE', 'REQUIRED', '听不懂正常速度的谈话，只有缓慢重复时才能理解。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1902, 1291, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1903, 1291, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1904, 1291, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1905, 1291, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1906, 1291, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1292, 18, 12, 'SINGLE_CHOICE', 'REQUIRED', '不能按照大人的指令做事情。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1907, 1292, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1908, 1292, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1909, 1292, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1910, 1292, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1911, 1292, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1293, 19, 12, 'SINGLE_CHOICE', 'REQUIRED', '无法用学过的字，词造句子。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1912, 1293, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1913, 1293, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1914, 1293, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1915, 1293, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1916, 1293, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1294, 20, 12, 'SINGLE_CHOICE', 'REQUIRED', '写字时经常涂抹，修改。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1917, 1294, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1918, 1294, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1919, 1294, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1920, 1294, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1921, 1294, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1295, 21, 12, 'SINGLE_CHOICE', 'REQUIRED', '阅读过程中常常分不清读音相近的字，如轻和清。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1922, 1295, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1923, 1295, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1924, 1295, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1925, 1295, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1926, 1295, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1296, 22, 12, 'SINGLE_CHOICE', 'REQUIRED', '不能熟练使用汉语拼音。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1927, 1296, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1928, 1296, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1929, 1296, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1930, 1296, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1931, 1296, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1297, 23, 12, 'SINGLE_CHOICE', 'REQUIRED', '听不懂口头讲解，跟不上正常的学习速度。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1932, 1297, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1933, 1297, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1934, 1297, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1935, 1297, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1936, 1297, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1298, 24, 12, 'SINGLE_CHOICE', 'REQUIRED', '朗读时经常读着不知读到何处。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1937, 1298, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1938, 1298, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1939, 1298, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1940, 1298, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1941, 1298, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1299, 25, 12, 'SINGLE_CHOICE', 'REQUIRED', '不理解“上下”“周围”“首尾”“前后”“向上”和“向下”等方位概念。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1942, 1299, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1943, 1299, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1944, 1299, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1945, 1299, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1946, 1299, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1300, 26, 12, 'SINGLE_CHOICE', 'REQUIRED', '认字能力虽好，却不知道字的意义。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1947, 1300, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1948, 1300, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1949, 1300, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1950, 1300, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1951, 1300, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1301, 27, 12, 'SINGLE_CHOICE', 'REQUIRED', '儿童难以记住公式，乘法口诀等。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1952, 1301, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1953, 1301, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1954, 1301, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1955, 1301, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1956, 1301, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1302, 28, 12, 'SINGLE_CHOICE', 'REQUIRED', '写字容易写错，如总是多一笔或少一笔。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1957, 1302, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1958, 1302, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1959, 1302, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1960, 1302, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1961, 1302, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1303, 29, 12, 'SINGLE_CHOICE', 'REQUIRED', '不理解时间关系：如昨天，今天和明天，前与后，15分钟与2小时，快与慢。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1962, 1303, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1963, 1303, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1964, 1303, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1965, 1303, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1966, 1303, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1304, 30, 12, 'SINGLE_CHOICE', 'REQUIRED', '没有幽默感，听不懂玩笑或双关语。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1967, 1304, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1968, 1304, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1969, 1304, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1970, 1304, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1971, 1304, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1305, 31, 12, 'SINGLE_CHOICE', 'REQUIRED', '写作吃力，语文测验时作文分数低。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1972, 1305, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1973, 1305, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1974, 1305, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1975, 1305, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1976, 1305, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1306, 32, 12, 'SINGLE_CHOICE', 'REQUIRED', '不理解人的情绪，如不领会“愉快”“反感”之类的情绪表现。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1977, 1306, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1978, 1306, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1979, 1306, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1980, 1306, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1981, 1306, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1307, 33, 12, 'SINGLE_CHOICE', 'REQUIRED', '难以掌握数学概念（例如多与少，大于与小于），不会估算。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1982, 1307, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1983, 1307, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1984, 1307, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1985, 1307, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1986, 1307, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1308, 34, 12, 'SINGLE_CHOICE', 'REQUIRED', '重复别人所说的数字时，超不过六位数。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1987, 1308, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1988, 1308, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1989, 1308, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1990, 1308, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1991, 1308, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1309, 35, 12, 'SINGLE_CHOICE', 'REQUIRED', '熟练掌握的词汇很少。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1992, 1309, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1993, 1309, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1994, 1309, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1995, 1309, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1996, 1309, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1310, 36, 12, 'SINGLE_CHOICE', 'REQUIRED', '常常不愿朗读或朗读时发音不清晰。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1997, 1310, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1998, 1310, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1999, 1310, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2000, 1310, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2001, 1310, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1311, 37, 12, 'SINGLE_CHOICE', 'REQUIRED', '朗读时总是丢字，加字，改字，串字。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2002, 1311, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2003, 1311, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2004, 1311, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2005, 1311, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2006, 1311, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1312, 38, 12, 'SINGLE_CHOICE', 'REQUIRED', '记不住物品名称，只能说“那个东西”。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2007, 1312, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2008, 1312, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2009, 1312, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2010, 1312, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2011, 1312, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1313, 39, 12, 'SINGLE_CHOICE', 'REQUIRED', '写字常常超出格子。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2012, 1313, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2013, 1313, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2014, 1313, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2015, 1313, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2016, 1313, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1314, 40, 12, 'SINGLE_CHOICE', 'REQUIRED', '富于说服力和表现力的语言太少。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2017, 1314, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2018, 1314, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2019, 1314, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2020, 1314, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2021, 1314, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1315, 41, 12, 'SINGLE_CHOICE', 'REQUIRED', '写作能力差：标点符号，空一行，空两格等常搞错。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2022, 1315, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2023, 1315, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2024, 1315, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2025, 1315, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2026, 1315, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1316, 42, 12, 'SINGLE_CHOICE', 'REQUIRED', '阅读时喜欢出声。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2027, 1316, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2028, 1316, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2029, 1316, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2030, 1316, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2031, 1316, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1317, 43, 12, 'SINGLE_CHOICE', 'REQUIRED', '朗读时总是反复重复某些字词。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2032, 1317, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2033, 1317, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2034, 1317, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2035, 1317, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2036, 1317, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1318, 44, 12, 'SINGLE_CHOICE', 'REQUIRED', '常常认不出或不知道学过的字是什么意思。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2037, 1318, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2038, 1318, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2039, 1318, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2040, 1318, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2041, 1318, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1319, 45, 12, 'SINGLE_CHOICE', 'REQUIRED', '易记住人名而不易记住人脸。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2042, 1319, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2043, 1319, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2044, 1319, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2045, 1319, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2046, 1319, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1320, 46, 12, 'SINGLE_CHOICE', 'REQUIRED', '语文考试时阅读理解部分得分低。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2047, 1320, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2048, 1320, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2049, 1320, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2050, 1320, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2051, 1320, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1321, 47, 12, 'SINGLE_CHOICE', 'REQUIRED', '不喜欢阅读，也不喜欢听别人阅读。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2052, 1321, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2053, 1321, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2054, 1321, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2055, 1321, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2056, 1321, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1322, 48, 12, 'SINGLE_CHOICE', 'REQUIRED', '写字，画画时笔画不均匀，歪歪斜斜。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2057, 1322, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2058, 1322, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2059, 1322, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2060, 1322, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2061, 1322, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1323, 49, 12, 'SINGLE_CHOICE', 'REQUIRED', '孩子不经常阅读课外读物。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2062, 1323, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2063, 1323, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2064, 1323, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2065, 1323, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2066, 1323, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1324, 50, 12, 'SINGLE_CHOICE', 'REQUIRED', '能正确阅读，但是有口无心，理解较差。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2067, 1324, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2068, 1324, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2069, 1324, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2070, 1324, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2071, 1324, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1325, 51, 12, 'SINGLE_CHOICE', 'REQUIRED', '考试或写作业时，常常出现题意理解错误。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2072, 1325, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2073, 1325, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2074, 1325, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2075, 1325, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2076, 1325, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1326, 52, 12, 'SINGLE_CHOICE', 'REQUIRED', '阅读写作又慢又差。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2077, 1326, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2078, 1326, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2079, 1326, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2080, 1326, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2081, 1326, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1327, 53, 12, 'SINGLE_CHOICE', 'REQUIRED', '语言表达尚可，但写的作文过于简单，内容枯燥。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2082, 1327, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2083, 1327, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2084, 1327, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2085, 1327, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2086, 1327, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1328, 54, 12, 'SINGLE_CHOICE', 'REQUIRED', '经常忘记一个学过的字应该怎样写。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2087, 1328, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2088, 1328, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2089, 1328, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2090, 1328, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2091, 1328, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1329, 55, 12, 'SINGLE_CHOICE', 'REQUIRED', '读书时常常有看不清或者看到的字有颤抖和闪烁的感觉。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2092, 1329, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2093, 1329, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2094, 1329, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2095, 1329, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2096, 1329, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1330, 56, 12, 'SINGLE_CHOICE', 'REQUIRED', '对大人的吩咐前讲后忘记。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2097, 1330, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2098, 1330, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2099, 1330, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2100, 1330, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2101, 1330, 'E', '经常出现');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1331, 57, 12, 'SINGLE_CHOICE', 'REQUIRED', '数学应用题常常不能正确解答，数学考试时应用题部分得分低。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2102, 1331, 'A', '从未出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2103, 1331, 'B', '偶尔出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2104, 1331, 'C', '有时出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2105, 1331, 'D', '较常出现');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2106, 1331, 'E', '经常出现');
+
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');
