@@ -4623,6 +4623,337 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(2105, 1331, 'D', '较常出现');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(2106, 1331, 'E', '经常出现');
 
+-- 子女教育心理控制源量表（PLOC）
+-- 请根据被评定的孩子的实际情况，选择你认为最接近的答案，并将代码涂黑。每题只选一个答案。
+-- 题目内容（共47题）： 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1332, 1, 13, 'SINGLE_CHOICE', 'REQUIRED', '我所做的对我孩子没什么作用。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2107, 1332, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2108, 1332, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2109, 1332, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2110, 1332, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2111, 1332, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1333, 2, 13, 'SINGLE_CHOICE', 'REQUIRED', '一旦我和孩子之间出了问题，我没办法解决。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2112, 1333, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2113, 1333, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2114, 1333, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2115, 1333, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2116, 1333, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1334, 3, 13, 'SINGLE_CHOICE', 'REQUIRED', '父母应当指出孩子们的毛病，因为对此视而不见问题并不会消失。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2117, 1334, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2118, 1334, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2119, 1334, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2120, 1334, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2121, 1334, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1335, 4, 13, 'SINGLE_CHOICE', 'REQUIRED', '如果你想尽办法孩子还是大发脾气，你只好罢手。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2122, 1335, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2123, 1335, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2124, 1335, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2125, 1335, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2126, 1335, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1336, 5, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的孩子最终按自已的想法行事，所以何必去管呢。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2127, 1336, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2128, 1336, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2129, 1336, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2130, 1336, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2131, 1336, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1337, 6, 13, 'SINGLE_CHOICE', 'REQUIRED', '不管父母们费多大劲，有些孩子就是不放在心上。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2132, 1337, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2133, 1337, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2134, 1337, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2135, 1337, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2136, 1337, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1338, 7, 13, 'SINGLE_CHOICE', 'REQUIRED', '我多能预料到我的孩子在不同的环境会有什么样的表现。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2137, 1338, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2138, 1338, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2139, 1338, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2140, 1338, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2141, 1338, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1339, 8, 13, 'SINGLE_CHOICE', 'REQUIRED', '对我的孩子期望过多并非总是明智的，因许多事情到头来只不过是好运或恶运的结果。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2142, 1339, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2143, 1339, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2144, 1339, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2145, 1339, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2146, 1339, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1340, 9, 13, 'SINGLE_CHOICE', 'REQUIRED', '当我的孩子发怒时，只要我保持冷静，总能把事情平息。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2147, 1340, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2148, 1340, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2149, 1340, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2150, 1340, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2151, 1340, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1341, 10, 13, 'SINGLE_CHOICE', 'REQUIRED', '当我为孩子的前程做规划时，我几乎可以肯定我能帮他／她实现。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2152, 1341, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2153, 1341, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2154, 1341, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2155, 1341, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2156, 1341, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1342, 11, 13, 'SINGLE_CHOICE', 'REQUIRED', '没有好孩子、坏孩子一说——只有好父母或不好的父母。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2157, 1342, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2158, 1342, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2159, 1342, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2160, 1342, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2161, 1342, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1343, 12, 13, 'SINGLE_CHOICE', 'REQUIRED', '如果我的孩子品行端正，是因为他／她不负我的努力。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2162, 1343, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2163, 1343, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2164, 1343, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2165, 1343, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2166, 1343, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1344, 13, 13, 'SINGLE_CHOICE', 'REQUIRED', '那些无法让自己的孩子昕自己讲话的父母，根本不懂如何同自己的子女相处。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2167, 1344, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2168, 1344, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2169, 1344, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2170, 1344, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2171, 1344, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1345, 14, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的孩子若有行为不端，错全在我。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2172, 1345, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2173, 1345, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2174, 1345, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2175, 1345, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2176, 1345, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1346, 15, 13, 'SINGLE_CHOICE', 'REQUIRED', '那些有能力当好父母却失败的人，全在于没有把握住机会做到底');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2177, 1346, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2178, 1346, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2179, 1346, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2180, 1346, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2181, 1346, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1347, 16, 13, 'SINGLE_CHOICE', 'REQUIRED', '孩子的品行不端多半由于他们父母的错误所造成。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2182, 1347, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2183, 1347, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2184, 1347, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2185, 1347, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2186, 1347, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1348, 17, 13, 'SINGLE_CHOICE', 'REQUIRED', '那些让孩子们搞得焦头烂额的父母全在于没有采用最佳的教育手段。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2187, 1348, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2188, 1348, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2189, 1348, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2190, 1348, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2191, 1348, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1349, 18, 13, 'SINGLE_CHOICE', 'REQUIRED', '如果父母的教育方法很高明，那么大多数孩子就不会出现行为上的问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2192, 1349, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2193, 1349, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2194, 1349, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2195, 1349, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2196, 1349, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1350, 19, 13, 'SINGLE_CHOICE', 'REQUIRED', '我为自己的孩子的行为负责。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2197, 1350, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2198, 1350, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2199, 1350, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2200, 1350, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2201, 1350, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1351, 20, 13, 'SINGLE_CHOICE', 'REQUIRED', '我作为父母成功与失败都是我自己行为的直接结果。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2202, 1351, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2203, 1351, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2204, 1351, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2205, 1351, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2206, 1351, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1352, 21, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的生活主要由我的孩子所左右。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2207, 1352, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2208, 1352, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2209, 1352, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2210, 1352, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2211, 1352, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1353, 22, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的孩子没有左右我的生活。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2212, 1353, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2213, 1353, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2214, 1353, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2215, 1353, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2216, 1353, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1354, 23, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的孩子影响到我拥有朋友的数目的多少。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2217, 1354, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2218, 1354, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2219, 1354, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2220, 1354, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2221, 1354, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1355, 24, 13, 'SINGLE_CHOICE', 'REQUIRED', '我感到我生活中的事件主要由我的孩子所决定。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2222, 1355, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2223, 1355, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2224, 1355, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2225, 1355, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2226, 1355, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1356, 25, 13, 'SINGLE_CHOICE', 'REQUIRED', '对我来说，避开孩子控制我的企图，独立行事．是轻而易举的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2227, 1356, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2228, 1356, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2229, 1356, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2230, 1356, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2231, 1356, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1357, 26, 13, 'SINGLE_CHOICE', 'REQUIRED', '当我在孩子的事上犯了错，我通常能够加以纠正。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2232, 1357, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2233, 1357, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2234, 1357, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2235, 1357, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2236, 1357, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1358, 27, 13, 'SINGLE_CHOICE', 'REQUIRED', '即使你的孩子常常大发脾气，父母也不应放弃努力。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2237, 1358, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2238, 1358, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2239, 1358, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2240, 1358, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2241, 1358, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1359, 28, 13, 'SINGLE_CHOICE', 'REQUIRED', '做一位好父母常常要看你是否走运，有一个好孩子。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2242, 1359, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2243, 1359, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2244, 1359, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2245, 1359, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2246, 1359, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1360, 29, 13, 'SINGLE_CHOICE', 'REQUIRED', '做为父母我很走运，碰巧我有一个好孩子。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2247, 1360, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2248, 1360, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2249, 1360, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2250, 1360, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2251, 1360, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1361, 30, 13, 'SINGLE_CHOICE', 'REQUIRED', '如我常常发现事到临头，对我的孩子该发生的事总会发生。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2252, 1361, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2253, 1361, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2254, 1361, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2255, 1361, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2256, 1361, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1362, 31, 13, 'SINGLE_CHOICE', 'REQUIRED', '命运对我太开恩了；要是我有个坏孩子，我真不知道该做些什么。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2257, 1362, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2258, 1362, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2259, 1362, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2260, 1362, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2261, 1362, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1363, 32, 13, 'SINGLE_CHOICE', 'REQUIRED', '能成功管教孩子，似乎更与当时孩子的心情、情绪有关，与采取什么行动关系不大。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2262, 1363, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2263, 1363, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2264, 1363, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2265, 1363, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2266, 1363, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1364, 33, 13, 'SINGLE_CHOICE', 'REQUIRED', '无论我的小孩还是我自己都不会对他／她的行为负责。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2267, 1364, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2268, 1364, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2269, 1364, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2270, 1364, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2271, 1364, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1365, 34, 13, 'SINGLE_CHOICE', 'REQUIRED', '为了使我的计划付诸实施，我要明确这些计划是否符合我的孩子的愿望。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2272, 1365, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2273, 1365, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2274, 1365, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2275, 1365, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2276, 1365, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1366, 35, 13, 'SINGLE_CHOICE', 'REQUIRED', '大多数父母认识不到，偶然事件对他们的孩子最终的表现影响有多大。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2277, 1366, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2278, 1366, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2279, 1366, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2280, 1366, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2281, 1366, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1367, 36, 13, 'SINGLE_CHOICE', 'REQUIRED', '遗传在决定孩子的个性上起主要作用。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2282, 1367, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2283, 1367, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2284, 1367, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2285, 1367, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2286, 1367, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1368, 37, 13, 'SINGLE_CHOICE', 'REQUIRED', '时运不好，一个人不可能做一个好父母。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2287, 1368, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2288, 1368, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2289, 1368, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2290, 1368, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2291, 1368, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1369, 38, 13, 'SINGLE_CHOICE', 'REQUIRED', '我对孩子的事总是感到心中有数。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2292, 1369, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2293, 1369, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2294, 1369, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2295, 1369, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2296, 1369, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1370, 39, 13, 'SINGLE_CHOICE', 'REQUIRED', '有时我的孩子的行为令我无法约束。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2297, 1370, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2298, 1370, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2299, 1370, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2300, 1370, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2301, 1370, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1371, 40, 13, 'SINGLE_CHOICE', 'REQUIRED', '有时我对我的孩子的行为感到绝望。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2302, 1371, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2303, 1371, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2304, 1371, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2305, 1371, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2306, 1371, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1372, 41, 13, 'SINGLE_CHOICE', 'REQUIRED', '让我的孩子按照自己的方式行事，有时要比忍受他们大发脾气容易得多。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2307, 1372, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2308, 1372, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2309, 1372, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2310, 1372, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2311, 1372, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1373, 42, 13, 'SINGLE_CHOICE', 'REQUIRED', '我发现有时我的孩子能让我做些我本不想做的事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2312, 1373, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2313, 1373, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2314, 1373, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2315, 1373, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2316, 1373, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1374, 43, 13, 'SINGLE_CHOICE', 'REQUIRED', '我的孩子的所做所为常常离我要求的相差甚远。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2317, 1374, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2318, 1374, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2319, 1374, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2320, 1374, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2321, 1374, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1375, 44, 13, 'SINGLE_CHOICE', 'REQUIRED', '有时如果我很累，我会让孩子们做那些平常我不会让他们做的事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2322, 1375, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2323, 1375, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2324, 1375, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2325, 1375, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2326, 1375, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1376, 45, 13, 'SINGLE_CHOICE', 'REQUIRED', '有时我感到自己难以对子女的生活方式加以控制。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2327, 1376, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2328, 1376, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2329, 1376, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2330, 1376, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2331, 1376, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1377, 46, 13, 'SINGLE_CHOICE', 'REQUIRED', '我允许我的孩子自行其事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2332, 1377, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2333, 1377, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2334, 1377, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2335, 1377, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2336, 1377, 'E', '很同意');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1378, 47, 13, 'SINGLE_CHOICE', 'REQUIRED', '让我的孩子改变主意并不是件难以做到的事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2337, 1378, 'A', '很不赞成');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2338, 1378, 'B', '不同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2339, 1378, 'C', '不肯定');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2340, 1378, 'D', '同意');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2341, 1378, 'E', '很同意');
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');
