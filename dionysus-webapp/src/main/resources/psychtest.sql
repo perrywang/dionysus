@@ -3662,7 +3662,7 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1195, 11, 10, 'SINGLE_CHOICE', 'REQUIRED', '容易烦恼和激动。');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1422, 1195, 'A', '没有');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1423, 1195, 'B', '很轻');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1424, 1195, 'C', '中等)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1424, 1195, 'C', '中等');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1425, 1195, 'D', '偏重');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1426, 1195, 'E', '严重');
 
@@ -3685,7 +3685,7 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1438, 1198, 'B', '很轻');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1439, 1198, 'C', '中等');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1440, 1198, 'D', '偏重');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1441, 1198, 'E', '严重)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1441, 1198, 'E', '严重');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1199, 15, 10, 'SINGLE_CHOICE', 'REQUIRED', '想结束自己的生命。');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1442, 1199, 'A', '没有');
@@ -4178,7 +4178,7 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1791, 1268, 'E', '严重');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1269, 85, 10, 'SINGLE_CHOICE', 'REQUIRED', '您认为应该因为自己的过错而受到惩罚。');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1792, 1269, 'A', '没有)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1792, 1269, 'A', '没有');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1793, 1269, 'B', '很轻');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1794, 1269, 'C', '中等');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1795, 1269, 'D', '偏重');
@@ -4189,14 +4189,14 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1798, 1270, 'B', '很轻');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1799, 1270, 'C', '中等');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1800, 1270, 'D', '偏重');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1801, 921, 'E', '严重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1801, 1270, 'E', '严重');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1271, 87, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己的身体有严重问题。');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1802, 1271, 'A', '没有');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1803, 1271, 'B', '很轻');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1804, 1271, 'C', '中等');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1805, 936, 'D', '偏重');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1806, 921, 'E', '严重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1805, 1271, 'D', '偏重');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1806, 1271, 'E', '严重');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1272, 88, 10, 'SINGLE_CHOICE', 'REQUIRED', '从未感到和其他人很亲近。');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1807, 1272, 'A', '没有');
@@ -4207,7 +4207,7 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1273, 89, 10, 'SINGLE_CHOICE', 'REQUIRED', '感到自己有罪。');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1812, 1273, 'A', '没有');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1813, 1273, 'B', '很轻)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1813, 1273, 'B', '很轻');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1814, 1273, 'C', '中等');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1815, 1273, 'D', '偏重');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1816, 1273, 'E', '严重');
@@ -4954,6 +4954,878 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(2339, 1378, 'C', '不肯定');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(2340, 1378, 'D', '同意');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(2341, 1378, 'E', '很同意');
+
+-- OLSON婚姻质量问卷
+-- 该问卷是了解你的婚姻状态的。虽然它不能预测你的婚姻是否成功，但可以发现婚姻中可能存在和需要解决的问题，有助于得到专家的指导。
+-- 希望你如实填写，不要征求他人的意见，独立完成。请注意，条目中的“我们”，均是指你和你的配偶
+-- 题目内容（共124题）： 
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1379, 1, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们都喜欢同一类的社会活动。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2342, 1379, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2343, 1379, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2344, 1379, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2345, 1379, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2346, 1379, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1380, 2, 11, 'SINGLE_CHOICE', 'REQUIRED', '.向配偶表达我真实的感受是非常容易的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2347, 1380, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2348, 1380, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2349, 1380, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2350, 1380, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2351, 1380, 'E', '确实不是这样)');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1381, 3, 11, 'SINGLE_CHOICE', 'REQUIRED', '对他(她)所受到的有关宗教信仰的教育。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2352, 1381, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2353, 1381, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2354, 1381, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2355, 1381, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2356, 1381, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1382, 4, 11, 'SINGLE_CHOICE', 'REQUIRED', '为了尽早结束争吵，我常立即让步。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2357, 1382, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2358, 1382, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2359, 1382, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2360, 1382, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2361, 1382, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1383, 5, 11, 'SINGLE_CHOICE', 'REQUIRED', '在我们家里，父亲与孩子呆在一起所花的时间不够。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2362, 1383, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2363, 1383, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2364, 1383, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2365, 1383, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2366, 1383, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1384, 6, 11, 'SINGLE_CHOICE', 'REQUIRED', '当夫妻问出现矛盾时，我的配偶常沉默不语。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2367, 1384, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2368, 1384, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2369, 1384, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2370, 1384, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2371, 1384, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1385, 7, 11, 'SINGLE_CHOICE', 'REQUIRED', '亲友中一些人使我们的婚姻变得紧张。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2372, 1385, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2373, 1385, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2374, 1385, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2375, 1385, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2376, 1385, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1386, 8, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶过于挑剔或经常持否定的观点。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2377, 1386, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2378, 1386, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2379, 1386, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2380, 1386, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2381, 1386, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1387, 9, 11, 'SINGLE_CHOICE', 'REQUIRED', '我完全满意配偶对我的感情。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2382, 1387, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2383, 1387, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2384, 1387, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2385, 1387, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2386, 1387, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1388, 10, 11, 'SINGLE_CHOICE', 'REQUIRED', '我和配偶就如何采取最佳方法解决矛盾常常意见不一致。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2387, 1388, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2388, 1388, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2389, 1388, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2390, 1388, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2391, 1388, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1389, 11, 11, 'SINGLE_CHOICE', 'REQUIRED', '我认为夫妻双方对宗教应有相同的理解。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2392, 1389, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2393, 1389, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2394, 1389, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2395, 1389, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2396, 1389, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1390, 12, 11, 'SINGLE_CHOICE', 'REQUIRED', '我认为妇女主要应呆在家里。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2397, 1390, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2398, 1390, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2399, 1390, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2400, 1390, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2401, 1390, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1391, 13, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我对配偶的脾气很在意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2402, 1391, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2403, 1391, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2404, 1391, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2405, 1391, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2406, 1391, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1392, 14, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不喜欢配偶的性格相个人习惯。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2407, 1392, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2408, 1392, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2409, 1392, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2410, 1392, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2411, 1392, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1393, 15, 11, 'SINGLE_CHOICE', 'REQUIRED', '为了使性关系保持乐趣，我们尝试找一些新的办法。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2412, 1393, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2413, 1393, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2414, 1393, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2415, 1393, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2416, 1393, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1394, 16, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我希望配偶别乱花钱。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2417, 1394, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2418, 1394, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2419, 1394, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2420, 1394, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2421, 1394, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1395, 17, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶似乎缺少时间与精力与我一起娱乐。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2422, 1395, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2423, 1395, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2424, 1395, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2425, 1395, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2426, 1395, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1396, 18, 11, 'SINGLE_CHOICE', 'REQUIRED', '我宁愿做别的任何事情，也不愿独自呆一个晚上。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2427, 1396, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2428, 1396, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2429, 1396, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2430, 1396, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2431, 1396, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1397, 19, 11, 'SINGLE_CHOICE', 'REQUIRED', '我非常满意夫妻双方在婚姻中承担的责任。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2432, 1397, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2433, 1397, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2434, 1397, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2435, 1397, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2436, 1397, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1398, 20, 11, 'SINGLE_CHOICE', 'REQUIRED', '我和配偶对怎样花钱总是意见一致。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2437, 1398, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2438, 1398, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2439, 1398, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2440, 1398, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2441, 1398, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1399, 21, 11, 'SINGLE_CHOICE', 'REQUIRED', '我很满意我们对抚养子女的责任分工。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2442, 1399, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2443, 1399, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2444, 1399, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2445, 1399, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2446, 1399, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1400, 22, 11, 'SINGLE_CHOICE', 'REQUIRED', '共同的信仰有助于我们的关系发展。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2447, 1400, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2448, 1400, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2449, 1400, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2450, 1400, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2451, 1400, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1401, 23, 11, 'SINGLE_CHOICE', 'REQUIRED', '如果夫妻双方都有工作，丈夫应该与妻子承担同样多的家务劳动。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2452, 1401, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2453, 1401, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2454, 1401, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2455, 1401, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2456, 1401, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1402, 24, 11, 'SINGLE_CHOICE', 'REQUIRED', '有的，我对配偶显得不愉快和孤僻感到担心。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2457, 1402, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2458, 1402, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2459, 1402, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2460, 1402, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2461, 1402, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1403, 25, 11, 'SINGLE_CHOICE', 'REQUIRED', '我担心配偶可能在性方面对我不大兴越。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2462, 1403, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2463, 1403, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2464, 1403, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2465, 1403, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2466, 1403, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1404, 26, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们很难在经济安排上作出决定。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2467, 1404, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2468, 1404, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2469, 1404, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2470, 1404, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2471, 1404, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1405, 27, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们为亲友花费的时间根恰当。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2472, 1405, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2473, 1405, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2474, 1405, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2475, 1405, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2476, 1405, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1406, 28, 11, 'SINGLE_CHOICE', 'REQUIRED', '对配偶兴趣或爱好过少，我很在意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2477, 1406, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2478, 1406, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2479, 1406, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2480, 1406, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2481, 1406, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1407, 29, 11, 'SINGLE_CHOICE', 'REQUIRED', '除非经济上需要，我的妻子不应外出工作。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2482, 1407, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2483, 1407, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2484, 1407, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2485, 1407, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2486, 1407, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1408, 30, 11, 'SINGLE_CHOICE', 'REQUIRED', '我配偶抽烟和／或饮酒成问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2487, 1408, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2488, 1408, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2489, 1408, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2490, 1408, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2491, 1408, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1409, 31, 11, 'SINGLE_CHOICE', 'REQUIRED', '与配偶参加社交活动，我很少感到压力。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2492, 1409, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2493, 1409, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2494, 1409, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2495, 1409, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2496, 1409, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1410, 32, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不满意夫妻间的交流，我配偶并不理解我。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2497, 1410, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2498, 1410, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2499, 1410, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2500, 1410, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2501, 1410, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1411, 33, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于我们家怎样和在何处度假，我总是觉得满意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2502, 1411, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2503, 1411, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2504, 1411, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2505, 1411, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2506, 1411, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1412, 34, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们夫妻间完全相互理解。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2507, 1412, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2508, 1412, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2509, 1412, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2510, 1412, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2511, 1412, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1413, 35, 11, 'SINGLE_CHOICE', 'REQUIRED', '在管教子女方面，夫妻意见一致。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2512, 1413, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2513, 1413, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2514, 1413, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2515, 1413, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2516, 1413, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1414, 36, 11, 'SINGLE_CHOICE', 'REQUIRED', '我非常满意我们作决定和解决冲突的方式。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2517, 1414, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2518, 1414, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2519, 1414, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2520, 1414, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2521, 1414, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1415, 37, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我的配偶不依赖我，不总是人云亦云。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2522, 1415, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2523, 1415, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2524, 1415, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2525, 1415, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2526, 1415, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1416, 38, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于家庭应储蓄多少钱的决定，我感到满意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2527, 1416, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2528, 1416, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2529, 1416, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2530, 1416, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2531, 1416, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1417, 39, 11, 'SINGLE_CHOICE', 'REQUIRED', '当讨论某一问题时，我通常感到配偶是理解我的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2532, 1417, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2533, 1417, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2534, 1417, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2535, 1417, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2536, 1417, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1418, 40, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶有时发责一些贬低我的意见。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2537, 1418, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2538, 1418, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2539, 1418, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2540, 1418, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2541, 1418, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1419, 41, 11, 'SINGLE_CHOICE', 'REQUIRED', '与配偶谈论性问题，对我来说是很容易和轻松的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2542, 1419, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2543, 1419, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2544, 1419, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2545, 1419, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2546, 1419, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1420, 42, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶对我的每一次情绪变化都能完全理解并有相同的感受。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2547, 1420, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2548, 1420, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2549, 1420, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2550, 1420, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2551, 1420, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1421, 43, 11, 'SINGLE_CHOICE', 'REQUIRED', '在我们的婚姻中，妻子应更加顺从丈夫的愿望。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2552, 1421, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2553, 1421, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2554, 1421, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2555, 1421, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2556, 1421, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1422, 44, 11, 'SINGLE_CHOICE', 'REQUIRED', '当我们与别人共处时，有时我为配偶的行为感到不安。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2557, 1422, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2558, 1422, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2559, 1422, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2560, 1422, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2561, 1422, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1423, 45, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们都知道我们所欠的债务．而且它不成问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2562, 1423, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2563, 1423, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2564, 1423, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2565, 1423, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2566, 1423, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1424, 46, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的宗教信仰是影响我们婚姻的一个重要部分。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2567, 1424, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2568, 1424, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2569, 1424, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2570, 1424, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2571, 1424, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1425, 47, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时我担心配偶会有寻求婚外性关系的想法。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2572, 1425, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2573, 1425, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2574, 1425, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2575, 1425, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2576, 1425, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1426, 48, 11, 'SINGLE_CHOICE', 'REQUIRED', '我认为配偶与他／她的家里过于密切或受其影响太大。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2577, 1426, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2578, 1426, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2579, 1426, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2580, 1426, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2581, 1426, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1427, 49, 11, 'SINGLE_CHOICE', 'REQUIRED', '子女似乎是我们婚姻中矛盾的一个主要来源。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2582, 1427, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2583, 1427, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2584, 1427, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2585, 1427, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2586, 1427, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1428, 50, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们对所需子女的数量意见一致。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2587, 1428, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2588, 1428, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2589, 1428, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2590, 1428, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2591, 1428, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1429, 51, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们按我们的经济实力有规律地花钱。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2592, 1429, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2593, 1429, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2594, 1429, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2595, 1429, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2596, 1429, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1430, 52, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不满意我们的经济地位相决定经济事务的方法。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2597, 1430, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2598, 1430, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2599, 1430, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2600, 1430, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2601, 1430, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1431, 53, 11, 'SINGLE_CHOICE', 'REQUIRED', '我非常满意我们的业余活动和夫妻一起度过的时间。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2602, 1431, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2603, 1431, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2604, 1431, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2605, 1431, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2606, 1431, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1432, 54, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时我不敢找配偶要我需要的东西。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2607, 1432, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2608, 1432, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2609, 1432, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2610, 1432, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2611, 1432, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1433, 55, 11, 'SINGLE_CHOICE', 'REQUIRED', '即使妻子有工作，也应该负担管理家务的责任。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2612, 1433, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2613, 1433, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2614, 1433, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2615, 1433, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2616, 1433, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1434, 56, 11, 'SINGLE_CHOICE', 'REQUIRED', '夫妻双方在与宗教信仰有关的活动中意见不一。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2617, 1434, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2618, 1434, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2619, 1434, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2620, 1434, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2621, 1434, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1435, 57, 11, 'SINGLE_CHOICE', 'REQUIRED', '与我的或配偶家的亲戚在一起，我感到不愉快。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2622, 1435, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2623, 1435, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2624, 1435, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2625, 1435, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2626, 1435, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1436, 58, 11, 'SINGLE_CHOICE', 'REQUIRED', '当我遇到困难时，我总是告诉配偶。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2627, 1436, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2628, 1436, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2629, 1436, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2630, 1436, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2631, 1436, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1437, 59, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶对子女的关注超过对我们的婚姻，这使我不舒服。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2632, 1437, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2633, 1437, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2634, 1437, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2635, 1437, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2636, 1437, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1438, 60, 11, 'SINGLE_CHOICE', 'REQUIRED', '我觉得我们的假期和旅游过得很好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2637, 1438, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2638, 1438, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2639, 1438, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2640, 1438, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2641, 1438, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1439, 61, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们家丈夫是一家之主。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2642, 1439, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2643, 1439, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2644, 1439, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2645, 1439, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2646, 1439, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1440, 62, 11, 'SINGLE_CHOICE', 'REQUIRED', '对我来说，我们的性关系是满意与完美的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2647, 1440, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2648, 1440, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2649, 1440, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2650, 1440, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2651, 1440, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1441, 63, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我的配偶太固执。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2652, 1441, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2653, 1441, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2654, 1441, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2655, 1441, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2656, 1441, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1442, 64, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们的婚姻是非常成功的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2657, 1442, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2658, 1442, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2659, 1442, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2660, 1442, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2661, 1442, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1443, 65, 11, 'SINGLE_CHOICE', 'REQUIRED', '与配偶一起祈祷．对我很重要。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2662, 1443, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2663, 1443, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2664, 1443, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2665, 1443, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2666, 1443, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1444, 66, 11, 'SINGLE_CHOICE', 'REQUIRED', '我希望配偶更愿意与我分享他／她的感受 。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2667, 1444, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2668, 1444, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2669, 1444, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2670, 1444, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2671, 1444, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1445, 67, 11, 'SINGLE_CHOICE', 'REQUIRED', '有了孩子，使我们的婚姻关系更密切。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2672, 1445, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2673, 1445, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2674, 1445, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2675, 1445, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2676, 1445, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1446, 68, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶喜欢我所有的朋友。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2677, 1446, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2678, 1446, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2679, 1446, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2680, 1446, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2681, 1446, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1447, 69, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不愿对配偶表示出很温柔，因为它经常被误认为是一种性的表示。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2682, 1447, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2683, 1447, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2684, 1447, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2685, 1447, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2686, 1447, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1448, 70, 11, 'SINGLE_CHOICE', 'REQUIRED', '我觉得我们的婚姻关系缺少某些东西。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2687, 1448, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2688, 1448, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2689, 1448, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2690, 1448, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2691, 1448, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1449, 71, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时在一些不重要的问题上我们常产生严重的争执。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2692, 1449, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2693, 1449, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2694, 1449, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2695, 1449, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2696, 1449, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1450, 72, 11, 'SINGLE_CHOICE', 'REQUIRED', '我感到夫妻双方没有花费足够的时间一起度过业余空暇。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2697, 1450, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2698, 1450, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2699, 1450, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2700, 1450, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2701, 1450, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1451, 73, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我很难相信配偶告诉我的每一件事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2702, 1451, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2703, 1451, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2704, 1451, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2705, 1451, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2706, 1451, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1452, 74, 11, 'SINGLE_CHOICE', 'REQUIRED', '我尽量避免与配偶发生冲突。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2707, 1452, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2708, 1452, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2709, 1452, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2710, 1452, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2711, 1452, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1453, 75, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于我们来说．丈夫的职业较妻子的职业更重要。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2712, 1453, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2713, 1453, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2714, 1453, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2715, 1453, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2716, 1453, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1454, 76, 11, 'SINGLE_CHOICE', 'REQUIRED', '我觉得我们的婚姻受到宗教观念影响。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2717, 1454, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2718, 1454, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2719, 1454, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2720, 1454, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2721, 1454, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1455, 77, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们的经济已变得紧张，如赊帐过多。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2722, 1455, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2723, 1455, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2724, 1455, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2725, 1455, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2726, 1455, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1456, 78, 11, 'SINGLE_CHOICE', 'REQUIRED', '配偶经常拖拖拉拉，使我很烦恼。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2727, 1456, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2728, 1456, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2729, 1456, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2730, 1456, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2731, 1456, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1457, 79, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时．我觉得夫妻之间的争执没完没了，认得不到解决。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2732, 1457, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2733, 1457, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2734, 1457, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2735, 1457, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2736, 1457, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1458, 80, 11, 'SINGLE_CHOICE', 'REQUIRED', '如果家里有很小的子女，妻子不应外出工作。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2737, 1458, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2738, 1458, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2739, 1458, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2740, 1458, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2741, 1458, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1459, 81, 11, 'SINGLE_CHOICE', 'REQUIRED', '我经常不把我的感受告诉配偶，因为他／她应该体会得到。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2742, 1459, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2743, 1459, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2744, 1459, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2745, 1459, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2746, 1459, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1460, 82, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于我们的夫妻之间怎样表达情感与性有关的事，我很满意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2747, 1460, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2748, 1460, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2749, 1460, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2750, 1460, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2751, 1460, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1461, 83, 11, 'SINGLE_CHOICE', 'REQUIRED', '当夫妻间出现意见不一时，我们开诚布公地交流感受和决定怎样来解决它。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2752, 1461, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2753, 1461, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2754, 1461, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2755, 1461, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2756, 1461, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1462, 84, 11, 'SINGLE_CHOICE', 'REQUIRED', '除非与配偶在一起，否则我很少开玩笑。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2757, 1462, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2758, 1462, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2759, 1462, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2760, 1462, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2761, 1462, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1463, 85, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们很注重决定怎样把钱花在最重要的事情上。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2762, 1463, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2763, 1463, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2764, 1463, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2765, 1463, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2766, 1463, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1464, 86, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时我的配偶与朋友在一起的时间太多。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2767, 1464, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2768, 1464, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2769, 1464, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2770, 1464, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2771, 1464, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1465, 87, 11, 'SINGLE_CHOICE', 'REQUIRED', '我和配偶在对子女进行宗教教育方面有不同的意见。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2772, 1465, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2773, 1465, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2774, 1465, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2775, 1465, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2776, 1465, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1466, 88, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于承担父母的责怪分工上，我不满意。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2777, 1466, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2778, 1466, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2779, 1466, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2780, 1466, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2781, 1466, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1467, 89, 11, 'SINGLE_CHOICE', 'REQUIRED', '爱配偶，使我更深地体会到；上帝是慈爱的。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2782, 1467, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2783, 1467, 'B', '可能是这样)');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2784, 1467, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2785, 1467, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2786, 1467, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1468, 90, 11, 'SINGLE_CHOICE', 'REQUIRED', '我觉得双方的父母过高地期望得到我们的关心与帮助。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2787, 1468, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2788, 1468, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2789, 1468, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2790, 1468, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2791, 1468, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1469, 91, 11, 'SINGLE_CHOICE', 'REQUIRED', '我非常满意夫妻之间相互谈话的方式。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2792, 1469, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2793, 1469, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2794, 1469, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2795, 1469, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2796, 1469, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1470, 92, 11, 'SINGLE_CHOICE', 'REQUIRED', '我觉得我们的父母给我们的婚姻造成问题。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2797, 1470, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2798, 1470, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2799, 1470, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2800, 1470, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2801, 1470, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1471, 93, 11, 'SINGLE_CHOICE', 'REQUIRED', '我很烦恼，没有配偶的允许我不能花钱。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2802, 1471, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2803, 1471, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2804, 1471, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2805, 1471, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2806, 1471, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1472, 94, 11, 'SINGLE_CHOICE', 'REQUIRED', '自从有了孩子，夫妻问很少有时间单独在一起。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2807, 1472, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2808, 1472, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2809, 1472, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2810, 1472, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2811, 1472, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1473, 95, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于配偶的喜怒无常．有时我感到束手无策。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2812, 1473, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2813, 1473, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2814, 1473, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2815, 1473, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2816, 1473, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1474, 96, 11, 'SINGLE_CHOICE', 'REQUIRED', '我经常感到配偶没有认真对待我们的分歧。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2817, 1474, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2818, 1474, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2819, 1474, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2820, 1474, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2821, 1474, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1475, 97, 11, 'SINGLE_CHOICE', 'REQUIRED', '在我们家里，丈夫在大多数重要的事情上应有最后的决定权。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2822, 1475, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2823, 1475, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2824, 1475, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2825, 1475, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2826, 1475, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1476, 98, 11, 'SINGLE_CHOICE', 'REQUIRED', '因为担心配偶发脾气，所以我不总是把心里的一些烦恼告诉他／她。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2827, 1476, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2828, 1476, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2829, 1476, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2830, 1476, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2831, 1476, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1477, 99, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不满意我们与双方父母、朋友的关系。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2832, 1477, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2833, 1477, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2834, 1477, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2835, 1477, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2836, 1477, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1478, 100, 11, 'SINGLE_CHOICE', 'REQUIRED', '我和配偶对我所受的宗教方面的教育意见不一。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2837, 1478, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2838, 1478, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2839, 1478, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2840, 1478, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2841, 1478, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1479, 101, 11, 'SINGLE_CHOICE', 'REQUIRED', '我从不后悔与我父母的关系，哪怕是一瞬间。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2842, 1479, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2843, 1479, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2844, 1479, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2845, 1479, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2846, 1479, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1480, 102, 11, 'SINGLE_CHOICE', 'REQUIRED', '应该为子女做多少事，是我们发生冲突的一个原因。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2847, 1480, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2848, 1480, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2849, 1480, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2850, 1480, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2851, 1480, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1481, 103, 11, 'SINGLE_CHOICE', 'REQUIRED', '我确实很高兴与配偶所有的朋友来往。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2852, 1481, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2853, 1481, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2854, 1481, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2855, 1481, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2856, 1481, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1482, 104, 11, 'SINGLE_CHOICE', 'REQUIRED', '因为我们的宗教信仰，我和我的配偶觉得很亲密。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2857, 1482, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2858, 1482, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2859, 1482, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2860, 1482, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2861, 1482, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1483, 105, 11, 'SINGLE_CHOICE', 'REQUIRED', '妻子在重要问题上应该相信与接受丈夫的判断。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2862, 1483, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2863, 1483, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2864, 1483, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2865, 1483, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2866, 1483, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1484, 106, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我很在意配偶的性兴趣与我的不一致。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2867, 1484, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2868, 1484, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2869, 1484, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2870, 1484, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2871, 1484, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1485, 107, 11, 'SINGLE_CHOICE', 'REQUIRED', '我很满意关于家庭计划和生育子女数的决定。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2872, 1485, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2873, 1485, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2874, 1485, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2875, 1485, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2876, 1485, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1486, 108, 11, 'SINGLE_CHOICE', 'REQUIRED', '我不在意配偶与异性朋友在。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2877, 1486, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2878, 1486, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2879, 1486, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2880, 1486, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2881, 1486, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1487, 109, 11, 'SINGLE_CHOICE', 'REQUIRED', '我说话时，配偶总是认真听着。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2882, 1487, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2883, 1487, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2884, 1487, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2885, 1487, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2886, 1487, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1488, 110, 11, 'SINGLE_CHOICE', 'REQUIRED', '我很在意谁管钱。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2887, 1488, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2888, 1488, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2889, 1488, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2890, 1488, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2891, 1488, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1489, 111, 11, 'SINGLE_CHOICE', 'REQUIRED', '配偶应用不公平的方式同意或拒绝性生活，使我很烦恼。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2892, 1489, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2893, 1489, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2894, 1489, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2895, 1489, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2896, 1489, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1490, 112, 11, 'SINGLE_CHOICE', 'REQUIRED', '当我们争吵时，我通常不去想这是我的过错。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2897, 1490, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2898, 1490, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2899, 1490, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2900, 1490, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2901, 1490, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1491, 113, 11, 'SINGLE_CHOICE', 'REQUIRED', '对于我们的宗教信仰与价值观，我觉得很好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2902, 1491, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2903, 1491, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2904, 1491, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2905, 1491, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2906, 1491, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1492, 114, 11, 'SINGLE_CHOICE', 'REQUIRED', '我的配偶在一起和分开度过的业余时间分配很公平。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2907, 1492, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2908, 1492, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2909, 1492, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2910, 1492, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2911, 1492, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1493, 115, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，我认为配偶过于盛气凌人。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2912, 1493, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2913, 1493, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2914, 1493, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2915, 1493, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2916, 1493, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1494, 116, 11, 'SINGLE_CHOICE', 'REQUIRED', '我认为任何生活在一起的配偶都没有我们夫妻和睦。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2917, 1494, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2918, 1494, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2919, 1494, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2920, 1494, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2921, 1494, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1495, 117, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时我觉得对配偶感觉不到爱相感情。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2922, 1495, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2923, 1495, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2924, 1495, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2925, 1495, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2926, 1495, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1496, 118, 11, 'SINGLE_CHOICE', 'REQUIRED', '有时，配偶做一些使我不愉快的事。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2927, 1496, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2928, 1496, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2929, 1496, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2930, 1496, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2931, 1496, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1497, 119, 11, 'SINGLE_CHOICE', 'REQUIRED', '如果配偶有何过错，我也没意识到。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2932, 1497, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2933, 1497, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2934, 1497, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2935, 1497, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2936, 1497, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1498, 120, 11, 'SINGLE_CHOICE', 'REQUIRED', '即使世界上每一个异性都愿与我结婚，我也不能作出比现在婚姻更好的选择。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2937, 1498, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2938, 1498, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2939, 1498, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2940, 1498, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2941, 1498, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1499, 121, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们夫妻比世界上任何人都相互适应得好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2942, 1499, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2943, 1499, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2944, 1499, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2945, 1499, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2946, 1499, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1500, 122, 11, 'SINGLE_CHOICE', 'REQUIRED', '关于配偶的每一件新鲜事都使我高兴。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2947, 1500, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2948, 1500, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2949, 1500, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2950, 1500, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2951, 1500, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1501, 123, 11, 'SINGLE_CHOICE', 'REQUIRED', '我们的关系比它应有的状况更好。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2952, 1501, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2953, 1501, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2954, 1501, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2955, 1501, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2956, 1501, 'E', '确实不是这样');
+
+insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(1502, 124, 11, 'SINGLE_CHOICE', 'REQUIRED', '当我和配偶在一起时，我觉得任何人都不可能比我们幸福。');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2957, 1502, 'A', '确定是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2958, 1502, 'B', '可能是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2959, 1502, 'C', '不同意也不反对');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2960, 1502, 'D', '可能不是这样');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(2961, 1502, 'E', '确实不是这样');
 
 insert into psychtestfactors(id, factor, name) values (1, 'A', '乐群性');
 insert into psychtestfactors(id, factor, name) values (2, 'B', '聪慧性');
