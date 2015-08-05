@@ -82,13 +82,17 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
-      Dionysus.request("appointments:search:pageable", "findByUser", {
+      if(this.model.toJSON().roles[0].name="ROLE_CONSULTANT"){
+		region.show(new ProfileConsultantAppointmentView());
+	  }else{
+        Dionysus.request("appointments:search:pageable", "findByUser", {
         user: sessionStorage.getItem('user'),
         projection: "myappointment"
       }).done(function(appointments) {
         region.show(new ProfileAppointmentView({collection: appointments}));
-
       });
+	  }  
+      
 
     },
     showMyCourses: function(){
@@ -409,6 +413,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       }
       return {items:dataCollection};
     },
+  });
+  
+  var ProfileConsultantAppointmentView = Marionette.ItemView.extend({
+    template: JST["templates/home/profile/appointmentsConsultant"],
   });
 
   var ProfilePsychoProfileView = Marionette.ItemView.extend({

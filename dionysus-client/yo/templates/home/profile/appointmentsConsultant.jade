@@ -1,0 +1,25 @@
+table.ui.stackable.table
+  thead
+    tr
+      th 咨询师
+      th 咨询对象
+      th 方式
+      th 日期
+      th 状态
+      th 管理
+  tbody
+    {{#each items}}
+    tr
+      td {{consultant.realName}}
+      td {{name}}
+      td {{approach}}
+      td {{date}}
+      td
+        a(class="ui {{state_color}} label") {{state}} 
+      {{#if approach_online}}
+      td
+        a.ui.basic.green.button(href="{{consultant.qqAddress}}") 开始会话
+      {{else}}
+      td 请等待通知
+      {{/if}}
+    {{/each}}
