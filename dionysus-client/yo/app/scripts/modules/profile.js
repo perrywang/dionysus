@@ -82,7 +82,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
-      if(this.model.toJSON().roles[0].name="ROLE_CONSULTANT"){
+      if(this.model.toJSON().roles[0].name=="ROLE_CONSULTANT"){
 		region.show(new ProfileConsultantAppointmentView());
 	  }else{
         Dionysus.request("appointments:search:pageable", "findByUser", {
