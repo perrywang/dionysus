@@ -40,6 +40,8 @@ insert into consultants (id) values (4);
 insert into consultants (id) values (5);
 insert into consultants (id) values (6);
 
+insert into organizations (id, status) values (1,'APPROVED');
+
 insert into expertises (id, name) values (1,'工作');
 insert into expertises (id, name) values (2,'社交');
 insert into expertises (id, name) values (3,'婚姻');
