@@ -1,6 +1,10 @@
 Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $) {
   'use strict';
 
+  Entities.Appointment = Backbone.Model.extend({
+    urlRoot: '/api/v1/appointments'
+  });
+  
   var Appointment = Backbone.Model.extend({
     url: function () {
       return this.id ? '/controllers/appointments/' + this.id : '/controllers/appointments';

@@ -64,6 +64,7 @@ insert into roles(id, name) values (3, 'ROLE_CONSULTANT');
 insert into users_roles(users_id, roles_id) values (1, 1);
 insert into users_roles(users_id, roles_id) values (2, 2);
 insert into users_roles(users_id, roles_id) values (3, 3);
+insert into users_roles(users_id, roles_id) values (4, 3);
 
 insert into categories (id, name) values(1, '亲子关系');
 insert into categories (id, name) values(2, '家庭关系');

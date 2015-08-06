@@ -59,6 +59,20 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     }
   });
 
+  Entities.AppointmentSelectionCollection = Backbone.Collection.extend({
+    url: '/api/v1/consultants',
+    model: Entities.Appointment,
+    parse: function(response) {
+      var embedded = response._embedded;
+      return embedded ? embedded.appointments : [];
+    },	
+	initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    }
+  });
+  
   Entities.ConsultantModel = Backbone.Model.extend({
     url: '/api/v1/consultants',
     initialize: function(options){
@@ -160,6 +174,15 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     var defer = $.Deferred();
     consultants.fetch().then(function() {
       defer.resolve(consultants);
+    });
+    return defer.promise();
+  });
+  
+  Dionysus.reqres.setHandler('consultant:findappointment', function(id) {
+    var appointments = new Entities.AppointmentSelectionCollection({appendUrl:'/' + id +'/appointments'});
+    var defer = $.Deferred();
+    appointments.fetch().then(function() {
+      defer.resolve(appointments);
     });
     return defer.promise();
   });
