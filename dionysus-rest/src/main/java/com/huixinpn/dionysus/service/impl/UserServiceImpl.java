@@ -135,14 +135,21 @@ public class UserServiceImpl implements UserService, ConsultantService {
     @Override
     public User registerconsultant(User consultant) {
         Consultant _consultant = new Consultant(consultant.getUsername(), consultant.getPassword());
+        HashSet<Role> roles = new HashSet<Role>();
+        roles.add(new Role("ROLE_CONSULTANT"));
+        _consultant.setRoles(roles);
         _consultant.setEmail(consultant.getEmail());
         _consultant.setEnabled(false);
         _consultant.setAbout("心理咨询师");
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(new UsernamePasswordAuthenticationToken(_consultant.getUsername(),
+        		_consultant.getPassword(), _consultant.getAuthorities()));
         consultantRepository.save(_consultant);
-        consultant.setPassword("");
-        consultant.setEncryptedPassword("");
-        consultant.setCourses(null);
-        return consultant;
+        manager.detach(_consultant);
+        _consultant.setPassword("");
+        _consultant.setEncryptedPassword("");
+        _consultant.setCourses(null);
+        return _consultant;
     }
 
     @Override
