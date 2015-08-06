@@ -118,7 +118,10 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       });
     },
     showMyTests: function(){
-      alert("功能开发中");
+      var region = this.getRegion('myContent');		
+      Dionysus.request("psychotest:findallByUser").done(function(psychotests){
+        region.show(new ProfilePsychoTestView({collection: psychotests}));
+      });		     
     },
     updateInfo:function(){
       this.getRegion('myContent').show(new ProfileView({model:this.model}));
@@ -422,6 +425,24 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     template: JST["templates/home/profile/appointmentsConsultant"],
   });
 
+  var ProfilePsychoTestView = Marionette.ItemView.extend({
+    template: JST["templates/home/profile/psychotest"],
+    serializeData: function() {
+      var dataCollection = this.collection.toJSON();
+
+      var state_const = {'NOT_START':'默认状态', 'IN_PROGRESS':'正在测试', 'FINISHED':'测试结果已经提交', 'WAIT_FEEDBACK':'等待咨询师反馈', 'DONE':'结束'};
+
+      for (var i = dataCollection.length - 1; i >= 0; i--) {
+        var data = dataCollection[i];
+        data.state = state_const[data.state];
+        data.title = data._embedded.test.title;
+        data.desc = data._embedded.test.description;
+        data.date = data.date;
+      }
+      return {items:dataCollection};
+    }	
+  });
+  
   var ProfilePsychoProfileView = Marionette.ItemView.extend({
     template: JST["templates/home/profile/psychoprofiles"],
     initialize: function (options) {

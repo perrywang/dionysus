@@ -72,6 +72,15 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
     return defer.promise();
   });
   
+  Dionysus.reqres.setHandler('psychotest:findallByUser', function(id) {
+    var psychotests = new Entities.PsychoTestCollection({appendUrl: '/search/findAll'});
+    var defer = $.Deferred();
+    psychotests.fetch().then(function() {
+      defer.resolve(psychotests);
+    });
+    return defer.promise();
+  });
+  
   Dionysus.reqres.setHandler('psychotest:instances', function() {
     var psychotests = new Entities.PsychoTestCollection({appendUrl: '?projection=summary'});
     var defer = $.Deferred();
