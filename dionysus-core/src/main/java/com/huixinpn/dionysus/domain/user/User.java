@@ -189,17 +189,17 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-  //  Collection<GrantedAuthority> authorities = new ArrayList<>();
-  //  Set<Role> userRoles = this.getRoles();
+    Collection<GrantedAuthority> authorities = new ArrayList<>();
+    Set<Role> userRoles = this.getRoles();
 
-  //  if (userRoles != null) {
-  //    for (Role role : userRoles) {
-  //      SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
-  //      authorities.add(authority);
-  //    }
-  //  }
-  //  return authorities;
-	  return null;
+    if (userRoles != null) {
+      for (Role role : userRoles) {
+    	if(role.getName().endsWith("ROLE_CONSULTANT")) return null;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
+        authorities.add(authority);
+      }
+    }
+    return authorities;
   }
 
   public void setUsername(String username) {
