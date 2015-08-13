@@ -5,6 +5,7 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "detailOfOrganization", types = Organization.class)
 public interface DetailOfOrganizationExcerpt {
+    Long getId();
     String getUsername();
     String getEmail();
     String getAbout();

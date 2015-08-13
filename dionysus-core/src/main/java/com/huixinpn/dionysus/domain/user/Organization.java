@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Organization extends User{
 
     @Enumerated(EnumType.STRING)
-    private OrganizationStatus status;
+    private OrganizationStatus status = OrganizationStatus.PENDING;
 
     private String location;
 

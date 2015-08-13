@@ -23,6 +23,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
         .antMatchers(HttpMethod.POST, "/api/v1/register").permitAll()
         .antMatchers(HttpMethod.POST, "/api/v1/registerconsultant").permitAll()
+        .antMatchers(HttpMethod.POST, "/api/v1/currentuser").authenticated()
         .antMatchers(HttpMethod.POST, "/api/v1/profiles/**").permitAll()
         .antMatchers(HttpMethod.PUT, "/api/v1/profiles/**").permitAll()
         .antMatchers(HttpMethod.POST, "/controllers/courses/**").hasRole("ADMIN")

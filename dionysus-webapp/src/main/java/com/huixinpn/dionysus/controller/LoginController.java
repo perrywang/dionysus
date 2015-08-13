@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.controller;
 
 import com.huixinpn.dionysus.domain.user.User;
+import com.huixinpn.dionysus.dto.user.UserData;
 import com.huixinpn.dionysus.repository.user.NotificationRepository;
 import com.huixinpn.dionysus.service.ConsultantService;
 import com.huixinpn.dionysus.service.UserService;
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpRequestResponseHolder;
@@ -83,5 +85,12 @@ public class LoginController {
         HashMap<String, String> revalue = new HashMap<>();
         userService.changePassword(pass.getOldPass(), pass.getNewPass(), revalue);
         return revalue;
+    }
+
+    @RequestMapping(value = "/currentuser", method = RequestMethod.GET)
+    public UserData currentloginUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User login = (User) authentication.getPrincipal();
+        return new UserData(login);
     }
 }

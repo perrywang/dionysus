@@ -1,10 +1,23 @@
 #home.organization
   .ui.centered.stackable.grid
     .body.eight.wide.column
-      h2
-        |this is organization body
-      #pagnationWrapper
-        #pagnation
+      img.ui.image(src="/public/images/question.png")
+      #content.basic.ui.segment
+        h2.ui.header.title 心理机构
+        #orgList.ui.four.column.stackable.grid
+          |{{#each organizations}}
+          .column
+            .ui.basic.segment
+              img.ui.fluid.image(src="{{avatar}}")
+              .org.link
+                h4
+                  a.title(href="/organizations/{{id}}") {{about}}
+          |{{/each}}
+        #pagnationWrapper
+          #pagnation
     .sidebar.four.wide.column
-      h2
-        |this is organization side bar.
+      .ui.basic.segment#add
+        p
+          h4 申请加入心理圈
+        #addContainer
+          .ui.big.green.button#adding 申 请
