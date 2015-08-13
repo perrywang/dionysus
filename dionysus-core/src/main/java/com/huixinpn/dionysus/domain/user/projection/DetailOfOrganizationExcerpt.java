@@ -11,5 +11,6 @@ public interface DetailOfOrganizationExcerpt {
     String getAbout();
     String getRealName();
     String getAvatar();
-    String getLocation();
+    String getAddress();
+    String getMobile();
 }

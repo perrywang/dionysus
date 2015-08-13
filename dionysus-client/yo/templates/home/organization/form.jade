@@ -1,16 +1,21 @@
 #form.organization
   .ui.segment
-    h3.header 请填写机构真实信息，我们会在线下通过电话来联系您提交的信息
+    h3.header 请填写机构真实信息，我们会在线下通过电话来联系您验证提交的信息
     .ui.form#applyForm
       .field
         label 机构名称
+        input(name="realName",type="text",placeholder="机构名称")
       .field
         label 机构地址
+        input(name="address",type="text",placeholder="详细地址")
       .field
         label 联系人
+        input(name="contact",type="text",placeholder="联系人")
       .field
-        lable 电话
+        lable 联系电话
+        input(name="mobile",type="text",placeholder="联系电话")
       .field
         label 电子邮件
+        input(name="email",type="text",placeholder="电子邮件")
       .button.submit 提 交
 

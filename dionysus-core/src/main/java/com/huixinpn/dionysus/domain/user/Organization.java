@@ -15,7 +15,7 @@ public class Organization extends User{
     @Enumerated(EnumType.STRING)
     private OrganizationStatus status = OrganizationStatus.PENDING;
 
-    private String location;
+    private String contact;
 
     public Organization(Long id){
         super(id);
