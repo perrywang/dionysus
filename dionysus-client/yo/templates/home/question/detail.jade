@@ -5,8 +5,8 @@
         .ui.header
           h2 {{title}}
         .meta
-          span 来自：{{author.username}}
-          span 回答：{{numberOfAnswers}}
+          span#from 来自：{{author.username}}
+          span#number 回答：{{numberOfAnswers}}
         p.description {{description}}
         .ui.divider(style="margin-top:50px;")
         #comments
