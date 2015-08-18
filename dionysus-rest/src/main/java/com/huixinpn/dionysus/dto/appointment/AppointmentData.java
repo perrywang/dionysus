@@ -26,6 +26,7 @@ public class AppointmentData extends EntityData<Appointment> {
   private ConsultantData consultant;
   private UserData user;
   private String state;
+  private String approach;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
   private Calendar date;
 
@@ -35,6 +36,7 @@ public class AppointmentData extends EntityData<Appointment> {
     this.user = new UserData(appointment.getUser());
     this.state = appointment.getState().toString();
     this.date = appointment.getDate();
+    this.approach = appointment.getApproach().toString();
   }
 
   public void update(Appointment appointment){
