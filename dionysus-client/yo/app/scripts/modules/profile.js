@@ -76,9 +76,9 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
       });
 
 
-      this.getRegion('myContent').show(new Marionette.ItemView({
+      /*this.getRegion('myContent').show(new Marionette.ItemView({
         template : JST["templates/home/profile/articles"]
-      }));
+      }));*/
     },
     showMyAppointments: function(){
       var region = this.getRegion('myContent');
