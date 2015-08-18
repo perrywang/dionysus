@@ -22,10 +22,10 @@ public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {
 	}
 
 	@Override
-	public void evaluate(PsychTestResult result) {
+	public Object evaluate(PsychTestResult result) {
 		EPQVisitor visitor = new EPQVisitor();
 		result.accept(visitor);
-		int score = visitor.getScore();
+		return visitor.getScore();
 	}
 
 }

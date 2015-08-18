@@ -14,7 +14,14 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   var PsychTest = Backbone.RelationalHalResource.extend({
-    urlRoot: '/api/v1/psychtests',
+    // urlRoot: '/api/v1/psychtests',
+    // url : function() {
+    //   return '/api/v1/psychtests/' + this.get('id');
+    // },
+    // halUrl : '/api/v1/psychtests',
+    url : function() {
+      return '/api/v1/psychtests/' + this.get('id');
+    },
     halEmbedded: {
       questions: {
         type: Backbone.HasMany,
@@ -160,14 +167,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
   });
 
   Dionysus.reqres.setHandler('psychtests:instance', function (id) {
-    var test = PsychTest.findOrCreate({
-      id : id,
-      _links : {
-        self: {
-          href : '/api/v1/psychtests/' + id 
-        }
-      }
-    }), defer = $.Deferred();
+    var test = PsychTest.findOrCreate({ id : id }), defer = $.Deferred();
     test.fetch().then(function () {
       defer.resolve(test);
     });
@@ -205,6 +205,12 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       var json = this.toJSON();
       var answers = this.embedded('answers');
       json.answers = answers.toJSON();
+      var test = this.embedded('test');
+      if (test) {
+        json.test = {
+          id : test.id
+        }
+      }
       return json;
     }
   });
@@ -219,15 +225,8 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
 
   Dionysus.reqres.setHandler('psychtestresults:instance', function(id) {
-    var result = PsychTestResult.findOrCreate({
-      id : id,
-      _links : {
-        self: {
-          href : '/api/v1/psychtestresults/' + id 
-        }
-      }
-    }), defer = $.Deferred();
-    result.fetch().then(function () {
+    var result = PsychTestResult.findOrCreate({ id : id }), defer = $.Deferred();
+    result.fetch({ url : '/api/v1/psychtestresults/' + id  }).then(function () {
       defer.resolve(result);
     }).fail(function(xhr) {
       if (xhr.status === 404) {

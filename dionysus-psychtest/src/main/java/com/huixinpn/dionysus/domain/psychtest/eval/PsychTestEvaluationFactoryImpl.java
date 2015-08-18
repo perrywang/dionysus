@@ -1,7 +1,10 @@
 package com.huixinpn.dionysus.domain.psychtest.eval;
 
+import org.springframework.stereotype.Component;
+
 import com.huixinpn.dionysus.domain.psychtest.PsychTest.PsychTestType;
 
+@Component
 public class PsychTestEvaluationFactoryImpl implements PsychTestEvaluationFactory {
 
 	public PsychTestEvaluationStrategy create(PsychTestType category) {

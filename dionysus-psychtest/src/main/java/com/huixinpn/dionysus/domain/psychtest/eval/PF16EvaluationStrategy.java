@@ -127,8 +127,9 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 	}
 
 	@Override
-	public void evaluate(PsychTestResult result) {
+	public Object evaluate(PsychTestResult result) {
 		PF16Visitor visitor = new PF16Visitor(this);
 		result.accept(visitor);
+		return visitor.getScore();
 	}
 }
