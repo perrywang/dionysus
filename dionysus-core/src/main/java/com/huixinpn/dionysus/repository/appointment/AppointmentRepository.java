@@ -24,8 +24,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
   @Query(value = "select a from Appointment a where a.consultant = ?1 and a.state = ?2 order by a.date desc")
   Page<Appointment> findByConsultantAndState(Consultant consultant, AppointmentStatus status, Pageable pageable);
 
-  @Query(value = "select a from Appointment a where a.consultant = ?1 order by a.state asc, a.date desc")
-  Page<Appointment> findByConsultant(Consultant consultant, Pageable pageable);
+  @Query(value = "select a from Appointment a where a.consultant = :consultant order by a.state asc, a.date desc")
+  Page<Appointment> findByConsultant(@Param("consultant") Consultant consultant, Pageable pageable);
 
   Page<Appointment> findByState(AppointmentStatus state, Pageable pageable);
 
