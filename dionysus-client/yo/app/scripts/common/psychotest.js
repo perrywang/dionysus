@@ -35,6 +35,48 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
       }
     }
   });
+
+  var PsychTestResultPageCollection = Backbone.PageableCollection.extend({
+    url: '/controllers/psychtestresults',
+    model: Entities.PsychoTest,
+    state: {
+      firstPage : 0,
+      currentPage: 0, 
+      pageSize:50
+    },
+    queryParams: {
+      currentPage: "page",
+      pageSize: "size",
+      totalPages: null,
+      totalRecords: null
+    },
+
+    parseRecords: function(resp){
+      return resp.content;
+    },
+
+    parseState: function(resp) {
+      return {
+        currentPage: resp.number,
+        pageSize: resp.size,
+        totalPages: resp.totalPages,
+        totalRecords: resp.totalElements
+      }
+    }
+
+  });
+
+
+
+
+  Dionysus.reqres.setHandler('psychtestresult:all:pageable', function(){
+    var psychTestResults = new PsychTestResultPageCollection(), defer = $.Deferred();
+    psychTestResults.fetch().then(function(){
+      defer.resolve(psychTestResults);
+    });
+    return defer.promise();
+  });
+
   
   Dionysus.reqres.setHandler('psychotest:entities', function() {
     var psychotests = new Entities.PsychoTestCollection();

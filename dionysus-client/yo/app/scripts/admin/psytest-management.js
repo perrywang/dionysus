@@ -3,19 +3,8 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
 
   var PsychTestItemView = Marionette.ItemView.extend({
     template: JST["templates/admin/psychtests/psychtestitem"],
-    tagName: 'tr',	
-	initialize: function (options) {
-      this.id = this.model.toJSON().id;
-      this.title = this.model.toJSON().test.title;
-      this.username = this.model.toJSON().createdBy.username;	  
-    },	
-    serializeData: function() {
-      var data = {};
-      data.username = this.username;	  
-	  data.title = this.title;
-      return data;
-    },
-	triggers: {
+    tagName: 'tr',
+	  triggers: {
       'click .input.button':'input:profile'
     }
   });
@@ -78,6 +67,25 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     initialize: function(options){
     },
     onDomRefresh:function(){
+      var state = this.collection.state;
+      var currentPage = state['currentPage'] + 1;
+      var total = state['totalPages'] == 0 ? 1 : state['totalPages'];
+      this.$('#paging').twbsPagination({
+        totalPages: total,
+        startPage: currentPage,
+        visiblePages: 6,
+        first: '第一页',
+        prev: '前一页',
+        next: '后一页',
+        last: '最后一页',
+        loop: true,
+        onPageClick: function(event, page) {
+          $(this).trigger("gotoPage", page);
+        }
+      });
+    },
+    gotoPage: function(event, page){
+      this.collection.getPage(page-1);
     }
   });
 
@@ -86,7 +94,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
 
     showPsychtests: function () {
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.when(Dionysus.request('psychotest:instances')).done(function (psychtests) {  
+      $.when(Dionysus.request('psychtestresult:all:pageable')).done(function (psychtests) {  
         var listView = new PsychTestListView({collection:psychtests});
         listView.on('childview:input:profile', function(childView, model){
 		  var editor = new PsychoProfileEditorView({model:model});

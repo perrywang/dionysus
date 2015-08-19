@@ -2,6 +2,8 @@ package com.huixinpn.dionysus.repository.psychtest;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -19,8 +21,11 @@ public interface PsychTestResultRepository
 	@Query("select o from PsychTestResult o where o.test.id = ?1 and (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0}))")
 	PsychTestResult findOne(Long id);
 	
-	@Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0})")
-	List<PsychTestResult> findAll();
+	@Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0}) order by o.lastModifiedDate desc")
+    List<PsychTestResult> findAll();
+
+    @Query("select o from PsychTestResult o where (o.createdBy.id = ?#{principal.id} or 1=?#{hasRole('ROLE_ADMIN') ? 1 : 0}) order by o.lastModifiedDate desc")
+    Page<PsychTestResult> findAllResults(Pageable pageable);
 	
 	PsychTestResult save(PsychTestResult entity);
 }

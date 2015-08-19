@@ -1,6 +1,7 @@
-td.user {{ username }}
-td.title {{ title }}
+td.user {{ userData.username }}
+td.title {{ testTitle }}
 td.date {{ date }}
+td {{state}}
 td.save
-  .ui.small.green.save.button 查看结果
+  a.ui.small.green.save.button(href="/admin/psychotestresult/{{id}}") 查看结果
   .ui.small.red.input.button(style="margin-left:20px;") 输入档案
