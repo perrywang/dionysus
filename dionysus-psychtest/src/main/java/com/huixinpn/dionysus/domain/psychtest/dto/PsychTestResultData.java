@@ -28,6 +28,7 @@ public class PsychTestResultData extends EntityData<PsychTestResult> {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd HH:mm")
     private DateTime date;
     private String testTitle;
+    private Long testId;
 
     @Override
     public void update(PsychTestResult entity) {
@@ -40,6 +41,7 @@ public class PsychTestResultData extends EntityData<PsychTestResult> {
         this.state = entity.getState().toString();
         this.date = entity.getLastModifiedDate();
         this.testTitle = entity.getTest().getTitle();
+        this.testId = entity.getTest().getId();
 
     }
 }

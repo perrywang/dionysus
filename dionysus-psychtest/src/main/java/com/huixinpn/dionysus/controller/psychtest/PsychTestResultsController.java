@@ -57,4 +57,12 @@ public class PsychTestResultsController {
 
         return new EntityPageData<>(result, PsychTestResultData.class);
     }
+
+    @RequestMapping(value="/psychtestresults/{id}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    PsychTestResultData getResult(@PathVariable Long id){
+        PsychTestResult psychTestResult = resultsRepository.findOne(id);
+        return new PsychTestResultData(psychTestResult);
+    }
 }

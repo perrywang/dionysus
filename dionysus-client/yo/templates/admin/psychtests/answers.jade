@@ -1,0 +1,30 @@
+.ui.segment 
+	a.ui.tag.label {{meta.testTitle}}
+	a.ui.small.green.submit.button 计算中间值
+	p
+		.ui.horizontal.list
+			.item
+				.content
+					.header 用户:
+					|{{meta.userData.username}}
+			.item
+				.content
+					.header 日期:
+					|-{{meta.date}}-
+			.item
+				.content
+					.header 状态:
+					|{{meta.state}}
+table.ui.celled.striped.table
+	thead
+		tr
+			th 编号
+			th 题目
+			th 答案
+	tbody
+		{{#each items}}
+		tr
+			td {{id}}
+			td {{{question}}}
+			td {{answer}}
+		{{/each}}

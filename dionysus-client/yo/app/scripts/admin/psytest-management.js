@@ -89,6 +89,52 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     }
   });
 
+  var PsychTestAnswersView = Marionette.ItemView.extend({
+    template: JST["templates/admin/psychtests/answers"],
+    serializeData: function() {
+      
+      //拼装meta信息
+      var meta = this.model.toJSON();
+
+      //拼装答案
+      var answers = this.collection.toJSON();
+      var items = [];
+      _.each(answers, function(answer) {
+
+        var type = answer.type;
+
+        //拼装问题描述和选项
+        var question = answer._embedded.question;
+        var questionString = '<p>' + question.description + '</p>';
+        if(type == 'SINGLE_CHOICE' || type == 'MULTIPLE_CHOICE'){
+          var optionString = ''
+          _.each(question.options, function(option){
+            optionString += option.identity + ': ' + option.description + ' ';
+          })
+          questionString += '<p>' + optionString + '</p>';
+        }
+
+        //转换答案
+        var answerString = answer.value;
+        if(type == 'SINGLE_CHOICE' || type == 'MULTIPLE_CHOICE'){
+          answerString = answer._embedded.option.identity;
+        }
+        else if(type == 'YES_NO'){
+          answerString = answer.value? 是:否;
+        }
+
+        items.push({
+          id: answer.qid,
+          question: questionString,
+          answer: answerString
+        });
+
+      });
+
+      return {items:items, meta: meta};
+    }
+  });
+
 
   var PsychTestController = Marionette.Controller.extend({
 
@@ -98,17 +144,33 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
         var listView = new PsychTestListView({collection:psychtests});
         listView.on('childview:input:profile', function(childView, model){
 		  var editor = new PsychoProfileEditorView({model:model});
-		  Dionysus.mainRegion.show(editor);          	  
+		  Dionysus.mainRegion.show(editor); 
 		});
         Dionysus.mainRegion.show(listView);
       });
-	}
+	},
+
+    showPsychtestResult: function(tid, rid){
+      Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
+
+      /*$.when(Dionysus.request("psychtests:instance", tid), Dionysus.request("psychtestresults:instance", rid)).done(function(test, result){
+        var x;
+      });*/
+
+      var fetcResult = Dionysus.request('psychtestresult:dto:instance', rid);
+      var fetchAnswers = Dionysus.request('psychtestanswers:by:result', rid);
+
+      $.when(fetcResult, fetchAnswers).done(function(result, answers){
+        Dionysus.mainRegion.show(new PsychTestAnswersView({collection:answers, model: result}));
+      });
+  }
   });
 
   Dionysus.addInitializer(function () {
     new Marionette.AppRouter({
       appRoutes: {
-        'admin/psychotests': 'showPsychtests'
+        'admin/psychotests': 'showPsychtests',
+        'admin/psychotestresult/tid=:tid&rid=:rid': 'showPsychtestResult'
       },
       controller: new PsychTestController()
     });

@@ -66,8 +66,50 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
 
   });
 
+  var PsychTestResultDto = Backbone.Model.extend({
+    urlRoot: '/controllers/psychtestresults'
+  });
+
+  var PsychTestAnswer = Backbone.Model.extend({
+    urlRoot:'/api/v1/psychtestanswers'
+  });
+
+  var PsychoTestAnswerCollection = Backbone.Collection.extend({
+    url: '/api/v1/psychtestanswers',
+    model: PsychTestAnswer,
+    initialize : function(options){
+      if(options && options.appendUrl){
+        this.url += options.appendUrl;
+      }
+    },
+    parse: function(response) {
+      var embedded = response._embedded;
+      return embedded ? embedded.psychtestanswers : [];
+    },
+  });
 
 
+
+
+  Dionysus.reqres.setHandler('psychtestresult:dto:instance', function(id){
+    var result = new PsychTestResultDto({id:id});
+    var defer = $.Deferred();
+    result.fetch().done(function(){
+      defer.resolve(result);
+    });
+    return defer.promise();
+  });
+
+  Dionysus.reqres.setHandler('psychtestanswers:by:result', function(rid){
+    var appendUrl = '/search/findByResult?result='+rid;
+    var psychtestanswers = new PsychoTestAnswerCollection({appendUrl:appendUrl});
+    var defer = $.Deferred();
+
+    psychtestanswers.fetch().then(function(){
+      defer.resolve(psychtestanswers);
+    });
+    return defer.promise();
+  });
 
   Dionysus.reqres.setHandler('psychtestresult:all:pageable', function(){
     var psychTestResults = new PsychTestResultPageCollection(), defer = $.Deferred();
