@@ -88,8 +88,21 @@ Dionysus.module('PsychoTest', function(Entities, Dionysus, Backbone, Marionette,
     },
   });
 
+  var PsychoTestEvaluationResult = Backbone.Model.extend({
+    urlRoot: '/controllers/psychtestresults/calcu/'
+  });
 
 
+
+
+  Dionysus.reqres.setHandler('psychtestresult:evaluate', function(id){
+    var result = new PsychoTestEvaluationResult({id:id});
+    var defer = $.Deferred();
+    result.fetch().done(function(){
+      defer.resolve(result);
+    });
+    return defer.promise();
+  });
 
   Dionysus.reqres.setHandler('psychtestresult:dto:instance', function(id){
     var result = new PsychTestResultDto({id:id});

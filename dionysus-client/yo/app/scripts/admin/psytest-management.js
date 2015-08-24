@@ -159,10 +159,6 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
       $.when(fetcResult, fetchAnswers).done(function(result, answers){
         Dionysus.mainRegion.show(new PsychTestAnswersView({collection:answers, model: result}));
       });
-  },
-
-  calcResult: function(id){
-    alert(id);
   }
   });
 
@@ -170,8 +166,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     new Marionette.AppRouter({
       appRoutes: {
         'admin/psychotests': 'showPsychtests',
-        'admin/psychotestresult/tid=:tid&rid=:rid': 'showPsychtestResult',
-        'admin/psychotestresult/calc/:id': 'calcResult'
+        'admin/psychotestresult/tid=:tid&rid=:rid': 'showPsychtestResult', 
       },
       controller: new PsychTestController()
     });
