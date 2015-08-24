@@ -23,6 +23,26 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
           Dionysus.navigate('/organizations/'+user.id+'/apply',true);
         });
       });
+      if(this.pagedorganizations.number + 1 <= this.pagedorganizations.totalPages){
+        this.$('#pagnation').twbsPagination({
+          totalPages: this.pagedorganizations.totalPages,
+          startPage: this.pagedorganizations.number + 1,
+          visiblePages: 6,
+          first: '第一页',
+          prev: '前一页',
+          next: '后一页',
+          last: '最后一页',
+          onPageClick: function (event, page) {
+            var template = JST[baseTemplatePath + '/list'];
+            var options = {};
+            options.page = page - 1;
+            $.when(Dionysus.request('organization:entities', options)).done(function (data) {
+              var html = template({organizations: data.content});
+              $('#orgList').html(html);
+            });
+          }
+        });
+      }
     }
   });
 
@@ -37,9 +57,32 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
 
     template: function (data) {
       var template = JST[baseTemplatePath + '/detail'];
-
       var html = template({organization:data.organization,blogs:data.pagedblogs.content});
       return html;
+    },
+    onRender: function(){
+      var that = this;
+      if(this.pagedblogs.number + 1 <= this.pagedblogs.totalPages){
+        this.$('#pagnation').twbsPagination({
+          totalPages: this.pagedblogs.totalPages,
+          startPage: this.pagedblogs.number + 1,
+          visiblePages: 6,
+          first: '第一页',
+          prev: '前一页',
+          next: '后一页',
+          last: '最后一页',
+          onPageClick: function (event, page) {
+            var template = JST[baseTemplatePath + '/bloglist'];
+            var options = {};
+            options.page = page - 1;
+            options.id = that.organization.id;
+            $.when(Dionysus.request('organization:blogs', options)).done(function (data) {
+              var html = template({blogs: data.content});
+              $('#blogList').html(html);
+            });
+          }
+        });
+      }
     }
   });
 

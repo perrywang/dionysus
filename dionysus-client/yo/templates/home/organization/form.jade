@@ -1,29 +1,29 @@
 #apply.organization
   .ui.centered.stackable.grid
     .body.eight.wide.column
-      .ui.segment(style="margin-bottom:50px;")
-        .ui.form#applyForm(style="padding:10px 100px;")
-          .field(style="margin-top:30px;margin-bottom:30px;")
+      .ui.segment
+        .ui.form#applyForm
+          .field
             h3.header 请填写机构真实信息，我们会在线下联系您验证所提交的信息
           .field
-            label(style="margin-top:15px;margin-bottom:15px;") 机构名称
+            label 机构名称
             input(name="realName",type="text",placeholder="机构名称")
           .field
-            label(style="margin-top:15px;margin-bottom:15px;") 机构地址
+            label 机构地址
             input(name="address",type="text",placeholder="详细地址")
           .field
-            label(style="margin-top:15px;margin-bottom:15px;") 联系人
+            label 联系人
             input(name="contact",type="text",placeholder="联系人")
           .field
-            label(style="margin-top:15px;margin-bottom:15px;") 联系电话
+            label 联系电话
             input(name="mobile",type="text",placeholder="联系电话")
           .field
-            label(style="margin-top:15px;margin-bottom:15px;") 电子邮件
+            label 电子邮件
             input(name="email",type="text",placeholder="电子邮件")
           .field
-            label(style="margin-top:20px;margin-bottom:15px;") 机构介绍
+            label 机构介绍
             textarea(name="about")
-          .ui.centered.grid(style="margin-top:50px;margin-bottom:10px;")
+          .ui.centered.grid#submitContainer
             .eight.wide.column
               .ui.big.green.button.submit.fluid 提 交
 

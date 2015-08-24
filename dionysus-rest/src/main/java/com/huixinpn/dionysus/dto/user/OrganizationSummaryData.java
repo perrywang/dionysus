@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.dto.user;
 
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,10 @@ public class OrganizationSummaryData extends UserData {
     public OrganizationSummaryData(User user) {
         super(user);
         this.realName = user.getRealName();
+    }
+
+    public OrganizationSummaryData(Consultant user) {
+        this((User)user);
     }
 
     @Override

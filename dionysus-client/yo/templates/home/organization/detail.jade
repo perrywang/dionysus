@@ -1,26 +1,23 @@
 #detail.organization
   .ui.centered.stackable.grid
-    .body.eight.wide.column
-
+    .body.ten.wide.column
       #content.basic.ui.segment
-        img.ui.image(src="/public/images/offline-course.png")
+        .ui.three.column.grid
+          .column
+            img.ui.image(src="{{organization.avatar}}")
         h2.ui.header.title {{organization.realName}}
         p {{organization.about}}
         .ui.divider
         .ui.secondary.pointing.menu
-          a.active.item(style="padding-left: 0px;")
+          a.active.item
             h3
               |我们的文章
         #blogList.ui.divided.items
           |{{#each blogs}}
           .ui.item
             .content
-              a.header(href="/blogs/{{id}}",style="margin-top:15px;") {{title}}
-              .summary(style="margin-top:10px;margin-bottom:10px;") {{summary}}
+              a.header(href="/blogs/{{id}}") {{title}}
+              .summary {{summary}}
           |{{/each}}
         #pagnationWrapper
           #pagnation
-    .sidebar.four.wide.column
-      .ui.basic.segment#add
-        p
-          |detail sidebar

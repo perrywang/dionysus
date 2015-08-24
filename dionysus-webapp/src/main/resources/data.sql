@@ -16,17 +16,17 @@ insert into profile (id) values(6);
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id,organization_status)
 values (1, 'admin','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '系统管理员', '/public/images/placeholder.png', 'admin@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 1, '管理员', 1,'APPROVED');
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
-values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '普通用户', '/public/images/placeholder.png', 'test1@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 2, '王鹏', 2);
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id,organization_status)
+values (2, 'test1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '普通用户', '/public/images/placeholder.png', 'test1@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 2, '王鹏', 2,'APPROVED');
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
-values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '心理咨询师', '/public/images/placeholder.png', 'test2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 3, '达峰', 3);
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id,organization_status)
+values (3, 'test2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '心理咨询师', '/public/images/placeholder.png', 'test2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 3, '达峰', 3,'APPROVED');
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
-values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '心理咨询师', '/public/images/placeholder.png', 'wp@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 4, '陆军', 4);
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id,organization_status)
+values (4, 'wp','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, TRUE, '心理咨询师', '/public/images/placeholder.png', 'wp@huixin.com', 'male', '30', '未知', '13888888888', '33333333', 4, '陆军', 4,'APPROVED');
 
-insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
-values (5, 'consultant1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '心理咨询师', '/public/images/placeholder.png', 'consultant1@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 5, '心理咨询师', 5);
+insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id,organization_status)
+values (5, 'consultant1','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '心理咨询师', '/public/images/placeholder.png', 'consultant1@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 5, '心理咨询师', 5,'APPROVED');
 
 insert into users (id, username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, about, avatar, email, gender, age, address, mobile, landline, inbox_id, realname, profile_id)
 values (6, 'consultant2','$2a$10$56XBkZOecmVo27bDByl4t.Y49T6ps.mJZf1ptSdAWf1fAICftXzdG', TRUE, TRUE, TRUE, FALSE, '心理咨询师', '/public/images/placeholder.png', 'consultant2@huixin.com', 'female', '30', '未知', '13888888888', '33333333', 6, '心理咨询师', 6);

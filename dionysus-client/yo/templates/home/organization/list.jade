@@ -1,0 +1,8 @@
+|{{#each organizations}}
+.column
+  .ui.basic.segment
+    img.ui.fluid.image(src="{{avatar}}")
+    .org.link
+      h4
+        a.title(href="/organizations/{{id}}") {{realName}}
+|{{/each}}

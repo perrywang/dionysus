@@ -2,26 +2,30 @@
   .ui.centered.stackable.grid
     .body.eight.wide.column
       #content.basic.ui.segment
-        ui.four.column.stackable.grid
-        .column
-          .ui.basic.segment
-            img.ui.image(src="/public/images/question.png")
-            h2.ui.header.title 心理机构
-            .ui.divider
-        #orgList.ui.four.column.stackable.grid
+        .ui.grid
+          .column
+            img.ui.image#moduleImage(src="/public/images/organization.jpg")
+            .ui.secondary.pointing.menu
+              a.active.item
+                h2
+                  |心理机构
+        #orgList.ui.three.column.stackable.grid
           |{{#each organizations}}
           .column
             .ui.basic.segment
               img.ui.fluid.image(src="{{avatar}}")
-              .org.link(style="margin-top:15px;text-align:center;")
-                h4
+              .org.link
+                h3
                   a.title(href="/organizations/{{id}}") {{realName}}
           |{{/each}}
         #pagnationWrapper
           #pagnation
     .sidebar.four.wide.column
-      .ui.basic.segment#add(style="text-align:center;background:#F5F5F6;padding-top:10px;padding-bottom:30px;padding-left:50px;padding-right:50px;")
-        p
-          h4 我要申请机构用户，我要申请加入心理圈！
-        #addContainer(style="margin-top:30px;padding-left:30px;padding-right:30px;")
-          .ui.fluid.green.button#adding 申 请
+      .ui.basic.segment
+        .ui.grid
+          .column
+            .ui.basic.segment#addContainer
+              p
+                h3 申请机构用户，加入心理圈！
+              #addBtn
+                .ui.fluid.green.button#adding 申 请

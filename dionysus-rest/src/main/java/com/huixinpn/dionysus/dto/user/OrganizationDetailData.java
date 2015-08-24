@@ -1,5 +1,6 @@
 package com.huixinpn.dionysus.dto.user;
 
+import com.huixinpn.dionysus.domain.user.Consultant;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,10 @@ public class OrganizationDetailData extends OrganizationSummaryData {
         this.mobile = user.getMobile();
         this.email = user.getEmail();
         this.about = user.getAbout();
+    }
+
+    public OrganizationDetailData(Consultant user) {
+        this((User)user);
     }
 
     @Override
