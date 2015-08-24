@@ -153,16 +153,16 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     showPsychtestResult: function(tid, rid){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
 
-      /*$.when(Dionysus.request("psychtests:instance", tid), Dionysus.request("psychtestresults:instance", rid)).done(function(test, result){
-        var x;
-      });*/
-
       var fetcResult = Dionysus.request('psychtestresult:dto:instance', rid);
       var fetchAnswers = Dionysus.request('psychtestanswers:by:result', rid);
 
       $.when(fetcResult, fetchAnswers).done(function(result, answers){
         Dionysus.mainRegion.show(new PsychTestAnswersView({collection:answers, model: result}));
       });
+  },
+
+  calcResult: function(id){
+    alert(id);
   }
   });
 
@@ -170,7 +170,8 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     new Marionette.AppRouter({
       appRoutes: {
         'admin/psychotests': 'showPsychtests',
-        'admin/psychotestresult/tid=:tid&rid=:rid': 'showPsychtestResult'
+        'admin/psychotestresult/tid=:tid&rid=:rid': 'showPsychtestResult',
+        'admin/psychotestresult/calc/:id': 'calcResult'
       },
       controller: new PsychTestController()
     });

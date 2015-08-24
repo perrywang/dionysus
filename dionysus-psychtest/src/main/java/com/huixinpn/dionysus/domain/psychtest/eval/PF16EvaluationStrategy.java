@@ -119,7 +119,7 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 			return this.scores;
 		}
 		
-		public Map<String, Integer> getNormalizedScore(String[] mode) {
+		public Map<String, Integer> getNormalizedScore(/*String[] mode*/) {
 			Map<String, Integer> scores = this.getScore();
 			// TODO: 判断用户身份，选择对应的常模
 			return PF16Normalization.normalize(scores, PF16Normalization.ADULT_MALE);
@@ -130,6 +130,13 @@ public class PF16EvaluationStrategy implements PsychTestEvaluationStrategy {
 	public Object evaluate(PsychTestResult result) {
 		PF16Visitor visitor = new PF16Visitor(this);
 		result.accept(visitor);
-		return visitor.getScore();
+        Map<String, Integer> score = visitor.getScore();
+        //计算常值，append到返回的MAP中
+        Map<String, Integer> normalized_score = visitor.getNormalizedScore();
+        for(String key : normalized_score.keySet()){
+            score.put("normal_"+key, normalized_score.get(key));
+        }
+
+		return score;
 	}
 }

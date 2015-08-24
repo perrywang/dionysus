@@ -3,6 +3,8 @@ package com.huixinpn.dionysus.controller.psychtest;
 import com.huixinpn.dionysus.domain.psychtest.PsychTest;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 import com.huixinpn.dionysus.domain.psychtest.dto.PsychTestResultData;
+import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestEvaluationFactory;
+import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestEvaluationStrategy;
 import com.huixinpn.dionysus.dto.EntityPageData;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestRepository;
 import com.huixinpn.dionysus.repository.psychtest.PsychTestResultRepository;
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/controllers")
@@ -25,6 +28,9 @@ public class PsychTestResultsController {
   
   @Autowired
   private PsychTestRepository testRepository;
+
+    @Autowired
+    private PsychTestEvaluationFactory factory;
   
   @RequestMapping(value = "/psychtest/{id}/submit", method = RequestMethod.POST)
   public ResponseEntity<String> submitTestResult(@PathVariable Long id, @RequestBody PsychTestResult model) {
@@ -64,5 +70,14 @@ public class PsychTestResultsController {
     PsychTestResultData getResult(@PathVariable Long id){
         PsychTestResult psychTestResult = resultsRepository.findOne(id);
         return new PsychTestResultData(psychTestResult);
+    }
+
+    @RequestMapping(value="/psychtestresults/calcu/{id}", method = RequestMethod.GET)
+    public Map<String, Integer> getScore(@PathVariable Long id){
+        PsychTestResult result = resultsRepository.findOne(id);
+        PsychTestEvaluationStrategy strategy = factory.create(result.getTest().getType());
+        Object obj = strategy.evaluate(result);
+        return (Map<String, Integer>) obj;
+
     }
 }
