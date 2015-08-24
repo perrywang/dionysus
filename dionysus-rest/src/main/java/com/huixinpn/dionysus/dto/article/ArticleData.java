@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.dto.article;
 
 import com.huixinpn.dionysus.domain.article.Article;
+import com.huixinpn.dionysus.domain.article.Blog;
 import com.huixinpn.dionysus.dto.EntityData;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,10 @@ public class ArticleData extends EntityData<Article> {
         this.category = new ArticleCategory(article.getCategory());
 
 
+    }
+
+    public ArticleData(Blog article){
+        this((Article)article);
     }
 
     @Override

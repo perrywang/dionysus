@@ -30,7 +30,7 @@ public class RestfulConfiguration extends RepositoryRestMvcConfiguration {
   protected void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
     config.exposeIdsFor(Article.class, Category.class, Menu.class,
         PsychTest.class, PsychTestQuestion.class, PsychTestResult.class, PsychTestQuestionOption.class,
-        Consultant.class, Profile.class, ProfileItem.class, User.class, Organization.class,
+        Consultant.class, Profile.class, ProfileItem.class, User.class,
         CourseCategory.class, Course.class, OfficialArticle.class, Blog.class, ConsExpertise.class, Room.class, ChatMessage.class);
     try {
       config.setReturnBodyOnCreate(true);

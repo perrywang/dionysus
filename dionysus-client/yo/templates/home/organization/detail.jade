@@ -1,23 +1,26 @@
 #detail.organization
   .ui.centered.stackable.grid
     .body.eight.wide.column
-      img.ui.image(src="{{avatar}}")
+
       #content.basic.ui.segment
-        h2.ui.header.title {{realName}}
-        p {{about}}
-        h2.ui.header.blogs 我们的文章
+        img.ui.image(src="/public/images/offline-course.png")
+        h2.ui.header.title {{organization.realName}}
+        p {{organization.about}}
+        .ui.divider
+        .ui.secondary.pointing.menu
+          a.active.item(style="padding-left: 0px;")
+            h3
+              |我们的文章
         #blogList.ui.divided.items
           |{{#each blogs}}
           .ui.item
             .content
-              a.header(src="/articles/{{id}}") {{title}}
-              .description {{description}}
+              a.header(href="/blogs/{{id}}",style="margin-top:15px;") {{title}}
+              .summary(style="margin-top:10px;margin-bottom:10px;") {{summary}}
           |{{/each}}
         #pagnationWrapper
           #pagnation
     .sidebar.four.wide.column
       .ui.basic.segment#add
         p
-          h4 申请加入心理圈
-        #addContainer
-          .ui.big.green.button#adding 申 请
+          |detail sidebar

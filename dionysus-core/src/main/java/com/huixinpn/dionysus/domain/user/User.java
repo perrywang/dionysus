@@ -113,6 +113,11 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   @Column(name = "realname")
   private String realName;
 
+  @Enumerated(EnumType.STRING)
+  private OrganizationStatus organizationStatus = OrganizationStatus.NONE;
+
+  private String contact;
+
   public String getQq() {
     return qq;
   }

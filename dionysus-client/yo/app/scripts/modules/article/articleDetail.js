@@ -41,7 +41,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
 
     serializeData: function() {
       var item = this.model.toJSON();
-      
+
       //procee body content
       //if the article location is slider, set the cover image width to 100%.
       if (item.location === "slider") {
@@ -111,7 +111,39 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
           template:JST[baseTemplatePath+'articleTag'],
         });
         layoutView.getRegion('tag').show(tags);
-      
+
+    },
+    showBlog: function(id){
+      var layoutView = new LayoutView();
+      Dionysus.mainRegion.show(layoutView);
+
+      //get detail value
+      Dionysus.request('blog:item', id).done(function(article) {
+
+        var detail = new ArticleDetailView({
+          model: article
+        });
+        layoutView.getRegion('detail').show(detail);
+      });
+
+      //get latest
+      Dionysus.request('article:list:pageable', null, {
+        sort: 'lastModifiedDate,desc',
+        size: 5
+      }).done(function(articles) {
+
+        var latest = new Dionysus.Article.RegionSummaryView({
+          template: JST[baseTemplatePath + 'articleLatest'],
+          collection: articles
+        });
+        layoutView.getRegion('latest').show(latest);
+      });
+
+      //get tags
+      var tags = new Dionysus.Article.RegionSummaryView({
+        template:JST[baseTemplatePath+'articleTag'],
+      });
+      layoutView.getRegion('tag').show(tags);
     }
   });
 
@@ -119,6 +151,7 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
     new Marionette.AppRouter({
       appRoutes: {
         'articles/:id': 'showArticle',
+        'blogs/:id':'showBlog'
       },
       controller: new ArticleController()
     });

@@ -9,18 +9,18 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
       this.pagedorganizations = options.pagedorganizations;
     },
     serializeData: function () {
-      return this.pagedorganizations;
+      return this.pagedorganizations.content;
     },
 
     template: function (data) {
       var template = JST[baseTemplatePath + '/home'];
-      var html = template(data);
+      var html = template({organizations:data});
       return html;
     },
     onRender : function(){
       this.$('#adding').on('click',function(){
         $.getJSON(api+'/currentuser').done(function(user){
-          Dionysus.navigate('/organizations/'+user.id+'/apply');
+          Dionysus.navigate('/organizations/'+user.id+'/apply',true);
         });
       });
     }
@@ -37,7 +37,8 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
 
     template: function (data) {
       var template = JST[baseTemplatePath + '/detail'];
-      var html = template(data);
+
+      var html = template({organization:data.organization,blogs:data.pagedblogs.content});
       return html;
     }
   });
@@ -56,14 +57,14 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
     },
     onRender : function(){
       var that = this;
-      this.$('.submit').form('set values',this.user);
+      this.$('#applyForm').form('set values',this.user);
       this.$('.submit').on('click',function(){
         var applyingUser = $('#applyForm').form('get values');
-        applyingUser.id = that.user.id;
+        $.extend(that.user,applyingUser);
         $.ajax({
           type: "POST",
-          url: api + "/organizations",
-          data: JSON.stringify(applyingUser),
+          url: "/controllers/organizations",
+          data: JSON.stringify(that.user),
           success: function(data){
             toastr.success("提交申请成功!");
           },
@@ -84,14 +85,14 @@ Dionysus.module('Organization', function(Organization, Dionysus, Backbone, Mario
     },
     showOrganization:function(id){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.when(Dionysus.request('organization:entity',id),Dionysus.request('blog:my:pageable',{id:id})).done(function(organization,blogs){
-        var detail = new HomeView({organization:organization,pagedblogs:blogs});
+      $.when(Dionysus.request('organization:entity',id),Dionysus.request('organization:blogs',{id:id})).done(function(organization,blogs){
+        var detail = new DetailView({organization:organization,pagedblogs:blogs});
         Dionysus.mainRegion.show(detail);
       });
     },
     joinOrganization:function(id){
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.getJSON(api+'/users/'+id + '?projection=excerpt').done(function(user){
+      $.getJSON('/controllers/organizations/' + id).done(function(user){
         var submitForm = new SubmitView({user:user});
         Dionysus.mainRegion.show(submitForm);
       });
