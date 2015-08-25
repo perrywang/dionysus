@@ -8,6 +8,7 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 public class SASEvaluationStrategy implements PsychTestEvaluationStrategy{
 	class SASVisitor extends PsychTestValueVisitorAdaptor {
 		private int score = 0;
+		private double temp = 0.0;
 
 		@Override
 		public void accept(PsychTestQuestion question, PsychTestQuestionOption option) {
@@ -30,10 +31,11 @@ public class SASEvaluationStrategy implements PsychTestEvaluationStrategy{
 					value = 0;
 					break;
 			}
-			this.score += value;
+			this.temp += value;
 		}
 
 		public int getScore() {
+			this.score = (int)(this.temp *1.25);
 			return this.score;
 		}
 	}

@@ -25,7 +25,7 @@ insert into psychtests(id, type, format, min, title, description, object, durati
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (11, 'OLSON', 'ONE_BY_ONE', 124, '婚姻质量', '评定婚姻状况', '22岁以上', '15', '100', 'MANUAL');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (12, 'DCCC', 'ONE_BY_ONE', 57, '阅读障碍', '阅读能力，阅读行为', '3岁以上', '10', '80', 'MANUAL');
-/************正向计分题；反向计分题************/
+/************无量表分************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (13, 'PLOC', 'ONE_BY_ONE', 47, '子女教育心理控制源量表', '评定父母教育控制因子', '父母', '15', '100', 'MANUAL');
 
 insert into suite_test(suite_id, test_id) values (1, 1);
