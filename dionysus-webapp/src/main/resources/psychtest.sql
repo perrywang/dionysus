@@ -2868,10 +2868,10 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1027, 903, 'D', '绝大部分或全部时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(904, 5, 6, 'SINGLE_CHOICE', 'REQUIRED', '我觉得一切都很好');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1028, 904, 'A', '没有或很少时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1029, 904, 'B', '小部分时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1030, 904, 'C', '相当多时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1031, 904, 'D', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1028, 904, 'A', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1029, 904, 'B', '相当多时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1030, 904, 'C', '小部分时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1031, 904, 'D', '没有或很少时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(905, 6, 6, 'SINGLE_CHOICE', 'REQUIRED', '我手脚发抖打颤');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1032, 905, 'A', '没有或很少时间');
@@ -2892,10 +2892,10 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1043, 907, 'D', '绝大部分或全部时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(908, 9, 6, 'SINGLE_CHOICE', 'REQUIRED', '我觉得心平气和，并且容易安静坐着');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1044, 908, 'A', '没有或很少时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1045, 908, 'B', '小部分时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1046, 908, 'C', '相当多时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1047, 908, 'D', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1044, 908, 'A', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1045, 908, 'B', '相当多时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1046, 908, 'C', '小部分时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1047, 908, 'D', '没有或很少时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(909, 10, 6, 'SINGLE_CHOICE', 'REQUIRED', '我觉得心跳得很快');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1048, 909, 'A', '没有或很少时间');
@@ -2916,10 +2916,10 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1059, 911, 'D', '绝大部分或全部时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(912, 13, 6, 'SINGLE_CHOICE', 'REQUIRED', '我吸气呼气都感到很容易');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1060, 912, 'A', '没有或很少时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1061, 912, 'B', '小部分时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1062, 912, 'C', '相当多时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1063, 912, 'D', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1060, 912, 'A', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1061, 912, 'B', '相当多时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1062, 912, 'C', '小部分时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1063, 912, 'D', '没有或很少时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(913, 14, 6, 'SINGLE_CHOICE', 'REQUIRED', '我的手脚麻木和刺痛');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1064, 913, 'A', '没有或很少时间');
@@ -2940,10 +2940,10 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1075, 915, 'D', '绝大部分或全部时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(916, 17, 6, 'SINGLE_CHOICE', 'REQUIRED', '我的手脚常常是干燥温暖的');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1076, 916, 'A', '没有或很少时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1077, 916, 'B', '小部分时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1078, 916, 'C', '相当多时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1079, 916, 'D', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1076, 916, 'A', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1077, 916, 'B', '相当多时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1078, 916, 'C', '小部分时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1079, 916, 'D', '没有或很少时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(917, 18, 6, 'SINGLE_CHOICE', 'REQUIRED', '我脸红发热');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1080, 917, 'A', '没有或很少时间');
@@ -2952,10 +2952,10 @@ insert into psychtestquestionoptions(id, question_id, identity, description) val
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1083, 917, 'D', '绝大部分或全部时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(918, 19, 6, 'SINGLE_CHOICE', 'REQUIRED', '我容易入睡并且一夜睡得很好');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1084, 918, 'A', '没有或很少时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1085, 918, 'B', '小部分时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1086, 918, 'C', '相当多时间');
-insert into psychtestquestionoptions(id, question_id, identity, description) values(1087, 918, 'D', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1084, 918, 'A', '绝大部分或全部时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1085, 918, 'B', '相当多时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1086, 918, 'C', '小部分时间');
+insert into psychtestquestionoptions(id, question_id, identity, description) values(1087, 918, 'D', '没有或很少时间');
 
 insert into psychtestquestions(id, sub_id, test_id, type, require, description) values(919, 20, 6, 'SINGLE_CHOICE', 'REQUIRED', '我作恶梦');
 insert into psychtestquestionoptions(id, question_id, identity, description) values(1088, 919, 'A', '没有或很少时间');
