@@ -13,6 +13,6 @@ public interface OrganizationRepository extends UserRepository {
 
     Page<User> findByOrganizationStatus(@Param("status") OrganizationStatus status, Pageable pageable);
 
-    @Query(value = "select u from User u where u.organizationStatus != 'NONE' order by u.lastModifiedDate desc")
+    @Query(value = "select u from User u where u.organizationStatus != 'NONE' order by u.applyOrganizationDate desc")
     Page<User> allOrganizations(Pageable pageable);
 }

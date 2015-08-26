@@ -6,6 +6,8 @@ import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Calendar;
+
 @Data
 @NoArgsConstructor
 public class OrganizationDetailData extends OrganizationSummaryData {
@@ -15,6 +17,7 @@ public class OrganizationDetailData extends OrganizationSummaryData {
     private String email;
     private String about;
     private OrganizationStatus organizationStatus;
+    private Calendar applyOrganizationDate;
 
     public OrganizationDetailData(User user) {
         super(user);
@@ -24,6 +27,7 @@ public class OrganizationDetailData extends OrganizationSummaryData {
         this.email = user.getEmail();
         this.about = user.getAbout();
         this.organizationStatus = user.getOrganizationStatus();
+        this.applyOrganizationDate = user.getApplyOrganizationDate();
     }
 
     public OrganizationDetailData(Consultant user) {
@@ -39,5 +43,6 @@ public class OrganizationDetailData extends OrganizationSummaryData {
         entity.setEmail(this.getEmail());
         entity.setAbout(this.getAbout());
         entity.setOrganizationStatus(this.getOrganizationStatus());
+        entity.setApplyOrganizationDate(this.getApplyOrganizationDate());
     }
 }

@@ -8,6 +8,7 @@ table.ui.celled.striped.table#organizationM
         th 联系电话
         th 电子邮件
         th 状态
+        th 申请时间
         th(style="padding-left:30px;") 管理
     tbody
       |{{#each organizations}}
@@ -18,9 +19,9 @@ table.ui.celled.striped.table#organizationM
         td.contact {{ contact }}
         td.mobile {{ mobile }}
         td.email {{email}}
-        td.status {{organizationStatus}}
+        td(id="{{id}}-status") {{organizationStatus}}
+        td.applyTime {{applyOrganizationDate}}
         td.action
-          .ui.small.red.input.button(style="margin-left:20px;") 拒绝
-          .ui.small.green.input.button(style="margin-left:20px;") 批准
+          .ui.small.red.input.button(style="margin-left:20px;",oid="{{id}}",value="REJECTED") 拒绝
+          .ui.small.green.input.button(style="margin-left:20px;",oid="{{id}}",value="APPROVED") 批准
       |{{/each}}
-

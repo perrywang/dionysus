@@ -11,6 +11,10 @@ Dionysus.module('AdminOrganization', function (Organization, Dionysus, Backbone,
       var rawContent = this.pagedOrganizations.content;
       for(var i = 0; i < rawContent.length; i++){
         rawContent[i]['organizationStatus'] = statusMapping[rawContent[i]['organizationStatus']];
+        var applyDate = rawContent[i]['applyOrganizationDate'];
+        if(applyDate != null) {
+          rawContent[i]['applyOrganizationDate'] = new Date(rawContent[i]['applyOrganizationDate']).toLocaleString();
+        }
       }
       return {organizations:rawContent};
     },
@@ -20,7 +24,14 @@ Dionysus.module('AdminOrganization', function (Organization, Dionysus, Backbone,
       return html;
     },
     onRender: function(){
-
+      this.$('tbody').on('click','.button',function(e){
+        var orgId = $(this).attr('oid');
+        var status = $(this).attr('value');
+        $.getJSON("/controllers/organizations/admin/approve/"+orgId + "?status="+status,function(data){
+          $('#'+orgId+'-status').text(statusMapping[status]);
+          toastr.info('更新状态成功！');
+        });
+      });
     }
   });
 
@@ -28,7 +39,7 @@ Dionysus.module('AdminOrganization', function (Organization, Dionysus, Backbone,
 
     showOrganizations: function () {
       Dionysus.mainRegion.show(new Dionysus.Common.Views.Loading());
-      $.when(Dionysus.request('organization:entities',{page:0,size:20,status:'ALL'})).done(function (pagedOrganizations) {
+      $.when(Dionysus.request('organization:entities',{page:0,size:25,status:'ALL',admin:true})).done(function (pagedOrganizations) {
         var view = new OrganizationMView({organizations:pagedOrganizations});
         Dionysus.mainRegion.show(view);
       });
