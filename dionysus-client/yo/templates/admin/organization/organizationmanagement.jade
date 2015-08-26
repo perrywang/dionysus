@@ -1,0 +1,26 @@
+table.ui.celled.striped.table#organizationM
+    thead
+      tr
+        th 申请人
+        th 机构名称
+        th 机构地址
+        th 联系人
+        th 联系电话
+        th 电子邮件
+        th 状态
+        th(style="padding-left:30px;") 管理
+    tbody
+      |{{#each organizations}}
+      tr
+        td.username {{ username }}
+        td.realName {{ realName }}
+        td.address {{address}}
+        td.contact {{ contact }}
+        td.mobile {{ mobile }}
+        td.email {{email}}
+        td.status {{organizationStatus}}
+        td.action
+          .ui.small.red.input.button(style="margin-left:20px;") 拒绝
+          .ui.small.green.input.button(style="margin-left:20px;") 批准
+      |{{/each}}
+

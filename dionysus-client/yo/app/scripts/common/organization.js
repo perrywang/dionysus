@@ -9,9 +9,15 @@ Dionysus.module('Entities', function(Entities, Dionysus, Backbone, Marionette, $
     var size = options.size || 6;
     var status = options.status || 'APPROVED';
     var organizations = $.Deferred();
-    $.getJSON(baseUrl+"?status=" + status + "&page=" + page + "&size=" + size).done(function(data){
-      organizations.resolve(data);
-    });
+    if(status == 'ALL'){
+      $.getJSON(baseUrl+"?page=" + page + "&size=" + size).done(function(data){
+        organizations.resolve(data);
+      });
+    }else{
+      $.getJSON(baseUrl+"?status=" + status + "&page=" + page + "&size=" + size).done(function(data){
+        organizations.resolve(data);
+      });
+    }
     return organizations.promise();
   });
 

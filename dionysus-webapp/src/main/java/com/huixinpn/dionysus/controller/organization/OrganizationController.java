@@ -38,10 +38,15 @@ public class OrganizationController {
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-    public EntityPageData<OrganizationSummaryData> getOrganizations(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "status") String organizationStatus) {
+    public EntityPageData<OrganizationDetailData> getOrganizations(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "status", required = false) String organizationStatus) {
         PageRequest paging = PagingHelper.getPageRequest(page, size);
-        Page<User> organizations = organizationRepository.findByOrganizationStatus(OrganizationStatus.valueOf(organizationStatus), paging);
-        return new EntityPageData<>(organizations, OrganizationSummaryData.class);
+        Page<User> organizations;
+        if (organizationStatus != null) {
+            organizations = organizationRepository.findByOrganizationStatus(OrganizationStatus.valueOf(organizationStatus), paging);
+        } else {
+            organizations = organizationRepository.allOrganizations(paging);
+        }
+        return new EntityPageData<>(organizations, OrganizationDetailData.class);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

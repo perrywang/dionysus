@@ -2,6 +2,7 @@ package com.huixinpn.dionysus.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.huixinpn.dionysus.auth.PasswordListener;
+import com.huixinpn.dionysus.domain.AbstractDionysusAuditable;
 import com.huixinpn.dionysus.domain.AbstractDionysusPersistable;
 import com.huixinpn.dionysus.domain.course.Course;
 import lombok.Data;
@@ -23,7 +24,7 @@ import java.util.Set;
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 @EntityListeners(PasswordListener.class)
-public class User extends AbstractDionysusPersistable implements UserDetails {
+public class User extends AbstractDionysusAuditable<User> implements UserDetails {
 
   private static final long serialVersionUID = 6574790333326442416L;
 

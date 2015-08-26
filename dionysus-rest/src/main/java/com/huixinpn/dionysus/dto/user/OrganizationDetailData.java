@@ -1,6 +1,7 @@
 package com.huixinpn.dionysus.dto.user;
 
 import com.huixinpn.dionysus.domain.user.Consultant;
+import com.huixinpn.dionysus.domain.user.OrganizationStatus;
 import com.huixinpn.dionysus.domain.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ public class OrganizationDetailData extends OrganizationSummaryData {
     private String mobile;
     private String email;
     private String about;
+    private OrganizationStatus organizationStatus;
 
     public OrganizationDetailData(User user) {
         super(user);
@@ -21,10 +23,11 @@ public class OrganizationDetailData extends OrganizationSummaryData {
         this.mobile = user.getMobile();
         this.email = user.getEmail();
         this.about = user.getAbout();
+        this.organizationStatus = user.getOrganizationStatus();
     }
 
     public OrganizationDetailData(Consultant user) {
-        this((User)user);
+        this((User) user);
     }
 
     @Override
@@ -35,5 +38,6 @@ public class OrganizationDetailData extends OrganizationSummaryData {
         entity.setMobile(this.getMobile());
         entity.setEmail(this.getEmail());
         entity.setAbout(this.getAbout());
+        entity.setOrganizationStatus(this.getOrganizationStatus());
     }
 }
