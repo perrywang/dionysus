@@ -13,10 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -28,7 +25,7 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
   private static final long serialVersionUID = 6574790333326442416L;
 
   @NotNull
-  @Size(min = 4, max = 40)
+  @Size(min = 1, max = 40)
   @Column(name = "username", unique = true)
   private String username;
 
@@ -115,6 +112,8 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
 
   @Enumerated(EnumType.STRING)
   private OrganizationStatus organizationStatus = OrganizationStatus.NONE;
+
+  private Calendar applyOrganizationDate;
 
   private String contact;
 

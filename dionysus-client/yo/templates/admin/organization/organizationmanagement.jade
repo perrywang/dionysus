@@ -1,0 +1,27 @@
+table.ui.celled.striped.table#organizationM
+    thead
+      tr
+        th 申请人
+        th 机构名称
+        th 机构地址
+        th 联系人
+        th 联系电话
+        th 电子邮件
+        th 状态
+        th 申请时间
+        th(style="padding-left:30px;") 管理
+    tbody
+      |{{#each organizations}}
+      tr
+        td.username {{ username }}
+        td.realName {{ realName }}
+        td.address {{address}}
+        td.contact {{ contact }}
+        td.mobile {{ mobile }}
+        td.email {{email}}
+        td(id="{{id}}-status") {{organizationStatus}}
+        td.applyTime {{applyOrganizationDate}}
+        td.action
+          .ui.small.red.input.button(style="margin-left:20px;",oid="{{id}}",value="REJECTED") 拒绝
+          .ui.small.green.input.button(style="margin-left:20px;",oid="{{id}}",value="APPROVED") 批准
+      |{{/each}}

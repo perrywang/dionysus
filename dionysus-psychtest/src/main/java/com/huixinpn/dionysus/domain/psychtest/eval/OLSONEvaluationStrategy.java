@@ -24,6 +24,11 @@ public class OLSONEvaluationStrategy implements PsychTestEvaluationStrategy {
 	private static final List<Integer> a11 = Arrays.asList(12, 23, 29, 43, 55, 61, 75, 80, 97, 105);
 	private static final List<Integer> a12 = Arrays.asList(3, 11, 22, 46, 56, 65, 76, 89, 100, 104);
 	
+	private static final List<Integer> negative_question = Arrays.asList(3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 16, 17, 18, 24, 25, 
+			26, 28, 29, 30, 37, 40, 43, 44, 47, 48, 49, 52, 53, 54, 55, 56, 57, 59, 61, 63, 64, 66,
+			69, 70, 71, 72, 73, 74, 75, 77, 78, 79, 81, 84, 85, 86, 87, 88, 90, 92, 93, 94, 95, 96, 97, 98, 99, 100, 
+			101, 105, 106, 110, 111, 112, 115, 117, 118, 123);
+	
 	private static Map<String, List<Integer>> prepareMap() {
         Map<String, List<Integer>> hashMap = new HashMap<>();
        
@@ -44,36 +49,63 @@ public class OLSONEvaluationStrategy implements PsychTestEvaluationStrategy {
     }
 	
 	public void calculateScore(Integer subid, String identity, Map<String, Integer> scores) {
-		int value;
+		int value = 0;
 		for (Map.Entry<String, List<Integer>> entry : RAW_SPLIT.entrySet())
 		{
-		    for (Integer i: entry.getValue())
+		    for (Integer i : entry.getValue())
 		    {
 		    	if(i.equals(subid)){
-		    		switch(identity){
-					case "A":
-						value = 1;
-						break;
-					case "B":
-						value = 2;
-						break;
-					case "C":
-						value = 3;
-						break;
-					case "D":
-						value = 4;
-					case "E":
-						value = 5;
-						break;
-					default: 
-						value = 0;
-						break;
+		    		/****判断正性和负性***********/
+		    		for(Integer j : negative_question){
+			    		if(j.equals(subid)){
+			    			switch(identity){
+								case "A":
+									value = 1;
+									break;
+								case "B":
+									value = 2;
+									break;
+								case "C":
+									value = 3;
+									break;
+								case "D":
+									value = 4;
+									break;
+								case "E":
+									value = 5;
+									break;
+								default: 
+									value = 0;
+									break;
+			    			}
+			    		}else{
+			    			switch(identity){
+								case "A":
+									value = 5;
+									break;
+								case "B":
+									value = 4;
+									break;
+								case "C":
+									value = 3;
+									break;
+								case "D":
+									value = 2;
+									break;
+								case "E":
+									value = 1;
+									break;
+								default: 
+									value = 0;
+									break;	
+			    			}
+			    		}
 		    		}
 		    		if (scores.containsKey(entry.getKey()))	{
 						scores.put(entry.getKey(), scores.get(entry.getKey()) + value);
 					} else {
 						scores.put(entry.getKey(), value);
-					}
+					}	    		
 		    	}
 		    }
 		}						
