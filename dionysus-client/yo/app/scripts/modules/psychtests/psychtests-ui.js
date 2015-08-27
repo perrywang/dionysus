@@ -109,9 +109,44 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
       return data;
     },
     onRender : function() {
-      this.$('.ui.radio.checkbox').checkbox();
+      if(this.model.canUpdate()) this.$('.ui.radio.checkbox').checkbox();
+      
+    },
+    onDomRefresh: function(){
+      this.fillData();
+    },
+    fillData: function(){
+      var answers = this.model.answers.toJSON();
+      var data = {};
+      _.each(answers, function(answer){
+        data[answer.qid] = answer.value ? "1" : "0";
+      });
+
+      Backbone.Syphon.deserialize(this, data);
+    },
+    events: {
+      "click .button.save": function(){
+        var answers = Backbone.Syphon.serialize(this);
+        var model = this.model;
+        _.each(answers, function(value, questionId){
+          if(typeof questionId == "string") questionId = parseInt(questionId,10);
+          var question = model.questions.find({id:questionId});
+          model.updateResult(question, value);
+        })
+        this.model.saveResults();
+      },
+      "click .button.submit": function(){
+        var answers = Backbone.Syphon.serialize(this);
+      }
     }
   });
+
+
+
+
+
+
+
 
   var psychtestController = (function() {
     var currentTest;
@@ -126,14 +161,14 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
           Dionysus.mainRegion.show(new TestSuiteCollectionView({ collection: suites }));
         });
       },
-      showPsychTest: function (id, question) {
+      showPsychTest: function (id, question, rid) {
         var tid = parseInt(id, 10);
         // 如果测试数据没有没加载，或者加载的测试数据不是当前选择的
         // 那么重新发起数据库查询
         if (!currentTest || currentTest.id !== tid) {
           // loading at the first time
           var fetchTest = Dionysus.request('psychtests:instance', id),
-              fetchResult = Dionysus.request('psychtestresults:instance', id);
+              fetchResult = Dionysus.request('psychtestresults:instance', rid);
 
           $.when(fetchTest, fetchResult).done(function (test, result) {
             test.initResult(result);
@@ -155,6 +190,10 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
           // 如果数据已经加载，那么定位到选中的题目
           currentTest.select(question);
         }
+      },
+      continuePsychTest: function(tid, rid){
+        this.clear();
+        this.showPsychTest(tid,null,rid);
       }
     };
   })();
@@ -162,6 +201,7 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
   Dionysus.addInitializer(function () {
     var router = new Marionette.AppRouter({
       appRoutes: {
+        'psychtests/continue/tid=:tid&rid=:rid': 'continuePsychTest',
         'psychtests/:id(/)(:question)': 'showPsychTest',
         'psychtestsuites(/)' : 'showPsychTestSuites'
       },

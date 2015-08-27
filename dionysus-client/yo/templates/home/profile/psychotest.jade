@@ -1,15 +1,14 @@
 table.ui.stackable.table
   thead
     tr
-      th 测试项目
-      th 项目描述	  
+      th 测试项目  
       th 测试时间
       th 测试状态
   tbody
     {{#each items}}
     tr
-      td {{title}}
-      td {{desc}}
+      td
+        a(href="/psychtests/continue/tid={{testId}}&rid={{id}}") {{testTitle}}
       td {{date}}
       td {{state}}
     {{/each}}

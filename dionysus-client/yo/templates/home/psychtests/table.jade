@@ -16,11 +16,16 @@
             .inline.fields
               .field
                 .ui.radio.checkbox
-                  input(type="radio", name="{{id}}")
+                  input(type="radio", name="{{id}}", value="1")
                   label 是
               .field
                 .ui.radio.checkbox
-                  input(type="radio", name="{{id}}")
+                  input(type="radio", name="{{id}}", value="0")
                   label 否
         {{/each}}
-    .ui.primary.button 提交答案
+    button.ui.primary.button.save
+      i.icon.save 
+      | 保存
+    button.ui.primary.button.submit(type="submit")
+      i.icon.send
+      | 提交答案

@@ -14,9 +14,9 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
     tagName: 'form',
     className: 'ui form',
     initialize: function (options) {
-      this.username = this.model.model.toJSON().createdBy.username;
+      this.username = this.model.toJSON().userData.username;
 	  //this.consultantname = this.model.model.toJSON().consultant.username;
-	  this.id = this.model.model.toJSON().createdBy.id;
+	  this.id = this.model.toJSON().userData.id;
     },
 	serializeData: function() {
       var data = {};
@@ -120,7 +120,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
           answerString = answer._embedded.option.identity;
         }
         else if(type == 'YES_NO'){
-          answerString = answer.value? 是:否;
+          answerString = answer.value? "是":"否";
         }
 
         items.push({
@@ -143,7 +143,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
       $.when(Dionysus.request('psychtestresult:all:pageable')).done(function (psychtests) {  
         var listView = new PsychTestListView({collection:psychtests});
         listView.on('childview:input:profile', function(childView, model){
-		  var editor = new PsychoProfileEditorView({model:model});
+		  var editor = new PsychoProfileEditorView({model:childView.model});
 		  Dionysus.mainRegion.show(editor); 
 		});
         Dionysus.mainRegion.show(listView);

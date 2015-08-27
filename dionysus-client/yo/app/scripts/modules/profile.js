@@ -139,7 +139,7 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
     },
     showMyTests: function() {
       var region = this.getRegion('myContent');
-      Dionysus.request("psychotest:findallByUser").done(function(psychotests) {
+      Dionysus.request("psychtestresult:all:pageable").done(function(psychotests) {
         region.show(new ProfilePsychoTestView({
           collection: psychotests
         }));
@@ -511,10 +511,13 @@ Dionysus.module('Profile', function(Profile, Dionysus, Backbone, Marionette) {
 
       for (var i = dataCollection.length - 1; i >= 0; i--) {
         var data = dataCollection[i];
+        //process date info
+        if(data.date && typeof data.date == "object"){
+          var temp_date = data.date;
+          data.date = temp_date.year+"-"+temp_date.monthOfYear+"-"+temp_date.dayOfMonth;
+        }
+        //transfer state
         data.state = state_const[data.state];
-        data.title = data._embedded.test.title;
-        data.desc = data._embedded.test.description;
-        data.date = data.date;
       }
       return {
         items: dataCollection

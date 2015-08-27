@@ -3,6 +3,9 @@ package com.huixinpn.dionysus.domain.psychtest.eval;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
+import java.util.HashMap;
+import java.util.Map;
+
 // 艾森克量表
 public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {
 
@@ -16,8 +19,10 @@ public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {
 			this.score += value;
 		}
 
-		public int getScore() {
-			return this.score;
+		public Object getScore() {
+            Map<String, Integer> result = new HashMap<>();
+            result.put("score", this.score);
+            return result;
 		}
 	}
 

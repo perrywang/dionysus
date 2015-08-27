@@ -39,14 +39,19 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
       // this.cachedResults.save();
       // console.log(this.cachedResults.toJSON());
       var data = this.cachedResults.toData();
+      var cachedResults = this.cachedResults;
+      if(this.answers.length == 0) return;
+
       $.ajax({
         url: '/controllers/psychtest/' + this.id + '/submit',
         method: 'POST',
         dataType:"json",
-        contentType: 'application/json',
+        //contentType: 'application/json',
+        contentType: 'text/plain',
         data: JSON.stringify(data)
       }).done(function(data) {
-        console.log(data);
+        if(typeof data === "number") cachedResults.set("id", data);
+        alert('保存成功');
       });
     },
     submitResults : function() {
@@ -56,6 +61,25 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
     },
     updateResult : function(question, answer) {
       var type = question.get('type');
+      var val = null;
+      switch(type){
+        case 'SINGLE_CHOICE': 
+          val = parseInt(answer, 10);
+          break;
+        case 'YES_NO':
+          val = Boolean(parseInt(answer, 10));
+          break;
+      }
+
+      var result_answer = this.answers.findWhere({qid : question.id});
+      if(result_answer){
+        result_answer.set("value",val);
+      }
+      else{
+        result_answer = new PsychTestAnswer({value:val, type: type, qid: question.id});
+        this.answers.add(result_answer);
+      }
+
       console.log(type);
     },
     canUpdate : function() {
@@ -136,7 +160,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
   var PsychTestQuestionResult = Backbone.RelationalHalResource.extend({});
 
-  var PsychTestResult = Backbone.RelationalHalResource.extend({
+  /*var PsychTestResult = Backbone.RelationalHalResource.extend({
     url : '/api/v1/psychtestresults',
     halEmbedded: {
       test : {
@@ -144,7 +168,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         relatedModel : PsychTest
       }
     }
-  });
+  });*/
 
 
 
@@ -225,16 +249,32 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
 
 
   Dionysus.reqres.setHandler('psychtestresults:instance', function(id) {
-    var result = PsychTestResult.findOrCreate({ id : id }), defer = $.Deferred();
-    result.fetch({ url : '/api/v1/psychtestresults/' + id  }).then(function () {
-      defer.resolve(result);
-    }).fail(function(xhr) {
-      if (xhr.status === 404) {
-        defer.resolve(new PsychTestResult({}));
-      } else {
-        defer.reject();
-      }
-    });
+    var defer = $.Deferred();
+    if (id) {
+      var result = PsychTestResult.findOrCreate({
+          id: id
+        });
+      result.fetch({
+        url: '/api/v1/psychtestresults/' + id
+      }).then(function() {
+        defer.resolve(result);
+      }).fail(function(xhr) {
+        if (xhr.status === 404) {
+          var r = new PsychTestResult();
+          r.set("_embedded", {answers: new Backbone.Collection()});
+          defer.resolve(r);
+          /*defer.resolve(new PsychTestResult({}));*/
+        } else {
+          defer.reject();
+        }
+      });
+    }
+    else {
+      var r = new PsychTestResult();
+      r.set("_embedded", {answers: new Backbone.Collection()});
+      defer.resolve(r);
+      /*defer.resolve(new PsychTestResult());*/
+    }
     return defer.promise();
   });
 
