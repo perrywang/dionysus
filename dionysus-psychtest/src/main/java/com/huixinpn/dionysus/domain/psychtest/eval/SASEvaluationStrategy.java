@@ -1,5 +1,8 @@
 package com.huixinpn.dionysus.domain.psychtest.eval;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
@@ -34,9 +37,11 @@ public class SASEvaluationStrategy implements PsychTestEvaluationStrategy{
 			this.temp += value;
 		}
 
-		public int getScore() {
-			this.score = (int)(this.temp *1.25);
-			return this.score;
+		public Object getScore() {
+            Map<String, Integer> result = new HashMap<>();
+            this.score = (int)(this.temp *1.25);
+            result.put("score", this.score);
+            return result;
 		}
 	}
   @Override
