@@ -4,24 +4,27 @@ insert into psychtestsuites(id, title, description) values (3, '认知发展类'
 insert into psychtestsuites(id, title, description) values (4, '行为类', '行为类');
 insert into psychtestsuites(id, title, description) values (5, '学习与教育类', '学习与教育类');
 
+/************Done*****************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (1, 'PF16', 'ONE_BY_ONE', 187, '16PF', '人格评定以及心理健康评定', '12岁以上', '30', '120', 'MACHINE');
+/************Done*****************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (2, 'EPQ',  'TABLE', 88, '艾森克量表', '人格评定以及心理健康评定', '3岁以上', '10', '100', 'MACHINE');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (3, 'MMPI', 'TABLE', 399, '明尼苏达', '人格评定及精神疾病评定', '12岁以上', '60', '300', 'MACHINE');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (4, 'EPPS', 'ONE_BY_ONE', 225, '爱德华个人偏好量表', '了解性格特点以及内在各项需求评定认知', '12岁以上', '40', '100', 'MACHINE');
+/************Not Yet 需要支持图片*****************************/
 insert into psychtests(id, type, format, title, description, object, duration, cost, approach) values (5, 'TAT',  'ONE_BY_ONE', 'TAT测试', '人格评定以及需求评定', '12岁以上', '10', '100', 'MANUAL');
-/************正向计分题A、B、C、D按1、2、3、4分计；反向计分题按4、3、2、1计分。反向计分题号：5、9、13、17、19。 
-总分乘以1.25取整数，即得标准分，分值越小越好，分界值为50。
-*********************************************************************************************************/
+/************Done********************************/ 
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (6, 'SAS', 'ONE_BY_ONE', 20, '焦虑量表', '焦虑评定以及情绪评定', '14岁以上', '3', '60', 'MACHINE');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (7, 'SDS', 'ONE_BY_ONE', 20, '抑郁量表', '抑郁评定以及情绪评定', '14岁以上', '3', '60', 'MACHINE');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (8, 'CMI', 'TABLE', 195, '康奈尔健康问卷', '男女性多维度心理健康评定', '14岁以上', '30', '120', 'MACHINE');
-/*************计算总分************************/
+/************Done********************************/ 
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (9, 'STS', 'ONE_BY_ONE', 20, '压力量表', '压力评定以及情绪评定', '18岁以上', '5', '80', 'MACHINE');
+/************Not Yet*****************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (10, 'SCL90', 'ONE_BY_ONE', 90, 'SCL-90', '9个方面进行心理健康评定', '12岁以上', '10', '100', 'MACHINE');
+/************Done********************************/ 
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (11, 'OLSON', 'ONE_BY_ONE', 124, '婚姻质量', '评定婚姻状况', '22岁以上', '15', '100', 'MANUAL');
 /************无量表分*************************/
 insert into psychtests(id, type, format, min, title, description, object, duration, cost, approach) values (12, 'DCCC', 'ONE_BY_ONE', 57, '阅读障碍', '阅读能力，阅读行为', '3岁以上', '10', '80', 'MANUAL');

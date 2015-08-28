@@ -10,7 +10,7 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestionOption;
 import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 public class OLSONEvaluationStrategy implements PsychTestEvaluationStrategy {
-	private static final Map<String, List<Integer>> RAW_SPLIT = prepareMap();
+	
 	private static final List<Integer> a1 = Arrays.asList(34, 42, 64, 70, 101, 116, 117, 118, 119, 120, 121, 122, 123, 124);
 	private static final List<Integer> a2 = Arrays.asList(14, 19, 32, 36, 52, 53, 82, 88, 99, 113);
 	private static final List<Integer> a3 = Arrays.asList(8, 13, 24, 30, 37, 44, 63, 78, 95, 115);
@@ -28,6 +28,8 @@ public class OLSONEvaluationStrategy implements PsychTestEvaluationStrategy {
 			26, 28, 29, 30, 37, 40, 43, 44, 47, 48, 49, 52, 53, 54, 55, 56, 57, 59, 61, 63, 64, 66,
 			69, 70, 71, 72, 73, 74, 75, 77, 78, 79, 81, 84, 85, 86, 87, 88, 90, 92, 93, 94, 95, 96, 97, 98, 99, 100, 
 			101, 105, 106, 110, 111, 112, 115, 117, 118, 123);
+	
+	private Map<String, List<Integer>> RAW_SPLIT = prepareMap();
 	
 	private static Map<String, List<Integer>> prepareMap() {
         Map<String, List<Integer>> hashMap = new HashMap<>();
