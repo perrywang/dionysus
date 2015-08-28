@@ -24,10 +24,24 @@ Dionysus.module('PsychTestEval', function (PsychTestEval, Dionysus, Backbone, Ma
 	});
 
 	var DefaultView = Marionette.ItemView.extend({
-		template: JST[''],
+		template: JST['templates/admin/psychtests/eval/default'],
+		tagName: 'table',
+    	className: 'ui celled striped table',
 		serializeData: function(){
 			var data = this.model.toJSON();
 			var items = [];
+
+			_.each(data, function(value, key) {
+				if (key != "id") {
+					items.push({
+						key: key,
+						value: value
+					});
+				}
+
+			});
+
+			return {items:items};
 		}
 	});
 

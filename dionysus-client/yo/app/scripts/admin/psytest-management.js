@@ -97,7 +97,10 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
       var meta = this.model.toJSON();
 
       //拼装答案
-      var answers = this.collection.toJSON();
+      var raw_answers = this.collection.toJSON();
+      //由于qid是question的数据库id字段，展示时需转换成从1开始，在此先排序，再取第一个id - 1 作为id转换的减数
+      var answers = _.sortBy(raw_answers,"qid");
+      var subtrahend = answers[0].qid - 1;
       var items = [];
       _.each(answers, function(answer) {
 
@@ -124,7 +127,7 @@ Dionysus.module('AdminPsychTest', function (PsychTest, Dionysus, Backbone, Mario
         }
 
         items.push({
-          id: answer.qid,
+          id: answer.qid - subtrahend,
           question: questionString,
           answer: answerString
         });

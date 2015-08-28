@@ -10,7 +10,7 @@ import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
 
 // 艾森克量表
 public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {
-	private static final Map<String, List<Integer>> RAW_SPLIT = prepareMap();
+
 	private static final List<Integer> a1 = Arrays.asList(2, 6, 9, 11, 18, 22, 26, 30, 34, 38, 42, 46, 50, 56, 62, 66, 68, 72, 75, 76, 81, 85, 88);
 	private static final List<Integer> a2 = Arrays.asList(1, 5, 10, 13, 14, 17, 21, 25, 29, 33, 37, 41, 45, 49, 53, 55, 61, 65, 71, 80, 84);
 	private static final List<Integer> a3 = Arrays.asList(3, 7, 12, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 57, 59, 63, 67, 69, 73, 74, 77, 78, 82, 86);
@@ -18,6 +18,8 @@ public class EPQEvaluationStrategy implements PsychTestEvaluationStrategy {
 	
 	private static final List<Integer> negative_question = Arrays.asList(2, 6, 9, 11, 18, 38, 42, 56, 62, 72, 88,
 			21, 29, 45, 4, 8, 16, 24, 28, 40, 44, 48, 52, 54, 60, 64, 70, 79, 83);
+
+    private Map<String, List<Integer>> RAW_SPLIT = prepareMap();
 	
 	private static Map<String, List<Integer>> prepareMap() {
         Map<String, List<Integer>> hashMap = new HashMap<>();
