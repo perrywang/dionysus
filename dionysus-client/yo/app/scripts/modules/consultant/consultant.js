@@ -87,6 +87,14 @@ Dionysus.module('Consultant', function(Consultant, Dionysus, Backbone, Marionett
       this.expertises = options.expertises;
       this.expertise = options.expertise;
       this.listenTo(this.collection, 'add', this.render, this);
+
+      //register a helper to manage long description
+      Handlebars.registerHelper("shorter_description", function(description){        
+        var lng = 88;
+        var sufix = "";
+        if(description.length > lng) sufix = '...';
+        return new Handlebars.SafeString(description.substr(0,lng) + sufix);
+      });
     },
 
     serializeData: function(){

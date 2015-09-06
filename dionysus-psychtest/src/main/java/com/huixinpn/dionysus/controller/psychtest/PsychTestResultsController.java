@@ -1,9 +1,6 @@
 package com.huixinpn.dionysus.controller.psychtest;
 
-import com.huixinpn.dionysus.domain.psychtest.PsychTest;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestAnswer;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestQuestion;
-import com.huixinpn.dionysus.domain.psychtest.PsychTestResult;
+import com.huixinpn.dionysus.domain.psychtest.*;
 import com.huixinpn.dionysus.domain.psychtest.dto.PsychTestResultData;
 import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestEvaluationFactory;
 import com.huixinpn.dionysus.domain.psychtest.eval.PsychTestEvaluationStrategy;
@@ -22,6 +19,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -145,6 +143,21 @@ public class PsychTestResultsController {
         }
     }
 
+    @RequestMapping(value = "/psychtest/{id}", method = RequestMethod.GET)
+    public Map<String, String> getTestDetail(@PathVariable Long id){
+        PsychTest test = testRepository.findOne(id);
+        Map<String, String> detail = new HashMap<>();
+        detail.put("id", test.getId().toString());
+        detail.put("title", test.getTitle());
+        detail.put("description", test.getDescription());
+        detail.put("cost", test.getCost());
+        detail.put("object", test.getObject());
+        detail.put("duration", test.getDuration());
+        detail.put("cover", test.getCover());
+        detail.put("comment", test.getComment());
+
+        return detail;
+    }
 
 
     @RequestMapping(value = "/psychtestresults", method = RequestMethod.GET)

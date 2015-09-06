@@ -15,7 +15,28 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
     template : JST['templates/home/psychtests/psychtest'],
     className : 'ui centered stackable grid',
     childView : TestSuiteView,
-    childViewContainer : '.ui.list.suites'
+    childViewContainer : '.ui.list.suites',
+    initialize: function(){
+      //register a helper to manage long description
+      Handlebars.registerHelper("shorter_description", function(description){        
+        var lng = 17;
+        var sufix = "";
+        if(description.length > lng) sufix = '...';
+        return new Handlebars.SafeString(description.substr(0,lng) + sufix);
+      });
+    },
+
+    events: {
+      'click #psy-type': function(event){
+        var clicking = $(event.target);
+        event.preventDefault();
+          var href = clicking.attr('href');
+          $('html,body').animate({
+            scrollTop: $(href).offset().top
+          }, 1000);
+ 
+      }
+    }
   });
 
 
@@ -143,6 +164,10 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
 
 
 
+  var TestDetailView = Marionette.ItemView.extend({
+    template : JST['templates/home/psychtests/testdetail'],
+  });
+
 
 
 
@@ -194,7 +219,14 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
       continuePsychTest: function(tid, rid){
         this.clear();
         this.showPsychTest(tid,null,rid);
+      },
+
+      showPsychTestDetail: function(id){
+        Dionysus.request('psychotest:dto:detail', id).done(function(test){
+          Dionysus.mainRegion.show(new TestDetailView({model:test}));
+        });
       }
+
     };
   })();
 
@@ -202,8 +234,9 @@ Dionysus.module('PsychTest', function (PsychTest, Dionysus, Backbone, Marionette
     var router = new Marionette.AppRouter({
       appRoutes: {
         'psychtests/continue/tid=:tid&rid=:rid': 'continuePsychTest',
+        'psychtests/about/:id': 'showPsychTestDetail',
         'psychtests/:id(/)(:question)': 'showPsychTest',
-        'psychtestsuites(/)' : 'showPsychTestSuites'
+        'psychtestsuites(/)' : 'showPsychTestSuites',
       },
       controller: psychtestController
     });

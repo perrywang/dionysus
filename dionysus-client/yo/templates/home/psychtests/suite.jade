@@ -1,7 +1,7 @@
-h3.header {{ title }}
+h3.header(id="{{id}}") {{ title }}
 .ui.stackable.grid
   .six.wide.column
-    img.ui.image(src="/public/images/placeholder.png")
+    img.ui.image(src="/public/images/T{{id}}.png")
 
   .ten.wide.column.ui.list
     table.ui.very.basic.unstackable.table
@@ -15,8 +15,9 @@ h3.header {{ title }}
         {{#each tests}}
         tr
           td 
-            a.header(title="{{ description }}", href="/psychtests/{{ id }}") {{title}}
+            a(title="{{ description }}", href="/psychtests/about/{{ id }}") 
+              h5.ui.green.header {{title}}
           td {{ object }}
-          td {{ description }}
-          td 0           
+          td {{shorter_description description}}
+          td ...           
         {{/each}}

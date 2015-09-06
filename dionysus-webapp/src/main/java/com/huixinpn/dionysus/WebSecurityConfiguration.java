@@ -60,7 +60,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         .antMatchers(HttpMethod.GET, "/api/v1/psychtests/**").authenticated()
         .antMatchers(HttpMethod.GET, "/api/v1/psychtestresults/**").authenticated()
-        .regexMatchers(HttpMethod.GET,"/controllers/psy.*").authenticated()
+        .regexMatchers(HttpMethod.GET,"/controllers/psychtestresults.*").authenticated()
         ;
     }
 

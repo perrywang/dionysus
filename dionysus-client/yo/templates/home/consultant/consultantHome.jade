@@ -23,10 +23,10 @@
             img.c-avatar(src="/public/images/placeholder.png")
             {{/if}}
           .ui.basic.center.aligned.segment
-            h4.ui.center.aligned.header
+            h4.ui.center.aligned.green.header
               .content {{realName}}
-                .sub.header {{about}}
-            a.ui.green.basic.button(href="/consultants/{{id}}") 预约咨询
+                .sub.header {{shorter_description about}}
+            a.ui.green.basic.button(href="/consultants/{{id}}") 详情或预约
         {{/each}}
 .row
   .center.aligned.column

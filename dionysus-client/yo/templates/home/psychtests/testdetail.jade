@@ -1,0 +1,15 @@
+.ui.centered.grid
+	.sixteen.wide.mobile.twelve.wide.tablet.eight.wide.computer.column
+		h3.ui.top.attached.green.header {{title}}
+			.sub.header 对象: {{object}} / 时长: {{duration}} / 费用: 0
+		.ui.attached.center.aligned.basic.segment
+			{{#if cover}}
+			img.ui.centered.image(src="{{cover}}")
+			{{else}}
+			img.ui.centered.image(src="/public/images/T{{id}}.png")
+			{{/if}}
+			p
+				h4.ui.header {{description}}
+			p
+				a.positive.ui.button(href="/psychtests/{{ id }}") 开始测试
+
