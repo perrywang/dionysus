@@ -10,22 +10,24 @@
         {{/each}}
   .six.wide.column
     a(href="/consultants/info/detail")
-      img(src="/public/images/consultantinfo.jpg")
+      img#attention(src="/public/images/consultantinfo.jpg")
 .row
-  .ui.three.column.stackable.grid
-    {{#each items}}
-    .column
-      {{#if avatar}}
-      img.ui.centered.circular.small.image(src="{{avatar}}")
-      {{else}}
-      img.ui.centered.circular.small.image(src="/public/images/placeholder.png")
-      {{/if}}
-      .ui.basic.center.aligned.segment
-        h4.ui.center.aligned.header
-          .content {{realName}}
-            .sub.header {{about}}
-        a.ui.green.basic.button(href="/consultants/{{id}}") 预约咨询
-    {{/each}}
+  .twelve.wide.column
+      .ui.three.column.stackable.grid
+        {{#each items}}
+        .column
+          .consultant.avatar
+            {{#if avatar}}
+            img.c-avatar(src="{{avatar}}")
+            {{else}}
+            img.c-avatar(src="/public/images/placeholder.png")
+            {{/if}}
+          .ui.basic.center.aligned.segment
+            h4.ui.center.aligned.header
+              .content {{realName}}
+                .sub.header {{about}}
+            a.ui.green.basic.button(href="/consultants/{{id}}") 预约咨询
+        {{/each}}
 .row
   .center.aligned.column
     #paging

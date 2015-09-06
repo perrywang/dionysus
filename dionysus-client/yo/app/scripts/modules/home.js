@@ -125,7 +125,7 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
       });
 
       this.$el
-        .modal('setting','transition','horizontal flip')
+        .modal('setting','transition','vertical flip')
         .modal('show');
     }
   });
