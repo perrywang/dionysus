@@ -50,12 +50,12 @@ module.exports = function (grunt) {
       req.url = '/index.html';
     }else if (/^\/app(\/)?/.test(url)) {
       req.url = '/index.html';
-    } else if (/^\/admin(\/)?/.test(url)) {
+    }else if (/^\/adminlogin(\/)?/.test(url)) {
+      req.url = '/adminlogin.html';
+    }else if (/^\/admin(\/)?/.test(url)) {
       req.url = '/admin.html';
     } else if (/^\/consultant(\/)?/.test(url)) {
       req.url = '/consultant.html';
-    } else if (/^\/adminlogin(\/)?/.test(url)) {
-      req.url = '/adminlogin.html';
     }
     return next();
   };
