@@ -8,23 +8,39 @@ html(class="no-js")
     link(rel="shortcut icon", href="/favicon.ico")
 
     // build:css({.,.tmp}) /styles/adminlogin.css
-    link(rel="stylesheet", href="/bower_components/fontawesome/css/font-awesome.css")
     link(rel="stylesheet", href="/styles/semantic.css")
     // endbuild
   body.dionysus
     main#main(style="width:80%")
-
+      .ui.centered.grid
+        .row
+          .column
+            img.ui.centered.image(src="/public/images/logo.png")
+        .row
+          .eight.wide.column
+            .ui.basic.segment
+              h3.ui.center.aligned.header
+                i.settings.icon
+                |管理系统 v1.0
+        .row
+          .eight.wide.column
+            .ui.raised.segment 
+              form.ui.form
+                .field
+                  label 用户名
+                  .ui.left.icon.input
+                    input#name(type="text", name="username", placeholder="请输入用户名")
+                    i.user.icon
+                .field
+                  label 密码    
+                  .ui.left.icon.input
+                    input#pass(type="password", name="password", placeholder="请输入密码")
+                    i.lock.icon
+                input.ui.primary.button#loginbutton(type="submit", value="登陆")
 
   include ./jade/_library
 
-  script(src="/public/langs/zh_cn.js")
-
   // build:js({app,.tmp}) /scripts/admin/loginapp.js
-  script(src="/templates/precompiled.handlebars.adminlogin.js")
-  script(src="/scripts/app.js")
-  script(src="/scripts/admin/admin.js")
-
+  script(src="/scripts/admin/adminlogin.js")
   // endbuild
 
-  script
-    | Dionysus.start();

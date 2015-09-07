@@ -43,7 +43,7 @@ public class HomeController {
 	public String admin() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
+        if(authentication == null || authentication.getPrincipal() == "anonymousUser"){
             return "/adminlogin.html";
         }
 

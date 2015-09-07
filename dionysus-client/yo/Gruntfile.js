@@ -265,7 +265,7 @@ module.exports = function (grunt) {
         files : {
           '.tmp/templates/precompiled.handlebars.home.js': ['templates/home/**/*.jade'],
           '.tmp/templates/precompiled.handlebars.admin.js' : ['templates/admin/**/*.jade'],
-          '.tmp/templates/precompiled.handlebars.adminlogin.js' : ['templates/admin/adminlogin.jade'],
+         // '.tmp/templates/precompiled.handlebars.adminlogin.js' : ['templates/admin/adminlogin.jade'],
         }
       }
     },
