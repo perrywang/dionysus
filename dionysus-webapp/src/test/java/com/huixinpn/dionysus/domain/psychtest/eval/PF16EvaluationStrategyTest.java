@@ -92,8 +92,9 @@ public class PF16EvaluationStrategyTest extends AbstractPersistentTest {
 	  Object obj = strategy.evaluate(result);
 	  @SuppressWarnings("unchecked")
     Map<String, Integer> score = (Map<String, Integer>) obj;
-	  Map<String, Integer> results = PF16Normalization.normalize(score, PF16Normalization.ADULT_MALE);
+	//  Map<String, Integer> results = PF16Normalization.normalize(score, PF16Normalization.ADULT_MALE);
 	  
-	  Assert.assertEquals(2, results.get("A").intValue()); 
+	  Assert.assertEquals(2, score.get("A").intValue());
+      Assert.assertEquals(2, score.get("normal_A").intValue());
 	}
 }

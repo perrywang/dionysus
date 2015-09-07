@@ -7,20 +7,20 @@ html(class="no-js")
     meta(http-equiv="X-UA-Compatible", content="IE=edge;")
     link(rel="shortcut icon", href="/favicon.ico")
 
-    // build:css({.,.tmp}) /styles/admin.css
+    // build:css({.,.tmp}) /styles/adminlogin.css
     link(rel="stylesheet", href="/bower_components/fontawesome/css/font-awesome.css")
     link(rel="stylesheet", href="/styles/semantic.css")
-    link(rel="stylesheet", href="/styles/main.css")
     // endbuild
   body.dionysus
     main#main(style="width:80%")
+
 
   include ./jade/_library
 
   script(src="/public/langs/zh_cn.js")
 
-  // build:js({app,.tmp}) /scripts/admin/app.js
-  script(src="/templates/precompiled.handlebars.admin.js")
+  // build:js({app,.tmp}) /scripts/admin/loginapp.js
+  script(src="/templates/precompiled.handlebars.adminlogin.js")
   script(src="/scripts/app.js")
   script(src="/scripts/admin/admin.js")
 
