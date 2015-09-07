@@ -6,9 +6,58 @@ Dionysus.module('Admin.Home', function (Home, Dionysus, Backbone, Marionette) {
         className: 'container'
     });
 
+    var LoginView = Marionette.ItemView.extend({
+        template: JST['templates/admin/adminlogin'],
+        events: {
+            'click #loginbutton': function() {
+                var user = {
+                    username: this.$('#name').val(),
+                    password: this.$('#pass').val()
+                };
+
+                if(!user.username || !user.password) return;
+                
+                $.ajax({
+                    url: '/api/v1/login',
+                    method: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(user)
+                }).done(function(response){
+                    window.location.href="/admin";
+                }).fail(function(response){
+                    alert(response.responseJSON.message);
+                });
+
+
+            }
+        },
+        onDomRefresh: function() {
+            this.$el.form({
+                username: {
+                    identifier: 'username',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '输入用户名'
+                    }]
+                },
+                password: {
+                    identifier: 'password',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '输入密码'
+                    }]
+                }
+            });
+        }
+    });
+
     var AdminHomeController = Marionette.Controller.extend({
         showHome: function () {
+            Dionysus.mainNavRegion.show(new Dionysus.Common.HeaderView({collection: links}));
             Dionysus.mainRegion.show(new HomeView());
+        },
+        adminlogin: function(){
+            Dionysus.mainRegion.show(new LoginView());
         }
     });
 
@@ -29,10 +78,11 @@ Dionysus.module('Admin.Home', function (Home, Dionysus, Backbone, Marionette) {
     ]);
 
     Dionysus.addInitializer(function () {
-        Dionysus.mainNavRegion.show(new Dionysus.Common.HeaderView({collection: links}));
+        
         new Marionette.AppRouter({
             appRoutes: {
-                'admin(/)': 'showHome'
+                'admin(/)': 'showHome',
+                'adminlogin(/)':"adminlogin"
             },
             controller: new AdminHomeController()
         });

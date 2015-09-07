@@ -86,6 +86,9 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
         username: this.$('#name').val(),
         password: this.$('#pass').val()
       };
+
+      if(!user.username || !user.password) return;
+
       $.ajax({
         url: '/api/v1/login',
         method: 'POST',
@@ -108,8 +111,8 @@ Dionysus.module('Home', function(Home, Dionysus, Backbone, Marionette) {
 
         window.location.reload();
 
-      }).fail(function() {
-        window.alert('登录失败，请确认用户名或密码正确...');
+      }).fail(function(response) {
+        window.alert(response.responseJSON.message);
       });
     },
     onDomRefresh: function() {
