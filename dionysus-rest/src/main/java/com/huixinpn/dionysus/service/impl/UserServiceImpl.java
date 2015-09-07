@@ -100,11 +100,17 @@ public class UserServiceImpl implements UserService, ConsultantService {
     @Override
     public User sign(String username, String password) {
         User user = userrepository.findByUsername(username);
-        if (!(user.isAccountNonExpired() && user.isAccountNonLocked() && user.isCredentialsNonExpired() && user.isEnabled())) {
-            throw new InvalidUserException("disabled user: " + username);
+
+        if (user == null) {
+            throw new InvalidUserException("用户不存在:" + username);
         }
-        if (user == null || !encoder.matches(password, user.getEncryptedPassword())) {
-            throw new InvalidUserException("invalid user: " + username);
+
+        if (!encoder.matches(password, user.getEncryptedPassword())) {
+            throw new InvalidUserException("密码错误: " + username);
+        }
+
+        if (!(user.isAccountNonExpired() && user.isAccountNonLocked() && user.isCredentialsNonExpired() && user.isEnabled())) {
+            throw new InvalidUserException("用户未生效: " + username);
         }
 
         manager.detach(user);
