@@ -51,7 +51,7 @@ Dionysus.module('Domain', function(Domain, Dionysus, Backbone, Marionette, $) {
         data: JSON.stringify(data)
       }).done(function(data) {
         if(typeof data === "number") cachedResults.set("id", data);
-        alert('保存成功');
+        alert('保存成功,你可以在用户面板中查看或继续这份测试!');
       });
     },
     submitResults : function() {
