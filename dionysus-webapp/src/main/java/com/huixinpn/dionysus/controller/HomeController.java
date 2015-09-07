@@ -42,7 +42,7 @@ public class HomeController {
 	@RequestMapping(value = "/admin/**", method = RequestMethod.GET)
 	public String admin() {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null || authentication.getPrincipal() == "anonymousUser"){
             return "/adminlogin.html";
         }
@@ -55,7 +55,8 @@ public class HomeController {
             }
         }
 
-        return "/adminlogin.html";
+        return "/adminlogin.html";*/
+        return "/admin.html";
 	}
 
 	@RequestMapping(value = "/consultant/**", method = RequestMethod.GET)

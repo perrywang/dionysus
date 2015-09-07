@@ -8,7 +8,7 @@ Dionysus.module('Admin.Home', function (Home, Dionysus, Backbone, Marionette) {
 
     var AdminHomeController = Marionette.Controller.extend({
         showHome: function () {
-            Dionysus.mainNavRegion.show(new Dionysus.Common.HeaderView({collection: links}));
+            
             Dionysus.mainRegion.show(new HomeView());
         },
     });
@@ -31,6 +31,17 @@ Dionysus.module('Admin.Home', function (Home, Dionysus, Backbone, Marionette) {
 
     Dionysus.addInitializer(function () {
         
+        Dionysus.on('login', function() {
+            window.location.href = "/adminlogin";
+        });
+
+        $.ajax({
+            url: '/api/v1/currentuser',
+            method: 'GET',
+        }).done(function(){
+            Dionysus.mainNavRegion.show(new Dionysus.Common.HeaderView({collection: links}));
+        })
+
         new Marionette.AppRouter({
             appRoutes: {
                 'admin(/)': 'showHome',
