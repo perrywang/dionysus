@@ -23,9 +23,8 @@
             img.c-avatar(src="/public/images/placeholder.png")
             {{/if}}
           .ui.basic.center.aligned.segment
-            h4.ui.center.aligned.green.header
-              .content {{realName}}
-                .sub.header {{shorter_description about}}
+            h3.ui.center.aligned.green.header {{realName}}
+              .sub.header {{shorter_description about}}
             a.ui.green.basic.button(href="/consultants/{{id}}") 详情或预约
         {{/each}}
 .row
