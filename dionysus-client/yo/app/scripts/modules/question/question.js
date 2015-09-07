@@ -147,7 +147,7 @@ Dionysus.module('Question', function (Article, Dionysus, Backbone, Marionette) {
       this.$('#submit').on('click',function(event){
         var title = $('#title').val();
         var description = $('#description').val();
-        var tagsInput = $('#tags').val();
+        var tagsInput = $('[name="tags"]').val();
         if(title == ''){
           toastr.error('请提供问题描述！');
           return;
