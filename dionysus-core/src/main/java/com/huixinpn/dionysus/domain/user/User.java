@@ -191,6 +191,14 @@ public class User extends AbstractDionysusPersistable implements UserDetails {
     this.courses = courses;
   }
 
+  public boolean isConsultant(){
+    for(Role role : getRoles()){
+      if(role.getName().endsWith("ROLE_CONSULTANT"))
+        return true;
+    }
+    return false;
+  }
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     Collection<GrantedAuthority> authorities = new ArrayList<>();
