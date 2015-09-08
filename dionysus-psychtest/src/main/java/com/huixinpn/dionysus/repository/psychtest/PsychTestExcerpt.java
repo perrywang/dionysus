@@ -14,4 +14,6 @@ public interface PsychTestExcerpt {
 	String getDescription();
 	
 	String getObject();
+
+    String getComment();
 }

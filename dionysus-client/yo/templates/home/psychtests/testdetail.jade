@@ -9,7 +9,10 @@
 			img.ui.centered.image(src="/public/images/心理测试.jpg")
 			{{/if}}
 			p
-				h4.ui.header {{description}}
+				h4.ui.header {{comment}}
+			.ui.left.aligned.basic.segment
+				p
+					{{{description}}} 
 			p
 				a.positive.ui.button(href="/psychtests/{{ id }}") 开始测试
 
