@@ -45,12 +45,14 @@ public class PsychTestQuestion extends AbstractDionysusPersistable {
 	@Column(name = "sub_id")
 	private Integer subId;
 
+
 	@Column(name = "description")
 	private String description;
 
 	@ManyToOne
 	private PsychTest test;
-	
+
+    @Column(name="required")
 	@Enumerated(EnumType.STRING)
 	private RequireMode require = RequireMode.OPTIONAL;
 	
