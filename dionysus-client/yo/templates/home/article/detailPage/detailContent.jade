@@ -3,7 +3,7 @@
       .ui.basic.segment
         .ui.header
           h2 {{ title }}
-          .sub.header 时间: {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}
+          .sub.header 时间: {{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}  浏览次数: {{readCounter.value}}
         p {{ summary }}
         p {{{ body }}}
     .row

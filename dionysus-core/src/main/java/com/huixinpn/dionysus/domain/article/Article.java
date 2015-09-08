@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.Valid;
 
+import com.huixinpn.dionysus.domain.event.NotificationListener;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.NotBlank;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -68,6 +70,9 @@ public class Article extends AbstractDionysusAuditable<User> {
 
 	@OneToMany(mappedBy = "article", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<Comment> comments = new ArrayList<>();
+
+    @OneToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    private ArticleReadCounter readCounter;
 
 	@PreUpdate
     @PrePersist

@@ -21,6 +21,8 @@ public interface ArticleSummary {
 
     public ArticleType getType();
 
+    public ReadCountExcerpt getReadCounter();
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public DateTime getLastModifiedDate();
 

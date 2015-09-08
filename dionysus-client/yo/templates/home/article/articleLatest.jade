@@ -7,5 +7,5 @@
 			.contnet
 				.header
 					a(href="/articles/{{id}}") {{title}}
-				.article-meta [{{category.name}}] 更新时间：{{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}  浏览数：
+				.article-meta [{{category.name}}] 更新时间：{{lastModifiedDate.year}}-{{lastModifiedDate.monthOfYear}}-{{lastModifiedDate.dayOfMonth}}  浏览数：{{readCounter.value}}
 		{{/each}}

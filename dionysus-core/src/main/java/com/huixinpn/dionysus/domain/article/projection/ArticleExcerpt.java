@@ -22,6 +22,7 @@ public interface ArticleExcerpt {
     ArticleType getType();
     String getLocation();
     Boolean getInterview();
+    ReadCountExcerpt getReadCounter();
     Collection<CommentExcerpt> getComments();
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     public DateTime getLastModifiedDate();

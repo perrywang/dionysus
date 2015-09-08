@@ -87,6 +87,10 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette) {
       //get detail value
       Dionysus.request('article:instance:excerpt', id).done(function(article) {
 
+        $.ajax({
+          url: "/controllers/article/"+id+"/incrReadCount"
+        });
+
         var detail = new ArticleDetailView({
           model: article
         });
