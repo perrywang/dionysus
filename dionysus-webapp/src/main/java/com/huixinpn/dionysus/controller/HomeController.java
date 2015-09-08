@@ -32,6 +32,7 @@ public class HomeController {
             "/questions/**",
 			"/murmurs/**",
 			"/organizations/**",
+            "/psychtests/**",
             "/inbox/**"
 		}, 
 		method = RequestMethod.GET)
