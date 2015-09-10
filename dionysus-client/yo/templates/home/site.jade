@@ -1,10 +1,13 @@
 .row
   .jumbotron
+    .vid
+      video#v1(autoplay,loop)
+        source(src="/video.mp4", type="video/mp4")
     .dialogue
       h1.ui.header 汇心网，关怀无处不在
       p.content 24小时x360度零距离与您贴心相伴
 
-.row.ui.four.column.grid.centered#modules
+.row.ui.four.column.stackable.grid.centered#modules
   .column
     a.ui.blue.card(href="/articles")
       .content

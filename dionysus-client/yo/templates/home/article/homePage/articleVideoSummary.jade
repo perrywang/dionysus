@@ -2,11 +2,16 @@
 	.two.column.row
 		.column
 			.ui.basic.segment
-				a(href="/articles/{{items.[0].id}}")
+				.ui.centered.image.coveritem
+					.ui.dimmer
+						.content
+							.center
+								h4.ui.inverted.header
+									a(href="/articles/{{items.[0].id}}") {{items.[0].title}}
 					{{#if items.[0].cover}}
-					img.ui.centered.image(src="{{items.[0].cover}}")
+					img(src="{{items.[0].cover}}")
 					{{else}}
-					img.ui.centered.image(src="/public/images/video-default.png")
+					img(src="/public/images/video-default.png")
 					{{/if}}
 		.column
 			.row
