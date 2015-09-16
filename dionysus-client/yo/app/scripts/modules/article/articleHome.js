@@ -69,7 +69,12 @@ Dionysus.module('Article', function(Article, Dionysus, Backbone, Marionette){
 					thisView.collection.reset([]);
 				}
 			});
-		}
+		},
+		onDomRefresh: function(){
+			$('.coveritem').dimmer({
+				on: 'hover'
+			});
+		},
 	});
 	//make this view public
 	Article.RegionSummaryView = RegionSummaryView;
